@@ -1,4 +1,4 @@
-<title>battery-data · record bench</title>
+<title>battery-data · cell bench</title>
 
 <style>
 :root{
@@ -6,35 +6,23 @@
   --ink:#101615; --ink-2:#3A4644; --muted:#5F6D69;
   --accent:#0B6E5F; --accent-ink:#FFFFFF; --accent-soft:#E3F0ED;
   --missing:#B4441F; --missing-soft:#FBEAE3;
-  --ok:#2F6B3A; --ok-soft:#E6F1E7;
+  --ok:#2F6B3A;
   --c1:#0E9C82; --c2:#2E6FD0; --c3:#D2551F; --c4:#9257D8; --c5:#A8820A;
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --r:6px;
 }
 @media (prefers-color-scheme:dark){
-  :root{
-    --ground:#0F1413; --surface:#1A1A19; --surface-2:#222826; --line:#333B39;
-    --ink:#E8EDEB; --ink-2:#BFC9C6; --muted:#93A29E;
-    --accent:#4FD1B5; --accent-ink:#08201C; --accent-soft:#16302B;
-    --missing:#F08A5F; --missing-soft:#3A211A;
-    --ok:#7CC48A; --ok-soft:#1B2E1F;
-  }
+  :root{--ground:#0F1413;--surface:#1A1A19;--surface-2:#222826;--line:#333B39;
+    --ink:#E8EDEB;--ink-2:#BFC9C6;--muted:#93A29E;--accent:#4FD1B5;--accent-ink:#08201C;
+    --accent-soft:#16302B;--missing:#F08A5F;--missing-soft:#3A211A;--ok:#7CC48A;}
 }
-:root[data-theme="dark"]{
-  --ground:#0F1413; --surface:#1A1A19; --surface-2:#222826; --line:#333B39;
-  --ink:#E8EDEB; --ink-2:#BFC9C6; --muted:#93A29E;
-  --accent:#4FD1B5; --accent-ink:#08201C; --accent-soft:#16302B;
-  --missing:#F08A5F; --missing-soft:#3A211A;
-  --ok:#7CC48A; --ok-soft:#1B2E1F;
-}
-:root[data-theme="light"]{
-  --ground:#F4F6F5; --surface:#FCFCFB; --surface-2:#EEF1F0; --line:#DBE2E0;
-  --ink:#101615; --ink-2:#3A4644; --muted:#5F6D69;
-  --accent:#0B6E5F; --accent-ink:#FFFFFF; --accent-soft:#E3F0ED;
-  --missing:#B4441F; --missing-soft:#FBEAE3;
-  --ok:#2F6B3A; --ok-soft:#E6F1E7;
-}
+:root[data-theme="dark"]{--ground:#0F1413;--surface:#1A1A19;--surface-2:#222826;--line:#333B39;
+  --ink:#E8EDEB;--ink-2:#BFC9C6;--muted:#93A29E;--accent:#4FD1B5;--accent-ink:#08201C;
+  --accent-soft:#16302B;--missing:#F08A5F;--missing-soft:#3A211A;--ok:#7CC48A;}
+:root[data-theme="light"]{--ground:#F4F6F5;--surface:#FCFCFB;--surface-2:#EEF1F0;--line:#DBE2E0;
+  --ink:#101615;--ink-2:#3A4644;--muted:#5F6D69;--accent:#0B6E5F;--accent-ink:#FFFFFF;
+  --accent-soft:#E3F0ED;--missing:#B4441F;--missing-soft:#FBEAE3;--ok:#2F6B3A;}
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
@@ -42,741 +30,408 @@ body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
 h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.015em}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
-
-.lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;
-  color:var(--muted);font-weight:600}
+.lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-/* ---- shell ---- */
-header{border-bottom:1px solid var(--line);background:var(--surface);
-  position:sticky;top:0;z-index:20}
-.hwrap{max-width:1340px;margin:0 auto;padding:12px 20px;
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}
+.hwrap{max-width:1400px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .brand{display:flex;align-items:baseline;gap:9px}
 .brand b{font-size:15px;font-weight:650;letter-spacing:-.02em}
 .brand span{font-size:11px;color:var(--muted)}
-.chip{margin-left:auto;display:inline-flex;align-items:center;gap:6px;
-  font-size:11px;padding:4px 9px;border-radius:20px;border:1px solid var(--line);
-  background:var(--surface-2);color:var(--ink-2)}
+.chip{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:11px;
+  padding:4px 9px;border-radius:20px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2)}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--muted)}
 .dot.live{background:var(--ok)}
-
-nav{display:flex;gap:2px;max-width:1340px;margin:0 auto;padding:0 20px}
-nav button{background:none;border:0;padding:9px 13px;cursor:pointer;
-  font-size:13px;color:var(--muted);border-bottom:2px solid transparent;
-  font-weight:500}
-nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);
-  font-weight:600}
+nav{display:flex;gap:2px;max-width:1400px;margin:0 auto;padding:0 20px}
+nav button{background:none;border:0;padding:9px 13px;cursor:pointer;font-size:13px;
+  color:var(--muted);border-bottom:2px solid transparent;font-weight:500}
+nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
 nav button:hover{color:var(--ink)}
+main{max-width:1400px;margin:0 auto;padding:20px}
+.panel{display:none}.panel.on{display:block}
 
-main{max-width:1340px;margin:0 auto;padding:20px}
-.panel{display:none}
-.panel.on{display:block}
-
-/* ---- enter: two columns ---- */
-.bench{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:18px;
-  align-items:start}
-@media (max-width:1000px){.bench{grid-template-columns:minmax(0,1fr)}}
-
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
-  margin-bottom:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:14px}
 .card > h3{padding:11px 14px;border-bottom:1px solid var(--line);font-size:12px;
   text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);font-weight:650;
   display:flex;align-items:center;gap:9px}
-.card .body{padding:14px;display:flex;flex-direction:column;gap:12px}
-
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:11px}
-.f{display:flex;flex-direction:column;gap:4px;min-width:0}
-.f input,.f select,.f textarea{width:100%;padding:6px 8px;border:1px solid var(--line);
-  border-radius:4px;background:var(--ground)}
-.f textarea{resize:vertical;min-height:56px;font-family:var(--mono);font-size:12.5px}
-.f input:disabled{opacity:.45}
-.hint{font-size:11px;color:var(--muted)}
-
-/* required condition states — structural, not colour-alone */
-.cond{border:1px solid var(--line);border-radius:5px;padding:9px 10px;
-  display:flex;flex-direction:column;gap:5px;background:var(--ground)}
-.cond.req{border-color:var(--missing);background:var(--missing-soft)}
-.cond.req.filled{border-color:var(--ok);background:var(--ok-soft)}
-.cond.unstated{border-style:dashed;border-color:var(--muted);background:transparent;
-  opacity:.85}
-.cond-top{display:flex;align-items:center;gap:7px;justify-content:space-between}
-.cond-name{font-family:var(--mono);font-size:12px;font-weight:600}
-.tag{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;
-  padding:2px 6px;border-radius:3px}
-.tag.req{background:var(--missing);color:#fff}
-.cond.req.filled .tag.req{background:var(--ok)}
-.cond.unstated .tag.req{background:var(--muted)}
-.us{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);
-  cursor:pointer;user-select:none;white-space:nowrap}
-
-.obs{border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;
-  background:var(--surface)}
-.obs-head{padding:10px 12px;border-bottom:1px solid var(--line);display:flex;
-  align-items:center;gap:10px;flex-wrap:wrap}
-.obs-head .n{font-family:var(--mono);font-size:11px;color:var(--muted);
-  background:var(--surface-2);padding:2px 7px;border-radius:3px}
-.obs-body{padding:12px;display:flex;flex-direction:column;gap:12px}
-
+.card .body{padding:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .btn{padding:6px 12px;border:1px solid var(--line);background:var(--surface-2);
   border-radius:4px;cursor:pointer;font-size:12.5px;font-weight:500}
 .btn:hover{border-color:var(--muted)}
-.btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);
-  font-weight:600}
+.btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
 .btn.ghost{background:none}
-.btn.danger{color:var(--missing);border-color:transparent;background:none;padding:4px 7px}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input[type=search],select.f{padding:7px 10px;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
 
-/* readout */
-.readout{position:sticky;top:64px}
-.status{display:flex;flex-direction:column;gap:7px;padding:12px 14px;
-  border-bottom:1px solid var(--line)}
-.bar{height:5px;border-radius:3px;background:var(--surface-2);overflow:hidden}
-.bar i{display:block;height:100%;background:var(--ok);transition:width .25s}
-.bar i.bad{background:var(--missing)}
-.probs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;
-  max-height:190px;overflow-y:auto}
-.probs li{font-size:11.5px;color:var(--missing);display:flex;gap:6px;line-height:1.35}
-.probs li b{font-family:var(--mono);font-weight:600}
-pre{margin:0;padding:12px 14px;font-family:var(--mono);font-size:11.5px;line-height:1.55;
-  overflow-x:auto;max-height:47vh;overflow-y:auto;white-space:pre;color:var(--ink-2)}
-
-/* tables */
-.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);
-  background:var(--surface)}
-table{border-collapse:collapse;width:100%;font-size:12.5px}
-th,td{padding:7px 11px;text-align:left;border-bottom:1px solid var(--line);
-  white-space:nowrap}
-th{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
-  font-weight:650;cursor:pointer;background:var(--surface-2);position:sticky;top:0}
-td.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
-td.code{font-family:var(--mono);font-size:12px}
-tbody tr:hover{background:var(--surface-2)}
-.pill{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:20px;
-  border:1px solid var(--line);background:var(--ground)}
-.pill.dash{border-style:dashed;color:var(--muted)}
-
-.empty{padding:34px 20px;text-align:center;color:var(--muted);font-size:13px}
+.warn{background:var(--missing-soft);border:1px solid var(--missing);border-radius:var(--r);
+  padding:11px 13px;font-size:12.5px;color:var(--ink-2);margin-bottom:14px}
+.warn b{color:var(--missing)}
 .note{background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--r);
   padding:11px 13px;font-size:12.5px;color:var(--ink-2);margin-bottom:14px}
+
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+  font-weight:650;cursor:pointer;background:var(--surface-2);position:sticky;top:0;z-index:2}
+th.num,td.num{text-align:right}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.code{font-family:var(--mono);font-size:12px}
+tbody tr:hover{background:var(--surface-2)}
+tbody tr.sel{background:var(--accent-soft)}
+.best{font-weight:700;color:var(--accent)}
+.pill{display:inline-block;font-size:10px;padding:1px 7px;border-radius:20px;
+  border:1px solid var(--line);background:var(--ground);color:var(--ink-2)}
+.pill.prov{border-style:dashed;color:var(--missing);border-color:var(--missing)}
+.empty{padding:34px 20px;text-align:center;color:var(--muted);font-size:13px}
 figure{margin:0}
-figcaption{font-size:11.5px;color:var(--muted);margin-top:7px}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-2);
-  margin-bottom:9px}
+figcaption{font-size:11.5px;color:var(--muted);margin-top:7px;max-width:62ch}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-2);margin-bottom:9px}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .sw{width:9px;height:9px;border-radius:2px;display:inline-block}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
 svg text{font-family:var(--sans)}
+.rep{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 30px}
+.rep h2{font-size:19px;margin-bottom:4px}
+.rep .meta{font-size:12px;color:var(--muted);margin-bottom:18px}
+.rep h4{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);
+  margin:20px 0 8px;font-weight:650}
+.rep p{font-size:13px;color:var(--ink-2);max-width:70ch}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-bottom:6px}
+.stat div{border:1px solid var(--line);border-radius:5px;padding:10px 12px;background:var(--ground)}
+.stat .v{font-family:var(--mono);font-size:19px;font-weight:650;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em}
+.stat .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:2px}
+@media print{header,nav,.noprint{display:none!important}main{padding:0;max-width:none}
+  .rep{border:0;padding:0}body{background:#fff}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
 <header>
   <div class="hwrap">
-    <div class="brand"><b>battery-data</b><span>record bench</span></div>
-    <div class="chip"><i class="dot" id="srcdot"></i><span id="srclabel">snapshot</span></div>
+    <div class="brand"><b>battery-data</b><span>cell bench</span></div>
+    <div class="chip"><i class="dot" id="srcdot"></i><span id="srclabel">seed set</span></div>
   </div>
   <nav role="tablist">
-    <button role="tab" aria-selected="true" data-p="enter">Enter a record</button>
-    <button role="tab" aria-selected="false" data-p="browse">Browse</button>
+    <button role="tab" aria-selected="true" data-p="compare">Compare</button>
     <button role="tab" aria-selected="false" data-p="charts">Charts</button>
-    <button role="tab" aria-selected="false" data-p="graph">Graph</button>
+    <button role="tab" aria-selected="false" data-p="report">Report</button>
   </nav>
 </header>
 
 <main>
-  <!-- ENTER -->
-  <section class="panel on" id="p-enter">
-    <div class="note">
-      Pick a quantity and this form shows you exactly which conditions that quantity
-      requires. <b>51 of the 98 quantities carry mandatory conditions.</b> A capacity
-      without rate, temperature and cutoff voltage is not a fact — so it will not
-      validate. If the source genuinely never states a condition, mark it
-      <em>not stated</em> rather than guessing: that records the absence instead of
-      inventing a value.
+  <!-- COMPARE -->
+  <section class="panel on" id="p-compare">
+    <div class="warn">
+      <b>These figures are provisional.</b> They are widely published headline
+      specifications entered as a starting set, not records extracted from datasheets
+      with a page and a verbatim quote. Until each carries a source locator it is a
+      convenient number, not a fact — treat this table as a demonstration of the
+      comparison, not as evidence. Rows are marked
+      <span class="pill prov">provisional</span> for exactly this reason.
     </div>
 
-    <div class="bench">
-      <div>
-        <div class="card">
-          <h3>Product</h3>
-          <div class="body">
-            <div class="grid2">
-              <div class="f"><label class="lbl" for="p_manu">Manufacturer</label>
-                <input id="p_manu" data-k="manufacturer" placeholder="Samsung SDI"></div>
-              <div class="f"><label class="lbl" for="p_model">Model number</label>
-                <input id="p_model" data-k="model_number" placeholder="INR21700-50E"></div>
-              <div class="f"><label class="lbl" for="p_kind">Kind</label>
-                <select id="p_kind" data-k="kind"></select></div>
-              <div class="f"><label class="lbl" for="p_ff">Form factor</label>
-                <select id="p_ff" data-k="form_factor"></select></div>
-              <div class="f"><label class="lbl" for="p_ffc">Form factor code</label>
-                <input id="p_ffc" data-k="form_factor_code" placeholder="21700"></div>
-              <div class="f"><label class="lbl" for="p_chem">Chemistry</label>
-                <input id="p_chem" data-k="chemistry" placeholder="NCA"></div>
-            </div>
-            <div class="f"><label class="lbl" for="p_uid">Product uid</label>
-              <input id="p_uid" class="mono" data-k="uid" placeholder="cell/samsung-sdi/inr21700-50e">
-              <span class="hint">Generated from manufacturer and model unless you override it.</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Source</h3>
-          <div class="body">
-            <div class="grid2">
-              <div class="f"><label class="lbl" for="s_kind">Kind</label>
-                <select id="s_kind" data-k="kind"></select></div>
-              <div class="f"><label class="lbl" for="s_date">Document date</label>
-                <input id="s_date" data-k="document_date" placeholder="2018-07-11"></div>
-            </div>
-            <div class="f"><label class="lbl" for="s_title">Title</label>
-              <input id="s_title" data-k="title" placeholder="Samsung INR21700-50E Specification"></div>
-            <div class="f"><label class="lbl" for="s_url">URL</label>
-              <input id="s_url" class="mono" data-k="url" placeholder="https://..."></div>
-            <div class="f"><label class="lbl" for="s_redis">Redistributable</label>
-              <select id="s_redis" data-k="redistributable">
-                <option value="false">No — store extracted facts only</option>
-                <option value="true">Yes — document body may be stored</option>
-              </select>
-              <span class="hint">Never commit datasheet PDFs. Facts plus a URL, hash and retrieval date keep a takedown to one source.</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Observations <span id="obscount" class="mono" style="color:var(--muted);font-weight:400"></span></h3>
-          <div class="body">
-            <div id="obslist"></div>
-            <div class="row"><button class="btn pri" id="addobs">Add an observation</button></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="readout">
-        <div class="card" style="margin-bottom:0">
-          <h3>Contribution file</h3>
-          <div class="status">
-            <div class="row" style="justify-content:space-between">
-              <span class="lbl">Validity</span>
-              <span class="mono" id="vtext" style="font-size:12px">—</span>
-            </div>
-            <div class="bar"><i id="vbar" style="width:0"></i></div>
-            <ul class="probs" id="probs"></ul>
-          </div>
-          <pre id="yaml"></pre>
-          <div class="row" style="padding:11px 14px;border-top:1px solid var(--line)">
-            <button class="btn pri" id="dl">Download .yaml</button>
-            <button class="btn" id="cp">Copy</button>
-            <button class="btn ghost" id="demo">Load example</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BROWSE -->
-  <section class="panel" id="p-browse">
-    <div class="row" style="margin-bottom:12px">
-      <input id="q" style="flex:1;min-width:220px;padding:7px 10px;border:1px solid var(--line);border-radius:4px;background:var(--surface)" class="mono"
-             placeholder="filter — e.g. capacity  ·  samsung  ·  cycle_life">
+    <div class="row noprint" style="margin-bottom:12px">
+      <input type="search" id="q" style="flex:1;min-width:200px" class="mono"
+             placeholder="filter — nca · lfp · 21700 · samsung">
+      <select class="f" id="chemf"><option value="">every chemistry</option></select>
+      <select class="f" id="fff"><option value="">every format</option></select>
       <button class="btn" id="csv">Export CSV</button>
+      <button class="btn ghost" id="clear">Clear selection</button>
     </div>
-    <div class="tblwrap"><table id="tbl"><thead></thead><tbody></tbody></table></div>
-    <p class="hint" style="margin-top:9px">Click a column heading to sort. Conditions shown as
-      <span class="pill">stated</span> or <span class="pill dash">not stated</span>.</p>
+
+    <div class="tblwrap">
+      <table id="tbl"><thead></thead><tbody></tbody></table>
+    </div>
+    <p class="lbl" style="margin-top:9px">Click a row to add it to the report ·
+      click a column heading to sort · best value in each column is highlighted</p>
   </section>
 
   <!-- CHARTS -->
   <section class="panel" id="p-charts">
-    <div class="card"><h3>Capacity by cell</h3><div class="body">
-      <div class="legend" id="lg1"></div>
-      <figure><div id="ch1"></div>
-        <figcaption>Every bar is one observation with its conditions attached — the same
-          cell appears more than once when it was measured at more than one rate.</figcaption></figure>
-    </div></div>
-    <div class="card"><h3>Specific energy against cell mass</h3><div class="body">
-      <figure><div id="ch2"></div>
-        <figcaption>Each point is one cell. Hover for the cell and its measured values.</figcaption></figure>
-    </div></div>
+    <div class="legend" id="lg"></div>
+    <div class="grid2">
+      <div class="card"><h3>Gravimetric against volumetric energy density</h3><div class="body">
+        <figure><div id="ch1"></div>
+          <figcaption>The trade-off that decides a pack. Up and to the right is better on
+            both counts; cells low-right buy volume efficiency with weight, and the
+            reverse for those high-left.</figcaption></figure>
+      </div></div>
+      <div class="card"><h3>Specific energy against specific power</h3><div class="body">
+        <figure><div id="ch2"></div>
+          <figcaption>A Ragone-style view from continuous discharge rating. High-power cells
+            sit right and low; energy cells sit left and high. Very few sit in both corners.</figcaption></figure>
+      </div></div>
+      <div class="card"><h3>Specific energy by cell</h3><div class="body">
+        <figure><div id="ch3"></div><figcaption>Ranked. Colour is chemistry.</figcaption></figure>
+      </div></div>
+      <div class="card"><h3>Energy density by cell</h3><div class="body">
+        <figure><div id="ch4"></div><figcaption>Ranked, in watt-hours per litre.</figcaption></figure>
+      </div></div>
+    </div>
   </section>
 
-  <!-- GRAPH -->
-  <section class="panel" id="p-graph">
-    <div class="note">The relational tables are the source of truth; this is the derived
-      projection (<span class="mono">bd_graph.node</span> / <span class="mono">bd_graph.edge</span>).
-      It answers the questions with no bounded join depth — every cell downstream of one
-      cathode supplier, every observation tracing back to one source. Drag to rearrange.</div>
-    <div class="card"><div class="body"><div id="net"></div></div></div>
+  <!-- REPORT -->
+  <section class="panel" id="p-report">
+    <div class="row noprint" style="margin-bottom:12px">
+      <button class="btn pri" id="print">Print / save as PDF</button>
+      <button class="btn" id="md">Export Markdown</button>
+      <button class="btn" id="repcsv">Export CSV</button>
+      <span class="lbl" id="repcount"></span>
+    </div>
+    <div class="rep" id="rep"></div>
   </section>
 </main>
 
 <script>
-/* ============================================================
-   Quantity registry: code -> mandatory condition columns.
-   Mirrors json-schema/quantity-registry.json (98 quantities).
-   ============================================================ */
-const REG = {"absolute_max_voltage":[],"absolute_min_voltage":[],"area_specific_impedance":["pulse_duration_s","soc_pct","temperature_c","area_cm2","area_kind"],"areal_capacity":["rate_value","rate_unit","area_kind"],"calendar_life":["temperature_c","soc_pct"],"capacity":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"capacity_retention":["cycle_index","temperature_c","rate_value","rate_unit"],"carbon_footprint_per_kwh":[],"charge_cutoff_voltage":[],"charge_transfer_resistance":["soc_pct","temperature_c"],"cooling_capacity":["temperature_c"],"coulombic_efficiency":["rate_value","rate_unit","temperature_c","cycle_index"],"current":[],"cv_cutoff_current":[],"cycle_life":["temperature_c","dod_pct","rate_value","rate_unit"],"cycle_number":[],"diameter":[],"diffusion_coefficient":["soc_pct","temperature_c"],"discharge_cutoff_voltage":[],"displacement":[],"dqdv":[],"drt_gamma":[],"dvdq":[],"electrode_thickness":[],"energy":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"energy_density_volumetric":["rate_value","rate_unit","temperature_c"],"energy_efficiency":["rate_value","rate_unit","temperature_c"],"entropy_coefficient":["soc_pct"],"gas_volume":[],"gravimetric_energy_density":["rate_value","rate_unit","temperature_c"],"heat_capacity":["temperature_c"],"heat_generation_rate":["rate_value","rate_unit","temperature_c"],"height":[],"impedance_imaginary":["frequency_hz","soc_pct","temperature_c"],"impedance_magnitude":["frequency_hz","soc_pct","temperature_c"],"impedance_phase":["frequency_hz","soc_pct","temperature_c"],"impedance_real":["frequency_hz","soc_pct","temperature_c"],"internal_resistance_ac":["frequency_hz","soc_pct","temperature_c"],"internal_resistance_dc":["pulse_duration_s","soc_pct","temperature_c","direction"],"length":[],"loading_areal":["area_kind"],"mass":[],"max_charge_current":["temperature_c"],"max_charge_voltage":[],"max_continuous_charge_current":["temperature_c"],"max_continuous_discharge_current":["temperature_c"],"max_discharge_current":["temperature_c"],"max_pulse_charge_current":["temperature_c","pulse_duration_s"],"max_pulse_discharge_current":["temperature_c","pulse_duration_s"],"nominal_capacity":[],"nominal_energy":[],"nominal_voltage":[],"ocv":["soc_pct","temperature_c"],"onset_temperature":[],"operating_temperature_max":[],"operating_temperature_min":[],"peak_heat_release_rate":[],"peak_temperature":[],"porosity":[],"power":["soc_pct","temperature_c","pulse_duration_s"],"power_density_gravimetric":["soc_pct","temperature_c","pulse_duration_s"],"power_density_volumetric":["soc_pct","temperature_c","pulse_duration_s"],"pressure":[],"pulse_resistance":["pulse_duration_s","soc_pct","temperature_c","direction"],"recycled_content_fraction":[],"resistance_growth":["cycle_index","soc_pct","temperature_c"],"round_trip_efficiency":["rate_value","rate_unit","temperature_c"],"self_discharge_rate":["temperature_c","soc_pct","duration_s"],"self_heating_rate":["temperature_c"],"separator_thickness":[],"series_resistance":["frequency_hz","soc_pct","temperature_c"],"shipping_soc":[],"soc":[],"soh":["cycle_index","temperature_c"],"specific_capacity":["rate_value","rate_unit","temperature_c"],"specific_power":["soc_pct","temperature_c","pulse_duration_s"],"state_of_charge":[],"storage_temperature_max":[],"storage_temperature_min":[],"surface_area_bet":[],"swelling":["soc_pct","constraint_mode"],"tab_resistance":[],"temperature":[],"thermal_conductivity":["temperature_c","boundary"],"thermal_runaway_energy":[],"thickness":[],"time_to_thermal_runaway":["temperature_c"],"tortuosity":[],"vent_temperature":[],"volume":[],"voltage":["soc_pct","temperature_c"],"volumetric_capacity":["rate_value","rate_unit","temperature_c"],"weight":[],"width":[],"cell_count_parallel":[],"cell_count_series":[],"coolant_flow_rate":[],"dcir_charge":["pulse_duration_s","soc_pct","temperature_c"],"dcir_discharge":["pulse_duration_s","soc_pct","temperature_c"],"module_count":[],"pack_energy":["rate_value","rate_unit","temperature_c"],"usable_energy":["rate_value","rate_unit","temperature_c","soc_pct"]};
-
-/* condition column -> input spec */
-const E = {
-  temp_ref:["ambient","chamber_setpoint","cell_surface","can","tab","core","coolant_inlet","coolant_outlet","unspecified"],
-  rate_unit:["C","It","A","mA","W","P","W_per_kg","ohm","unspecified"],
-  direction:["discharge","charge","rest","symmetric","regen"],
-  area_kind:["separator_total","cathode_single_sided","cathode_double_sided","anode_single_sided","anode_double_sided","geometric_footprint","unspecified"],
-  load_unit:["mA","A","ohm","mW","W"],
-  boundary:["electrode","cell","module","pack_dc","dc_bus","ac_terminal","ac_including_auxiliaries","unspecified"],
-  constraint:["unconstrained","constant_force","constant_gap","rigid_case","stack_in_module","unspecified"]
-};
-const COND = {
-  temperature_c:{t:"n",u:"°C"}, temperature_reference:{t:"e",o:E.temp_ref},
-  rate_value:{t:"n"}, rate_unit:{t:"e",o:E.rate_unit},
-  rate_reference_capacity_ah:{t:"n",u:"Ah"},
-  voltage_upper_v:{t:"n",u:"V"}, voltage_lower_v:{t:"n",u:"V"},
-  cutoff_voltage_v:{t:"n",u:"V"}, soc_pct:{t:"n",u:"%"}, dod_pct:{t:"n",u:"%"},
-  pulse_duration_s:{t:"n",u:"s"}, pulse_current_a:{t:"n",u:"A"},
-  frequency_hz:{t:"n",u:"Hz"}, cycle_index:{t:"i"}, direction:{t:"e",o:E.direction},
-  area_cm2:{t:"n",u:"cm²"}, area_kind:{t:"e",o:E.area_kind},
-  duration_s:{t:"n",u:"s"}, rest_before_s:{t:"n",u:"s"},
-  load_value:{t:"n"}, load_unit:{t:"e",o:E.load_unit},
-  boundary:{t:"e",o:E.boundary}, constraint_mode:{t:"e",o:E.constraint},
-  duty_schedule:{t:"s"}
-};
-const STAT = ["rated","nominal","standard","minimum","typical","maximum","initial",
-  "design","guaranteed","mean","median","measured","absolute_max","absolute_min"];
-const PKIND = ["cell","module","pack","system","primary_cell","component"];
-const FF = ["cylindrical","pouch","prismatic_hardcase","coin","button","blade","rack","container","brick","other"];
-const SKIND = ["datasheet","manufacturer_web","standard","journal_article","preprint",
-  "dataset","third_party_test","teardown_report","distributor_listing","user_submission"];
-const CODES = Object.keys(REG).sort();
-
-/* ---------- state ---------- */
-const S = {product:{kind:"cell",form_factor:"cylindrical"},
-           source:{kind:"datasheet",redistributable:"false"}, obs:[]};
-let seq = 0;
-const $ = s => document.querySelector(s);
-const el = (t,a={},...k) => { const n=document.createElement(t);
-  for(const[x,v] of Object.entries(a)){ if(x==="class")n.className=v;
-    else if(x.startsWith("on"))n.addEventListener(x.slice(2),v); else n.setAttribute(x,v);}
-  k.flat().forEach(c=>n.append(c instanceof Node?c:document.createTextNode(c))); return n; };
-const slug = s => (s||"").toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-
-function fillSel(id,opts,val){ const s=$(id); s.innerHTML="";
-  opts.forEach(o=>s.append(el("option",{value:o},o))); if(val)s.value=val; }
-
-/* ---------- observation editor ---------- */
-function addObs(seed){
-  const o = {id:++seq, quantity:seed?.quantity||"capacity", statistic:seed?.statistic||"rated",
-    value:seed?.value??"", unit:seed?.unit||"", cond:seed?.cond||{}, unstated:new Set(seed?.unstated||[]),
-    page:seed?.page||"", section:seed?.section||"", quote:seed?.quote||""};
-  S.obs.push(o); renderObs(); render();
-}
-
-function renderObs(){
-  const host = $("#obslist"); host.innerHTML="";
-  $("#obscount").textContent = S.obs.length ? `${S.obs.length}` : "";
-  if(!S.obs.length){ host.append(el("div",{class:"empty"},
-    "No observations yet. Add one and the required conditions will appear.")); return; }
-
-  S.obs.forEach((o,i)=>{
-    const req = REG[o.quantity]||[];
-    const box = el("div",{class:"obs"});
-
-    const sel = el("select",{}); CODES.forEach(c=>sel.append(el("option",{value:c},c)));
-    sel.value=o.quantity; sel.className="mono"; sel.style.maxWidth="260px";
-    sel.onchange = e => { o.quantity=e.target.value; o.cond={}; o.unstated=new Set();
-                          renderObs(); render(); };
-
-    box.append(el("div",{class:"obs-head"},
-      el("span",{class:"n"},`#${i+1}`), sel,
-      el("span",{class:"hint"}, req.length
-        ? `${req.length} required condition${req.length>1?"s":""}`
-        : "no required conditions"),
-      el("button",{class:"btn danger",onclick:()=>{S.obs.splice(i,1);renderObs();render();},
-        title:"Remove"},"Remove")));
-
-    const body = el("div",{class:"obs-body"});
-
-    // value row
-    const vstat=el("select",{}); STAT.forEach(s=>vstat.append(el("option",{value:s},s)));
-    vstat.value=o.statistic; vstat.onchange=e=>{o.statistic=e.target.value;render();};
-    const vval=el("input",{type:"number",step:"any",placeholder:"4900",value:o.value});
-    vval.oninput=e=>{o.value=e.target.value;render();};
-    const vunit=el("input",{placeholder:"mAh",value:o.unit}); vunit.className="mono";
-    vunit.oninput=e=>{o.unit=e.target.value;render();};
-    body.append(el("div",{class:"grid2"},
-      el("div",{class:"f"},el("span",{class:"lbl"},"Statistic"),vstat),
-      el("div",{class:"f"},el("span",{class:"lbl"},"Value"),vval),
-      el("div",{class:"f"},el("span",{class:"lbl"},"Unit"),vunit)));
-
-    // conditions
-    if(req.length){
-      body.append(el("span",{class:"lbl"},"Required conditions"));
-      const g=el("div",{class:"grid2"});
-      req.forEach(c=>g.append(condField(o,c,true)));
-      body.append(g);
-    }
-    const extra=Object.keys(COND).filter(c=>!req.includes(c));
-    const det=el("details",{});
-    det.append(el("summary",{style:"cursor:pointer;font-size:12px;color:var(--muted)"},
-      "Other conditions (optional)"));
-    const g2=el("div",{class:"grid2",style:"margin-top:9px"});
-    extra.forEach(c=>g2.append(condField(o,c,false)));
-    det.append(g2); body.append(det);
-
-    // locator
-    body.append(el("span",{class:"lbl"},"Locator — required"));
-    const pg=el("input",{type:"number",placeholder:"3",value:o.page});
-    pg.oninput=e=>{o.page=e.target.value;render();};
-    const sc=el("input",{placeholder:"Table 2 — Specification",value:o.section});
-    sc.oninput=e=>{o.section=e.target.value;render();};
-    const qt=el("textarea",{placeholder:"Standard Discharge Capacity 4900 mAh (0.2C, 2.5V cut-off)"});
-    qt.value=o.quote; qt.oninput=e=>{o.quote=e.target.value;render();};
-    body.append(el("div",{class:"grid2"},
-      el("div",{class:"f"},el("span",{class:"lbl"},"Page"),pg),
-      el("div",{class:"f"},el("span",{class:"lbl"},"Section"),sc)));
-    body.append(el("div",{class:"f"},el("span",{class:"lbl"},"Verbatim quote"),qt,
-      el("span",{class:"hint"},"The exact text supporting this value. If you cannot quote it, do not record it.")));
-
-    box.append(body); host.append(box);
-  });
-}
-
-function condField(o,c,required){
-  const spec=COND[c]||{t:"s"};
-  const un=o.unstated.has(c);
-  const filled=o.cond[c]!==undefined&&o.cond[c]!=="";
-  const cls="cond"+(required?" req":"")+(filled&&!un?" filled":"")+(un?" unstated":"");
-  const wrap=el("div",{class:cls});
-
-  const top=el("div",{class:"cond-top"},
-    el("span",{class:"cond-name"},c),
-    required?el("span",{class:"tag req"}, un?"not stated":(filled?"ok":"required")):"");
-  wrap.append(top);
-
-  let input;
-  if(spec.t==="e"){ input=el("select",{});
-    input.append(el("option",{value:""},"—"));
-    spec.o.forEach(v=>input.append(el("option",{value:v},v)));
-  } else { input=el("input",{type:spec.t==="s"?"text":"number",
-      step:spec.t==="i"?"1":"any", placeholder:spec.u||""}); }
-  input.value=o.cond[c]??"";
-  input.disabled=un;
-  input.oninput=input.onchange=e=>{ const v=e.target.value;
-    if(v==="")delete o.cond[c]; else o.cond[c]=v; renderObs(); render(); };
-  wrap.append(input);
-
-  if(required){
-    const cb=el("input",{type:"checkbox"}); cb.checked=un;
-    cb.onchange=e=>{ if(e.target.checked){o.unstated.add(c);delete o.cond[c];}
-                     else o.unstated.delete(c); renderObs(); render(); };
-    wrap.append(el("label",{class:"us"},cb,"source never states this"));
-  }
-  return wrap;
-}
-
-/* ---------- validate + emit ---------- */
-function problems(){
-  const p=[];
-  if(!S.product.manufacturer) p.push(["product","manufacturer is required"]);
-  if(!S.product.model_number) p.push(["product","model number is required"]);
-  if(!S.source.title) p.push(["source","title is required"]);
-  if(!S.obs.length) p.push(["observations","add at least one"]);
-  S.obs.forEach((o,i)=>{
-    const n=`#${i+1} ${o.quantity}`;
-    if(o.value==="" ) p.push([n,"no value"]);
-    if(!o.unit) p.push([n,"no unit"]);
-    (REG[o.quantity]||[]).forEach(c=>{
-      const has=o.cond[c]!==undefined&&o.cond[c]!=="";
-      if(!has&&!o.unstated.has(c)) p.push([n,`${c} — required, and not marked unstated`]);
-    });
-    if(!o.quote||o.quote.trim().length<10) p.push([n,"quote must be at least 10 characters"]);
-  });
-  return p;
-}
-
-function yamlOut(){
-  const q=s=>/[:#\-{}\[\]&*?|>%@`"'\n]/.test(String(s))?JSON.stringify(String(s)):String(s);
-  const P=S.product, SR=S.source;
-  const uid=P.uid||`cell/${slug(P.manufacturer)||"vendor"}/${slug(P.model_number)||"model"}`;
-  const L=["# battery-data community contribution",
-    "# Validated in CI against json-schema/cell-contribution.schema.json",
-    'schema_version: "1"',"","product:",`  uid: ${uid}`,`  kind: ${P.kind||"cell"}`];
-  if(P.manufacturer)L.push(`  manufacturer: ${q(P.manufacturer)}`);
-  if(P.model_number)L.push(`  model_number: ${q(P.model_number)}`);
-  if(P.form_factor)L.push(`  form_factor: ${P.form_factor}`);
-  if(P.form_factor_code)L.push(`  form_factor_code: ${q(P.form_factor_code)}`);
-  L.push("","source:",`  uid: src/${slug(P.model_number)||"source"}`,`  kind: ${SR.kind||"datasheet"}`);
-  if(SR.title)L.push(`  title: ${q(SR.title)}`);
-  if(SR.url)L.push(`  url: ${SR.url}`);
-  if(SR.document_date)L.push(`  document_date: ${q(SR.document_date)}`);
-  L.push(`  redistributable: ${SR.redistributable||"false"}`);
-  if(P.chemistry)L.push("","chemistry:",`  designation: ${q(P.chemistry)}`);
-  L.push("","observations:");
-  if(!S.obs.length)L.push("  []");
-  S.obs.forEach(o=>{
-    L.push(`  - quantity: ${o.quantity}`,`    statistic: ${o.statistic}`,
-           `    value: ${o.value===""?"~":o.value}`,`    unit: ${q(o.unit||"~")}`);
-    const ck=Object.keys(o.cond).filter(k=>o.cond[k]!=="");
-    if(ck.length||o.unstated.size){
-      L.push("    conditions:");
-      ck.forEach(k=>L.push(`      ${k}: ${q(o.cond[k])}`));
-      if(o.unstated.size)L.push(`      unstated: [${[...o.unstated].join(", ")}]`);
-    }
-    L.push("    locator:");
-    if(o.page)L.push(`      page: ${o.page}`);
-    if(o.section)L.push(`      section: ${q(o.section)}`);
-    L.push(`      quote: ${q(o.quote||"")}`);
-  });
-  return L.join("\n")+"\n";
-}
-
-function render(){
-  $("#yaml").textContent = yamlOut();
-  const p=problems(), ok=p.length===0;
-  const total=Math.max(1,S.obs.length*4+4);
-  const pct=Math.max(0,Math.min(100,Math.round(100*(1-p.length/total))));
-  const bar=$("#vbar"); bar.style.width=(ok?100:pct)+"%"; bar.className=ok?"":"bad";
-  $("#vtext").textContent = ok ? "valid" : `${p.length} to fix`;
-  $("#vtext").style.color = ok ? "var(--ok)" : "var(--missing)";
-  const ul=$("#probs"); ul.innerHTML="";
-  p.slice(0,14).forEach(([w,m])=>ul.append(el("li",{},el("b",{},w),m)));
-  if(p.length>14)ul.append(el("li",{},`…and ${p.length-14} more`));
-}
-
-/* ---------- data: live API, else snapshot ---------- */
-const SNAP = [
- {cell:"Samsung SDI INR21700-50E",manu:"Samsung SDI",chem:"NCA",ff:"21700",mass_g:69,
-  obs:[{q:"capacity",v:4900,u:"mAh",stat:"standard",c:{rate_value:0.2,rate_unit:"C",temperature_c:25,voltage_lower_v:2.5},us:[]},
-       {q:"capacity",v:4753,u:"mAh",stat:"rated",c:{rate_value:1.0,rate_unit:"C",temperature_c:25,voltage_lower_v:2.5},us:[]},
-       {q:"nominal_voltage",v:3.6,u:"V",stat:"nominal",c:{},us:[]},
-       {q:"mass",v:69,u:"g",stat:"maximum",c:{},us:[]},
-       {q:"cycle_life",v:500,u:"cycles",stat:"minimum",c:{temperature_c:23,dod_pct:100,rate_value:0.5,rate_unit:"C"},us:[]},
-       {q:"max_pulse_discharge_current",v:14700,u:"mA",stat:"maximum",c:{temperature_c:25},us:["pulse_duration_s"]}]},
- {cell:"LG Chem INR21700-M50",manu:"LG Chem",chem:"NMC811",ff:"21700",mass_g:68.5,
-  obs:[{q:"capacity",v:4850,u:"mAh",stat:"standard",c:{rate_value:0.2,rate_unit:"C",temperature_c:25,voltage_lower_v:2.5},us:[]},
-       {q:"nominal_voltage",v:3.63,u:"V",stat:"nominal",c:{},us:[]},
-       {q:"mass",v:68.5,u:"g",stat:"typical",c:{},us:[]}]},
- {cell:"Molicel INR21700-P42A",manu:"Molicel",chem:"NMC",ff:"21700",mass_g:70,
-  obs:[{q:"capacity",v:4200,u:"mAh",stat:"rated",c:{rate_value:0.2,rate_unit:"C",temperature_c:23,voltage_lower_v:2.5},us:[]},
-       {q:"nominal_voltage",v:3.6,u:"V",stat:"nominal",c:{},us:[]},
-       {q:"mass",v:70,u:"g",stat:"typical",c:{},us:[]},
-       {q:"max_continuous_discharge_current",v:45,u:"A",stat:"maximum",c:{temperature_c:25},us:[]}]},
- {cell:"CATL 302Ah LFP",manu:"CATL",chem:"LFP",ff:"prismatic",mass_g:5420,
-  obs:[{q:"capacity",v:302,u:"Ah",stat:"rated",c:{rate_value:0.5,rate_unit:"C",temperature_c:25,voltage_lower_v:2.5},us:[]},
-       {q:"nominal_voltage",v:3.22,u:"V",stat:"nominal",c:{},us:[]},
-       {q:"mass",v:5420,u:"g",stat:"typical",c:{},us:[]},
-       {q:"cycle_life",v:10000,u:"cycles",stat:"minimum",c:{temperature_c:25,dod_pct:80,rate_value:0.5,rate_unit:"C"},us:[]}]}
+/* ------------------------------------------------------------------
+   Seed set. PROVISIONAL — headline specifications, no source locators.
+   Replace by ingesting datasheets through the contribution path, or by
+   pointing this page at a populated /v1/cells.
+   dims: cylindrical [diameter_mm, height_mm]; prismatic [l,w,h].
+------------------------------------------------------------------ */
+const SEED=[
+ {cell:"Samsung INR21700-50E",manu:"Samsung SDI",chem:"NCA",   fmt:"21700",   shape:"cyl",dims:[21.2,70.4], ah:4.90, v:3.60, g:69.0,  a:9.8},
+ {cell:"LG INR21700-M50",     manu:"LG Energy",  chem:"NMC811",fmt:"21700",   shape:"cyl",dims:[21.2,70.15],ah:4.85, v:3.63, g:68.5,  a:7.3},
+ {cell:"Molicel INR21700-P42A",manu:"Molicel",   chem:"NMC",   fmt:"21700",   shape:"cyl",dims:[21.7,70.15],ah:4.20, v:3.60, g:70.0,  a:45.0},
+ {cell:"Samsung INR18650-35E",manu:"Samsung SDI",chem:"NCA",   fmt:"18650",   shape:"cyl",dims:[18.4,65.0], ah:3.50, v:3.60, g:48.0,  a:8.0},
+ {cell:"LG INR18650-MJ1",     manu:"LG Energy",  chem:"NMC",   fmt:"18650",   shape:"cyl",dims:[18.4,65.0], ah:3.50, v:3.635,g:47.0,  a:10.0},
+ {cell:"Panasonic NCR18650B", manu:"Panasonic",  chem:"NCA",   fmt:"18650",   shape:"cyl",dims:[18.5,65.3], ah:3.35, v:3.60, g:47.5,  a:4.9},
+ {cell:"Murata US18650VTC6",  manu:"Murata",     chem:"NMC",   fmt:"18650",   shape:"cyl",dims:[18.35,64.85],ah:3.00,v:3.60, g:46.6,  a:30.0},
+ {cell:"Molicel INR18650-P26A",manu:"Molicel",   chem:"NMC",   fmt:"18650",   shape:"cyl",dims:[18.4,65.2], ah:2.60, v:3.60, g:45.0,  a:35.0},
+ {cell:"EVE LF280K",          manu:"EVE Energy", chem:"LFP",   fmt:"prismatic",shape:"pri",dims:[173,72,207],ah:280,  v:3.20, g:5420,  a:140},
+ {cell:"CATL 302Ah",          manu:"CATL",       chem:"LFP",   fmt:"prismatic",shape:"pri",dims:[174,72,207],ah:302,  v:3.22, g:5450,  a:151}
 ];
-let ROWS=[];
-function flatten(cells){
-  const r=[];
-  cells.forEach(c=>c.obs.forEach(o=>{
-    const cond=Object.entries(o.c).map(([k,v])=>`${k}=${v}`).join(" · ");
-    r.push({cell:c.cell,manu:c.manu,chem:c.chem,quantity:o.q,statistic:o.stat,
-            value:o.v,unit:o.u,conditions:cond,unstated:(o.us||[]).join(", "),
-            mass_g:c.mass_g,_c:o.c});
-  }));
-  return r;
-}
-async function loadData(){
-  try{
-    const ctl=new AbortController(); setTimeout(()=>ctl.abort(),1200);
-    const res=await fetch("http://localhost:8080/v1/cells?page_limit=100",{signal:ctl.signal});
-    if(!res.ok) throw 0;
-    const j=await res.json();
-    if(j&&j.data&&j.data.length){
-      $("#srclabel").textContent="live · localhost:8080";
-      $("#srcdot").className="dot live";
-      ROWS=flatten(SNAP); return;   // shape-map live payload here
-    }
-    throw 0;
-  }catch(e){
-    $("#srclabel").textContent="snapshot";
-    ROWS=flatten(SNAP);
-  }
-}
 
-/* ---------- browse ---------- */
-let sortK="cell", sortD=1;
-const COLS=[["cell","Cell"],["quantity","Quantity"],["statistic","Statistic"],
-  ["value","Value"],["unit","Unit"],["conditions","Conditions"],["unstated","Not stated"]];
+const derive = d => {
+  const litres = d.shape==="cyl"
+    ? Math.PI*Math.pow(d.dims[0]/20,2)*(d.dims[1]/10)/1000
+    : (d.dims[0]*d.dims[1]*d.dims[2])/1e6;
+  const wh = d.ah*d.v;
+  return {...d, wh, litres,
+    whkg: wh/(d.g/1000),
+    whl : wh/litres,
+    wkg : (d.a*d.v)/(d.g/1000),
+    crate: d.a/d.ah,
+    provisional:true};
+};
+let ROWS = SEED.map(derive);
+const SEL = new Set();
+
+const $=s=>document.querySelector(s);
+const el=(t,a={},...k)=>{const n=document.createElement(t);
+  for(const[x,v] of Object.entries(a)){if(x==="class")n.className=v;
+    else if(x.startsWith("on"))n.addEventListener(x.slice(2),v);else n.setAttribute(x,v);}
+  k.flat().forEach(c=>n.append(c instanceof Node?c:document.createTextNode(c)));return n;};
+const esc=s=>String(s).replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+const f=(n,d=1)=>n==null||isNaN(n)?"—":n.toFixed(d);
+
+/* ---------- compare table ---------- */
+const COLS=[
+  ["cell","Cell",0,0],["chem","Chemistry",0,0],["fmt","Format",0,0],
+  ["ah","Ah",1,2],["v","V nom",1,2],["wh","Wh",1,2],["g","Mass g",1,1],
+  ["litres","Litres",1,3],["whkg","Wh/kg",1,1],["whl","Wh/L",1,0],
+  ["wkg","W/kg",1,0],["crate","Max C",1,1]
+];
+const HIGHER=["ah","wh","whkg","whl","wkg","crate"];
+let sortK="whkg", sortD=-1;
+
+function visible(){
+  const q=$("#q").value.toLowerCase().trim(), c=$("#chemf").value, ff=$("#fff").value;
+  return ROWS.filter(r=>(!q||JSON.stringify(r).toLowerCase().includes(q))
+    &&(!c||r.chem===c)&&(!ff||r.fmt===ff));
+}
 function drawTable(){
-  const q=$("#q").value.toLowerCase().trim();
-  let rows=ROWS.filter(r=>!q||JSON.stringify(r).toLowerCase().includes(q));
-  rows.sort((a,b)=>{const x=a[sortK],y=b[sortK];
-    return (typeof x==="number"&&typeof y==="number"?x-y:String(x).localeCompare(String(y)))*sortD;});
-  const th=$("#tbl thead"); th.innerHTML="";
+  const rows=visible().sort((a,b)=>{const x=a[sortK],y=b[sortK];
+    return (typeof x==="number"?x-y:String(x).localeCompare(String(y)))*sortD;});
+  const best={};
+  HIGHER.forEach(k=>{best[k]=Math.max(...rows.map(r=>r[k]).filter(n=>!isNaN(n)));});
+
+  const th=$("#tbl thead");th.innerHTML="";
   const tr=el("tr",{});
-  COLS.forEach(([k,l])=>tr.append(el("th",{onclick:()=>{sortD=sortK===k?-sortD:1;sortK=k;drawTable();}},
+  tr.append(el("th",{style:"width:26px"},""));
+  COLS.forEach(([k,l,num])=>tr.append(el("th",{class:num?"num":"",
+    onclick:()=>{sortD=sortK===k?-sortD:(num?-1:1);sortK=k;drawTable();}},
     l+(sortK===k?(sortD>0?" ↑":" ↓"):""))));
+  tr.append(el("th",{},"Status"));
   th.append(tr);
-  const tb=$("#tbl tbody"); tb.innerHTML="";
-  if(!rows.length){ tb.append(el("tr",{},el("td",{colspan:COLS.length},
-    el("div",{class:"empty"},"Nothing matches that filter.")))); return; }
+
+  const tb=$("#tbl tbody");tb.innerHTML="";
+  if(!rows.length){tb.append(el("tr",{},el("td",{colspan:COLS.length+2},
+    el("div",{class:"empty"},"Nothing matches those filters."))));return;}
   rows.forEach(r=>{
-    const t=el("tr",{});
-    t.append(el("td",{},r.cell));
-    t.append(el("td",{class:"code"},r.quantity));
-    t.append(el("td",{},r.statistic));
-    t.append(el("td",{class:"num"},String(r.value)));
-    t.append(el("td",{class:"code"},r.unit));
-    t.append(el("td",{class:"code",style:"white-space:normal;max-width:340px;color:var(--muted)"},
-      r.conditions||el("span",{class:"pill dash"},"none required")));
-    t.append(el("td",{}, r.unstated?el("span",{class:"pill dash"},r.unstated):""));
+    const t=el("tr",{class:SEL.has(r.cell)?"sel":"",onclick:()=>{
+      SEL.has(r.cell)?SEL.delete(r.cell):SEL.add(r.cell);drawTable();drawReport();}});
+    const cb=el("input",{type:"checkbox"});cb.checked=SEL.has(r.cell);
+    cb.onclick=e=>e.stopPropagation();
+    cb.onchange=()=>{SEL.has(r.cell)?SEL.delete(r.cell):SEL.add(r.cell);drawTable();drawReport();};
+    t.append(el("td",{},cb));
+    COLS.forEach(([k,l,num,dec])=>{
+      const v=r[k];
+      const cls=(num?"num ":"")+(HIGHER.includes(k)&&v===best[k]?"best":"")
+        +(k==="cell"||k==="fmt"?" code":"");
+      t.append(el("td",{class:cls.trim()},num?f(v,dec):String(v)));
+    });
+    t.append(el("td",{},el("span",{class:"pill prov"},"provisional")));
     tb.append(t);
   });
-}
-function toCSV(){
-  const q=$("#q").value.toLowerCase().trim();
-  const rows=ROWS.filter(r=>!q||JSON.stringify(r).toLowerCase().includes(q));
-  const head=COLS.map(c=>c[1]).join(",");
-  const body=rows.map(r=>COLS.map(([k])=>`"${String(r[k]??"").replace(/"/g,'""')}"`).join(",")).join("\n");
-  save("battery-data.csv",head+"\n"+body,"text/csv");
-}
-function save(name,text,mime){
-  const b=new Blob([text],{type:mime||"text/plain"});
-  const a=el("a",{href:URL.createObjectURL(b),download:name}); a.click();
-  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  $("#repcount").textContent = SEL.size?`${SEL.size} selected`:"nothing selected — report covers all cells";
 }
 
 /* ---------- charts ---------- */
 const CAT=["#0E9C82","#2E6FD0","#D2551F","#9257D8","#A8820A"];
-const chemColor={};
-function colourFor(c){ if(!(c in chemColor)) chemColor[c]=CAT[Object.keys(chemColor).length%CAT.length];
-  return chemColor[c]; }
+const CHEMS=[...new Set(SEED.map(d=>d.chem))];
+const col=c=>CAT[CHEMS.indexOf(c)%CAT.length];
 
-function barChart(host){
-  const data=ROWS.filter(r=>r.quantity==="capacity")
-    .map(r=>({...r, ah: r.unit==="mAh"? r.value/1000 : r.value}));
-  if(!data.length){host.innerHTML='<div class="empty">No capacity observations loaded.</div>';return;}
-  const W=760,rowH=30,padL=250,padR=60,H=data.length*rowH+40;
-  const max=Math.max(...data.map(d=>d.ah))*1.12;
-  const x=v=>padL+(v/max)*(W-padL-padR);
-  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Capacity by cell">`;
-  [0,.25,.5,.75,1].forEach(f=>{const gx=x(max*f);
-    s+=`<line x1="${gx}" y1="20" x2="${gx}" y2="${H-20}" stroke="var(--line)" stroke-width="1"/>`;
-    s+=`<text x="${gx}" y="${H-6}" font-size="10" fill="var(--muted)" text-anchor="middle">${(max*f).toFixed(1)}</text>`;});
-  data.forEach((d,i)=>{
-    const y=24+i*rowH, w=x(d.ah)-padL, col=colourFor(d.chem);
-    s+=`<text x="${padL-10}" y="${y+13}" font-size="11" fill="var(--ink-2)" text-anchor="end">${esc(d.cell)}</text>`;
-    s+=`<rect x="${padL}" y="${y+2}" width="${Math.max(2,w)}" height="${rowH-10}" rx="4" fill="${col}"><title>${esc(d.cell)} — ${d.ah.toFixed(3)} Ah · ${esc(d.conditions)}</title></rect>`;
-    s+=`<text x="${padL+w+8}" y="${y+14}" font-size="10.5" fill="var(--muted)" font-family="var(--mono)">${d.ah.toFixed(2)} Ah</text>`;
-  });
-  s+=`<text x="${padL}" y="12" font-size="10" fill="var(--muted)">Ah</text></svg>`;
-  host.innerHTML=s;
-  const lg=$("#lg1"); lg.innerHTML="";
-  [...new Set(data.map(d=>d.chem))].forEach(c=>lg.append(
-    el("span",{},el("i",{class:"sw",style:`background:${colourFor(c)}`}),c)));
-}
-
-function scatter(host){
-  const byCell={};
-  ROWS.forEach(r=>{ byCell[r.cell]=byCell[r.cell]||{cell:r.cell,chem:r.chem,mass:r.mass_g};
-    if(r.quantity==="capacity") byCell[r.cell].ah = r.unit==="mAh"? r.value/1000 : r.value;
-    if(r.quantity==="nominal_voltage") byCell[r.cell].v = r.value; });
-  const pts=Object.values(byCell).filter(d=>d.ah&&d.v&&d.mass)
-    .map(d=>({...d, wh_kg:(d.ah*d.v)/(d.mass/1000)}));
-  if(!pts.length){host.innerHTML='<div class="empty">Not enough data for this chart.</div>';return;}
-  const W=760,H=330,p={t:20,r:24,b:44,l:56};
-  const xs=pts.map(d=>d.mass), ys=pts.map(d=>d.wh_kg);
-  const xmin=0,xmax=Math.max(...xs)*1.12,ymin=0,ymax=Math.max(...ys)*1.15;
-  const X=v=>p.l+((v-xmin)/(xmax-xmin))*(W-p.l-p.r);
-  const Y=v=>H-p.b-((v-ymin)/(ymax-ymin))*(H-p.t-p.b);
-  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Specific energy against cell mass">`;
-  for(let i=0;i<=4;i++){const gy=p.t+(i/4)*(H-p.t-p.b), val=ymax-(i/4)*(ymax-ymin);
+function scatter(host,xk,yk,xlab,ylab){
+  const pts=visible();
+  if(!pts.length){host.innerHTML='<div class="empty">No cells match.</div>';return;}
+  const W=680,H=380,p={t:18,r:22,b:46,l:62};
+  const xmax=Math.max(...pts.map(d=>d[xk]))*1.14, ymax=Math.max(...pts.map(d=>d[yk]))*1.14;
+  const X=v=>p.l+(v/xmax)*(W-p.l-p.r), Y=v=>H-p.b-(v/ymax)*(H-p.t-p.b);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${esc(ylab)} against ${esc(xlab)}">`;
+  for(let i=0;i<=4;i++){
+    const gy=p.t+(i/4)*(H-p.t-p.b), yv=ymax-(i/4)*ymax;
     s+=`<line x1="${p.l}" y1="${gy}" x2="${W-p.r}" y2="${gy}" stroke="var(--line)"/>`;
-    s+=`<text x="${p.l-8}" y="${gy+3}" font-size="10" fill="var(--muted)" text-anchor="end">${val.toFixed(0)}</text>`;}
-  for(let i=0;i<=4;i++){const gx=p.l+(i/4)*(W-p.l-p.r), val=xmin+(i/4)*(xmax-xmin);
-    s+=`<text x="${gx}" y="${H-p.b+16}" font-size="10" fill="var(--muted)" text-anchor="middle">${val.toFixed(0)}</text>`;}
-  pts.forEach(d=>{ const cx=X(d.mass),cy=Y(d.wh_kg);
-    s+=`<circle cx="${cx}" cy="${cy}" r="7" fill="${colourFor(d.chem)}" stroke="var(--surface)" stroke-width="2"><title>${esc(d.cell)} — ${d.wh_kg.toFixed(0)} Wh/kg · ${d.mass} g · ${esc(d.chem)}</title></circle>`;
-    s+=`<text x="${cx+11}" y="${cy+4}" font-size="10.5" fill="var(--ink-2)">${esc(d.cell.split(" ")[0])}</text>`;});
-  s+=`<text x="${(W)/2}" y="${H-4}" font-size="10.5" fill="var(--muted)" text-anchor="middle">cell mass (g)</text>`;
-  s+=`<text transform="translate(13,${H/2}) rotate(-90)" font-size="10.5" fill="var(--muted)" text-anchor="middle">specific energy (Wh/kg)</text>`;
-  s+="</svg>"; host.innerHTML=s;
-}
-const esc=s=>String(s).replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
-
-/* ---------- graph ---------- */
-function drawGraph(host){
-  const nodes=[],edges=[],idx={};
-  const add=(k,label,title)=>{ if(!(k in idx)){idx[k]=nodes.length;
-    nodes.push({k,label,title,x:0,y:0,vx:0,vy:0});} return idx[k]; };
-  const cells=[...new Set(ROWS.map(r=>r.cell))];
-  cells.forEach(c=>{
-    const row=ROWS.find(r=>r.cell===c);
-    const ci=add("cell:"+c,"Cell",c);
-    const mi=add("org:"+row.manu,"Organization",row.manu);
-    const chi=add("chem:"+row.chem,"Chemistry",row.chem);
-    edges.push([mi,ci,"manufactures"]); edges.push([ci,chi,"has_chemistry"]);
-    const si=add("src:"+c,"Source","datasheet");
-    edges.push([ci,si,"evidence"]);
-  });
-  const W=760,H=430;
-  nodes.forEach((n,i)=>{const a=(i/nodes.length)*Math.PI*2;
-    n.x=W/2+Math.cos(a)*160+(i%3)*14; n.y=H/2+Math.sin(a)*140;});
-  for(let it=0;it<220;it++){
-    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
-      const a=nodes[i],b=nodes[j];let dx=b.x-a.x,dy=b.y-a.y;
-      let d=Math.hypot(dx,dy)||1; const f=2600/(d*d);
-      dx/=d;dy/=d; a.vx-=dx*f;a.vy-=dy*f;b.vx+=dx*f;b.vy+=dy*f;}
-    edges.forEach(([s,t])=>{const a=nodes[s],b=nodes[t];
-      let dx=b.x-a.x,dy=b.y-a.y;const d=Math.hypot(dx,dy)||1;const f=(d-108)*0.02;
-      dx/=d;dy/=d;a.vx+=dx*f;a.vy+=dy*f;b.vx-=dx*f;b.vy-=dy*f;});
-    nodes.forEach(n=>{n.x+=n.vx*0.55;n.y+=n.vy*0.55;n.vx*=0.72;n.vy*=0.72;
-      n.x=Math.max(60,Math.min(W-60,n.x));n.y=Math.max(28,Math.min(H-28,n.y));});
+    s+=`<text x="${p.l-8}" y="${gy+3}" font-size="10" fill="var(--muted)" text-anchor="end">${yv.toFixed(0)}</text>`;
+    const gx=p.l+(i/4)*(W-p.l-p.r), xv=(i/4)*xmax;
+    s+=`<text x="${gx}" y="${H-p.b+16}" font-size="10" fill="var(--muted)" text-anchor="middle">${xv.toFixed(0)}</text>`;
   }
-  const LC={Cell:CAT[0],Organization:CAT[1],Chemistry:CAT[2],Source:CAT[3]};
-  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Provenance graph">`;
-  edges.forEach(([a,b])=>{const p=nodes[a],q2=nodes[b];
-    s+=`<line x1="${p.x}" y1="${p.y}" x2="${q2.x}" y2="${q2.y}" stroke="var(--line)" stroke-width="1.5"/>`;});
-  nodes.forEach(n=>{
-    s+=`<circle cx="${n.x}" cy="${n.y}" r="9" fill="${LC[n.label]||CAT[4]}" stroke="var(--surface)" stroke-width="2"><title>${esc(n.label)}: ${esc(n.title)}</title></circle>`;
-    s+=`<text x="${n.x}" y="${n.y-14}" font-size="10.5" fill="var(--ink-2)" text-anchor="middle">${esc(n.title.length>22?n.title.slice(0,21)+"…":n.title)}</text>`;});
-  s+="</svg>";
-  const lg=Object.entries(LC).map(([k,v])=>
-    `<span><i class="sw" style="background:${v}"></i>${k}</span>`).join("");
-  host.innerHTML=`<div class="legend">${lg}</div>`+s;
+  pts.forEach(d=>{const cx=X(d[xk]),cy=Y(d[yk]);
+    s+=`<circle cx="${cx}" cy="${cy}" r="7" fill="${col(d.chem)}" stroke="var(--surface)" stroke-width="2">`
+      +`<title>${esc(d.cell)} — ${f(d[yk],1)} ${esc(ylab)} · ${f(d[xk],1)} ${esc(xlab)} · ${esc(d.chem)}</title></circle>`;
+    s+=`<text x="${cx+11}" y="${cy+4}" font-size="10" fill="var(--ink-2)">${esc(d.fmt)}</text>`;});
+  s+=`<text x="${W/2}" y="${H-4}" font-size="10.5" fill="var(--muted)" text-anchor="middle">${esc(xlab)}</text>`;
+  s+=`<text transform="translate(14,${H/2}) rotate(-90)" font-size="10.5" fill="var(--muted)" text-anchor="middle">${esc(ylab)}</text>`;
+  host.innerHTML=s+"</svg>";
+}
+function bars(host,k,unit,dec){
+  const d=visible().slice().sort((a,b)=>b[k]-a[k]);
+  if(!d.length){host.innerHTML='<div class="empty">No cells match.</div>';return;}
+  const W=680,rh=27,padL=178,padR=66,H=d.length*rh+30;
+  const max=Math.max(...d.map(x=>x[k]))*1.1, X=v=>padL+(v/max)*(W-padL-padR);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${esc(unit)} by cell">`;
+  [0,.5,1].forEach(fr=>{const gx=X(max*fr);
+    s+=`<line x1="${gx}" y1="8" x2="${gx}" y2="${H-20}" stroke="var(--line)"/>`;
+    s+=`<text x="${gx}" y="${H-6}" font-size="10" fill="var(--muted)" text-anchor="middle">${(max*fr).toFixed(0)}</text>`;});
+  d.forEach((r,i)=>{const y=12+i*rh,w=Math.max(2,X(r[k])-padL);
+    s+=`<text x="${padL-9}" y="${y+13}" font-size="10.5" fill="var(--ink-2)" text-anchor="end">${esc(r.cell)}</text>`;
+    s+=`<rect x="${padL}" y="${y+3}" width="${w}" height="${rh-11}" rx="4" fill="${col(r.chem)}">`
+      +`<title>${esc(r.cell)} — ${f(r[k],dec)} ${esc(unit)}</title></rect>`;
+    s+=`<text x="${padL+w+7}" y="${y+14}" font-size="10" fill="var(--muted)" font-family="var(--mono)">${f(r[k],dec)}</text>`;});
+  host.innerHTML=s+"</svg>";
+}
+function drawCharts(){
+  $("#lg").innerHTML="";
+  CHEMS.forEach(c=>$("#lg").append(el("span",{},el("i",{class:"sw",style:`background:${col(c)}`}),c)));
+  scatter($("#ch1"),"whl","whkg","Wh/L","Wh/kg");
+  scatter($("#ch2"),"wkg","whkg","W/kg","Wh/kg");
+  bars($("#ch3"),"whkg","Wh/kg",1);
+  bars($("#ch4"),"whl","Wh/L",0);
+}
+
+/* ---------- report ---------- */
+function repRows(){ const v=visible(); return SEL.size? v.filter(r=>SEL.has(r.cell)) : v; }
+function drawReport(){
+  const d=repRows().slice().sort((a,b)=>b.whkg-a.whkg);
+  const host=$("#rep");host.innerHTML="";
+  if(!d.length){host.append(el("div",{class:"empty"},"No cells selected."));return;}
+  const now=new Date().toISOString().slice(0,10);
+  host.append(el("h2",{},"Cell comparison"));
+  host.append(el("div",{class:"meta"},
+    `${d.length} cell${d.length>1?"s":""} · generated ${now} · figures provisional, no source locators`));
+
+  const top=d[0], dense=d.slice().sort((a,b)=>b.whl-a.whl)[0],
+        power=d.slice().sort((a,b)=>b.wkg-a.wkg)[0];
+  host.append(el("h4",{},"Leaders"));
+  const st=el("div",{class:"stat"});
+  [[f(top.whkg,1)+" Wh/kg",top.cell,"highest specific energy"],
+   [f(dense.whl,0)+" Wh/L",dense.cell,"highest energy density"],
+   [f(power.wkg,0)+" W/kg",power.cell,"highest specific power"]]
+   .forEach(([v,c,k])=>st.append(el("div",{},el("div",{class:"v"},v),
+     el("div",{style:"font-size:12px;color:var(--ink-2)"},c),el("div",{class:"k"},k))));
+  host.append(st);
+
+  host.append(el("h4",{},"Full comparison"));
+  const w=el("div",{class:"tblwrap"}),t=el("table",{}),hh=el("thead",{}),hr=el("tr",{});
+  COLS.forEach(([k,l,num])=>hr.append(el("th",{class:num?"num":"",style:"cursor:default"},l)));
+  hh.append(hr);t.append(hh);
+  const tb=el("tbody",{});
+  d.forEach(r=>{const tr=el("tr",{});
+    COLS.forEach(([k,l,num,dec])=>tr.append(el("td",{class:num?"num":""},
+      num?f(r[k],dec):String(r[k]))));
+    tb.append(tr);});
+  t.append(tb);w.append(t);host.append(w);
+
+  host.append(el("h4",{},"How these were derived"));
+  host.append(el("p",{},"Energy is nominal voltage times rated capacity. Specific energy divides "
+    +"that by cell mass; energy density divides it by enclosed volume — πr²h for cylindrical "
+    +"cells, l×w×h for prismatic, so prismatic figures ignore packing loss and flatter them "
+    +"slightly against cylindrical in a real module. Specific power uses the continuous "
+    +"discharge rating at nominal voltage, not a pulse rating."));
+  host.append(el("h4",{},"Standing of these numbers"));
+  host.append(el("p",{},"Every row is provisional. They are headline specifications, not "
+    +"observations carrying a rate, a temperature, a cutoff and a verbatim quote, and capacity "
+    +"in particular is meaningless without the rate and cutoff it was measured at — a 0.2C and "
+    +"a 1C capacity for one cell can differ by several percent. Before citing any of this, "
+    +"ingest the datasheets through the contribution path so each value carries its conditions "
+    +"and a locator."));
+}
+function repMarkdown(){
+  const d=repRows().slice().sort((a,b)=>b.whkg-a.whkg);
+  const L=["# Cell comparison","",
+    `${d.length} cells · generated ${new Date().toISOString().slice(0,10)}`,
+    "","> Figures are provisional headline specifications with no source locators.","",
+    "| "+COLS.map(c=>c[1]).join(" | ")+" |",
+    "|"+COLS.map(c=>c[2]?"--:":"---").join("|")+"|"];
+  d.forEach(r=>L.push("| "+COLS.map(([k,l,num,dec])=>num?f(r[k],dec):r[k]).join(" | ")+" |"));
+  L.push("","## Derivation","",
+    "Energy = nominal voltage x rated capacity. Specific energy divides by mass;",
+    "energy density by enclosed volume (pi r^2 h cylindrical, lxwxh prismatic).",
+    "Specific power uses the continuous discharge rating at nominal voltage.");
+  return L.join("\n")+"\n";
+}
+function toCSV(rows){
+  const head=COLS.map(c=>c[1]).join(",");
+  const body=rows.map(r=>COLS.map(([k,l,num,dec])=>{
+    const v=num?f(r[k],dec):r[k];return `"${String(v).replace(/"/g,'""')}"`;}).join(",")).join("\n");
+  return head+"\n"+body;
+}
+function save(name,text,mime){
+  const b=new Blob([text],{type:mime||"text/plain"});
+  const a=el("a",{href:URL.createObjectURL(b),download:name});a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+/* ---------- live data attempt ---------- */
+async function loadData(){
+  try{
+    const ctl=new AbortController();setTimeout(()=>ctl.abort(),1200);
+    const r=await fetch("http://localhost:8080/v1/cells?page_limit=200",{signal:ctl.signal});
+    if(!r.ok)throw 0;
+    const j=await r.json();
+    if(j&&j.data&&j.data.length){
+      $("#srclabel").textContent=`live · ${j.data.length} cells`;
+      $("#srcdot").className="dot live";
+    }
+  }catch(e){ $("#srclabel").textContent="seed set · provisional"; }
 }
 
 /* ---------- wiring ---------- */
-fillSel("#p_kind",PKIND,"cell"); fillSel("#p_ff",FF,"cylindrical");
-fillSel("#s_kind",SKIND,"datasheet");
-document.querySelectorAll("[data-k]").forEach(i=>{
-  const grp = i.id.startsWith("p_")?"product":"source";
-  i.addEventListener("input",e=>{ S[grp][e.target.dataset.k]=e.target.value; render(); });
-  i.addEventListener("change",e=>{ S[grp][e.target.dataset.k]=e.target.value; render(); });
-});
-$("#addobs").onclick=()=>addObs();
-$("#dl").onclick=()=>{ const P=S.product;
-  save(`${slug(P.model_number)||"contribution"}.yaml`, yamlOut(), "text/yaml"); };
-$("#cp").onclick=async e=>{ try{ await navigator.clipboard.writeText(yamlOut());
-  e.target.textContent="Copied"; setTimeout(()=>e.target.textContent="Copy",1400);}catch(_){} };
-$("#demo").onclick=()=>{
-  Object.assign(S.product,{manufacturer:"Samsung SDI",model_number:"INR21700-50E",
-    kind:"cell",form_factor:"cylindrical",form_factor_code:"21700",chemistry:"NCA"});
-  Object.assign(S.source,{kind:"datasheet",title:"Samsung INR21700-50E Specification",
-    url:"https://example.org/INR21700-50E.pdf",document_date:"2018-07-11",redistributable:"false"});
-  $("#p_manu").value="Samsung SDI"; $("#p_model").value="INR21700-50E";
-  $("#p_ffc").value="21700"; $("#p_chem").value="NCA";
-  $("#s_title").value="Samsung INR21700-50E Specification";
-  $("#s_url").value="https://example.org/INR21700-50E.pdf"; $("#s_date").value="2018-07-11";
-  S.obs.length=0;
-  addObs({quantity:"capacity",statistic:"standard",value:4900,unit:"mAh",
-    cond:{rate_value:"0.2",rate_unit:"C",temperature_c:"25",voltage_lower_v:"2.5",direction:"discharge"},
-    page:3,section:"Table 2 — Specification",
-    quote:"Standard Discharge Capacity 4900 mAh (0.2C, 2.5V cut-off)"});
-  addObs({quantity:"max_pulse_discharge_current",statistic:"maximum",value:14700,unit:"mA",
-    cond:{temperature_c:"25",direction:"discharge"},unstated:["pulse_duration_s"],page:3,
-    quote:"Max. non-continuous discharge current 14700 mA"});
-};
-$("#q").oninput=drawTable; $("#csv").onclick=toCSV;
-
+[...new Set(SEED.map(d=>d.chem))].forEach(c=>$("#chemf").append(el("option",{value:c},c)));
+[...new Set(SEED.map(d=>d.fmt))].forEach(c=>$("#fff").append(el("option",{value:c},c)));
+["#q","#chemf","#fff"].forEach(s=>$(s).addEventListener("input",()=>{drawTable();drawCharts();drawReport();}));
+$("#clear").onclick=()=>{SEL.clear();drawTable();drawReport();};
+$("#csv").onclick=()=>save("cell-comparison.csv",toCSV(visible()),"text/csv");
+$("#repcsv").onclick=()=>save("cell-report.csv",toCSV(repRows()),"text/csv");
+$("#md").onclick=()=>save("cell-report.md",repMarkdown(),"text/markdown");
+$("#print").onclick=()=>window.print();
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("nav button").forEach(x=>x.setAttribute("aria-selected",x===b));
   document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("on",p.id==="p-"+b.dataset.p));
-  if(b.dataset.p==="charts"){barChart($("#ch1"));scatter($("#ch2"));}
-  if(b.dataset.p==="graph")drawGraph($("#net"));
+  if(b.dataset.p==="charts")drawCharts();
+  if(b.dataset.p==="report")drawReport();
 });
 
-addObs(); render();
-loadData().then(()=>{drawTable();});
+drawTable();drawReport();loadData();
 </script>
