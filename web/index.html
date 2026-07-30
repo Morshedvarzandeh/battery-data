@@ -175,7 +175,12 @@ svg text{font-family:var(--sans)}
         A slot marked <span class="pill prov">conditions</span> requires them before the
         value counts as a record.</p>
     </div></div>
+    <div class="row noprint" style="margin-bottom:12px;gap:2px">
+      <button class="btn pri" data-layer="chars">Characteristics</button>
+      <button class="btn" data-layer="tests">Test campaigns</button>
+    </div>
     <div id="sheet"></div>
+    <div id="tests" style="display:none"></div>
   </section>
 
   <!-- CHARTS -->
@@ -223,6 +228,8 @@ svg text{font-family:var(--sans)}
 ------------------------------------------------------------------ */
 const _D={"GROUPS":{"Current and power":["max_continuous_discharge_current","max_continuous_charge_current","max_pulse_discharge_current","standard_charge_current","cv_cutoff_current","peak_power","rated_power","power"],"Density":["specific_energy","energy_density","specific_capacity","specific_power","areal_capacity"],"Electrical":["nominal_voltage","capacity","open_circuit_voltage","charge_cutoff_voltage","discharge_cutoff_voltage","absolute_max_voltage","absolute_min_voltage","shipping_voltage"],"Impedance":["internal_resistance_ac","internal_resistance_dc","ohmic_resistance","charge_transfer_resistance","area_specific_impedance"],"Lifetime":["cycle_life","calendar_life","capacity_retention","energy_retention","state_of_health","knee_point_cycle","self_discharge_rate","leakage_current","first_cycle_efficiency","coulombic_efficiency","warranty_cycles","warranty_throughput","service_life_hours"],"Mechanical":["expansion_force","reversible_expansion","irreversible_expansion","stack_pressure"],"Physical":["mass","diameter","height","length","width","thickness","volume","electrode_area"],"Sustainability":["carbon_footprint_per_kwh","recycled_content_lithium","recycled_content_cobalt","recycled_content_nickel"],"Thermal and safety":["operating_temperature_min","operating_temperature_max","storage_temperature_min","storage_temperature_max","specific_heat_capacity","thermal_conductivity_in_plane","thermal_conductivity_through_plane","runaway_onset_temperature","max_runaway_temperature","heat_generation_rate"]},"REG":{"absolute_max_voltage":[],"absolute_min_voltage":[],"area_specific_impedance":["pulse_duration_s","soc_pct","temperature_c","area_cm2","area_kind"],"areal_capacity":["rate_value","rate_unit","area_kind"],"calendar_life":["temperature_c","soc_pct"],"capacity":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"capacity_retention":["cycle_index","temperature_c","rate_value","rate_unit"],"carbon_footprint_per_kwh":[],"charge_cutoff_voltage":[],"charge_transfer_resistance":["soc_pct","temperature_c"],"cooling_capacity":["temperature_c"],"coulombic_efficiency":["rate_value","rate_unit","temperature_c","cycle_index"],"current":[],"cv_cutoff_current":[],"cycle_life":["temperature_c","dod_pct","rate_value","rate_unit"],"cycle_number":[],"diameter":[],"diffusion_coefficient":["soc_pct","temperature_c"],"discharge_cutoff_voltage":[],"displacement":[],"dqdv":[],"drt_gamma":[],"dvdq":[],"electrode_area":[],"energy":["rate_value","rate_unit","temperature_c"],"energy_density":["rate_value","rate_unit","temperature_c"],"energy_efficiency":["rate_value","rate_unit","temperature_c"],"energy_retention":["cycle_index","temperature_c"],"entropic_coefficient":["soc_pct","temperature_c"],"expansion_force":["soc_pct","constraint_mode"],"first_cycle_efficiency":["rate_value","rate_unit","temperature_c"],"force":[],"frequency":[],"heat_generation_rate":["rate_value","rate_unit","soc_pct","temperature_c"],"height":[],"impedance_imag":[],"impedance_real":[],"intensity":[],"internal_resistance_ac":["frequency_hz","soc_pct","temperature_c"],"internal_resistance_dc":["pulse_duration_s","pulse_current_a","soc_pct","temperature_c","direction"],"irreversible_expansion":["cycle_index","constraint_mode"],"knee_point_cycle":["temperature_c","dod_pct"],"leakage_current":["temperature_c","soc_pct"],"length":[],"lithium_content":[],"mass":[],"max_continuous_charge_current":["temperature_c"],"max_continuous_discharge_current":["temperature_c"],"max_pulse_discharge_current":["pulse_duration_s","temperature_c"],"max_runaway_temperature":["soc_pct"],"nominal_voltage":[],"ohmic_resistance":["soc_pct","temperature_c"],"open_circuit_voltage":["soc_pct","temperature_c","direction","rest_before_s"],"operating_temperature_max":["temperature_reference","direction"],"operating_temperature_min":["temperature_reference","direction"],"parallel_count":[],"peak_power":["pulse_duration_s","soc_pct","temperature_c","boundary"],"power":[],"pressure":[],"rated_power":["temperature_c","boundary"],"recycled_content_cobalt":[],"recycled_content_lead":[],"recycled_content_lithium":[],"recycled_content_nickel":[],"relaxation_time":[],"resistance_growth":["cycle_index","temperature_c","pulse_duration_s"],"reversible_expansion":["soc_pct","constraint_mode","temperature_c"],"round_trip_efficiency":["boundary","rate_value","rate_unit","temperature_c"],"runaway_onset_temperature":["soc_pct"],"self_discharge_rate":["temperature_c","soc_pct","duration_s"],"series_count":[],"service_life_hours":["load_value","load_unit","duty_schedule","cutoff_voltage_v","temperature_c"],"shipping_voltage":[],"soc_estimation_accuracy":[],"soh_estimation_accuracy":[],"specific_capacity":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"specific_energy":["rate_value","rate_unit","temperature_c"],"specific_heat_capacity":["soc_pct","temperature_c"],"specific_power":["temperature_c","soc_pct","pulse_duration_s"],"stack_pressure":["soc_pct","constraint_mode"],"standard_charge_current":["temperature_c"],"standby_consumption":[],"state_of_charge":[],"state_of_health":["temperature_c","rate_value","rate_unit"],"storage_temperature_max":["duration_s"],"storage_temperature_min":["duration_s"],"temperature":[],"thermal_conductivity_in_plane":["temperature_c"],"thermal_conductivity_through_plane":["temperature_c"],"thickness":[],"time":[],"two_theta":[],"usable_energy":["boundary","dod_pct"],"voltage":[],"volume":[],"warranty_cycles":[],"warranty_throughput":[],"width":[]}};
 const REG=_D.REG, GROUPS=_D.GROUPS;
+const _T={"FAM":{"Abuse and safety":["arc","thermal_ramp","thermal_propagation","nail_penetration","crush","overcharge","over_discharge","external_short","internal_short","vent_gas_analysis"],"Ageing":["cycle_life","calendar_aging","ica_dva","coulombic_efficiency","self_discharge","leakage_current"],"Electrical performance":["formation","capacity","rate_capability","rpt","ocv_pseudo","ocv_incremental","gitt","pitt","drive_cycle","three_electrode"],"Environmental":["drop","vibration","shock","altitude","thermal_shock","immersion"],"Mechanical":["swelling","stack_pressure"],"Post-mortem":["post_mortem","xrd","sem","eds","xps","icp","bet","nmr","gcms","half_cell_reconstruction"],"Pulse and impedance":["hppc","eis","drt"],"Thermal":["entropic_coefficient","heat_capacity","thermal_conductivity","thermal_impedance","isothermal_calorimetry"]},"LANDS":{"altitude":"abuse_result \u00b7 abuse_event","arc":"arc_result","bet":"teardown \u00b7 sample \u00b7 characterisation","calendar_aging":"timeseries_record \u00b7 cycle_summary \u00b7 observation","capacity":"timeseries_record \u00b7 cycle_summary \u00b7 observation","coulombic_efficiency":"observation \u00b7 timeseries_record","crush":"abuse_result \u00b7 abuse_event","cycle_life":"timeseries_record \u00b7 cycle_summary \u00b7 observation","drive_cycle":"timeseries_record \u00b7 cycle_summary \u00b7 observation","drop":"abuse_result \u00b7 abuse_event","drt":"drt_result \u00b7 drt_peak","eds":"teardown \u00b7 sample \u00b7 characterisation","eis":"eis_spectrum \u00b7 eis_point \u00b7 eis_fit","entropic_coefficient":"observation \u00b7 timeseries_record","external_short":"abuse_result \u00b7 abuse_event","formation":"timeseries_record \u00b7 cycle_summary \u00b7 observation","gcms":"teardown \u00b7 sample \u00b7 characterisation","gitt":"observation \u00b7 timeseries_record","half_cell_reconstruction":"teardown \u00b7 sample \u00b7 characterisation","heat_capacity":"thermal_property","hppc":"observation \u00b7 timeseries_record","ica_dva":"observation \u00b7 timeseries_record","icp":"teardown \u00b7 sample \u00b7 characterisation","immersion":"abuse_result \u00b7 abuse_event","internal_short":"abuse_result \u00b7 abuse_event","isothermal_calorimetry":"calorimetry_result","leakage_current":"observation \u00b7 timeseries_record","nail_penetration":"abuse_result \u00b7 abuse_event","nmr":"teardown \u00b7 sample \u00b7 characterisation","ocv_incremental":"observation \u00b7 timeseries_record","ocv_pseudo":"observation \u00b7 timeseries_record","over_discharge":"abuse_result \u00b7 abuse_event","overcharge":"abuse_result \u00b7 abuse_event","pitt":"observation \u00b7 timeseries_record","post_mortem":"teardown \u00b7 sample \u00b7 characterisation","rate_capability":"timeseries_record \u00b7 cycle_summary \u00b7 observation","rpt":"timeseries_record \u00b7 cycle_summary \u00b7 observation","self_discharge":"observation \u00b7 timeseries_record","sem":"teardown \u00b7 sample \u00b7 characterisation","shock":"abuse_result \u00b7 abuse_event","stack_pressure":"observation \u00b7 timeseries_record","swelling":"observation \u00b7 timeseries_record","thermal_conductivity":"thermal_property","thermal_impedance":"thermal_property","thermal_propagation":"abuse_result \u00b7 abuse_event","thermal_ramp":"abuse_result \u00b7 abuse_event","thermal_shock":"abuse_result \u00b7 abuse_event","three_electrode":"observation \u00b7 timeseries_record","vent_gas_analysis":"vent_gas_analysis \u00b7 vent_gas_species","vibration":"abuse_result \u00b7 abuse_event","xps":"teardown \u00b7 sample \u00b7 characterisation","xrd":"teardown \u00b7 sample \u00b7 characterisation"}};
+const FAM=_T.FAM, LANDS=_T.LANDS;
 
 const SEED=[
  {cell:"Samsung INR21700-50E",manu:"Samsung SDI",chem:"NCA",   fmt:"21700",   shape:"cyl",dims:[21.2,70.4], ah:4.90, v:3.60, g:69.0,  a:9.8},
@@ -556,6 +563,43 @@ function sheetMD(){
   });
   return L.join("\n");
 }
+
+/* ---------- test campaign layer ---------- */
+function drawTests(){
+  const d=ROWS.find(r=>r.cell===curCell); if(!d)return;
+  const host=$("#tests"); host.innerHTML="";
+  const all=Object.values(FAM).flat();
+  host.append(el("div",{class:"warn"},
+    el("b",{},"No test campaigns recorded for any seed cell. "),
+    "That is honest, not broken: a datasheet number is not a test. Each row below is a "
+    +"test_kind the schema already models, with the tables its results land in. A campaign "
+    +"arrives as test_run → test_segment → dataset, and the segment layer is what keeps "
+    +"[aging, RPT, aging, RPT] legible instead of collapsing into one undifferentiated run."));
+
+  Object.entries(FAM).forEach(([fam,kinds])=>{
+    const card=el("div",{class:"card"});
+    card.append(el("h3",{},fam,el("span",{class:"mono",
+      style:"margin-left:auto;font-weight:400;color:var(--muted);font-size:11px"},
+      `0/${kinds.length}`)));
+    const body=el("div",{class:"body",style:"padding:0"});
+    kinds.forEach(k=>{
+      const row=el("div",{class:"slot gap",style:"grid-template-columns:minmax(190px,1fr) 2fr auto"});
+      row.append(el("span",{class:"qc"},k));
+      row.append(el("span",{class:"cond"},LANDS[k]||"observation"));
+      row.append(el("span",{class:"pill"},"none recorded"));
+      body.append(row);
+    });
+    card.append(body); host.append(card);
+  });
+  $("#testcount") && ($("#testcount").textContent=`0 of ${all.length} test kinds`);
+}
+document.querySelectorAll("[data-layer]").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("[data-layer]").forEach(x=>x.className="btn"+(x===b?" pri":""));
+  const t=b.dataset.layer==="tests";
+  $("#tests").style.display=t?"block":"none";
+  $("#sheet").style.display=t?"none":"block";
+  if(t)drawTests();
+});
 
 ROWS.forEach(r=>$("#cellsel").append(el("option",{value:r.cell},r.cell)));
 $("#cellsel").onchange=e=>{curCell=e.target.value;drawSheet();};
