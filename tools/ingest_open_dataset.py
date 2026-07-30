@@ -295,6 +295,74 @@ def cmd_list(_a) -> int:
     return 0
 
 
+def cmd_fetch(a) -> int:
+    """
+    Download the files of a dataset, verifying and recording hashes.
+
+    Deliberately not clever: no crawling, no link discovery. You give it
+    URLs, it stores the bytes with a manifest of what arrived and when.
+    That manifest is what the ingest step turns into provenance rows.
+
+    Many of these publishers sit behind a click-through or a login, and
+    several corporate networks block them outright. If that is your
+    situation, download by hand and skip straight to 'plan'.
+    """
+    import urllib.request
+    import urllib.error
+
+    ds = DATASETS[a.dataset]
+    urls = a.url or []
+    if not urls:
+        print(f"{ds['name']}\n  landing: {ds['landing']}\n  licence: {ds['license']}")
+        if ds.get("notes"):
+            print(f"  note: {ds['notes']}")
+        print("\nNo --url given. These publishers do not offer a stable file API,")
+        print("so fetch from the landing page and re-run, or pass --url explicitly:")
+        print(f"  python tools/ingest_open_dataset.py fetch {a.dataset} \\")
+        print("      --url https://.../cell01.csv --url https://.../cell02.csv --dest ./data")
+        return 2
+
+    os.makedirs(a.dest, exist_ok=True)
+    manifest_path = os.path.join(a.dest, "manifest.json")
+    manifest = {}
+    if os.path.exists(manifest_path):
+        manifest = json.load(open(manifest_path))
+
+    ok = 0
+    for u in urls:
+        name = os.path.basename(u.split("?")[0]) or "download.bin"
+        dest = os.path.join(a.dest, name)
+        if os.path.exists(dest) and not a.force:
+            log.info("%s already present, skipping (--force to refetch)", name)
+            ok += 1
+            continue
+        try:
+            log.info("fetching %s", u)
+            with urllib.request.urlopen(u, timeout=a.timeout) as r, open(dest, "wb") as fh:
+                while True:
+                    chunk = r.read(1 << 20)
+                    if not chunk:
+                        break
+                    fh.write(chunk)
+        except Exception as exc:                                  # noqa: BLE001
+            log.error("%s FAILED: %s", u, exc)
+            log.error("  if this is a 403 or a timeout, the host is probably blocked "
+                      "by your network policy - download by hand and use 'plan'")
+            continue
+        digest = sha256(dest)
+        manifest[name] = {"url": u, "sha256": digest,
+                          "retrieved": _dt.date.today().isoformat(),
+                          "bytes": os.path.getsize(dest)}
+        log.info("  %s  %s bytes  sha256=%s...", name,
+                 manifest[name]["bytes"], digest[:16])
+        ok += 1
+
+    json.dump(manifest, open(manifest_path, "w"), indent=2, sort_keys=True)
+    print(f"\n{ok}/{len(urls)} file(s) in {a.dest}; manifest at {manifest_path}")
+    print(f"next:  python tools/ingest_open_dataset.py plan {a.dataset} {a.dest}")
+    return 0 if ok else 1
+
+
 def cmd_plan(a) -> int:
     ds = DATASETS[a.dataset]
     files = discover(a.path, a.glob or ds["file_glob"])
@@ -434,6 +502,13 @@ def main(argv=None) -> int:
 
     sub.add_parser("list", help="show the dataset registry")
 
+    f = sub.add_parser("fetch", help="download dataset files and record hashes")
+    f.add_argument("dataset", choices=sorted(DATASETS))
+    f.add_argument("--url", action="append", help="repeatable")
+    f.add_argument("--dest", default="./data")
+    f.add_argument("--timeout", type=int, default=120)
+    f.add_argument("--force", action="store_true")
+
     p = sub.add_parser("plan", help="scan files and report what would be ingested")
     p.add_argument("dataset", choices=sorted(DATASETS))
     p.add_argument("path")
@@ -456,7 +531,7 @@ def main(argv=None) -> int:
 
     a = ap.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
-    return {"list": cmd_list, "plan": cmd_plan,
+    return {"list": cmd_list, "fetch": cmd_fetch, "plan": cmd_plan,
             "ingest": cmd_ingest, "demo": cmd_demo}[a.cmd](a)
 
 
