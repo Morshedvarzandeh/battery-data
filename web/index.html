@@ -177,9 +177,11 @@ svg text{font-family:var(--sans)}
     </div></div>
     <div class="row noprint" style="margin-bottom:12px;gap:2px">
       <button class="btn pri" data-layer="chars">Characteristics</button>
+      <button class="btn" data-layer="chem">Chemistry and components</button>
       <button class="btn" data-layer="tests">Test campaigns</button>
     </div>
     <div id="sheet"></div>
+    <div id="chem" style="display:none"></div>
     <div id="tests" style="display:none"></div>
   </section>
 
@@ -230,6 +232,8 @@ const _D={"GROUPS":{"Current and power":["max_continuous_discharge_current","max
 const REG=_D.REG, GROUPS=_D.GROUPS;
 const _T={"FAM":{"Abuse and safety":["arc","thermal_ramp","thermal_propagation","nail_penetration","crush","overcharge","over_discharge","external_short","internal_short","vent_gas_analysis"],"Ageing":["cycle_life","calendar_aging","ica_dva","coulombic_efficiency","self_discharge","leakage_current"],"Electrical performance":["formation","capacity","rate_capability","rpt","ocv_pseudo","ocv_incremental","gitt","pitt","drive_cycle","three_electrode"],"Environmental":["drop","vibration","shock","altitude","thermal_shock","immersion"],"Mechanical":["swelling","stack_pressure"],"Post-mortem":["post_mortem","xrd","sem","eds","xps","icp","bet","nmr","gcms","half_cell_reconstruction"],"Pulse and impedance":["hppc","eis","drt"],"Thermal":["entropic_coefficient","heat_capacity","thermal_conductivity","thermal_impedance","isothermal_calorimetry"]},"LANDS":{"altitude":"abuse_result \u00b7 abuse_event","arc":"arc_result","bet":"teardown \u00b7 sample \u00b7 characterisation","calendar_aging":"timeseries_record \u00b7 cycle_summary \u00b7 observation","capacity":"timeseries_record \u00b7 cycle_summary \u00b7 observation","coulombic_efficiency":"observation \u00b7 timeseries_record","crush":"abuse_result \u00b7 abuse_event","cycle_life":"timeseries_record \u00b7 cycle_summary \u00b7 observation","drive_cycle":"timeseries_record \u00b7 cycle_summary \u00b7 observation","drop":"abuse_result \u00b7 abuse_event","drt":"drt_result \u00b7 drt_peak","eds":"teardown \u00b7 sample \u00b7 characterisation","eis":"eis_spectrum \u00b7 eis_point \u00b7 eis_fit","entropic_coefficient":"observation \u00b7 timeseries_record","external_short":"abuse_result \u00b7 abuse_event","formation":"timeseries_record \u00b7 cycle_summary \u00b7 observation","gcms":"teardown \u00b7 sample \u00b7 characterisation","gitt":"observation \u00b7 timeseries_record","half_cell_reconstruction":"teardown \u00b7 sample \u00b7 characterisation","heat_capacity":"thermal_property","hppc":"observation \u00b7 timeseries_record","ica_dva":"observation \u00b7 timeseries_record","icp":"teardown \u00b7 sample \u00b7 characterisation","immersion":"abuse_result \u00b7 abuse_event","internal_short":"abuse_result \u00b7 abuse_event","isothermal_calorimetry":"calorimetry_result","leakage_current":"observation \u00b7 timeseries_record","nail_penetration":"abuse_result \u00b7 abuse_event","nmr":"teardown \u00b7 sample \u00b7 characterisation","ocv_incremental":"observation \u00b7 timeseries_record","ocv_pseudo":"observation \u00b7 timeseries_record","over_discharge":"abuse_result \u00b7 abuse_event","overcharge":"abuse_result \u00b7 abuse_event","pitt":"observation \u00b7 timeseries_record","post_mortem":"teardown \u00b7 sample \u00b7 characterisation","rate_capability":"timeseries_record \u00b7 cycle_summary \u00b7 observation","rpt":"timeseries_record \u00b7 cycle_summary \u00b7 observation","self_discharge":"observation \u00b7 timeseries_record","sem":"teardown \u00b7 sample \u00b7 characterisation","shock":"abuse_result \u00b7 abuse_event","stack_pressure":"observation \u00b7 timeseries_record","swelling":"observation \u00b7 timeseries_record","thermal_conductivity":"thermal_property","thermal_impedance":"thermal_property","thermal_propagation":"abuse_result \u00b7 abuse_event","thermal_ramp":"abuse_result \u00b7 abuse_event","thermal_shock":"abuse_result \u00b7 abuse_event","three_electrode":"observation \u00b7 timeseries_record","vent_gas_analysis":"vent_gas_analysis \u00b7 vent_gas_species","vibration":"abuse_result \u00b7 abuse_event","xps":"teardown \u00b7 sample \u00b7 characterisation","xrd":"teardown \u00b7 sample \u00b7 characterisation"}};
 const FAM=_T.FAM, LANDS=_T.LANDS;
+const _TO={"CELLS":[{"cell":"Toshiba SCiB 20Ah","manu":"Toshiba","fmt":"prismatic","shape":"pri","dims":null,"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2},"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"obs":[{"q":"capacity","v":20,"u":"Ah","stat":"rated","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Rated capacity 20Ah","src":"datasheet"},{"q":"nominal_voltage","v":2.3,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage 2.3V","src":"datasheet"},{"q":"peak_power","v":1200,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Output Power 1200W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"rated_power","v":1100,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Input Power 1100W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"energy_density","v":176,"u":"Wh/L","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Volumetric energy density 176Wh/L","src":"datasheet"},{"q":"specific_energy","v":89,"u":"Wh/kg","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Weight energy density 89Wh/kg","src":"datasheet"},{"q":"mass","v":515,"u":"g","stat":"typical","cond":{},"unstated":[],"pg":4,"quote":"Weight Approx. 515g","src":"datasheet"}],"verified":true},{"cell":"Toshiba SCiB 23Ah","manu":"Toshiba","fmt":"prismatic","shape":"pri","dims":null,"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2},"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"obs":[{"q":"capacity","v":23,"u":"Ah","stat":"rated","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Rated capacity 23Ah","src":"datasheet"},{"q":"nominal_voltage","v":2.3,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage 2.3V","src":"datasheet"},{"q":"peak_power","v":1000,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Output Power 1000W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"rated_power","v":1000,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Input Power 1000W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"energy_density","v":202,"u":"Wh/L","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Volumetric energy density 202Wh/L","src":"datasheet"},{"q":"specific_energy","v":96,"u":"Wh/kg","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Weight energy density 96Wh/kg","src":"datasheet"},{"q":"mass","v":550,"u":"g","stat":"typical","cond":{},"unstated":[],"pg":4,"quote":"Weight Approx. 550g","src":"datasheet"}],"verified":true},{"cell":"Toshiba SCiB 10Ah","manu":"Toshiba","fmt":"prismatic","shape":"pri","dims":[116,22,106],"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2},"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"obs":[{"q":"capacity","v":10,"u":"Ah","stat":"rated","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Rated capacity 10Ah","src":"datasheet"},{"q":"nominal_voltage","v":2.4,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage 2.4V","src":"datasheet"},{"q":"peak_power","v":1800,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Output Power 1800W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"rated_power","v":1500,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Input Power 1500W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"energy_density","v":92,"u":"Wh/L","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Volumetric energy density 92Wh/L","src":"datasheet"},{"q":"specific_energy","v":47,"u":"Wh/kg","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Weight energy density 47Wh/kg","src":"datasheet"},{"q":"mass","v":510,"u":"g","stat":"typical","cond":{},"unstated":[],"pg":4,"quote":"Weight Approx. 510g","src":"datasheet"},{"q":"width","v":116,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W116 \u00d7 D22 \u00d7 H106 mm","src":"datasheet"},{"q":"thickness","v":22,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W116 \u00d7 D22 \u00d7 H106 mm","src":"datasheet"},{"q":"height","v":106,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W116 \u00d7 D22 \u00d7 H106 mm","src":"datasheet"}],"verified":true},{"cell":"Toshiba SCiB 2.9Ah","manu":"Toshiba","fmt":"prismatic","shape":"pri","dims":[63,14,97],"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2},"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"obs":[{"q":"capacity","v":2.9,"u":"Ah","stat":"rated","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Rated capacity 2.9Ah","src":"datasheet"},{"q":"nominal_voltage","v":2.4,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage 2.4V","src":"datasheet"},{"q":"peak_power","v":520,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Output Power 520W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"rated_power","v":410,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Input Power 410W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"energy_density","v":85,"u":"Wh/L","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Volumetric energy density 85Wh/L","src":"datasheet"},{"q":"specific_energy","v":46,"u":"Wh/kg","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Weight energy density 46Wh/kg","src":"datasheet"},{"q":"mass","v":150,"u":"g","stat":"typical","cond":{},"unstated":[],"pg":4,"quote":"Weight Approx. 150g","src":"datasheet"},{"q":"width","v":63,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W63 \u00d7 D14 \u00d7 H97 mm","src":"datasheet"},{"q":"thickness","v":14,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W63 \u00d7 D14 \u00d7 H97 mm","src":"datasheet"},{"q":"height","v":97,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W63 \u00d7 D14 \u00d7 H97 mm","src":"datasheet"}],"verified":true}],"FAMILY":[{"q":"cycle_life","v":20000,"u":"cycles","stat":"minimum","cond":{"temperature_c":25,"rate_value":3,"rate_unit":"C"},"unstated":["dod_pct"],"pg":2,"quote":"The capacity remains at 70% or more even after 20,000 times of charging/discharging \u2014 test condition: high-rate (3C) charge/discharge cycles at 25\u00b0C","src":"datasheet"}]};
+const TOSHIBA=_TO.CELLS, FAMILY=_TO.FAMILY;
 
 const SEED=[
  {cell:"Samsung INR21700-50E",manu:"Samsung SDI",chem:"NCA",   fmt:"21700",   shape:"cyl",dims:[21.2,70.4], ah:4.90, v:3.60, g:69.0,  a:9.8},
@@ -256,7 +260,18 @@ const derive = d => {
     crate: d.a/d.ah,
     provisional:true};
 };
-let ROWS = SEED.map(derive);
+const fromRecord=c=>{
+  const g={}; c.obs.forEach(o=>{g[o.q]=o.v;});
+  const litres = c.dims ? (c.dims[0]*c.dims[1]*c.dims[2])/1e6 : null;
+  const wh = (g.capacity||0)*(g.nominal_voltage||0);
+  return {cell:c.cell,manu:c.manu,chem:c.chem.designation,fmt:c.fmt,shape:c.shape,
+    dims:c.dims,ah:g.capacity,v:g.nominal_voltage,g:g.mass,a:null,
+    wh, litres: litres!=null?litres:(g.energy_density?wh/g.energy_density:null),
+    whkg:g.specific_energy, whl:g.energy_density,
+    wkg:g.peak_power?g.peak_power/(g.mass/1000):null,
+    crate:null, provisional:false, rec:c};
+};
+let ROWS = SEED.map(derive).concat(TOSHIBA.map(fromRecord));
 const SEL = new Set();
 
 const $=s=>document.querySelector(s);
@@ -318,7 +333,9 @@ function drawTable(){
         t.append(el("td",{class:cls.trim()},a));
       } else t.append(el("td",{class:cls.trim()},num?f(v,dec):String(v)));
     });
-    t.append(el("td",{},el("span",{class:"pill prov"},"provisional")));
+    t.append(el("td",{}, r.provisional!==false
+      ? el("span",{class:"pill prov"},"provisional")
+      : el("span",{class:"pill",style:"border-color:var(--ok);color:var(--ok)"},"datasheet")));
     tb.append(t);
   });
   $("#repcount").textContent = SEL.size?`${SEL.size} selected`:"nothing selected — report covers all cells";
@@ -504,6 +521,12 @@ const UNIT={mass:"g",diameter:"mm",height:"mm",length:"mm",width:"mm",thickness:
 
 /* what the seed set actually carries, mapped onto real registry codes */
 function known(d){
+  if(d.rec){                       // sourced record: use the observations as recorded
+    const k={};
+    d.rec.obs.forEach(o=>{k[o.q]={v:o.v,src:o.src,cond:o.cond,unstated:o.unstated,
+                                  quote:o.quote,pg:o.pg};});
+    return k;
+  }
   const k={
     mass:{v:d.g,src:"seed"}, volume:{v:d.litres,src:"derived"},
     nominal_voltage:{v:d.v,src:"seed"}, capacity:{v:d.ah,src:"seed"},
@@ -540,9 +563,18 @@ function drawSheet(){
       row.append(el("span",{class:"val"},got?f(got.v, got.v<10?2:(got.v<1000?1:0)):"—"));
       row.append(el("span",{class:"cond"}, got?(UNIT[q]||""):"not recorded"));
       const tags=el("span",{class:"row",style:"gap:5px;justify-content:flex-end"});
-      if(req.length) tags.append(el("span",{class:"pill prov",
-        title:"requires "+req.join(", ")},`conditions ×${req.length}`));
-      if(got) tags.append(el("span",{class:"pill"},got.src));
+      if(got&&got.unstated&&got.unstated.length)
+        tags.append(el("span",{class:"pill prov",
+          title:"the source never states: "+got.unstated.join(", ")},
+          `unstated ×${got.unstated.length}`));
+      else if(req.length&&!got)
+        tags.append(el("span",{class:"pill prov",
+          title:"requires "+req.join(", ")},`conditions ×${req.length}`));
+      else if(got&&req.length)
+        tags.append(el("span",{class:"pill",style:"border-color:var(--ok);color:var(--ok)"},
+          "conditions ok"));
+      if(got) tags.append(el("span",{class:"pill",
+        title:got.quote?`“${got.quote}”  — page ${got.pg}`:""},got.src));
       row.append(tags);
       body.append(row);
     });
@@ -562,6 +594,63 @@ function sheetMD(){
     L.push("");
   });
   return L.join("\n");
+}
+
+/* ---------- chemistry and components layer ---------- */
+const COMPONENTS=[
+ ["designation","Chemistry designation","the shorthand the source uses — NCA, NMC811, LFP, LTO"],
+ ["cathode","Cathode active material","the material the source names, not one inferred from the designation"],
+ ["anode","Anode active material","graphite, Si-graphite, LTO, lithium metal"],
+ ["electrolyte","Electrolyte","salt and solvent system"],
+ ["separator","Separator","material and any ceramic coating"],
+ ["current_collector_cathode","Cathode current collector","usually aluminium"],
+ ["current_collector_anode","Anode current collector","usually copper, but not with LTO"],
+ ["binder","Binder","PVDF, CMC/SBR"],
+ ["additives","Electrolyte additives","VC, FEC and similar"],
+ ["case","Case material","steel, aluminium, laminate pouch"]
+];
+function drawChem(){
+  const d=ROWS.find(r=>r.cell===curCell); if(!d)return;
+  const host=$("#chem"); host.innerHTML="";
+  const c=d.rec?d.rec.chem:{designation:d.chem};
+  const named=COMPONENTS.filter(([k])=>c&&c[k]).length;
+
+  host.append(el("div",{class:d.rec?"note":"warn"},
+    d.rec
+      ? el("span",{},el("b",{},`${named} of ${COMPONENTS.length} components named. `),
+          "A chemistry designation is a label, not a composition — LTO tells you the anode and "
+          +"nothing about the cathode. The slots below stay empty until a source names them.")
+      : el("span",{},el("b",{},"No source behind this chemistry. "),
+          "The designation came from a headline spec with no document behind it, so nothing "
+          +"below can be filled in without guessing.")));
+
+  const card=el("div",{class:"card"});
+  card.append(el("h3",{},"Composition",el("span",{class:"mono",
+    style:"margin-left:auto;font-weight:400;color:var(--muted);font-size:11px"},
+    `${named}/${COMPONENTS.length}`)));
+  const body=el("div",{class:"body",style:"padding:0"});
+  COMPONENTS.forEach(([k,label,hint])=>{
+    const v=c?c[k]:null;
+    const row=el("div",{class:"slot"+(v?"":" gap"),
+      style:"grid-template-columns:minmax(200px,1fr) 1.4fr auto"});
+    row.append(el("span",{class:"qc"},label));
+    row.append(el("span",{class:v?"":"cond"},v||hint));
+    row.append(v
+      ? el("span",{class:"pill",style:"border-color:var(--ok);color:var(--ok)"},"named")
+      : el("span",{class:"pill prov"},"not stated"));
+    body.append(row);
+  });
+  card.append(body); host.append(card);
+
+  if(d.rec&&d.rec.chem.anode_quote){
+    const q=el("div",{class:"card"});
+    q.append(el("h3",{},"Evidence"));
+    const b=el("div",{class:"body"});
+    b.append(el("p",{style:"font-family:var(--mono);font-size:12px;margin:0 0 7px;color:var(--ink-2)"},
+      "“"+d.rec.chem.anode_quote+"”"));
+    b.append(el("span",{class:"lbl"},`${d.rec.source.ref} · page ${d.rec.chem.anode_pg}`));
+    q.append(b); host.append(q);
+  }
 }
 
 /* ---------- test campaign layer ---------- */
@@ -595,10 +684,12 @@ function drawTests(){
 }
 document.querySelectorAll("[data-layer]").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("[data-layer]").forEach(x=>x.className="btn"+(x===b?" pri":""));
-  const t=b.dataset.layer==="tests";
-  $("#tests").style.display=t?"block":"none";
-  $("#sheet").style.display=t?"none":"block";
-  if(t)drawTests();
+  const L=b.dataset.layer;
+  $("#sheet").style.display=L==="chars"?"block":"none";
+  $("#chem").style.display =L==="chem" ?"block":"none";
+  $("#tests").style.display=L==="tests"?"block":"none";
+  if(L==="chem")drawChem();
+  if(L==="tests")drawTests();
 });
 
 ROWS.forEach(r=>$("#cellsel").append(el("option",{value:r.cell},r.cell)));
