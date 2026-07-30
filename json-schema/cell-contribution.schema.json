@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/cell-contribution.schema.json",
+  "title": "battery-data cell contribution",
+  "description": "A community-contributed product specification. Every observation must carry a locator, and any quantity with required conditions must supply them or declare them unstated.",
+  "type": "object",
+  "required": ["schema_version", "product", "source", "observations"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1" },
+    "product": {
+      "type": "object",
+      "required": ["uid", "kind", "manufacturer", "model_number"],
+      "properties": {
+        "uid": { "type": "string", "pattern": "^[a-z_]+/[a-z0-9-]+/[a-z0-9._-]+$" },
+        "kind": { "enum": ["cell","module","pack","system","primary_cell","component"] },
+        "manufacturer": { "type": "string" },
+        "model_number": { "type": "string" },
+        "form_factor": { "enum": ["cylindrical","pouch","prismatic_hardcase","coin","button","blade","rack","container","brick","other"] },
+        "form_factor_code": { "type": "string" },
+        "iec_designation": { "type": "string" },
+        "ansi_neda": { "type": "string" },
+        "is_rechargeable": { "type": "boolean" },
+        "aliases": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["uid", "kind"],
+      "properties": {
+        "uid": { "type": "string" },
+        "kind": { "enum": ["datasheet","manufacturer_web","standard","journal_article","preprint","dataset","third_party_test","teardown_report","distributor_listing","user_submission"] },
+        "title": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "doi": { "type": "string" },
+        "revision": { "type": "string" },
+        "document_date": { "type": "string", "format": "date" },
+        "is_final": { "type": "boolean" },
+        "license": { "type": "string" },
+        "redistributable": { "type": "boolean" },
+        "region_scope": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "chemistry": {
+      "type": "object",
+      "properties": {
+        "designation": { "type": "string" },
+        "cathode_text": { "type": "string" },
+        "anode_text": { "type": "string" },
+        "electrolyte_text": { "type": "string" },
+        "separator_text": { "type": "string" }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/observation" }
+    },
+    "curves": { "type": "array", "items": { "$ref": "#/$defs/curve" } }
+  },
+  "$defs": {
+    "locator": {
+      "type": "object",
+      "required": ["quote"],
+      "description": "Where in the source this claim comes from. Mandatory - a value with no evidence is rejected.",
+      "properties": {
+        "page": { "type": "integer", "minimum": 1 },
+        "section": { "type": "string" },
+        "quote": { "type": "string", "minLength": 8 },
+        "bbox": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 }
+      }
+    },
+    "conditions": {
+      "type": "object",
+      "description": "condition_set columns. Anything the SOURCE does not state must be named in 'unstated', never silently omitted.",
+      "properties": {
+        "temperature_c": { "type": "number" },
+        "temperature_reference": { "enum": ["ambient","chamber_setpoint","cell_surface","can","tab","core","coolant_inlet","coolant_outlet","unspecified"] },
+        "rate_value": { "type": "number" },
+        "rate_unit": { "enum": ["A","mA","C","It","W","P","W_per_kg","ohm","unspecified"] },
+        "rate_reference_capacity_ah": { "type": "number" },
+        "rate_reference_source": { "type": "string" },
+        "direction": { "enum": ["charge","discharge","rest","symmetric","regen"] },
+        "voltage_upper_v": { "type": "number" },
+        "voltage_lower_v": { "type": "number" },
+        "soc_pct": { "type": "number", "minimum": -5, "maximum": 105 },
+        "soc_method": { "enum": ["coulomb_counted","ocv_lookup","bms_reported","voltage_proxy","time_from_full","unspecified"] },
+        "dod_pct": { "type": "number" },
+        "pulse_duration_s": { "type": "number", "exclusiveMinimum": 0 },
+        "pulse_current_a": { "type": "number" },
+        "frequency_hz": { "type": "number", "exclusiveMinimum": 0 },
+        "rest_before_s": { "type": "number" },
+        "cycle_index": { "type": "integer" },
+        "duration_s": { "type": "number" },
+        "constraint_mode": { "enum": ["unconstrained","constant_force","constant_gap","rigid_case","stack_in_module","unspecified"] },
+        "clamp_force_n": { "type": "number" },
+        "boundary": { "enum": ["electrode","cell","module","pack_dc","dc_bus","ac_terminal","ac_including_auxiliaries","unspecified"] },
+        "load_value": { "type": "number" },
+        "load_unit": { "enum": ["mA","A","ohm","mW","W"] },
+        "duty_schedule": { "type": "string" },
+        "cutoff_voltage_v": { "type": "number" },
+        "area_cm2": { "type": "number" },
+        "area_kind": { "enum": ["separator_total","cathode_single_sided","cathode_double_sided","anode_single_sided","anode_double_sided","geometric_footprint","unspecified"] },
+        "unstated": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Condition columns the source itself does not state. Recording the omission is required; inferring a value is not permitted."
+        },
+        "extra": { "type": "object" },
+        "verbatim": { "type": "string" }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "required": ["quantity", "value", "unit", "locator"],
+      "additionalProperties": false,
+      "properties": {
+        "quantity": { "type": "string", "description": "Must exist in bd.quantity.code" },
+        "statistic": { "enum": ["rated","nominal","standard","minimum","typical","maximum","initial","design","guaranteed","mean","median","measured","absolute_max","absolute_min"] },
+        "value": { "type": "number" },
+        "unit": { "type": "string" },
+        "tol_plus": { "type": "number" },
+        "tol_minus": { "type": "number" },
+        "value_min": { "type": "number" },
+        "value_max": { "type": "number" },
+        "is_lower_bound": { "type": "boolean" },
+        "is_upper_bound": { "type": "boolean" },
+        "n_samples": { "type": "integer" },
+        "conditions": { "$ref": "#/$defs/conditions" },
+        "locator": { "$ref": "#/$defs/locator" }
+      }
+    },
+    "curve": {
+      "type": "object",
+      "required": ["curve_kind", "x_quantity", "y_quantity", "x_unit", "y_unit", "x_values", "y_values", "locator"],
+      "properties": {
+        "curve_kind": { "type": "string" },
+        "x_quantity": { "type": "string" },
+        "y_quantity": { "type": "string" },
+        "x_unit": { "type": "string" },
+        "y_unit": { "type": "string" },
+        "x_values": { "type": "array", "items": { "type": "number" }, "minItems": 2 },
+        "y_values": { "type": "array", "items": { "type": "number" }, "minItems": 2 },
+        "conditions": { "$ref": "#/$defs/conditions" },
+        "processing": { "type": "object" },
+        "locator": { "$ref": "#/$defs/locator" }
+      }
+    }
+  }
+}

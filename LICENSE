@@ -19,3 +19,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+DATA LICENCE
+
+Curated data contributed to this repository is licensed CC-BY-4.0.
+
+Manufacturer datasheets are NOT redistributed. Extracted factual values are
+stored with a source URL, content hash and retrieval date; source.redistributable
+governs whether a document body may be stored at all. Takedown requests can be
+answered per-source. Facts are not copyrightable; compilations may be, and this
+project's compilation is offered under CC-BY-4.0.
