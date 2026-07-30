@@ -1,0 +1,68 @@
+name: ci
+on: [push, pull_request]
+
+jobs:
+  schema:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_PASSWORD: postgres, POSTGRES_DB: batterydb }
+        options: >-
+          --health-cmd pg_isready --health-interval 10s
+          --health-timeout 5s --health-retries 5
+        ports: ['5432:5432']
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - name: One-command setup (what a user actually runs)
+        run: ./setup.sh
+      - name: Load schema
+        run: ./tools/build_db.sh batterydb
+      - name: Load seed data
+        run: psql -v ON_ERROR_STOP=1 -d batterydb -f seed/001_reference_cells.sql
+      - name: Run killer queries
+        run: psql -v ON_ERROR_STOP=1 -d batterydb -f tests/010_killer_queries.sql
+      - name: Assert the schema refuses uninterpretable data
+        run: |
+          # A bare internal resistance with no conditions MUST fail.
+          if psql -q -d batterydb -c "
+            INSERT INTO bd.observation
+              (product_revision_id, quantity_id, value_native, unit_native, provenance_id)
+            SELECT pr.id, q.id, 15, 'mohm', pv.id
+              FROM bd.product_revision pr, bd.quantity q, bd.provenance pv
+             WHERE q.code='internal_resistance_ac' LIMIT 1;" 2>/dev/null
+          then
+            echo "FAIL: schema accepted a resistance with no method or conditions"
+            exit 1
+          fi
+          echo "ok: uninterpretable data rejected"
+      - name: Refresh graph projection
+        run: psql -v ON_ERROR_STOP=1 -d batterydb -c "SELECT bd_graph.refresh();"
+      - name: Export the standards crosswalk
+        run: python tools/export_crosswalk.py batterydb
+
+  units:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install pandas numpy pyyaml jsonschema
+      - name: Cycler adapters - sniff, normalise, conventions, RPT segmentation
+        run: python tools/cyclers.py selftest
+      - name: Filter grammar - parsing, type checking, injection safety
+        run: python api/filter_grammar.py
+
+  contrib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install pyyaml jsonschema
+      - name: Validate community contributions
+        run: python tools/validate_contrib.py contrib/

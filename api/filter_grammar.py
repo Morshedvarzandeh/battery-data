@@ -1,0 +1,330 @@
+#!/usr/bin/env python3
+"""
+OPTIMADE-style filter grammar -> parameterised SQL.
+
+Why borrow OPTIMADE's grammar rather than invent one: it is already the
+filter language 21 materials-science providers implement, it has a
+published formal definition, and it covers exactly the shape of query
+this database needs - numeric comparison, boolean composition, string
+matching, and list membership.
+
+    capacity_ah >= 4.5 AND form_factor_code = "21700"
+    manufacturer CONTAINS "Samsung" AND max_cont_discharge_a > 9
+    elements HAS ALL "Li","Fe","P"
+    chemistry = "LFP" AND (temperature_c >= 45 OR cycle_life > 5000)
+    internal_resistance_dc IS KNOWN AND pulse_duration_s = 10
+
+Everything is emitted as parameterised SQL. No user string ever reaches
+the query text, so the injection surface is the identifier whitelist
+alone - and unknown identifiers are rejected with a suggestion rather
+than silently interpolated.
+"""
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+from typing import Any
+
+# ---------------------------------------------------------------------
+# Field whitelist. An identifier not in here is an error, never a
+# pass-through. `_bd_` prefixed names are this provider's vendor
+# extensions, following OPTIMADE's `_<providerprefix>_<field>` convention.
+# ---------------------------------------------------------------------
+FIELDS: dict[str, dict] = {
+    # product identity
+    "product_uid":        {"col": "product_uid",        "type": "string"},
+    "manufacturer":       {"col": "manufacturer",       "type": "string"},
+    "model_number":       {"col": "model_number",       "type": "string"},
+    "form_factor":        {"col": "form_factor",        "type": "string"},
+    "form_factor_code":   {"col": "form_factor_code",   "type": "string"},
+    "chemistry":          {"col": "chemistry",          "type": "string"},
+    "cathode":            {"col": "cathode_text",       "type": "string"},
+    "anode":              {"col": "anode_text",         "type": "string"},
+    # performance
+    "capacity_ah":        {"col": "capacity_low_rate_ah", "type": "number"},
+    "capacity_1c_ah":     {"col": "capacity_1c_ah",     "type": "number"},
+    "max_cont_discharge_a": {"col": "max_cont_discharge_a", "type": "number"},
+    "nominal_voltage_v":  {"col": "nominal_voltage_v",  "type": "number"},
+    "specific_energy_wh_kg": {"col": "specific_energy_wh_per_kg_derived",
+                              "type": "number"},
+    "mass_kg":            {"col": "mass_kg",            "type": "number"},
+    "discharge_temp_min_c": {"col": "discharge_temp_min_c", "type": "number"},
+    # vendor extensions
+    "_bd_revision":       {"col": "revision_label",     "type": "string"},
+    "_bd_capacity_statistic": {"col": "capacity_low_rate_statistic",
+                               "type": "string"},
+    "_bd_capacity_rate_c": {"col": "capacity_low_rate_c", "type": "number"},
+}
+
+COMPARISON = {"=": "=", "!=": "<>", "<": "<", "<=": "<=", ">": ">", ">=": ">="}
+
+
+class FilterError(ValueError):
+    """Raised with a message intended to be returned to the caller."""
+
+
+# ---------------------------------------------------------------------
+# Tokeniser
+# ---------------------------------------------------------------------
+TOKEN_RE = re.compile(r"""
+    (?P<ws>\s+)
+  | (?P<string>"(?:[^"\\]|\\.)*")
+  | (?P<number>-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)
+  | (?P<op><=|>=|!=|=|<|>)
+  | (?P<lparen>\()
+  | (?P<rparen>\))
+  | (?P<comma>,)
+  | (?P<word>[A-Za-z_][A-Za-z0-9_]*)
+""", re.VERBOSE)
+
+KEYWORDS = {"AND", "OR", "NOT", "CONTAINS", "STARTS", "ENDS", "WITH",
+            "IS", "KNOWN", "UNKNOWN", "HAS", "ALL", "ANY", "ONLY", "LENGTH"}
+
+
+@dataclass
+class Token:
+    kind: str
+    value: Any
+    pos: int
+
+
+def tokenize(s: str) -> list[Token]:
+    toks, i = [], 0
+    while i < len(s):
+        m = TOKEN_RE.match(s, i)
+        if not m:
+            raise FilterError(f"unexpected character {s[i]!r} at position {i}")
+        i = m.end()
+        kind = m.lastgroup
+        if kind == "ws":
+            continue
+        val = m.group()
+        if kind == "string":
+            val = val[1:-1].replace('\\"', '"').replace("\\\\", "\\")
+        elif kind == "number":
+            val = float(val) if ("." in val or "e" in val.lower()) else int(val)
+        elif kind == "word" and val.upper() in KEYWORDS:
+            kind, val = "keyword", val.upper()
+        toks.append(Token(kind, val, m.start()))
+    return toks
+
+
+# ---------------------------------------------------------------------
+# Recursive-descent parser  ->  (sql_fragment, params)
+#
+#   expr    := term   ( OR term )*
+#   term    := factor ( AND factor )*
+#   factor  := NOT factor | '(' expr ')' | predicate
+# ---------------------------------------------------------------------
+class Parser:
+    def __init__(self, tokens: list[Token]):
+        self.t, self.i, self.params = tokens, 0, []
+
+    # -- helpers ------------------------------------------------------
+    def peek(self) -> Token | None:
+        return self.t[self.i] if self.i < len(self.t) else None
+
+    def next(self) -> Token:
+        if self.i >= len(self.t):
+            raise FilterError("unexpected end of filter")
+        self.i += 1
+        return self.t[self.i - 1]
+
+    def accept_kw(self, kw: str) -> bool:
+        tok = self.peek()
+        if tok and tok.kind == "keyword" and tok.value == kw:
+            self.i += 1
+            return True
+        return False
+
+    def expect_kw(self, kw: str) -> None:
+        if not self.accept_kw(kw):
+            got = self.peek()
+            raise FilterError(f"expected {kw}, got {got.value if got else 'end'}")
+
+    def bind(self, value: Any) -> str:
+        self.params.append(value)
+        return f"${len(self.params)}"
+
+    # -- grammar ------------------------------------------------------
+    def parse(self) -> tuple[str, list]:
+        sql = self.expr()
+        if self.i < len(self.t):
+            raise FilterError(
+                f"unexpected {self.t[self.i].value!r} at position {self.t[self.i].pos}")
+        return sql, self.params
+
+    def expr(self) -> str:
+        sql = self.term()
+        while self.accept_kw("OR"):
+            sql = f"({sql} OR {self.term()})"
+        return sql
+
+    def term(self) -> str:
+        sql = self.factor()
+        while self.accept_kw("AND"):
+            sql = f"({sql} AND {self.factor()})"
+        return sql
+
+    def factor(self) -> str:
+        if self.accept_kw("NOT"):
+            return f"(NOT {self.factor()})"
+        tok = self.peek()
+        if tok and tok.kind == "lparen":
+            self.next()
+            sql = self.expr()
+            close = self.next()
+            if close.kind != "rparen":
+                raise FilterError("unbalanced parenthesis")
+            return f"({sql})"
+        return self.predicate()
+
+    def predicate(self) -> str:
+        tok = self.next()
+        if tok.kind != "word":
+            raise FilterError(f"expected a field name, got {tok.value!r}")
+        name = tok.value
+        if name not in FIELDS:
+            raise FilterError(
+                f"unknown field {name!r}. "
+                f"Did you mean one of: {', '.join(_suggest(name))}?")
+        col = FIELDS[name]["col"]
+        ftype = FIELDS[name]["type"]
+
+        nxt = self.peek()
+        if nxt is None:
+            raise FilterError(f"field {name!r} is not followed by an operator")
+
+        # field <op> value
+        if nxt.kind == "op":
+            op = COMPARISON[self.next().value]
+            v = self.next()
+            if v.kind not in ("string", "number"):
+                raise FilterError(f"expected a value after {op}, got {v.value!r}")
+            _typecheck(name, ftype, v)
+            return f"{col} {op} {self.bind(v.value)}"
+
+        if nxt.kind != "keyword":
+            raise FilterError(f"expected an operator after {name!r}, "
+                              f"got {nxt.value!r}")
+
+        kw = self.next().value
+
+        # field IS KNOWN | IS UNKNOWN
+        if kw == "IS":
+            k = self.next()
+            if k.kind != "keyword" or k.value not in ("KNOWN", "UNKNOWN"):
+                raise FilterError("expected KNOWN or UNKNOWN after IS")
+            return f"{col} IS {'NOT NULL' if k.value == 'KNOWN' else 'NULL'}"
+
+        # field CONTAINS / STARTS WITH / ENDS WITH "s"
+        if kw in ("CONTAINS", "STARTS", "ENDS"):
+            if kw in ("STARTS", "ENDS"):
+                self.expect_kw("WITH")
+            v = self.next()
+            if v.kind != "string":
+                raise FilterError(f"{kw} requires a quoted string")
+            pat = {"CONTAINS": f"%{v.value}%",
+                   "STARTS": f"{v.value}%",
+                   "ENDS": f"%{v.value}"}[kw]
+            return f"{col} ILIKE {self.bind(pat)}"
+
+        # field HAS [ALL|ANY|ONLY] v1, v2, ...
+        if kw == "HAS":
+            mode = "ANY"
+            for m in ("ALL", "ANY", "ONLY"):
+                if self.accept_kw(m):
+                    mode = m
+                    break
+            values = [self.next().value]
+            while self.peek() and self.peek().kind == "comma":
+                self.next()
+                values.append(self.next().value)
+            p = self.bind(values)
+            if mode == "ALL":
+                return f"{col} @> {p}"
+            if mode == "ONLY":
+                return f"({col} <@ {p} AND {col} && {p})"
+            return f"{col} && {p}"
+
+        raise FilterError(f"unsupported operator {kw!r} for field {name!r}")
+
+
+def _typecheck(name: str, ftype: str, tok: Token) -> None:
+    if ftype == "number" and tok.kind != "number":
+        raise FilterError(f"field {name!r} is numeric; "
+                          f"{tok.value!r} is a string")
+    if ftype == "string" and tok.kind != "string":
+        raise FilterError(f"field {name!r} is a string; quote the value "
+                          f'as "{tok.value}"')
+
+
+def _suggest(name: str, n: int = 3) -> list[str]:
+    """Cheap edit-distance suggestion so a typo is a helpful error."""
+    def dist(a: str, b: str) -> int:
+        prev = list(range(len(b) + 1))
+        for i, ca in enumerate(a, 1):
+            cur = [i]
+            for j, cb in enumerate(b, 1):
+                cur.append(min(prev[j] + 1, cur[j - 1] + 1,
+                               prev[j - 1] + (ca != cb)))
+            prev = cur
+        return prev[-1]
+    return sorted(FIELDS, key=lambda f: dist(name.lower(), f.lower()))[:n]
+
+
+def parse_filter(expr: str) -> tuple[str, list]:
+    """Return (SQL WHERE fragment with $1..$n placeholders, params)."""
+    if not expr or not expr.strip():
+        return "TRUE", []
+    return Parser(tokenize(expr)).parse()
+
+
+def to_psycopg(sql: str, params: list) -> tuple[str, list]:
+    """Convert $1..$n placeholders to psycopg's %s, preserving order."""
+    order: list[int] = []
+
+    def sub(m):
+        idx = int(m.group(1))
+        order.append(idx)
+        return "%s"
+
+    out = re.sub(r"\$(\d+)", sub, sql)
+    return out, [params[i - 1] for i in order]
+
+
+# ---------------------------------------------------------------------
+if __name__ == "__main__":
+    CASES = [
+        ('capacity_ah >= 4.5 AND form_factor_code = "21700"', True),
+        ('manufacturer CONTAINS "Samsung"', True),
+        ('chemistry = "LFP" AND (nominal_voltage_v < 3.4 OR capacity_ah > 200)', True),
+        ('NOT form_factor = "coin"', True),
+        ('capacity_ah IS KNOWN AND max_cont_discharge_a > 9', True),
+        ('model_number STARTS WITH "INR"', True),
+        ('_bd_capacity_statistic = "rated"', True),
+        # failures, each with a useful message
+        ('capacity_ah >= "4.5"', False),      # type error
+        ('capcity_ah >= 4.5', False),         # typo -> suggestion
+        ('capacity_ah >= 4.5 AND', False),    # truncated
+        ('capacity_ah >= 4.5)', False),       # unbalanced
+        ('DROP TABLE bd.observation', False), # not a field
+        ("model_number = \"x'; DROP TABLE bd.product; --\"", True),  # parameterised
+    ]
+    ok = True
+    print("OPTIMADE-style filter grammar\n" + "=" * 70)
+    for expr, should_pass in CASES:
+        try:
+            sql, params = parse_filter(expr)
+            passed = True
+            detail = f"{sql}   params={params}"
+        except FilterError as e:
+            passed = False
+            detail = str(e)
+        mark = "ok  " if passed == should_pass else "FAIL"
+        if passed != should_pass:
+            ok = False
+        print(f"\n  {mark} {expr}\n       -> {detail}")
+    print("\n" + "=" * 70)
+    print("PASS" if ok else "FAIL")
+    raise SystemExit(0 if ok else 1)

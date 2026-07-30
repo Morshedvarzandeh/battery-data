@@ -1,0 +1,115 @@
+# battery-data community contribution
+# Validated in CI against json-schema/cell-contribution.schema.json
+#
+# The rule that matters: every observation carries its conditions and a
+# locator, or the pull request fails. You cannot contribute a capacity
+# without saying at what rate, temperature and cutoff it was measured.
+schema_version: "1"
+
+product:
+  uid: cell/samsung-sdi/inr21700-50e
+  kind: cell
+  manufacturer: Samsung SDI
+  model_number: INR21700-50E
+  form_factor: cylindrical
+  form_factor_code: "21700"
+  iec_designation: INR21700
+  is_rechargeable: true
+
+source:
+  uid: src/samsung-50e-v1.0
+  kind: datasheet
+  title: Samsung INR21700-50E Specification
+  url: https://batteryservice.bg/wp-content/uploads/2018/12/INR21700-50E.pdf
+  revision: "V1.0"
+  document_date: "2018-07-11"
+  is_final: true
+  license: proprietary
+  redistributable: false        # facts extracted; document body not stored
+
+chemistry:
+  designation: NCA
+  cathode_text: Ni-based (high Ni)
+  anode_text: Graphite
+
+observations:
+  # Two capacities on one page. Both are recorded. Neither is "the" capacity.
+  - quantity: capacity
+    statistic: standard
+    value: 4900
+    unit: mAh
+    conditions:
+      temperature_c: 25
+      temperature_reference: ambient
+      rate_value: 0.2
+      rate_unit: C
+      rate_reference_capacity_ah: 4.9
+      voltage_upper_v: 4.2
+      voltage_lower_v: 2.5
+      direction: discharge
+    locator:
+      page: 3
+      section: Table 2 - Specification
+      quote: "Standard Discharge Capacity 4900 mAh (0.2C, 2.5V cut-off)"
+
+  - quantity: capacity
+    statistic: rated
+    value: 4753
+    unit: mAh
+    conditions:
+      temperature_c: 25
+      temperature_reference: ambient
+      rate_value: 1.0
+      rate_unit: C
+      rate_reference_capacity_ah: 4.9
+      voltage_upper_v: 4.2
+      voltage_lower_v: 2.5
+      direction: discharge
+    locator:
+      page: 3
+      section: Table 2 - Specification
+      quote: "Rated Discharge Capacity 4753 mAh (1.0C, 2.5V cut-off)"
+
+  # Declared absence: Samsung gives a pulse current and never a duration.
+  - quantity: max_pulse_discharge_current
+    statistic: maximum
+    value: 14700
+    unit: mA
+    conditions:
+      temperature_c: 25
+      direction: discharge
+      unstated: [pulse_duration_s]
+      extra:
+        note: >-
+          Datasheet states a maximum non-continuous discharge current with no
+          duration. Recorded as declared-unstated rather than as a NULL.
+    locator:
+      page: 3
+      quote: "Max. non-continuous discharge current 14700 mA"
+
+  - quantity: nominal_voltage
+    statistic: nominal
+    value: 3.6
+    unit: V
+    locator: { page: 3, quote: "Nominal Voltage 3.6 V" }
+
+  - quantity: mass
+    statistic: maximum
+    value: 69
+    unit: g
+    locator: { page: 5, quote: "Weight max. 69.0 g" }
+
+  - quantity: cycle_life
+    statistic: minimum
+    value: 500
+    unit: cycles
+    conditions:
+      temperature_c: 23
+      dod_pct: 100
+      rate_value: 0.5
+      rate_unit: C
+      rate_reference_capacity_ah: 4.9
+      extra: { eol_criterion_pct: 80, eol_reference: nameplate_capacity }
+    locator:
+      page: 4
+      quote: ">= 3802 mAh after 500 cycles (80% of rated capacity)"

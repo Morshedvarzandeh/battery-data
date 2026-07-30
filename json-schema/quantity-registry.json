@@ -1,0 +1,282 @@
+{
+ "absolute_max_voltage": [],
+ "absolute_min_voltage": [],
+ "area_specific_impedance": [
+  "pulse_duration_s",
+  "soc_pct",
+  "temperature_c",
+  "area_cm2",
+  "area_kind"
+ ],
+ "areal_capacity": [
+  "rate_value",
+  "rate_unit",
+  "area_kind"
+ ],
+ "calendar_life": [
+  "temperature_c",
+  "soc_pct"
+ ],
+ "capacity": [
+  "rate_value",
+  "rate_unit",
+  "temperature_c",
+  "voltage_lower_v"
+ ],
+ "capacity_retention": [
+  "cycle_index",
+  "temperature_c",
+  "rate_value",
+  "rate_unit"
+ ],
+ "carbon_footprint_per_kwh": [],
+ "charge_cutoff_voltage": [],
+ "charge_transfer_resistance": [
+  "soc_pct",
+  "temperature_c"
+ ],
+ "cooling_capacity": [
+  "temperature_c"
+ ],
+ "coulombic_efficiency": [
+  "rate_value",
+  "rate_unit",
+  "temperature_c",
+  "cycle_index"
+ ],
+ "current": [],
+ "cv_cutoff_current": [],
+ "cycle_life": [
+  "temperature_c",
+  "dod_pct",
+  "rate_value",
+  "rate_unit"
+ ],
+ "cycle_number": [],
+ "diameter": [],
+ "diffusion_coefficient": [
+  "soc_pct",
+  "temperature_c"
+ ],
+ "discharge_cutoff_voltage": [],
+ "displacement": [],
+ "dqdv": [],
+ "drt_gamma": [],
+ "dvdq": [],
+ "electrode_area": [],
+ "energy": [
+  "rate_value",
+  "rate_unit",
+  "temperature_c"
+ ],
+ "energy_density": [
+  "rate_value",
+  "rate_unit",
+  "temperature_c"
+ ],
+ "energy_efficiency": [
+  "rate_value",
+  "rate_unit",
+  "temperature_c"
+ ],
+ "energy_retention": [
+  "cycle_index",
+  "temperature_c"
+ ],
+ "entropic_coefficient": [
+  "soc_pct",
+  "temperature_c"
+ ],
+ "expansion_force": [
+  "soc_pct",
+  "constraint_mode"
+ ],
+ "first_cycle_efficiency": [
+  "rate_value",
+  "rate_unit",
+  "temperature_c"
+ ],
+ "force": [],
+ "frequency": [],
+ "heat_generation_rate": [
+  "rate_value",
+  "rate_unit",
+  "soc_pct",
+  "temperature_c"
+ ],
+ "height": [],
+ "impedance_imag": [],
+ "impedance_real": [],
+ "intensity": [],
+ "internal_resistance_ac": [
+  "frequency_hz",
+  "soc_pct",
+  "temperature_c"
+ ],
+ "internal_resistance_dc": [
+  "pulse_duration_s",
+  "pulse_current_a",
+  "soc_pct",
+  "temperature_c",
+  "direction"
+ ],
+ "irreversible_expansion": [
+  "cycle_index",
+  "constraint_mode"
+ ],
+ "knee_point_cycle": [
+  "temperature_c",
+  "dod_pct"
+ ],
+ "leakage_current": [
+  "temperature_c",
+  "soc_pct"
+ ],
+ "length": [],
+ "lithium_content": [],
+ "mass": [],
+ "max_continuous_charge_current": [
+  "temperature_c"
+ ],
+ "max_continuous_discharge_current": [
+  "temperature_c"
+ ],
+ "max_pulse_discharge_current": [
+  "pulse_duration_s",
+  "temperature_c"
+ ],
+ "max_runaway_temperature": [
+  "soc_pct"
+ ],
+ "nominal_voltage": [],
+ "ohmic_resistance": [
+  "soc_pct",
+  "temperature_c"
+ ],
+ "open_circuit_voltage": [
+  "soc_pct",
+  "temperature_c",
+  "direction",
+  "rest_before_s"
+ ],
+ "operating_temperature_max": [
+  "temperature_reference",
+  "direction"
+ ],
+ "operating_temperature_min": [
+  "temperature_reference",
+  "direction"
+ ],
+ "parallel_count": [],
+ "peak_power": [
+  "pulse_duration_s",
+  "soc_pct",
+  "temperature_c",
+  "boundary"
+ ],
+ "power": [],
+ "pressure": [],
+ "rated_power": [
+  "temperature_c",
+  "boundary"
+ ],
+ "recycled_content_cobalt": [],
+ "recycled_content_lead": [],
+ "recycled_content_lithium": [],
+ "recycled_content_nickel": [],
+ "relaxation_time": [],
+ "resistance_growth": [
+  "cycle_index",
+  "temperature_c",
+  "pulse_duration_s"
+ ],
+ "reversible_expansion": [
+  "soc_pct",
+  "constraint_mode",
+  "temperature_c"
+ ],
+ "round_trip_efficiency": [
+  "boundary",
+  "rate_value",
+  "rate_unit",
+  "temperature_c"
+ ],
+ "runaway_onset_temperature": [
+  "soc_pct"
+ ],
+ "self_discharge_rate": [
+  "temperature_c",
+  "soc_pct",
+  "duration_s"
+ ],
+ "series_count": [],
+ "service_life_hours": [
+  "load_value",
+  "load_unit",
+  "duty_schedule",
+  "cutoff_voltage_v",
+  "temperature_c"
+ ],
+ "shipping_voltage": [],
+ "soc_estimation_accuracy": [],
+ "soh_estimation_accuracy": [],
+ "specific_capacity": [
+  "rate_value",
+  "rate_unit",
+  "temperature_c",
+  "voltage_lower_v"
+ ],
+ "specific_energy": [
+  "rate_value",
+  "rate_unit",
+  "temperature_c"
+ ],
+ "specific_heat_capacity": [
+  "soc_pct",
+  "temperature_c"
+ ],
+ "specific_power": [
+  "temperature_c",
+  "soc_pct",
+  "pulse_duration_s"
+ ],
+ "stack_pressure": [
+  "soc_pct",
+  "constraint_mode"
+ ],
+ "standard_charge_current": [
+  "temperature_c"
+ ],
+ "standby_consumption": [],
+ "state_of_charge": [],
+ "state_of_health": [
+  "temperature_c",
+  "rate_value",
+  "rate_unit"
+ ],
+ "storage_temperature_max": [
+  "duration_s"
+ ],
+ "storage_temperature_min": [
+  "duration_s"
+ ],
+ "temperature": [],
+ "thermal_conductivity_in_plane": [
+  "temperature_c"
+ ],
+ "thermal_conductivity_through_plane": [
+  "temperature_c"
+ ],
+ "thickness": [],
+ "time": [],
+ "two_theta": [],
+ "usable_energy": [
+  "boundary",
+  "dod_pct"
+ ],
+ "voltage": [],
+ "volume": [],
+ "warranty_cycles": [],
+ "warranty_throughput": [],
+ "width": []
+}

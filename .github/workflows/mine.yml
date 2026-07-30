@@ -1,0 +1,119 @@
+# =====================================================================
+# Literature miner - scheduled sweep.
+#
+# Every Monday morning (and on demand from the Actions tab) this:
+#   1. searches OpenAlex, Zenodo and arXiv with the built-in query
+#      families (test methods, cell identities, quantities, datasets)
+#   2. LLM-triages every abstract: does it contain extractable battery
+#      data, of what kind, and how is the data available?
+#   3. publishes the ranked shortlist as a build artifact and opens a
+#      GitHub issue with the top candidates
+#
+# Nothing is written to the database from here. The shortlist is where a
+# human decides what gets extracted - that is the design, not a gap.
+#
+# Setup (one time): repo Settings -> Secrets and variables -> Actions ->
+# New repository secret ->  Name: ANTHROPIC_API_KEY  Value: sk-ant-...
+# =====================================================================
+name: literature-miner
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'          # Mondays 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      query:
+        description: 'Extra search query (optional)'
+        required: false
+      min_priority:
+        description: 'Keep candidates at or above this priority (0-1)'
+        default: '0.6'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+
+      - name: Discover candidate works
+        env:
+          CONTACT_EMAIL: ${{ github.repository_owner }}@users.noreply.github.com
+        run: |
+          EXTRA=""
+          if [ -n "${{ github.event.inputs.query }}" ]; then
+            EXTRA="--query \"${{ github.event.inputs.query }}\""
+          fi
+          eval python agents/literature-miner/pipeline.py discover \
+            --limit 40 --out discovered.json $EXTRA
+          python -c "import json;d=json.load(open('discovered.json'));print(f'{len(d)} works discovered')"
+
+      - name: Triage abstracts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::warning::ANTHROPIC_API_KEY secret not set - skipping triage."
+            echo '{"summary":{"n_in":0,"n_kept":0,"skipped":"no API key"}}' > triaged.json
+            exit 0
+          fi
+          python agents/literature-miner/pipeline.py triage discovered.json \
+            --out triaged.json \
+            --min-priority "${{ github.event.inputs.min_priority || '0.6' }}"
+
+      - name: Upload shortlist
+        uses: actions/upload-artifact@v4
+        with:
+          name: miner-shortlist-${{ github.run_number }}
+          path: |
+            discovered.json
+            triaged.json
+          retention-days: 90
+
+      - name: Open shortlist issue
+        if: hashFiles('triaged.json') != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let t;
+            try { t = JSON.parse(fs.readFileSync('triaged.json','utf8')); }
+            catch { return; }
+            const cands = t.candidates || [];
+            if (!cands.length) {
+              core.info('No candidates above threshold; no issue opened.');
+              return;
+            }
+            const rows = cands.slice(0, 25).map(c => {
+              const tr = c.triage;
+              const link = c.doi ? `https://doi.org/${c.doi}` : (c.url || '');
+              return `| [${(c.title||'').slice(0,70).replace(/\|/g,' ')}](${link}) `
+                   + `| ${tr.data_availability} | ${tr.data_kinds.join(', ')} `
+                   + `| ${tr.priority} |`;
+            }).join('\n');
+            const body = [
+              `Weekly sweep: **${t.summary.n_in} works discovered, `
+              + `${t.summary.n_kept} triaged as containing extractable data** `
+              + `(${t.summary.n_errors||0} triage errors).`,
+              '',
+              'Availability: ' + JSON.stringify(t.summary.by_availability || {}),
+              '',
+              '| Work | Data via | Kinds | Priority |',
+              '|---|---|---|---|',
+              rows,
+              '',
+              '`repository`-linked entries are the highest value: their raw',
+              'files can be ingested with `tools/cyclers.py` directly.',
+              'Full lists are in the run artifact.',
+            ].join('\n');
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: `Miner shortlist ${new Date().toISOString().slice(0,10)}: `
+                   + `${t.summary.n_kept} candidates`,
+              body, labels: ['literature-miner'],
+            });
