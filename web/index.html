@@ -147,6 +147,7 @@ svg text{font-family:var(--sans)}
       <select class="f" id="kindf"><option value="cell">cells</option><option value="module">modules</option><option value="pack">packs</option><option value="">cells, modules and packs</option></select>
       <select class="f" id="chemf"><option value="">every chemistry</option></select>
       <select class="f" id="fff"><option value="">every format</option></select>
+      <select class="f" id="yearf"><option value="">any vintage</option><option value="2015">2015 or newer</option><option value="2018">2018 or newer</option><option value="2020">2020 or newer</option><option value="0">undated only</option></select>
       <button class="btn" id="csv">Export CSV</button>
       <button class="btn ghost" id="clear">Clear selection</button>
     </div>
@@ -271,9 +272,11 @@ const fromRecord=c=>{
     wh, litres: litres!=null?litres:(g.energy_density?wh/g.energy_density:null),
     whkg:g.specific_energy, whl:g.energy_density,
     wkg:g.peak_power?g.peak_power/(g.mass/1000):null,
-    crate:null, provisional:false, rec:c};
+    crate:null, provisional:false, rec:c,
+    year: c.source && c.source.date ? +String(c.source.date).slice(0,4) : null,
+    docdate: c.source ? c.source.date : null};
 };
-let ROWS = SEED.map(derive).map(r=>({...r,kind:"cell"}))
+let ROWS = SEED.map(derive).map(r=>({...r,kind:"cell",year:null,docdate:null}))
   .concat(TOSHIBA.map(fromRecord).map(r=>({...r,kind:"cell"})))
   .concat(PACKS.map(c=>({...fromRecord(c),kind:c.kind})));
 const SEL = new Set();
@@ -291,16 +294,17 @@ const COLS=[
   ["cell","Cell",0,0],["chem","Chemistry",0,0],["fmt","Format",0,0],
   ["ah","Ah",1,2],["v","V nom",1,2],["wh","Wh",1,2],["g","Mass g",1,1],
   ["litres","Litres",1,3],["whkg","Wh/kg",1,1],["whl","Wh/L",1,0],
-  ["wkg","W/kg",1,0],["crate","Max C",1,1]
+  ["wkg","W/kg",1,0],["crate","Max C",1,1],["year","Source yr",1,0]
 ];
 const HIGHER=["ah","wh","whkg","whl","wkg","crate"];
 let sortK="whkg", sortD=-1;
 
 function visible(){
   const q=$("#q").value.toLowerCase().trim(), c=$("#chemf").value,
-        ff=$("#fff").value, kd=$("#kindf").value;
+        ff=$("#fff").value, kd=$("#kindf").value, yr=$("#yearf").value;
   return ROWS.filter(r=>(!q||JSON.stringify(r).toLowerCase().includes(q))
-    &&(!c||r.chem===c)&&(!ff||r.fmt===ff)&&(!kd||r.kind===kd));
+    &&(!c||r.chem===c)&&(!ff||r.fmt===ff)&&(!kd||r.kind===kd)
+    &&(yr===""||(yr==="0"?r.year==null:(r.year!=null&&r.year>=+yr))));
 }
 function drawTable(){
   const rows=visible().sort((a,b)=>{const x=a[sortK],y=b[sortK];
@@ -336,6 +340,9 @@ function drawTable(){
           title:"Open the cell sheet",
           onclick:e=>{e.stopPropagation();openCell(r.cell);}},r.cell);
         t.append(el("td",{class:cls.trim()},a));
+      } else if(k==="year"){
+        t.append(el("td",{class:"num",title:r.docdate?("document date "+r.docdate):"no source document"},
+          r.year?String(r.year):"—"));
       } else t.append(el("td",{class:cls.trim()},num?f(v,dec):String(v)));
     });
     t.append(el("td",{}, r.provisional!==false
@@ -488,7 +495,7 @@ async function loadData(){
 /* ---------- wiring ---------- */
 [...new Set(SEED.map(d=>d.chem))].forEach(c=>$("#chemf").append(el("option",{value:c},c)));
 [...new Set(SEED.map(d=>d.fmt))].forEach(c=>$("#fff").append(el("option",{value:c},c)));
-["#q","#chemf","#fff","#kindf"].forEach(s=>$(s).addEventListener("input",()=>{drawTable();drawCharts();drawReport();}));
+["#q","#chemf","#fff","#kindf","#yearf"].forEach(s=>$(s).addEventListener("input",()=>{drawTable();drawCharts();drawReport();}));
 $("#clear").onclick=()=>{SEL.clear();drawTable();drawReport();};
 $("#csv").onclick=()=>save("cell-comparison.csv",toCSV(visible()),"text/csv");
 $("#repcsv").onclick=()=>save("cell-report.csv",toCSV(repRows()),"text/csv");
@@ -555,6 +562,20 @@ function drawSheet(){
   $("#compbar").style.width=(100*have/total)+"%";
 
   const host=$("#sheet"); host.innerHTML="";
+  if(d.rec&&d.rec.source){
+    const S=d.rec.source, pc=el("div",{class:"card"});
+    pc.append(el("h3",{},"Provenance and vintage"));
+    const pb=el("div",{class:"body",style:"padding:0"});
+    [["source document",S.title],["reference",S.ref],
+     ["document date",S.date+"  — the revision this record came from"],
+     ["product first released","not stated in this document"],
+     ["unit manufacture date","not applicable — this is a specification, not a physical cell"]]
+     .forEach(([k,v])=>{
+       const r2=el("div",{class:"slot"+(String(v).startsWith("not ")?" gap":""),
+         style:"grid-template-columns:minmax(190px,1fr) 2fr"});
+       r2.append(el("span",{class:"qc"},k)); r2.append(el("span",{class:"cond"},v)); pb.append(r2);});
+    pc.append(pb); host.append(pc);
+  }
   Object.entries(GROUPS).forEach(([g,codes])=>{
     const n=codes.filter(q=>K[q]).length;
     const card=el("div",{class:"card"});
