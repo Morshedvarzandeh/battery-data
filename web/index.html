@@ -126,6 +126,7 @@ svg text{font-family:var(--sans)}
     <button role="tab" aria-selected="false" data-p="cell">Cell sheet</button>
     <button role="tab" aria-selected="false" data-p="charts">Charts</button>
     <button role="tab" aria-selected="false" data-p="report">Report</button>
+    <button role="tab" aria-selected="false" data-p="docs">Datasheets</button>
   </nav>
 </header>
 
@@ -180,10 +181,12 @@ svg text{font-family:var(--sans)}
     <div class="row noprint" style="margin-bottom:12px;gap:2px">
       <button class="btn pri" data-layer="chars">Characteristics</button>
       <button class="btn" data-layer="chem">Chemistry and components</button>
+      <button class="btn" data-layer="pulse">Pulse map</button>
       <button class="btn" data-layer="tests">Test campaigns</button>
     </div>
     <div id="sheet"></div>
     <div id="chem" style="display:none"></div>
+    <div id="pulse" style="display:none"></div>
     <div id="tests" style="display:none"></div>
   </section>
 
@@ -211,6 +214,18 @@ svg text{font-family:var(--sans)}
     </div>
   </section>
 
+  <!-- DATASHEETS -->
+  <section class="panel" id="p-docs">
+    <div class="warn">
+      <b>Documents are registered, not republished.</b> Manufacturer datasheets are
+      almost always copyrighted, so this holds a URL, a SHA-256 of the exact bytes
+      parsed, a retrieval date and a licence — never the document body.
+      <span class="mono">source.redistributable</span> governs the exception. Kept this
+      way, a takedown request is a one-source problem instead of a project-ending one.
+    </div>
+    <div id="docs"></div>
+  </section>
+
   <!-- REPORT -->
   <section class="panel" id="p-report">
     <div class="row noprint" style="margin-bottom:12px">
@@ -236,6 +251,8 @@ const _T={"FAM":{"Abuse and safety":["arc","thermal_ramp","thermal_propagation",
 const FAM=_T.FAM, LANDS=_T.LANDS;
 const _TO={"CELLS":[{"cell":"Toshiba SCiB 20Ah","manu":"Toshiba","fmt":"prismatic","shape":"pri","dims":null,"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2},"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"obs":[{"q":"capacity","v":20,"u":"Ah","stat":"rated","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Rated capacity 20Ah","src":"datasheet"},{"q":"nominal_voltage","v":2.3,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage 2.3V","src":"datasheet"},{"q":"peak_power","v":1200,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Output Power 1200W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"rated_power","v":1100,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Input Power 1100W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"energy_density","v":176,"u":"Wh/L","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Volumetric energy density 176Wh/L","src":"datasheet"},{"q":"specific_energy","v":89,"u":"Wh/kg","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Weight energy density 89Wh/kg","src":"datasheet"},{"q":"mass","v":515,"u":"g","stat":"typical","cond":{},"unstated":[],"pg":4,"quote":"Weight Approx. 515g","src":"datasheet"}],"verified":true},{"cell":"Toshiba SCiB 23Ah","manu":"Toshiba","fmt":"prismatic","shape":"pri","dims":null,"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2},"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"obs":[{"q":"capacity","v":23,"u":"Ah","stat":"rated","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Rated capacity 23Ah","src":"datasheet"},{"q":"nominal_voltage","v":2.3,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage 2.3V","src":"datasheet"},{"q":"peak_power","v":1000,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Output Power 1000W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"rated_power","v":1000,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Input Power 1000W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"energy_density","v":202,"u":"Wh/L","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Volumetric energy density 202Wh/L","src":"datasheet"},{"q":"specific_energy","v":96,"u":"Wh/kg","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Weight energy density 96Wh/kg","src":"datasheet"},{"q":"mass","v":550,"u":"g","stat":"typical","cond":{},"unstated":[],"pg":4,"quote":"Weight Approx. 550g","src":"datasheet"}],"verified":true},{"cell":"Toshiba SCiB 10Ah","manu":"Toshiba","fmt":"prismatic","shape":"pri","dims":[116,22,106],"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2},"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"obs":[{"q":"capacity","v":10,"u":"Ah","stat":"rated","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Rated capacity 10Ah","src":"datasheet"},{"q":"nominal_voltage","v":2.4,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage 2.4V","src":"datasheet"},{"q":"peak_power","v":1800,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Output Power 1800W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"rated_power","v":1500,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Input Power 1500W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"energy_density","v":92,"u":"Wh/L","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Volumetric energy density 92Wh/L","src":"datasheet"},{"q":"specific_energy","v":47,"u":"Wh/kg","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Weight energy density 47Wh/kg","src":"datasheet"},{"q":"mass","v":510,"u":"g","stat":"typical","cond":{},"unstated":[],"pg":4,"quote":"Weight Approx. 510g","src":"datasheet"},{"q":"width","v":116,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W116 \u00d7 D22 \u00d7 H106 mm","src":"datasheet"},{"q":"thickness","v":22,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W116 \u00d7 D22 \u00d7 H106 mm","src":"datasheet"},{"q":"height","v":106,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W116 \u00d7 D22 \u00d7 H106 mm","src":"datasheet"}],"verified":true},{"cell":"Toshiba SCiB 2.9Ah","manu":"Toshiba","fmt":"prismatic","shape":"pri","dims":[63,14,97],"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2},"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"obs":[{"q":"capacity","v":2.9,"u":"Ah","stat":"rated","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Rated capacity 2.9Ah","src":"datasheet"},{"q":"nominal_voltage","v":2.4,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage 2.4V","src":"datasheet"},{"q":"peak_power","v":520,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Output Power 520W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"rated_power","v":410,"u":"W","stat":"typical","cond":{"soc_pct":50,"pulse_duration_s":10,"temperature_c":25},"unstated":["boundary"],"pg":4,"quote":"Input Power 410W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance","src":"datasheet"},{"q":"energy_density","v":85,"u":"Wh/L","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Volumetric energy density 85Wh/L","src":"datasheet"},{"q":"specific_energy","v":46,"u":"Wh/kg","stat":"typical","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"Weight energy density 46Wh/kg","src":"datasheet"},{"q":"mass","v":150,"u":"g","stat":"typical","cond":{},"unstated":[],"pg":4,"quote":"Weight Approx. 150g","src":"datasheet"},{"q":"width","v":63,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W63 \u00d7 D14 \u00d7 H97 mm","src":"datasheet"},{"q":"thickness","v":14,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W63 \u00d7 D14 \u00d7 H97 mm","src":"datasheet"},{"q":"height","v":97,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W63 \u00d7 D14 \u00d7 H97 mm","src":"datasheet"}],"verified":true}],"FAMILY":[{"q":"cycle_life","v":20000,"u":"cycles","stat":"minimum","cond":{"temperature_c":25,"rate_value":3,"rate_unit":"C"},"unstated":["dod_pct"],"pg":2,"quote":"The capacity remains at 70% or more even after 20,000 times of charging/discharging \u2014 test condition: high-rate (3C) charge/discharge cycles at 25\u00b0C","src":"datasheet"}]};
 const TOSHIBA=_TO.CELLS, FAMILY=_TO.FAMILY;
+const CATL={"cell":"CATL 302Ah LFP","manu":"CATL","fmt":"prismatic","shape":"pri","dims":null,"chem":{"designation":"LFP","cathode":"Lithium iron phosphate (LiFePO4)","anode":null,"electrolyte":null,"separator":null,"anode_quote":null,"cathode_quote":"rechargeable lithium iron phosphate power battery","cathode_pg":1},"source":{"title":"CATL 302Ah 3.22V LiFePO4 power battery \u2014 Product Specification","ref":"CATL product specification, C-sample stage","date":"2022","kind":"datasheet","sha256":"2f4be57cdeeb531aa351222f51ef60afdf5e91dcec5aac4a2eb34a6786331fcb","url":null,"note":"C-sample specification. CATL states mass-production specs will be redefined."},"obs":[{"q":"capacity","v":302,"u":"Ah","stat":"standard","cond":{"temperature_c":25,"rate_value":1,"rate_unit":"C"},"unstated":["voltage_lower_v"],"pg":2,"quote":"2.1.1 Standard capacity 302 Ah \u2014 25\u00b12 \u2103, 1C, new battery status","src":"datasheet"},{"q":"capacity","v":302,"u":"Ah","stat":"minimum","cond":{"temperature_c":25,"rate_value":1,"rate_unit":"C"},"unstated":["voltage_lower_v"],"pg":2,"quote":"2.1.2 Minimum capacity 302 Ah \u2014 25\u00b12 \u2103, 1C, new battery status","src":"datasheet"},{"q":"nominal_voltage","v":3.22,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":1,"quote":"302Ah 3.22V rechargeable lithium iron phosphate power battery","src":"datasheet"},{"q":"absolute_max_voltage","v":3.65,"u":"V","stat":"absolute_max","cond":{},"unstated":[],"pg":2,"quote":"2.1.3 Operating Voltage 2.5~3.65V","src":"datasheet"},{"q":"absolute_min_voltage","v":2.5,"u":"V","stat":"absolute_min","cond":{"temperature_c":25},"unstated":[],"pg":2,"quote":"2.1.3 Operating Voltage 2.5~3.65V \u2014 Temperature T>0\u2103","src":"datasheet"},{"q":"internal_resistance_ac","v":0.18,"u":"m\u03a9","stat":"typical","cond":{"frequency_hz":1000,"soc_pct":35,"temperature_c":25},"unstated":[],"pg":2,"quote":"2.1.4 Battery internal resistance (1KHz) 0.18\u00b10.05 m\u03a9 \u2014 New battery status (30~40%SOC)","src":"datasheet"},{"q":"self_discharge_rate","v":3.5,"u":"%/month","stat":"maximum","cond":{"temperature_c":25,"soc_pct":50,"duration_s":7776000},"unstated":[],"pg":2,"quote":"2.1.6 Monthly self-discharge \u22643.5% \u2014 25\u2103, 50% SOC, 3 months after new battery","src":"datasheet"},{"q":"operating_temperature_min","v":-30,"u":"\u00b0C","stat":"minimum","cond":{"direction":"discharge"},"unstated":["temperature_reference"],"pg":2,"quote":"2.1.8 Working temperature (discharge) -30~60\u2103","src":"datasheet"},{"q":"operating_temperature_max","v":60,"u":"\u00b0C","stat":"maximum","cond":{"direction":"discharge"},"unstated":["temperature_reference"],"pg":2,"quote":"2.1.8 Working temperature (discharge) -30~60\u2103","src":"datasheet"},{"q":"mass","v":5510,"u":"g","stat":"maximum","cond":{},"unstated":[],"pg":2,"quote":"2.1.9 Battery weight \u22645.51Kg","src":"datasheet"},{"q":"cycle_life","v":4000,"u":"cycles","stat":"minimum","cond":{"temperature_c":25,"rate_value":0.5,"rate_unit":"C"},"unstated":["dod_pct"],"pg":2,"quote":"2.1.11 Cell cycle \u22654000cycles \u2014 Initial clamping force 300Kgf, standard charge and discharge test","src":"datasheet"},{"q":"standard_charge_current","v":151,"u":"A","stat":"standard","cond":{"temperature_c":25},"unstated":[],"pg":3,"quote":"2.2.1 Standard charging current 0.5C \u2014 25\u00b12 \u2103  (0.5C of 302Ah = 151A)","src":"derived"},{"q":"max_continuous_charge_current","v":302,"u":"A","stat":"maximum","cond":{"temperature_c":25},"unstated":[],"pg":3,"quote":"2.2.2 Maximum continuous charging current 1C \u2014 25\u00b12 \u2103  (1C of 302Ah = 302A)","src":"derived"},{"q":"charge_cutoff_voltage","v":3.65,"u":"V","stat":"maximum","cond":{},"unstated":[],"pg":3,"quote":"2.2.3 Standard charging voltage Single battery max 3.65V","src":"datasheet"},{"q":"cv_cutoff_current","v":15100,"u":"mA","stat":"typical","cond":{},"unstated":[],"pg":3,"quote":"2.2.4 ... constant voltage ... until the current lower limit is 0.05C  (0.05C of 302Ah = 15.1A)","src":"derived"},{"q":"max_continuous_discharge_current","v":302,"u":"A","stat":"maximum","cond":{},"unstated":["temperature_c"],"pg":3,"quote":"2.3.2 Maximum continuous discharge current 1C  (1C of 302Ah = 302A)","src":"derived"},{"q":"discharge_cutoff_voltage","v":2.5,"u":"V","stat":"minimum","cond":{"temperature_c":25},"unstated":[],"pg":3,"quote":"2.3.3 Discharge cut-off voltage 2.5V \u2014 Temperature T>0\u2103","src":"datasheet"},{"q":"capacity_retention","v":80,"u":"%","stat":"minimum","cond":{"temperature_c":0,"rate_value":1,"rate_unit":"C","cycle_index":0},"unstated":[],"pg":4,"quote":"2.5.1 0\u2103 capacity \u226580% \u2014 New battery status, 0\u2103, 1C, 2.0V~3.65V, the benchmark is 302Ah","src":"datasheet"},{"q":"capacity_retention","v":70,"u":"%","stat":"minimum","cond":{"temperature_c":-20,"rate_value":1,"rate_unit":"C","cycle_index":0},"unstated":[],"pg":4,"quote":"2.5.2 -20\u2103 capacity \u226570% \u2014 New battery status, -20\u2103, 1C, 2.0V~3.65V, the benchmark is 302Ah","src":"datasheet"},{"q":"shipping_voltage","v":3.2,"u":"V","stat":"typical","cond":{},"unstated":[],"pg":2,"quote":"2.1.5 Shipping capacity 117~123Ah \u2014 40%SOC","src":"datasheet"}],"pulse":{"soc":[0,5,10,20,30,40,50,60,70,80,90,95,100],"dis":{"-35":[0,0,0,0,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],"-30":[0,0.03,0.06,0.13,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25],"-25":[0,0.06,0.13,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"-15":[0,0.06,0.13,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"-10":[0,0.19,0.38,0.63,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2],"-5":[0,0.25,0.5,1,2.13,2.13,2.13,2.13,2.13,2.13,2.13,2.13,2.13],"0":[0,0.28,0.56,1.06,2.18,2.18,2.18,2.18,2.18,2.18,2.18,2.18,2.18],"5":[0,0.31,0.63,1.13,2.25,2.25,2.25,2.25,2.25,2.25,2.25,2.25,2.25],"10":[0,0.33,0.66,1.22,2.43,2.43,2.43,2.43,2.43,2.43,2.43,2.43,2.43],"15":[0,0.34,0.68,1.32,2.63,2.63,2.63,2.63,2.63,2.63,2.63,2.63,2.63],"20":[0,0.36,0.72,1.41,2.82,2.82,2.82,2.82,2.82,2.82,2.82,2.82,2.82],"25":[0,0.38,0.75,1.5,3,3,3,3,3,3,3,3,3],"30":[0,0.38,0.75,1.5,3,3,3,3,3,3,3,3,3],"35":[0,0.38,0.75,1.5,3,3,3,3,3,3,3,3,3],"40":[0,0.38,0.75,1.5,3,3,3,3,3,3,3,3,3],"45":[0,0.38,0.75,1.5,3,3,3,3,3,3,3,3,3],"50":[0,0.38,0.75,1.5,3,3,3,3,3,3,3,3,3],"55":[0,0.38,0.75,1.5,3,3,3,3,3,3,3,3,3],"60":[0,0.38,0.75,1.5,3,3,3,3,3,3,3,3,3],"65":[0,0,0,0,0,0,0,0,0,0,0,0,0]},"chg":{"0":[0,0,0,0,0,0,0,0,0,0,0,0,0],"5":[-0.42,-0.42,-0.42,-0.42,-0.42,-0.42,-0.42,-0.42,-0.42,-0.42,-0.42,-0.42,0],"10":[-0.81,-0.81,-0.81,-0.81,-0.81,-0.81,-0.81,-0.81,-0.81,-0.81,-0.81,-0.81,0],"15":[-1.22,-1.22,-1.22,-1.22,-1.22,-1.22,-1.22,-1.22,-1.22,-1.22,-1.22,-1.22,0],"20":[-1.61,-1.61,-1.61,-1.61,-1.61,-1.61,-1.61,-1.61,-1.61,-1.61,-1.61,-1.22,0],"25":[-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1.33,0],"30":[-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1.33,0],"35":[-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1.33,0],"40":[-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1.33,0],"45":[-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1.33,0],"50":[-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1.33,0],"55":[-1.6,-1.6,-1.6,-1.6,-1.6,-1.6,-1.6,-1.6,-1.6,-1.6,-1.6,-1.07,0],"60":[0,0,0,0,0,0,0,0,0,0,0,0,0]},"duration_s":30},"verified":true};
+const CATL_PULSE_N=357;
 const PACKS=[{"cell":"Toshiba SCiB Type3-20 module","kind":"module","model":"FM01202CCA04A","obs":[{"q":"capacity","v":40,"u":"Ah","stat":"nominal","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Type3-20 FM01202CCA04A Nominal capacity 40Ah","src":"datasheet"},{"q":"nominal_voltage","v":25.3,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage DC25.3V","src":"datasheet"},{"q":"absolute_max_voltage","v":29.7,"u":"V","stat":"absolute_max","cond":{},"unstated":[],"pg":4,"quote":"Voltage range DC16.5 to 29.7V","src":"datasheet"},{"q":"absolute_min_voltage","v":16.5,"u":"V","stat":"absolute_min","cond":{},"unstated":[],"pg":4,"quote":"Voltage range DC16.5 to 29.7V","src":"datasheet"},{"q":"operating_temperature_min","v":-30,"u":"\u00b0C","stat":"minimum","cond":{},"unstated":["temperature_reference","direction"],"pg":4,"quote":"Ambient temperature -30 to 45\u00baC","src":"datasheet"},{"q":"operating_temperature_max","v":45,"u":"\u00b0C","stat":"maximum","cond":{},"unstated":["temperature_reference","direction"],"pg":4,"quote":"Ambient temperature -30 to 45\u00baC","src":"datasheet"},{"q":"max_pulse_discharge_current","v":125,"u":"A","stat":"maximum","cond":{"pulse_duration_s":200},"unstated":["temperature_c"],"pg":4,"quote":"Max. charge/discharge current 125A (200 sec)","src":"datasheet"}],"manu":"Toshiba","fmt":"module","shape":"pri","dims":null,"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"verified":true,"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2}},{"cell":"Toshiba SCiB Type3-23 module","kind":"module","model":"FM01202CCB01A","obs":[{"q":"capacity","v":45,"u":"Ah","stat":"nominal","cond":{},"unstated":["rate_value","rate_unit","temperature_c","voltage_lower_v"],"pg":4,"quote":"Type3-23 FM01202CCB01A Nominal capacity 45Ah","src":"datasheet"},{"q":"nominal_voltage","v":25.3,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage DC25.3V","src":"datasheet"},{"q":"absolute_max_voltage","v":29.7,"u":"V","stat":"absolute_max","cond":{},"unstated":[],"pg":4,"quote":"Voltage range DC16.5 to 29.7V","src":"datasheet"},{"q":"absolute_min_voltage","v":16.5,"u":"V","stat":"absolute_min","cond":{},"unstated":[],"pg":4,"quote":"Voltage range DC16.5 to 29.7V","src":"datasheet"},{"q":"operating_temperature_min","v":-30,"u":"\u00b0C","stat":"minimum","cond":{},"unstated":["temperature_reference","direction"],"pg":4,"quote":"Ambient temperature -30 to 45\u00baC","src":"datasheet"},{"q":"operating_temperature_max","v":45,"u":"\u00b0C","stat":"maximum","cond":{},"unstated":["temperature_reference","direction"],"pg":4,"quote":"Ambient temperature -30 to 45\u00baC","src":"datasheet"},{"q":"max_pulse_discharge_current","v":125,"u":"A","stat":"maximum","cond":{"pulse_duration_s":200},"unstated":["temperature_c"],"pg":4,"quote":"Max. charge/discharge current 125A (200 sec)","src":"datasheet"}],"manu":"Toshiba","fmt":"module","shape":"pri","dims":null,"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"verified":true,"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2}},{"cell":"Toshiba SCiB Industrial Pack 12V","kind":"pack","model":"PM051CD","obs":[{"q":"energy","v":230,"u":"Wh","stat":"nominal","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"SCiB Industrial Pack (12V) PM051CD 230Wh","src":"datasheet"},{"q":"nominal_voltage","v":11.5,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage DC11.5V","src":"datasheet"},{"q":"absolute_max_voltage","v":13.0,"u":"V","stat":"absolute_max","cond":{},"unstated":[],"pg":4,"quote":"Voltage range DC 9.9 to 13.0V","src":"datasheet"},{"q":"absolute_min_voltage","v":9.9,"u":"V","stat":"absolute_min","cond":{},"unstated":[],"pg":4,"quote":"Voltage range DC 9.9 to 13.0V","src":"datasheet"},{"q":"max_continuous_discharge_current","v":10,"u":"A","stat":"maximum","cond":{},"unstated":["temperature_c"],"pg":4,"quote":"Max. charge/discharge current 10A","src":"datasheet"},{"q":"width","v":140,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W140\u00d7D421\u00d7H62mm","src":"datasheet"},{"q":"thickness","v":421,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W140\u00d7D421\u00d7H62mm","src":"datasheet"},{"q":"height","v":62,"u":"mm","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Dimensions W140\u00d7D421\u00d7H62mm","src":"datasheet"}],"manu":"Toshiba","fmt":"pack","shape":"pri","dims":null,"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"verified":true,"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2}},{"cell":"Toshiba SCiB Industrial Pack 24V","kind":"pack","model":"FP01101MCB01A","obs":[{"q":"energy","v":1112,"u":"Wh","stat":"nominal","cond":{},"unstated":["rate_value","rate_unit","temperature_c"],"pg":4,"quote":"SCiB Industrial Pack (24V) FP01101MCB01A 1112Wh","src":"datasheet"},{"q":"nominal_voltage","v":27.6,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage DC27.6V","src":"datasheet"},{"q":"absolute_max_voltage","v":32.4,"u":"V","stat":"absolute_max","cond":{},"unstated":[],"pg":4,"quote":"Voltage range 18.0 to 32.4V","src":"datasheet"},{"q":"absolute_min_voltage","v":18.0,"u":"V","stat":"absolute_min","cond":{},"unstated":[],"pg":4,"quote":"Voltage range 18.0 to 32.4V","src":"datasheet"},{"q":"max_continuous_discharge_current","v":160,"u":"A","stat":"maximum","cond":{},"unstated":["temperature_c"],"pg":4,"quote":"Max. charge/discharge current 160 A (continuous), 350 A (rush current)","src":"datasheet"}],"manu":"Toshiba","fmt":"pack","shape":"pri","dims":null,"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"verified":true,"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2}},{"cell":"Toshiba SCiB Industrial Pack 48V","kind":"pack","model":"FP01101MCB02A","obs":[{"q":"nominal_voltage","v":50.6,"u":"V","stat":"nominal","cond":{},"unstated":[],"pg":4,"quote":"Nominal voltage DC50.6V","src":"datasheet"},{"q":"absolute_max_voltage","v":59.4,"u":"V","stat":"absolute_max","cond":{},"unstated":[],"pg":4,"quote":"Voltage range DC33.0 to 59.4V","src":"datasheet"},{"q":"absolute_min_voltage","v":33.0,"u":"V","stat":"absolute_min","cond":{},"unstated":[],"pg":4,"quote":"Voltage range DC33.0 to 59.4V","src":"datasheet"}],"manu":"Toshiba","fmt":"pack","shape":"pri","dims":null,"source":{"title":"Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)","ref":"SBT(E)-006f 20-10","date":"2020-10","kind":"datasheet","url":"http://www.scib.jp/en/index.htm","note":"Catalogue, October 2020. Toshiba: \u201cSpecifications shown herein are not guaranteed values.\u201d"},"verified":true,"chem":{"designation":"LTO","anode":"Lithium titanium oxide (LTO)","cathode":null,"electrolyte":null,"separator":null,"anode_quote":"the lithium titanium oxide (LTO) in the anode layer of SCiB\u2122","anode_pg":2}}];
 
 const SEED=[
@@ -278,6 +295,7 @@ const fromRecord=c=>{
 };
 let ROWS = SEED.map(derive).map(r=>({...r,kind:"cell",year:null,docdate:null}))
   .concat(TOSHIBA.map(fromRecord).map(r=>({...r,kind:"cell"})))
+  .concat([{...fromRecord(CATL),kind:"cell"}])
   .concat(PACKS.map(c=>({...fromRecord(c),kind:c.kind})));
 const SEL = new Set();
 
@@ -507,6 +525,7 @@ document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
   if(b.dataset.p==="charts")drawCharts();
   if(b.dataset.p==="report")drawReport();
   if(b.dataset.p==="cell")drawSheet();
+  if(b.dataset.p==="docs")drawDocs();
 });
 
 /* ---------- cell sheet ---------- */
@@ -679,6 +698,145 @@ function drawChem(){
   }
 }
 
+/* ---------- source documents ---------- */
+function drawDocs(){
+  const host=$("#docs"); host.innerHTML="";
+  const byRef={};
+  ROWS.filter(r=>r.rec&&r.rec.source).forEach(r=>{
+    const S=r.rec.source, k=S.ref||S.title;
+    (byRef[k]=byRef[k]||{S,products:[],obs:0}).products.push(r.cell);
+    byRef[k].obs+=r.rec.obs.length+(r.rec.pulse?CATL_PULSE_N:0);
+  });
+  const rows=Object.values(byRef);
+  if(!rows.length){host.append(el("div",{class:"empty"},"No source documents registered."));return;}
+
+  rows.forEach(({S,products,obs})=>{
+    const card=el("div",{class:"card"});
+    card.append(el("h3",{},S.kind||"document",
+      el("span",{style:"margin-left:auto;font-weight:400;color:var(--muted);font-size:11px"},
+        `${products.length} product${products.length>1?"s":""} · ${obs} observations`)));
+    const b=el("div",{class:"body",style:"padding:0"});
+    const row=(k,v,mono)=>{
+      const r=el("div",{class:"slot"+(v?"":" gap"),
+        style:"grid-template-columns:minmax(150px,1fr) 3fr"});
+      r.append(el("span",{class:"qc"},k));
+      r.append(el("span",{class:mono?"qc":"cond",style:mono?"word-break:break-all":""},
+        v||"not recorded"));
+      b.append(r);
+    };
+    row("title",S.title);
+    row("reference",S.ref);
+    row("document date",S.date);
+    row("sha256",S.sha256,true);
+    row("licence",S.note||"see publisher");
+    row("products",products.join(" · "));
+    card.append(b);
+
+    const foot=el("div",{class:"row",style:"padding:11px 14px;border-top:1px solid var(--line)"});
+    if(S.url){
+      const a=el("a",{href:S.url,target:"_blank",rel:"noopener noreferrer",class:"btn pri",
+        style:"text-decoration:none;display:inline-block"},"Open source ↗");
+      foot.append(a);
+    } else {
+      foot.append(el("span",{class:"pill prov"},"no public URL recorded"));
+    }
+    foot.append(el("span",{class:"lbl",style:"margin-left:auto"},
+      S.sha256?"hash recorded — re-parse is reproducible":"hash not recorded"));
+    card.append(foot);
+    host.append(card);
+  });
+
+  const how=el("div",{class:"card"});
+  how.append(el("h3",{},"Adding a document"));
+  const hb=el("div",{class:"body"});
+  hb.append(el("p",{style:"margin:0 0 8px;max-width:70ch;color:var(--ink-2);font-size:13px"},
+    "Store the file wherever you keep documents, record its URL and SHA-256 here, then "
+    +"extract facts with a page and a verbatim quote. The hash is what makes a later "
+    +"re-parse reproducible: if the vendor silently revises the PDF, the hash changes and "
+    +"the old records stay attached to the old bytes."));
+  hb.append(el("p",{style:"margin:0;max-width:70ch;color:var(--muted);font-size:12.5px",
+    class:"mono"},
+    "python tools/validate_contrib.py contrib/     # refuses a value with no conditions"));
+  how.append(hb); host.append(how);
+}
+
+/* ---------- pulse capability map ----------
+   A pulse rating is a surface over SOC and temperature, not a number.
+   "3C pulse" means nothing until you know for how long: CATL rates at 30 s,
+   Toshiba at 200 s. pulse_duration_s is a required condition for exactly
+   this reason. Sequential ramp, one hue, light to dark — magnitude, so
+   never a categorical palette and never a rainbow.                        */
+const RAMP=["#E6F4F1","#B7E1D9","#7FC9BC","#48AE9C","#1E8F7C","#0B6E5F"];
+function rampFor(x,max){ if(!max)return RAMP[0];
+  return RAMP[Math.min(RAMP.length-1,Math.floor((Math.abs(x)/max)*RAMP.length))]; }
+
+function pulseGrid(title,grid,socs,ah,dur,note){
+  const temps=Object.keys(grid).map(Number).sort((a,b)=>a-b);
+  const max=Math.max(...temps.map(t=>Math.max(...grid[t].map(Math.abs))));
+  const card=el("div",{class:"card"});
+  card.append(el("h3",{},title,el("span",{class:"mono",
+    style:"margin-left:auto;font-weight:400;color:var(--muted);font-size:11px"},
+    `${temps.length}×${socs.length} = ${temps.length*socs.length} points · ${dur}s`)));
+  const body=el("div",{class:"body"});
+  body.append(el("p",{class:"lbl",
+    style:"text-transform:none;letter-spacing:0;font-weight:400;margin:0 0 10px;max-width:70ch"},note));
+  const w=el("div",{class:"tblwrap"}),t=el("table",{});
+  const th=el("thead",{}),hr=el("tr",{});
+  hr.append(el("th",{style:"cursor:default"},"°C \\ SOC"));
+  socs.forEach(sc=>hr.append(el("th",{class:"num",style:"cursor:default"},sc+"%")));
+  th.append(hr); t.append(th);
+  const tb=el("tbody",{});
+  temps.forEach(tp=>{
+    const tr=el("tr",{});
+    tr.append(el("td",{class:"code",style:"font-weight:600"},tp+"°C"));
+    grid[tp].forEach((c,i)=>{
+      const amps=Math.abs(c)*ah;
+      const td=el("td",{class:"num",
+        style:c?`background:${rampFor(c,max)};color:${Math.abs(c)/max>0.55?"#fff":"var(--ink)"}`:"",
+        title:`${Math.abs(c)}C for ${dur}s at ${tp}°C, SOC ${socs[i]}% → ${amps.toFixed(0)} A`},
+        c?Math.abs(c).toFixed(2):"—");
+      tr.append(td);
+    });
+    tb.append(tr);
+  });
+  t.append(tb); w.append(t); body.append(w);
+  const lg=el("div",{class:"legend",style:"margin:10px 0 0"});
+  lg.append(el("span",{},"C-rate"));
+  RAMP.forEach((c,i)=>lg.append(el("span",{},el("i",{class:"sw",style:`background:${c}`}),
+    (max*(i+1)/RAMP.length).toFixed(1))));
+  body.append(lg);
+  card.append(body); return card;
+}
+
+function drawPulse(){
+  const d=ROWS.find(r=>r.cell===curCell); if(!d)return;
+  const host=$("#pulse"); host.innerHTML="";
+  const P=d.rec&&d.rec.pulse;
+  if(!P){
+    host.append(el("div",{class:"warn"},el("b",{},"No pulse map for this product. "),
+      "Only the CATL 302Ah specification publishes one. A single "
+      +"max_pulse_discharge_current with a duration is the least a source can give; "
+      +"a full surface over SOC and temperature is what a pack designer actually needs, "
+      +"and almost nobody publishes it."));
+    return;
+  }
+  const ah=d.ah||302;
+  host.append(el("div",{class:"note"},
+    el("b",{},`${CATL_PULSE_N} pulse observations, every condition stated. `),
+    "Each cell of these grids is one observation carrying pulse_duration_s, "
+    +"temperature_c, soc_pct and direction. Hover for the amperes. This is the "
+    +"shape a pulse rating actually has — the single headline number most datasheets "
+    +"print is one point off this surface, usually the best one."));
+  host.append(pulseGrid("Pulse discharge",P.dis,P.soc,ah,P.duration_s,
+    "2.4.1. Peaks at 3C — 906 A for 30 s at 25 °C and 30% SOC or above. Falls to zero "
+    +"at 65 °C and at 0% SOC, and collapses below −25 °C: at −35 °C the cell will give "
+    +"0.1C, a thirtieth of its warm capability."));
+  host.append(pulseGrid("Pulse recharge",P.chg,P.soc,ah,P.duration_s,
+    "2.4.2. Regenerative braking, in effect. Zero at and below 0 °C — an LFP cell will "
+    +"not take charge current cold, which is the constraint that decides whether a pack "
+    +"needs a heater. Also zero at 100% SOC, and derated at 95%."));
+}
+
 /* ---------- test campaign layer ---------- */
 function drawTests(){
   const d=ROWS.find(r=>r.cell===curCell); if(!d)return;
@@ -713,8 +871,10 @@ document.querySelectorAll("[data-layer]").forEach(b=>b.onclick=()=>{
   const L=b.dataset.layer;
   $("#sheet").style.display=L==="chars"?"block":"none";
   $("#chem").style.display =L==="chem" ?"block":"none";
+  $("#pulse").style.display=L==="pulse"?"block":"none";
   $("#tests").style.display=L==="tests"?"block":"none";
   if(L==="chem")drawChem();
+  if(L==="pulse")drawPulse();
   if(L==="tests")drawTests();
 });
 
