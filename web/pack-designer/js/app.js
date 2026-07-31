@@ -124,7 +124,8 @@ function bindControls() {
   document.querySelectorAll('[data-step]').forEach((b) => b.onclick = () => {
     const [k, d] = b.dataset.step.split(':');
     const input = k === 's' ? $('inS') : $('inP');
-    input.value = Math.max(1, (parseInt(input.value, 10) || 1) + parseInt(d, 10));
+    const max = k === 's' ? 300 : 200;
+    input.value = clamp((parseInt(input.value, 10) || 1) + parseInt(d, 10), 1, max);
     readNumbers(); recompute();
   });
   $('inNx').onchange = $('inNz').onchange = () => { readNumbers(); recompute(); };
@@ -165,6 +166,10 @@ function readNumbers() {
   state.p = clamp(parseInt($('inP').value, 10) || 1, 1, 200);
   state.nx = clamp(parseInt($('inNx').value, 10) || 0, 0, 200);
   state.nz = clamp(parseInt($('inNz').value, 10) || 1, 1, 6);
+  // Reflect clamping back so the fields never display a value the state
+  // silently rejected.
+  $('inS').value = state.s; $('inP').value = state.p;
+  $('inNx').value = state.nx; $('inNz').value = state.nz;
 }
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const cell = () => cellById(state.cellId) || CELLS[0];
@@ -219,9 +224,22 @@ function recompute() {
   const c = cell();
   const N = state.s * state.p;
   if (N > MAX_CELLS) {
+    // Invalidate every derived surface so nothing keeps describing the
+    // previous configuration (stats, 3D, findings, export).
     $('cfgHint').textContent = `${N.toLocaleString()} cells — above the ${MAX_CELLS.toLocaleString()}-cell render cap; reduce S or P.`;
+    lastLayout = null; lastSummary = null; lastFindings = [];
+    const emptyMsg = '<div class="empty">Over the cell cap — no pack computed.</div>';
+    $('hdrStats').innerHTML = '';
+    $('statsBody').innerHTML = emptyMsg;
+    $('stageStats').innerHTML = emptyMsg;
+    $('findings').innerHTML = emptyMsg;
+    const badge = $('stdBadge'); badge.textContent = '—'; badge.className = 'chip';
+    $('btnExport').disabled = true;
+    viewer.setPack(null);
+    saveHash();
     return;
   }
+  $('btnExport').disabled = false;
   const opts = {
     arrangement: state.arrangement, orientation: state.orientation,
     spacingMm: state.spacingMm, wallMm: state.wallMm,
@@ -375,10 +393,14 @@ function runSuggest() {
 function applyCandidate(r) {
   state.cellId = r.cell.id;
   state.s = r.s; state.p = r.p;
+  // Copy the full layout options the suggestion was priced with, so the
+  // applied pack reproduces the card's mass/volume/dims exactly.
   Object.assign(state, {
     arrangement: r.best.opts.arrangement,
     orientation: r.best.opts.orientation,
     nx: r.best.opts.nx, nz: r.best.opts.nz,
+    spacingMm: r.best.opts.spacingMm, layerGapMm: r.best.opts.layerGapMm,
+    wallMm: r.best.opts.wallMm, headroomMm: r.best.opts.headroomMm,
   });
   onCellChange();
   syncInputs();
@@ -406,7 +428,7 @@ function runFit() {
     card.className = 'card';
     card.innerHTML = `
       <h4>${cd.arrangement} · ${cd.orientation}
-        ${target ? `<span class="chip ${cd.fits ? 'pass' : 'fail'}">${cd.fits ? 'fits' : 'does not fit'}</span>` : ''}</h4>
+        ${target ? `<span class="chip ${cd.fits ? 'pass' : 'fail'}">${cd.fits ? (cd.fitsRotated ? 'fits (rotated 90°)' : 'fits') : 'does not fit'}</span>` : ''}</h4>
       <div class="m">${cd.nx}×${cd.ny}${cd.nz > 1 ? `×${cd.nz}` : ''} ·
         ${f0(cd.outer.x)} × ${f0(cd.outer.y)} × ${f0(cd.outer.z)} mm · ${f1(cd.volumeL)} L</div>
       <button class="btn" style="margin-top:8px">Apply</button>`;

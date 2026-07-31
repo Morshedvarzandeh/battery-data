@@ -42,13 +42,14 @@ export function optimizeSpace(cell, s, p, baseOpts = {}, target = null, topK = 6
             y: g.innerY + 2 * wallMm,
             z: g.innerZ + 2 * wallMm + headroomMm,
           };
-          const fits = !target
-            || (outer.x <= target.x && outer.y <= target.y && outer.z <= target.z)
-            || (outer.y <= target.x && outer.x <= target.y && outer.z <= target.z);
+          const fitsDirect = !target
+            || (outer.x <= target.x && outer.y <= target.y && outer.z <= target.z);
+          const fitsRotated = !fitsDirect && !!target
+            && outer.y <= target.x && outer.x <= target.y && outer.z <= target.z;
           const volumeL = (outer.x * outer.y * outer.z) / 1e6;
           out.push({
             nx, ny: g.ny, nz, arrangement, orientation,
-            outer, volumeL, fits,
+            outer, volumeL, fits: fitsDirect || fitsRotated, fitsRotated,
             opts: { arrangement, orientation, spacingMm, layerGapMm, wallMm, headroomMm, nx, nz },
           });
         }

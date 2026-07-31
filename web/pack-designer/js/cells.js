@@ -237,7 +237,7 @@ export const CELLS = [
     dcirMOhm: 16,
     cycleLife: 500,
     tempDischargeC: [-40, 60],
-    tempChargeC: [0, 45],
+    tempChargeC: [0, 60],
     priceUSD: 6,
     dataQuality: 'datasheet',
     sourceNote: 'Molicel P42A datasheet: 4.2 Ah, 45 A continuous, 70 g max, rated to -40 C discharge. Cycle-life retention criterion is roughly 70-80% depending on test current. Dims are nominal 21700. DCIR and price estimated.'

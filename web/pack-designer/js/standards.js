@@ -326,7 +326,7 @@ function ruleBms(ctx) {
       'group’s voltage and provides cell balancing is required — series groups drift apart over ' +
       'life, and an unmonitored group can be overcharged or overdischarged even when the pack voltage looks normal. ' +
       'The BMS must disconnect or inhibit charge/discharge on overvoltage, undervoltage, overcurrent and overtemperature.',
-      'IEC 62619 §7; IEC 62133-2'
+      'IEC 62619 §8; IEC 62133-2'
     );
   }
   return finding(
@@ -336,7 +336,7 @@ function ruleBms(ctx) {
     ', so no balancing is needed, but overcharge, overdischarge, overcurrent and overtemperature ' +
     'protection are still required. A simple protection circuit or charge controller enforcing the ' +
     'cell’s voltage and current limits satisfies this.',
-    'IEC 62133-2; IEC 62619 §7'
+    'IEC 62133-2; IEC 62619 §8'
   );
 }
 
@@ -567,13 +567,24 @@ function ruleTempEnvelope(ctx) {
           'Cell datasheet; IEC 62619'
         ));
       }
-    } else {
+    }
+    if (envMax > chg[1]) {
+      out.push(finding(
+        'hot-charge', 'warn', 'thermal',
+        'Ambient above cell charge window',
+        'The environment can reach ' + fmt(envMax) + ' °C, above the cell’s maximum charge ' +
+        'temperature of ' + fmt(chg[1]) + ' °C. Charging above the datasheet limit accelerates ' +
+        'degradation and is an overtemperature hazard; the BMS must inhibit or derate charge above it.',
+        'Cell datasheet; IEC 62619 §8'
+      ));
+    }
+    if (envMin >= chg[0] && envMax <= chg[1]) {
       out.push(finding(
         'cold-charge', 'pass', 'thermal',
         'Charging environment within cell window',
-        'The minimum environment temperature of ' + fmt(envMin) + ' °C is at or above the cell’s ' +
-        'minimum charge temperature of ' + fmt(chg[0]) + ' °C, so cold-charge lithium plating is not ' +
-        'flagged for this design.',
+        'The environment range of ' + fmt(envMin) + ' to ' + fmt(envMax) + ' °C sits inside the cell’s ' +
+        'charge window of ' + fmt(chg[0]) + ' to ' + fmt(chg[1]) + ' °C, so neither cold-charge lithium ' +
+        'plating nor hot-charge overtemperature is flagged for this design.',
         'Cell datasheet'
       ));
     }
@@ -591,9 +602,10 @@ function rulePackTransport(ctx) {
       'Pack > 100 Wh — fully regulated for transport',
       'At ' + fmt(pack.energyWh, 0) + ' Wh, this pack exceeds the 100 Wh limit for the excepted (Section II) ' +
       'provisions of IATA PI 966/967 and ADR SP 188, so it ships as fully regulated Class 9 dangerous goods ' +
-      'under UN 3480 (battery shipped alone) or UN 3481 (packed with / contained in equipment). When shipped ' +
-      'alone by air under PI 965 it must be offered at no more than 30% state of charge, and shipments require ' +
-      'trained/certified dangerous-goods handling.',
+      'under UN 3480 (battery shipped alone) or UN 3481 (packed with / contained in equipment). For air ' +
+      'transport it must be offered at no more than 30% state of charge — long required under PI 965 and, ' +
+      'from the 2026 regulations, also for UN 3481 shipments under PI 966/967 (limited exceptions with ' +
+      'operator/state approval) — and shipments require trained/certified dangerous-goods handling.',
       'IATA DGR PI 965–967; ADR SP 188'
     );
   }
@@ -627,9 +639,10 @@ function ruleCellTransport(ctx) {
     'transport-cell-energy', 'pass', 'transport',
     'Cell ≤ 20 Wh',
     'Each ' + (cell.name || 'cell') + ' stores about ' + fmt(cellWh, 1) + ' Wh, within the 20 Wh per-cell ' +
-    'threshold for the excepted transport provisions, so individual UN 38.3-tested cells can use the ' +
-    'simplified Section II / SP 188 route.',
-    'IATA DGR PI 965; ADR SP 188'
+    'threshold for excepted transport provisions. By road (ADR), UN 38.3-tested cells can use the SP 188 ' +
+    'excepted route. By air, Section II of PI 965 was withdrawn in 2022: cells shipped alone use PI 965 ' +
+    'Section IB, which still requires the Class 9 lithium battery label and a shipper’s declaration.',
+    'IATA DGR PI 965 Section IB; ADR SP 188'
   );
 }
 
@@ -640,10 +653,10 @@ function ruleUn383(ctx) {
     'un383-testing', 'info', 'transport',
     'UN 38.3 testing required before transport',
     'Regardless of size (' + (isNum(pack.energyWh) ? fmt(pack.energyWh, 0) + ' Wh here' : 'any energy') +
-    '), every lithium cell design and every battery design must pass the UN 38.3 test series ' +
-    '(T1–T8: altitude, thermal cycling, vibration, shock, external short, impact/crush, overcharge, ' +
-    'forced discharge) before it may be transported, and a test summary must be available. Home-built packs ' +
-    'that have not been through this testing cannot legally be shipped.',
+    '), every lithium cell design and every battery design must pass the applicable UN 38.3 tests ' +
+    '(T1–T5 apply to cells and batteries; T6 impact/crush and T8 forced discharge to cells only; ' +
+    'T7 overcharge to batteries only) before it may be transported, and a test summary must be ' +
+    'available. Home-built packs that have not been through this testing cannot legally be shipped.',
     'UN 38.3 §38.3.4'
   );
 }
