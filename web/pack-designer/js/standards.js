@@ -379,6 +379,9 @@ function ruleParallelFusing(ctx) {
 function ruleShortCircuit(ctx) {
   const { pack } = ctx;
   if (isNum(pack.dcirMOhm) && pack.dcirMOhm > 0 && isNum(pack.vMax)) {
+    // Cells-only DCIR, so this is an UPPER bound: real busbars, welds and
+    // wiring add resistance and the true fault current is lower. Conservative
+    // for a protection warning, and said out loud rather than implied.
     const iscA = pack.vMax / (pack.dcirMOhm / 1000);
     return finding(
       'short-circuit', 'info', 'protection',

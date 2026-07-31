@@ -30,11 +30,24 @@ server (or GitHub Pages); everything, including Three.js, is vendored.
 
 ## Honesty rules
 
-- Every cell record carries `dataQuality` (`datasheet` vs `estimate`) and a
-  `sourceNote` saying exactly what was estimated. Cells from this repo's
-  `contrib/cells/` YAMLs use those values verbatim.
+- Provenance is two fields, not one flag. `basis` says where the electrical
+  core came from — `contrib` (a document held in this repository, named by
+  `contribUid`), `external_datasheet`, `teardown`, `composite` or `recalled` —
+  and `inferredFields` lists what was worked out rather than read. A cell can
+  be sourced and still have inferred dimensions; one flag could not say that,
+  and it marked the best-evidenced cells here as estimates while cells with no
+  document at all read as datasheet-grade.
+- `basis: 'contrib'` is checked, not asserted: `tools/check_pack_cells.py`
+  runs in CI and fails if a `contribUid` resolves to nothing, if basis and
+  contribUid disagree, or if a repeated value has drifted from the YAML.
 - Pack mass adds 8% for interconnects plus an aluminium-wall estimate, and
-  the UI says so. DCIR is cells-only (interconnects excluded), labeled.
+  the UI says so. DCIR is cells-only (interconnects excluded), labeled — which
+  also makes the short-circuit estimate an upper bound, stated as such.
+- Power sizing and headroom are quoted at the MINIMUM pack voltage, not the
+  nominal. A constant-power load draws its highest current at the bottom of
+  the discharge, and sizing at nominal understates it by vNom/vMin — about
+  1.44x for NMC. Designs that meet a rating on paper and overload at low SOC
+  are exactly what that hides.
 - Standards output is engineering guidance derived from public standards —
   not certification, and the page repeats that disclaimer.
 - Hex (staggered) packing is only offered where it is geometrically real:

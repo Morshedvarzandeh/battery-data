@@ -2,7 +2,7 @@
 // pack-engine.js / optimizer.js; all the data in cells.js / presets.js /
 // standards.js; all the rendering in viewer3d.js.
 
-import { CELLS, CHEMISTRIES, cellById } from './cells.js';
+import { CELLS, CHEMISTRIES, cellById, provenance } from './cells.js';
 import { PRESETS } from './presets.js';
 import { layoutPack, summarize, ARRANGEMENTS_BY_FORM, defaultArrangement } from './pack-engine.js';
 import { optimizeSpace, suggestDesigns } from './optimizer.js';
@@ -211,10 +211,13 @@ function syncInputs() {
     seg.appendChild(b);
   }
   const ch = CHEMISTRIES[c.chemistry];
+  const pv = provenance(c);
   $('cellHint').innerHTML =
     `${c.form} ${c.formFactor} · <b style="color:${ch?.color}">${c.chemistry}</b> · ` +
     `${f1(c.nominalV)} V · ${f1(c.capacityAh)} Ah · ${f0(c.massG)} g · ` +
-    `${c.dataQuality === 'datasheet' ? 'datasheet' : 'estimated'} data`;
+    `<span class="prov prov-${pv.tone}" title="${esc(pv.detail)}">${pv.label}</span>` +
+    (pv.contribUid ? ` <span class="mono prov-uid">${esc(pv.contribUid)}</span>` : '') +
+    `<div class="prov-detail">${esc(pv.detail)}</div>`;
 }
 
 // ---------------------------------------------------------------------------

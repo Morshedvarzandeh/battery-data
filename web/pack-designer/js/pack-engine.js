@@ -28,7 +28,12 @@ export function electrical(cell, s, p) {
     massCellsKg: (cellCount * cell.massG) / 1000,
     maxContCurrentA,
     maxPulseCurrentA: cell.maxPulseDischargeA != null ? p * cell.maxPulseDischargeA : null,
+    // Power at nominal voltage, and again at the bottom of the window. The
+    // second is the one a design has to survive: a pack that meets its
+    // continuous rating at 3.6 V/cell can be 44% short at 2.5 V/cell, and the
+    // load does not care which end of the discharge it is at.
     maxContPowerW: nominalV * maxContCurrentA,
+    maxContPowerAtVMinW: s * cell.vMin * maxContCurrentA,
     maxChargeCurrentA: p * cell.maxContChargeA,
     // Cells-only DCIR (series adds, parallel divides). Interconnects add more
     // in reality; the UI labels this as a cells-only lower bound.

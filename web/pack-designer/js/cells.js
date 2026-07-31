@@ -15,10 +15,23 @@
  *   All dimensions are nominal outer-envelope values in millimetres.
  *
  * ── HONESTY RULES ───────────────────────────────────────────────────────────
- *   - dataQuality: 'datasheet' means the electrical core (capacity, voltages,
- *     current limits, mass, dims) comes from a real public datasheet we are
- *     confident about. 'estimate' means one or more core values are inferred,
- *     composite, or recalled without a document in hand.
+ *   Two independent questions, kept as two fields, because collapsing them
+ *   into one flag is how a recalled number ends up wearing a green badge.
+ *
+ *   basis — where the electrical core came from:
+ *     'contrib'            a document held in THIS repository; contribUid
+ *                          names the file, and CI checks that it exists
+ *     'external_datasheet' a real datasheet, read elsewhere, not held here.
+ *                          Nobody can re-check it from this repo.
+ *     'teardown'           measured from hardware by someone else
+ *     'composite'          a family of similar cells, not one SKU
+ *     'recalled'           remembered without the document in hand
+ *
+ *   inferredFields — which named fields were worked out rather than read.
+ *     ['ALL'] means the whole record is inference. A cell can be sourced
+ *     ('contrib') and still have inferred dimensions; the old single flag
+ *     could not say that, and marked the best-evidenced cells here as
+ *     estimates while cells with no document at all read as datasheet-grade.
  *   - null means "unknown / not published", never "zero".
  *   - priceUSD is ALWAYS a rough single-unit street-price estimate, even on
  *     'datasheet' records; treat it as order-of-magnitude only.
@@ -139,7 +152,9 @@ export const CELLS = [
     tempDischargeC: [-20, 60],
     tempChargeC: [0, 45],
     priceUSD: 5,
-    dataQuality: 'datasheet',
+    basis: 'contrib',
+    contribUid: 'cell/samsung-sdi/inr21700-50e',
+    inferredFields: ['dims', 'maxContChargeA', 'dcirMOhm', 'priceUSD'],
     sourceNote: 'Core electricals from Samsung spec V1.0 via contrib/cells/samsung-sdi/inr21700-50e.yaml (4.9 Ah std, 14.7 A pulse with no stated duration, 69 g max, 500 cycles to 80%). Dims are nominal 21700 (datasheet max 21.25 x 70.80). Charge current is the 0.5C standard rate; DCIR and price estimated.'
   },
   {
@@ -164,7 +179,9 @@ export const CELLS = [
     tempDischargeC: [-20, 75],
     tempChargeC: [0, 50],
     priceUSD: 4,
-    dataQuality: 'datasheet',
+    basis: 'external_datasheet',
+    contribUid: null,
+    inferredFields: ['dcirMOhm', 'priceUSD'],
     sourceNote: 'Samsung 25R datasheet: 2.5 Ah, 20 A continuous, 4 A rapid charge, 45 g max. cycleLife null because the sheet only states 60% retention at 250 cycles (10 A), not a cycles-to-80% figure. DCIR ~ published AC-IR class, treat as estimate; price estimated.'
   },
   {
@@ -189,7 +206,9 @@ export const CELLS = [
     tempDischargeC: [-20, 75],
     tempChargeC: [0, 50],
     priceUSD: 5,
-    dataQuality: 'datasheet',
+    basis: 'external_datasheet',
+    contribUid: null,
+    inferredFields: ['dcirMOhm', 'priceUSD'],
     sourceNote: 'LG HG2 datasheet: 3.0 Ah, 20 A continuous, 4 A max charge, 48 g max. cycleLife null (sheet criterion is ~70% at 300 cycles, not cycles-to-80%). DCIR and price estimated.'
   },
   {
@@ -214,7 +233,9 @@ export const CELLS = [
     tempDischargeC: [-20, 60],
     tempChargeC: [0, 45],
     priceUSD: 4.5,
-    dataQuality: 'datasheet',
+    basis: 'external_datasheet',
+    contribUid: null,
+    inferredFields: ['maxContChargeA', 'dcirMOhm', 'priceUSD'],
     sourceNote: 'LG MJ1 datasheet: 3.5 Ah, 10 A continuous, 49 g max, >=80% at 400 cycles. Charge current shown is the standard 0.5C rate (sheet max not carried here). DCIR and price estimated.'
   },
   {
@@ -239,7 +260,9 @@ export const CELLS = [
     tempDischargeC: [-40, 60],
     tempChargeC: [0, 60],
     priceUSD: 6,
-    dataQuality: 'datasheet',
+    basis: 'external_datasheet',
+    contribUid: null,
+    inferredFields: ['dims', 'dcirMOhm', 'priceUSD'],
     sourceNote: 'Molicel P42A datasheet: 4.2 Ah, 45 A continuous, 70 g max, rated to -40 C discharge. Cycle-life retention criterion is roughly 70-80% depending on test current. Dims are nominal 21700. DCIR and price estimated.'
   },
   {
@@ -264,7 +287,9 @@ export const CELLS = [
     tempDischargeC: [-20, 60],
     tempChargeC: [0, 45],
     priceUSD: 5,
-    dataQuality: 'datasheet',
+    basis: 'external_datasheet',
+    contribUid: null,
+    inferredFields: ['maxContDischargeA', 'dcirMOhm', 'cycleLife', 'priceUSD'],
     sourceNote: 'Panasonic NCR18650B datasheet: 3.35 Ah typ, 1.625 A standard charge, 48.5 g max. Panasonic does not state a hard max discharge current; 6.7 A (~2C) reflects the published discharge curves and is an estimate. DCIR, cycle life criterion and price estimated.'
   },
   {
@@ -289,7 +314,9 @@ export const CELLS = [
     tempDischargeC: [-20, 60],
     tempChargeC: [0, 45],
     priceUSD: null,
-    dataQuality: 'estimate',
+    basis: 'teardown',
+    contribUid: null,
+    inferredFields: ['ALL'],
     sourceNote: 'No public datasheet exists. Mass (~355 g) and capacity from independent teardowns (published figures span roughly 22-26 Ah; ~87 Wh at 3.7 V used here). Current limits unpublished — the ~1.5C continuous discharge and 1C charge here are deliberately conservative placeholders. DCIR and cycle life unpublished; temperature windows are generic NMC assumptions. Everything on this record is an estimate.'
   },
 
@@ -316,7 +343,9 @@ export const CELLS = [
     tempDischargeC: [-30, 55],
     tempChargeC: [0, 55],
     priceUSD: 9,
-    dataQuality: 'datasheet',
+    basis: 'external_datasheet',
+    contribUid: null,
+    inferredFields: ['dcirMOhm', 'tempChargeC', 'priceUSD'],
     sourceNote: 'A123 M1B datasheet: 2.5 Ah, 50 A continuous, 120 A 10 s pulse, 10 A fast charge, 76 g, 6 mOhm 1 kHz AC-IR. cycleLife per datasheet ">1000 at 10C, 100% DOD" (not a cycles-to-80% figure). DCIR estimated at ~1.5x AC-IR; charge temperature floor set conservatively at 0 C; price estimated.'
   },
   {
@@ -341,7 +370,9 @@ export const CELLS = [
     tempDischargeC: [-20, 60],
     tempChargeC: [0, 55],
     priceUSD: 4,
-    dataQuality: 'estimate',
+    basis: 'composite',
+    contribUid: null,
+    inferredFields: ['ALL'],
     sourceNote: 'Composite of common Chinese 32700 LFP cells (6 Ah, 3C discharge, 1C charge, ~140 g class). Representative of the family, not a specific SKU; all values are estimates.'
   },
 
@@ -368,7 +399,9 @@ export const CELLS = [
     tempDischargeC: [-30, 60],
     tempChargeC: [0, 55],
     priceUSD: 90,
-    dataQuality: 'datasheet',
+    basis: 'contrib',
+    contribUid: 'cell/catl/302ah-lifepo4',
+    inferredFields: ['dims', 'dcirMOhm', 'tempChargeC', 'priceUSD'],
     sourceNote: 'Core electricals from the CATL product spec via contrib/cells/catl/302ah-lifepo4.yaml (302 Ah, 3.22 V, 1C cont charge/discharge, 906 A 30 s pulse at 25 C, 5.51 kg max, >=4000 cycles, 0.18 mOhm 1 kHz AC-IR). Dims are the public LF-type footprint, not from the extracted spec. DCIR ~1.5x AC-IR (estimate); charge temperature window and price estimated.'
   },
   {
@@ -393,7 +426,9 @@ export const CELLS = [
     tempDischargeC: [-30, 60],
     tempChargeC: [0, 60],
     priceUSD: 80,
-    dataQuality: 'datasheet',
+    basis: 'external_datasheet',
+    contribUid: null,
+    inferredFields: ['dims', 'dcirMOhm', 'tempChargeC', 'tempDischargeC', 'priceUSD'],
     sourceNote: 'EVE LF280K public spec: 280 Ah, 1C cont charge/discharge, ~5.42 kg, <=0.25 mOhm AC-IR, >=6000 cycles (EVE claim, 25 C standard cycling). Dims are the LF-type footprint to +/-0.5 mm. DCIR ~1.5x AC-IR (estimate); temperature windows approximate; price estimated.'
   },
 
@@ -420,7 +455,9 @@ export const CELLS = [
     tempDischargeC: [-30, 55],
     tempChargeC: [-30, 45],
     priceUSD: 45,
-    dataQuality: 'estimate',
+    basis: 'contrib',
+    contribUid: 'cell/toshiba/scib-20ah',
+    inferredFields: ['dims', 'dcirMOhm', 'maxContDischargeA', 'maxContChargeA', 'cycleLife', 'tempChargeC', 'tempDischargeC', 'priceUSD'],
     sourceNote: 'Capacity, 2.3 V nominal, 515 g and energy densities from the Toshiba SCiB catalog via contrib/cells/toshiba/scib-20ah.yaml. Dims from the same catalog family (W116 x D22 x H106, cross-checked against 176 Wh/L). Toshiba publishes power (1200 W out / 10 s / SOC 50%) rather than current limits: DCIR ~1.1 mOhm backed out of that figure; discharge/charge currents (8C/3C), cycle life (Toshiba long-life claim, own criterion), temperatures and price are estimates.'
   },
   {
@@ -445,7 +482,9 @@ export const CELLS = [
     tempDischargeC: [-30, 55],
     tempChargeC: [-30, 45],
     priceUSD: 50,
-    dataQuality: 'estimate',
+    basis: 'contrib',
+    contribUid: 'cell/toshiba/scib-23ah',
+    inferredFields: ['dims', 'dcirMOhm', 'maxContDischargeA', 'maxContChargeA', 'cycleLife', 'tempChargeC', 'tempDischargeC', 'priceUSD'],
     sourceNote: 'High-energy SCiB type. Capacity, 2.3 V nominal, 550 g and 202 Wh/L from the Toshiba catalog via contrib/cells/toshiba/scib-23ah.yaml; dims are the shared W116 x D22 x H106 case (consistent with the stated Wh/L). DCIR ~1.3 mOhm backed out of the 1000 W / 10 s power figure. Current limits (~3C/2C), cycle life, temperatures and price are estimates.'
   },
   {
@@ -470,7 +509,9 @@ export const CELLS = [
     tempDischargeC: [-30, 55],
     tempChargeC: [-30, 45],
     priceUSD: 20,
-    dataQuality: 'estimate',
+    basis: 'contrib',
+    contribUid: 'cell/toshiba/scib-2-9ah',
+    inferredFields: ['dcirMOhm', 'maxContDischargeA', 'maxPulseDischargeA', 'maxContChargeA', 'vMax', 'vMin', 'cycleLife', 'tempChargeC', 'tempDischargeC', 'priceUSD'],
     sourceNote: 'High-power SCiB type. Capacity, 2.4 V nominal, 150 g and W63 x D14 x H97 dims all from the Toshiba catalog via contrib/cells/toshiba/scib-2-9ah.yaml. Toshiba publishes power (520 W out / 10 s) instead of current limits; the 10C continuous / ~35C pulse figures here are conservative estimates backed out of that power figure, and DCIR ~2.8 mOhm likewise. Voltage window assumed same as other SCiB types; cycle life is the Toshiba family claim; temperatures and price estimated.'
   },
 
@@ -497,7 +538,9 @@ export const CELLS = [
     tempDischargeC: [-20, 60],
     tempChargeC: [0, 45],
     priceUSD: 50,
-    dataQuality: 'estimate',
+    basis: 'composite',
+    contribUid: null,
+    inferredFields: ['ALL'],
     sourceNote: 'Composite of ~10 Ah 15C-class high-power NMC pouches (Kokam SLPB / Melasta style): ~160 Wh/kg, 15C continuous, 25C pulse, 4C charge. Representative of the class, not a specific SKU; all values are estimates.'
   },
   {
@@ -522,7 +565,9 @@ export const CELLS = [
     tempDischargeC: [-25, 60],
     tempChargeC: [0, 45],
     priceUSD: 70,
-    dataQuality: 'estimate',
+    basis: 'composite',
+    contribUid: null,
+    inferredFields: ['ALL'],
     sourceNote: 'Composite modelled on LG/SK EV pouch cells of the Chevy Bolt generation (~60 Ah, ~246 Wh/kg, ~338 x 11 x 100 mm envelope from teardown reports). Current limits (3C/5C pulse/1C charge), DCIR, cycle life, temperatures and price are estimates.'
   },
 
@@ -549,7 +594,9 @@ export const CELLS = [
     tempDischargeC: [-30, 60],
     tempChargeC: [-10, 45],
     priceUSD: 60,
-    dataQuality: 'estimate',
+    basis: 'composite',
+    contribUid: null,
+    inferredFields: ['ALL'],
     sourceNote: 'Composite of announced first-generation sodium-ion prismatic cells (HiNa / CATL gen-1 class, ~130 Wh/kg, ~200 Wh/L, strong cold-temperature performance, deep-discharge tolerant). Representative of the class, not a specific SKU; all values are estimates.'
   },
 
@@ -576,7 +623,9 @@ export const CELLS = [
     tempDischargeC: [-20, 60],
     tempChargeC: [0, 45],
     priceUSD: 4,
-    dataQuality: 'estimate',
+    basis: 'recalled',
+    contribUid: null,
+    inferredFields: ['ALL'],
     sourceNote: 'Classic cobalt-based (ICR family; LCO or LCO-rich blend) energy 18650: 2.6 Ah, 2C max discharge, 1C charge. Values recalled from the Samsung 26J datasheet without the document in hand — treat the whole record as an estimate. Mass, DCIR, cycle life and price approximate.'
   }
 ];
@@ -595,4 +644,58 @@ export function cellById(id) {
     if (CELLS[i].id === id) return CELLS[i];
   }
   return null;
+}
+
+// ---------------------------------------------------------------------------
+// Provenance, in one place so the UI and any tooling agree
+// ---------------------------------------------------------------------------
+
+// Short label and a one-line explanation of how much weight a record bears.
+// Deliberately blunt: 'external datasheet' reads worse than 'datasheet' did,
+// because it is worse — nobody can re-check it from this repository.
+export const BASIS_INFO = {
+  contrib: {
+    label: 'sourced',
+    tone: 'good',
+    blurb: 'Core values come from a document held in this repository, with a page and a quote behind each one.',
+  },
+  external_datasheet: {
+    label: 'external datasheet',
+    tone: 'warn',
+    blurb: 'Read from a real datasheet that is not held here, so it cannot be re-checked from this repository.',
+  },
+  teardown: {
+    label: 'teardown',
+    tone: 'warn',
+    blurb: 'Measured from hardware by a third party. No manufacturer document exists.',
+  },
+  composite: {
+    label: 'composite',
+    tone: 'estimate',
+    blurb: 'Representative of a family of similar cells rather than any one part number.',
+  },
+  recalled: {
+    label: 'recalled',
+    tone: 'estimate',
+    blurb: 'Remembered without the document in hand. Treat every figure as approximate.',
+  },
+};
+
+export function provenance(cell) {
+  const info = BASIS_INFO[cell.basis] || BASIS_INFO.recalled;
+  const inferred = cell.inferredFields || [];
+  const all = inferred.length === 1 && inferred[0] === 'ALL';
+  return {
+    ...info,
+    basis: cell.basis,
+    contribUid: cell.contribUid || null,
+    inferredAll: all,
+    inferred: all ? [] : inferred,
+    // What a reader needs to know in one sentence.
+    detail: info.blurb + (all
+      ? ' Every field on this record is an estimate.'
+      : inferred.length
+        ? ` Worked out rather than read: ${inferred.join(', ')}.`
+        : ''),
+  };
 }
