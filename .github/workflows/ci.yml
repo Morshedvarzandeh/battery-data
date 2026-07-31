@@ -77,6 +77,11 @@ jobs:
             echo "::error::web/index.html is stale. Run: python tools/build_web_data.py"
             exit 1
           }
+      - name: Footprint geometry - exact fit, not sampled
+        # The fit test decides whether a pack physically goes into the space
+        # someone measured. A sampled test passes a cell straddling a notch
+        # narrower than itself; these tests hold the exact version in place.
+        run: node web/pack-designer/test/shape.test.mjs
       - name: Pack designer cells match the contributions they cite
         # basis 'contrib' is a claim that a document in this repository backs
         # the record. Unchecked, it is just a badge -- and a badge that says

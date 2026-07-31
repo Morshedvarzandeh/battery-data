@@ -145,6 +145,17 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .empty{color:var(--muted);font-size:12.5px;padding:8px 0}
 footer{padding:8px 16px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);
   background:var(--surface)}
+.shapepick{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.shapepick button{padding:9px 8px;border:1px solid var(--line);background:var(--surface);
+  border-radius:8px;cursor:pointer;font:inherit;font-size:12.5px;color:var(--ink);text-align:left}
+.shapepick button:hover{border-color:var(--accent)}
+.shapepick button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+#shapeCanvas{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;
+  background:var(--surface);touch-action:none;cursor:crosshair}
+.fitline{display:flex;justify-content:space-between;gap:10px;padding:4px 0;font-size:12.5px}
+.fitline b{font-variant-numeric:tabular-nums}
+.fitbig{font-size:26px;font-weight:600;letter-spacing:-.01em}
+.fitwarn{color:#8a5a00;font-size:12px;margin-top:6px;line-height:1.5}
 .prov{display:inline-block;padding:1px 7px;border-radius:99px;font-size:11px;
   font-weight:600;letter-spacing:.02em;border:1px solid}
 .prov-good{color:#0b6e5f;border-color:#7fc9bc;background:#e6f4f1}
@@ -176,6 +187,7 @@ footer{padding:8px 16px;border-top:1px solid var(--line);font-size:11.5px;color:
     <div class="tabs" id="tabs">
       <button class="tab active" data-tab="design">Design</button>
       <button class="tab" data-tab="usage">From usage</button>
+      <button class="tab" data-tab="space">My space</button>
       <button class="tab" data-tab="fit">Fit box</button>
       <button class="tab" data-tab="standards">Standards <span class="chip" id="stdBadge"></span></button>
     </div>
@@ -281,6 +293,47 @@ footer{padding:8px 16px;border-top:1px solid var(--line);font-size:11.5px;color:
         <button class="btn primary" id="btnFit" style="width:100%;margin-top:10px">Find best packings</button>
       </div>
       <div class="sec"><h3>Candidates</h3><div id="fitResults"><div class="empty">No search yet.</div></div></div>
+    </div>
+
+
+    <div class="tabpane" id="pane-space">
+      <div class="sec">
+        <h3>What shape is the space?</h3>
+        <div class="shapepick" id="shapePick"></div>
+        <div class="hint" id="shapeHint"></div>
+      </div>
+
+      <div class="sec" id="shapeNumbers">
+        <h3>Measurements (mm)</h3>
+        <div class="row3" id="shapeFields"></div>
+        <div class="row3" style="margin-top:8px">
+          <div><label class="f">Height</label><input type="number" id="shHeight" value="120"></div>
+          <div><label class="f">Wall</label><input type="number" id="shWall" value="2"></div>
+          <div><label class="f">Gap</label><input type="number" id="shGap" value="1"></div>
+        </div>
+      </div>
+
+      <div class="sec" id="shapeDrawSec" style="display:none">
+        <h3>Draw the outline</h3>
+        <div class="hint">Click to drop a corner. Drag a corner to move it. The
+          grid is 10&nbsp;mm. You need at least three corners.</div>
+        <div class="row" style="gap:6px;margin-top:8px">
+          <button class="btn" id="btnUndoPt">Undo corner</button>
+          <button class="btn" id="btnClearPts">Start over</button>
+        </div>
+      </div>
+
+      <div class="sec">
+        <h3>Plan view</h3>
+        <canvas id="shapeCanvas" width="640" height="460"></canvas>
+        <div class="hint" id="shapeScale"></div>
+      </div>
+
+      <div class="sec">
+        <h3>What fits</h3>
+        <div id="shapeFit"><div class="empty">Choose a shape.</div></div>
+        <button class="btn primary" id="btnApplyShape" style="width:100%;margin-top:10px">Use this space</button>
+      </div>
     </div>
 
     <div class="tabpane" id="pane-standards">
