@@ -872,6 +872,33 @@ function drawPulse(){
   const d=ROWS.find(r=>r.cell===curCell); if(!d)return;
   const host=$("#pulse"); host.innerHTML="";
   const P=d.rec&&d.rec.pulse;
+  if(P){
+    const inv=el("div",{class:"card"});
+    inv.append(el("h3",{},"Curve inventory",el("span",{class:"mono",
+      style:"margin-left:auto;font-weight:400;color:var(--muted);font-size:11px"},
+      `${Object.keys(P.dis).filter(t=>P.dis[t].some(v=>v)).length +
+         Object.keys(P.chg).filter(t=>P.chg[t].some(v=>v)).length} curves`)));
+    const ib=el("div",{class:"body",style:"padding:0"});
+    [["derating_map · discharge","state_of_charge → max_pulse_discharge_current",
+      Object.keys(P.dis).filter(t=>P.dis[t].some(v=>v)).length],
+     ["derating_map · charge","state_of_charge → max_pulse_discharge_current",
+      Object.keys(P.chg).filter(t=>P.chg[t].some(v=>v)).length]]
+     .forEach(([k,axes,n])=>{
+       const r=el("div",{class:"slot",style:"grid-template-columns:minmax(190px,1fr) 2fr auto"});
+       r.append(el("span",{class:"qc"},k));
+       r.append(el("span",{class:"cond"},axes));
+       r.append(el("span",{class:"pill",style:"border-color:var(--ok);color:var(--ok)"},
+         `${n} at ${P.duration_s}s`));
+       ib.append(r);
+     });
+    const note=el("div",{style:"padding:11px 14px;border-top:1px solid var(--line)"});
+    note.append(el("span",{class:"lbl",style:"text-transform:none;letter-spacing:0;font-weight:400"},
+      "Stored as curves rather than loose scalars — the schema's curve table exists "
+      +"for exactly this, and lists derating_map among its own examples. The "
+      +"contribution format is one-dimensional, so a surface over SOC and temperature "
+      +"is carried as one curve per temperature."));
+    inv.append(ib); inv.append(note); host.append(inv);
+  }
   if(!P){
     host.append(el("div",{class:"warn"},el("b",{},"No pulse map for this product. "),
       "Only the CATL 302Ah specification publishes one. A single "
