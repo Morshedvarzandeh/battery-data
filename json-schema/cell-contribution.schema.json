@@ -56,7 +56,12 @@
       "minItems": 1,
       "items": { "$ref": "#/$defs/observation" }
     },
-    "curves": { "type": "array", "items": { "$ref": "#/$defs/curve" } }
+    "curves": { "type": "array", "items": { "$ref": "#/$defs/curve" } },
+    "applications": {
+      "type": "array",
+      "description": "Where this product is actually fielded. Each entry is a claim about a relationship, so it carries its own basis and locator - see schema/045_application.sql.",
+      "items": { "$ref": "#/$defs/application" }
+    }
   },
   "$defs": {
     "locator": {
@@ -127,6 +132,32 @@
         "is_upper_bound": { "type": "boolean" },
         "n_samples": { "type": "integer" },
         "conditions": { "$ref": "#/$defs/conditions" },
+        "locator": { "$ref": "#/$defs/locator" }
+      }
+    },
+    "application": {
+      "type": "object",
+      "required": ["uid", "name", "sector", "basis", "locator"],
+      "additionalProperties": false,
+      "description": "One fielded use. 'basis' says how the link is known; anything weaker than a statement by the manufacturer or a regulator also needs an explicit 'confidence'.",
+      "properties": {
+        "uid": { "type": "string", "pattern": "^app/[a-z0-9-]+/[a-z0-9._-]+$" },
+        "name": { "type": "string" },
+        "sector": { "enum": ["passenger_vehicle","commercial_vehicle","bus","rail","marine","aviation","off_highway","grid_storage","behind_meter_storage","backup_power","industrial","consumer","micromobility","defence","other"] },
+        "operator": { "type": "string", "description": "The organisation fielding it, which is rarely the cell maker." },
+        "programme": { "type": "string" },
+        "region": { "type": "string" },
+        "in_service_from": { "type": "string", "format": "date" },
+        "in_service_to": { "type": "string", "format": "date" },
+        "system_energy_kwh": { "type": "number", "exclusiveMinimum": 0 },
+        "system_power_kw": { "type": "number", "exclusiveMinimum": 0 },
+        "role": { "enum": ["traction","propulsion","regenerative","backup","starter","buffer","auxiliary","stationary_storage","other"] },
+        "quantity_per_unit": { "type": "integer", "minimum": 1 },
+        "topology_string": { "type": "string" },
+        "basis": { "enum": ["manufacturer_stated","teardown","regulatory_filing","press_release","trade_press","community_reported","inferred"] },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "is_exclusive": { "type": "boolean" },
+        "notes": { "type": "string" },
         "locator": { "$ref": "#/$defs/locator" }
       }
     },

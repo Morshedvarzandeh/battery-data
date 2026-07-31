@@ -8,6 +8,12 @@
   --missing:#B4441F; --missing-soft:#FBEAE3;
   --ok:#2F6B3A;
   --c1:#0E9C82; --c2:#2E6FD0; --c3:#D2551F; --c4:#9257D8; --c5:#A8820A;
+  /* Chart series. Three slots, not more: the categorical palette only clears
+     the all-pairs colour-vision gates at three, and a scatter puts every pair
+     on screen at once. Past three formats the chart facets instead of
+     inventing a fourth hue. Validated in both modes with
+     dataviz/scripts/validate_palette.js --pairs all. */
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --r:6px;
@@ -15,14 +21,17 @@
 @media (prefers-color-scheme:dark){
   :root{--ground:#0F1413;--surface:#1A1A19;--surface-2:#222826;--line:#333B39;
     --ink:#E8EDEB;--ink-2:#BFC9C6;--muted:#93A29E;--accent:#4FD1B5;--accent-ink:#08201C;
-    --accent-soft:#16302B;--missing:#F08A5F;--missing-soft:#3A211A;--ok:#7CC48A;}
+    --accent-soft:#16302B;--missing:#F08A5F;--missing-soft:#3A211A;--ok:#7CC48A;
+    --s1:#3987e5;--s2:#d95926;--s3:#199e70;}
 }
 :root[data-theme="dark"]{--ground:#0F1413;--surface:#1A1A19;--surface-2:#222826;--line:#333B39;
   --ink:#E8EDEB;--ink-2:#BFC9C6;--muted:#93A29E;--accent:#4FD1B5;--accent-ink:#08201C;
-  --accent-soft:#16302B;--missing:#F08A5F;--missing-soft:#3A211A;--ok:#7CC48A;}
+  --accent-soft:#16302B;--missing:#F08A5F;--missing-soft:#3A211A;--ok:#7CC48A;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;}
 :root[data-theme="light"]{--ground:#F4F6F5;--surface:#FCFCFB;--surface-2:#EEF1F0;--line:#DBE2E0;
   --ink:#101615;--ink-2:#3A4644;--muted:#5F6D69;--accent:#0B6E5F;--accent-ink:#FFFFFF;
-  --accent-soft:#E3F0ED;--missing:#B4441F;--missing-soft:#FBEAE3;--ok:#2F6B3A;}
+  --accent-soft:#E3F0ED;--missing:#B4441F;--missing-soft:#FBEAE3;--ok:#2F6B3A;
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;}
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
@@ -81,6 +90,7 @@ tbody tr:hover{background:var(--surface-2)}
 tbody tr.sel{background:var(--accent-soft)}
 .best{font-weight:700;color:var(--accent)}
 .pill{display:inline-block;font-size:10px;padding:1px 7px;border-radius:20px;
+  text-transform:none;letter-spacing:0;font-weight:500;
   border:1px solid var(--line);background:var(--ground);color:var(--ink-2)}
 .pill.prov{border-style:dashed;color:var(--missing);border-color:var(--missing)}
 .bar{height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden}
@@ -95,9 +105,12 @@ tbody tr.sel{background:var(--accent-soft)}
 .empty{padding:34px 20px;text-align:center;color:var(--muted);font-size:13px}
 figure{margin:0}
 figcaption{font-size:11.5px;color:var(--muted);margin-top:7px;max-width:62ch}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-2);margin-bottom:9px}
-.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-2);margin-bottom:11px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
 .sw{width:9px;height:9px;border-radius:2px;display:inline-block}
+.sw.dot9{width:11px;height:11px;border-radius:50%}
+.facets{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+figure svg{display:block;margin:0 auto}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
 svg text{font-family:var(--sans)}
 .rep{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 30px}
@@ -193,24 +206,31 @@ svg text{font-family:var(--sans)}
 
   <!-- CHARTS -->
   <section class="panel" id="p-charts">
-    <div class="legend" id="lg"></div>
+    <div class="card"><h3>Gravimetric energy against gravimetric power
+        <span class="pill" id="ch1n"></span></h3><div class="body">
+      <figure>
+        <div class="legend" id="lg1"></div>
+        <div id="ch1"></div>
+        <figcaption id="cap1">The Ragone trade-off, one point per cell. Up is more energy
+          for the same mass; right is more power for the same mass. Almost nothing sits in
+          both corners, which is why a pack designer picks a side. Colour is cell format,
+          because format constrains the trade-off more than chemistry does: a can that
+          takes 45 A has thicker tabs and thinner coatings than one built for range.
+          Power here is continuous discharge rating at nominal voltage, not a pulse.</figcaption>
+      </figure>
+    </div></div>
+
     <div class="grid2">
-      <div class="card"><h3>Gravimetric against volumetric energy density</h3><div class="body">
-        <figure><div id="ch1"></div>
+      <div class="card"><h3>Gravimetric against volumetric energy density
+          <span class="pill" id="ch2n"></span></h3><div class="body">
+        <figure><div class="legend" id="lg2"></div><div id="ch2"></div>
           <figcaption>The trade-off that decides a pack. Up and to the right is better on
             both counts; cells low-right buy volume efficiency with weight, and the
             reverse for those high-left.</figcaption></figure>
       </div></div>
-      <div class="card"><h3>Specific energy against specific power</h3><div class="body">
-        <figure><div id="ch2"></div>
-          <figcaption>A Ragone-style view from continuous discharge rating. High-power cells
-            sit right and low; energy cells sit left and high. Very few sit in both corners.</figcaption></figure>
-      </div></div>
       <div class="card"><h3>Specific energy by cell</h3><div class="body">
-        <figure><div id="ch3"></div><figcaption>Ranked. Colour is chemistry.</figcaption></figure>
-      </div></div>
-      <div class="card"><h3>Energy density by cell</h3><div class="body">
-        <figure><div id="ch4"></div><figcaption>Ranked, in watt-hours per litre.</figcaption></figure>
+        <figure><div id="ch3"></div><figcaption>Ranked, in watt-hours per kilogram.
+          Colour is format, as above.</figcaption></figure>
       </div></div>
     </div>
   </section>
@@ -395,55 +415,204 @@ function drawTable(){
 }
 
 /* ---------- charts ---------- */
-const CAT=["#0E9C82","#2E6FD0","#D2551F","#9257D8","#A8820A"];
-const CHEMS=[...new Set(SEED.map(d=>d.chem))];
-const col=c=>CAT[CHEMS.indexOf(c)%CAT.length];
+/* Colour encodes cell format. Three slots is the ceiling, not a stylistic
+   choice: a scatter shows every pair of series at once, and the palette only
+   clears the colour-vision separation gates all-pairs at three. When more
+   than three formats are on screen the chart facets into small multiples
+   instead of reaching for a fourth hue nobody can distinguish from the third.
 
-function scatter(host,xk,yk,xlab,ylab){
-  const pts=visible();
-  if(!pts.length){host.innerHTML='<div class="empty">No cells match.</div>';return;}
-  const W=680,H=380,p={t:18,r:22,b:46,l:62};
-  const xmax=Math.max(...pts.map(d=>d[xk]))*1.14, ymax=Math.max(...pts.map(d=>d[yk]))*1.14;
-  const X=v=>p.l+(v/xmax)*(W-p.l-p.r), Y=v=>H-p.b-(v/ymax)*(H-p.t-p.b);
-  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${esc(ylab)} against ${esc(xlab)}">`;
-  for(let i=0;i<=4;i++){
-    const gy=p.t+(i/4)*(H-p.t-p.b), yv=ymax-(i/4)*ymax;
-    s+=`<line x1="${p.l}" y1="${gy}" x2="${W-p.r}" y2="${gy}" stroke="var(--line)"/>`;
-    s+=`<text x="${p.l-8}" y="${gy+3}" font-size="10" fill="var(--muted)" text-anchor="end">${yv.toFixed(0)}</text>`;
-    const gx=p.l+(i/4)*(W-p.l-p.r), xv=(i/4)*xmax;
-    s+=`<text x="${gx}" y="${H-p.b+16}" font-size="10" fill="var(--muted)" text-anchor="middle">${xv.toFixed(0)}</text>`;
-  }
-  pts.forEach(d=>{const cx=X(d[xk]),cy=Y(d[yk]);
-    s+=`<circle cx="${cx}" cy="${cy}" r="7" fill="${col(d.chem)}" stroke="var(--surface)" stroke-width="2">`
-      +`<title>${esc(d.cell)} — ${f(d[yk],1)} ${esc(ylab)} · ${f(d[xk],1)} ${esc(xlab)} · ${esc(d.chem)}</title></circle>`;
-    s+=`<text x="${cx+11}" y="${cy+4}" font-size="10" fill="var(--ink-2)">${esc(d.fmt)}</text>`;});
-  s+=`<text x="${W/2}" y="${H-4}" font-size="10.5" fill="var(--muted)" text-anchor="middle">${esc(xlab)}</text>`;
-  s+=`<text transform="translate(14,${H/2}) rotate(-90)" font-size="10.5" fill="var(--muted)" text-anchor="middle">${esc(ylab)}</text>`;
+   Charts also drop, rather than plot, any cell missing either axis. A cell
+   with no continuous-discharge rating has no specific power; drawing it at
+   zero would invent a measurement, and drawing it anywhere else would be a
+   lie about which cells are slow. The count of what was dropped is printed
+   next to the title so the omission is visible rather than silent. */
+const SER=["var(--s1)","var(--s2)","var(--s3)"];
+
+/* Format family. Cylindrical cans are named by their millimetres, so the
+   diameter is the family and the length is noise: 21700 and 21755 answer the
+   same design question. Everything else falls back to its shape. */
+function fam(r){
+  const m=/^(\d{2})(\d{3})$/.exec(String(r.fmt||""));
+  if(m){const d=+m[1];
+    if(d===18)return "18650";
+    if(d===21)return "21700";
+    if(d>=25&&d<=27)return "26xxx";
+    if(d>=45&&d<=47)return "46xxx";
+    return "other cylindrical";}
+  if(r.shape==="cyl")return "other cylindrical";
+  return String(r.fmt||"other");
+}
+
+const nice=v=>{ // a tick step a human would have chosen
+  if(!(v>0))return 1;
+  const e=Math.pow(10,Math.floor(Math.log10(v))), n=v/e;
+  return (n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*e;
+};
+const thou=n=>n.toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* Rows that actually have both axes. */
+function pointsFor(xk,yk){
+  const all=visible();
+  const ok=all.filter(r=>r[xk]!=null&&r[yk]!=null&&!isNaN(r[xk])&&!isNaN(r[yk])
+                        &&r[xk]>0&&r[yk]>0);
+  return {ok, dropped:all.length-ok.length};
+}
+
+function famLegend(host,fams){
+  if(!host)return;
+  host.innerHTML="";
+  fams.forEach((fm,i)=>host.append(el("span",{},
+    el("i",{class:"sw dot9",style:`background:${SER[i%SER.length]}`}),fm)));
+}
+
+function noteMissing(host,dropped,total,what){
+  if(!host)return;
+  host.textContent = dropped
+    ? `${total-dropped} of ${total} plotted · ${dropped} without ${what}`
+    : `${total} cells`;
+  host.style.display = total? "" : "none";
+}
+
+/* A scatter with both grids, honest ticks, direct labels and no zero-padding
+   of missing values. Labels are placed left or right of the marker depending
+   on which side has room, which is the whole difference between a readable
+   plot and a smear of overlapping text. */
+function scatter(host,xk,yk,xlab,ylab,countHost,legendHost,dec,wide){
+  const {ok:pts,dropped}=pointsFor(xk,yk);
+  const total=visible().length;
+  noteMissing(countHost,dropped,total,`a ${xk==="wkg"?"power":"volume"} figure`);
+  if(!pts.length){
+    host.innerHTML='<div class="empty">No cell in this selection carries both '
+      +esc(ylab)+' and '+esc(xlab)+'.</div>';
+    if(legendHost)legendHost.innerHTML="";return;}
+
+  const fams=[...new Set(pts.map(fam))].sort();
+  const faceted=fams.length>3;
+  famLegend(legendHost,faceted?[]:fams);
+  if(legendHost&&faceted)legendHost.innerHTML=
+    '<span style="color:var(--muted)">'+fams.length+' formats — shown as separate panels,'
+    +' because more than three colours cannot be told apart reliably</span>';
+
+  const xmax=Math.max(...pts.map(d=>d[xk])), ymax=Math.max(...pts.map(d=>d[yk]));
+  const xs=nice(xmax/5), ys=nice(ymax/5);
+  const XM=Math.ceil(xmax*1.08/xs)*xs, YM=Math.ceil(ymax*1.08/ys)*ys;
+
+  const panel=(rows,label,W,H)=>{
+    const p={t:label?24:14,r:16,b:44,l:60};
+    const X=v=>p.l+(v/XM)*(W-p.l-p.r), Y=v=>H-p.b-(v/YM)*(H-p.t-p.b);
+    let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px" `
+      +`role="img" aria-label="${esc(ylab)} against ${esc(xlab)}${label?" — "+esc(label):""}">`;
+    if(label)s+=`<text x="${p.l}" y="14" font-size="11" font-weight="600" fill="var(--ink-2)">${esc(label)}</text>`;
+    // plot frame + full grid, so a reader can read a value off the chart
+    s+=`<rect x="${p.l}" y="${p.t}" width="${W-p.l-p.r}" height="${H-p.t-p.b}" `
+      +`fill="none" stroke="var(--line)"/>`;
+    for(let v=0;v<=YM+1e-9;v+=ys){const gy=Y(v);
+      if(v>0)s+=`<line x1="${p.l}" y1="${gy}" x2="${W-p.r}" y2="${gy}" stroke="var(--line)"/>`;
+      s+=`<text x="${p.l-7}" y="${gy+3.5}" font-size="10" fill="var(--muted)" `
+        +`text-anchor="end" font-family="var(--mono)">${thou(v)}</text>`;}
+    for(let v=0;v<=XM+1e-9;v+=xs){const gx=X(v);
+      if(v>0)s+=`<line x1="${gx}" y1="${p.t}" x2="${gx}" y2="${H-p.b}" stroke="var(--line)"/>`;
+      s+=`<text x="${gx}" y="${H-p.b+15}" font-size="10" fill="var(--muted)" `
+        +`text-anchor="middle" font-family="var(--mono)">${thou(v)}</text>`;}
+
+    // Markers first, so no label is drawn under a later point.
+    const placed=[], lab=[];
+    rows.forEach(d=>{
+      const cx=X(d[xk]),cy=Y(d[yk]),c=faceted?SER[0]:SER[fams.indexOf(fam(d))%SER.length];
+      s+=`<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="6.5" fill="${c}" `
+        +`stroke="var(--surface)" stroke-width="1.5">`
+        +`<title>${esc(d.cell)}\n${f(d[yk],1)} ${esc(ylab)} · ${f(d[xk],dec==null?0:dec)} ${esc(xlab)}`
+        +`\n${esc(fam(d))} · ${esc(d.chem)}</title></circle>`;
+      lab.push({d,cx,cy});});
+
+    // Direct labels are the secondary encoding the palette rules require, so
+    // they have to survive a crowded cluster rather than pile up into a
+    // smear. Each label tries eight positions around its marker at growing
+    // distance and takes the first that clears everything already placed and
+    // stays inside the frame; a leader line is drawn once it has been pushed
+    // far enough that the pairing is no longer obvious.
+    const CAND=[[10,3.5,"start"],[-10,3.5,"end"],[10,-8,"start"],[-10,-8,"end"],
+                [10,15,"start"],[-10,15,"end"],[0,-13,"middle"],[0,20,"middle"]];
+    lab.sort((a,b)=>a.cy-b.cy).forEach(({d,cx,cy})=>{
+      const txt=shortName(d.cell), w=txt.length*5.1+4, h=11;
+      let best=null,bestPen=Infinity;
+      for(const grow of [1,1.8,2.8,4]){
+        for(const [dx,dy,anc] of CAND){
+          const x=cx+dx*grow, y=cy+dy*grow;
+          const x0=anc==="start"?x:anc==="end"?x-w:x-w/2;
+          const box={x0,y0:y-h+2,x1:x0+w,y1:y+2};
+          let pen=0;
+          if(box.x0<p.l+1||box.x1>W-p.r-1||box.y0<p.t+1||box.y1>H-p.b-1)pen+=1000;
+          for(const q of placed)
+            if(box.x0<q.x1&&box.x1>q.x0&&box.y0<q.y1&&box.y1>q.y0)pen+=200;
+          for(const m of lab){const d2=Math.hypot(m.cx-(x0+w/2),m.cy-(y-4));
+            if(d2<9)pen+=120;}
+          pen+=grow*4;
+          if(pen<bestPen){bestPen=pen;best={x,y,anc,box};}
+          if(pen<=grow*4+0.001)break;
+        }
+        if(bestPen<=40)break;
+      }
+      placed.push(best.box);
+      if(Math.hypot(best.x-cx,best.y-cy)>22)
+        s+=`<line x1="${cx.toFixed(1)}" y1="${cy.toFixed(1)}" `
+          +`x2="${(best.anc==="end"?best.x-3:best.anc==="start"?best.x-3:best.x).toFixed(1)}" `
+          +`y2="${(best.y-3.5).toFixed(1)}" stroke="var(--line)"/>`;
+      s+=`<text x="${best.x.toFixed(1)}" y="${best.y.toFixed(1)}" font-size="9.5" `
+        +`fill="var(--ink-2)" text-anchor="${best.anc}">${esc(txt)}</text>`;});
+
+    s+=`<text x="${p.l+(W-p.l-p.r)/2}" y="${H-4}" font-size="11" fill="var(--ink-2)" `
+      +`text-anchor="middle">${esc(xlab)}</text>`;
+    s+=`<text transform="translate(13,${p.t+(H-p.t-p.b)/2}) rotate(-90)" font-size="11" `
+      +`fill="var(--ink-2)" text-anchor="middle">${esc(ylab)}</text>`;
+    return s+"</svg>";
+  };
+
+  host.innerHTML = faceted
+    ? '<div class="facets">'+fams.map(fm=>
+        '<div>'+panel(pts.filter(d=>fam(d)===fm),fm,430,310)+'</div>').join("")+'</div>'
+    : panel(pts,null,wide?940:640,wide?440:400);
+}
+
+/* Datasheet model numbers are long and the manufacturer is already the first
+   word. Trim to what tells two points apart on a crowded plot. */
+function shortName(n){
+  const s=String(n).replace(/^(Samsung SDI|Samsung|Panasonic|Molicel|Murata|LG Energy|LG|EVE Energy|EVE|Toshiba|CATL)\s+/i,"");
+  return s.length>18?s.slice(0,17)+"…":s;
+}
+
+function bars(host,k,unit,dec,countHost){
+  const all=visible();
+  const d=all.filter(r=>r[k]!=null&&!isNaN(r[k])&&r[k]>0).sort((a,b)=>b[k]-a[k]);
+  noteMissing(countHost,all.length-d.length,all.length,"a figure");
+  if(!d.length){host.innerHTML='<div class="empty">No cell in this selection carries '
+    +esc(unit)+'.</div>';return;}
+  const fams=[...new Set(d.map(fam))].sort();
+  const W=660,rh=26,padL=176,padR=64,H=d.length*rh+28;
+  const step=nice(Math.max(...d.map(x=>x[k]))/4);
+  const max=Math.ceil(Math.max(...d.map(x=>x[k]))*1.06/step)*step;
+  const X=v=>padL+(v/max)*(W-padL-padR);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(unit)} by cell">`;
+  for(let v=0;v<=max+1e-9;v+=step){const gx=X(v);
+    s+=`<line x1="${gx}" y1="6" x2="${gx}" y2="${H-20}" stroke="var(--line)"/>`;
+    s+=`<text x="${gx}" y="${H-6}" font-size="10" fill="var(--muted)" text-anchor="middle" `
+      +`font-family="var(--mono)">${thou(v)}</text>`;}
+  d.forEach((r,i)=>{const y=10+i*rh,w=Math.max(2,X(r[k])-padL);
+    s+=`<text x="${padL-8}" y="${y+13}" font-size="10.5" fill="var(--ink-2)" text-anchor="end">${esc(r.cell)}</text>`;
+    s+=`<rect x="${padL}" y="${y+3}" width="${w.toFixed(1)}" height="${rh-11}" rx="3" `
+      +`fill="${fams.length>3?SER[0]:SER[fams.indexOf(fam(r))%SER.length]}">`
+      +`<title>${esc(r.cell)} — ${f(r[k],dec)} ${esc(unit)} · ${esc(fam(r))}</title></rect>`;
+    s+=`<text x="${(padL+w+6).toFixed(1)}" y="${y+14}" font-size="10" fill="var(--muted)" `
+      +`font-family="var(--mono)">${f(r[k],dec)}</text>`;});
   host.innerHTML=s+"</svg>";
 }
-function bars(host,k,unit,dec){
-  const d=visible().slice().sort((a,b)=>b[k]-a[k]);
-  if(!d.length){host.innerHTML='<div class="empty">No cells match.</div>';return;}
-  const W=680,rh=27,padL=178,padR=66,H=d.length*rh+30;
-  const max=Math.max(...d.map(x=>x[k]))*1.1, X=v=>padL+(v/max)*(W-padL-padR);
-  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${esc(unit)} by cell">`;
-  [0,.5,1].forEach(fr=>{const gx=X(max*fr);
-    s+=`<line x1="${gx}" y1="8" x2="${gx}" y2="${H-20}" stroke="var(--line)"/>`;
-    s+=`<text x="${gx}" y="${H-6}" font-size="10" fill="var(--muted)" text-anchor="middle">${(max*fr).toFixed(0)}</text>`;});
-  d.forEach((r,i)=>{const y=12+i*rh,w=Math.max(2,X(r[k])-padL);
-    s+=`<text x="${padL-9}" y="${y+13}" font-size="10.5" fill="var(--ink-2)" text-anchor="end">${esc(r.cell)}</text>`;
-    s+=`<rect x="${padL}" y="${y+3}" width="${w}" height="${rh-11}" rx="4" fill="${col(r.chem)}">`
-      +`<title>${esc(r.cell)} — ${f(r[k],dec)} ${esc(unit)}</title></rect>`;
-    s+=`<text x="${padL+w+7}" y="${y+14}" font-size="10" fill="var(--muted)" font-family="var(--mono)">${f(r[k],dec)}</text>`;});
-  host.innerHTML=s+"</svg>";
-}
+
 function drawCharts(){
-  $("#lg").innerHTML="";
-  CHEMS.forEach(c=>$("#lg").append(el("span",{},el("i",{class:"sw",style:`background:${col(c)}`}),c)));
-  scatter($("#ch1"),"whl","whkg","Wh/L","Wh/kg");
-  scatter($("#ch2"),"wkg","whkg","W/kg","Wh/kg");
-  bars($("#ch3"),"whkg","Wh/kg",1);
-  bars($("#ch4"),"whl","Wh/L",0);
+  scatter($("#ch1"),"wkg","whkg","Gravimetric power density / W/kg",
+          "Gravimetric energy density / Wh/kg",$("#ch1n"),$("#lg1"),0,true);
+  scatter($("#ch2"),"whl","whkg","Volumetric energy density / Wh/L",
+          "Gravimetric energy density / Wh/kg",$("#ch2n"),$("#lg2"),0);
+  bars($("#ch3"),"whkg","Wh/kg",1,null);
 }
 
 /* ---------- report ---------- */
