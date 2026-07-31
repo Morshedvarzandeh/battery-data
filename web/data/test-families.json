@@ -1,0 +1,129 @@
+{
+ "EXCLUDE": [
+  "other"
+ ],
+ "FAM": {
+  "Abuse and safety": [
+   "arc",
+   "thermal_ramp",
+   "thermal_propagation",
+   "nail_penetration",
+   "crush",
+   "overcharge",
+   "over_discharge",
+   "external_short",
+   "internal_short",
+   "vent_gas_analysis"
+  ],
+  "Ageing": [
+   "cycle_life",
+   "calendar_aging",
+   "ica_dva",
+   "coulombic_efficiency",
+   "self_discharge",
+   "leakage_current"
+  ],
+  "Electrical performance": [
+   "formation",
+   "capacity",
+   "rate_capability",
+   "rpt",
+   "ocv_pseudo",
+   "ocv_incremental",
+   "gitt",
+   "pitt",
+   "drive_cycle",
+   "three_electrode"
+  ],
+  "Environmental": [
+   "drop",
+   "vibration",
+   "shock",
+   "altitude",
+   "thermal_shock",
+   "immersion"
+  ],
+  "Mechanical": [
+   "swelling",
+   "stack_pressure"
+  ],
+  "Post-mortem": [
+   "post_mortem",
+   "xrd",
+   "sem",
+   "eds",
+   "xps",
+   "icp",
+   "bet",
+   "nmr",
+   "gcms",
+   "half_cell_reconstruction"
+  ],
+  "Pulse and impedance": [
+   "hppc",
+   "eis",
+   "drt"
+  ],
+  "Thermal": [
+   "entropic_coefficient",
+   "heat_capacity",
+   "thermal_conductivity",
+   "thermal_impedance",
+   "isothermal_calorimetry"
+  ]
+ },
+ "LANDS": {
+  "altitude": "abuse_result · abuse_event",
+  "arc": "arc_result",
+  "bet": "teardown · sample · characterisation",
+  "calendar_aging": "timeseries_record · cycle_summary · observation",
+  "capacity": "timeseries_record · cycle_summary · observation",
+  "coulombic_efficiency": "observation · timeseries_record",
+  "crush": "abuse_result · abuse_event",
+  "cycle_life": "timeseries_record · cycle_summary · observation",
+  "drive_cycle": "timeseries_record · cycle_summary · observation",
+  "drop": "abuse_result · abuse_event",
+  "drt": "drt_result · drt_peak",
+  "eds": "teardown · sample · characterisation",
+  "eis": "eis_spectrum · eis_point · eis_fit",
+  "entropic_coefficient": "observation · timeseries_record",
+  "external_short": "abuse_result · abuse_event",
+  "formation": "timeseries_record · cycle_summary · observation",
+  "gcms": "teardown · sample · characterisation",
+  "gitt": "observation · timeseries_record",
+  "half_cell_reconstruction": "teardown · sample · characterisation",
+  "heat_capacity": "thermal_property",
+  "hppc": "observation · timeseries_record",
+  "ica_dva": "observation · timeseries_record",
+  "icp": "teardown · sample · characterisation",
+  "immersion": "abuse_result · abuse_event",
+  "internal_short": "abuse_result · abuse_event",
+  "isothermal_calorimetry": "calorimetry_result",
+  "leakage_current": "observation · timeseries_record",
+  "nail_penetration": "abuse_result · abuse_event",
+  "nmr": "teardown · sample · characterisation",
+  "ocv_incremental": "observation · timeseries_record",
+  "ocv_pseudo": "observation · timeseries_record",
+  "over_discharge": "abuse_result · abuse_event",
+  "overcharge": "abuse_result · abuse_event",
+  "pitt": "observation · timeseries_record",
+  "post_mortem": "teardown · sample · characterisation",
+  "rate_capability": "timeseries_record · cycle_summary · observation",
+  "rpt": "timeseries_record · cycle_summary · observation",
+  "self_discharge": "observation · timeseries_record",
+  "sem": "teardown · sample · characterisation",
+  "shock": "abuse_result · abuse_event",
+  "stack_pressure": "observation · timeseries_record",
+  "swelling": "observation · timeseries_record",
+  "thermal_conductivity": "thermal_property",
+  "thermal_impedance": "thermal_property",
+  "thermal_propagation": "abuse_result · abuse_event",
+  "thermal_ramp": "abuse_result · abuse_event",
+  "thermal_shock": "abuse_result · abuse_event",
+  "three_electrode": "observation · timeseries_record",
+  "vent_gas_analysis": "vent_gas_analysis · vent_gas_species",
+  "vibration": "abuse_result · abuse_event",
+  "xps": "teardown · sample · characterisation",
+  "xrd": "teardown · sample · characterisation"
+ }
+}

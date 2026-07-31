@@ -1,0 +1,21 @@
+{
+ "scib": [
+  {
+   "cond": {
+    "rate_unit": "C",
+    "rate_value": 3,
+    "temperature_c": 25
+   },
+   "pg": 2,
+   "q": "cycle_life",
+   "quote": "The capacity remains at 70% or more even after 20,000 times of charging/discharging — test condition: high-rate (3C) charge/discharge cycles at 25°C",
+   "src": "datasheet",
+   "stat": "minimum",
+   "u": "cycles",
+   "unstated": [
+    "dod_pct"
+   ],
+   "v": 20000
+  }
+ ]
+}

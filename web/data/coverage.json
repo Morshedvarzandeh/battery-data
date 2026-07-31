@@ -1,0 +1,211 @@
+[
+ {
+  "cells": [
+   {
+    "name": "CATL 302Ah",
+    "uid": "cell/catl/302ah-lifepo4"
+   },
+   {
+    "name": "CATL Shenxing"
+   },
+   {
+    "name": "BYD Blade"
+   },
+   {
+    "name": "EVE LF280K"
+   },
+   {
+    "name": "EVE LF304"
+   },
+   {
+    "name": "Gotion L600"
+   },
+   {
+    "name": "REPT 320Ah"
+   },
+   {
+    "name": "Hithium 314Ah"
+   }
+  ],
+  "note": "the volume segment of the market",
+  "segment": "EV prismatic LFP"
+ },
+ {
+  "cells": [
+   {
+    "name": "EVE LF280K"
+   },
+   {
+    "name": "CATL 314Ah"
+   },
+   {
+    "name": "Hithium 314Ah"
+   },
+   {
+    "name": "REPT 320Ah"
+   },
+   {
+    "name": "Great Power 314Ah"
+   }
+  ],
+  "note": "grid storage, 280-320Ah class",
+  "segment": "ESS prismatic LFP"
+ },
+ {
+  "cells": [
+   {
+    "name": "CATL NMC prismatic"
+   },
+   {
+    "name": "Samsung SDI Gen5"
+   },
+   {
+    "name": "SK On NMC"
+   },
+   {
+    "name": "LG NMC prismatic"
+   }
+  ],
+  "note": "premium range segment",
+  "segment": "EV prismatic NMC"
+ },
+ {
+  "cells": [
+   {
+    "name": "Tesla 4680"
+   },
+   {
+    "name": "Panasonic 4680"
+   },
+   {
+    "name": "LG 4680"
+   },
+   {
+    "name": "EVE 4695"
+   }
+  ],
+  "note": "the format the industry is retooling for",
+  "segment": "EV cylindrical 4680"
+ },
+ {
+  "cells": [
+   {
+    "name": "Panasonic NCA 2170"
+   },
+   {
+    "name": "LG INR21700-M50"
+   },
+   {
+    "name": "Samsung INR21700-50E",
+    "uid": "cell/samsung-sdi/inr21700-50e"
+   },
+   {
+    "name": "Molicel P42A"
+   },
+   {
+    "name": "Molicel P45B"
+   },
+   {
+    "name": "EVE 40PL"
+   }
+  ],
+  "note": "",
+  "segment": "EV / power cylindrical 21700"
+ },
+ {
+  "cells": [
+   {
+    "name": "Samsung INR18650-35E"
+   },
+   {
+    "name": "LG INR18650-MJ1"
+   },
+   {
+    "name": "Panasonic NCR18650B"
+   },
+   {
+    "name": "Murata VTC6"
+   },
+   {
+    "name": "Molicel P26A"
+   },
+   {
+    "name": "Samsung 30Q"
+   }
+  ],
+  "note": "mature, still shipping in volume",
+  "segment": "Consumer / power 18650"
+ },
+ {
+  "cells": [
+   {
+    "name": "LG pouch NMC"
+   },
+   {
+    "name": "SK On pouch"
+   },
+   {
+    "name": "AESC pouch"
+   }
+  ],
+  "note": "",
+  "segment": "EV pouch NMC"
+ },
+ {
+  "cells": [
+   {
+    "name": "Toshiba SCiB 20Ah"
+   },
+   {
+    "name": "Toshiba SCiB 23Ah"
+   },
+   {
+    "name": "Toshiba SCiB 10Ah"
+   },
+   {
+    "name": "Toshiba SCiB 2.9Ah"
+   },
+   {
+    "name": "Altairnano"
+   },
+   {
+    "name": "Yinlong LTO"
+   }
+  ],
+  "note": "fast charge and cold climate",
+  "segment": "LTO"
+ },
+ {
+  "cells": [
+   {
+    "name": "CATL sodium-ion"
+   },
+   {
+    "name": "HiNa NaCR32140"
+   },
+   {
+    "name": "Natron Blue Tray"
+   }
+  ],
+  "note": "early market, moving fast",
+  "segment": "Sodium-ion"
+ },
+ {
+  "cells": [
+   {
+    "name": "WeLion semi-solid"
+   },
+   {
+    "name": "QuantumScape QSE-5"
+   },
+   {
+    "name": "Solid Power A-sample"
+   },
+   {
+    "name": "ProLogium"
+   }
+  ],
+  "note": "pre-volume, worth tracking",
+  "segment": "Semi-solid / solid-state"
+ }
+]
