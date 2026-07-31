@@ -77,6 +77,11 @@ jobs:
             echo "::error::web/index.html is stale. Run: python tools/build_web_data.py"
             exit 1
           }
+      - name: Pack designer cells match the contributions they cite
+        # basis 'contrib' is a claim that a document in this repository backs
+        # the record. Unchecked, it is just a badge -- and a badge that says
+        # 'datasheet' over a remembered number is worse than no badge.
+        run: python tools/check_pack_cells.py
       - name: Extraction schema builds from the contribution schema
         # No API key and no network: this checks that the schema the model is
         # forced to fill is still derivable from the schema the validator
