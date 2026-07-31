@@ -23,6 +23,25 @@ from urllib.parse import urlparse
 
 BLANK = {"_no response_", "_none_", ""}
 
+# A file dragged into an issue textarea uploads to GitHub and leaves a link
+# behind, as bare text or wrapped in markdown. Accepting the drag is worth the
+# extra parsing: most people have the PDF, not a URL to it, and telling them
+# to go find a hosted copy first is how a submission flow stops being used.
+LINK = re.compile(r"""(?:\]\(|<|\s|^)?(https?://[^\s<>)\]"']+)""")
+
+
+def first_pdf_link(text: str) -> str:
+    """The first link that is plausibly a PDF, preferring an explicit .pdf.
+
+    GitHub's own attachment URLs end in the original filename, so a dragged
+    datasheet keeps its extension; a bare link pasted by hand may not.
+    """
+    urls = LINK.findall(text or "")
+    for u in urls:
+        if u.lower().split("?")[0].endswith(".pdf"):
+            return u
+    return urls[0] if urls else ""
+
 
 def parse(body: str) -> dict[str, str]:
     out: dict[str, str] = {}
@@ -46,7 +65,16 @@ def parse(body: str) -> dict[str, str]:
 def main() -> int:
     fields = parse(os.environ.get("ISSUE_BODY", ""))
 
-    url = fields.get("datasheet url", "")
+    # Either field is fine, and neither is required on its own -- the form
+    # cannot express "one of these two", so the check lives here.
+    url = (first_pdf_link(fields.get("the pdf", ""))
+           or first_pdf_link(fields.get(
+               "datasheet url (if you did not attach the file)", ""))
+           or fields.get("datasheet url", ""))
+    if not url:
+        print("no PDF found: attach the file or give a direct link to it",
+              file=sys.stderr)
+        return 2
     scheme = urlparse(url).scheme
     if scheme not in ("http", "https"):
         # A file:// or gopher:// URL here would make the runner fetch
