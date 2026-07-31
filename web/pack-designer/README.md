@@ -22,6 +22,12 @@ server (or GitHub Pages); everything, including Three.js, is vendored.
 - **Fit box** — enumerate arrangements, orientations and layer counts to
   pack the current configuration into a target envelope, or just minimize
   volume.
+- **My space** — when the space is not a box. Pick a rectangle, circle,
+  L-shape or long slot and type the measurements, or draw the outline corner
+  by corner on a 10 mm grid. The plan view fills it with cells as you type and
+  says how many fit, how much of the floor is used, and the best S/P split for
+  12/24/36/48/52/72 V. "Use this space" pushes the footprint into the 3D view,
+  where the enclosure follows the outline rather than a bounding box.
 - **Standards** — a rule engine audits the design against UN 38.3 / IATA
   transport thresholds, ECE R100 / ISO 6469-3 voltage classes, IEC 62619 /
   IEC 62133-2 protection requirements, thermal-propagation spacing practice,
@@ -52,6 +58,15 @@ server (or GitHub Pages); everything, including Three.js, is vendored.
   not certification, and the page repeats that disclaimer.
 - Hex (staggered) packing is only offered where it is geometrically real:
   upright cylinders. Lying cylinders and prismatic cells pack rectangularly.
+- Fitting a cell into a footprint is an EXACT test, not a sampled one. A
+  corners-only check passes a cell straddling a notch narrower than itself,
+  and the pack then does not go in. Rectangular footprints test corner
+  containment plus wall-edge intersection; round footprints test distance to
+  every edge. `web/pack-designer/test/shape.test.mjs` holds that line in CI.
+- Volume for a non-rectangular space is the prism over the actual footprint,
+  not over its bounding box — a circle would otherwise be flattered by 4/pi.
+- Asking for more cells than the space holds returns what fits and reports the
+  shortfall, rather than drawing cells through the wall.
 
 ## Architecture
 
@@ -62,6 +77,8 @@ server (or GitHub Pages); everything, including Three.js, is vendored.
 | `js/standards.js` | Standards rule engine over a computed design context |
 | `js/pack-engine.js` | Pure electrical + layout math (Z-up, mm) |
 | `js/optimizer.js` | Requirement search + space fitting |
+| `js/shape.js` | Footprint geometry: primitives, exact fit tests, filling |
+| `js/space-ui.js` | The "My space" tab: shape picker, plan view, capacity |
 | `js/viewer3d.js` | Three.js instanced rendering |
 | `js/app.js` | UI state and wiring |
 

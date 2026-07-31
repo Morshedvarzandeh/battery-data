@@ -137,16 +137,30 @@ export class PackViewer {
       this.packGroup.add(this._caps);
     }
 
-    // Enclosure.
+    // Enclosure. A box unless the layout carries a footprint polygon, in
+    // which case the walls follow it — drawing a cuboid around a round or
+    // L-shaped space would show a pack that does not exist.
     const enc = new THREE.Group();
-    const box = new THREE.BoxGeometry(L.outer.x, L.outer.z, L.outer.y);
-    const lines = new THREE.LineSegments(
-      new THREE.EdgesGeometry(box),
-      new THREE.LineBasicMaterial({ color: this._dark ? 0x93a29e : 0x5f6d69 })
-    );
-    const panel = new THREE.Mesh(box, new THREE.MeshBasicMaterial({
+    const lineMat = new THREE.LineBasicMaterial({ color: this._dark ? 0x93a29e : 0x5f6d69 });
+    const faceMat = new THREE.MeshBasicMaterial({
       color: 0x4fd1b5, transparent: true, opacity: 0.05, depthWrite: false, side: THREE.DoubleSide,
-    }));
+    });
+    let lines, panel;
+    if (L.poly && L.poly.length >= 3) {
+      const shape = new THREE.Shape();
+      // Pack XY -> three XZ, with height on three's Y.
+      L.poly.forEach((pt, i) => (i ? shape.lineTo(pt.x, pt.y) : shape.moveTo(pt.x, pt.y)));
+      shape.closePath();
+      const prism = new THREE.ExtrudeGeometry(shape, { depth: L.outer.z, bevelEnabled: false });
+      prism.rotateX(Math.PI / 2);           // extrude along -Y after the turn
+      prism.translate(0, L.outer.z / 2, 0);
+      lines = new THREE.LineSegments(new THREE.EdgesGeometry(prism), lineMat);
+      panel = new THREE.Mesh(prism, faceMat);
+    } else {
+      const box = new THREE.BoxGeometry(L.outer.x, L.outer.z, L.outer.y);
+      lines = new THREE.LineSegments(new THREE.EdgesGeometry(box), lineMat);
+      panel = new THREE.Mesh(box, faceMat);
+    }
     const encCenterY = L.headroomMm / 2; // walls symmetric; headroom raises the lid
     enc.position.set(0, encCenterY, 0);
     enc.add(lines, panel);

@@ -9,6 +9,8 @@
 //   direction) along Y, h along Z with terminals up.
 //   All lengths in mm, masses in g/kg as named, energies in Wh.
 
+import { fillShape, bbox, area } from './shape.js';
+
 // ---------------------------------------------------------------------------
 // Electrical
 // ---------------------------------------------------------------------------
@@ -66,6 +68,10 @@ export function defaultArrangement(cell) {
 // `round` marks cylindrical geometry for the renderer; `hexOk` marks that the
 // circular cross-section lies in the XY plane, which is the only case where
 // hex (staggered, sqrt(3)/2 row pitch) packing is geometrically valid.
+export function orientedFootprint(cell, orientation) {
+  return orientedDims(cell, orientation);
+}
+
 function orientedDims(cell, orientation) {
   if (cell.form === 'cylindrical') {
     if (orientation === 'lying') {
@@ -241,5 +247,91 @@ export function summarize(cell, s, p, layout) {
     whPerKg: massKg > 0 ? e.energyWh / massKg : null,
     whPerL: layout && layout.volumeL > 0 ? e.energyWh / layout.volumeL : null,
     packingEfficiency: layout ? layout.packingEfficiency : null,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Layout inside an arbitrary footprint
+// ---------------------------------------------------------------------------
+// Same contract as layoutPack — the viewer and summarize() cannot tell the
+// difference — but the cells are placed wherever they fit inside a polygon
+// instead of on a full nx * ny grid.
+//
+// Two things are deliberately different from the rectangular path:
+//
+//   volumeL is the PRISM over the polygon, not over its bounding box. A round
+//   locker is not a cube with rounded corners, and reporting bounding-box
+//   volume would flatter Wh/L by 27% on a circle.
+//
+//   N is capped by what fits. Asking for 100 cells in a space that holds 60
+//   returns a 60-cell layout and says so, rather than drawing cells through
+//   the wall.
+
+export function layoutInShape(cell, s, p, poly, opts = {}) {
+  const wanted = s * p;
+  const arrangement = opts.arrangement || defaultArrangement(cell);
+  const orientation = opts.orientation || 'upright';
+  const spacingMm = opts.spacingMm ?? 1;
+  const layerGapMm = opts.layerGapMm ?? 2;
+  const wallMm = opts.wallMm ?? 2;
+  const headroomMm = opts.headroomMm ?? (cell.form === 'cylindrical' ? 8 : 15);
+  const heightMm = opts.heightMm ?? null;
+
+  const od = orientedDims(cell, orientation);
+  const hexActive = arrangement === 'hex' && od.hexOk;
+  const pitchX = od.fx + spacingMm;
+  const pitchY = hexActive ? pitchX * (Math.sqrt(3) / 2) : od.fy + spacingMm;
+
+  // How many layers the stated height allows, if a height was given.
+  const pitchZ = od.fz + layerGapMm;
+  const usableZ = heightMm != null ? heightMm - 2 * wallMm - headroomMm : null;
+  const maxLayers = usableZ != null
+    ? Math.max(0, Math.floor((usableZ + layerGapMm) / pitchZ))
+    : Math.max(1, opts.nz || 1);
+  const nz = Math.max(1, Math.min(opts.nz || maxLayers || 1, maxLayers || 1));
+
+  const perLayer = fillShape(poly, od.fx, od.fy, od.round, pitchX, pitchY, wallMm, hexActive);
+  const capacity = perLayer.length * nz;
+  const N = Math.min(wanted, capacity);
+  if (N === 0) return null;
+
+  const positions = [];
+  const innerZ = nz * od.fz + (nz - 1) * layerGapMm;
+  for (let iz = 0; iz < nz && positions.length < N; iz++) {
+    // Alternate layer direction too, so the series path walks back on itself
+    // instead of jumping the full diagonal between layers.
+    const layer = iz % 2 === 0 ? perLayer : perLayer.slice().reverse();
+    for (const q of layer) {
+      if (positions.length >= N) break;
+      positions.push({
+        x: q.x, y: q.y,
+        z: iz * pitchZ + od.fz / 2 - innerZ / 2,
+        sIndex: Math.floor(positions.length / p),
+        pIndex: positions.length % p,
+        layer: iz,
+      });
+    }
+  }
+
+  const b = bbox(poly);
+  const outer = { x: b.w, y: b.d, z: innerZ + 2 * wallMm + headroomMm };
+  const footprintAreaMm2 = area(poly);
+  const cellVolL = N * singleCellVolumeL(cell);
+
+  return {
+    cell, s, p, N,
+    wanted, capacity, shortfall: Math.max(0, wanted - capacity),
+    arrangement, orientation,
+    spacingMm, layerGapMm, wallMm, headroomMm,
+    nx: null, ny: null, nz,
+    positions,
+    cellFootprint: { fx: od.fx, fy: od.fy, fz: od.fz, round: od.round, axis: od.axis },
+    inner: { x: b.w - 2 * wallMm, y: b.d - 2 * wallMm, z: innerZ },
+    outer,
+    poly,
+    footprintAreaMm2,
+    // Prism over the actual footprint, not the bounding box.
+    volumeL: (footprintAreaMm2 * outer.z) / 1e6,
+    packingEfficiency: cellVolL / ((footprintAreaMm2 * innerZ) / 1e6),
   };
 }

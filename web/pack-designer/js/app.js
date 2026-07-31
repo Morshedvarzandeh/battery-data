@@ -4,7 +4,10 @@
 
 import { CELLS, CHEMISTRIES, cellById, provenance } from './cells.js';
 import { PRESETS } from './presets.js';
-import { layoutPack, summarize, ARRANGEMENTS_BY_FORM, defaultArrangement } from './pack-engine.js';
+import { layoutPack, layoutInShape, summarize, orientedFootprint,
+         ARRANGEMENTS_BY_FORM, defaultArrangement } from './pack-engine.js';
+import { SpaceUI } from './space-ui.js';
+import { shapeToPolygon } from './shape.js';
 import { optimizeSpace, suggestDesigns } from './optimizer.js';
 import { DISCLAIMER, STANDARDS_INFO, runChecks } from './standards.js';
 import { PackViewer } from './viewer3d.js';
@@ -26,12 +29,16 @@ const state = {
   nx: 0, nz: 1,
   presetId: null,
   colorMode: 'series',
+  // A footprint the pack must fit inside, when the space is not a box.
+  // null means the ordinary rectangular grid.
+  shape: null,
 };
 
 let viewer = null;
 let lastFindings = [];
 let lastSummary = null;
 let lastLayout = null;
+let spaceUI = null;
 
 // ---------------------------------------------------------------------------
 // Formatting
@@ -113,10 +120,30 @@ function applyPreset(pr) {
 // Controls
 // ---------------------------------------------------------------------------
 function bindControls() {
+  // "My space": pick or draw a footprint, see what fits, push it into the pack.
+  spaceUI = new SpaceUI(
+    (shape, fit) => {
+      state.shape = { ...shape };
+      state.wallMm = fit.wall; state.spacingMm = fit.gap;
+      // Fill the space by default: the whole point of measuring it was to use
+      // it. S stays where the person put it; P takes up the slack.
+      if (fit.total > 0) {
+        state.p = Math.max(1, Math.floor(fit.total / Math.max(1, state.s)));
+      }
+      syncInputs(); recompute();
+      document.querySelector('#tabs .tab[data-tab="design"]').click();
+    },
+    () => {
+      const c = cell();
+      const od = orientedFootprint(c, state.orientation);
+      return { cell: c, od, hex: state.arrangement === 'hex' && od.hexOk };
+    });
+
   document.querySelectorAll('#tabs .tab').forEach((t) => t.onclick = () => {
     document.querySelectorAll('#tabs .tab').forEach((x) => x.classList.toggle('active', x === t));
     document.querySelectorAll('.tabpane').forEach((p) =>
       p.classList.toggle('active', p.id === `pane-${t.dataset.tab}`));
+    if (t.dataset.tab === 'space') spaceUI?.refresh();
   });
 
   $('selCell').onchange = () => { state.cellId = $('selCell').value; onCellChange(); recompute(); };
@@ -249,12 +276,33 @@ function recompute() {
     headroomMm: state.headroomMm, layerGapMm: state.layerGapMm,
     nx: state.nx, nz: state.nz,
   };
-  let layout = layoutPack(c, state.s, state.p, opts);
-  if (!layout) layout = layoutPack(c, state.s, state.p, { ...opts, nx: 0 });
+  let layout;
+  if (state.shape) {
+    const poly = shapeToPolygon(state.shape);
+    layout = layoutInShape(c, state.s, state.p, poly,
+      { ...opts, heightMm: state.shape.heightMm, nz: 0 });
+  } else {
+    layout = layoutPack(c, state.s, state.p, opts);
+    if (!layout) layout = layoutPack(c, state.s, state.p, { ...opts, nx: 0 });
+  }
+  if (!layout) {
+    // A shape too small for even one cell. Say that instead of rendering
+    // nothing and leaving the previous pack on screen.
+    lastLayout = null; lastSummary = null; lastFindings = [];
+    $('cfgHint').textContent = 'No cell of this size fits the space — pick a smaller cell or a bigger space.';
+    const msg = '<div class="empty">Nothing fits this space.</div>';
+    $('hdrStats').innerHTML = ''; $('statsBody').innerHTML = msg;
+    $('stageStats').innerHTML = msg; $('findings').innerHTML = msg;
+    viewer.setPack(null); saveHash();
+    return;
+  }
   lastLayout = layout;
-  lastSummary = summarize(c, state.s, state.p, layout);
-  $('cfgHint').textContent =
-    `${N} cells · ${layout.nx}×${layout.ny}${layout.nz > 1 ? `×${layout.nz}` : ''} ${layout.arrangement}`;
+  lastSummary = summarize(c, layout.s, layout.p, layout);
+  $('cfgHint').textContent = state.shape
+    ? `${layout.N} cells placed in the ${state.shape.kind} space`
+      + (layout.nz > 1 ? ` · ${layout.nz} layers` : '')
+      + (layout.shortfall ? ` · ${layout.shortfall} short of ${layout.wanted} requested` : '')
+    : `${N} cells · ${layout.nx}×${layout.ny}${layout.nz > 1 ? `×${layout.nz}` : ''} ${layout.arrangement}`;
 
   viewer.setPack(layout, CHEMISTRIES[c.chemistry]?.color);
   viewer.setColorMode(state.colorMode, CHEMISTRIES[c.chemistry]?.color);
