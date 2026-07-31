@@ -75,6 +75,48 @@ def check(path: str, schema: dict, registry: dict) -> list[str]:
         if not registry[q] and cond and set(cond) - {"verbatim", "extra", "unstated"}:
             pass
 
+    errs += check_applications(path, doc)
+    return errs
+
+
+# Bases where somebody with direct knowledge put the claim in writing. Anything
+# else is a reading of indirect evidence, and must say how sure it is.
+FIRSTHAND_BASES = {"manufacturer_stated", "regulatory_filing"}
+
+
+def check_applications(path: str, doc: dict) -> list[str]:
+    """Deployment claims get the same treatment as observations.
+
+    The failure mode here is different from a wrong number: this can be wrong
+    about whether the relationship exists at all. So a claim resting on a
+    teardown, a trade article or an inference has to carry an explicit
+    confidence rather than sitting in the table looking as solid as a
+    datasheet line.
+    """
+    errs, seen = [], {}
+    for i, app in enumerate(doc.get("applications", [])):
+        where = f"{path}: applications[{i}] ({app.get('uid', '?')})"
+        basis = app["basis"]
+
+        if basis not in FIRSTHAND_BASES and app.get("confidence") is None:
+            errs.append(
+                f"{where}: basis '{basis}' is indirect evidence, so 'confidence' "
+                f"is required. State how sure you are -- an unhedged teardown "
+                f"claim reads like a manufacturer statement."
+            )
+
+        if app.get("in_service_to") and app.get("in_service_from") \
+                and app["in_service_to"] < app["in_service_from"]:
+            errs.append(f"{where}: in_service_to precedes in_service_from")
+
+        # Same application named twice in one file means one of the two rows
+        # will silently lose the UNIQUE race at load time.
+        key = (app["uid"], app.get("role"))
+        if key in seen:
+            errs.append(f"{where}: duplicate of applications[{seen[key]}] "
+                        f"(same uid and role)")
+        seen[key] = i
+
     return errs
 
 

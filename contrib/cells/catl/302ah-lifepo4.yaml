@@ -1,0 +1,639 @@
+# battery-data community contribution — generated from a source document
+# Validated in CI against json-schema/cell-contribution.schema.json
+schema_version: "1"
+
+product:
+  uid: cell/catl/302ah-lifepo4
+  kind: cell
+  manufacturer: CATL
+  model_number: 302Ah LiFePO4
+  form_factor: prismatic_hardcase
+  is_rechargeable: true
+
+source:
+  uid: src/catl-product-specification-c-sample-stage
+  kind: datasheet
+  title: CATL 302Ah 3.22V LiFePO4 power battery — Product Specification
+  document_date: "2022"
+  redistributable: false
+
+chemistry:
+  designation: LFP
+  cathode_text: Lithium iron phosphate (LiFePO4)
+
+observations:
+  - quantity: capacity
+    statistic: standard
+    value: 302
+    unit: Ah
+    conditions:
+      temperature_c: 25
+      rate_value: 1
+      rate_unit: C
+      unstated: [voltage_lower_v]
+    locator:
+      page: 2
+      quote: 2.1.1 Standard capacity 302 Ah — 25±2 ℃, 1C, new battery status
+  - quantity: capacity
+    statistic: minimum
+    value: 302
+    unit: Ah
+    conditions:
+      temperature_c: 25
+      rate_value: 1
+      rate_unit: C
+      unstated: [voltage_lower_v]
+    locator:
+      page: 2
+      quote: 2.1.2 Minimum capacity 302 Ah — 25±2 ℃, 1C, new battery status
+  - quantity: nominal_voltage
+    statistic: nominal
+    value: 3.22
+    unit: V
+    locator:
+      page: 1
+      quote: 302Ah 3.22V rechargeable lithium iron phosphate power battery
+  - quantity: absolute_max_voltage
+    statistic: absolute_max
+    value: 3.65
+    unit: V
+    locator:
+      page: 2
+      quote: 2.1.3 Operating Voltage 2.5~3.65V
+  - quantity: absolute_min_voltage
+    statistic: absolute_min
+    value: 2.5
+    unit: V
+    conditions:
+      temperature_c: 25
+    locator:
+      page: 2
+      quote: "2.1.3 Operating Voltage 2.5~3.65V \u2014 Temperature T>0\u2103"
+  - quantity: internal_resistance_ac
+    statistic: typical
+    value: 0.18
+    unit: mΩ
+    conditions:
+      frequency_hz: 1000
+      soc_pct: 35
+      temperature_c: 25
+    locator:
+      page: 2
+      quote: "2.1.4 Battery internal resistance (1KHz) 0.18\u00b10.05 m\u03a9 \u2014 New battery status (30~40%SOC)"
+  - quantity: self_discharge_rate
+    statistic: maximum
+    value: 3.5
+    unit: "%/month"
+    conditions:
+      temperature_c: 25
+      soc_pct: 50
+      duration_s: 7776000
+    locator:
+      page: 2
+      quote: "2.1.6 Monthly self-discharge \u22643.5% \u2014 25\u2103, 50% SOC, 3 months after new battery"
+  - quantity: operating_temperature_min
+    statistic: minimum
+    value: -30
+    unit: °C
+    conditions:
+      direction: discharge
+      unstated: [temperature_reference]
+    locator:
+      page: 2
+      quote: "2.1.8 Working temperature (discharge) -30~60\u2103"
+  - quantity: operating_temperature_max
+    statistic: maximum
+    value: 60
+    unit: °C
+    conditions:
+      direction: discharge
+      unstated: [temperature_reference]
+    locator:
+      page: 2
+      quote: "2.1.8 Working temperature (discharge) -30~60\u2103"
+  - quantity: mass
+    statistic: maximum
+    value: 5510
+    unit: g
+    locator:
+      page: 2
+      quote: 2.1.9 Battery weight ≤5.51Kg
+  - quantity: cycle_life
+    statistic: minimum
+    value: 4000
+    unit: cycles
+    conditions:
+      temperature_c: 25
+      rate_value: 0.5
+      rate_unit: C
+      unstated: [dod_pct]
+    locator:
+      page: 2
+      quote: 2.1.11 Cell cycle ≥4000cycles — Initial clamping force 300Kgf, standard charge and discharge test
+  - quantity: standard_charge_current
+    statistic: standard
+    value: 151
+    unit: A
+    conditions:
+      temperature_c: 25
+    locator:
+      page: 3
+      quote: 2.2.1 Standard charging current 0.5C — 25±2 ℃  (0.5C of 302Ah = 151A)
+  - quantity: max_continuous_charge_current
+    statistic: maximum
+    value: 302
+    unit: A
+    conditions:
+      temperature_c: 25
+    locator:
+      page: 3
+      quote: 2.2.2 Maximum continuous charging current 1C — 25±2 ℃  (1C of 302Ah = 302A)
+  - quantity: charge_cutoff_voltage
+    statistic: maximum
+    value: 3.65
+    unit: V
+    locator:
+      page: 3
+      quote: 2.2.3 Standard charging voltage Single battery max 3.65V
+  - quantity: cv_cutoff_current
+    statistic: typical
+    value: 15100
+    unit: mA
+    locator:
+      page: 3
+      quote: 2.2.4 ... constant voltage ... until the current lower limit is 0.05C  (0.05C of 302Ah = 15.1A)
+  - quantity: max_continuous_discharge_current
+    statistic: maximum
+    value: 302
+    unit: A
+    conditions:
+      unstated: [temperature_c]
+    locator:
+      page: 3
+      quote: 2.3.2 Maximum continuous discharge current 1C  (1C of 302Ah = 302A)
+  - quantity: discharge_cutoff_voltage
+    statistic: minimum
+    value: 2.5
+    unit: V
+    conditions:
+      temperature_c: 25
+    locator:
+      page: 3
+      quote: "2.3.3 Discharge cut-off voltage 2.5V \u2014 Temperature T>0\u2103"
+  - quantity: capacity_retention
+    statistic: minimum
+    value: 80
+    unit: "%"
+    conditions:
+      temperature_c: 0
+      rate_value: 1
+      rate_unit: C
+      cycle_index: 0
+    locator:
+      page: 4
+      quote: "2.5.1 0\u2103 capacity \u226580% \u2014 New battery status, 0\u2103, 1C, 2.0V~3.65V, the benchmark is 302Ah"
+  - quantity: capacity_retention
+    statistic: minimum
+    value: 70
+    unit: "%"
+    conditions:
+      temperature_c: -20
+      rate_value: 1
+      rate_unit: C
+      cycle_index: 0
+    locator:
+      page: 4
+      quote: "2.5.2 -20\u2103 capacity \u226570% \u2014 New battery status, -20\u2103, 1C, 2.0V~3.65V, the benchmark is 302Ah"
+  - quantity: shipping_voltage
+    statistic: typical
+    value: 3.2
+    unit: V
+    locator:
+      page: 2
+      quote: "2.1.5 Shipping capacity 117~123Ah \u2014 40%SOC"
+
+# The pulse capability of this cell is a surface over SOC and temperature,
+# not a number. The contribution schema's curve is one-dimensional, so the
+# surface is carried as a family of curves — one per temperature, each
+# stating the temperature, the pulse duration and the direction it belongs to.
+curves:
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 0.0, 0.0, 0.0, 30.2, 30.2, 30.2, 30.2, 30.2, 30.2, 30.2, 30.2, 30.2]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: -35.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at -35 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 9.1, 18.1, 39.3, 75.5, 75.5, 75.5, 75.5, 75.5, 75.5, 75.5, 75.5, 75.5]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: -30.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at -30 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 18.1, 39.3, 75.5, 151.0, 151.0, 151.0, 151.0, 151.0, 151.0, 151.0, 151.0, 151.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: -25.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at -25 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 18.1, 39.3, 75.5, 151.0, 151.0, 151.0, 151.0, 151.0, 151.0, 151.0, 151.0, 151.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: -15.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at -15 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 57.4, 114.8, 190.3, 362.4, 362.4, 362.4, 362.4, 362.4, 362.4, 362.4, 362.4, 362.4]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: -10.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at -10 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 75.5, 151.0, 302.0, 643.3, 643.3, 643.3, 643.3, 643.3, 643.3, 643.3, 643.3, 643.3]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: -5.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at -5 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 84.6, 169.1, 320.1, 658.4, 658.4, 658.4, 658.4, 658.4, 658.4, 658.4, 658.4, 658.4]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 0.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 0 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 93.6, 190.3, 341.3, 679.5, 679.5, 679.5, 679.5, 679.5, 679.5, 679.5, 679.5, 679.5]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 5.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 5 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 99.7, 199.3, 368.4, 733.9, 733.9, 733.9, 733.9, 733.9, 733.9, 733.9, 733.9, 733.9]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 10.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 10 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 102.7, 205.4, 398.6, 794.3, 794.3, 794.3, 794.3, 794.3, 794.3, 794.3, 794.3, 794.3]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 15.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 15 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 108.7, 217.4, 425.8, 851.6, 851.6, 851.6, 851.6, 851.6, 851.6, 851.6, 851.6, 851.6]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 20.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 20 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 114.8, 226.5, 453.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 25.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 25 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 114.8, 226.5, 453.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 30.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 30 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 114.8, 226.5, 453.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 35.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 35 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 114.8, 226.5, 453.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 40.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 40 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 114.8, 226.5, 453.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 45.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 45 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 114.8, 226.5, 453.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 50.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 50 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 114.8, 226.5, 453.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 55.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 55 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 114.8, 226.5, 453.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0, 906.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 60.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4 pulse discharge mode, 30s pulse rate at 60 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [126.8, 126.8, 126.8, 126.8, 126.8, 126.8, 126.8, 126.8, 126.8, 126.8, 126.8, 126.8, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 5.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 5 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [244.6, 244.6, 244.6, 244.6, 244.6, 244.6, 244.6, 244.6, 244.6, 244.6, 244.6, 244.6, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 10.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 10 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [368.4, 368.4, 368.4, 368.4, 368.4, 368.4, 368.4, 368.4, 368.4, 368.4, 368.4, 368.4, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 15.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 15 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [486.2, 486.2, 486.2, 486.2, 486.2, 486.2, 486.2, 486.2, 486.2, 486.2, 486.2, 368.4, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 20.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 20 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 401.7, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 25.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 25 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 401.7, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 30.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 30 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 401.7, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 35.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 35 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 401.7, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 40.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 40 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 401.7, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 45.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 45 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 604.0, 401.7, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 50.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 50 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [483.2, 483.2, 483.2, 483.2, 483.2, 483.2, 483.2, 483.2, 483.2, 483.2, 483.2, 323.1, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 55.0
+      direction: charge
+    locator:
+      page: 4
+      quote: "2.4 pulse charge mode, 30s pulse rate at 55 C across SOC 0-100%"
