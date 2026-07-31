@@ -1,12 +1,18 @@
 # battery-data community contribution — generated from a source document
 # Validated in CI against json-schema/cell-contribution.schema.json
+#
+# IDENTITY NOTE
+# CS2 is CALCE's own sample label, not a manufacturer's model number. The 
+# page gives chemistry, mass and dimensions but never names the maker. 
+# Cells are individually numbered CS2_n.
+# CALCE is the testing laboratory, not the manufacturer.
 schema_version: "1"
 
 product:
   uid: cell/unstated/cs2
   kind: cell
-  manufacturer: unstated
-  model_number: CS2
+  manufacturer: "unstated"
+  model_number: "unstated"
   form_factor: prismatic_hardcase
   is_rechargeable: true
 

@@ -1,12 +1,20 @@
 # battery-data community contribution — generated from a source document
 # Validated in CI against json-schema/cell-contribution.schema.json
+#
+# IDENTITY NOTE
+# The page gives this part designation and no manufacturer. INR18650-20R 
+# is a part-number convention used by Samsung SDI and the stated 2.0 Ah 
+# NMC/graphite, 45 g, 18.33 x 64.85 mm match that part — but this source 
+# does not say so, so the manufacturer is recorded as unstated rather than 
+# inferred.
+# CALCE is the testing laboratory, not the manufacturer.
 schema_version: "1"
 
 product:
   uid: cell/unstated/inr-18650-20r
   kind: cell
-  manufacturer: unstated
-  model_number: "INR 18650-20R"
+  manufacturer: "unstated"
+  model_number: "INR18650-20R"
   form_factor: cylindrical
   is_rechargeable: true
 

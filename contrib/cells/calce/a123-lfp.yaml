@@ -1,12 +1,18 @@
 # battery-data community contribution — generated from a source document
 # Validated in CI against json-schema/cell-contribution.schema.json
+#
+# IDENTITY NOTE
+# The page names the manufacturer, A123, but gives no model number. 1.1 Ah 
+# LFP in 18650 is consistent with the APR18650M1A, which is not stated 
+# here.
+# CALCE is the testing laboratory, not the manufacturer.
 schema_version: "1"
 
 product:
   uid: cell/a123-systems/a123-lfp
   kind: cell
-  manufacturer: A123 Systems
-  model_number: A123 (LFP)
+  manufacturer: "A123 Systems"
+  model_number: "unstated"
   form_factor: cylindrical
   is_rechargeable: true
 

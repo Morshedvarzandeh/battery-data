@@ -1,12 +1,17 @@
 # battery-data community contribution — generated from a source document
 # Validated in CI against json-schema/cell-contribution.schema.json
+#
+# IDENTITY NOTE
+# CX2 is CALCE's own sample label, not a manufacturer's model number. 
+# Cells are individually numbered CX2_n.
+# CALCE is the testing laboratory, not the manufacturer.
 schema_version: "1"
 
 product:
   uid: cell/unstated/cx2
   kind: cell
-  manufacturer: unstated
-  model_number: CX2
+  manufacturer: "unstated"
+  model_number: "unstated"
   form_factor: prismatic_hardcase
   is_rechargeable: true
 
