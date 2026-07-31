@@ -116,13 +116,21 @@ DATASETS: dict[str, dict] = {
         "landing": "https://calce.umd.edu/battery-data",
         "citation": "CALCE Battery Research Group, University of Maryland.",
         "license": "research use - verify at landing page",
-        "cells": "CS2/CX2 prismatic LCO and 18650 cells",
+        "cells": ("5 cell types: INR18650-20R 2.0Ah NMC/graphite, A123 1.1Ah LFP, "
+                  "CS2 1.1Ah prismatic LCO, CX2 1.35Ah prismatic LCO, PL 1.5Ah pouch LCO"),
         "chemistry": "LCO", "form_factor": "prismatic_hardcase", "ff_code": None,
         "nominal_ah": 1.1, "nominal_v": 3.7,
         "manufacturer": "unstated", "model": "CS2",
         "file_glob": "*.xlsx",
         "test_kind": "cycle_life",
-        "notes": "Arbin exports as Excel; convert to CSV so the sniffer sees a header.",
+        "notes": ("Set --nominal-ah per cell type; they differ (1.1 / 1.35 / 1.5 / 2.0 Ah). "
+                  "Arbin exports as Excel, so convert to CSV for the sniffer. CS2_8 and "
+                  "CS2_21 came off a CADEX tester and ship as .txt instead. Campaigns go "
+                  "well beyond plain cycling: low-current and incremental OCV at 0/25/45 C, "
+                  "DST/US06/FUDS drive cycles, pulsed-discharge profiles, temperature "
+                  "cycling 25-55 C, and partial-SOC ageing with periodic full "
+                  "characterisation. Cite the CALCE article for the experiment, not just "
+                  "the page."),
     },
     "batteryarchive": {
         "name": "Battery Archive (aggregator)",
