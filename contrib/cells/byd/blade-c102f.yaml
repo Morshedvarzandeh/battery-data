@@ -1,0 +1,163 @@
+# battery-data community contribution — generated from a source document
+# Validated in CI against json-schema/cell-contribution.schema.json
+schema_version: "1"
+
+product:
+  uid: cell/byd/blade-c102f
+  kind: cell
+  manufacturer: BYD
+  model_number: Blade C102F
+  form_factor: prismatic_hardcase
+  is_rechargeable: true
+
+source:
+  uid: src/batemo-gmbh-cell-explorer-product-page
+  kind: manufacturer_web
+  title: Batemo Cell Explorer — BYD Blade C102F
+  url: https://www.batemo.com/products/batemo-cell-explorer/byd-blade-c102f/
+  document_date: "2024-09-30"
+  redistributable: false
+
+observations:
+  - quantity: capacity
+    statistic: nominal
+    value: 138.0
+    unit: Ah
+    conditions:
+      unstated: [rate_value, rate_unit, temperature_c, voltage_lower_v]
+    locator:
+      quote: Capacity definition nominal 138.0 Ah
+  - quantity: capacity
+    statistic: measured
+    value: 140.2
+    unit: Ah
+    conditions:
+      rate_value: 0.1
+      rate_unit: C
+      unstated: [temperature_c, voltage_lower_v]
+    locator:
+      quote: Capacity definition C/10 140.2 Ah
+  - quantity: energy
+    statistic: measured
+    value: 453.9
+    unit: Wh
+    conditions:
+      rate_value: 0.1
+      rate_unit: C
+      unstated: [temperature_c]
+    locator:
+      quote: Energy definition C/10 453.9 Wh
+  - quantity: mass
+    statistic: typical
+    value: 2536.3
+    unit: g
+    locator:
+      quote: Weight 2.5363 kg
+  - quantity: length
+    statistic: nominal
+    value: 945
+    unit: mm
+    locator:
+      quote: Dimensions 945 x 90.5 x 13.9 mm
+  - quantity: width
+    statistic: nominal
+    value: 90.5
+    unit: mm
+    locator:
+      quote: Dimensions 945 x 90.5 x 13.9 mm
+  - quantity: thickness
+    statistic: nominal
+    value: 13.9
+    unit: mm
+    locator:
+      quote: Dimensions 945 x 90.5 x 13.9 mm
+  - quantity: volume
+    statistic: nominal
+    value: 1.1888
+    unit: L
+    locator:
+      quote: computed from stated dimensions 945 x 90.5 x 13.9 mm
+  - quantity: specific_energy
+    statistic: typical
+    value: 179
+    unit: Wh/kg
+    conditions:
+      unstated: [rate_value, rate_unit, temperature_c]
+    locator:
+      quote: Energy Density definition gravimetric 179 Wh/kg
+  - quantity: energy_density
+    statistic: typical
+    value: 381
+    unit: Wh/L
+    conditions:
+      unstated: [rate_value, rate_unit, temperature_c]
+    locator:
+      quote: Energy Density definition volumetric 381 Wh/l
+  - quantity: max_continuous_discharge_current
+    statistic: maximum
+    value: 265
+    unit: A
+    conditions:
+      unstated: [temperature_c]
+    locator:
+      quote: Current definition continuous 265 A
+  - quantity: max_pulse_discharge_current
+    statistic: maximum
+    value: 537
+    unit: A
+    conditions:
+      unstated: [pulse_duration_s, temperature_c]
+    locator:
+      quote: Current definition peak 537 A — the page states no pulse duration
+  - quantity: rated_power
+    statistic: maximum
+    value: 790
+    unit: W
+    conditions:
+      unstated: [temperature_c, boundary]
+    locator:
+      quote: Power definition continuous 790 W
+  - quantity: peak_power
+    statistic: maximum
+    value: 1530
+    unit: W
+    conditions:
+      unstated: [pulse_duration_s, soc_pct, temperature_c, boundary]
+    locator:
+      quote: Power definition peak 1.53 kW
+  - quantity: specific_power
+    statistic: maximum
+    value: 604
+    unit: W/kg
+    conditions:
+      unstated: [temperature_c, soc_pct, pulse_duration_s]
+    locator:
+      quote: Power Density definition gravimetric 604 W/kg — matches peak power / mass (603), not continuous (311)
+  - quantity: absolute_max_voltage
+    statistic: absolute_max
+    value: 3.8
+    unit: V
+    locator:
+      quote: Voltage Range definition 2.0 … 3.8 V
+  - quantity: absolute_min_voltage
+    statistic: absolute_min
+    value: 2.0
+    unit: V
+    locator:
+      quote: Voltage Range definition 2.0 … 3.8 V
+  - quantity: operating_temperature_min
+    statistic: minimum
+    value: -20
+    unit: °C
+    conditions:
+      unstated: [temperature_reference, direction]
+    locator:
+      quote: "Temperature Range definition -20 \u2026 55 \u00b0C (model validation range)"
+  - quantity: operating_temperature_max
+    statistic: maximum
+    value: 55
+    unit: °C
+    conditions:
+      unstated: [temperature_reference, direction]
+    locator:
+      quote: "Temperature Range definition -20 \u2026 55 \u00b0C (model validation range)"

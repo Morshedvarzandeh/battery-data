@@ -1,0 +1,63 @@
+# battery-data community contribution — generated from a source document
+# Validated in CI against json-schema/cell-contribution.schema.json
+schema_version: "1"
+
+product:
+  uid: pack/toshiba/industrial-pack-24v
+  kind: pack
+  manufacturer: Toshiba
+  model_number: Industrial Pack 24V
+  is_rechargeable: true
+
+source:
+  uid: src/sbt-e-006f-20-10
+  kind: datasheet
+  title: "Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)"
+  url: http://www.scib.jp/en/index.htm
+  document_date: "2020-10"
+  redistributable: false
+
+chemistry:
+  designation: LTO
+  anode_text: Lithium titanium oxide (LTO)
+
+observations:
+  - quantity: energy
+    statistic: nominal
+    value: 1112
+    unit: Wh
+    conditions:
+      unstated: [rate_value, rate_unit, temperature_c]
+    locator:
+      page: 4
+      quote: SCiB Industrial Pack (24V) FP01101MCB01A 1112Wh
+  - quantity: nominal_voltage
+    statistic: nominal
+    value: 27.6
+    unit: V
+    locator:
+      page: 4
+      quote: Nominal voltage DC27.6V
+  - quantity: absolute_max_voltage
+    statistic: absolute_max
+    value: 32.4
+    unit: V
+    locator:
+      page: 4
+      quote: Voltage range 18.0 to 32.4V
+  - quantity: absolute_min_voltage
+    statistic: absolute_min
+    value: 18.0
+    unit: V
+    locator:
+      page: 4
+      quote: Voltage range 18.0 to 32.4V
+  - quantity: max_continuous_discharge_current
+    statistic: maximum
+    value: 160
+    unit: A
+    conditions:
+      unstated: [temperature_c]
+    locator:
+      page: 4
+      quote: Max. charge/discharge current 160 A (continuous), 350 A (rush current)

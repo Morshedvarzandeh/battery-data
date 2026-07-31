@@ -1,0 +1,82 @@
+# battery-data community contribution — generated from a source document
+# Validated in CI against json-schema/cell-contribution.schema.json
+schema_version: "1"
+
+product:
+  uid: module/toshiba/type3-20-module
+  kind: module
+  manufacturer: Toshiba
+  model_number: "Type3-20 module"
+  is_rechargeable: true
+
+source:
+  uid: src/sbt-e-006f-20-10
+  kind: datasheet
+  title: "Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)"
+  url: http://www.scib.jp/en/index.htm
+  document_date: "2020-10"
+  redistributable: false
+
+chemistry:
+  designation: LTO
+  anode_text: Lithium titanium oxide (LTO)
+
+observations:
+  - quantity: capacity
+    statistic: nominal
+    value: 40
+    unit: Ah
+    conditions:
+      unstated: [rate_value, rate_unit, temperature_c, voltage_lower_v]
+    locator:
+      page: 4
+      quote: "Type3-20 FM01202CCA04A Nominal capacity 40Ah"
+  - quantity: nominal_voltage
+    statistic: nominal
+    value: 25.3
+    unit: V
+    locator:
+      page: 4
+      quote: Nominal voltage DC25.3V
+  - quantity: absolute_max_voltage
+    statistic: absolute_max
+    value: 29.7
+    unit: V
+    locator:
+      page: 4
+      quote: Voltage range DC16.5 to 29.7V
+  - quantity: absolute_min_voltage
+    statistic: absolute_min
+    value: 16.5
+    unit: V
+    locator:
+      page: 4
+      quote: Voltage range DC16.5 to 29.7V
+  - quantity: operating_temperature_min
+    statistic: minimum
+    value: -30
+    unit: °C
+    conditions:
+      unstated: [temperature_reference, direction]
+    locator:
+      page: 4
+      quote: "Ambient temperature -30 to 45\u00baC"
+  - quantity: operating_temperature_max
+    statistic: maximum
+    value: 45
+    unit: °C
+    conditions:
+      unstated: [temperature_reference, direction]
+    locator:
+      page: 4
+      quote: "Ambient temperature -30 to 45\u00baC"
+  - quantity: max_pulse_discharge_current
+    statistic: maximum
+    value: 125
+    unit: A
+    conditions:
+      pulse_duration_s: 200
+      unstated: [temperature_c]
+    locator:
+      page: 4
+      quote: Max. charge/discharge current 125A (200 sec)

@@ -1,0 +1,111 @@
+# battery-data community contribution — generated from a source document
+# Validated in CI against json-schema/cell-contribution.schema.json
+schema_version: "1"
+
+product:
+  uid: cell/toshiba/scib-2-9ah
+  kind: cell
+  manufacturer: Toshiba
+  model_number: SCiB 2.9Ah
+  form_factor: prismatic_hardcase
+  is_rechargeable: true
+
+source:
+  uid: src/sbt-e-006f-20-10
+  kind: datasheet
+  title: "Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)"
+  url: http://www.scib.jp/en/index.htm
+  document_date: "2020-10"
+  redistributable: false
+
+chemistry:
+  designation: LTO
+  anode_text: Lithium titanium oxide (LTO)
+
+observations:
+  - quantity: capacity
+    statistic: rated
+    value: 2.9
+    unit: Ah
+    conditions:
+      unstated: [rate_value, rate_unit, temperature_c, voltage_lower_v]
+    locator:
+      page: 4
+      quote: Rated capacity 2.9Ah
+  - quantity: nominal_voltage
+    statistic: nominal
+    value: 2.4
+    unit: V
+    locator:
+      page: 4
+      quote: Nominal voltage 2.4V
+  - quantity: peak_power
+    statistic: typical
+    value: 520
+    unit: W
+    conditions:
+      soc_pct: 50
+      pulse_duration_s: 10
+      temperature_c: 25
+      unstated: [boundary]
+    locator:
+      page: 4
+      quote: "Output Power 520W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance"
+  - quantity: rated_power
+    statistic: typical
+    value: 410
+    unit: W
+    conditions:
+      soc_pct: 50
+      pulse_duration_s: 10
+      temperature_c: 25
+      unstated: [boundary]
+    locator:
+      page: 4
+      quote: "Input Power 410W* (SOC50%, 10s, 25\u00b0C) \u2014 *calculated from the internal resistance"
+  - quantity: energy_density
+    statistic: typical
+    value: 85
+    unit: Wh/L
+    conditions:
+      unstated: [rate_value, rate_unit, temperature_c]
+    locator:
+      page: 4
+      quote: Volumetric energy density 85Wh/L
+  - quantity: specific_energy
+    statistic: typical
+    value: 46
+    unit: Wh/kg
+    conditions:
+      unstated: [rate_value, rate_unit, temperature_c]
+    locator:
+      page: 4
+      quote: Weight energy density 46Wh/kg
+  - quantity: mass
+    statistic: typical
+    value: 150
+    unit: g
+    locator:
+      page: 4
+      quote: Weight Approx. 150g
+  - quantity: width
+    statistic: nominal
+    value: 63
+    unit: mm
+    locator:
+      page: 4
+      quote: Dimensions W63 × D14 × H97 mm
+  - quantity: thickness
+    statistic: nominal
+    value: 14
+    unit: mm
+    locator:
+      page: 4
+      quote: Dimensions W63 × D14 × H97 mm
+  - quantity: height
+    statistic: nominal
+    value: 97
+    unit: mm
+    locator:
+      page: 4
+      quote: Dimensions W63 × D14 × H97 mm

@@ -1,0 +1,33 @@
+# battery-data community contribution — generated from a source document
+# Validated in CI against json-schema/cell-contribution.schema.json
+schema_version: "1"
+
+product:
+  uid: cell/a123-systems/a123-lfp
+  kind: cell
+  manufacturer: A123 Systems
+  model_number: A123 (LFP)
+  form_factor: cylindrical
+  is_rechargeable: true
+
+source:
+  uid: src/calce-battery-research-group-university-of-maryland
+  kind: dataset
+  title: CALCE Battery Data — Center for Advanced Life Cycle Engineering
+  url: https://calce.umd.edu/battery-data
+  document_date: "2026-07"
+  redistributable: false
+
+chemistry:
+  designation: LFP
+  cathode_text: LiFePO4
+
+observations:
+  - quantity: capacity
+    statistic: rated
+    value: 1.1
+    unit: Ah
+    conditions:
+      unstated: [rate_value, rate_unit, temperature_c, voltage_lower_v]
+    locator:
+      quote: Capacity Rating 1100 mAh
