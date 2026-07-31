@@ -13,13 +13,19 @@ product:
 source:
   uid: src/catl-product-specification-c-sample-stage
   kind: datasheet
+  revision: "CATL product specification, C-sample stage"
   title: CATL 302Ah 3.22V LiFePO4 power battery — Product Specification
   document_date: "2022"
   redistributable: false
+  note: "C-sample specification. CATL states mass-production specs will be redefined."
+  sha256: "2f4be57cdeeb531aa351222f51ef60afdf5e91dcec5aac4a2eb34a6786331fcb"
 
 chemistry:
   designation: LFP
   cathode_text: Lithium iron phosphate (LiFePO4)
+  locator:
+    page: 2
+    quote: "rechargeable lithium iron phosphate power battery"
 
 observations:
   - quantity: capacity
@@ -637,3 +643,45 @@ curves:
     locator:
       page: 4
       quote: "2.4 pulse charge mode, 30s pulse rate at 55 C across SOC 0-100%"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_discharge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 65.0
+      direction: discharge
+    locator:
+      page: 3
+      quote: "2.4.1 pulse discharge mode, 30s pulse rate at 65 C across SOC 0-100%; the datasheet states this row as zero throughout"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_charge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 0.0
+      direction: charge
+    locator:
+      page: 3
+      quote: "2.4.2 pulse charge mode, 30s pulse rate at 0 C across SOC 0-100%; the datasheet states this row as zero throughout"
+  - curve_kind: derating_map
+    x_quantity: state_of_charge
+    x_unit: '%'
+    y_quantity: max_pulse_charge_current
+    y_unit: A
+    x_values: [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+    y_values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    conditions:
+      pulse_duration_s: 30
+      temperature_c: 60.0
+      direction: charge
+    locator:
+      page: 3
+      quote: "2.4.2 pulse charge mode, 30s pulse rate at 60 C across SOC 0-100%; the datasheet states this row as zero throughout"

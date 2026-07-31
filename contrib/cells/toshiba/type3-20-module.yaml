@@ -12,14 +12,19 @@ product:
 source:
   uid: src/sbt-e-006f-20-10
   kind: datasheet
+  revision: "SBT(E)-006f 20-10"
   title: "Toshiba Rechargeable Battery SCiB (industrial lithium-ion battery)"
   url: http://www.scib.jp/en/index.htm
   document_date: "2020-10"
   redistributable: false
+  note: "Catalogue, October 2020. Toshiba: “Specifications shown herein are not guaranteed values.”"
 
 chemistry:
   designation: LTO
   anode_text: Lithium titanium oxide (LTO)
+  locator:
+    page: 2
+    quote: "the lithium titanium oxide (LTO) in the anode layer of SCiB™"
 
 observations:
   - quantity: capacity

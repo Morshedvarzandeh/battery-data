@@ -1,0 +1,127 @@
+{
+ "axis_only": [
+  "Curve axes and signals"
+ ],
+ "groups": {
+  "Current and power": [
+   "max_continuous_discharge_current",
+   "max_continuous_charge_current",
+   "max_pulse_discharge_current",
+   "standard_charge_current",
+   "cv_cutoff_current",
+   "peak_power",
+   "rated_power",
+   "power"
+  ],
+  "Curve axes and signals": [
+   "current",
+   "cycle_number",
+   "diffusion_coefficient",
+   "displacement",
+   "dqdv",
+   "drt_gamma",
+   "dvdq",
+   "entropic_coefficient",
+   "force",
+   "frequency",
+   "impedance_imag",
+   "impedance_real",
+   "intensity",
+   "lithium_content",
+   "pressure",
+   "relaxation_time",
+   "state_of_charge",
+   "temperature",
+   "time",
+   "two_theta",
+   "voltage"
+  ],
+  "Density": [
+   "specific_energy",
+   "energy_density",
+   "specific_capacity",
+   "specific_power",
+   "areal_capacity"
+  ],
+  "Electrical": [
+   "nominal_voltage",
+   "capacity",
+   "open_circuit_voltage",
+   "charge_cutoff_voltage",
+   "discharge_cutoff_voltage",
+   "absolute_max_voltage",
+   "absolute_min_voltage",
+   "shipping_voltage",
+   "energy",
+   "usable_energy"
+  ],
+  "Impedance": [
+   "internal_resistance_ac",
+   "internal_resistance_dc",
+   "ohmic_resistance",
+   "charge_transfer_resistance",
+   "area_specific_impedance"
+  ],
+  "Lifetime": [
+   "cycle_life",
+   "calendar_life",
+   "capacity_retention",
+   "energy_retention",
+   "state_of_health",
+   "knee_point_cycle",
+   "self_discharge_rate",
+   "leakage_current",
+   "first_cycle_efficiency",
+   "coulombic_efficiency",
+   "warranty_cycles",
+   "warranty_throughput",
+   "service_life_hours",
+   "energy_efficiency",
+   "resistance_growth",
+   "round_trip_efficiency"
+  ],
+  "Mechanical": [
+   "expansion_force",
+   "reversible_expansion",
+   "irreversible_expansion",
+   "stack_pressure"
+  ],
+  "Physical": [
+   "mass",
+   "diameter",
+   "height",
+   "length",
+   "width",
+   "thickness",
+   "volume",
+   "electrode_area"
+  ],
+  "Sustainability": [
+   "carbon_footprint_per_kwh",
+   "recycled_content_lithium",
+   "recycled_content_cobalt",
+   "recycled_content_nickel",
+   "recycled_content_lead"
+  ],
+  "System and BMS": [
+   "cooling_capacity",
+   "parallel_count",
+   "series_count",
+   "soc_estimation_accuracy",
+   "soh_estimation_accuracy",
+   "standby_consumption"
+  ],
+  "Thermal and safety": [
+   "operating_temperature_min",
+   "operating_temperature_max",
+   "storage_temperature_min",
+   "storage_temperature_max",
+   "specific_heat_capacity",
+   "thermal_conductivity_in_plane",
+   "thermal_conductivity_through_plane",
+   "runaway_onset_temperature",
+   "max_runaway_temperature",
+   "heat_generation_rate"
+  ]
+ }
+}
