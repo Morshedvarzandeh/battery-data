@@ -16,14 +16,30 @@ body:
         listed as unstated that is in fact printed on the page. Those are
         the two things worth checking.
 
+  - type: textarea
+    id: attachment
+    attributes:
+      label: The PDF
+      description: >
+        Drag the file into this box, or paste a direct link to it. Either
+        works. A dragged file is uploaded to GitHub and the link appears
+        here automatically.
+      placeholder: |
+        Drop the PDF here, or paste https://example.com/cell-datasheet.pdf
+    validations:
+      required: false
+
   - type: input
     id: url
     attributes:
-      label: Datasheet URL
-      description: Direct link to the PDF. Must be reachable without a login.
+      label: Datasheet URL (if you did not attach the file)
+      description: >
+        Must be the PDF itself and reachable without a login — a landing
+        page or a download button's page will not work. Right-click the
+        download link and copy the address.
       placeholder: https://example.com/cell-datasheet.pdf
     validations:
-      required: true
+      required: false
 
   - type: input
     id: manufacturer
