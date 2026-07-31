@@ -1,0 +1,88 @@
+name: Submit a datasheet
+description: Point at a datasheet PDF and get an extraction back for review
+title: "[datasheet] "
+labels: ["datasheet"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill this in and the extractor reads the PDF, writes a contribution
+        file and opens a **pull request** with it. Nothing enters the
+        database from here — you accept, edit or reject that PR.
+
+        The extraction records what the document states and names what it
+        leaves out. Where it goes wrong is usually one of two ways: a quote
+        that does not actually say what the value claims, or a condition
+        listed as unstated that is in fact printed on the page. Those are
+        the two things worth checking.
+
+  - type: input
+    id: url
+    attributes:
+      label: Datasheet URL
+      description: Direct link to the PDF. Must be reachable without a login.
+      placeholder: https://example.com/cell-datasheet.pdf
+    validations:
+      required: true
+
+  - type: input
+    id: manufacturer
+    attributes:
+      label: Manufacturer
+      description: >
+        Who MADE the cell — not who published the document. A test
+        laboratory's report is not evidence that the laboratory built the
+        cell. If the document does not name the maker, say so here.
+      placeholder: Samsung SDI
+    validations:
+      required: true
+
+  - type: input
+    id: model
+    attributes:
+      label: Model number
+      description: As printed on the datasheet.
+      placeholder: INR21700-50E
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Product kind
+      options: [cell, module, pack, system, primary_cell, component]
+      default: 0
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Landing page
+      description: >
+        The page the PDF was published on, if different from the PDF link.
+        Published files move; landing pages usually do not.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: redistributable
+    attributes:
+      label: Licence
+      options:
+        - label: >
+            The licence permits this repository to store the document body.
+            Leave unticked if unsure — the repository then keeps only the
+            extracted facts plus a URL, a hash and a retrieval date, which
+            is the default and is fine.
+          required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything the extractor should know
+      description: >
+        Which pages matter, a model whose numbers sit in a shared comparison
+        table, a revision date printed somewhere odd.
+    validations:
+      required: false
