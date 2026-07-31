@@ -28,8 +28,12 @@ API_URL = "https://api.anthropic.com/v1/messages"
 API_VERSION = "2023-06-01"
 
 # Cheap-and-fast is deliberate for triage volume; override per stage.
-DEFAULT_MODEL = os.getenv("MINER_MODEL", "claude-3-5-haiku-latest")
-EXTRACT_MODEL = os.getenv("MINER_EXTRACT_MODEL", "claude-sonnet-4-5")
+# Triage reads an abstract and answers a yes/no plus a couple of labels, which
+# is a small-model job. Extraction reads a datasheet and has to get a rate, a
+# temperature and a page number right, where a mistake costs reviewer time and
+# may survive into the database -- so it gets the stronger model.
+DEFAULT_MODEL = os.getenv("MINER_MODEL", "claude-haiku-4-5-20251001")
+EXTRACT_MODEL = os.getenv("MINER_EXTRACT_MODEL", "claude-sonnet-5")
 
 
 class LLMError(RuntimeError):
@@ -54,8 +58,20 @@ class AnthropicLLM:
 
     # ------------------------------------------------------------------
     def complete(self, prompt: str, *, schema: dict | None = None,
-                 images: list[bytes] | None = None):
+                 images: list[bytes] | None = None,
+                 pdfs: list[bytes] | None = None):
         content: list[dict] = []
+        # PDFs go up whole rather than as extracted text. Datasheet tables
+        # interleave their columns when flattened -- a row of four cells and a
+        # row of four masses come out as eight numbers in a line, and pairing
+        # them back up is guesswork. The layout is the data.
+        for doc in pdfs or []:
+            content.append({
+                "type": "document",
+                "source": {"type": "base64", "media_type": "application/pdf",
+                           "data": base64.b64encode(doc).decode()},
+                "citations": {"enabled": True},
+            })
         for img in images or []:
             content.append({
                 "type": "image",

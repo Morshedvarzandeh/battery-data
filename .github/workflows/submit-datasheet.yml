@@ -1,0 +1,224 @@
+# =====================================================================
+# Datasheet submission -> extraction -> review.
+#
+# Open an issue with the "Submit a datasheet" template. This reads the PDF,
+# writes a contribution file, and opens a pull request with it.
+#
+# THE PULL REQUEST IS THE REVIEW STEP. That is the whole design: accepting
+# is merging, modifying is editing the branch, rejecting is closing. Nothing
+# reaches the database until a human has said yes, and the schema's
+# review_state mirrors the same idea.
+#
+# Setup (one time): repo Settings -> Secrets and variables -> Actions ->
+# New repository secret ->  Name: ANTHROPIC_API_KEY  Value: sk-ant-...
+# =====================================================================
+name: submit-datasheet
+
+on:
+  issues:
+    types: [opened, labeled]
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Datasheet PDF URL'
+        required: true
+      manufacturer:
+        description: 'Manufacturer (who made the cell)'
+        required: true
+      model:
+        description: 'Model number'
+        required: true
+      kind:
+        description: 'cell | module | pack | system | primary_cell | component'
+        default: 'cell'
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  extract:
+    # Extraction spends API credit, so it does not run for arbitrary
+    # drive-by issues. Everything else about the repository is open; this
+    # one step is not.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (contains(github.event.issue.labels.*.name, 'datasheet') &&
+       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),
+                github.event.issue.author_association))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install pyyaml jsonschema
+
+      - name: Read the request
+        id: req
+        env:
+          # Untrusted text, so it goes in as an environment variable and is
+          # parsed by a Python file. It is never interpolated into a shell
+          # command -- an issue body is written by whoever opened the issue.
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          D_URL: ${{ inputs.url }}
+          D_MANU: ${{ inputs.manufacturer }}
+          D_MODEL: ${{ inputs.model }}
+          D_KIND: ${{ inputs.kind }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            python - <<'PY' > request.json
+          import json, os
+          json.dump({"url": os.environ["D_URL"],
+                     "manufacturer": os.environ["D_MANU"],
+                     "model": os.environ["D_MODEL"],
+                     "kind": os.environ.get("D_KIND") or "cell",
+                     "source_url": "", "redistributable": False,
+                     "notes": ""}, open(1, "w"), indent=2)
+          PY
+          else
+            python .github/scripts/issue_form.py > request.json
+          fi
+          # Newlines are stripped before anything reaches GITHUB_OUTPUT: a
+          # value containing a line break would otherwise write a second
+          # `KEY=value` line and set an output nobody asked for.
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, re
+          r = json.load(open("request.json"))
+          for k in ("manufacturer", "model", "kind"):
+              print(f"{k}=" + re.sub(r"[\r\n]+", " ", str(r[k]))[:120])
+          PY
+          cat request.json
+
+      - name: Extract
+        id: extract
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "no_key=1" >> "$GITHUB_OUTPUT"
+            echo "::error::ANTHROPIC_API_KEY secret is not set. \
+          Settings -> Secrets and variables -> Actions -> New repository secret."
+            exit 1
+          fi
+          python tools/extract_datasheet.py --request request.json | tee extract.log
+
+      - name: Summarise for the reviewer
+        if: always() && steps.extract.outcome == 'success'
+        run: |
+          python - <<'PY' > summary.md
+          import glob, json, os, subprocess, yaml
+          changed = subprocess.run(["git", "ls-files", "-o", "--exclude-standard",
+                                    "contrib/"], capture_output=True,
+                                   text=True).stdout.split()
+          changed += subprocess.run(["git", "diff", "--name-only", "--", "contrib/"],
+                                    capture_output=True, text=True).stdout.split()
+          out = []
+          for path in sorted(set(changed)):
+              d = yaml.safe_load(open(path))
+              obs = d.get("observations", [])
+              out.append(f"### `{path}`\n")
+              p = d.get("product", {})
+              out.append(f"**{p.get('manufacturer','?')} {p.get('model_number','?')}** "
+                         f"— {p.get('kind','?')}, {len(obs)} observation(s)\n")
+              out.append("| Quantity | Value | Conditions | Not stated | p. | Quote |")
+              out.append("|---|---|---|---|---|---|")
+              for o in obs:
+                  c = dict(o.get("conditions") or {})
+                  uns = ", ".join(c.pop("unstated", []) or []) or "—"
+                  c.pop("verbatim", None); c.pop("extra", None)
+                  cond = ", ".join(f"{k}={v}" for k, v in c.items()) or "—"
+                  loc = o.get("locator", {})
+                  q = str(loc.get("quote", "")).replace("|", "\\|")[:90]
+                  out.append(f"| `{o['quantity']}` | {o.get('value')} {o.get('unit','')} "
+                             f"| {cond} | {uns} | {loc.get('page','—')} | {q} |")
+              apps = d.get("applications", [])
+              if apps:
+                  out.append("\n**Applications**\n")
+                  out.append("| Application | Sector | Basis | Confidence | Quote |")
+                  out.append("|---|---|---|---|---|")
+                  for ap in apps:
+                      out.append(f"| {ap['name']} | {ap['sector']} | {ap['basis']} "
+                                 f"| {ap.get('confidence','—')} "
+                                 f"| {str(ap.get('locator',{}).get('quote',''))[:70]} |")
+              out.append("")
+          print("\n".join(out) if out else "_No contribution file was produced._")
+          PY
+          cat summary.md
+
+      - name: Open the review pull request
+        if: steps.extract.outcome == 'success'
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          MANU: ${{ steps.req.outputs.manufacturer }}
+          MODEL: ${{ steps.req.outputs.model }}
+        run: |
+          BRANCH="contrib/$(python -c "
+          import os,re
+          print(re.sub(r'[^a-z0-9]+','-',(os.environ['MANU']+'-'+os.environ['MODEL']).lower()).strip('-'))
+          ")-${GITHUB_RUN_NUMBER}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add contrib/
+          git commit -m "Extract ${MANU} ${MODEL} from its datasheet
+
+          Machine extraction, not yet reviewed. Check that each quote says
+          what its value claims, and that nothing listed as unstated is in
+          fact printed on the page.
+
+          Refs #${ISSUE:-0}"
+          git push -u origin "$BRANCH"
+          {
+            echo "Extracted from the datasheet in #${ISSUE:-'(manual run)'}."
+            echo
+            echo "**Accept** by merging. **Modify** by editing the file on this"
+            echo "branch. **Reject** by closing — nothing is written anywhere else."
+            echo
+            echo "The two failure modes worth checking: a quote that does not"
+            echo "actually say what its value claims, and a condition listed as"
+            echo "not-stated that is in fact printed on the page."
+            echo
+            cat summary.md
+            echo
+            echo "---"
+            echo "_Generated by [Claude Code](https://claude.ai/code)_"
+          } > pr-body.md
+          PR_URL=$(gh pr create --base "${GITHUB_REF_NAME}" --head "$BRANCH" \
+            --title "Contribution: ${MANU} ${MODEL} (needs review)" \
+            --body-file pr-body.md)
+          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Report back on the issue
+        if: always() && github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const ok = '${{ steps.extract.outcome }}' === 'success';
+            const pr = '${{ steps.pr.outputs.url }}';
+            const noKey = '${{ steps.extract.outputs.no_key }}' === '1';
+            let body;
+            if (ok && pr) {
+              body = `Extracted. Review it here: ${pr}\n\n`
+                   + `Merge to accept, edit the branch to modify, close to reject.`;
+            } else if (noKey) {
+              body = `Could not extract: the \`ANTHROPIC_API_KEY\` repository `
+                   + `secret is not set.\n\nSettings → Secrets and variables → `
+                   + `Actions → New repository secret. Only a repository admin `
+                   + `can add it.`;
+            } else {
+              body = `Extraction failed. `
+                   + `[Run log](${context.serverUrl}/${context.repo.owner}/`
+                   + `${context.repo.repo}/actions/runs/${context.runId})\n\n`
+                   + `Common causes: the URL is not a reachable PDF, the file is `
+                   + `over 32 MB, or the document states values without the `
+                   + `conditions they require and the validator refused the result.`;
+            }
+            body += `\n\n---\n_Generated by [Claude Code](https://claude.ai/code)_`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number, body,
+            });

@@ -201,6 +201,8 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/02-conventions.md`](docs/02-conventions.md) | **The 27 places the field genuinely disagrees**, and what this schema does about each |
 | [`docs/03-crosswalk.md`](docs/03-crosswalk.md) | Mapping to BDF, BattINFO/EMMO, BPX, EU Battery Passport, OPTIMADE |
 | [`docs/04-ingestion.md`](docs/04-ingestion.md) | Pipelines, review queue, contribution format |
+| [`docs/05-data-sources.md`](docs/05-data-sources.md) | Sources credited but not reproduced, and the bulk cycling datasets |
+| [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---

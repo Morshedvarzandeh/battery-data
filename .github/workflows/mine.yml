@@ -44,18 +44,25 @@ jobs:
       - name: Discover candidate works
         env:
           CONTACT_EMAIL: ${{ github.repository_owner }}@users.noreply.github.com
+          # The query is user input from the Actions form. It goes in as an
+          # environment variable and is passed as a single argv element --
+          # the previous `eval` around an interpolated string would have run
+          # anything a dispatcher typed.
+          MINER_QUERY: ${{ github.event.inputs.query }}
         run: |
-          EXTRA=""
-          if [ -n "${{ github.event.inputs.query }}" ]; then
-            EXTRA="--query \"${{ github.event.inputs.query }}\""
+          if [ -n "$MINER_QUERY" ]; then
+            python agents/literature-miner/pipeline.py discover \
+              --limit 40 --out discovered.json --query "$MINER_QUERY"
+          else
+            python agents/literature-miner/pipeline.py discover \
+              --limit 40 --out discovered.json
           fi
-          eval python agents/literature-miner/pipeline.py discover \
-            --limit 40 --out discovered.json $EXTRA
           python -c "import json;d=json.load(open('discovered.json'));print(f'{len(d)} works discovered')"
 
       - name: Triage abstracts
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MIN_PRIORITY: ${{ github.event.inputs.min_priority || '0.6' }}
         run: |
           if [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "::warning::ANTHROPIC_API_KEY secret not set - skipping triage."
@@ -63,8 +70,7 @@ jobs:
             exit 0
           fi
           python agents/literature-miner/pipeline.py triage discovered.json \
-            --out triaged.json \
-            --min-priority "${{ github.event.inputs.min_priority || '0.6' }}"
+            --out triaged.json --min-priority "$MIN_PRIORITY"
 
       - name: Upload shortlist
         uses: actions/upload-artifact@v4
