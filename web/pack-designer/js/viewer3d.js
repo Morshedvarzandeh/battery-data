@@ -82,17 +82,23 @@ export class PackViewer {
     if (enclosure != null) this.showEnclosure = enclosure;
     if (wiring != null) this.showWiring = wiring;
     if (this._encGroup) this._encGroup.visible = this.showEnclosure && this.explodeF < 0.05;
-    if (this._wire) this._wire.visible = this.showWiring;
+    // Wire vertices are built from unexploded positions, so it hides with
+    // the enclosure while exploded.
+    if (this._wire) this._wire.visible = this.showWiring && this.explodeF < 0.05;
   }
 
   setPack(layout, chemColor) {
     this.layout = layout;
     if (chemColor) this.chemColor = chemColor;
     this._rebuild();
-    this._frame();
+    if (layout) this._frame();
   }
 
   _clearPack() {
+    // InstancedMesh.dispose() releases the instanceMatrix/instanceColor GPU
+    // buffers, which geometry/material disposal does not cover.
+    this._cells?.dispose();
+    this._caps?.dispose();
     this.packGroup.traverse((o) => {
       if (o.geometry) o.geometry.dispose();
       if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => m.dispose());

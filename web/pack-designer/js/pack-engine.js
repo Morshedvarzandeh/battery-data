@@ -84,6 +84,7 @@ export function gridDims(cell, N, nx, nz, arrangement, spacingMm, layerGapMm, or
   if (nx < 1 || nz < 1) return null;
   const perLayer = Math.ceil(N / nz);
   if (perLayer < 1) return null;
+  if (nz > 1 && (nz - 1) * perLayer >= N) return null; // last layer would be empty
   const ny = Math.ceil(perLayer / nx);
   if ((ny - 1) * nx >= perLayer) return null; // last row would be empty
   const od = orientedDims(cell, orientation);
@@ -135,7 +136,8 @@ export function layoutPack(cell, s, p, opts = {}) {
   const layerGapMm = opts.layerGapMm ?? 2;
   const wallMm = opts.wallMm ?? 2;
   const headroomMm = opts.headroomMm ?? (cell.form === 'cylindrical' ? 8 : 15);
-  const nz = Math.max(1, Math.min(opts.nz || 1, N));
+  let nz = Math.max(1, Math.min(opts.nz || 1, N));
+  while (nz > 1 && (nz - 1) * Math.ceil(N / nz) >= N) nz--; // drop empty top layers
   const nx = (opts.nx && opts.nx > 0)
     ? Math.min(opts.nx, Math.ceil(N / nz))
     : autoNx(cell, N, nz, arrangement, spacingMm, orientation);
