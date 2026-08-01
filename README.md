@@ -230,7 +230,6 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | `agents/literature-miner/` | Papers and datasets → structured records with provenance |
 | `crosswalk/` | Generated BDF ↔ EMMO ↔ BPX ↔ Battery Passport mapping |
 | `tools/validate_contrib.py` | CI gate: refuses a contribution whose values lack their conditions |
-| `web/pack-designer/` | **3D pack designer** — build S·P packs from the cell library (cylindrical hex/grid, prismatic/pouch stacks, spacers, enclosure), design from a usage profile, optimize packing into an envelope, and audit the result against UN 38.3 / IEC / UL / ECE guidance. Static page, no build step |
 
 ### The query no other battery schema can express
 
