@@ -169,6 +169,61 @@ def envelope(data, *, request_url: str, returned: int, more: bool,
     return {"meta": meta, "data": data}
 
 
+# ---------------------------------------------------------------------
+# Packs and the vehicles they are fielded in.
+#
+# Cells are the deep end of this database; packs are the end most callers
+# arrive at, because "what is in this car" is the first question anyone
+# asks. Kept as its own endpoint rather than a product_kind filter on
+# /v1/cells, because the useful shape is different: a pack query wants its
+# assembly, its applications and its market values folded in.
+#
+# Attribution travels with the row. A caller that values a pack against a
+# community-reported link should be able to see that it did.
+# ---------------------------------------------------------------------
+PACK_SELECT = """
+SELECT
+  p.uid                                        AS product_uid,
+  p.model_number,
+  o.name                                       AS manufacturer,
+  pc.designation                               AS chemistry,
+  p.form_factor_code,
+  energy.value_si / 3.6e6                      AS rated_kwh,
+  mass.value_si                                AS pack_mass_kg,
+  asm.quantity                                 AS module_count,
+  cmv.unit_value                               AS used_module_value_eur,
+  rp.price_per_kwh                             AS oem_replacement_price_eur_per_kwh,
+  array_remove(array_agg(DISTINCT a.name), NULL)          AS vehicle_models,
+  array_remove(array_agg(DISTINCT a.sector::text), NULL)  AS sectors,
+  max(pa.confidence)                           AS attribution_confidence,
+  min(pa.basis::text)                          AS attribution_basis
+FROM bd.product p
+JOIN bd.organization o            ON o.id = p.manufacturer_id
+JOIN bd.product_revision r        ON r.product_id = p.id
+LEFT JOIN bd.product_chemistry pc ON pc.product_revision_id = r.id
+LEFT JOIN bd.product_assembly asm ON asm.parent_revision_id = r.id
+LEFT JOIN bd.product_revision mr  ON mr.id = asm.child_revision_id
+LEFT JOIN bd.component_market_value cmv
+       ON cmv.product_revision_id = mr.id AND cmv.valid_to IS NULL
+LEFT JOIN bd.replacement_price rp
+       ON rp.product_revision_id = r.id AND rp.valid_to IS NULL
+LEFT JOIN bd.product_application pa
+       ON pa.product_revision_id = r.id AND pa.superseded_by IS NULL
+LEFT JOIN bd.application a        ON a.id = pa.application_id
+LEFT JOIN bd.observation energy
+       ON energy.product_revision_id = r.id AND energy.statistic = 'nominal'
+      AND energy.quantity_id = (SELECT id FROM bd.quantity WHERE code='energy')
+LEFT JOIN bd.observation mass
+       ON mass.product_revision_id = r.id AND mass.statistic = 'nominal'
+      AND mass.quantity_id = (SELECT id FROM bd.quantity WHERE code='mass')
+WHERE p.kind = 'pack'
+GROUP BY p.uid, p.model_number, o.name, pc.designation, p.form_factor_code,
+         asm.quantity, cmv.unit_value, rp.price_per_kwh,
+         energy.value_si, mass.value_si
+ORDER BY o.name, p.model_number
+"""
+
+
 class Handler(BaseHTTPRequestHandler):
     db: Db = None                                  # injected in serve()
     server_version = "battery-data/1.0"
@@ -216,6 +271,8 @@ class Handler(BaseHTTPRequestHandler):
             m = re.fullmatch(r"/v1/cells/(.+)", path)
             if m:
                 return self._cell_detail(urllib.parse.unquote(m.group(1)), q)
+            if path == "/v1/packs":
+                return self._packs(q, self.path)
             if path == "/v1/crosswalk":
                 return self._crosswalk()
             return self._error(404, "Not found",
@@ -327,6 +384,28 @@ class Handler(BaseHTTPRequestHandler):
             payload["links"]["next"] = (
                 f"/v1/cells?filter={urllib.parse.quote(expr)}"
                 f"&page_limit={limit}&page_offset={offset + limit}")
+        self._send(200, payload)
+
+    def _packs(self, q: dict, request_url: str):
+        limit = min(int((q.get("page_limit") or [200])[0]), 500)
+        offset = int((q.get("page_offset") or [0])[0])
+        sector = (q.get("sector") or [""])[0]
+
+        sql = PACK_SELECT
+        params: list = []
+        if sector:
+            # Filter after aggregation, since sectors is an aggregate.
+            sql = "SELECT * FROM (" + sql + ") t WHERE %s = ANY(t.sectors)"
+            params.append(sector)
+
+        sql += " LIMIT %s OFFSET %s"
+        rows = self.db.query(sql, params + [limit + 1, offset])
+        more = len(rows) > limit
+        rows = rows[:limit]
+
+        payload = envelope(rows, request_url=request_url,
+                           returned=len(rows), more=more)
+        payload["links"] = {"base_url": "/v1"}
         self._send(200, payload)
 
     def _cell_detail(self, uid: str, q: dict):

@@ -24,8 +24,12 @@ jobs:
         run: ./tools/build_db.sh batterydb
       - name: Load seed data
         run: psql -v ON_ERROR_STOP=1 -d batterydb -f seed/001_reference_cells.sql
+      - name: Load packs and valuation seed
+        run: psql -v ON_ERROR_STOP=1 -d batterydb -f seed/002_packs_and_valuation.sql
       - name: Run killer queries
         run: psql -v ON_ERROR_STOP=1 -d batterydb -f tests/010_killer_queries.sql
+      - name: Run valuation queries
+        run: psql -v ON_ERROR_STOP=1 -d batterydb -f tests/020_valuation_queries.sql
       - name: Assert the schema refuses uninterpretable data
         run: |
           # A bare internal resistance with no conditions MUST fail.
