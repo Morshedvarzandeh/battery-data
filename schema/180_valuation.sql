@@ -315,6 +315,125 @@ CREATE TABLE replacement_price (
 );
 
 -- ---------------------------------------------------------------------
+-- How fast a pack wears out
+--
+-- A state-of-health figure is a number without a yardstick. 87% is
+-- excellent on a nine-year-old car and disappointing on a two-year-old
+-- one, and nothing in the reading itself says which. What supplies the
+-- yardstick is a fade curve for the pack model, and that belongs here
+-- rather than in a consumer: it is a claim about a product, from sources,
+-- and it goes stale exactly the way a payable term does.
+--
+-- WHY THIS HANGS OFF THE PRODUCT AND NOT THE CHEMISTRY.
+--
+-- Cooling design predicts how a fleet ages better than cathode chemistry
+-- does. Two NMC packs of the same vintage diverge sharply if one is
+-- liquid-cooled and the other is not, which is the whole story of the
+-- early Leaf. So a profile attaches to a product where one is known, and
+-- falls back to a chemistry designation only where it is not.
+--
+-- WHAT MAKES A CURVE MEAN ANYTHING: THE SPREAD.
+--
+-- Real packs of one model at one age differ by several points of state of
+-- health. Without spread_points_at_8y a consumer can only say "yours is
+-- below average", which is true of half of everything. With it, the same
+-- consumer can say whether a pack is genuinely unusual. A single-number
+-- curve invites a verdict the data does not support.
+--
+-- THE DOUBLE-COUNTING TRAP.
+--
+-- fade_at_8y comes from cars that were being driven, so it already
+-- contains a typical amount of cycling. reference_km_per_year records how
+-- much, so a consumer can charge only the DIFFERENCE between a pack's
+-- actual use and that reference. Storing fade and cycle life without the
+-- reference lets a consumer add both in full and bill the same kilometres
+-- twice.
+-- ---------------------------------------------------------------------
+
+CREATE TYPE thermal_management AS ENUM (
+  'passive',                -- no cooling system at all
+  'air',                    -- forced air over the modules
+  'liquid',                 -- a coolant loop, including direct refrigerant
+  'unknown'
+);
+
+CREATE TABLE degradation_profile (
+  id                  bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
+  -- Exactly one of these. A profile is about a specific pack, or it is a
+  -- stated fallback for a chemistry; anything else is an unattributed
+  -- claim about batteries in general.
+  product_id          bigint REFERENCES product(id) ON DELETE CASCADE,
+  chemistry           text,
+
+  thermal_management  thermal_management NOT NULL DEFAULT 'unknown',
+
+  -- Capacity lost after eight years at reference_km_per_year in a
+  -- temperate climate. Eight years because that is where the warranty
+  -- floors and the fleet studies both land, so sources are comparable.
+  fade_at_8y          numeric(4,3) NOT NULL CHECK (fade_at_8y BETWEEN 0 AND 1),
+
+  -- Equivalent full cycles to 80% state of health. Prices the deviation
+  -- from reference use, not the use itself. See the header.
+  cycle_life_to_80pct int CHECK (cycle_life_to_80pct IS NULL
+                                 OR cycle_life_to_80pct > 0),
+  reference_km_per_year numeric(8,1) CHECK (reference_km_per_year IS NULL
+                                            OR reference_km_per_year >= 0),
+  km_per_kwh          numeric(5,2) CHECK (km_per_kwh IS NULL OR km_per_kwh > 0),
+
+  -- Fade goes with time to this power. 0.5 is the square root, which is
+  -- what diffusion-limited film growth predicts and what field data shows:
+  -- a visible drop in the first year, then a long flattening.
+  calendar_exponent   numeric(3,2) CHECK (calendar_exponent IS NULL
+                                          OR calendar_exponent BETWEEN 0.1 AND 2),
+
+  -- Where the curve steepens near end of life, and by how much.
+  knee_onset_soh      numeric(4,3) CHECK (knee_onset_soh IS NULL
+                                          OR knee_onset_soh BETWEEN 0 AND 1),
+  knee_acceleration   numeric(4,2) CHECK (knee_acceleration IS NULL
+                                          OR knee_acceleration >= 1),
+
+  -- How exposed this pack is to heat, which is the largest difference
+  -- between two otherwise identical batteries in different places.
+  climate_sensitivity text NOT NULL DEFAULT 'medium'
+                      CHECK (climate_sensitivity IN ('low','medium','high')),
+
+  -- One standard deviation in state-of-health points across real packs of
+  -- this model at eight years. The number that turns "below average" into
+  -- "genuinely unusual".
+  spread_points_at_8y numeric(4,1) CHECK (spread_points_at_8y IS NULL
+                                          OR spread_points_at_8y >= 0),
+
+  confidence          numeric(3,2) CHECK (confidence BETWEEN 0 AND 1),
+  basis               text,                    -- what it was calibrated against
+
+  valid_from          date NOT NULL,
+  valid_to            date,
+  region              text,
+  provenance_id       bigint NOT NULL REFERENCES provenance(id),
+  notes               text,
+  created_at          timestamptz NOT NULL DEFAULT now(),
+
+  CHECK (valid_to IS NULL OR valid_to > valid_from),
+  CONSTRAINT profile_is_product_or_chemistry CHECK (
+    num_nonnulls(product_id, chemistry) = 1
+  ),
+  UNIQUE NULLS NOT DISTINCT (product_id, chemistry, region, valid_from)
+);
+
+COMMENT ON TABLE degradation_profile IS
+  'Fade curve for a pack model, or for a chemistry as a stated fallback. '
+  'Describes a population, never an individual pack: a measured state of '
+  'health always outranks anything here.';
+COMMENT ON COLUMN degradation_profile.fade_at_8y IS
+  'Capacity lost after eight years at reference_km_per_year in a temperate '
+  'climate. Already includes the cycling a typical car of this model does.';
+COMMENT ON COLUMN degradation_profile.spread_points_at_8y IS
+  'One standard deviation in state-of-health points across packs of this '
+  'model at eight years. Without it, a consumer can only say a pack is '
+  'below average, which is true of half of them.';
+
+-- ---------------------------------------------------------------------
 -- Model calibration
 --
 -- Deliberately generic, and the only table here that is. The rows are not
@@ -428,3 +547,8 @@ CREATE INDEX replacement_price_application
   ON replacement_price (application_id, valid_from DESC);
 CREATE INDEX valuation_assumption_lookup
   ON valuation_assumption (key, valid_from DESC);
+CREATE INDEX degradation_profile_product
+  ON degradation_profile (product_id, valid_from DESC);
+CREATE INDEX degradation_profile_chemistry
+  ON degradation_profile (chemistry, valid_from DESC)
+  WHERE chemistry IS NOT NULL;

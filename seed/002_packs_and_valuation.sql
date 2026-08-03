@@ -76,6 +76,14 @@ ON CONFLICT (uid) DO NOTHING;
 INSERT INTO source_location (source_id, locator_kind)
 SELECT id,'dataset' FROM source WHERE uid='src/bv-used-parts-market'
 ON CONFLICT DO NOTHING;
+INSERT INTO source (uid, kind, title, url, license, redistributable,
+                    retrieved_at, scope_note)
+VALUES ('src/bv-degradation-profiles','dataset','battery-value pack degradation profiles','https://github.com/Morshedvarzandeh/battery-worldcup','MIT', true, now(),
+        'Fade curves per pack model, calibrated against published fleet telemetry studies, OEM warranty floors and aggregated owner-reported capacity readings. Cohort central estimates with an explicit spread; they describe a population and never an individual pack.')
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO source_location (source_id, locator_kind)
+SELECT id,'dataset' FROM source WHERE uid='src/bv-degradation-profiles'
+ON CONFLICT DO NOTHING;
 
 INSERT INTO provenance (source_location_id, evidence, extraction,
                         contributor_id, confidence, review,
@@ -112,6 +120,15 @@ SELECT sl.id, 'estimated'::evidence_class,'manual_entry'::extraction_method,
        0.6, 'pending_review'::review_state, 'src/bv-used-parts-market'
   FROM source_location sl JOIN source s ON s.id=sl.source_id
  WHERE s.uid='src/bv-used-parts-market'
+ LIMIT 1;
+INSERT INTO provenance (source_location_id, evidence, extraction,
+                        contributor_id, confidence, review,
+                        derivation_note)
+SELECT sl.id, 'literature_reported'::evidence_class,'manual_entry'::extraction_method,
+       (SELECT id FROM contributor WHERE uid='user/battery-value-export'),
+       0.7, 'pending_review'::review_state, 'src/bv-degradation-profiles'
+  FROM source_location sl JOIN source s ON s.id=sl.source_id
+ WHERE s.uid='src/bv-degradation-profiles'
  LIMIT 1;
 
 -- ---------------------------------------------------------------------
@@ -3542,6 +3559,338 @@ INSERT INTO product_application (application_id,
 SELECT a.id,(SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-powerwall2@bv'),'traction',1,'teardown',0.65,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM application a WHERE a.uid='app/powerwall-2'
+ON CONFLICT DO NOTHING;
+
+-- ---------------------------------------------------------------------
+-- Degradation profiles: how fast each pack model wears out.
+--
+-- fade_at_8y already contains the cycling a typical car of this
+-- model does, which is what reference_km_per_year records. A
+-- consumer that adds a full cycle term on top would bill the same
+-- kilometres twice.
+-- ---------------------------------------------------------------------
+INSERT INTO valuation_assumption (key, value_num, unit,
+       valid_from, region, provenance_id) VALUES
+  ('degradation.reference_km_per_year',13500,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('degradation.km_per_kwh',5.5,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('degradation.calendar_exponent',0.5,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('degradation.knee_onset_soh',0.68,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('degradation.knee_acceleration',1.35,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('degradation.spread_points_at_8y',5.0,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('climate_factor.cool',0.82,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('climate_factor.temperate',1.0,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('climate_factor.warm',1.25,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('climate_factor.hot',1.55,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('climate_sensitivity.low',0.5,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('climate_sensitivity.medium',1.0,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles')),
+  ('climate_sensitivity.high',1.4,'fraction','2026-01-01','EU',
+   (SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'));
+
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'passive'::thermal_management,
+       0.28,'high',0.85,
+       'large owner-reported dataset, plus the well-documented hot-climate failures','No cooling at all, and a manganese-spinel cathode that dislikes heat. The fastest-ageing mainstream EV pack ever sold, and the reason every maker since has cooled its packs.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 1200, 9000, 7.0
+  FROM product p WHERE p.uid='pack/nissan/nissan-leaf-ze0-24'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'passive'::thermal_management,
+       0.19,'high',0.85,
+       'owner-reported capacity readings and fleet telemetry','Still passively cooled, but a better cathode. Rapid-charges badly in summer, so a pack used mainly on DC fast chargers ages well ahead of this curve.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 1500, 11000, 6.0
+  FROM product p WHERE p.uid='pack/nissan/nissan-leaf-ze1-40'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'passive'::thermal_management,
+       0.16,'high',0.65,
+       'owner-reported readings; fewer years in service than the 40 kWh','The bigger pack runs each cell gentler for the same journey, which offsets some of the missing cooling.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 1600, 13000, 5.5
+  FROM product p WHERE p.uid='pack/nissan/nissan-leaf-ze1-62'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'air'::thermal_management,
+       0.17,'medium',0.65,
+       'fleet telemetry and leasing-company return data','Air cooling and a low charge rate for most of its life. Many were battery-leased, so their capacity was tracked and weak packs replaced.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 1600, 11000, 5.0
+  FROM product p WHERE p.uid='pack/renault/renault-zoe-ze40'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'air'::thermal_management,
+       0.15,'medium',0.65,
+       'fleet telemetry',NULL,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 1700, 12000, 4.5
+  FROM product p WHERE p.uid='pack/renault/renault-zoe-ze50'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.15,'low',0.85,
+       'long service history with refrigerant cooling from new','Directly refrigerant-cooled, so climate barely moves it. The small pack is worked hard per kilometre, which is what keeps this above the later cars.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 1600, 9500, 4.0
+  FROM product p WHERE p.uid='pack/bmw/bmw-i3-60ah'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.13,'low',0.85,
+       'long service history; capacity readings widely published by owners',NULL,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 1800, 10500, 3.5
+  FROM product p WHERE p.uid='pack/bmw/bmw-i3-94ah'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.12,'low',0.85,
+       'service history and owner-reported readings','One of the best-ageing packs of its generation.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 2000, 11000, 3.5
+  FROM product p WHERE p.uid='pack/bmw/bmw-i3-120ah'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.11,'low',0.85,
+       'manufacturer fleet reporting and large owner-telemetry datasets','Loses most of its first few percent quickly, then flattens hard. High annual mileage is normal for this car, and the reference reflects that.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 2000, 18000, 3.5
+  FROM product p WHERE p.uid='pack/tesla/tesla-model3-lr'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.12,'medium',0.65,
+       'owner telemetry; fewer years in service','Charged to 100% routinely by design, which costs a little calendar life but the cell tolerates cycling far better. High-mileage examples age much better than the nickel packs.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 3500, 16000, 3.5
+  FROM product p WHERE p.uid='pack/tesla/tesla-model3-lfp'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.13,'low',0.85,
+       'very long service history across a large owner-reported dataset','The oldest large fleet on record, and the clearest demonstration of the flattening curve: most of the loss happens in the first three years.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 1800, 17000, 4.5
+  FROM product p WHERE p.uid='pack/tesla/tesla-models-85'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.13,'low',0.65,
+       'warranty floor plus early fleet telemetry',NULL,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 2000, 13500, 4.0
+  FROM product p WHERE p.uid='pack/volkswagen/vw-id3-58'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.12,'low',0.65,
+       'warranty floor plus early fleet telemetry',NULL,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 2000, 15000, 4.0
+  FROM product p WHERE p.uid='pack/volkswagen/vw-id4-77'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.11,'low',0.85,
+       'fleet telemetry across several years and climates','Consistently one of the slowest-ageing packs measured.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 2000, 14000, 3.5
+  FROM product p WHERE p.uid='pack/hyundai/hyundai-kona-64'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.12,'medium',0.45,
+       'manufacturer cycle-life claims; too few years in service to verify calendar fade','The cell outlasts the car on cycles. What limits this pack is calendar time, not use, so mileage barely moves it.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 4000, 14000, 4.0
+  FROM product p WHERE p.uid='pack/byd/byd-atto3-60'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.14,'low',0.65,
+       'warranty floor plus fleet telemetry',NULL,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 1800, 12000, 4.5
+  FROM product p WHERE p.uid='pack/stellantis/psa-emp1-50'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.1,'low',0.85,
+       'fleet telemetry; heavily buffered pack','Only about 86% of the pack is ever used. The buffer is expensive in kWh you paid for and never see, and it is why this pack ages so slowly.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 2000, 16000, 3.0
+  FROM product p WHERE p.uid='pack/audi/audi-etron-95'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.12,'low',0.65,
+       'warranty floor plus fleet telemetry',NULL,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 2000, 15000, 4.0
+  FROM product p WHERE p.uid='pack/polestar/polestar2-78'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'air'::thermal_management,
+       0.2,'high',0.65,
+       'very long service history; failures are usually one weak module, not even fade','A hybrid pack cycles shallowly thousands of times a year, so mileage hardly matters. These rarely fade to death; they fail when one module drifts and the others carry it. Cell imbalance is the number to watch, not capacity.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 3000, 15000, 8.0
+  FROM product p WHERE p.uid='pack/toyota/toyota-prius-xw30-nimh'
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (product_id, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, reference_km_per_year, spread_points_at_8y)
+SELECT p.id,'liquid'::thermal_management,
+       0.16,'low',0.65,
+       'manufacturer warranty floor of 70% retention at ten years','A stationary product, cycled daily by design. Its cycle count is meaningful where a car''s mileage is not, so the reference mileage does not apply.',
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 3500, 0, 4.0
+  FROM product p WHERE p.uid='pack/tesla/tesla-powerwall2'
+ON CONFLICT DO NOTHING;
+
+-- Chemistry fallbacks, for packs the catalogue does not recognise.
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, spread_points_at_8y)
+VALUES ('LMO','unknown'::thermal_management,
+        0.26,'high',0.45,
+        NULL,'Manganese dissolves out of the cathode at temperature. Almost every LMO traction pack was passively cooled.',
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 7.0)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, spread_points_at_8y)
+VALUES ('NMC111','unknown'::thermal_management,
+        0.15,'medium',0.45,
+        NULL,NULL,
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 5.0)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, spread_points_at_8y)
+VALUES ('NMC532','unknown'::thermal_management,
+        0.15,'medium',0.45,
+        NULL,NULL,
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 5.0)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, spread_points_at_8y)
+VALUES ('NMC622','unknown'::thermal_management,
+        0.14,'medium',0.45,
+        NULL,NULL,
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 4.5)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, spread_points_at_8y)
+VALUES ('NMC712','unknown'::thermal_management,
+        0.13,'medium',0.45,
+        NULL,NULL,
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 4.5)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, spread_points_at_8y)
+VALUES ('NMC811','unknown'::thermal_management,
+        0.14,'medium',0.45,
+        NULL,'More nickel buys energy density at some cost in stability.',
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 5.0)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, spread_points_at_8y)
+VALUES ('NCA','unknown'::thermal_management,
+        0.13,'low',0.45,
+        NULL,NULL,
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 4.0)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, spread_points_at_8y)
+VALUES ('LFP','unknown'::thermal_management,
+        0.12,'medium',0.45,
+        NULL,'Outstanding on cycles, ordinary on calendar time. An LFP pack that sits unused ages much like any other.',
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 3500, 4.0)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, spread_points_at_8y)
+VALUES ('LMFP','unknown'::thermal_management,
+        0.13,'medium',0.45,
+        NULL,NULL,
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 2800, 4.5)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, spread_points_at_8y)
+VALUES ('LTO','unknown'::thermal_management,
+        0.07,'low',0.45,
+        NULL,'Barely ages. Its problem is energy density and price, never life.',
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 15000, 2.5)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, spread_points_at_8y)
+VALUES ('LCO','unknown'::thermal_management,
+        0.3,'high',0.45,
+        NULL,NULL,
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 7.0)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, spread_points_at_8y)
+VALUES ('NA_ION','unknown'::thermal_management,
+        0.16,'medium',0.45,
+        NULL,'Too new for field data. This is an expectation, not an observation.',
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 6.0)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, spread_points_at_8y)
+VALUES ('NIMH','unknown'::thermal_management,
+        0.2,'high',0.45,
+        NULL,NULL,
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 3000, 8.0)
+ON CONFLICT DO NOTHING;
+INSERT INTO degradation_profile (chemistry, thermal_management,
+       fade_at_8y, climate_sensitivity, confidence, basis, notes,
+       valid_from, region, provenance_id, cycle_life_to_80pct, spread_points_at_8y)
+VALUES ('LEAD_ACID','unknown'::thermal_management,
+        0.45,'high',0.45,
+        NULL,'Short-lived by design and cheap to replace, which is why nobody tracks its fade closely.',
+        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-degradation-profiles'), 500, 10.0)
 ON CONFLICT DO NOTHING;
 
 -- ---------------------------------------------------------------------
