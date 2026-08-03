@@ -392,10 +392,15 @@ INSERT INTO valuation_assumption (key, pathway, value_num, unit,
 -- Nissan Leaf ZE0 24 kWh
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/nissan/nissan-leaf-ze0-24','pack',(SELECT id FROM organization WHERE uid='org/nissan'),'nissan-leaf-ze0-24','Nissan',
+VALUES ('pack/nissan/nissan-leaf-ze0-24','pack',(SELECT id FROM organization WHERE uid='org/nissan'),'Nissan Leaf ZE0 24 kWh','Nissan',
         'pouch','unknown', true,
         'Passively cooled. Very strong second-life and DIY demand keeps module resale well above scrap value.')
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('eM61'),('leaf24'),('nissan-leaf-ze0-24'),('ze0')) AS v(alias)
+ WHERE p.uid='pack/nissan/nissan-leaf-ze0-24'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/nissan/nissan-leaf-ze0-24@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -422,6 +427,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze0-2
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/nissan/nissan-leaf-ze0-24-bms','component',(SELECT id FROM organization WHERE uid='org/nissan'),'Battery management system for Nissan Leaf ZE0 24 kWh',
+        'Nissan','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/nissan/nissan-leaf-ze0-24-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/nissan/nissan-leaf-ze0-24-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze0-24@bv'),(SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze0-24-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze0-24-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/nissan/nissan-leaf-ze0-24-hv_box','component',(SELECT id FROM organization WHERE uid='org/nissan'),'HV junction box for Nissan Leaf ZE0 24 kWh',
+        'Nissan','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/nissan/nissan-leaf-ze0-24-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/nissan/nissan-leaf-ze0-24-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze0-24@bv'),(SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze0-24-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze0-24-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/nissan/nissan-leaf-ze0-24-thermal','component',(SELECT id FROM organization WHERE uid='org/nissan'),'Cooling plate assembly for Nissan Leaf ZE0 24 kWh',
+        'Nissan','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/nissan/nissan-leaf-ze0-24-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/nissan/nissan-leaf-ze0-24-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze0-24@bv'),(SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze0-24-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze0-24-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/nissan/nissan-leaf-ze0-24','module',(SELECT id FROM organization WHERE uid='org/nissan'),'nissan-leaf-ze0-24-module',
         'Nissan','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -439,7 +507,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/nissan/nissan-leaf-ze0-24@bv'),42.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/nissan/nissan-leaf-ze0-24@bv'),42.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -485,10 +553,15 @@ ON CONFLICT DO NOTHING;
 -- Nissan Leaf ZE1 40 kWh
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/nissan/nissan-leaf-ze1-40','pack',(SELECT id FROM organization WHERE uid='org/nissan'),'nissan-leaf-ze1-40','Nissan',
+VALUES ('pack/nissan/nissan-leaf-ze1-40','pack',(SELECT id FROM organization WHERE uid='org/nissan'),'Nissan Leaf ZE1 40 kWh','Nissan',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('leaf40'),('nissan-leaf-ze1-40'),('ze1')) AS v(alias)
+ WHERE p.uid='pack/nissan/nissan-leaf-ze1-40'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/nissan/nissan-leaf-ze1-40@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -515,6 +588,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze1-4
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/nissan/nissan-leaf-ze1-40-bms','component',(SELECT id FROM organization WHERE uid='org/nissan'),'Battery management system for Nissan Leaf ZE1 40 kWh',
+        'Nissan','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/nissan/nissan-leaf-ze1-40-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/nissan/nissan-leaf-ze1-40-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze1-40@bv'),(SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-40-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-40-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/nissan/nissan-leaf-ze1-40-hv_box','component',(SELECT id FROM organization WHERE uid='org/nissan'),'HV junction box for Nissan Leaf ZE1 40 kWh',
+        'Nissan','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/nissan/nissan-leaf-ze1-40-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/nissan/nissan-leaf-ze1-40-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze1-40@bv'),(SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-40-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-40-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/nissan/nissan-leaf-ze1-40-thermal','component',(SELECT id FROM organization WHERE uid='org/nissan'),'Cooling plate assembly for Nissan Leaf ZE1 40 kWh',
+        'Nissan','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/nissan/nissan-leaf-ze1-40-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/nissan/nissan-leaf-ze1-40-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze1-40@bv'),(SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-40-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-40-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/nissan/nissan-leaf-ze1-40','module',(SELECT id FROM organization WHERE uid='org/nissan'),'nissan-leaf-ze1-40-module',
         'Nissan','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -532,7 +668,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/nissan/nissan-leaf-ze1-40@bv'),105.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/nissan/nissan-leaf-ze1-40@bv'),105.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -566,10 +702,15 @@ ON CONFLICT DO NOTHING;
 -- Nissan Leaf e+ 62 kWh
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/nissan/nissan-leaf-ze1-62','pack',(SELECT id FROM organization WHERE uid='org/nissan'),'nissan-leaf-ze1-62','Nissan',
+VALUES ('pack/nissan/nissan-leaf-ze1-62','pack',(SELECT id FROM organization WHERE uid='org/nissan'),'Nissan Leaf e+ 62 kWh','Nissan',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('leaf62'),('leafeplus'),('nissan-leaf-ze1-62')) AS v(alias)
+ WHERE p.uid='pack/nissan/nissan-leaf-ze1-62'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/nissan/nissan-leaf-ze1-62@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -596,6 +737,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze1-6
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/nissan/nissan-leaf-ze1-62-bms','component',(SELECT id FROM organization WHERE uid='org/nissan'),'Battery management system for Nissan Leaf e+ 62 kWh',
+        'Nissan','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/nissan/nissan-leaf-ze1-62-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/nissan/nissan-leaf-ze1-62-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze1-62@bv'),(SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-62-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-62-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/nissan/nissan-leaf-ze1-62-hv_box','component',(SELECT id FROM organization WHERE uid='org/nissan'),'HV junction box for Nissan Leaf e+ 62 kWh',
+        'Nissan','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/nissan/nissan-leaf-ze1-62-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/nissan/nissan-leaf-ze1-62-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze1-62@bv'),(SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-62-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-62-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/nissan/nissan-leaf-ze1-62-thermal','component',(SELECT id FROM organization WHERE uid='org/nissan'),'Cooling plate assembly for Nissan Leaf e+ 62 kWh',
+        'Nissan','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/nissan/nissan-leaf-ze1-62-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/nissan/nissan-leaf-ze1-62-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/nissan/nissan-leaf-ze1-62@bv'),(SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-62-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/nissan/nissan-leaf-ze1-62-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/nissan/nissan-leaf-ze1-62','module',(SELECT id FROM organization WHERE uid='org/nissan'),'nissan-leaf-ze1-62-module',
         'Nissan','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -613,7 +817,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/nissan/nissan-leaf-ze1-62@bv'),155.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/nissan/nissan-leaf-ze1-62@bv'),155.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -647,10 +851,15 @@ ON CONFLICT DO NOTHING;
 -- Renault Zoe ZE40 41 kWh
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/renault/renault-zoe-ze40','pack',(SELECT id FROM organization WHERE uid='org/renault'),'renault-zoe-ze40','Renault',
+VALUES ('pack/renault/renault-zoe-ze40','pack',(SELECT id FROM organization WHERE uid='org/renault'),'Renault Zoe ZE40 41 kWh','Renault',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('renault-zoe-ze40'),('ze40'),('zoe41')) AS v(alias)
+ WHERE p.uid='pack/renault/renault-zoe-ze40'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/renault/renault-zoe-ze40@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -675,6 +884,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/renault/renault-zoe-ze40
        305.0,'kg',305.0,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM quantity q WHERE q.code='mass';
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/renault/renault-zoe-ze40-bms','component',(SELECT id FROM organization WHERE uid='org/renault'),'Battery management system for Renault Zoe ZE40 41 kWh',
+        'Renault','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/renault/renault-zoe-ze40-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/renault/renault-zoe-ze40-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/renault/renault-zoe-ze40@bv'),(SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze40-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze40-bms@bv'),260.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/renault/renault-zoe-ze40-hv_box','component',(SELECT id FROM organization WHERE uid='org/renault'),'HV junction box for Renault Zoe ZE40 41 kWh',
+        'Renault','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/renault/renault-zoe-ze40-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/renault/renault-zoe-ze40-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/renault/renault-zoe-ze40@bv'),(SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze40-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze40-hv_box@bv'),190.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/renault/renault-zoe-ze40-thermal','component',(SELECT id FROM organization WHERE uid='org/renault'),'Cooling plate assembly for Renault Zoe ZE40 41 kWh',
+        'Renault','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/renault/renault-zoe-ze40-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/renault/renault-zoe-ze40-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/renault/renault-zoe-ze40@bv'),(SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze40-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze40-thermal@bv'),70.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
 VALUES ('module/renault/renault-zoe-ze40','module',(SELECT id FROM organization WHERE uid='org/renault'),'renault-zoe-ze40-module',
@@ -740,10 +1012,15 @@ ON CONFLICT DO NOTHING;
 -- Renault Zoe ZE50 52 kWh
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/renault/renault-zoe-ze50','pack',(SELECT id FROM organization WHERE uid='org/renault'),'renault-zoe-ze50','Renault',
+VALUES ('pack/renault/renault-zoe-ze50','pack',(SELECT id FROM organization WHERE uid='org/renault'),'Renault Zoe ZE50 52 kWh','Renault',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('renault-zoe-ze50'),('ze50'),('zoe52')) AS v(alias)
+ WHERE p.uid='pack/renault/renault-zoe-ze50'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/renault/renault-zoe-ze50@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -768,6 +1045,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/renault/renault-zoe-ze50
        326.0,'kg',326.0,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM quantity q WHERE q.code='mass';
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/renault/renault-zoe-ze50-bms','component',(SELECT id FROM organization WHERE uid='org/renault'),'Battery management system for Renault Zoe ZE50 52 kWh',
+        'Renault','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/renault/renault-zoe-ze50-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/renault/renault-zoe-ze50-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/renault/renault-zoe-ze50@bv'),(SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze50-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze50-bms@bv'),260.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/renault/renault-zoe-ze50-hv_box','component',(SELECT id FROM organization WHERE uid='org/renault'),'HV junction box for Renault Zoe ZE50 52 kWh',
+        'Renault','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/renault/renault-zoe-ze50-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/renault/renault-zoe-ze50-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/renault/renault-zoe-ze50@bv'),(SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze50-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze50-hv_box@bv'),190.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/renault/renault-zoe-ze50-thermal','component',(SELECT id FROM organization WHERE uid='org/renault'),'Cooling plate assembly for Renault Zoe ZE50 52 kWh',
+        'Renault','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/renault/renault-zoe-ze50-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/renault/renault-zoe-ze50-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/renault/renault-zoe-ze50@bv'),(SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze50-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/renault/renault-zoe-ze50-thermal@bv'),70.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
 VALUES ('module/renault/renault-zoe-ze50','module',(SELECT id FROM organization WHERE uid='org/renault'),'renault-zoe-ze50-module',
@@ -821,10 +1161,15 @@ ON CONFLICT DO NOTHING;
 -- BMW i3 60Ah (22 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/bmw/bmw-i3-60ah','pack',(SELECT id FROM organization WHERE uid='org/bmw'),'bmw-i3-60ah','BMW',
+VALUES ('pack/bmw/bmw-i3-60ah','pack',(SELECT id FROM organization WHERE uid='org/bmw'),'BMW i3 60Ah (22 kWh)','BMW',
         'prismatic_hardcase','unknown', true,
         'Prismatic Samsung SDI modules are a favourite for DIY stationary storage, which supports module resale value.')
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('bmw-i3-60ah'),('i3 60'),('i360')) AS v(alias)
+ WHERE p.uid='pack/bmw/bmw-i3-60ah'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/bmw/bmw-i3-60ah@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -851,6 +1196,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-60ah@bv'), q.
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/bmw/bmw-i3-60ah-bms','component',(SELECT id FROM organization WHERE uid='org/bmw'),'Battery management system for BMW i3 60Ah (22 kWh)',
+        'BMW','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/bmw/bmw-i3-60ah-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/bmw/bmw-i3-60ah-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-60ah@bv'),(SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-60ah-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-60ah-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/bmw/bmw-i3-60ah-hv_box','component',(SELECT id FROM organization WHERE uid='org/bmw'),'HV junction box for BMW i3 60Ah (22 kWh)',
+        'BMW','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/bmw/bmw-i3-60ah-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/bmw/bmw-i3-60ah-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-60ah@bv'),(SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-60ah-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-60ah-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/bmw/bmw-i3-60ah-thermal','component',(SELECT id FROM organization WHERE uid='org/bmw'),'Cooling plate assembly for BMW i3 60Ah (22 kWh)',
+        'BMW','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/bmw/bmw-i3-60ah-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/bmw/bmw-i3-60ah-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-60ah@bv'),(SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-60ah-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-60ah-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/bmw/bmw-i3-60ah','module',(SELECT id FROM organization WHERE uid='org/bmw'),'bmw-i3-60ah-module',
         'BMW','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -868,7 +1276,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/bmw/bmw-i3-60ah@bv'),130.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/bmw/bmw-i3-60ah@bv'),130.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -914,10 +1322,15 @@ ON CONFLICT DO NOTHING;
 -- BMW i3 94Ah (33 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/bmw/bmw-i3-94ah','pack',(SELECT id FROM organization WHERE uid='org/bmw'),'bmw-i3-94ah','BMW',
+VALUES ('pack/bmw/bmw-i3-94ah','pack',(SELECT id FROM organization WHERE uid='org/bmw'),'BMW i3 94Ah (33 kWh)','BMW',
         'prismatic_hardcase','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('bmw-i3-94ah'),('i3 94'),('i394')) AS v(alias)
+ WHERE p.uid='pack/bmw/bmw-i3-94ah'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/bmw/bmw-i3-94ah@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -944,6 +1357,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-94ah@bv'), q.
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/bmw/bmw-i3-94ah-bms','component',(SELECT id FROM organization WHERE uid='org/bmw'),'Battery management system for BMW i3 94Ah (33 kWh)',
+        'BMW','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/bmw/bmw-i3-94ah-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/bmw/bmw-i3-94ah-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-94ah@bv'),(SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-94ah-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-94ah-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/bmw/bmw-i3-94ah-hv_box','component',(SELECT id FROM organization WHERE uid='org/bmw'),'HV junction box for BMW i3 94Ah (33 kWh)',
+        'BMW','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/bmw/bmw-i3-94ah-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/bmw/bmw-i3-94ah-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-94ah@bv'),(SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-94ah-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-94ah-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/bmw/bmw-i3-94ah-thermal','component',(SELECT id FROM organization WHERE uid='org/bmw'),'Cooling plate assembly for BMW i3 94Ah (33 kWh)',
+        'BMW','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/bmw/bmw-i3-94ah-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/bmw/bmw-i3-94ah-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-94ah@bv'),(SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-94ah-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-94ah-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/bmw/bmw-i3-94ah','module',(SELECT id FROM organization WHERE uid='org/bmw'),'bmw-i3-94ah-module',
         'BMW','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -961,7 +1437,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/bmw/bmw-i3-94ah@bv'),175.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/bmw/bmw-i3-94ah@bv'),175.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -995,10 +1471,15 @@ ON CONFLICT DO NOTHING;
 -- BMW i3 120Ah (42 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/bmw/bmw-i3-120ah','pack',(SELECT id FROM organization WHERE uid='org/bmw'),'bmw-i3-120ah','BMW',
+VALUES ('pack/bmw/bmw-i3-120ah','pack',(SELECT id FROM organization WHERE uid='org/bmw'),'BMW i3 120Ah (42 kWh)','BMW',
         'prismatic_hardcase','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('bmw-i3-120ah'),('i3120')) AS v(alias)
+ WHERE p.uid='pack/bmw/bmw-i3-120ah'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/bmw/bmw-i3-120ah@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1025,6 +1506,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-120ah@bv'), q
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/bmw/bmw-i3-120ah-bms','component',(SELECT id FROM organization WHERE uid='org/bmw'),'Battery management system for BMW i3 120Ah (42 kWh)',
+        'BMW','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/bmw/bmw-i3-120ah-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/bmw/bmw-i3-120ah-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-120ah@bv'),(SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-120ah-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-120ah-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/bmw/bmw-i3-120ah-hv_box','component',(SELECT id FROM organization WHERE uid='org/bmw'),'HV junction box for BMW i3 120Ah (42 kWh)',
+        'BMW','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/bmw/bmw-i3-120ah-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/bmw/bmw-i3-120ah-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-120ah@bv'),(SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-120ah-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-120ah-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/bmw/bmw-i3-120ah-thermal','component',(SELECT id FROM organization WHERE uid='org/bmw'),'Cooling plate assembly for BMW i3 120Ah (42 kWh)',
+        'BMW','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/bmw/bmw-i3-120ah-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/bmw/bmw-i3-120ah-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/bmw/bmw-i3-120ah@bv'),(SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-120ah-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/bmw/bmw-i3-120ah-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/bmw/bmw-i3-120ah','module',(SELECT id FROM organization WHERE uid='org/bmw'),'bmw-i3-120ah-module',
         'BMW','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -1042,7 +1586,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/bmw/bmw-i3-120ah@bv'),215.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/bmw/bmw-i3-120ah@bv'),215.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -1088,10 +1632,15 @@ ON CONFLICT DO NOTHING;
 -- Tesla Model 3 Long Range (75 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/tesla/tesla-model3-lr','pack',(SELECT id FROM organization WHERE uid='org/tesla'),'tesla-model3-lr','Tesla',
+VALUES ('pack/tesla/tesla-model3-lr','pack',(SELECT id FROM organization WHERE uid='org/tesla'),'Tesla Model 3 Long Range (75 kWh)','Tesla',
         'cylindrical','unknown', true,
         'Only four large modules, so module-level resale is high-value but the pack is hard to dismantle safely (structural bonding).')
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('m3lr'),('model3lr'),('tesla-model3-lr')) AS v(alias)
+ WHERE p.uid='pack/tesla/tesla-model3-lr'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/tesla/tesla-model3-lr@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1118,6 +1667,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-model3-lr@bv
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-model3-lr-bms','component',(SELECT id FROM organization WHERE uid='org/tesla'),'Battery management system for Tesla Model 3 Long Range (75 kWh)',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-model3-lr-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-model3-lr-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-model3-lr@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lr-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lr-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-model3-lr-hv_box','component',(SELECT id FROM organization WHERE uid='org/tesla'),'HV junction box for Tesla Model 3 Long Range (75 kWh)',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-model3-lr-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-model3-lr-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-model3-lr@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lr-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lr-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-model3-lr-thermal','component',(SELECT id FROM organization WHERE uid='org/tesla'),'Cooling plate assembly for Tesla Model 3 Long Range (75 kWh)',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-model3-lr-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-model3-lr-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-model3-lr@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lr-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lr-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/tesla/tesla-model3-lr','module',(SELECT id FROM organization WHERE uid='org/tesla'),'tesla-model3-lr-module',
         'Tesla','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -1135,7 +1747,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/tesla/tesla-model3-lr@bv'),1250.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/tesla/tesla-model3-lr@bv'),1250.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -1181,10 +1793,15 @@ ON CONFLICT DO NOTHING;
 -- Tesla Model 3 Standard Range LFP (60 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/tesla/tesla-model3-lfp','pack',(SELECT id FROM organization WHERE uid='org/tesla'),'tesla-model3-lfp','Tesla',
+VALUES ('pack/tesla/tesla-model3-lfp','pack',(SELECT id FROM organization WHERE uid='org/tesla'),'Tesla Model 3 Standard Range LFP (60 kWh)','Tesla',
         NULL,'unknown', true,
         'LFP: near-zero recycling value, but excellent cycle life makes second life the dominant pathway.')
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('m3sr'),('model3lfp'),('tesla-model3-lfp')) AS v(alias)
+ WHERE p.uid='pack/tesla/tesla-model3-lfp'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/tesla/tesla-model3-lfp@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1211,6 +1828,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-model3-lfp@b
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-model3-lfp-bms','component',(SELECT id FROM organization WHERE uid='org/tesla'),'Battery management system for Tesla Model 3 Standard Range LFP (60 kWh)',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-model3-lfp-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-model3-lfp-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-model3-lfp@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lfp-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lfp-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-model3-lfp-hv_box','component',(SELECT id FROM organization WHERE uid='org/tesla'),'HV junction box for Tesla Model 3 Standard Range LFP (60 kWh)',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-model3-lfp-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-model3-lfp-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-model3-lfp@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lfp-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lfp-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-model3-lfp-thermal','component',(SELECT id FROM organization WHERE uid='org/tesla'),'Cooling plate assembly for Tesla Model 3 Standard Range LFP (60 kWh)',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-model3-lfp-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-model3-lfp-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-model3-lfp@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lfp-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-model3-lfp-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/tesla/tesla-model3-lfp','module',(SELECT id FROM organization WHERE uid='org/tesla'),'tesla-model3-lfp-module',
         'Tesla','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -1228,7 +1908,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/tesla/tesla-model3-lfp@bv'),780.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/tesla/tesla-model3-lfp@bv'),780.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -1274,10 +1954,15 @@ ON CONFLICT DO NOTHING;
 -- Tesla Model S 85 kWh
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/tesla/tesla-models-85','pack',(SELECT id FROM organization WHERE uid='org/tesla'),'tesla-models-85','Tesla',
+VALUES ('pack/tesla/tesla-models-85','pack',(SELECT id FROM organization WHERE uid='org/tesla'),'Tesla Model S 85 kWh','Tesla',
         'cylindrical','unknown', true,
         '16 modules of ~5.3 kWh each are the classic off-grid storage building block; module resale usually beats recycling comfortably.')
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('models85'),('tesla-models-85')) AS v(alias)
+ WHERE p.uid='pack/tesla/tesla-models-85'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/tesla/tesla-models-85@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1304,6 +1989,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-models-85@bv
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-models-85-bms','component',(SELECT id FROM organization WHERE uid='org/tesla'),'Battery management system for Tesla Model S 85 kWh',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-models-85-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-models-85-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-models-85@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-models-85-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-models-85-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-models-85-hv_box','component',(SELECT id FROM organization WHERE uid='org/tesla'),'HV junction box for Tesla Model S 85 kWh',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-models-85-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-models-85-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-models-85@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-models-85-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-models-85-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-models-85-thermal','component',(SELECT id FROM organization WHERE uid='org/tesla'),'Cooling plate assembly for Tesla Model S 85 kWh',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-models-85-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-models-85-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-models-85@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-models-85-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-models-85-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/tesla/tesla-models-85','module',(SELECT id FROM organization WHERE uid='org/tesla'),'tesla-models-85-module',
         'Tesla','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -1321,7 +2069,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/tesla/tesla-models-85@bv'),340.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/tesla/tesla-models-85@bv'),340.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -1367,10 +2115,15 @@ ON CONFLICT DO NOTHING;
 -- Volkswagen ID.3 Pro (58 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/volkswagen/vw-id3-58','pack',(SELECT id FROM organization WHERE uid='org/volkswagen'),'vw-id3-58','Volkswagen',
+VALUES ('pack/volkswagen/vw-id3-58','pack',(SELECT id FROM organization WHERE uid='org/volkswagen'),'Volkswagen ID.3 Pro (58 kWh)','Volkswagen',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('id3pro'),('meb58'),('vw-id3-58')) AS v(alias)
+ WHERE p.uid='pack/volkswagen/vw-id3-58'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/volkswagen/vw-id3-58@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1395,6 +2148,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/volkswagen/vw-id3-58@bv'
        375.0,'kg',375.0,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM quantity q WHERE q.code='mass';
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/volkswagen/vw-id3-58-bms','component',(SELECT id FROM organization WHERE uid='org/volkswagen'),'Battery management system for Volkswagen ID.3 Pro (58 kWh)',
+        'Volkswagen','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/volkswagen/vw-id3-58-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/volkswagen/vw-id3-58-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/volkswagen/vw-id3-58@bv'),(SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id3-58-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id3-58-bms@bv'),260.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/volkswagen/vw-id3-58-hv_box','component',(SELECT id FROM organization WHERE uid='org/volkswagen'),'HV junction box for Volkswagen ID.3 Pro (58 kWh)',
+        'Volkswagen','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/volkswagen/vw-id3-58-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/volkswagen/vw-id3-58-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/volkswagen/vw-id3-58@bv'),(SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id3-58-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id3-58-hv_box@bv'),190.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/volkswagen/vw-id3-58-thermal','component',(SELECT id FROM organization WHERE uid='org/volkswagen'),'Cooling plate assembly for Volkswagen ID.3 Pro (58 kWh)',
+        'Volkswagen','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/volkswagen/vw-id3-58-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/volkswagen/vw-id3-58-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/volkswagen/vw-id3-58@bv'),(SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id3-58-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id3-58-thermal@bv'),70.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
 VALUES ('module/volkswagen/vw-id3-58','module',(SELECT id FROM organization WHERE uid='org/volkswagen'),'vw-id3-58-module',
@@ -1460,10 +2276,15 @@ ON CONFLICT DO NOTHING;
 -- Volkswagen ID.4 Pro (77 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/volkswagen/vw-id4-77','pack',(SELECT id FROM organization WHERE uid='org/volkswagen'),'vw-id4-77','Volkswagen',
+VALUES ('pack/volkswagen/vw-id4-77','pack',(SELECT id FROM organization WHERE uid='org/volkswagen'),'Volkswagen ID.4 Pro (77 kWh)','Volkswagen',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('enyaq80'),('id4pro'),('meb77'),('vw-id4-77')) AS v(alias)
+ WHERE p.uid='pack/volkswagen/vw-id4-77'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/volkswagen/vw-id4-77@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1488,6 +2309,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/volkswagen/vw-id4-77@bv'
        493.0,'kg',493.0,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM quantity q WHERE q.code='mass';
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/volkswagen/vw-id4-77-bms','component',(SELECT id FROM organization WHERE uid='org/volkswagen'),'Battery management system for Volkswagen ID.4 Pro (77 kWh)',
+        'Volkswagen','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/volkswagen/vw-id4-77-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/volkswagen/vw-id4-77-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/volkswagen/vw-id4-77@bv'),(SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id4-77-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id4-77-bms@bv'),260.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/volkswagen/vw-id4-77-hv_box','component',(SELECT id FROM organization WHERE uid='org/volkswagen'),'HV junction box for Volkswagen ID.4 Pro (77 kWh)',
+        'Volkswagen','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/volkswagen/vw-id4-77-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/volkswagen/vw-id4-77-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/volkswagen/vw-id4-77@bv'),(SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id4-77-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id4-77-hv_box@bv'),190.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/volkswagen/vw-id4-77-thermal','component',(SELECT id FROM organization WHERE uid='org/volkswagen'),'Cooling plate assembly for Volkswagen ID.4 Pro (77 kWh)',
+        'Volkswagen','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/volkswagen/vw-id4-77-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/volkswagen/vw-id4-77-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/volkswagen/vw-id4-77@bv'),(SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id4-77-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/volkswagen/vw-id4-77-thermal@bv'),70.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
 VALUES ('module/volkswagen/vw-id4-77','module',(SELECT id FROM organization WHERE uid='org/volkswagen'),'vw-id4-77-module',
@@ -1565,10 +2449,15 @@ ON CONFLICT DO NOTHING;
 -- Hyundai Kona Electric 64 kWh
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/hyundai/hyundai-kona-64','pack',(SELECT id FROM organization WHERE uid='org/hyundai'),'hyundai-kona-64','Hyundai',
+VALUES ('pack/hyundai/hyundai-kona-64','pack',(SELECT id FROM organization WHERE uid='org/hyundai'),'Hyundai Kona Electric 64 kWh','Hyundai',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('eniro64'),('hyundai-kona-64'),('kona64')) AS v(alias)
+ WHERE p.uid='pack/hyundai/hyundai-kona-64'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/hyundai/hyundai-kona-64@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1593,6 +2482,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/hyundai/hyundai-kona-64@
        452.0,'kg',452.0,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM quantity q WHERE q.code='mass';
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/hyundai/hyundai-kona-64-bms','component',(SELECT id FROM organization WHERE uid='org/hyundai'),'Battery management system for Hyundai Kona Electric 64 kWh',
+        'Hyundai','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/hyundai/hyundai-kona-64-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/hyundai/hyundai-kona-64-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/hyundai/hyundai-kona-64@bv'),(SELECT id FROM product_revision WHERE uid='component/hyundai/hyundai-kona-64-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/hyundai/hyundai-kona-64-bms@bv'),260.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/hyundai/hyundai-kona-64-hv_box','component',(SELECT id FROM organization WHERE uid='org/hyundai'),'HV junction box for Hyundai Kona Electric 64 kWh',
+        'Hyundai','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/hyundai/hyundai-kona-64-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/hyundai/hyundai-kona-64-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/hyundai/hyundai-kona-64@bv'),(SELECT id FROM product_revision WHERE uid='component/hyundai/hyundai-kona-64-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/hyundai/hyundai-kona-64-hv_box@bv'),190.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/hyundai/hyundai-kona-64-thermal','component',(SELECT id FROM organization WHERE uid='org/hyundai'),'Cooling plate assembly for Hyundai Kona Electric 64 kWh',
+        'Hyundai','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/hyundai/hyundai-kona-64-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/hyundai/hyundai-kona-64-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/hyundai/hyundai-kona-64@bv'),(SELECT id FROM product_revision WHERE uid='component/hyundai/hyundai-kona-64-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/hyundai/hyundai-kona-64-thermal@bv'),70.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
 VALUES ('module/hyundai/hyundai-kona-64','module',(SELECT id FROM organization WHERE uid='org/hyundai'),'hyundai-kona-64-module',
@@ -1658,10 +2610,15 @@ ON CONFLICT DO NOTHING;
 -- BYD Atto 3 Blade (60 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/byd/byd-atto3-60','pack',(SELECT id FROM organization WHERE uid='org/byd'),'byd-atto3-60','BYD',
+VALUES ('pack/byd/byd-atto3-60','pack',(SELECT id FROM organization WHERE uid='org/byd'),'BYD Atto 3 Blade (60 kWh)','BYD',
         'blade','unknown', true,
         'Cell-to-pack construction means there are no serviceable modules: the pack is reused or recycled whole, so the parts-out pathway barely applies.')
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('atto3'),('blade60'),('byd-atto3-60')) AS v(alias)
+ WHERE p.uid='pack/byd/byd-atto3-60'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/byd/byd-atto3-60@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1686,6 +2643,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/byd/byd-atto3-60@bv'), q
        440.0,'kg',440.0,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM quantity q WHERE q.code='mass';
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/byd/byd-atto3-60-bms','component',(SELECT id FROM organization WHERE uid='org/byd'),'Battery management system for BYD Atto 3 Blade (60 kWh)',
+        'BYD','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/byd/byd-atto3-60-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/byd/byd-atto3-60-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/byd/byd-atto3-60@bv'),(SELECT id FROM product_revision WHERE uid='component/byd/byd-atto3-60-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/byd/byd-atto3-60-bms@bv'),260.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/byd/byd-atto3-60-hv_box','component',(SELECT id FROM organization WHERE uid='org/byd'),'HV junction box for BYD Atto 3 Blade (60 kWh)',
+        'BYD','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/byd/byd-atto3-60-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/byd/byd-atto3-60-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/byd/byd-atto3-60@bv'),(SELECT id FROM product_revision WHERE uid='component/byd/byd-atto3-60-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/byd/byd-atto3-60-hv_box@bv'),190.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/byd/byd-atto3-60-thermal','component',(SELECT id FROM organization WHERE uid='org/byd'),'Cooling plate assembly for BYD Atto 3 Blade (60 kWh)',
+        'BYD','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/byd/byd-atto3-60-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/byd/byd-atto3-60-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/byd/byd-atto3-60@bv'),(SELECT id FROM product_revision WHERE uid='component/byd/byd-atto3-60-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/byd/byd-atto3-60-thermal@bv'),70.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
 VALUES ('module/byd/byd-atto3-60','module',(SELECT id FROM organization WHERE uid='org/byd'),'byd-atto3-60-module',
@@ -1746,10 +2766,15 @@ ON CONFLICT DO NOTHING;
 -- Stellantis e-CMP 50 kWh
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/stellantis/psa-emp1-50','pack',(SELECT id FROM organization WHERE uid='org/stellantis'),'psa-emp1-50','Stellantis',
+VALUES ('pack/stellantis/psa-emp1-50','pack',(SELECT id FROM organization WHERE uid='org/stellantis'),'Stellantis e-CMP 50 kWh','Stellantis',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('e208'),('ecmp50'),('psa-emp1-50')) AS v(alias)
+ WHERE p.uid='pack/stellantis/psa-emp1-50'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/stellantis/psa-emp1-50@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1774,6 +2799,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/stellantis/psa-emp1-50@b
        345.0,'kg',345.0,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM quantity q WHERE q.code='mass';
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/stellantis/psa-emp1-50-bms','component',(SELECT id FROM organization WHERE uid='org/stellantis'),'Battery management system for Stellantis e-CMP 50 kWh',
+        'Stellantis','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/stellantis/psa-emp1-50-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/stellantis/psa-emp1-50-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/stellantis/psa-emp1-50@bv'),(SELECT id FROM product_revision WHERE uid='component/stellantis/psa-emp1-50-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/stellantis/psa-emp1-50-bms@bv'),260.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/stellantis/psa-emp1-50-hv_box','component',(SELECT id FROM organization WHERE uid='org/stellantis'),'HV junction box for Stellantis e-CMP 50 kWh',
+        'Stellantis','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/stellantis/psa-emp1-50-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/stellantis/psa-emp1-50-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/stellantis/psa-emp1-50@bv'),(SELECT id FROM product_revision WHERE uid='component/stellantis/psa-emp1-50-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/stellantis/psa-emp1-50-hv_box@bv'),190.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/stellantis/psa-emp1-50-thermal','component',(SELECT id FROM organization WHERE uid='org/stellantis'),'Cooling plate assembly for Stellantis e-CMP 50 kWh',
+        'Stellantis','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/stellantis/psa-emp1-50-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/stellantis/psa-emp1-50-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/stellantis/psa-emp1-50@bv'),(SELECT id FROM product_revision WHERE uid='component/stellantis/psa-emp1-50-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/stellantis/psa-emp1-50-thermal@bv'),70.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
 VALUES ('module/stellantis/psa-emp1-50','module',(SELECT id FROM organization WHERE uid='org/stellantis'),'psa-emp1-50-module',
@@ -1851,10 +2939,15 @@ ON CONFLICT DO NOTHING;
 -- Audi e-tron 55 (95 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/audi/audi-etron-95','pack',(SELECT id FROM organization WHERE uid='org/audi'),'audi-etron-95','Audi',
+VALUES ('pack/audi/audi-etron-95','pack',(SELECT id FROM organization WHERE uid='org/audi'),'Audi e-tron 55 (95 kWh)','Audi',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('audi-etron-95'),('etron95')) AS v(alias)
+ WHERE p.uid='pack/audi/audi-etron-95'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/audi/audi-etron-95@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1879,6 +2972,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/audi/audi-etron-95@bv'),
        700.0,'kg',700.0,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM quantity q WHERE q.code='mass';
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/audi/audi-etron-95-bms','component',(SELECT id FROM organization WHERE uid='org/audi'),'Battery management system for Audi e-tron 55 (95 kWh)',
+        'Audi','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/audi/audi-etron-95-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/audi/audi-etron-95-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/audi/audi-etron-95@bv'),(SELECT id FROM product_revision WHERE uid='component/audi/audi-etron-95-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/audi/audi-etron-95-bms@bv'),260.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/audi/audi-etron-95-hv_box','component',(SELECT id FROM organization WHERE uid='org/audi'),'HV junction box for Audi e-tron 55 (95 kWh)',
+        'Audi','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/audi/audi-etron-95-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/audi/audi-etron-95-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/audi/audi-etron-95@bv'),(SELECT id FROM product_revision WHERE uid='component/audi/audi-etron-95-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/audi/audi-etron-95-hv_box@bv'),190.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/audi/audi-etron-95-thermal','component',(SELECT id FROM organization WHERE uid='org/audi'),'Cooling plate assembly for Audi e-tron 55 (95 kWh)',
+        'Audi','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/audi/audi-etron-95-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/audi/audi-etron-95-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/audi/audi-etron-95@bv'),(SELECT id FROM product_revision WHERE uid='component/audi/audi-etron-95-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/audi/audi-etron-95-thermal@bv'),70.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
 VALUES ('module/audi/audi-etron-95','module',(SELECT id FROM organization WHERE uid='org/audi'),'audi-etron-95-module',
@@ -1932,10 +3088,15 @@ ON CONFLICT DO NOTHING;
 -- Polestar 2 Long Range (78 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/polestar/polestar2-78','pack',(SELECT id FROM organization WHERE uid='org/polestar'),'polestar2-78','Polestar',
+VALUES ('pack/polestar/polestar2-78','pack',(SELECT id FROM organization WHERE uid='org/polestar'),'Polestar 2 Long Range (78 kWh)','Polestar',
         'pouch','unknown', true,
         NULL)
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('cma78'),('polestar2-78'),('ps2lr')) AS v(alias)
+ WHERE p.uid='pack/polestar/polestar2-78'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/polestar/polestar2-78@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -1960,6 +3121,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/polestar/polestar2-78@bv
        500.0,'kg',500.0,
        (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
   FROM quantity q WHERE q.code='mass';
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/polestar/polestar2-78-bms','component',(SELECT id FROM organization WHERE uid='org/polestar'),'Battery management system for Polestar 2 Long Range (78 kWh)',
+        'Polestar','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/polestar/polestar2-78-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/polestar/polestar2-78-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/polestar/polestar2-78@bv'),(SELECT id FROM product_revision WHERE uid='component/polestar/polestar2-78-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/polestar/polestar2-78-bms@bv'),260.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/polestar/polestar2-78-hv_box','component',(SELECT id FROM organization WHERE uid='org/polestar'),'HV junction box for Polestar 2 Long Range (78 kWh)',
+        'Polestar','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/polestar/polestar2-78-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/polestar/polestar2-78-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/polestar/polestar2-78@bv'),(SELECT id FROM product_revision WHERE uid='component/polestar/polestar2-78-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/polestar/polestar2-78-hv_box@bv'),190.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/polestar/polestar2-78-thermal','component',(SELECT id FROM organization WHERE uid='org/polestar'),'Cooling plate assembly for Polestar 2 Long Range (78 kWh)',
+        'Polestar','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/polestar/polestar2-78-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/polestar/polestar2-78-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/polestar/polestar2-78@bv'),(SELECT id FROM product_revision WHERE uid='component/polestar/polestar2-78-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/polestar/polestar2-78-thermal@bv'),70.0,'EUR',0.85,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
 VALUES ('module/polestar/polestar2-78','module',(SELECT id FROM organization WHERE uid='org/polestar'),'polestar2-78-module',
@@ -2013,10 +3237,15 @@ ON CONFLICT DO NOTHING;
 -- Toyota Prius XW30 NiMH (1.31 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/toyota/toyota-prius-xw30-nimh','pack',(SELECT id FROM organization WHERE uid='org/toyota'),'toyota-prius-xw30-nimh','Toyota',
+VALUES ('pack/toyota/toyota-prius-xw30-nimh','pack',(SELECT id FROM organization WHERE uid='org/toyota'),'Toyota Prius XW30 NiMH (1.31 kWh)','Toyota',
         'prismatic_hardcase','unknown', true,
         'The highest-volume used traction pack in the world. Replacement demand is enormous relative to pack energy, so reuse dominates: OEM price per kWh looks extreme only because the pack is tiny.')
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('priusnimh'),('toyota-prius-xw30-nimh'),('xw30')) AS v(alias)
+ WHERE p.uid='pack/toyota/toyota-prius-xw30-nimh'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/toyota/toyota-prius-xw30-nimh@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -2043,6 +3272,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/toyota/toyota-prius-xw30
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/toyota/toyota-prius-xw30-nimh-bms','component',(SELECT id FROM organization WHERE uid='org/toyota'),'Battery management system for Toyota Prius XW30 NiMH (1.31 kWh)',
+        'Toyota','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/toyota/toyota-prius-xw30-nimh-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/toyota/toyota-prius-xw30-nimh-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/toyota/toyota-prius-xw30-nimh@bv'),(SELECT id FROM product_revision WHERE uid='component/toyota/toyota-prius-xw30-nimh-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/toyota/toyota-prius-xw30-nimh-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/toyota/toyota-prius-xw30-nimh-hv_box','component',(SELECT id FROM organization WHERE uid='org/toyota'),'HV junction box for Toyota Prius XW30 NiMH (1.31 kWh)',
+        'Toyota','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/toyota/toyota-prius-xw30-nimh-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/toyota/toyota-prius-xw30-nimh-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/toyota/toyota-prius-xw30-nimh@bv'),(SELECT id FROM product_revision WHERE uid='component/toyota/toyota-prius-xw30-nimh-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/toyota/toyota-prius-xw30-nimh-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/toyota/toyota-prius-xw30-nimh-thermal','component',(SELECT id FROM organization WHERE uid='org/toyota'),'Cooling plate assembly for Toyota Prius XW30 NiMH (1.31 kWh)',
+        'Toyota','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/toyota/toyota-prius-xw30-nimh-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/toyota/toyota-prius-xw30-nimh-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/toyota/toyota-prius-xw30-nimh@bv'),(SELECT id FROM product_revision WHERE uid='component/toyota/toyota-prius-xw30-nimh-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/toyota/toyota-prius-xw30-nimh-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/toyota/toyota-prius-xw30-nimh','module',(SELECT id FROM organization WHERE uid='org/toyota'),'toyota-prius-xw30-nimh-module',
         'Toyota','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -2060,7 +3352,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/toyota/toyota-prius-xw30-nimh@bv'),11.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/toyota/toyota-prius-xw30-nimh@bv'),11.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)
@@ -2118,10 +3410,15 @@ ON CONFLICT DO NOTHING;
 -- Tesla Powerwall 2 (13.5 kWh)
 INSERT INTO product (uid, kind, manufacturer_id, model_number, brand,
                      form_factor, lifecycle, is_rechargeable, notes)
-VALUES ('pack/tesla/tesla-powerwall2','pack',(SELECT id FROM organization WHERE uid='org/tesla'),'tesla-powerwall2','Tesla',
+VALUES ('pack/tesla/tesla-powerwall2','pack',(SELECT id FROM organization WHERE uid='org/tesla'),'Tesla Powerwall 2 (13.5 kWh)','Tesla',
         'cylindrical','unknown', true,
         'Already a stationary product, so the second-life pathway is really a straight resale.')
 ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_alias (product_id, alias, kind)
+SELECT p.id, v.alias, 'oem_code' FROM product p,
+  (VALUES ('powerwall2'),('pw2'),('tesla-powerwall2')) AS v(alias)
+ WHERE p.uid='pack/tesla/tesla-powerwall2'
+ON CONFLICT (product_id, alias, kind) DO NOTHING;
 INSERT INTO product_revision (uid, product_id, source_id,
                               revision_label, region_scope)
 SELECT 'pack/tesla/tesla-powerwall2@bv', p.id, s.id, 'bv-catalogue', '{EU}'
@@ -2148,6 +3445,69 @@ SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-powerwall2@b
   FROM quantity q WHERE q.code='mass';
 INSERT INTO product (uid, kind, manufacturer_id, model_number,
                      brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-powerwall2-bms','component',(SELECT id FROM organization WHERE uid='org/tesla'),'Battery management system for Tesla Powerwall 2 (13.5 kWh)',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-powerwall2-bms@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-powerwall2-bms' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-powerwall2@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-powerwall2-bms@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-powerwall2-bms@bv'),260.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-powerwall2-hv_box','component',(SELECT id FROM organization WHERE uid='org/tesla'),'HV junction box for Tesla Powerwall 2 (13.5 kWh)',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-powerwall2-hv_box@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-powerwall2-hv_box' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-powerwall2@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-powerwall2-hv_box@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-powerwall2-hv_box@bv'),190.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
+VALUES ('component/tesla/tesla-powerwall2-thermal','component',(SELECT id FROM organization WHERE uid='org/tesla'),'Cooling plate assembly for Tesla Powerwall 2 (13.5 kWh)',
+        'Tesla','unknown', false)
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_revision (uid, product_id, source_id,
+                              revision_label)
+SELECT 'component/tesla/tesla-powerwall2-thermal@bv', p.id, s.id, 'bv-catalogue'
+  FROM product p, source s
+ WHERE p.uid='component/tesla/tesla-powerwall2-thermal' AND s.uid='src/bv-pack-catalogue'
+ON CONFLICT (uid) DO NOTHING;
+INSERT INTO product_assembly (parent_revision_id,
+       child_revision_id, quantity, provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='pack/tesla/tesla-powerwall2@bv'),(SELECT id FROM product_revision WHERE uid='component/tesla/tesla-powerwall2-thermal@bv'),1,
+       (SELECT id FROM provenance WHERE derivation_note='src/bv-pack-catalogue')
+ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
+INSERT INTO component_market_value (product_revision_id,
+       unit_value, currency, sell_through, valid_from, region,
+       provenance_id)
+SELECT (SELECT id FROM product_revision WHERE uid='component/tesla/tesla-powerwall2-thermal@bv'),70.0,'EUR',0.95,
+       '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
+INSERT INTO product (uid, kind, manufacturer_id, model_number,
+                     brand, lifecycle, is_rechargeable)
 VALUES ('module/tesla/tesla-powerwall2','module',(SELECT id FROM organization WHERE uid='org/tesla'),'tesla-powerwall2-module',
         'Tesla','unknown', true)
 ON CONFLICT (uid) DO NOTHING;
@@ -2165,7 +3525,7 @@ ON CONFLICT (parent_revision_id, child_revision_id) DO NOTHING;
 INSERT INTO component_market_value (product_revision_id,
        unit_value, currency, assumed_soh, sell_through,
        valid_from, region, provenance_id)
-SELECT (SELECT id FROM product_revision WHERE uid='module/tesla/tesla-powerwall2@bv'),900.0,'EUR',1.0,0.85,
+SELECT (SELECT id FROM product_revision WHERE uid='module/tesla/tesla-powerwall2@bv'),900.0,'EUR',1.0,0.95,
        '2026-01-01','EU',(SELECT id FROM provenance WHERE derivation_note='src/bv-used-parts-market');
 INSERT INTO replacement_price (product_revision_id, price_per_kwh,
        currency, includes_labour, valid_from, region, provenance_id)

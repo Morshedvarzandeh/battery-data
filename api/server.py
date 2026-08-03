@@ -185,7 +185,8 @@ PACK_SELECT = """
 SELECT
   p.uid                                        AS product_uid,
   p.model_number,
-  o.name                                       AS manufacturer,
+  o.name                                       AS organisation,
+  p.brand                                      AS brand,
   pc.designation                               AS chemistry,
   p.form_factor_code,
   energy.value_si / 3.6e6                      AS rated_kwh,
@@ -217,7 +218,8 @@ LEFT JOIN bd.observation mass
        ON mass.product_revision_id = r.id AND mass.statistic = 'nominal'
       AND mass.quantity_id = (SELECT id FROM bd.quantity WHERE code='mass')
 WHERE p.kind = 'pack'
-GROUP BY p.uid, p.model_number, o.name, pc.designation, p.form_factor_code,
+GROUP BY p.uid, p.model_number, o.name, p.brand, pc.designation,
+         p.form_factor_code,
          asm.quantity, cmv.unit_value, rp.price_per_kwh,
          energy.value_si, mass.value_si
 ORDER BY o.name, p.model_number
