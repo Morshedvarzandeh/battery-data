@@ -46,40 +46,40 @@ ON CONFLICT (uid) DO NOTHING;
 
 INSERT INTO source (uid, kind, title, url, license, redistributable,
                     retrieved_at, scope_note)
-VALUES ('src/bv-pack-catalogue','teardown_report','battery-value pack catalogue (teardowns and service documentation)','https://github.com/Morshedvarzandeh/battery-worldcup','MIT', true, now(),
-        'Compiled from OEM service documentation, homologation filings and published pack teardowns. Individual figures vary in strength; the confidence column carries that.')
+VALUES ('src/bv-pack-catalogue','teardown_report','battery-value pack catalogue (teardowns and service documentation)','https://github.com/Morshedvarzandeh/battery-worldcup','AGPL-3.0-or-later',
+        true, now(), 'Compiled from OEM service documentation, homologation filings and published pack teardowns. Individual figures vary in strength; the confidence column carries that.')
 ON CONFLICT (uid) DO NOTHING;
 INSERT INTO source_location (source_id, locator_kind)
 SELECT id,'dataset' FROM source WHERE uid='src/bv-pack-catalogue'
 ON CONFLICT DO NOTHING;
 INSERT INTO source (uid, kind, title, url, license, redistributable,
                     retrieved_at, scope_note)
-VALUES ('src/eu-2023-1542-annex-xii','standard','Regulation (EU) 2023/1542 Annex XII, recycling efficiency and material recovery targets','https://eur-lex.europa.eu/eli/reg/2023/1542/oj','MIT', true, now(),
-        'Regulatory minima with fixed compliance dates. These are floors on recovery, and say nothing about what a refiner pays.')
+VALUES ('src/eu-2023-1542-annex-xii','standard','Regulation (EU) 2023/1542 Annex XII, recycling efficiency and material recovery targets','https://eur-lex.europa.eu/eli/reg/2023/1542/oj','EUR-Lex reuse (Decision 2011/833/EU)',
+        true, now(), 'Regulatory minima with fixed compliance dates. These are floors on recovery, and say nothing about what a refiner pays. Only the Official Journal text is authentic.')
 ON CONFLICT (uid) DO NOTHING;
 INSERT INTO source_location (source_id, locator_kind)
 SELECT id,'dataset' FROM source WHERE uid='src/eu-2023-1542-annex-xii'
 ON CONFLICT DO NOTHING;
 INSERT INTO source (uid, kind, title, url, license, redistributable,
                     retrieved_at, scope_note)
-VALUES ('src/bv-recycling-terms','third_party_test','battery-value recycling process and payable terms','https://github.com/Morshedvarzandeh/battery-worldcup','MIT', true, now(),
-        'Commercial recovery rates and black-mass payable terms, benchmarked from published plant mass balances and reported offtake structures. Payables in particular are negotiated and move with the market.')
+VALUES ('src/bv-recycling-terms','third_party_test','battery-value recycling process and payable terms','https://github.com/Morshedvarzandeh/battery-worldcup','AGPL-3.0-or-later',
+        true, now(), 'Commercial recovery rates and black-mass payable terms, benchmarked from published plant mass balances and reported offtake structures. Payables in particular are negotiated and move with the market.')
 ON CONFLICT (uid) DO NOTHING;
 INSERT INTO source_location (source_id, locator_kind)
 SELECT id,'dataset' FROM source WHERE uid='src/bv-recycling-terms'
 ON CONFLICT DO NOTHING;
 INSERT INTO source (uid, kind, title, url, license, redistributable,
                     retrieved_at, scope_note)
-VALUES ('src/bv-used-parts-market','distributor_listing','battery-value used-parts market observations','https://github.com/Morshedvarzandeh/battery-worldcup','MIT', true, now(),
-        'Used module and component values from second-hand marketplace listings. A thin market, so treat as indicative and refresh often.')
+VALUES ('src/bv-used-parts-market','distributor_listing','battery-value used-parts market observations','https://github.com/Morshedvarzandeh/battery-worldcup','AGPL-3.0-or-later',
+        true, now(), 'Used module and component values from second-hand marketplace listings. A thin market, so treat as indicative and refresh often.')
 ON CONFLICT (uid) DO NOTHING;
 INSERT INTO source_location (source_id, locator_kind)
 SELECT id,'dataset' FROM source WHERE uid='src/bv-used-parts-market'
 ON CONFLICT DO NOTHING;
 INSERT INTO source (uid, kind, title, url, license, redistributable,
                     retrieved_at, scope_note)
-VALUES ('src/bv-degradation-profiles','dataset','battery-value pack degradation profiles','https://github.com/Morshedvarzandeh/battery-worldcup','MIT', true, now(),
-        'Fade curves per pack model, calibrated against published fleet telemetry studies, OEM warranty floors and aggregated owner-reported capacity readings. Cohort central estimates with an explicit spread; they describe a population and never an individual pack.')
+VALUES ('src/bv-degradation-profiles','dataset','battery-value pack degradation profiles','https://github.com/Morshedvarzandeh/battery-worldcup','AGPL-3.0-or-later',
+        true, now(), 'Fade curves per pack model, calibrated against published fleet telemetry studies, OEM warranty floors and aggregated owner-reported capacity readings. Cohort central estimates with an explicit spread; they describe a population and never an individual pack.')
 ON CONFLICT (uid) DO NOTHING;
 INSERT INTO source_location (source_id, locator_kind)
 SELECT id,'dataset' FROM source WHERE uid='src/bv-degradation-profiles'
@@ -3894,5 +3894,5 @@ VALUES ('LEAD_ACID','unknown'::thermal_management,
 ON CONFLICT DO NOTHING;
 
 -- ---------------------------------------------------------------------
--- Generated 2026-08-03 from battery-value data files.
+-- Generated 2026-08-04 from battery-value data files.
 -- ---------------------------------------------------------------------
