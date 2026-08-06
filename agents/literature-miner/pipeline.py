@@ -57,10 +57,14 @@ class NullLLM:
         )
 
 
-def make_llm(stage: str = "triage") -> LLM:
-    """AnthropicLLM when a key is present, NullLLM otherwise - so importing
-    and offline commands (discover, selftest) never require credentials."""
-    if os.getenv("ANTHROPIC_API_KEY"):
+def make_llm(stage: str = "triage", *, allow_paid_api: bool = False) -> LLM:
+    """Return a paid client only after an explicit per-invocation opt-in.
+
+    A stored key is deliberately insufficient. Scheduled discovery, imports,
+    tests and accidental CLI calls therefore remain free even in an environment
+    where a repository secret is present.
+    """
+    if allow_paid_api and os.getenv("ANTHROPIC_API_KEY"):
         from llm_anthropic import get_llm
         return get_llm(stage)
     return NullLLM()
@@ -239,13 +243,22 @@ DISCOVERERS = {
 
 def discover(queries: Iterable[str], limit: int = 50,
              backends: Iterable[str] = ("openalex", "zenodo", "arxiv")) -> list[Candidate]:
+    if limit < 1:
+        return []
     seen: dict[str, Candidate] = {}
     for q in queries:
         for b in backends:
             try:
-                for c in DISCOVERERS[b](q, limit):
+                remaining = limit - len(seen)
+                if remaining <= 0:
+                    log.info("global discovery limit %d reached", limit)
+                    return list(seen.values())
+                for c in DISCOVERERS[b](q, remaining):
                     if c.key() not in seen:
                         seen[c.key()] = c
+                        if len(seen) >= limit:
+                            log.info("global discovery limit %d reached", limit)
+                            return list(seen.values())
             except Exception as exc:                  # noqa: BLE001
                 log.warning("%s/%s failed: %s", b, q, exc)
     log.info("discovered %d unique works", len(seen))
@@ -591,6 +604,8 @@ def main(argv=None):
     t.add_argument("input", help="JSON file written by `discover --out`")
     t.add_argument("--out", default="triaged.json")
     t.add_argument("--min-priority", type=float, default=0.5)
+    t.add_argument("--allow-paid-api", action="store_true",
+                   help="explicitly authorize model API calls for this invocation")
 
     for name, helptext in [("run", "full pipeline on one work"),
                            ("ingest-dataset", "parse a dataset archive")]:
@@ -620,9 +635,9 @@ def main(argv=None):
         return 0
 
     if a.cmd == "triage":
-        llm = make_llm("triage")
+        llm = make_llm("triage", allow_paid_api=a.allow_paid_api)
         if isinstance(llm, NullLLM):
-            log.error("triage needs ANTHROPIC_API_KEY; see AGENT.md")
+            log.error("triage needs both --allow-paid-api and ANTHROPIC_API_KEY; see AGENT.md")
             return 1
         summary = triage_file(llm, a.input, a.out, a.min_priority)
         print(json.dumps(summary, indent=2))

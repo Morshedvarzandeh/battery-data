@@ -1,0 +1,139 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "system/cnte/star-q",
+    "kind": "system",
+    "manufacturer": "CNTE",
+    "model_number": "STAR Q",
+    "is_rechargeable": true,
+    "form_factor": "other"
+  },
+  "source": {
+    "uid": "src/cnte-ci-ess-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "CNTE C&I Energy Storage System specifications",
+    "url": "https://en.cntepower.com/ci-ess/",
+    "document_date": "2026-08-06",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "The manufacturer states that product parameters may change; each candidate is revision-dated to retrieval."
+  },
+  "observations": [
+    {
+      "quantity": "energy",
+      "value": 109,
+      "unit": "kWh",
+      "locator": {
+        "quote": "Product Model STAR Q; Energy Capacity 109 kWh; Rated output power 50 kW"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "rated_power",
+      "value": 50,
+      "unit": "kW",
+      "locator": {
+        "quote": "Product Model STAR Q; Energy Capacity 109 kWh; Rated output power 50 kW"
+      },
+      "statistic": "rated",
+      "conditions": {
+        "boundary": "ac_terminal",
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -25,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating Temperature Range -25 to 55 °C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 55,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating Temperature Range -25 to 55 °C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 1270,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (W × D × H) 1270 × 1340 × 2094 mm"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 1340,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (W × D × H) 1270 × 1340 × 2094 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 2094,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (W × D × H) 1270 × 1340 × 2094 mm"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1800,
+      "unit": "kg",
+      "locator": {
+        "quote": "Weight ≈1.8T"
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 10000,
+      "unit": "cycles",
+      "locator": {
+        "quote": "Cycle Life (@25℃, 0.5P) ≥10000"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_c": 25,
+        "rate_value": 0.5,
+        "rate_unit": "P",
+        "unstated": [
+          "dod_pct"
+        ]
+      },
+      "is_lower_bound": true
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "CATL lithium iron phosphate",
+    "locator": {
+      "quote": "CNTE’s commercial and Industrial Battery Solutions use CATL LFP battery cells"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/hithium/infinity-cell-1300ah",
+    "kind": "cell",
+    "manufacturer": "HiTHIUM",
+    "model_number": "∞Cell 1300Ah",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/hithium-cell-lineup-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "HiTHIUM Battery Cells for Advanced Energy Storage Solutions",
+    "url": "https://www.hithium.com/products/cell.html",
+    "document_date": "2026-08-06",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 1300,
+      "unit": "Ah",
+      "locator": {
+        "quote": "∞Cell 1300Ah: 1300 Ah; LFP; ≥ 10,000 cycles; ≥ 190 Wh/kg; ≥ 406 Wh/L"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 10000,
+      "unit": "cycles",
+      "locator": {
+        "quote": "∞Cell 1300Ah: 1300 Ah; LFP; ≥ 10,000 cycles; ≥ 190 Wh/kg; ≥ 406 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 190,
+      "unit": "Wh/kg",
+      "locator": {
+        "quote": "∞Cell 1300Ah: 1300 Ah; LFP; ≥ 10,000 cycles; ≥ 190 Wh/kg; ≥ 406 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "energy_density",
+      "value": 406,
+      "unit": "Wh/L",
+      "locator": {
+        "quote": "∞Cell 1300Ah: 1300 Ah; LFP; ≥ 10,000 cycles; ≥ 190 Wh/kg; ≥ 406 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "length",
+      "value": 580.2,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (L × W × H): 580.2 × 75.2 × 234.3 mm"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 75.2,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (L × W × H): 580.2 × 75.2 × 234.3 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 234.3,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (L × W × H): 580.2 × 75.2 × 234.3 mm"
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "anode_text": "Not stated",
+    "locator": {
+      "quote": "∞Cell 1300Ah: LFP"
+    }
+  }
+}

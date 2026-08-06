@@ -1,10 +1,11 @@
 # =====================================================================
 # Literature miner - scheduled sweep.
 #
-# Every Monday morning (and on demand from the Actions tab) this:
+# Every Monday morning this performs free discovery only. On demand from the
+# Actions tab, a repository owner may separately opt in to paid triage.
 #   1. searches OpenAlex, Zenodo and arXiv with the built-in query
 #      families (test methods, cell identities, quantities, datasets)
-#   2. LLM-triages every abstract: does it contain extractable battery
+#   2. optionally LLM-triages abstracts after an explicit manual checkbox
 #      data, of what kind, and how is the data available?
 #   3. publishes the ranked shortlist as a build artifact and opens a
 #      GitHub issue with the top candidates
@@ -28,6 +29,11 @@ on:
       min_priority:
         description: 'Keep candidates at or above this priority (0-1)'
         default: '0.6'
+      allow_paid_api:
+        description: 'I approve paid triage for this manual run'
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -60,6 +66,7 @@ jobs:
           python -c "import json;d=json.load(open('discovered.json'));print(f'{len(d)} works discovered')"
 
       - name: Triage abstracts
+        if: github.event_name == 'workflow_dispatch' && inputs.allow_paid_api == true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MIN_PRIORITY: ${{ github.event.inputs.min_priority || '0.6' }}
@@ -70,7 +77,18 @@ jobs:
             exit 0
           fi
           python agents/literature-miner/pipeline.py triage discovered.json \
-            --out triaged.json --min-priority "$MIN_PRIORITY"
+            --out triaged.json --min-priority "$MIN_PRIORITY" --allow-paid-api
+
+      - name: Record discovery-only mode
+        if: github.event_name != 'workflow_dispatch' || inputs.allow_paid_api != true
+        run: |
+          python - <<'PY'
+          import json
+          discovered = json.load(open('discovered.json'))
+          json.dump({"summary": {"n_in": len(discovered), "n_kept": 0,
+                     "mode": "discovery_only", "paid_api_used": False},
+                     "candidates": []}, open('triaged.json', 'w'), indent=2)
+          PY
 
       - name: Upload shortlist
         uses: actions/upload-artifact@v4
@@ -82,7 +100,7 @@ jobs:
           retention-days: 90
 
       - name: Open shortlist issue
-        if: hashFiles('triaged.json') != ''
+        if: github.event_name == 'workflow_dispatch' && inputs.allow_paid_api == true && hashFiles('triaged.json') != ''
         uses: actions/github-script@v7
         with:
           script: |

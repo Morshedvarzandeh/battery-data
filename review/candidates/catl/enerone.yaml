@@ -1,0 +1,90 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "system/catl/enerone",
+    "kind": "system",
+    "manufacturer": "CATL",
+    "model_number": "EnerOne",
+    "is_rechargeable": true,
+    "form_factor": "rack"
+  },
+  "source": {
+    "uid": "src/catl-enerone-2022-05-11",
+    "kind": "manufacturer_web",
+    "title": "CATL’s EnerOne battery storage system won ees AWARD 2022",
+    "url": "https://www.catl.com/en/news/935.html",
+    "document_date": "2022-05-11",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "energy",
+      "value": 372.7,
+      "unit": "kWh",
+      "locator": {
+        "quote": "It has a nominal capacity of 372.7 kWh"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "absolute_min_voltage",
+      "value": 600,
+      "unit": "V",
+      "locator": {
+        "quote": "suitable for inverters with operating voltages ranging from 600 to 1500 volts"
+      },
+      "statistic": "absolute_min"
+    },
+    {
+      "quantity": "absolute_max_voltage",
+      "value": 1500,
+      "unit": "V",
+      "locator": {
+        "quote": "suitable for inverters with operating voltages ranging from 600 to 1500 volts"
+      },
+      "statistic": "absolute_max"
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -30,
+      "unit": "°C",
+      "locator": {
+        "quote": "adaptability to ambient temperature range of -30 to +55 ℃"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 55,
+      "unit": "°C",
+      "locator": {
+        "quote": "adaptability to ambient temperature range of -30 to +55 ℃"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "locator": {
+      "quote": "CATL describes the product as LFP-based"
+    }
+  }
+}

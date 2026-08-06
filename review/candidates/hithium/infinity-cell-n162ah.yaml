@@ -1,0 +1,143 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/hithium/infinity-cell-n162ah",
+    "kind": "cell",
+    "manufacturer": "HiTHIUM",
+    "model_number": "∞Cell N162Ah",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/hithium-cell-lineup-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "HiTHIUM Battery Cells for Advanced Energy Storage Solutions",
+    "url": "https://www.hithium.com/products/cell.html",
+    "document_date": "2026-08-06",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 162,
+      "unit": "Ah",
+      "locator": {
+        "quote": "∞Cell N162Ah: 162 Ah; NFPP/HC; ≥ 20,000 cycles; ≥ 95.2 Wh/kg; ≥ 173 Wh/L"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 20000,
+      "unit": "cycles",
+      "locator": {
+        "quote": "∞Cell N162Ah: 162 Ah; NFPP/HC; ≥ 20,000 cycles; ≥ 95.2 Wh/kg; ≥ 173 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 95.2,
+      "unit": "Wh/kg",
+      "locator": {
+        "quote": "∞Cell N162Ah: 162 Ah; NFPP/HC; ≥ 20,000 cycles; ≥ 95.2 Wh/kg; ≥ 173 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "energy_density",
+      "value": 173,
+      "unit": "Wh/L",
+      "locator": {
+        "quote": "∞Cell N162Ah: 162 Ah; NFPP/HC; ≥ 20,000 cycles; ≥ 95.2 Wh/kg; ≥ 173 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "energy_efficiency",
+      "value": 94,
+      "unit": "%",
+      "locator": {
+        "quote": "High energy efficiency ≥ 94% @1P"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "rate_value": 1,
+        "rate_unit": "P",
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "quote": "Ultra-wide operating temperature range (–40°C to 60°C)"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "quote": "Ultra-wide operating temperature range (–40°C to 60°C)"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "NFPP/HC",
+    "cathode_text": "Sodium NFPP",
+    "anode_text": "Hard carbon",
+    "locator": {
+      "quote": "∞Cell N162Ah: NFPP/HC"
+    }
+  }
+}

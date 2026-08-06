@@ -1,0 +1,86 @@
+name: approve-candidate
+
+on:
+  issues:
+    types: [edited]
+
+concurrency:
+  group: candidate-library-promotion
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  promote:
+    # A checkbox is a write control. Only the repository owner may operate it.
+    if: >-
+      github.actor == github.repository_owner &&
+      startsWith(github.event.issue.title, '[candidate] ') &&
+      contains(github.event.issue.body, '<!-- battery-candidate:') &&
+      contains(github.event.issue.body, '- [x] Approve this battery for the accepted library')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install pyyaml jsonschema
+
+      - name: Promote the exact candidate named by the issue
+        id: promote
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python .github/scripts/promote_candidate.py --issue "${{ github.event.issue.number }}" | tee -a "$GITHUB_OUTPUT"
+
+      - name: Validate accepted and pending data
+        run: |
+          python tools/validate_contrib.py contrib/
+          python tools/validate_review.py
+          python tools/render_review_issues.py
+          python tools/build_web_data.py
+
+      - name: Commit the accepted record
+        env:
+          ISSUE: ${{ github.event.issue.number }}
+          TITLE: ${{ github.event.issue.title }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add contrib/ review/ web/index.html
+          git commit -m "Accept ${TITLE#\[candidate\] } (#${ISSUE})"
+          git pull --rebase origin "${{ github.event.repository.default_branch }}"
+          git push origin "HEAD:${{ github.event.repository.default_branch }}"
+
+      - name: Confirm and close the review issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const accepted = '${{ steps.promote.outputs.accepted_file }}';
+            const body = `Accepted into the library as \`${accepted}\`.\n\n`
+              + `The public catalog rebuild was validated in the same commit.`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number, body,
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number, state: 'closed',
+              state_reason: 'completed',
+            });
+
+      - name: Report a failed promotion without accepting data
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = `Approval did not enter the library because validation or publication failed. `
+              + `[Open the run log](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}). `
+              + `The issue remains open and no candidate should be treated as accepted.`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number, body,
+            });

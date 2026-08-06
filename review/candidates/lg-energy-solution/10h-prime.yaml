@@ -1,0 +1,71 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "pack/lg-energy-solution/10h-prime",
+    "kind": "pack",
+    "manufacturer": "LG Energy Solution",
+    "model_number": "10H Prime",
+    "is_rechargeable": true,
+    "form_factor": "other"
+  },
+  "source": {
+    "uid": "src/lg-energy-solution-home-battery-eu-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "LG Energy Solution Home Battery product information",
+    "url": "https://www.lgessbattery.com/m/eu/home-battery/product-info.lg",
+    "document_date": "2026-08-06",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "usable_energy",
+      "value": 9.6,
+      "unit": "kWh",
+      "locator": {
+        "quote": "10H Prime: Usable Energy 9.6 kWh; Weight 111.0 kg; Dimensions 504 x 817 x 295 mm; IP55"
+      },
+      "statistic": "rated",
+      "conditions": {
+        "boundary": "pack_dc",
+        "unstated": [
+          "dod_pct"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 111.0,
+      "unit": "kg",
+      "locator": {
+        "quote": "10H Prime: Usable Energy 9.6 kWh; Weight 111.0 kg; Dimensions 504 x 817 x 295 mm; IP55"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "width",
+      "value": 504,
+      "unit": "mm",
+      "locator": {
+        "quote": "10H Prime: Usable Energy 9.6 kWh; Weight 111.0 kg; Dimensions 504 x 817 x 295 mm; IP55"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 817,
+      "unit": "mm",
+      "locator": {
+        "quote": "10H Prime: Usable Energy 9.6 kWh; Weight 111.0 kg; Dimensions 504 x 817 x 295 mm; IP55"
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 295,
+      "unit": "mm",
+      "locator": {
+        "quote": "10H Prime: Usable Energy 9.6 kWh; Weight 111.0 kg; Dimensions 504 x 817 x 295 mm; IP55"
+      }
+    }
+  ]
+}

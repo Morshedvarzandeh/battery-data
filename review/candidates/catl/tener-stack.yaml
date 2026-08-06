@@ -1,0 +1,47 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "system/catl/tener-stack",
+    "kind": "system",
+    "manufacturer": "CATL",
+    "model_number": "TENER Stack",
+    "is_rechargeable": true,
+    "form_factor": "container"
+  },
+  "source": {
+    "uid": "src/catl-tener-stack-2025-05-07",
+    "kind": "manufacturer_web",
+    "title": "CATL launches 9 MWh TENER Stack",
+    "url": "https://www.catl.com/en/news/6410.html",
+    "document_date": "2025-05-07",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "energy",
+      "value": 9000,
+      "unit": "kWh",
+      "locator": {
+        "quote": "The internal capacity reaches up to 9MWh"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_upper_bound": true
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "locator": {
+      "quote": "CATL describes the product as LFP-based"
+    }
+  }
+}

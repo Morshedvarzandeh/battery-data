@@ -1,0 +1,108 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "module/samsung-sdi/m2994",
+    "kind": "module",
+    "manufacturer": "Samsung SDI",
+    "model_number": "M2994",
+    "is_rechargeable": true,
+    "form_factor": "other"
+  },
+  "source": {
+    "uid": "src/samsung-sdi-smart-battery-systems-2016",
+    "kind": "datasheet",
+    "title": "Samsung SDI Smart Battery Systems for Energy Storage",
+    "url": "https://www.samsungsdi.com/upload/ess_brochure/Samsung%20SDI%20brochure_EN.pdf",
+    "revision": "2016 product lineup",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "energy",
+      "value": 2.8,
+      "unit": "kWh",
+      "locator": {
+        "quote": "Item M2994; Energy 2.8 kWh; Nominal voltage 29.6 V; Operating voltage 25.6~33.2 V; Weight 22 kg",
+        "page": 4
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 29.6,
+      "unit": "V",
+      "locator": {
+        "quote": "Item M2994; Energy 2.8 kWh; Nominal voltage 29.6 V; Operating voltage 25.6~33.2 V; Weight 22 kg",
+        "page": 4
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "absolute_min_voltage",
+      "value": 25.6,
+      "unit": "V",
+      "locator": {
+        "quote": "Item M2994; Energy 2.8 kWh; Nominal voltage 29.6 V; Operating voltage 25.6~33.2 V; Weight 22 kg",
+        "page": 4
+      },
+      "statistic": "absolute_min"
+    },
+    {
+      "quantity": "absolute_max_voltage",
+      "value": 33.2,
+      "unit": "V",
+      "locator": {
+        "quote": "Item M2994; Energy 2.8 kWh; Nominal voltage 29.6 V; Operating voltage 25.6~33.2 V; Weight 22 kg",
+        "page": 4
+      },
+      "statistic": "absolute_max"
+    },
+    {
+      "quantity": "width",
+      "value": 457,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimension (W x D x H) 457 x 185 x 154 mm",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 185,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimension (W x D x H) 457 x 185 x 154 mm",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 154,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimension (W x D x H) 457 x 185 x 154 mm",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 22,
+      "unit": "kg",
+      "locator": {
+        "quote": "Item M2994; Energy 2.8 kWh; Nominal voltage 29.6 V; Operating voltage 25.6~33.2 V; Weight 22 kg",
+        "page": 4
+      },
+      "statistic": "nominal",
+      "is_upper_bound": false
+    }
+  ]
+}

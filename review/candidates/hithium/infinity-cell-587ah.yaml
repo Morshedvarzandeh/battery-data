@@ -1,0 +1,124 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/hithium/infinity-cell-587ah",
+    "kind": "cell",
+    "manufacturer": "HiTHIUM",
+    "model_number": "∞Cell 587Ah",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/hithium-cell-lineup-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "HiTHIUM Battery Cells for Advanced Energy Storage Solutions",
+    "url": "https://www.hithium.com/products/cell.html",
+    "document_date": "2026-08-06",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 587,
+      "unit": "Ah",
+      "locator": {
+        "quote": "∞Cell 587Ah: 587 Ah; LFP; ≥ 11,000 cycles; ≈ 185 Wh/kg; ≈ 413 Wh/L"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 11000,
+      "unit": "cycles",
+      "locator": {
+        "quote": "∞Cell 587Ah: 587 Ah; LFP; ≥ 11,000 cycles; ≈ 185 Wh/kg; ≈ 413 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 185,
+      "unit": "Wh/kg",
+      "locator": {
+        "quote": "∞Cell 587Ah: 587 Ah; LFP; ≥ 11,000 cycles; ≈ 185 Wh/kg; ≈ 413 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": false
+    },
+    {
+      "quantity": "energy_density",
+      "value": 413,
+      "unit": "Wh/L",
+      "locator": {
+        "quote": "∞Cell 587Ah: 587 Ah; LFP; ≥ 11,000 cycles; ≈ 185 Wh/kg; ≈ 413 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": false
+    },
+    {
+      "quantity": "length",
+      "value": 286,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (L × W × H): 286 × 73.5 × 216.3 mm"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 73.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (L × W × H): 286 × 73.5 × 216.3 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 216.3,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (L × W × H): 286 × 73.5 × 216.3 mm"
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "anode_text": "Not stated",
+    "locator": {
+      "quote": "∞Cell 587Ah: LFP"
+    }
+  }
+}

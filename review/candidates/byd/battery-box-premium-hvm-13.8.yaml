@@ -1,0 +1,207 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "system/byd/battery-box-premium-hvm-13.8",
+    "kind": "system",
+    "manufacturer": "BYD",
+    "model_number": "Battery-Box Premium HVM 13.8",
+    "is_rechargeable": true,
+    "form_factor": "other"
+  },
+  "source": {
+    "uid": "src/byd-battery-box-premium-hvs-hvm-v1.1",
+    "kind": "datasheet",
+    "title": "BYD Battery-Box Premium HVS / HVM technical parameters",
+    "url": "https://bydbatterybox.com/uploads/downloads/BYD%20Battery-Box%20Premium_Datasheet_HV-AU%20V1.2%20EN-5eec6422498ad.pdf",
+    "revision": "V1.1",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; document body is not redistributed."
+  },
+  "observations": [
+    {
+      "quantity": "usable_energy",
+      "value": 13.8,
+      "unit": "kWh",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      },
+      "statistic": "rated",
+      "conditions": {
+        "boundary": "pack_dc",
+        "dod_pct": 100
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 50,
+      "unit": "A",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "max_pulse_discharge_current",
+      "value": 75,
+      "unit": "A",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "pulse_duration_s": 5,
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 256,
+      "unit": "V",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "absolute_min_voltage",
+      "value": 200,
+      "unit": "V",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      },
+      "statistic": "absolute_min"
+    },
+    {
+      "quantity": "absolute_max_voltage",
+      "value": 288,
+      "unit": "V",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      },
+      "statistic": "absolute_max"
+    },
+    {
+      "quantity": "height",
+      "value": 1411,
+      "unit": "mm",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 585,
+      "unit": "mm",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 298,
+      "unit": "mm",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 205,
+      "unit": "kg",
+      "locator": {
+        "quote": "HVM 13.8: 5 modules; Usable Energy 13.80 kWh; Max Output Current 50 A; Peak Output Current 75 A, 5 s; Nominal Voltage 256 V; Operating Voltage 200~288 V; Weight 205 kg",
+        "page": 2
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "round_trip_efficiency",
+      "value": 96,
+      "unit": "%",
+      "locator": {
+        "quote": "Round-trip Efficiency ≥96%",
+        "page": 2
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "boundary",
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -10,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating Temperature -10 °C to +50°C",
+        "page": 2
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 50,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating Temperature -10 °C to +50°C",
+        "page": 2
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    },
+    {
+      "quantity": "rated_power",
+      "value": 12.8,
+      "unit": "kW",
+      "locator": {
+        "quote": "Rated Power 12.8 kW",
+        "page": 2
+      },
+      "statistic": "rated",
+      "conditions": {
+        "boundary": "pack_dc",
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate (cobalt-free)",
+    "locator": {
+      "page": 2,
+      "quote": "Battery Cell Technology Lithium Iron Phosphate (cobalt-free)"
+    }
+  }
+}
