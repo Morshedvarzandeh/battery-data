@@ -328,7 +328,7 @@ INSERT INTO unit (symbol, si_symbol, factor, offset_, dimension) VALUES
   ('s','s',1,0,'time'),                       ('h','s',3600,0,'time'),
   ('day','s',86400,0,'time'),                 ('year','s',31557600,0,'time'),
   ('pct','1',0.01,0,'dimensionless'),         ('%','1',0.01,0,'dimensionless'),
-  ('cycles','1',1,0,'dimensionless'),         ('1','1',1,0,'dimensionless'),
+  ('1','1',1,0,'dimensionless'),
   ('mV_per_K','V/K',1e-3,0,'entropic'),       ('V_per_K','V/K',1,0,'entropic'),
   ('W_per_mK','W/(m*K)',1,0,'thermal_conductivity'),
   ('J_per_kgK','J/(kg*K)',1,0,'specific_heat'),
