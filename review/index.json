@@ -3,7 +3,7 @@
   "batch": "2026-08-06-manufacturer-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 37,
+  "candidate_count": 36,
   "total_record_count": 37,
   "candidates": [
     {
@@ -15,9 +15,10 @@
       "source_url": "https://bydbatterybox.com/uploads/downloads/BYD%20Battery-Box%20Premium_Datasheet_HV-AU%20V1.2%20EN-5eec6422498ad.pdf",
       "source_title": "BYD Battery-Box Premium HVS / HVM technical parameters",
       "observation_count": 13,
-      "state": "pending_review",
+      "state": "accepted",
       "issue_number": 13,
-      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/13"
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/13",
+      "accepted_file": "contrib/cells/byd/battery-box-premium-hvs-5.1.yaml"
     },
     {
       "uid": "system/byd/battery-box-premium-hvs-7.7",
