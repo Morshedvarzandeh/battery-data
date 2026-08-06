@@ -1,0 +1,152 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/hithium/ess-cell-280ah-1p",
+    "kind": "cell",
+    "manufacturer": "HiTHIUM",
+    "model_number": "ESS Cell 280Ah-1P",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/hithium-cell-lineup-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "HiTHIUM Battery Cells for Advanced Energy Storage Solutions",
+    "url": "https://www.hithium.com/products/cell.html",
+    "document_date": "2026-08-06",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 280,
+      "unit": "Ah",
+      "locator": {
+        "quote": "ESS Cell 280Ah-1P: 280 Ah; LFP; ≥ 7,000 cycles; ≥ 159.2 Wh/kg; ≥ 341.4 Wh/L"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 7000,
+      "unit": "cycles",
+      "locator": {
+        "quote": "ESS Cell 280Ah-1P: 280 Ah; LFP; ≥ 7,000 cycles; ≥ 159.2 Wh/kg; ≥ 341.4 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 159.2,
+      "unit": "Wh/kg",
+      "locator": {
+        "quote": "ESS Cell 280Ah-1P: 280 Ah; LFP; ≥ 7,000 cycles; ≥ 159.2 Wh/kg; ≥ 341.4 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "energy_density",
+      "value": 341.4,
+      "unit": "Wh/L",
+      "locator": {
+        "quote": "ESS Cell 280Ah-1P: 280 Ah; LFP; ≥ 7,000 cycles; ≥ 159.2 Wh/kg; ≥ 341.4 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -30,
+      "unit": "°C",
+      "locator": {
+        "quote": "Discharge: –30°C to 60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "discharge"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "quote": "Discharge: –30°C to 60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "discharge"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "locator": {
+        "quote": "Charge: 0°C to 60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "charge"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "quote": "Charge: 0°C to 60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "charge"
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "anode_text": "Not stated",
+    "locator": {
+      "quote": "ESS Cell 280Ah-1P: LFP"
+    }
+  }
+}

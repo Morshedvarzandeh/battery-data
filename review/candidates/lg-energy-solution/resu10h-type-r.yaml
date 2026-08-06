@@ -1,0 +1,87 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "pack/lg-energy-solution/resu10h-type-r",
+    "kind": "pack",
+    "manufacturer": "LG Energy Solution",
+    "model_number": "RESU10H (Type-R)",
+    "is_rechargeable": true,
+    "form_factor": "other"
+  },
+  "source": {
+    "uid": "src/lg-energy-solution-home-battery-eu-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "LG Energy Solution Home Battery product information",
+    "url": "https://www.lgessbattery.com/m/eu/home-battery/product-info.lg",
+    "document_date": "2026-08-06",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "energy",
+      "value": 9.8,
+      "unit": "kWh",
+      "locator": {
+        "quote": "RESU10H (Type-R): Total Energy 9.8 kWh; Usable Energy 9.3 kWh; Weight 97.0 kg; Dimensions 744 x 907 x 206 mm; IP55"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "usable_energy",
+      "value": 9.3,
+      "unit": "kWh",
+      "locator": {
+        "quote": "RESU10H (Type-R): Total Energy 9.8 kWh; Usable Energy 9.3 kWh; Weight 97.0 kg; Dimensions 744 x 907 x 206 mm; IP55"
+      },
+      "statistic": "rated",
+      "conditions": {
+        "boundary": "pack_dc",
+        "unstated": [
+          "dod_pct"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 97.0,
+      "unit": "kg",
+      "locator": {
+        "quote": "RESU10H (Type-R): Total Energy 9.8 kWh; Usable Energy 9.3 kWh; Weight 97.0 kg; Dimensions 744 x 907 x 206 mm; IP55"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "width",
+      "value": 744,
+      "unit": "mm",
+      "locator": {
+        "quote": "RESU10H (Type-R): Total Energy 9.8 kWh; Usable Energy 9.3 kWh; Weight 97.0 kg; Dimensions 744 x 907 x 206 mm; IP55"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 907,
+      "unit": "mm",
+      "locator": {
+        "quote": "RESU10H (Type-R): Total Energy 9.8 kWh; Usable Energy 9.3 kWh; Weight 97.0 kg; Dimensions 744 x 907 x 206 mm; IP55"
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 206,
+      "unit": "mm",
+      "locator": {
+        "quote": "RESU10H (Type-R): Total Energy 9.8 kWh; Usable Energy 9.3 kWh; Weight 97.0 kg; Dimensions 744 x 907 x 206 mm; IP55"
+      }
+    }
+  ]
+}

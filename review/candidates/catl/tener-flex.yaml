@@ -1,0 +1,56 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "system/catl/tener-flex",
+    "kind": "system",
+    "manufacturer": "CATL",
+    "model_number": "TENER Flex",
+    "is_rechargeable": true,
+    "form_factor": "rack"
+  },
+  "source": {
+    "uid": "src/catl-tener-flex-2024-09-25",
+    "kind": "manufacturer_web",
+    "title": "CATL unveils TENER Flex rack energy storage system",
+    "url": "https://www.catl.com/en/news/6291.html?pagesense_source=531883000126269001",
+    "document_date": "2024-09-25",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "quote": "Withstanding temperatures from -40°C to 60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "quote": "Withstanding temperatures from -40°C to 60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "locator": {
+      "quote": "CATL describes the product as LFP-based"
+    }
+  }
+}

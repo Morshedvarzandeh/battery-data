@@ -1,14 +1,17 @@
 name: Submit a datasheet
-description: Point at a datasheet PDF and get an extraction back for review
+description: Request a datasheet extraction without spending API credit automatically
 title: "[datasheet] "
 labels: ["datasheet"]
 body:
   - type: markdown
     attributes:
       value: |
-        Fill this in and the extractor reads the PDF, writes a contribution
-        file and opens a **pull request** with it. Nothing enters the
-        database from here — you accept, edit or reject that PR.
+        Fill this in to request an extraction. Opening or editing this issue
+        never calls a paid model API. A repository owner must manually run the
+        extraction workflow and explicitly approve that one paid call.
+
+        Nothing enters the database from the issue. Any extracted file still
+        requires a separate human review and approval.
 
         The extraction records what the document states and names what it
         leaves out. Where it goes wrong is usually one of two ways: a quote

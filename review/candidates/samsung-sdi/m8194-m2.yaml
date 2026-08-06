@@ -1,0 +1,108 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "module/samsung-sdi/m8194-m2",
+    "kind": "module",
+    "manufacturer": "Samsung SDI",
+    "model_number": "M8194 M2",
+    "is_rechargeable": true,
+    "form_factor": "other"
+  },
+  "source": {
+    "uid": "src/samsung-sdi-smart-battery-systems-2016",
+    "kind": "datasheet",
+    "title": "Samsung SDI Smart Battery Systems for Energy Storage",
+    "url": "https://www.samsungsdi.com/upload/ess_brochure/Samsung%20SDI%20brochure_EN.pdf",
+    "revision": "2016 product lineup",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "energy",
+      "value": 7.65,
+      "unit": "kWh",
+      "locator": {
+        "quote": "Item M8194 M2; Energy 7.65 kWh; Nominal voltage 81.4 V; Operating voltage 70.4~91.3 V; Weight <55 kg",
+        "page": 4
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 81.4,
+      "unit": "V",
+      "locator": {
+        "quote": "Item M8194 M2; Energy 7.65 kWh; Nominal voltage 81.4 V; Operating voltage 70.4~91.3 V; Weight <55 kg",
+        "page": 4
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "absolute_min_voltage",
+      "value": 70.4,
+      "unit": "V",
+      "locator": {
+        "quote": "Item M8194 M2; Energy 7.65 kWh; Nominal voltage 81.4 V; Operating voltage 70.4~91.3 V; Weight <55 kg",
+        "page": 4
+      },
+      "statistic": "absolute_min"
+    },
+    {
+      "quantity": "absolute_max_voltage",
+      "value": 91.3,
+      "unit": "V",
+      "locator": {
+        "quote": "Item M8194 M2; Energy 7.65 kWh; Nominal voltage 81.4 V; Operating voltage 70.4~91.3 V; Weight <55 kg",
+        "page": 4
+      },
+      "statistic": "absolute_max"
+    },
+    {
+      "quantity": "width",
+      "value": 370,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimension (W x D x H) 370 x 588 x 160 mm",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 588,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimension (W x D x H) 370 x 588 x 160 mm",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 160,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimension (W x D x H) 370 x 588 x 160 mm",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 55,
+      "unit": "kg",
+      "locator": {
+        "quote": "Item M8194 M2; Energy 7.65 kWh; Nominal voltage 81.4 V; Operating voltage 70.4~91.3 V; Weight <55 kg",
+        "page": 4
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true
+    }
+  ]
+}

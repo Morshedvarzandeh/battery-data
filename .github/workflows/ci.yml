@@ -65,7 +65,15 @@ jobs:
         with: { python-version: '3.11' }
       - run: pip install pyyaml jsonschema
       - name: Validate community contributions
-        run: python tools/validate_contrib.py contrib/
+        run: |
+          python tools/validate_contrib.py contrib/
+          python tools/validate_review.py
+          python tools/build_review_batch.py
+          python tools/render_review_issues.py
+          git diff --exit-code -- review/ || {
+            echo "::error::review batch is stale. Run the deterministic builders"
+            exit 1
+          }
       - name: The page is generated, not maintained
         # web/index.html carries a copy of the contribution data. If the two
         # can drift, a merged submission lands in contrib/ and never appears

@@ -12,10 +12,11 @@ rejects it.** Nothing reaches the database on a model's say-so.
 ## The short version
 
 1. Open an issue with the **Submit a datasheet** template.
-2. A workflow reads the PDF and opens a **pull request** with a contribution
-   file, plus a table of every value, its conditions and the quote it came
-   from.
-3. **Merge** to accept. **Edit the branch** to modify. **Close** to reject.
+2. Opening the issue records the request but spends no API credit.
+3. A repository owner manually starts one extraction and explicitly approves
+   that paid call. The workflow opens a pull request with every value, its
+   conditions and the quote it came from.
+4. **Merge** to accept. **Edit the branch** to modify. **Close** to reject.
 
 The pull request *is* the review step. There is no separate approval UI to
 build or log into, and the schema's `review_state` means the same thing on
@@ -120,7 +121,7 @@ python agents/literature-miner/pipeline.py discover --limit 20 --out found.json
 
 # Triage does.
 export ANTHROPIC_API_KEY=sk-ant-...
-python agents/literature-miner/pipeline.py triage found.json --min-priority 0.6
+python agents/literature-miner/pipeline.py triage found.json --min-priority 0.6 --allow-paid-api
 ```
 
 Or run it from the **Actions** tab → *literature-miner* → *Run workflow*.
@@ -137,15 +138,15 @@ a mistake costs reviewer time and can survive into the database.
 
 ## One-time setup
 
-Both workflows need an Anthropic API key as a **repository secret** —
-repository admin only, and it cannot be set from a pull request:
+Paid triage or extraction needs an Anthropic API key as a **repository
+secret** — repository admin only, and it cannot be set from a pull request:
 
 > Settings → Secrets and variables → Actions → New repository secret
 > Name: `ANTHROPIC_API_KEY`  ·  Value: `sk-ant-...`
 
-Without it, discovery still runs; triage and extraction stop with a message
-saying exactly this rather than failing obscurely.
+Without it, discovery still runs; paid triage and extraction stop with a
+message saying exactly this rather than failing obscurely.
 
-Extraction only runs for issues opened by the repository owner, a member or a
-collaborator. Everything else here is open; that one step spends money per
-run, so it is not.
+A stored key alone cannot trigger spending. Extraction requires a manual
+workflow dispatch and its explicit `allow_paid_api` checkbox. Scheduled mining
+is discovery-only; paid triage has the same manual opt-in boundary.

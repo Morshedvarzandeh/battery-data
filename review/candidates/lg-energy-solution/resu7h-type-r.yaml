@@ -1,0 +1,87 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "pack/lg-energy-solution/resu7h-type-r",
+    "kind": "pack",
+    "manufacturer": "LG Energy Solution",
+    "model_number": "RESU7H (Type-R)",
+    "is_rechargeable": true,
+    "form_factor": "other"
+  },
+  "source": {
+    "uid": "src/lg-energy-solution-home-battery-eu-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "LG Energy Solution Home Battery product information",
+    "url": "https://www.lgessbattery.com/m/eu/home-battery/product-info.lg",
+    "document_date": "2026-08-06",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "energy",
+      "value": 7.0,
+      "unit": "kWh",
+      "locator": {
+        "quote": "RESU7H (Type-R): Total Energy 7.0 kWh; Usable Energy 6.6 kWh; Weight 75.0 kg; Dimensions 744 x 692 x 206 mm; IP55"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "usable_energy",
+      "value": 6.6,
+      "unit": "kWh",
+      "locator": {
+        "quote": "RESU7H (Type-R): Total Energy 7.0 kWh; Usable Energy 6.6 kWh; Weight 75.0 kg; Dimensions 744 x 692 x 206 mm; IP55"
+      },
+      "statistic": "rated",
+      "conditions": {
+        "boundary": "pack_dc",
+        "unstated": [
+          "dod_pct"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 75.0,
+      "unit": "kg",
+      "locator": {
+        "quote": "RESU7H (Type-R): Total Energy 7.0 kWh; Usable Energy 6.6 kWh; Weight 75.0 kg; Dimensions 744 x 692 x 206 mm; IP55"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "width",
+      "value": 744,
+      "unit": "mm",
+      "locator": {
+        "quote": "RESU7H (Type-R): Total Energy 7.0 kWh; Usable Energy 6.6 kWh; Weight 75.0 kg; Dimensions 744 x 692 x 206 mm; IP55"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 692,
+      "unit": "mm",
+      "locator": {
+        "quote": "RESU7H (Type-R): Total Energy 7.0 kWh; Usable Energy 6.6 kWh; Weight 75.0 kg; Dimensions 744 x 692 x 206 mm; IP55"
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 206,
+      "unit": "mm",
+      "locator": {
+        "quote": "RESU7H (Type-R): Total Energy 7.0 kWh; Usable Energy 6.6 kWh; Weight 75.0 kg; Dimensions 744 x 692 x 206 mm; IP55"
+      }
+    }
+  ]
+}

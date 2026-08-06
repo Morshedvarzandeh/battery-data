@@ -1,0 +1,62 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "system/catl/tener",
+    "kind": "system",
+    "manufacturer": "CATL",
+    "model_number": "TENER",
+    "is_rechargeable": true,
+    "form_factor": "container"
+  },
+  "source": {
+    "uid": "src/catl-tener-2024-04-09",
+    "kind": "manufacturer_web",
+    "title": "CATL unveils TENER 6.25 MWh energy storage system",
+    "url": "https://www.catl.com/en/news/6232.html",
+    "document_date": "2024-04-09",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false
+  },
+  "observations": [
+    {
+      "quantity": "energy",
+      "value": 6250,
+      "unit": "kWh",
+      "locator": {
+        "quote": "TENER achieves an impressive 6.25 MWh capacity in the TEU container"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 430,
+      "unit": "Wh/L",
+      "locator": {
+        "quote": "achieving an energy density of 430 Wh/L"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "locator": {
+      "quote": "CATL describes the product as LFP-based"
+    }
+  }
+}
