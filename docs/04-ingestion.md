@@ -76,6 +76,35 @@ observations:
 
 A contributor cannot submit a capacity without a rate. This is the point.
 
+### Getting an accepted contribution into the library
+
+Merging a contribution, or approving its review issue, puts the file in
+`contrib/`. That is where it stops being a proposal — and, until
+`tools/load_contrib.py` existed, where it stopped entirely: the catalog page is
+built straight from the YAML, so an accepted battery could appear on the site
+and in no query.
+
+```bash
+python tools/load_contrib.py --dsn dbname=batterydb     # stage, validate, promote
+python tools/load_contrib.py --dsn dbname=batterydb --stage-only
+```
+
+It takes the left-hand branch of the diagram above, and takes it in full:
+observations are staged as candidates, `bd_stage.validate_candidate()` applies
+the unit table, the quantity registry, the required-conditions rule and the
+plausibility bounds, `bd_stage.detect_conflicts()` flags anything that
+contradicts an accepted value by more than 2%, and only then does anything
+reach `bd.*`.
+
+Promotion is the default because `contrib/` is post-review by construction: a
+file is only there because a human accepted it. `--stage-only` stops before
+that and leaves the queue populated for `bd_stage.review_queue`.
+
+A file is rejected whole rather than in part — a spec sheet loaded with its bad
+rows dropped reads, in a later query, like a complete spec sheet. Re-running is
+safe: unchanged bytes are skipped, and an edited contribution supersedes what
+its previous load asserted instead of standing beside it.
+
 ## Cycler file adapters
 
 | Format | Parser | Trap |
