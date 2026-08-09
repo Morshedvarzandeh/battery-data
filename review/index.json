@@ -3,7 +3,7 @@
   "batch": "2026-08-06-manufacturer-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 229,
+  "candidate_count": 228,
   "total_record_count": 230,
   "candidates": [
     {
@@ -575,7 +575,8 @@
       "source_url": "https://www.evebattery.com/en/news-1822",
       "source_title": "EVE's LEV full-scenario solutions unveiled at EUROBIKE 2024",
       "observation_count": 4,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eve/21700-58e.yaml",
       "issue_number": 238,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/238"
     },
