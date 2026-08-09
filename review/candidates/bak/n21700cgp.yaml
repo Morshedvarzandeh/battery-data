@@ -22,9 +22,9 @@
       "value": 4.0,
       "unit": "Ah",
       "conditions": {
-        "rate_value": "0.2",
+        "rate_value": 0.2,
         "rate_unit": "C",
-        "voltage_lower_v": "2.5",
+        "voltage_lower_v": 2.5,
         "unstated": [
           "temperature_c"
         ]

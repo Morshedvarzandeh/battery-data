@@ -22,7 +22,7 @@
       "value": 4.2,
       "unit": "Ah",
       "conditions": {
-        "voltage_lower_v": "2.5",
+        "voltage_lower_v": 2.5,
         "unstated": [
           "rate_value",
           "rate_unit",
@@ -126,7 +126,7 @@
       "value": 10,
       "unit": "mohm",
       "conditions": {
-        "frequency_hz": "1000",
+        "frequency_hz": 1000,
         "unstated": [
           "soc_pct",
           "temperature_c"
@@ -141,8 +141,8 @@
       "value": 16,
       "unit": "mohm",
       "conditions": {
-        "pulse_duration_s": "1",
-        "pulse_current_a": "10",
+        "pulse_duration_s": 1,
+        "pulse_current_a": 10,
         "direction": "discharge",
         "unstated": [
           "soc_pct",

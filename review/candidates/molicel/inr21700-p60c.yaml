@@ -117,7 +117,7 @@
       "value": 660,
       "unit": "W",
       "conditions": {
-        "pulse_duration_s": "2",
+        "pulse_duration_s": 2,
         "boundary": "cell",
         "unstated": [
           "soc_pct",
@@ -133,8 +133,8 @@
       "value": 70,
       "unit": "%",
       "conditions": {
-        "cycle_index": "1000",
-        "rate_value": "100",
+        "cycle_index": 1000,
+        "rate_value": 100,
         "rate_unit": "W",
         "unstated": [
           "temperature_c"

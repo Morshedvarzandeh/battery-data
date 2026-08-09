@@ -100,6 +100,22 @@ def split_heading(heading: str, uid: str) -> tuple[str, str]:
     raise SystemExit(f"cannot split {heading!r} against uid {uid}")
 
 
+def condition_types() -> dict[str, str]:
+    """Declared type per condition, so a rendered cell comes back typed.
+
+    Every cell in the markdown table is text. A voltage_lower_v left as the
+    string "2.5" passes the review validator and then fails the contribution
+    schema at the moment of approval -- which is the failure this whole script
+    exists to clear, arriving one step later.
+    """
+    schema = json.loads((ROOT / "json-schema" / "cell-contribution.schema.json").read_text())
+    return {name: spec.get("type", "string")
+            for name, spec in schema["$defs"]["conditions"]["properties"].items()}
+
+
+TYPES = condition_types()
+
+
 def parse_conditions(text: str) -> dict | None:
     """Invert tools/render_review_issues.py:conditions_text."""
     text = text.strip()
@@ -113,7 +129,14 @@ def parse_conditions(text: str) -> dict | None:
                                       in part[len("not stated:"):].split(",") if c.strip()]
         elif "=" in part:
             key, _, value = part.partition("=")
-            conditions[key.strip()] = value.strip()
+            key, value = key.strip(), value.strip()
+            declared = TYPES.get(key, "string")
+            if declared == "integer":
+                value = int(value)
+            elif declared == "number":
+                value = float(value)
+                value = int(value) if value.is_integer() else value
+            conditions[key] = value
     return conditions or None
 
 
@@ -183,8 +206,14 @@ def recover(issue: dict) -> dict:
 
 
 def main() -> int:
+    # A candidate file on disk normally means the issue is fine and needs no
+    # recovery -- except for the ones this script wrote last time, which are on
+    # disk precisely because it ran. Re-deriving those keeps the run idempotent
+    # and lets a fix to the parser reach records already recovered.
+    mine = {entry["candidate_file"] for entry in
+            json.loads(BATCH.read_text())["candidates"]} if BATCH.exists() else set()
     committed = {str(path.relative_to(ROOT))
-                 for path in (ROOT / "review" / "candidates").rglob("*.yaml")}
+                 for path in (ROOT / "review" / "candidates").rglob("*.yaml")} - mine
     recovered = []
     for issue in fetch_issues():
         marker = MARKER.search(issue["body"] or "")

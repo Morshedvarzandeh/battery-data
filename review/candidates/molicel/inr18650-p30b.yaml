@@ -141,8 +141,8 @@
       "value": 75,
       "unit": "%",
       "conditions": {
-        "cycle_index": "500",
-        "rate_value": "100",
+        "cycle_index": 500,
+        "rate_value": 100,
         "rate_unit": "W",
         "unstated": [
           "temperature_c"

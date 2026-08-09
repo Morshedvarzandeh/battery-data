@@ -117,8 +117,8 @@
       "value": 13.8,
       "unit": "mohm",
       "conditions": {
-        "pulse_duration_s": "10",
-        "pulse_current_a": "10",
+        "pulse_duration_s": 10,
+        "pulse_current_a": 10,
         "direction": "discharge",
         "unstated": [
           "soc_pct",

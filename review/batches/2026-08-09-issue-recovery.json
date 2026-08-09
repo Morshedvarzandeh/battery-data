@@ -36,9 +36,9 @@
             "value": 2.6,
             "unit": "Ah",
             "conditions": {
-              "rate_value": "0.2",
+              "rate_value": 0.2,
               "rate_unit": "C",
-              "voltage_lower_v": "2.75",
+              "voltage_lower_v": 2.75,
               "unstated": [
                 "temperature_c"
               ]
@@ -230,9 +230,9 @@
             "value": 2.9,
             "unit": "Ah",
             "conditions": {
-              "rate_value": "0.2",
+              "rate_value": 0.2,
               "rate_unit": "C",
-              "voltage_lower_v": "2.5",
+              "voltage_lower_v": 2.5,
               "unstated": [
                 "temperature_c"
               ]
@@ -424,9 +424,9 @@
             "value": 3.5,
             "unit": "Ah",
             "conditions": {
-              "rate_value": "0.2",
+              "rate_value": 0.2,
               "rate_unit": "C",
-              "voltage_lower_v": "2.5",
+              "voltage_lower_v": 2.5,
               "unstated": [
                 "temperature_c"
               ]
@@ -618,9 +618,9 @@
             "value": 5.3,
             "unit": "Ah",
             "conditions": {
-              "rate_value": "0.2",
+              "rate_value": 0.2,
               "rate_unit": "C",
-              "voltage_lower_v": "2.5",
+              "voltage_lower_v": 2.5,
               "unstated": [
                 "temperature_c"
               ]
@@ -812,9 +812,9 @@
             "value": 5.0,
             "unit": "Ah",
             "conditions": {
-              "rate_value": "0.2",
+              "rate_value": 0.2,
               "rate_unit": "C",
-              "voltage_lower_v": "2.5",
+              "voltage_lower_v": 2.5,
               "unstated": [
                 "temperature_c"
               ]
@@ -1006,9 +1006,9 @@
             "value": 4.0,
             "unit": "Ah",
             "conditions": {
-              "rate_value": "0.2",
+              "rate_value": 0.2,
               "rate_unit": "C",
-              "voltage_lower_v": "2.5",
+              "voltage_lower_v": 2.5,
               "unstated": [
                 "temperature_c"
               ]
@@ -2055,8 +2055,8 @@
             "value": 75,
             "unit": "%",
             "conditions": {
-              "cycle_index": "500",
-              "rate_value": "100",
+              "cycle_index": 500,
+              "rate_value": 100,
               "rate_unit": "W",
               "unstated": [
                 "temperature_c"
@@ -2309,7 +2309,7 @@
             "value": 1000,
             "unit": "cycles",
             "conditions": {
-              "rate_value": "1",
+              "rate_value": 1,
               "rate_unit": "C",
               "unstated": [
                 "temperature_c",
@@ -2351,7 +2351,7 @@
             "value": 4.2,
             "unit": "Ah",
             "conditions": {
-              "voltage_lower_v": "2.5",
+              "voltage_lower_v": 2.5,
               "unstated": [
                 "rate_value",
                 "rate_unit",
@@ -2455,7 +2455,7 @@
             "value": 10,
             "unit": "mohm",
             "conditions": {
-              "frequency_hz": "1000",
+              "frequency_hz": 1000,
               "unstated": [
                 "soc_pct",
                 "temperature_c"
@@ -2470,8 +2470,8 @@
             "value": 16,
             "unit": "mohm",
             "conditions": {
-              "pulse_duration_s": "1",
-              "pulse_current_a": "10",
+              "pulse_duration_s": 1,
+              "pulse_current_a": 10,
               "direction": "discharge",
               "unstated": [
                 "soc_pct",
@@ -2608,8 +2608,8 @@
             "value": 13.8,
             "unit": "mohm",
             "conditions": {
-              "pulse_duration_s": "10",
-              "pulse_current_a": "10",
+              "pulse_duration_s": 10,
+              "pulse_current_a": 10,
               "direction": "discharge",
               "unstated": [
                 "soc_pct",
@@ -2746,7 +2746,7 @@
             "value": 1400,
             "unit": "cycles",
             "conditions": {
-              "rate_value": "100",
+              "rate_value": 100,
               "rate_unit": "W",
               "unstated": [
                 "temperature_c",
@@ -3013,7 +3013,7 @@
             "value": 660,
             "unit": "W",
             "conditions": {
-              "pulse_duration_s": "2",
+              "pulse_duration_s": 2,
               "boundary": "cell",
               "unstated": [
                 "soc_pct",
@@ -3029,8 +3029,8 @@
             "value": 70,
             "unit": "%",
             "conditions": {
-              "cycle_index": "1000",
-              "rate_value": "100",
+              "cycle_index": 1000,
+              "rate_value": 100,
               "rate_unit": "W",
               "unstated": [
                 "temperature_c"
