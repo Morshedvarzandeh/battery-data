@@ -1,0 +1,46 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "primary_cell/renata/cr1620fv-lf",
+    "kind": "primary_cell",
+    "manufacturer": "Renata",
+    "model_number": "CR1620FV-LF",
+    "is_rechargeable": false
+  },
+  "source": {
+    "uid": "src/renata-tabbed-lithium-coin-cells",
+    "kind": "manufacturer_web",
+    "title": "Renata tabbed lithium coin cells",
+    "url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
+    "document_date": "2026-08-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 0.068,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Renata No. CR1620FV-LF Capacity 68 mAh Weight 1.4 g"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1.4,
+      "unit": "g",
+      "locator": {
+        "quote": "Renata No. CR1620FV-LF Capacity 68 mAh Weight 1.4 g"
+      }
+    }
+  ]
+}

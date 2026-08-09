@@ -1,0 +1,157 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/molicel/inr21700-p42a",
+    "kind": "cell",
+    "manufacturer": "Molicel",
+    "model_number": "INR-21700-P42A",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/molicel-inr21700p42a-1.7-product-data-sheet-of-inr-21700-p42a-80092",
+    "kind": "datasheet",
+    "title": "Molicel INR-21700-P42A product data sheet",
+    "url": "https://www.molicel.com/wp-content/uploads/INR21700P42A_1.7_Product-Data-Sheet-of-INR-21700-P42A-80092.pdf",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 4.2,
+      "unit": "Ah",
+      "conditions": {
+        "voltage_lower_v": "2.5",
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.6,
+      "unit": "V",
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 45,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 230,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 615,
+      "unit": "Wh/L",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "standard_charge_current",
+      "value": 4.2,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 21.55,
+      "unit": "mm",
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 70.15,
+      "unit": "mm",
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 70,
+      "unit": "g",
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 10,
+      "unit": "mohm",
+      "conditions": {
+        "frequency_hz": "1000",
+        "unstated": [
+          "soc_pct",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    },
+    {
+      "quantity": "internal_resistance_dc",
+      "value": 16,
+      "unit": "mohm",
+      "conditions": {
+        "pulse_duration_s": "1",
+        "pulse_current_a": "10",
+        "direction": "discharge",
+        "unstated": [
+          "soc_pct",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity Typical 4200 mAh; Cell Voltage Nominal 3.6 V; Charge 4.2 V; Discharge 2.5 V; Charge Current Standard 4.2 A; Discharge Current Continuous 45 A; Typical Impedance AC (1 KHz) 10 mΩ; DC (10A/1s) 16 mΩ; Energy Density Volumetric 615 Wh/l; Gravimetric 230 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 70 g (Max)"
+      }
+    }
+  ]
+}

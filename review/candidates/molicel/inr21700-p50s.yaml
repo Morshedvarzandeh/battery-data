@@ -1,0 +1,125 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/molicel/inr21700-p50s",
+    "kind": "cell",
+    "manufacturer": "Molicel",
+    "model_number": "INR-21700-P50S",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/molicel-inr-21700-p50s",
+    "kind": "manufacturer_web",
+    "title": "Molicel INR-21700-P50S product page",
+    "url": "https://www.molicel.com/product/inr-21700-p50s/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 5.0,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Model INR-21700-P50S; Nominal Voltage 3.6 V; Typical Capacity 5.0 Ah; Charge Current 5 A; Discharge Current 100 A; Energy Density 714 Wh/L and 260 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 71 g (Max)"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.6,
+      "unit": "V",
+      "locator": {
+        "quote": "Model INR-21700-P50S; Nominal Voltage 3.6 V; Typical Capacity 5.0 Ah; Charge Current 5 A; Discharge Current 100 A; Energy Density 714 Wh/L and 260 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 71 g (Max)"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 100,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Model INR-21700-P50S; Nominal Voltage 3.6 V; Typical Capacity 5.0 Ah; Charge Current 5 A; Discharge Current 100 A; Energy Density 714 Wh/L and 260 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 71 g (Max)"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 260,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Model INR-21700-P50S; Nominal Voltage 3.6 V; Typical Capacity 5.0 Ah; Charge Current 5 A; Discharge Current 100 A; Energy Density 714 Wh/L and 260 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 71 g (Max)"
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 714,
+      "unit": "Wh/L",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Model INR-21700-P50S; Nominal Voltage 3.6 V; Typical Capacity 5.0 Ah; Charge Current 5 A; Discharge Current 100 A; Energy Density 714 Wh/L and 260 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 71 g (Max)"
+      }
+    },
+    {
+      "quantity": "standard_charge_current",
+      "value": 5,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Model INR-21700-P50S; Nominal Voltage 3.6 V; Typical Capacity 5.0 Ah; Charge Current 5 A; Discharge Current 100 A; Energy Density 714 Wh/L and 260 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 71 g (Max)"
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 21.55,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model INR-21700-P50S; Nominal Voltage 3.6 V; Typical Capacity 5.0 Ah; Charge Current 5 A; Discharge Current 100 A; Energy Density 714 Wh/L and 260 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 71 g (Max)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 70.15,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model INR-21700-P50S; Nominal Voltage 3.6 V; Typical Capacity 5.0 Ah; Charge Current 5 A; Discharge Current 100 A; Energy Density 714 Wh/L and 260 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 71 g (Max)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 71,
+      "unit": "g",
+      "locator": {
+        "quote": "Model INR-21700-P50S; Nominal Voltage 3.6 V; Typical Capacity 5.0 Ah; Charge Current 5 A; Discharge Current 100 A; Energy Density 714 Wh/L and 260 Wh/kg; Diameter 21.55 mm (Max); Height 70.15 mm (Max); Weight 71 g (Max)"
+      }
+    }
+  ]
+}

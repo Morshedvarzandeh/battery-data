@@ -25,6 +25,27 @@ The issue editor is treated as a security boundary: only
 as data, restricted to `review/candidates/`, resolved before use, and never
 interpolated from untrusted issue text into a shell command.
 
+A refusal is quoted back onto the issue. Checking the box and getting a red
+cross with only a link to a run log tells the owner nothing about which of the
+refusals they hit, and the two that read alike are worth telling apart: a path
+that escapes the review queue is an attack, while a path with no file behind it
+is an issue that outlived its candidate. Only the second is fixable, by
+`tools/recover_issue_candidates.py`.
+
+## When the issue is the only surviving copy
+
+Step 1 can fail silently: an issue gets opened and its candidate file never
+reaches the default branch. The issue then shows a full table of reviewable
+claims that no approval can act on.
+
+`tools/recover_issue_candidates.py` rebuilds those declarations from the issue
+bodies into `review/batches/`, which `tools/build_review_batch.py` emits like
+any other batch. The rendered issue is a lossy view of the extraction behind
+it — no `statistic`, no page numbers — so a recovered record is weaker than a
+freshly extracted one and says so in `source.note`. Re-extracting from the
+datasheet through `submit-datasheet.yml` is the way to get those fields back,
+and it costs an API call per product.
+
 ## Paid extraction boundary
 
 Opening, labelling, editing, or approving an issue cannot invoke a paid model.

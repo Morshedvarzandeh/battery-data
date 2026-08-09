@@ -1,0 +1,148 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/molicel/inr21700-p60c",
+    "kind": "cell",
+    "manufacturer": "Molicel",
+    "model_number": "INR-21700-P60C",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/molicel-inr-21700-p60c",
+    "kind": "manufacturer_web",
+    "title": "Molicel INR-21700-P60C product page",
+    "url": "https://www.molicel.com/inr-21700-p60c/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 6.0,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.0Ah, 21.6Wh; Energy Density 871 Wh/L, 284Wh/kg; Maximum Discharge Current 100A; fast charging up to 5C"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.6,
+      "unit": "V",
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.0Ah, 21.6Wh; Energy Density 871 Wh/L, 284Wh/kg; Maximum Discharge Current 100A; fast charging up to 5C"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 100,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.0Ah, 21.6Wh; Energy Density 871 Wh/L, 284Wh/kg; Maximum Discharge Current 100A; fast charging up to 5C"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 284,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.0Ah, 21.6Wh; Energy Density 871 Wh/L, 284Wh/kg; Maximum Discharge Current 100A; fast charging up to 5C"
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 871,
+      "unit": "Wh/L",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.0Ah, 21.6Wh; Energy Density 871 Wh/L, 284Wh/kg; Maximum Discharge Current 100A; fast charging up to 5C"
+      }
+    },
+    {
+      "quantity": "energy",
+      "value": 21.6,
+      "unit": "Wh",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.0Ah, 21.6Wh; Energy Density 871 Wh/L, 284Wh/kg; Maximum Discharge Current 100A; fast charging up to 5C"
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 5,
+      "unit": "C",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.0Ah, 21.6Wh; Energy Density 871 Wh/L, 284Wh/kg; Maximum Discharge Current 100A; fast charging up to 5C"
+      }
+    },
+    {
+      "quantity": "peak_power",
+      "value": 660,
+      "unit": "W",
+      "conditions": {
+        "pulse_duration_s": "2",
+        "boundary": "cell",
+        "unstated": [
+          "soc_pct",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.0Ah, 21.6Wh; Energy Density 871 Wh/L, 284Wh/kg; Maximum Discharge Current 100A; fast charging up to 5C"
+      }
+    },
+    {
+      "quantity": "capacity_retention",
+      "value": 70,
+      "unit": "%",
+      "conditions": {
+        "cycle_index": "1000",
+        "rate_value": "100",
+        "rate_unit": "W",
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "over 70% capacity even after 1,000 intense 100W discharge cycles"
+      }
+    }
+  ]
+}

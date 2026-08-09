@@ -1,0 +1,82 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/murata/us18650nc1",
+    "kind": "cell",
+    "manufacturer": "Murata",
+    "model_number": "US18650NC1",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/murata-products-search",
+    "kind": "manufacturer_web",
+    "title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
+    "url": "https://www.murata.com/products/batteries/cylindrical/products-search",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 2.9,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "US18650NC1 (NRND): Nominal Capacity 2900 mAh; Positive Electrode Material NCA; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.6 V; Weight 45.3 g; Diameter φ18.0 mm; Height 65.0 mm; Continuous Max Discharge Current 8.0 A; Features runtime"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.6,
+      "unit": "V",
+      "locator": {
+        "quote": "US18650NC1 (NRND): Nominal Capacity 2900 mAh; Positive Electrode Material NCA; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.6 V; Weight 45.3 g; Diameter φ18.0 mm; Height 65.0 mm; Continuous Max Discharge Current 8.0 A; Features runtime"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 45.3,
+      "unit": "g",
+      "locator": {
+        "quote": "US18650NC1 (NRND): Nominal Capacity 2900 mAh; Positive Electrode Material NCA; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.6 V; Weight 45.3 g; Diameter φ18.0 mm; Height 65.0 mm; Continuous Max Discharge Current 8.0 A; Features runtime"
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 18.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "US18650NC1 (NRND): Nominal Capacity 2900 mAh; Positive Electrode Material NCA; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.6 V; Weight 45.3 g; Diameter φ18.0 mm; Height 65.0 mm; Continuous Max Discharge Current 8.0 A; Features runtime"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 65.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "US18650NC1 (NRND): Nominal Capacity 2900 mAh; Positive Electrode Material NCA; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.6 V; Weight 45.3 g; Diameter φ18.0 mm; Height 65.0 mm; Continuous Max Discharge Current 8.0 A; Features runtime"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 8.0,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "US18650NC1 (NRND): Nominal Capacity 2900 mAh; Positive Electrode Material NCA; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.6 V; Weight 45.3 g; Diameter φ18.0 mm; Height 65.0 mm; Continuous Max Discharge Current 8.0 A; Features runtime"
+      }
+    }
+  ]
+}

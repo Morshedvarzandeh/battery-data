@@ -1,0 +1,156 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/molicel/inr18650-p30b",
+    "kind": "cell",
+    "manufacturer": "Molicel",
+    "model_number": "INR-18650-P30B",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/molicel-inr-18650-p30b",
+    "kind": "manufacturer_web",
+    "title": "Molicel INR-18650-P30B product page",
+    "url": "https://www.molicel.com/inr-18650-p30b/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 3.0,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.6,
+      "unit": "V",
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 36,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 234,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 631,
+      "unit": "Wh/L",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "energy",
+      "value": 10.8,
+      "unit": "Wh",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "standard_charge_current",
+      "value": 9,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 18.6,
+      "unit": "mm",
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 65.2,
+      "unit": "mm",
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 48,
+      "unit": "g",
+      "locator": {
+        "quote": "Nominal Voltage 3.6V; Typical Capacity 3.0Ah (10.8Wh); Discharge Current (MAX)36A; Energy Density 631 Wh/l and 234 Wh/kg; Fast Charge 9A continues charge; Diameter 18.6 mm (Max); Height 65.2 mm (Max); Weight 48 g (Max)"
+      }
+    },
+    {
+      "quantity": "capacity_retention",
+      "value": 75,
+      "unit": "%",
+      "conditions": {
+        "cycle_index": "500",
+        "rate_value": "100",
+        "rate_unit": "W",
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "500 Cycles 75% capacity retention by 100W discharge/1C charge"
+      }
+    }
+  ]
+}

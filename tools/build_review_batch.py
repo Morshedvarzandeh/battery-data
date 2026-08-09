@@ -73,16 +73,28 @@ def candidate(maker_slug, model_slug, *, kind, manufacturer, model, source,
     }
     if chemistry:
         document["chemistry"] = chemistry
+    return register(document)
+
+
+def register(document):
+    """Write one candidate file and return its index record.
+
+    Writing is skipped for a candidate already accepted: promotion moved that
+    file into ``contrib/``, and putting it back under review would offer the
+    same product for approval twice.
+    """
+    product, source = document["product"], document["source"]
+    _, maker_slug, model_slug = product["uid"].split("/", 2)
     path = OUT / maker_slug / f"{model_slug}.yaml"
     record = {
         "uid": product["uid"],
-        "manufacturer": manufacturer,
-        "model_number": model,
-        "kind": kind,
+        "manufacturer": product["manufacturer"],
+        "model_number": product["model_number"],
+        "kind": product["kind"],
         "candidate_file": str(path.relative_to(ROOT)),
         "source_url": source.get("url"),
         "source_title": source.get("title"),
-        "observation_count": len(observations),
+        "observation_count": len(document["observations"]),
         "state": "pending_review",
     }
     previous = PREVIOUS_BY_UID.get(product["uid"], {})
@@ -480,9 +492,22 @@ def catl(records):
         ))
 
 
+def recovered(records):
+    """Emit the candidates re-derived from their own review issues.
+
+    Their declaration is a data file rather than a builder above because the
+    extraction that produced them is gone: ``tools/recover_issue_candidates.py``
+    rebuilt each one from the issue the owner reviews, and that JSON is the
+    checked-in record of what it found.
+    """
+    for batch in sorted((ROOT / "review" / "batches").glob("*.json")):
+        for entry in json.loads(batch.read_text())["candidates"]:
+            records.append(register(entry["document"]))
+
+
 def main():
     records = []
-    for builder in (byd, hithium, cnte, samsung, lg, catl):
+    for builder in (byd, hithium, cnte, samsung, lg, catl, recovered):
         builder(records)
     index = {
         "schema_version": 1,
