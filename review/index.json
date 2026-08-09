@@ -3,7 +3,7 @@
   "batch": "2026-08-06-manufacturer-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 279,
+  "candidate_count": 278,
   "total_record_count": 291,
   "candidates": [
     {
@@ -3718,7 +3718,8 @@
       "source_url": "https://www.reptbattero.com/50ah-battery-cell/",
       "source_title": "REPT BATTERO 50Ah ESS battery cell",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/rept/50ah.yaml",
       "issue_number": 297,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/297"
     },
