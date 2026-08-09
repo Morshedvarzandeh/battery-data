@@ -3,7 +3,7 @@
   "batch": "2026-08-06-manufacturer-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 227,
+  "candidate_count": 226,
   "total_record_count": 230,
   "candidates": [
     {
@@ -967,7 +967,8 @@
       "source_url": "https://industry.panasonic.eu/model/130926",
       "source_title": "Panasonic NCR-18650GA cylindrical lithium-ion cell",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/ncr-18650ga.yaml",
       "issue_number": 243,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/243"
     },
