@@ -34,7 +34,9 @@ jobs:
         id: promote
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
-        run: python .github/scripts/promote_candidate.py --issue "${{ github.event.issue.number }}" | tee -a "$GITHUB_OUTPUT"
+        run: |
+          set -o pipefail
+          python .github/scripts/promote_candidate.py --issue "${{ github.event.issue.number }}" | tee -a "$GITHUB_OUTPUT"
 
       - name: Validate accepted and pending data
         run: |
