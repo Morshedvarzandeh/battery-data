@@ -16,9 +16,9 @@
       "source_title": "BYD Battery-Box Premium HVS / HVM technical parameters",
       "observation_count": 13,
       "state": "accepted",
+      "accepted_file": "contrib/cells/byd/battery-box-premium-hvs-5.1.yaml",
       "issue_number": 13,
-      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/13",
-      "accepted_file": "contrib/cells/byd/battery-box-premium-hvs-5.1.yaml"
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/13"
     },
     {
       "uid": "system/byd/battery-box-premium-hvs-7.7",
