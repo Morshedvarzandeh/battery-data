@@ -283,7 +283,20 @@ and propose the metadata layer upstream to the Battery Data Alliance.
 
 ## Licence
 
-Code MIT. Curated data CC-BY-4.0. Manufacturer datasheets are **not**
-redistributed — `source.redistributable` governs whether a document body is
-stored, and every value keeps a URL, hash and retrieval date so any takedown
-request is answerable.
+Code **AGPL-3.0-or-later** — see [LICENSE](LICENSE). Schema, loaders and API
+are copyleft: run a modified version as a service and the modifications are
+owed back to whoever uses it. Querying the database, loading your own data and
+running it inside a business trigger nothing.
+
+Curated data stays **CC-BY-4.0**, unchanged — the code licence does not reach
+the facts. Attribution is the only condition, and every row already carries the
+provenance needed to give it.
+
+Manufacturer datasheets are **not** redistributed: `source.redistributable`
+governs whether a document body is stored, and every value keeps a URL, hash
+and retrieval date so any takedown request is answerable. `source.license`
+records the terms each source arrived under, which is not the same question as
+the terms this repository ships under.
+
+The relicence from MIT applies going forward. Earlier commits were published
+under MIT and those rights do not expire.
