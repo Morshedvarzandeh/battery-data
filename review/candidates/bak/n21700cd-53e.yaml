@@ -1,0 +1,189 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/bak/n21700cd-53e",
+    "kind": "cell",
+    "manufacturer": "BAK",
+    "model_number": "N21700CD-53E",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/bak-n21700cd-53e-en",
+    "kind": "datasheet",
+    "title": "BAK N21700CD-53E product data sheet",
+    "url": "https://www.bakpower.com/uploads/cpxl_table1_en/N21700CD-53E_en.pdf",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 5.3,
+      "unit": "Ah",
+      "conditions": {
+        "rate_value": 0.2,
+        "rate_unit": "C",
+        "voltage_lower_v": 2.5,
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.6,
+      "unit": "V",
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "absolute_min_voltage",
+      "value": 2.5,
+      "unit": "V",
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "absolute_max_voltage",
+      "value": 4.2,
+      "unit": "V",
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 21.3,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 70.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 69,
+      "unit": "g",
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "internal_resistance_dc",
+      "value": 13,
+      "unit": "mohm",
+      "conditions": {
+        "unstated": [
+          "pulse_duration_s",
+          "pulse_current_a",
+          "soc_pct",
+          "temperature_c",
+          "direction"
+        ]
+      },
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "standard_charge_current",
+      "value": 0.5,
+      "unit": "C",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 1,
+      "unit": "C",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 2,
+      "unit": "C",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "conditions": {
+        "temperature_reference": "cell_surface",
+        "direction": "charge"
+      },
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 55,
+      "unit": "°C",
+      "conditions": {
+        "temperature_reference": "cell_surface",
+        "direction": "charge"
+      },
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "conditions": {
+        "temperature_reference": "cell_surface",
+        "direction": "discharge"
+      },
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 70,
+      "unit": "°C",
+      "conditions": {
+        "temperature_reference": "cell_surface",
+        "direction": "discharge"
+      },
+      "locator": {
+        "quote": "Model N21700CD-53E; Materials Hi-Ni; Diameter 21.3±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5.3 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 69 g; Max Charge Current 1C; Max Discharge Current 2C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
+      }
+    }
+  ]
+}

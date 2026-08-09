@@ -110,12 +110,33 @@ BEGIN
     IF NOT FOUND THEN
       errs := errs || format('unknown quantity "%s"', c.quantity_code);
     ELSE
-      -- 3. required conditions must be present
+      -- 3. required conditions must be present.
+      --
+      -- A condition the source itself never states is declared, not missing --
+      -- the same rule bd.validate_observation() applies at the far end. Without
+      -- the `unstated` check here, staging refuses candidates the observation
+      -- table would accept, and a datasheet that honestly reports an untyped
+      -- capacity can never be promoted at all. An explicit 'unspecified' is a
+      -- placeholder rather than an answer, so it does not count as supplied.
       FOREACH k IN ARRAY q.required_conditions LOOP
-        IF c.condition_json IS NULL OR c.condition_json->>k IS NULL THEN
+        CONTINUE WHEN c.condition_json ? 'unstated'
+                  AND c.condition_json->'unstated' ? k;
+        IF c.condition_json IS NULL OR c.condition_json->>k IS NULL
+           OR c.condition_json->>k = 'unspecified' THEN
           errs := errs || format('missing required condition "%s" for %s', k, q.code);
         END IF;
       END LOOP;
+
+      -- 3b. a C-rate carries no meaning without the capacity it is a multiple
+      -- of, and bd.condition_set refuses one outright. Catching it here puts
+      -- the reason in the review queue instead of surfacing it as a constraint
+      -- violation at promotion time, when the reviewer has already left.
+      IF c.condition_json->>'rate_unit' = 'C'
+         AND c.condition_json->>'rate_reference_capacity_ah' IS NULL
+         AND c.condition_json->>'rate_reference_source' IS NULL THEN
+        errs := errs || format('C-rate on %s has neither rate_reference_capacity_ah '
+                               'nor rate_reference_source', q.code);
+      END IF;
 
       -- 4. the unit must be convertible to the quantity's SI unit
       IF c.unit_native IS NOT NULL THEN

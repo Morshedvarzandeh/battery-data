@@ -1,0 +1,86 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/panasonic/ncr-18650ga",
+    "kind": "cell",
+    "manufacturer": "Panasonic",
+    "model_number": "NCR-18650GA",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/panasonic-130926",
+    "kind": "manufacturer_web",
+    "title": "Panasonic NCR-18650GA cylindrical lithium-ion cell",
+    "url": "https://industry.panasonic.eu/model/130926",
+    "document_date": "2026-08-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 3.35,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "NCR-18650GA: Type High Capacity Models (Ni System); Diameter (max.) 18.5 mm; Height (max.) 65.3 mm; Weight (max. approx.) 49.5 g; Nominal capacity (min.) 3350 mAh; Nominal capacity (typ.) 3450 mAh; Nominal voltage 3.6 V"
+      }
+    },
+    {
+      "quantity": "capacity",
+      "value": 3.45,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "NCR-18650GA: Type High Capacity Models (Ni System); Diameter (max.) 18.5 mm; Height (max.) 65.3 mm; Weight (max. approx.) 49.5 g; Nominal capacity (min.) 3350 mAh; Nominal capacity (typ.) 3450 mAh; Nominal voltage 3.6 V"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.6,
+      "unit": "V",
+      "locator": {
+        "quote": "NCR-18650GA: Type High Capacity Models (Ni System); Diameter (max.) 18.5 mm; Height (max.) 65.3 mm; Weight (max. approx.) 49.5 g; Nominal capacity (min.) 3350 mAh; Nominal capacity (typ.) 3450 mAh; Nominal voltage 3.6 V"
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 18.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "NCR-18650GA: Type High Capacity Models (Ni System); Diameter (max.) 18.5 mm; Height (max.) 65.3 mm; Weight (max. approx.) 49.5 g; Nominal capacity (min.) 3350 mAh; Nominal capacity (typ.) 3450 mAh; Nominal voltage 3.6 V"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 65.3,
+      "unit": "mm",
+      "locator": {
+        "quote": "NCR-18650GA: Type High Capacity Models (Ni System); Diameter (max.) 18.5 mm; Height (max.) 65.3 mm; Weight (max. approx.) 49.5 g; Nominal capacity (min.) 3350 mAh; Nominal capacity (typ.) 3450 mAh; Nominal voltage 3.6 V"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 49.5,
+      "unit": "g",
+      "locator": {
+        "quote": "NCR-18650GA: Type High Capacity Models (Ni System); Diameter (max.) 18.5 mm; Height (max.) 65.3 mm; Weight (max. approx.) 49.5 g; Nominal capacity (min.) 3350 mAh; Nominal capacity (typ.) 3450 mAh; Nominal voltage 3.6 V"
+      }
+    }
+  ]
+}

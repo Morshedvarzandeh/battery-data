@@ -1,39 +1,922 @@
 {
-  "system/byd/battery-box-premium-hvs-5.1": {"issue_number": 13, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/13"},
-  "system/byd/battery-box-premium-hvs-7.7": {"issue_number": 15, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/15"},
-  "system/byd/battery-box-premium-hvs-10.2": {"issue_number": 18, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/18"},
-  "system/byd/battery-box-premium-hvs-12.8": {"issue_number": 17, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/17"},
-  "system/byd/battery-box-premium-hvm-8.3": {"issue_number": 14, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/14"},
-  "system/byd/battery-box-premium-hvm-11.0": {"issue_number": 16, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/16"},
-  "system/byd/battery-box-premium-hvm-13.8": {"issue_number": 20, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/20"},
-  "system/byd/battery-box-premium-hvm-16.6": {"issue_number": 21, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/21"},
-  "system/byd/battery-box-premium-hvm-19.3": {"issue_number": 22, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/22"},
-  "system/byd/battery-box-premium-hvm-22.1": {"issue_number": 23, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/23"},
-  "cell/hithium/infinity-cell-1300ah": {"issue_number": 19, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/19"},
-  "cell/hithium/infinity-cell-n162ah": {"issue_number": 25, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/25"},
-  "cell/hithium/infinity-cell-1175ah": {"issue_number": 27, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/27"},
-  "cell/hithium/infinity-cell-587ah": {"issue_number": 28, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/28"},
-  "cell/hithium/ess-cell-314ah": {"issue_number": 24, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/24"},
-  "cell/hithium/ess-cell-280ah-1p": {"issue_number": 26, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/26"},
-  "system/cnte/star-x": {"issue_number": 32, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/32"},
-  "system/cnte/star-h-232": {"issue_number": 29, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/29"},
-  "system/cnte/star-h-254-sp": {"issue_number": 30, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/30"},
-  "system/cnte/star-h-plus-306ah": {"issue_number": 33, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/33"},
-  "system/cnte/star-h-plus-314ah": {"issue_number": 31, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/31"},
-  "system/cnte/star-h-max": {"issue_number": 35, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/35"},
-  "system/cnte/star-q": {"issue_number": 36, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/36"},
-  "module/samsung-sdi/m2994": {"issue_number": 34, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/34"},
-  "module/samsung-sdi/m2963-m2968": {"issue_number": 38, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/38"},
-  "module/samsung-sdi/m8994-e2": {"issue_number": 37, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/37"},
-  "module/samsung-sdi/m8194-m2": {"issue_number": 39, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/39"},
-  "module/samsung-sdi/m8068-p2": {"issue_number": 41, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/41"},
-  "pack/lg-energy-solution/resu7h-type-r": {"issue_number": 43, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/43"},
-  "pack/lg-energy-solution/resu10h-type-r": {"issue_number": 40, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/40"},
-  "pack/lg-energy-solution/resu10h-type-c": {"issue_number": 42, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/42"},
-  "pack/lg-energy-solution/10h-prime": {"issue_number": 44, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/44"},
-  "pack/lg-energy-solution/16h-prime": {"issue_number": 48, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/48"},
-  "system/catl/enerone": {"issue_number": 45, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/45"},
-  "system/catl/tener": {"issue_number": 47, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/47"},
-  "system/catl/tener-stack": {"issue_number": 46, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/46"},
-  "system/catl/tener-flex": {"issue_number": 49, "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/49"}
+  "system/byd/battery-box-premium-hvs-5.1": {
+    "issue_number": 13,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/13"
+  },
+  "system/byd/battery-box-premium-hvs-7.7": {
+    "issue_number": 15,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/15"
+  },
+  "system/byd/battery-box-premium-hvs-10.2": {
+    "issue_number": 18,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/18"
+  },
+  "system/byd/battery-box-premium-hvs-12.8": {
+    "issue_number": 17,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/17"
+  },
+  "system/byd/battery-box-premium-hvm-8.3": {
+    "issue_number": 14,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/14"
+  },
+  "system/byd/battery-box-premium-hvm-11.0": {
+    "issue_number": 16,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/16"
+  },
+  "system/byd/battery-box-premium-hvm-13.8": {
+    "issue_number": 20,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/20"
+  },
+  "system/byd/battery-box-premium-hvm-16.6": {
+    "issue_number": 21,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/21"
+  },
+  "system/byd/battery-box-premium-hvm-19.3": {
+    "issue_number": 22,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/22"
+  },
+  "system/byd/battery-box-premium-hvm-22.1": {
+    "issue_number": 23,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/23"
+  },
+  "cell/hithium/infinity-cell-1300ah": {
+    "issue_number": 19,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/19"
+  },
+  "cell/hithium/infinity-cell-n162ah": {
+    "issue_number": 25,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/25"
+  },
+  "cell/hithium/infinity-cell-1175ah": {
+    "issue_number": 27,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/27"
+  },
+  "cell/hithium/infinity-cell-587ah": {
+    "issue_number": 28,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/28"
+  },
+  "cell/hithium/ess-cell-314ah": {
+    "issue_number": 24,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/24"
+  },
+  "cell/hithium/ess-cell-280ah-1p": {
+    "issue_number": 26,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/26"
+  },
+  "system/cnte/star-x": {
+    "issue_number": 32,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/32"
+  },
+  "system/cnte/star-h-232": {
+    "issue_number": 29,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/29"
+  },
+  "system/cnte/star-h-254-sp": {
+    "issue_number": 30,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/30"
+  },
+  "system/cnte/star-h-plus-306ah": {
+    "issue_number": 33,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/33"
+  },
+  "system/cnte/star-h-plus-314ah": {
+    "issue_number": 31,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/31"
+  },
+  "system/cnte/star-h-max": {
+    "issue_number": 35,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/35"
+  },
+  "system/cnte/star-q": {
+    "issue_number": 36,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/36"
+  },
+  "module/samsung-sdi/m2994": {
+    "issue_number": 34,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/34"
+  },
+  "module/samsung-sdi/m2963-m2968": {
+    "issue_number": 38,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/38"
+  },
+  "module/samsung-sdi/m8994-e2": {
+    "issue_number": 37,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/37"
+  },
+  "module/samsung-sdi/m8194-m2": {
+    "issue_number": 39,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/39"
+  },
+  "module/samsung-sdi/m8068-p2": {
+    "issue_number": 41,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/41"
+  },
+  "pack/lg-energy-solution/resu7h-type-r": {
+    "issue_number": 43,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/43"
+  },
+  "pack/lg-energy-solution/resu10h-type-r": {
+    "issue_number": 40,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/40"
+  },
+  "pack/lg-energy-solution/resu10h-type-c": {
+    "issue_number": 42,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/42"
+  },
+  "pack/lg-energy-solution/10h-prime": {
+    "issue_number": 44,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/44"
+  },
+  "pack/lg-energy-solution/16h-prime": {
+    "issue_number": 48,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/48"
+  },
+  "system/catl/enerone": {
+    "issue_number": 45,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/45"
+  },
+  "system/catl/tener": {
+    "issue_number": 47,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/47"
+  },
+  "system/catl/tener-stack": {
+    "issue_number": 46,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/46"
+  },
+  "system/catl/tener-flex": {
+    "issue_number": 49,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/49"
+  },
+  "cell/bak/n18650ch": {
+    "issue_number": 234,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/234"
+  },
+  "cell/bak/n18650cl-29": {
+    "issue_number": 232,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/232"
+  },
+  "cell/bak/n18650cr-35e": {
+    "issue_number": 235,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/235"
+  },
+  "cell/bak/n21700cd-53e": {
+    "issue_number": 233,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/233"
+  },
+  "cell/bak/n21700cg-50e": {
+    "issue_number": 236,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/236"
+  },
+  "cell/bak/n21700cgp": {
+    "issue_number": 237,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/237"
+  },
+  "cell/eve/21700-58e": {
+    "issue_number": 238,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/238"
+  },
+  "cell/molicel/inr18650-m30a": {
+    "issue_number": 62,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/62"
+  },
+  "cell/molicel/inr18650-m35a": {
+    "issue_number": 63,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/63"
+  },
+  "cell/molicel/inr18650-p22s": {
+    "issue_number": 60,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/60"
+  },
+  "cell/molicel/inr18650-p26a": {
+    "issue_number": 57,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/57"
+  },
+  "cell/molicel/inr18650-p28a": {
+    "issue_number": 58,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/58"
+  },
+  "cell/molicel/inr18650-p30b": {
+    "issue_number": 59,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/59"
+  },
+  "cell/molicel/inr18650-p30s": {
+    "issue_number": 61,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/61"
+  },
+  "cell/molicel/inr21700-m65a": {
+    "issue_number": 56,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/56"
+  },
+  "cell/molicel/inr21700-p42a": {
+    "issue_number": 51,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/51"
+  },
+  "cell/molicel/inr21700-p45b": {
+    "issue_number": 52,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/52"
+  },
+  "cell/molicel/inr21700-p50b": {
+    "issue_number": 53,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/53"
+  },
+  "cell/molicel/inr21700-p50s": {
+    "issue_number": 55,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/55"
+  },
+  "cell/molicel/inr21700-p60c": {
+    "issue_number": 54,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/54"
+  },
+  "cell/murata/us18650ftc1": {
+    "issue_number": 72,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/72"
+  },
+  "cell/murata/us18650nc1": {
+    "issue_number": 69,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/69"
+  },
+  "cell/murata/us18650vc7": {
+    "issue_number": 71,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/71"
+  },
+  "cell/murata/us18650vtc4": {
+    "issue_number": 64,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/64"
+  },
+  "cell/murata/us18650vtc4a": {
+    "issue_number": 65,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/65"
+  },
+  "cell/murata/us18650vtc5": {
+    "issue_number": 66,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/66"
+  },
+  "cell/murata/us18650vtc5a": {
+    "issue_number": 67,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/67"
+  },
+  "cell/murata/us18650vtc5d": {
+    "issue_number": 68,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/68"
+  },
+  "cell/murata/us18650vtc6": {
+    "issue_number": 70,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/70"
+  },
+  "cell/murata/us21700vtc6a": {
+    "issue_number": 73,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/73"
+  },
+  "cell/murata/us26650ftc1a": {
+    "issue_number": 74,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/74"
+  },
+  "primary_cell/panasonic/cr2016": {
+    "issue_number": 231,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/231"
+  },
+  "primary_cell/panasonic/cr2032": {
+    "issue_number": 239,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/239"
+  },
+  "primary_cell/panasonic/cr2330": {
+    "issue_number": 240,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/240"
+  },
+  "primary_cell/panasonic/cr2354": {
+    "issue_number": 241,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/241"
+  },
+  "primary_cell/panasonic/cr2450": {
+    "issue_number": 242,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/242"
+  },
+  "cell/panasonic/ncr-18650ga": {
+    "issue_number": 243,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/243"
+  },
+  "primary_cell/renata/cr1025": {
+    "issue_number": 75,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/75"
+  },
+  "primary_cell/renata/cr1025fv-lf": {
+    "issue_number": 92,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/92"
+  },
+  "primary_cell/renata/cr1025fv1-lf": {
+    "issue_number": 96,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/96"
+  },
+  "primary_cell/renata/cr1025sm": {
+    "issue_number": 114,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/114"
+  },
+  "primary_cell/renata/cr1216-mfr-fh": {
+    "issue_number": 131,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/131"
+  },
+  "primary_cell/renata/cr1216-mfr-fv": {
+    "issue_number": 97,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/97"
+  },
+  "primary_cell/renata/cr1216-mfr-sm": {
+    "issue_number": 117,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/117"
+  },
+  "primary_cell/renata/cr1216-mfr": {
+    "issue_number": 77,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/77"
+  },
+  "primary_cell/renata/cr1220-mfr-fh": {
+    "issue_number": 134,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/134"
+  },
+  "primary_cell/renata/cr1220-mfr-fv": {
+    "issue_number": 94,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/94"
+  },
+  "primary_cell/renata/cr1220-mfr-sm": {
+    "issue_number": 116,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/116"
+  },
+  "primary_cell/renata/cr1220-mfr": {
+    "issue_number": 76,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/76"
+  },
+  "primary_cell/renata/cr1225": {
+    "issue_number": 79,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/79"
+  },
+  "primary_cell/renata/cr1225ah": {
+    "issue_number": 164,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/164"
+  },
+  "primary_cell/renata/cr1225fh-lf": {
+    "issue_number": 133,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/133"
+  },
+  "primary_cell/renata/cr1225fv-lf": {
+    "issue_number": 98,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/98"
+  },
+  "primary_cell/renata/cr1225sm": {
+    "issue_number": 113,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/113"
+  },
+  "primary_cell/renata/cr1616": {
+    "issue_number": 80,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/80"
+  },
+  "primary_cell/renata/cr1616fh-lf": {
+    "issue_number": 130,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/130"
+  },
+  "primary_cell/renata/cr1616fv-lf": {
+    "issue_number": 99,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/99"
+  },
+  "primary_cell/renata/cr1616sm": {
+    "issue_number": 119,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/119"
+  },
+  "primary_cell/renata/cr1620": {
+    "issue_number": 78,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/78"
+  },
+  "primary_cell/renata/cr1620fh-lf": {
+    "issue_number": 129,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/129"
+  },
+  "primary_cell/renata/cr1620fv-lf": {
+    "issue_number": 100,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/100"
+  },
+  "primary_cell/renata/cr1620sm": {
+    "issue_number": 118,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/118"
+  },
+  "primary_cell/renata/cr1632": {
+    "issue_number": 87,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/87"
+  },
+  "primary_cell/renata/cr1632ah1": {
+    "issue_number": 163,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/163"
+  },
+  "primary_cell/renata/cr1632fh-lf": {
+    "issue_number": 132,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/132"
+  },
+  "primary_cell/renata/cr1632fh1-lf": {
+    "issue_number": 136,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/136"
+  },
+  "primary_cell/renata/cr1632fv-lf": {
+    "issue_number": 101,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/101"
+  },
+  "primary_cell/renata/cr1632rh-lf": {
+    "issue_number": 175,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/175"
+  },
+  "primary_cell/renata/cr1632sm": {
+    "issue_number": 122,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/122"
+  },
+  "primary_cell/renata/cr2016-mfr-fh": {
+    "issue_number": 135,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/135"
+  },
+  "primary_cell/renata/cr2016-mfr-fh1": {
+    "issue_number": 137,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/137"
+  },
+  "primary_cell/renata/cr2016-mfr-fv": {
+    "issue_number": 106,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/106"
+  },
+  "primary_cell/renata/cr2016-mfr-hf": {
+    "issue_number": 138,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/138"
+  },
+  "primary_cell/renata/cr2016-mfr-hf1": {
+    "issue_number": 142,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/142"
+  },
+  "primary_cell/renata/cr2016-mfr-hr": {
+    "issue_number": 177,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/177"
+  },
+  "primary_cell/renata/cr2016-mfr-rh": {
+    "issue_number": 172,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/172"
+  },
+  "primary_cell/renata/cr2016-mfr-sm": {
+    "issue_number": 120,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/120"
+  },
+  "primary_cell/renata/cr2016-mfr-vf": {
+    "issue_number": 107,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/107"
+  },
+  "primary_cell/renata/cr2016-mfr": {
+    "issue_number": 82,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/82"
+  },
+  "primary_cell/renata/cr2016.mfr": {
+    "issue_number": 81,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/81"
+  },
+  "primary_cell/renata/cr2025-mfr-ah": {
+    "issue_number": 167,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/167"
+  },
+  "primary_cell/renata/cr2025-mfr-fh": {
+    "issue_number": 144,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/144"
+  },
+  "primary_cell/renata/cr2025-mfr-fh1": {
+    "issue_number": 140,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/140"
+  },
+  "primary_cell/renata/cr2025-mfr-hf": {
+    "issue_number": 139,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/139"
+  },
+  "primary_cell/renata/cr2025-mfr-hf1": {
+    "issue_number": 141,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/141"
+  },
+  "primary_cell/renata/cr2025-mfr-hf3": {
+    "issue_number": 146,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/146"
+  },
+  "primary_cell/renata/cr2025-mfr-hf4": {
+    "issue_number": 143,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/143"
+  },
+  "primary_cell/renata/cr2025-mfr-hr": {
+    "issue_number": 174,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/174"
+  },
+  "primary_cell/renata/cr2025-mfr-rh": {
+    "issue_number": 176,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/176"
+  },
+  "primary_cell/renata/cr2025-mfr-rv": {
+    "issue_number": 195,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/195"
+  },
+  "primary_cell/renata/cr2025-mfr-sm": {
+    "issue_number": 126,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/126"
+  },
+  "primary_cell/renata/cr2025-mfr": {
+    "issue_number": 84,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/84"
+  },
+  "primary_cell/renata/cr2025.mfr": {
+    "issue_number": 85,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/85"
+  },
+  "primary_cell/renata/cr2032-mfr-ah": {
+    "issue_number": 165,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/165"
+  },
+  "primary_cell/renata/cr2032-mfr-ah0": {
+    "issue_number": 161,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/161"
+  },
+  "primary_cell/renata/cr2032-mfr-ah1": {
+    "issue_number": 168,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/168"
+  },
+  "primary_cell/renata/cr2032-mfr-fh": {
+    "issue_number": 147,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/147"
+  },
+  "primary_cell/renata/cr2032-mfr-fh0": {
+    "issue_number": 145,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/145"
+  },
+  "primary_cell/renata/cr2032-mfr-fh1": {
+    "issue_number": 156,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/156"
+  },
+  "primary_cell/renata/cr2032-mfr-fh2": {
+    "issue_number": 155,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/155"
+  },
+  "primary_cell/renata/cr2032-mfr-fv": {
+    "issue_number": 102,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/102"
+  },
+  "primary_cell/renata/cr2032-mfr-hf": {
+    "issue_number": 154,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/154"
+  },
+  "primary_cell/renata/cr2032-mfr-hf0": {
+    "issue_number": 157,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/157"
+  },
+  "primary_cell/renata/cr2032-mfr-hf1": {
+    "issue_number": 152,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/152"
+  },
+  "primary_cell/renata/cr2032-mfr-hf2": {
+    "issue_number": 148,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/148"
+  },
+  "primary_cell/renata/cr2032-mfr-hf3": {
+    "issue_number": 149,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/149"
+  },
+  "primary_cell/renata/cr2032-mfr-hf4": {
+    "issue_number": 151,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/151"
+  },
+  "primary_cell/renata/cr2032-mfr-hr": {
+    "issue_number": 173,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/173"
+  },
+  "primary_cell/renata/cr2032-mfr-hr1": {
+    "issue_number": 178,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/178"
+  },
+  "primary_cell/renata/cr2032-mfr-hr2": {
+    "issue_number": 179,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/179"
+  },
+  "primary_cell/renata/cr2032-mfr-rh": {
+    "issue_number": 180,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/180"
+  },
+  "primary_cell/renata/cr2032-mfr-rh1": {
+    "issue_number": 182,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/182"
+  },
+  "primary_cell/renata/cr2032-mfr-rh2": {
+    "issue_number": 181,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/181"
+  },
+  "primary_cell/renata/cr2032-mfr-rv": {
+    "issue_number": 190,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/190"
+  },
+  "primary_cell/renata/cr2032-mfr-sm": {
+    "issue_number": 123,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/123"
+  },
+  "primary_cell/renata/cr2032-mfr-vf": {
+    "issue_number": 103,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/103"
+  },
+  "primary_cell/renata/cr2032-mfr-vf3": {
+    "issue_number": 105,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/105"
+  },
+  "primary_cell/renata/cr2032-mfr": {
+    "issue_number": 86,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/86"
+  },
+  "primary_cell/renata/cr2032.mfr": {
+    "issue_number": 83,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/83"
+  },
+  "primary_cell/renata/cr2320": {
+    "issue_number": 89,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/89"
+  },
+  "primary_cell/renata/cr2320fv-lf": {
+    "issue_number": 104,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/104"
+  },
+  "primary_cell/renata/cr2320sm": {
+    "issue_number": 125,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/125"
+  },
+  "primary_cell/renata/cr2325": {
+    "issue_number": 88,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/88"
+  },
+  "primary_cell/renata/cr2325fh-lf": {
+    "issue_number": 153,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/153"
+  },
+  "primary_cell/renata/cr2325fv-lf": {
+    "issue_number": 108,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/108"
+  },
+  "primary_cell/renata/cr2325rh-lf": {
+    "issue_number": 183,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/183"
+  },
+  "primary_cell/renata/cr2325rv-lf": {
+    "issue_number": 196,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/196"
+  },
+  "primary_cell/renata/cr2325sm": {
+    "issue_number": 124,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/124"
+  },
+  "primary_cell/renata/cr2430": {
+    "issue_number": 95,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/95"
+  },
+  "primary_cell/renata/cr2430ah": {
+    "issue_number": 169,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/169"
+  },
+  "primary_cell/renata/cr2430fh-lf": {
+    "issue_number": 150,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/150"
+  },
+  "primary_cell/renata/cr2430fh1-lf": {
+    "issue_number": 158,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/158"
+  },
+  "primary_cell/renata/cr2430fv-lf": {
+    "issue_number": 112,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/112"
+  },
+  "primary_cell/renata/cr2430rh-lf": {
+    "issue_number": 184,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/184"
+  },
+  "primary_cell/renata/cr2430rh1-lf": {
+    "issue_number": 186,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/186"
+  },
+  "primary_cell/renata/cr2430rv-lf": {
+    "issue_number": 193,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/193"
+  },
+  "primary_cell/renata/cr2430sm": {
+    "issue_number": 121,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/121"
+  },
+  "primary_cell/renata/cr2450n-mfr-hf": {
+    "issue_number": 159,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/159"
+  },
+  "primary_cell/renata/cr2450n-mfr-hf3": {
+    "issue_number": 162,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/162"
+  },
+  "primary_cell/renata/cr2450n-mfr-hr": {
+    "issue_number": 187,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/187"
+  },
+  "primary_cell/renata/cr2450n-mfr-hr1": {
+    "issue_number": 185,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/185"
+  },
+  "primary_cell/renata/cr2450n-mfr-rv": {
+    "issue_number": 197,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/197"
+  },
+  "primary_cell/renata/cr2450n-mfr-vf": {
+    "issue_number": 109,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/109"
+  },
+  "primary_cell/renata/cr2450n-mfr-vf3": {
+    "issue_number": 110,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/110"
+  },
+  "primary_cell/renata/cr2450n-mfr": {
+    "issue_number": 91,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/91"
+  },
+  "primary_cell/renata/cr2450n": {
+    "issue_number": 93,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/93"
+  },
+  "primary_cell/renata/cr2450nah": {
+    "issue_number": 170,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/170"
+  },
+  "primary_cell/renata/cr2450nfh-lf": {
+    "issue_number": 166,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/166"
+  },
+  "primary_cell/renata/cr2450nfv-lf": {
+    "issue_number": 111,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/111"
+  },
+  "primary_cell/renata/cr2450nrh-lf": {
+    "issue_number": 189,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/189"
+  },
+  "primary_cell/renata/cr2450nrh1-lf": {
+    "issue_number": 188,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/188"
+  },
+  "primary_cell/renata/cr2450nrv-lf": {
+    "issue_number": 192,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/192"
+  },
+  "primary_cell/renata/cr2450nsm": {
+    "issue_number": 127,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/127"
+  },
+  "primary_cell/renata/cr2477n": {
+    "issue_number": 90,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/90"
+  },
+  "primary_cell/renata/cr2477nah": {
+    "issue_number": 171,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/171"
+  },
+  "primary_cell/renata/cr2477nfh-lf": {
+    "issue_number": 160,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/160"
+  },
+  "primary_cell/renata/cr2477nfv-lf": {
+    "issue_number": 115,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/115"
+  },
+  "primary_cell/renata/cr2477nrh-lf": {
+    "issue_number": 194,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/194"
+  },
+  "primary_cell/renata/cr2477nrv-lf": {
+    "issue_number": 191,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/191"
+  },
+  "primary_cell/renata/cr2477nsm": {
+    "issue_number": 128,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/128"
+  },
+  "pack/renata/icp281029hpg": {
+    "issue_number": 207,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/207"
+  },
+  "pack/renata/icp303450pa-02": {
+    "issue_number": 222,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/222"
+  },
+  "pack/renata/icp331319pm": {
+    "issue_number": 199,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/199"
+  },
+  "pack/renata/icp341018pm": {
+    "issue_number": 198,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/198"
+  },
+  "pack/renata/icp390831pr": {
+    "issue_number": 201,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/201"
+  },
+  "pack/renata/icp401230upr": {
+    "issue_number": 205,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/205"
+  },
+  "pack/renata/icp401835tprt": {
+    "issue_number": 216,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/216"
+  },
+  "pack/renata/icp402025pc-01": {
+    "issue_number": 214,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/214"
+  },
+  "pack/renata/icp402035": {
+    "issue_number": 210,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/210"
+  },
+  "pack/renata/icp402050pr": {
+    "issue_number": 226,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/226"
+  },
+  "pack/renata/icp403029pl-02": {
+    "issue_number": 220,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/220"
+  },
+  "pack/renata/icp422339pr": {
+    "issue_number": 225,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/225"
+  },
+  "pack/renata/icp501022upm": {
+    "issue_number": 202,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/202"
+  },
+  "pack/renata/icp501230": {
+    "issue_number": 208,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/208"
+  },
+  "pack/renata/icp501230ps-03": {
+    "issue_number": 209,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/209"
+  },
+  "pack/renata/icp501233pa-02": {
+    "issue_number": 217,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/217"
+  },
+  "pack/renata/icp501421ps-01": {
+    "issue_number": 203,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/203"
+  },
+  "pack/renata/icp521522ps": {
+    "issue_number": 206,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/206"
+  },
+  "pack/renata/icp521630pm-01": {
+    "issue_number": 215,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/215"
+  },
+  "pack/renata/icp543759pmt": {
+    "issue_number": 229,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/229"
+  },
+  "pack/renata/icp581323pa-01": {
+    "issue_number": 211,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/211"
+  },
+  "pack/renata/icp582035pr-01": {
+    "issue_number": 223,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/223"
+  },
+  "pack/renata/icp582930pr-01": {
+    "issue_number": 224,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/224"
+  },
+  "pack/renata/icp602823pa-01": {
+    "issue_number": 227,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/227"
+  },
+  "pack/renata/icp606168prt": {
+    "issue_number": 230,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/230"
+  },
+  "pack/renata/icp621333hpmt": {
+    "issue_number": 218,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/218"
+  },
+  "pack/renata/icp621333pa-01": {
+    "issue_number": 212,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/212"
+  },
+  "pack/renata/icp622540pmt": {
+    "issue_number": 228,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/228"
+  },
+  "pack/renata/icp632136hpst": {
+    "issue_number": 221,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/221"
+  },
+  "pack/renata/icp641414pe": {
+    "issue_number": 200,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/200"
+  },
+  "pack/renata/icp641620pa-01": {
+    "issue_number": 213,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/213"
+  },
+  "pack/renata/icp651321pa-01": {
+    "issue_number": 204,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/204"
+  },
+  "pack/renata/icp682828hpmt": {
+    "issue_number": 219,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/219"
+  }
 }

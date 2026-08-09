@@ -1,0 +1,54 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "primary_cell/renata/cr1632",
+    "kind": "primary_cell",
+    "manufacturer": "Renata",
+    "model_number": "CR1632",
+    "is_rechargeable": false
+  },
+  "source": {
+    "uid": "src/renata-lithium-batteries",
+    "kind": "manufacturer_web",
+    "title": "Renata lithium batteries and tabbed lithium coin cells",
+    "url": "https://www.renata.com/en-us/products/lithium-batteries/",
+    "document_date": "2026-08-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 0.137,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Renata No. CR1632 Capacity 137 mAh Diameter 16.0 mm Height 3.2 mm"
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 16.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "Renata No. CR1632 Capacity 137 mAh Diameter 16.0 mm Height 3.2 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 3.2,
+      "unit": "mm",
+      "locator": {
+        "quote": "Renata No. CR1632 Capacity 137 mAh Diameter 16.0 mm Height 3.2 mm"
+      }
+    }
+  ]
+}

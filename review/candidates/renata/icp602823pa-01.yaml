@@ -1,0 +1,86 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "pack/renata/icp602823pa-01",
+    "kind": "pack",
+    "manufacturer": "Renata",
+    "model_number": "ICP602823PA-01",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/renata-lithium-polymer-batteries",
+    "kind": "manufacturer_web",
+    "title": "Renata Lithium Polymer batteries",
+    "url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
+    "document_date": "2026-08-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 0.35,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Renata No. ICP602823PA-01 Capacity 350 mAh Thickness 6.4 mm Width 28.2 mm Length 25.5 mm"
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 6.4,
+      "unit": "mm",
+      "locator": {
+        "quote": "Renata No. ICP602823PA-01 Capacity 350 mAh Thickness 6.4 mm Width 28.2 mm Length 25.5 mm"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 28.2,
+      "unit": "mm",
+      "locator": {
+        "quote": "Renata No. ICP602823PA-01 Capacity 350 mAh Thickness 6.4 mm Width 28.2 mm Length 25.5 mm"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 25.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "Renata No. ICP602823PA-01 Capacity 350 mAh Thickness 6.4 mm Width 28.2 mm Length 25.5 mm"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      },
+      "locator": {
+        "quote": "Operating temperature from -20 °C to 60 °C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      },
+      "locator": {
+        "quote": "Operating temperature from -20 °C to 60 °C"
+      }
+    }
+  ]
+}

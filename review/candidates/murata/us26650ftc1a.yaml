@@ -1,0 +1,82 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/murata/us26650ftc1a",
+    "kind": "cell",
+    "manufacturer": "Murata",
+    "model_number": "US26650FTC1A",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/murata-products-search",
+    "kind": "manufacturer_web",
+    "title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
+    "url": "https://www.murata.com/products/batteries/cylindrical/products-search",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 3.0,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "US26650FTC1A (NRND): Nominal Capacity 3000 mAh; Positive Electrode Material LFP; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.2 V; Weight 84.0 g; Diameter φ26.0 mm; Height 66.0 mm; Continuous Max Discharge Current 25.0 A; Features life, safety"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "quote": "US26650FTC1A (NRND): Nominal Capacity 3000 mAh; Positive Electrode Material LFP; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.2 V; Weight 84.0 g; Diameter φ26.0 mm; Height 66.0 mm; Continuous Max Discharge Current 25.0 A; Features life, safety"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 84.0,
+      "unit": "g",
+      "locator": {
+        "quote": "US26650FTC1A (NRND): Nominal Capacity 3000 mAh; Positive Electrode Material LFP; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.2 V; Weight 84.0 g; Diameter φ26.0 mm; Height 66.0 mm; Continuous Max Discharge Current 25.0 A; Features life, safety"
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 26.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "US26650FTC1A (NRND): Nominal Capacity 3000 mAh; Positive Electrode Material LFP; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.2 V; Weight 84.0 g; Diameter φ26.0 mm; Height 66.0 mm; Continuous Max Discharge Current 25.0 A; Features life, safety"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 66.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "US26650FTC1A (NRND): Nominal Capacity 3000 mAh; Positive Electrode Material LFP; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.2 V; Weight 84.0 g; Diameter φ26.0 mm; Height 66.0 mm; Continuous Max Discharge Current 25.0 A; Features life, safety"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 25.0,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "US26650FTC1A (NRND): Nominal Capacity 3000 mAh; Positive Electrode Material LFP; Negative Electrode Material Gr; Nominal (Rated) Voltage 3.2 V; Weight 84.0 g; Diameter φ26.0 mm; Height 66.0 mm; Continuous Max Discharge Current 25.0 A; Features life, safety"
+      }
+    }
+  ]
+}

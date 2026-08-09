@@ -329,6 +329,13 @@ INSERT INTO unit (symbol, si_symbol, factor, offset_, dimension) VALUES
   ('day','s',86400,0,'time'),                 ('year','s',31557600,0,'time'),
   ('pct','1',0.01,0,'dimensionless'),         ('%','1',0.01,0,'dimensionless'),
   ('1','1',1,0,'dimensionless'),
+  -- Self-discharge is quoted per unit time, and quantity.self_discharge_rate
+  -- says outright that %/month, mV/day and uA are not interconvertible. They
+  -- get their own dimension so nothing joins a monthly rate to a bare fraction
+  -- on the strength of both reducing to '1'.
+  ('%/month','1/month',0.01,0,'fraction_per_month'),
+  ('%/year','1/year',0.01,0,'fraction_per_year'),
+  ('mV/day','V/day',1e-3,0,'voltage_per_day'),
   ('mV_per_K','V/K',1e-3,0,'entropic'),       ('V_per_K','V/K',1,0,'entropic'),
   ('W_per_mK','W/(m*K)',1,0,'thermal_conductivity'),
   ('J_per_kgK','J/(kg*K)',1,0,'specific_heat'),

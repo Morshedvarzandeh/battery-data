@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 MARKER = re.compile(r"<!--\s*battery-candidate:\s*(review/candidates/[a-z0-9._/-]+\.yaml)\s*-->")
 APPROVAL = "- [x] Approve this battery for the accepted library"
+ACCEPTED_TAIL = ("accepted_file", "issue_number", "issue_url")
 
 
 def main() -> int:
@@ -27,8 +28,18 @@ def main() -> int:
     rel = match.group(1)
     source = (ROOT / rel).resolve()
     candidate_root = (ROOT / "review/candidates").resolve()
-    if candidate_root not in source.parents or not source.is_file():
-        raise SystemExit("candidate path is outside the review queue or missing")
+    if candidate_root not in source.parents:
+        raise SystemExit(f"candidate path is outside the review queue: {rel}")
+    # Told apart from a path attack on purpose. A missing file means the issue
+    # outlived its candidate -- the approval is legitimate and the data is not
+    # there -- and the owner cannot act on that if it reads as a rejected path.
+    if not source.is_file():
+        raise SystemExit(
+            f"no candidate file at {rel}. The issue names a file that is not on "
+            f"the default branch, so there is nothing to promote. Rebuild it with "
+            f"tools/recover_issue_candidates.py and tools/build_review_batch.py, "
+            f"or close the issue."
+        )
     doc = json.loads(source.read_text())
     uid = doc["product"]["uid"]
     kind, maker, model = uid.split("/", 2)
@@ -45,11 +56,19 @@ def main() -> int:
     index_path = ROOT / "review/index.json"
     index = json.loads(index_path.read_text())
     found = False
-    for item in index["candidates"]:
+    for position, item in enumerate(index["candidates"]):
         if item["candidate_file"] == rel:
-            item["state"] = "accepted"
-            item["issue_number"] = args.issue
-            item["accepted_file"] = str(destination.relative_to(ROOT))
+            # tools/build_review_batch.py rebuilds an accepted entry with
+            # accepted_file ahead of the issue keys, and CI diffs this file
+            # against that builder's output. Assigning in place would append
+            # accepted_file last and leave the index stale the moment it is
+            # written, so the tail is rewritten in the builder's order.
+            entry = {k: v for k, v in item.items() if k not in ACCEPTED_TAIL}
+            entry["state"] = "accepted"
+            entry["accepted_file"] = str(destination.relative_to(ROOT))
+            entry["issue_number"] = args.issue
+            entry["issue_url"] = item.get("issue_url")
+            index["candidates"][position] = entry
             found = True
             break
     if not found:

@@ -26,6 +26,27 @@ jobs:
         run: psql -v ON_ERROR_STOP=1 -d batterydb -f seed/001_reference_cells.sql
       - name: Load packs and valuation seed
         run: psql -v ON_ERROR_STOP=1 -d batterydb -f seed/002_packs_and_valuation.sql
+      - name: Load accepted contributions into the library
+        # The path from an approved battery to a queryable row, exercised on
+        # every push. It is the step most likely to rot silently: contrib/ is
+        # edited by contributors and bd.* by schema changes, and nothing else
+        # here makes the two meet.
+        run: |
+          pip install psycopg2-binary pyyaml
+          python tools/load_contrib.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
+          psql -v ON_ERROR_STOP=1 -d batterydb -c "
+            DO \$\$
+            DECLARE n int;
+            BEGIN
+              SELECT count(*) INTO n FROM bd.observation o
+                JOIN bd.provenance p ON p.id = o.provenance_id
+               WHERE p.review_note LIKE 'accepted into contrib/%';
+              IF n = 0 THEN
+                RAISE EXCEPTION 'contrib/ loaded but no observation reached bd.*';
+              END IF;
+              RAISE NOTICE 'ok: % contributed observation(s) in the library', n;
+            END\$\$;"
+
       - name: Run killer queries
         run: psql -v ON_ERROR_STOP=1 -d batterydb -f tests/010_killer_queries.sql
       - name: Run valuation queries
@@ -71,6 +92,11 @@ jobs:
       - name: Validate community contributions
         run: |
           python tools/validate_contrib.py contrib/
+          # A pending candidate has to clear the contribution schema too, not
+          # just the lighter review rules. Approval promotes the file as-is, so
+          # anything the schema rejects turns a checked box into a failed run,
+          # and the owner finds that out from a red cross instead of from CI.
+          python tools/validate_contrib.py review/candidates/
           python tools/validate_review.py
           python tools/build_review_batch.py
           python tools/render_review_issues.py

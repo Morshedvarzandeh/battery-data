@@ -1,0 +1,81 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/eve/21700-58e",
+    "kind": "cell",
+    "manufacturer": "EVE Energy",
+    "model_number": "21700 58E",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/eve-news-1822",
+    "kind": "manufacturer_web",
+    "title": "EVE's LEV full-scenario solutions unveiled at EUROBIKE 2024",
+    "url": "https://www.evebattery.com/en/news-1822",
+    "document_date": "2024-07-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 5.7,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "The new 21700 58E battery ... capacity of 5,700mAh ... energy density of up to 290Wh/kg ... -20℃~+70℃ wide temperature discharge"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 290,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "The new 21700 58E battery ... capacity of 5,700mAh ... energy density of up to 290Wh/kg ... -20℃~+70℃ wide temperature discharge"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      },
+      "locator": {
+        "quote": "The new 21700 58E battery ... capacity of 5,700mAh ... energy density of up to 290Wh/kg ... -20℃~+70℃ wide temperature discharge"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 70,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      },
+      "locator": {
+        "quote": "The new 21700 58E battery ... capacity of 5,700mAh ... energy density of up to 290Wh/kg ... -20℃~+70℃ wide temperature discharge"
+      }
+    }
+  ]
+}

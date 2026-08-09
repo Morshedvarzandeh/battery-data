@@ -1,0 +1,119 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/molicel/inr21700-m65a",
+    "kind": "cell",
+    "manufacturer": "Molicel",
+    "model_number": "INR-21700-M65A",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/molicel-inr-21700-m65a",
+    "kind": "manufacturer_web",
+    "title": "Molicel INR-21700-M65A product page",
+    "url": "https://www.molicel.com/inr-21700-m65a/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 6.5,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.5Ah, 23.4Wh; Energy Density 943Wh/l, 322Wh/kg; Discharge Current 26A; Extended Cycle Life of over 1000 cycles (+1C charge, 1C discharge)"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.6,
+      "unit": "V",
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.5Ah, 23.4Wh; Energy Density 943Wh/l, 322Wh/kg; Discharge Current 26A; Extended Cycle Life of over 1000 cycles (+1C charge, 1C discharge)"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 26,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.5Ah, 23.4Wh; Energy Density 943Wh/l, 322Wh/kg; Discharge Current 26A; Extended Cycle Life of over 1000 cycles (+1C charge, 1C discharge)"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 322,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.5Ah, 23.4Wh; Energy Density 943Wh/l, 322Wh/kg; Discharge Current 26A; Extended Cycle Life of over 1000 cycles (+1C charge, 1C discharge)"
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 943,
+      "unit": "Wh/L",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.5Ah, 23.4Wh; Energy Density 943Wh/l, 322Wh/kg; Discharge Current 26A; Extended Cycle Life of over 1000 cycles (+1C charge, 1C discharge)"
+      }
+    },
+    {
+      "quantity": "energy",
+      "value": 23.4,
+      "unit": "Wh",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Cell Type 21700; Nominal Voltage 3.6V; Typical Capacity 6.5Ah, 23.4Wh; Energy Density 943Wh/l, 322Wh/kg; Discharge Current 26A; Extended Cycle Life of over 1000 cycles (+1C charge, 1C discharge)"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 1000,
+      "unit": "cycles",
+      "conditions": {
+        "rate_value": 1,
+        "rate_unit": "C",
+        "unstated": [
+          "temperature_c",
+          "dod_pct"
+        ]
+      },
+      "locator": {
+        "quote": "Extended Cycle Life of over 1000 cycles (+1C charge, 1C discharge)"
+      }
+    }
+  ]
+}

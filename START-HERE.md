@@ -82,6 +82,7 @@ Copy `contrib/cells/samsung-sdi/inr21700-50e.yaml`, edit it, then:
 
 ```bash
 python tools/validate_contrib.py contrib/
+python tools/load_contrib.py --dsn dbname=batterydb   # once it is accepted
 ```
 
 It will refuse a capacity that has no rate, temperature and cutoff voltage. That

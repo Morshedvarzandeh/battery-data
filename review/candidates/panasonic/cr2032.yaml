@@ -1,0 +1,98 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "primary_cell/panasonic/cr2032",
+    "kind": "primary_cell",
+    "manufacturer": "Panasonic",
+    "model_number": "CR-2032",
+    "is_rechargeable": false
+  },
+  "source": {
+    "uid": "src/panasonic-33053",
+    "kind": "manufacturer_web",
+    "title": "Panasonic Industry CR coin-type lithium battery product pages",
+    "url": "https://industry.panasonic.eu/model/33053",
+    "document_date": "2026-08-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 0.225,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "CR-2032: Nominal Voltage 3 V; Nominal Capacity 225 mAh; Diameter 20 mm; Height 3.2 mm; Weight 2.8 g; Operating temperature range -30 °C to 85 °C; Continuous Standard Drain 0.2 mA"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3,
+      "unit": "V",
+      "locator": {
+        "quote": "CR-2032: Nominal Voltage 3 V; Nominal Capacity 225 mAh; Diameter 20 mm; Height 3.2 mm; Weight 2.8 g; Operating temperature range -30 °C to 85 °C; Continuous Standard Drain 0.2 mA"
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 20.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "CR-2032: Nominal Voltage 3 V; Nominal Capacity 225 mAh; Diameter 20 mm; Height 3.2 mm; Weight 2.8 g; Operating temperature range -30 °C to 85 °C; Continuous Standard Drain 0.2 mA"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 3.2,
+      "unit": "mm",
+      "locator": {
+        "quote": "CR-2032: Nominal Voltage 3 V; Nominal Capacity 225 mAh; Diameter 20 mm; Height 3.2 mm; Weight 2.8 g; Operating temperature range -30 °C to 85 °C; Continuous Standard Drain 0.2 mA"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 2.8,
+      "unit": "g",
+      "locator": {
+        "quote": "CR-2032: Nominal Voltage 3 V; Nominal Capacity 225 mAh; Diameter 20 mm; Height 3.2 mm; Weight 2.8 g; Operating temperature range -30 °C to 85 °C; Continuous Standard Drain 0.2 mA"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -30,
+      "unit": "°C",
+      "conditions": {
+        "direction": "symmetric",
+        "unstated": [
+          "temperature_reference"
+        ]
+      },
+      "locator": {
+        "quote": "CR-2032: Nominal Voltage 3 V; Nominal Capacity 225 mAh; Diameter 20 mm; Height 3.2 mm; Weight 2.8 g; Operating temperature range -30 °C to 85 °C; Continuous Standard Drain 0.2 mA"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 85,
+      "unit": "°C",
+      "conditions": {
+        "direction": "symmetric",
+        "unstated": [
+          "temperature_reference"
+        ]
+      },
+      "locator": {
+        "quote": "CR-2032: Nominal Voltage 3 V; Nominal Capacity 225 mAh; Diameter 20 mm; Height 3.2 mm; Weight 2.8 g; Operating temperature range -30 °C to 85 °C; Continuous Standard Drain 0.2 mA"
+      }
+    }
+  ]
+}
