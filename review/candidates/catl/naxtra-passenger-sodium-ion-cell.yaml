@@ -1,0 +1,77 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/catl/naxtra-passenger-sodium-ion-cell",
+    "kind": "cell",
+    "manufacturer": "CATL",
+    "model_number": "Naxtra passenger EV sodium-ion cell",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/catl-6401",
+    "kind": "manufacturer_web",
+    "title": "Naxtra Battery Breakthrough & Dual-Power Architecture: CATL Pioneers the Multi-Power Era",
+    "url": "https://www.catl.com/en/news/6401.html",
+    "document_date": "2025-04-21",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "specific_energy",
+      "value": 175,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "CATL's Naxtra passenger EV Battery achieves an energy density of 175Wh/kg"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 10000,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "It offers a 500-kilometer range and can achieve over 10,000 cycles"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      },
+      "locator": {
+        "quote": "Both are capable of performing across the full temperature range from -40°C to +70°C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 70,
+      "unit": "°C",
+      "conditions": {
+        "temperature_reference": "ambient",
+        "direction": "symmetric"
+      },
+      "locator": {
+        "quote": "Both are capable of performing across the full temperature range from -40°C to +70°C"
+      }
+    }
+  ]
+}

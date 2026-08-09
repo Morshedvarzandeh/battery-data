@@ -1,0 +1,177 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/eve/lf105",
+    "kind": "cell",
+    "manufacturer": "EVE Energy",
+    "model_number": "LF105",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/eve-lf105",
+    "kind": "manufacturer_web",
+    "title": "EVE Energy LF105 product page",
+    "url": "https://www.evemall.eu/power-battery/eu-warehouse/lf105",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 105,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "LF105: Nominal Voltage 3.2V; Nominal Capacity 105Ah; Nominal Cycles 5000; Weight 1.98 kg; Published dimensions 130.3*36.35*200.5 mm; 0.5C/0.5C"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "quote": "LF105: Nominal Voltage 3.2V; Nominal Capacity 105Ah; Nominal Cycles 5000; Weight 1.98 kg; Published dimensions 130.3*36.35*200.5 mm; 0.5C/0.5C"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1.98,
+      "unit": "kg",
+      "locator": {
+        "quote": "LF105: Nominal Voltage 3.2V; Nominal Capacity 105Ah; Nominal Cycles 5000; Weight 1.98 kg; Published dimensions 130.3*36.35*200.5 mm; 0.5C/0.5C"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 130.3,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 130.3*36.35*200.5 mm"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 36.35,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 130.3*36.35*200.5 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 200.5,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 130.3*36.35*200.5 mm"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 5000,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "LF105: Nominal Voltage 3.2V; Nominal Capacity 105Ah; Nominal Cycles 5000; Weight 1.98 kg; Published dimensions 130.3*36.35*200.5 mm; 0.5C/0.5C"
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 0.32,
+      "unit": "mohm",
+      "conditions": {
+        "frequency_hz": 1000,
+        "unstated": [
+          "soc_pct",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "LF105: Nominal Voltage 3.2V; Nominal Capacity 105Ah; Nominal Cycles 5000; Weight 1.98 kg; Published dimensions 130.3*36.35*200.5 mm; 0.5C/0.5C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -10,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "LF105: Nominal Voltage 3.2V; Nominal Capacity 105Ah; Nominal Cycles 5000; Weight 1.98 kg; Published dimensions 130.3*36.35*200.5 mm; 0.5C/0.5C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "LF105: Nominal Voltage 3.2V; Nominal Capacity 105Ah; Nominal Cycles 5000; Weight 1.98 kg; Published dimensions 130.3*36.35*200.5 mm; 0.5C/0.5C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -35,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "LF105: Nominal Voltage 3.2V; Nominal Capacity 105Ah; Nominal Cycles 5000; Weight 1.98 kg; Published dimensions 130.3*36.35*200.5 mm; 0.5C/0.5C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "LF105: Nominal Voltage 3.2V; Nominal Capacity 105Ah; Nominal Cycles 5000; Weight 1.98 kg; Published dimensions 130.3*36.35*200.5 mm; 0.5C/0.5C"
+      }
+    }
+  ]
+}

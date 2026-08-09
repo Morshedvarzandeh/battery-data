@@ -1,0 +1,38 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/catl/228ah-high-energy-density-cell",
+    "kind": "cell",
+    "manufacturer": "CATL",
+    "model_number": "228Ah High Energy Density Cell",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/catl-1022",
+    "kind": "manufacturer_web",
+    "title": "CATL showcases all-scenario solutions and services for commercial applications at IAA Transportation 2022",
+    "url": "https://www.catl.com/en/news/1022.html",
+    "document_date": "2022-09-20",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 228,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "the High Energy Density Pack, which is powered by the 228Ah High Energy Density Cell"
+      }
+    }
+  ]
+}

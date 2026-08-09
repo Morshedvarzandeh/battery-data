@@ -33,12 +33,16 @@ Two kinds of declaration feed the builder, and both are checked in:
 | Python builders in `tools/build_review_batch.py` | the six manufacturer functions | the 2026-08-06 batch |
 | JSON files in `review/batches/` | `recovered()` | candidates re-derived from their issues |
 
-The second kind exists because most `[candidate]` issues were opened without
-their candidate file ever being committed. Approving one could not work: the
-promotion script resolves the path the issue names and found nothing there.
-`tools/recover_issue_candidates.py` reads those issues back out of the GitHub
-API and rebuilds each declaration from the rendered body — which is the same
-text the owner reviews, so what gets accepted is what was on screen.
+The second kind exists because the research process opens `[candidate]` issues
+without committing their candidate files. Approving such an issue could not
+work: the promotion script resolves the path the issue names and finds nothing
+there. `tools/recover_issue_candidates.py` reads those issues back out of the
+GitHub API and rebuilds each declaration from the rendered body — which is the
+same text the owner reviews, so what gets accepted is what was on screen.
+`.github/workflows/adopt-candidate.yml` runs it on every newly opened candidate
+issue (and on manual dispatch), so an orphaned issue is adopted before anyone
+reads it. Issues that fail its shape, vocabulary or registry checks are skipped
+with a warning in the run log and stay unapprovable.
 
 Recovery cannot restore what the renderer never printed: the per-value
 `statistic` label (rated, typical, minimum, maximum) and `locator.page`. Every

@@ -1,0 +1,102 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/rept/392ah",
+    "kind": "cell",
+    "manufacturer": "REPT BATTERO",
+    "model_number": "392Ah ESS",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/rept-392ah-battery-cell",
+    "kind": "manufacturer_web",
+    "title": "REPT BATTERO 392Ah ESS battery cell",
+    "url": "https://www.reptbattero.com/392ah-battery-cell/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 392,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 392Ah; Rated Voltage 3.2V; Dimension 75*182*224.5(mm); Application Utility Energy Storage, C&I Energy Storage; Cycle Life 12000 Cycles"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "quote": "Capacity 392Ah; Rated Voltage 3.2V; Dimension 75*182*224.5(mm); Application Utility Energy Storage, C&I Energy Storage; Cycle Life 12000 Cycles"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 75,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 75*182*224.5(mm)"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 182,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 75*182*224.5(mm)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 224.5,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 75*182*224.5(mm)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 6.85,
+      "unit": "kg",
+      "locator": {
+        "quote": "Weight 6.85 kg"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 12000,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 392Ah; Rated Voltage 3.2V; Dimension 75*182*224.5(mm); Application Utility Energy Storage, C&I Energy Storage; Cycle Life 12000 Cycles"
+      }
+    }
+  ]
+}

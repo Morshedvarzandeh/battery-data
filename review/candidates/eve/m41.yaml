@@ -1,0 +1,117 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/eve/m41",
+    "kind": "cell",
+    "manufacturer": "EVE Energy",
+    "model_number": "M41",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/eve-m41",
+    "kind": "manufacturer_web",
+    "title": "EVE Energy M41 product page",
+    "url": "https://www.evemall.eu/power-battery/prismatic-ncm-cell/m41",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 19.5,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "M41: Nominal Voltage 3.66V; Nominal Capacity 19.5Ah; Nominal Cycles 2000; Weight 0.547 kg; Published dimensions 98.8*148.7*17.7 mm; 5C/5C"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.66,
+      "unit": "V",
+      "locator": {
+        "quote": "M41: Nominal Voltage 3.66V; Nominal Capacity 19.5Ah; Nominal Cycles 2000; Weight 0.547 kg; Published dimensions 98.8*148.7*17.7 mm; 5C/5C"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 0.547,
+      "unit": "kg",
+      "locator": {
+        "quote": "M41: Nominal Voltage 3.66V; Nominal Capacity 19.5Ah; Nominal Cycles 2000; Weight 0.547 kg; Published dimensions 98.8*148.7*17.7 mm; 5C/5C"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 98.8,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 98.8*148.7*17.7 mm"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 148.7,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 98.8*148.7*17.7 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 17.7,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 98.8*148.7*17.7 mm"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 2000,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "M41: Nominal Voltage 3.66V; Nominal Capacity 19.5Ah; Nominal Cycles 2000; Weight 0.547 kg; Published dimensions 98.8*148.7*17.7 mm; 5C/5C"
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 0.4,
+      "unit": "mohm",
+      "conditions": {
+        "frequency_hz": 1000,
+        "unstated": [
+          "soc_pct",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "M41: Nominal Voltage 3.66V; Nominal Capacity 19.5Ah; Nominal Cycles 2000; Weight 0.547 kg; Published dimensions 98.8*148.7*17.7 mm; 5C/5C"
+      }
+    }
+  ]
+}

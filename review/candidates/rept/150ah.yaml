@@ -1,0 +1,115 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/rept/150ah",
+    "kind": "cell",
+    "manufacturer": "REPT BATTERO",
+    "model_number": "150Ah BEV",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/rept-150ah-battery-cell",
+    "kind": "manufacturer_web",
+    "title": "REPT BATTERO 150Ah BEV battery cell",
+    "url": "https://www.reptbattero.com/150ah-battery-cell/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 150,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 150Ah; Rated Voltage 3.2V; Dimension 54*173*145(mm); Application BEV; Energy Density 170Wh/kg; Fast Charging (10%~80%) 1.2C"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "quote": "Capacity 150Ah; Rated Voltage 3.2V; Dimension 54*173*145(mm); Application BEV; Energy Density 170Wh/kg; Fast Charging (10%~80%) 1.2C"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 54,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 54*173*145(mm)"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 173,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 54*173*145(mm)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 145,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 54*173*145(mm)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 2.87,
+      "unit": "kg",
+      "locator": {
+        "quote": "Weight 2.87 kg"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 170,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 150Ah; Rated Voltage 3.2V; Dimension 54*173*145(mm); Application BEV; Energy Density 170Wh/kg; Fast Charging (10%~80%) 1.2C"
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 1.2,
+      "unit": "C",
+      "conditions": {
+        "soc_window": "10-80%",
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 150Ah; Rated Voltage 3.2V; Dimension 54*173*145(mm); Application BEV; Energy Density 170Wh/kg; Fast Charging (10%~80%) 1.2C"
+      }
+    }
+  ]
+}

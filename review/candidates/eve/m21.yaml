@@ -1,0 +1,190 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/eve/m21",
+    "kind": "cell",
+    "manufacturer": "EVE Energy",
+    "model_number": "M21",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/eve-m21",
+    "kind": "manufacturer_web",
+    "title": "EVE Energy M21 product page",
+    "url": "https://www.evemall.eu/power-battery/prismatic-ncm-cell/m21",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 58,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.62,
+      "unit": "V",
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 0.86,
+      "unit": "kg",
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 95.2,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 95.2*148.6*26.7 mm"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 148.6,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 95.2*148.6*26.7 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 26.7,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 95.2*148.6*26.7 mm"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 3000,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 0.5,
+      "unit": "mohm",
+      "conditions": {
+        "frequency_hz": 1000,
+        "unstated": [
+          "soc_pct",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 58,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 55,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -30,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 55,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "M21: Nominal Voltage 3.62V; Nominal Capacity 58Ah; Nominal Cycles 3000; Weight 0.86 kg; Published dimensions 95.2*148.6*26.7 mm; 58A (1C)"
+      }
+    }
+  ]
+}

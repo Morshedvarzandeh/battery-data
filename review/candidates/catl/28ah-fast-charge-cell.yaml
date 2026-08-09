@@ -1,0 +1,51 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/catl/28ah-fast-charge-cell",
+    "kind": "cell",
+    "manufacturer": "CATL",
+    "model_number": "28Ah fast-charge cell",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/catl-1022",
+    "kind": "manufacturer_web",
+    "title": "CATL showcases all-scenario solutions and services for commercial applications at IAA Transportation 2022",
+    "url": "https://www.catl.com/en/news/1022.html",
+    "document_date": "2022-09-20",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 28,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "the 28 Ah cell enables 6C fast charging and 10C recharging"
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 10,
+      "unit": "C",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "the 28 Ah cell enables 6C fast charging and 10C recharging"
+      }
+    }
+  ]
+}

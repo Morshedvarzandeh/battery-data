@@ -1,0 +1,175 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/rept/54ah",
+    "kind": "cell",
+    "manufacturer": "REPT BATTERO",
+    "model_number": "54Ah",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/rept-54ah-battery-cell",
+    "kind": "manufacturer_web",
+    "title": "REPT BATTERO 54Ah battery cell",
+    "url": "https://www.reptbattero.com/54ah-battery-cell/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 54,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 54Ah; Rated Voltage 3.2V; Dimension 30*194*87(mm); Application PHEV, REEV; Energy Density 165Wh/kg; Fast Charging (10%~80%) 2C"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "quote": "Capacity 54Ah; Rated Voltage 3.2V; Dimension 30*194*87(mm); Application PHEV, REEV; Energy Density 165Wh/kg; Fast Charging (10%~80%) 2C"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 30,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 30*194*87(mm)"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 194,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 30*194*87(mm)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 87,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 30*194*87(mm)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1.082,
+      "unit": "kg",
+      "locator": {
+        "quote": "Weight 1.082 kg"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 165,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 54Ah; Rated Voltage 3.2V; Dimension 30*194*87(mm); Application PHEV, REEV; Energy Density 165Wh/kg; Fast Charging (10%~80%) 2C"
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 2,
+      "unit": "C",
+      "conditions": {
+        "soc_window": "10-80%",
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 54Ah; Rated Voltage 3.2V; Dimension 30*194*87(mm); Application PHEV, REEV; Energy Density 165Wh/kg; Fast Charging (10%~80%) 2C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -10,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Charging Operating Temperature -10℃≤T≤65℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Charging Operating Temperature -10℃≤T≤65℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -35,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Discharging Operating Temperature -35℃≤T≤65℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Discharging Operating Temperature -35℃≤T≤65℃"
+      }
+    }
+  ]
+}

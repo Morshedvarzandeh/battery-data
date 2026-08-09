@@ -1,0 +1,190 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/eve/lf304",
+    "kind": "cell",
+    "manufacturer": "EVE Energy",
+    "model_number": "LF304",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/eve-lf304",
+    "kind": "manufacturer_web",
+    "title": "EVE Energy LF304 product page",
+    "url": "https://www.evemall.eu/power-battery/eu-warehouse/lf304",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 304,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 5.45,
+      "unit": "kg",
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 173.7,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 173.7*71.7*207.2 mm"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 71.7,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 173.7*71.7*207.2 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 207.2,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Published dimensions 173.7*71.7*207.2 mm"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 4000,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 0.16,
+      "unit": "mohm",
+      "conditions": {
+        "frequency_hz": 1000,
+        "unstated": [
+          "soc_pct",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 152,
+      "unit": "A",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -10,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -35,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "LF304: Nominal Voltage 3.2V; Nominal Capacity 304Ah; Nominal Cycles 4000; Weight 5.45 kg; Published dimensions 173.7*71.7*207.2 mm; 152A/152A"
+      }
+    }
+  ]
+}
