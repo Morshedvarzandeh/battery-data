@@ -1,0 +1,102 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/rept/314pro",
+    "kind": "cell",
+    "manufacturer": "REPT BATTERO",
+    "model_number": "314Pro",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/rept-314-pro-battery-cell",
+    "kind": "manufacturer_web",
+    "title": "REPT BATTERO 314Pro battery cell",
+    "url": "https://www.reptbattero.com/314-pro-battery-cell/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 314,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 314Ah; Rated Voltage 3.2V; Dimension 71*173*207(mm); Application Utility Energy Storage; Cycle Life 12000 Cycles"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "quote": "Capacity 314Ah; Rated Voltage 3.2V; Dimension 71*173*207(mm); Application Utility Energy Storage; Cycle Life 12000 Cycles"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 71,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 71*173*207(mm)"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 173,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 71*173*207(mm)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 207,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 71*173*207(mm)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 5.7,
+      "unit": "kg",
+      "locator": {
+        "quote": "Weight 5.7 kg"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 12000,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 314Ah; Rated Voltage 3.2V; Dimension 71*173*207(mm); Application Utility Energy Storage; Cycle Life 12000 Cycles"
+      }
+    }
+  ]
+}

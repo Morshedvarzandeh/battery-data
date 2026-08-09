@@ -40,7 +40,12 @@ claims that no approval can act on.
 
 `tools/recover_issue_candidates.py` rebuilds those declarations from the issue
 bodies into `review/batches/`, which `tools/build_review_batch.py` emits like
-any other batch. The rendered issue is a lossy view of the extraction behind
+any other batch. `.github/workflows/adopt-candidate.yml` runs that recovery
+automatically when a candidate issue is opened, serialised against promotion so
+the two never rewrite `review/index.json` at the same time. A condition value
+the schema cannot hold — a prose temperature where a number is required, a
+`temperature_reference` outside the vocabulary — is kept verbatim and declared
+unstated rather than silently coerced, because per the quote it is unstated. The rendered issue is a lossy view of the extraction behind
 it — no `statistic`, no page numbers — so a recovered record is weaker than a
 freshly extracted one and says so in `source.note`. Re-extracting from the
 datasheet through `submit-datasheet.yml` is the way to get those fields back,

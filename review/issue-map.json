@@ -918,5 +918,249 @@
   "pack/renata/icp682828hpmt": {
     "issue_number": 219,
     "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/219"
+  },
+  "cell/catl/228ah-high-energy-density-cell": {
+    "issue_number": 245,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/245"
+  },
+  "cell/catl/280ah-lfp-bess-cell": {
+    "issue_number": 246,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/246"
+  },
+  "cell/catl/28ah-fast-charge-cell": {
+    "issue_number": 250,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/250"
+  },
+  "cell/catl/first-generation-sodium-ion-cell": {
+    "issue_number": 247,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/247"
+  },
+  "cell/eve/18650-20p": {
+    "issue_number": 273,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/273"
+  },
+  "cell/eve/18650-25p": {
+    "issue_number": 271,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/271"
+  },
+  "cell/eve/18650-26v": {
+    "issue_number": 272,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/272"
+  },
+  "cell/eve/18650-30p": {
+    "issue_number": 270,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/270"
+  },
+  "cell/eve/21700-40p": {
+    "issue_number": 269,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/269"
+  },
+  "cell/eve/21700-40pl": {
+    "issue_number": 274,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/274"
+  },
+  "cell/eve/21700-50e": {
+    "issue_number": 268,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/268"
+  },
+  "cell/eve/21700-50pl": {
+    "issue_number": 267,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/267"
+  },
+  "cell/eve/a27-v2.1": {
+    "issue_number": 258,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/258"
+  },
+  "cell/eve/a41-v3": {
+    "issue_number": 257,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/257"
+  },
+  "cell/eve/c33": {
+    "issue_number": 260,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/260"
+  },
+  "cell/eve/c40": {
+    "issue_number": 259,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/259"
+  },
+  "cell/eve/lf100la": {
+    "issue_number": 253,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/253"
+  },
+  "cell/eve/lf105": {
+    "issue_number": 251,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/251"
+  },
+  "cell/eve/lf230": {
+    "issue_number": 254,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/254"
+  },
+  "cell/eve/lf304": {
+    "issue_number": 255,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/255"
+  },
+  "cell/eve/lf356l": {
+    "issue_number": 256,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/256"
+  },
+  "cell/eve/m21-v1.2": {
+    "issue_number": 262,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/262"
+  },
+  "cell/eve/m21-v2": {
+    "issue_number": 261,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/261"
+  },
+  "cell/eve/m21": {
+    "issue_number": 263,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/263"
+  },
+  "cell/eve/m41": {
+    "issue_number": 265,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/265"
+  },
+  "cell/eve/m42": {
+    "issue_number": 266,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/266"
+  },
+  "cell/eve/m43": {
+    "issue_number": 264,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/264"
+  },
+  "cell/eve/mb31": {
+    "issue_number": 252,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/252"
+  },
+  "cell/rept/100ah-ess": {
+    "issue_number": 301,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/301"
+  },
+  "cell/rept/104ah": {
+    "issue_number": 295,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/295"
+  },
+  "cell/rept/106ah": {
+    "issue_number": 275,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/275"
+  },
+  "cell/rept/120ah": {
+    "issue_number": 280,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/280"
+  },
+  "cell/rept/141ah": {
+    "issue_number": 277,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/277"
+  },
+  "cell/rept/175ah": {
+    "issue_number": 279,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/279"
+  },
+  "cell/rept/206ah": {
+    "issue_number": 282,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/282"
+  },
+  "cell/rept/215ah": {
+    "issue_number": 283,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/283"
+  },
+  "cell/rept/223ah": {
+    "issue_number": 290,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/290"
+  },
+  "cell/rept/230ah": {
+    "issue_number": 285,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/285"
+  },
+  "cell/rept/267ah": {
+    "issue_number": 284,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/284"
+  },
+  "cell/rept/268ah": {
+    "issue_number": 286,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/286"
+  },
+  "cell/rept/295ah": {
+    "issue_number": 287,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/287"
+  },
+  "cell/rept/314pro": {
+    "issue_number": 291,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/291"
+  },
+  "cell/rept/324ah": {
+    "issue_number": 288,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/288"
+  },
+  "cell/rept/340ah": {
+    "issue_number": 289,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/289"
+  },
+  "cell/rept/54ah": {
+    "issue_number": 292,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/292"
+  },
+  "cell/rept/588ah": {
+    "issue_number": 281,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/281"
+  },
+  "cell/rept/65ah": {
+    "issue_number": 293,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/293"
+  },
+  "cell/rept/79ah": {
+    "issue_number": 294,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/294"
+  },
+  "cell/catl/119ah-fast-charge-cell": {
+    "issue_number": 249,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/249"
+  },
+  "cell/catl/naxtra-passenger-sodium-ion-cell": {
+    "issue_number": 248,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/248"
+  },
+  "cell/rept/100ah-100c": {
+    "issue_number": 300,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/300"
+  },
+  "cell/rept/100ah-100p": {
+    "issue_number": 299,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/299"
+  },
+  "cell/rept/132-5ah": {
+    "issue_number": 276,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/276"
+  },
+  "cell/rept/143-5ah": {
+    "issue_number": 278,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/278"
+  },
+  "cell/rept/150ah": {
+    "issue_number": 296,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/296"
+  },
+  "cell/rept/280ah": {
+    "issue_number": 302,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/302"
+  },
+  "cell/rept/314ah": {
+    "issue_number": 303,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/303"
+  },
+  "cell/rept/392ah": {
+    "issue_number": 305,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/305"
+  },
+  "cell/rept/50ah": {
+    "issue_number": 297,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/297"
+  },
+  "cell/rept/587ah": {
+    "issue_number": 304,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/304"
+  },
+  "cell/rept/72ah": {
+    "issue_number": 298,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/298"
   }
 }

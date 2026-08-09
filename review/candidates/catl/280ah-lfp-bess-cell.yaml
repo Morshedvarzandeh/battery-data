@@ -1,0 +1,87 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/catl/280ah-lfp-bess-cell",
+    "kind": "cell",
+    "manufacturer": "CATL",
+    "model_number": "280Ah LFP BESS Cell",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/catl-20210617132842-6pdubp7st7",
+    "kind": "datasheet",
+    "title": "CATL BESS Product Brochure",
+    "url": "https://www.catl.com/en/uploads/1/file/public/202106/20210617132842_6pdubp7st7.pdf",
+    "revision": "2020-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 280,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "280Ah Cell; Cell Capacity (Ah) 280"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 8000,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "Cycle Life 8,000 cycles"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 173.9,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "L*W*H"
+      },
+      "locator": {
+        "quote": "Dimension (L*W*H) (mm) 173.9*71.7*207.2"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 71.7,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "L*W*H"
+      },
+      "locator": {
+        "quote": "Dimension (L*W*H) (mm) 173.9*71.7*207.2"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 207.2,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "L*W*H"
+      },
+      "locator": {
+        "quote": "Dimension (L*W*H) (mm) 173.9*71.7*207.2"
+      }
+    }
+  ]
+}

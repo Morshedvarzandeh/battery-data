@@ -1,0 +1,191 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/rept/340ah",
+    "kind": "cell",
+    "manufacturer": "REPT BATTERO",
+    "model_number": "340Ah",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/rept-340ah-battery-cell",
+    "kind": "manufacturer_web",
+    "title": "REPT BATTERO 340Ah battery cell",
+    "url": "https://www.reptbattero.com/340ah-battery-cell/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 340,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 340Ah; Rated Voltage 3.22V; Dimension 72*174*204(mm); Application Commercial Vehicles; Energy Density 190Wh/kg; Cycle Life 7000 Cycles; Fast Charging (10%~80%) 1C"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.22,
+      "unit": "V",
+      "locator": {
+        "quote": "Capacity 340Ah; Rated Voltage 3.22V; Dimension 72*174*204(mm); Application Commercial Vehicles; Energy Density 190Wh/kg; Cycle Life 7000 Cycles; Fast Charging (10%~80%) 1C"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 72,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 72*174*204(mm)"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 174,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 72*174*204(mm)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 204,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 72*174*204(mm)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 5.68,
+      "unit": "kg",
+      "locator": {
+        "quote": "Weight 5.68 kg"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 190,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 340Ah; Rated Voltage 3.22V; Dimension 72*174*204(mm); Application Commercial Vehicles; Energy Density 190Wh/kg; Cycle Life 7000 Cycles; Fast Charging (10%~80%) 1C"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 7000,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 340Ah; Rated Voltage 3.22V; Dimension 72*174*204(mm); Application Commercial Vehicles; Energy Density 190Wh/kg; Cycle Life 7000 Cycles; Fast Charging (10%~80%) 1C"
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 1,
+      "unit": "C",
+      "conditions": {
+        "soc_window": "10-80%",
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 340Ah; Rated Voltage 3.22V; Dimension 72*174*204(mm); Application Commercial Vehicles; Energy Density 190Wh/kg; Cycle Life 7000 Cycles; Fast Charging (10%~80%) 1C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -10,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Charging Operating Temperature -10℃≤T≤65℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Charging Operating Temperature -10℃≤T≤65℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -35,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Discharging Operating Temperature -35℃≤T≤65℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Discharging Operating Temperature -35℃≤T≤65℃"
+      }
+    }
+  ]
+}

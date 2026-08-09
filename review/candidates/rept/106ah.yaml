@@ -1,0 +1,175 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/rept/106ah",
+    "kind": "cell",
+    "manufacturer": "REPT BATTERO",
+    "model_number": "106Ah",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/rept-106ah-battery-cell",
+    "kind": "manufacturer_web",
+    "title": "REPT BATTERO 106Ah battery cell",
+    "url": "https://www.reptbattero.com/106ah-battery-cell/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 106,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 106Ah; Rated Voltage 3.2V; Dimension 52*148*115(mm); Application BEV; Energy Density 177Wh/kg; Fast Charging (10%~80%) 2.2C"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "quote": "Capacity 106Ah; Rated Voltage 3.2V; Dimension 52*148*115(mm); Application BEV; Energy Density 177Wh/kg; Fast Charging (10%~80%) 2.2C"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 52,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 52*148*115(mm)"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 148,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 52*148*115(mm)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 115,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 52*148*115(mm)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1.91,
+      "unit": "kg",
+      "locator": {
+        "quote": "Weight 1.91 kg"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 177,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 106Ah; Rated Voltage 3.2V; Dimension 52*148*115(mm); Application BEV; Energy Density 177Wh/kg; Fast Charging (10%~80%) 2.2C"
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 2.2,
+      "unit": "C",
+      "conditions": {
+        "soc_window": "10-80%",
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 106Ah; Rated Voltage 3.2V; Dimension 52*148*115(mm); Application BEV; Energy Density 177Wh/kg; Fast Charging (10%~80%) 2.2C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -10,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Charging Operating Temperature -10℃≤T≤65℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Charging Operating Temperature -10℃≤T≤65℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -35,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Discharging Operating Temperature -35℃≤T≤65℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Discharging Operating Temperature -35℃≤T≤65℃"
+      }
+    }
+  ]
+}

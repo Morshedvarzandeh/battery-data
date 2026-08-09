@@ -1,0 +1,191 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/rept/223ah",
+    "kind": "cell",
+    "manufacturer": "REPT BATTERO",
+    "model_number": "223Ah",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/rept-223ah-battery-cell",
+    "kind": "manufacturer_web",
+    "title": "REPT BATTERO 223Ah battery cell",
+    "url": "https://www.reptbattero.com/portfolio/223ah-battery-cell/",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 223,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 223Ah; Rated Voltage 3.73V; Dimension 41*173*204(mm); Application Commercial Vehicles; Energy Density 248Wh/kg; Cycle Life 4500 Cycles; Fast Charging (10%~80%) 0.8C"
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.73,
+      "unit": "V",
+      "locator": {
+        "quote": "Capacity 223Ah; Rated Voltage 3.73V; Dimension 41*173*204(mm); Application Commercial Vehicles; Energy Density 248Wh/kg; Cycle Life 4500 Cycles; Fast Charging (10%~80%) 0.8C"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 41,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 41*173*204(mm)"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 173,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 41*173*204(mm)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 204,
+      "unit": "mm",
+      "conditions": {
+        "dimension_order": "as_published"
+      },
+      "locator": {
+        "quote": "Dimension 41*173*204(mm)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 3.3,
+      "unit": "kg",
+      "locator": {
+        "quote": "Weight 3.3 kg"
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 248,
+      "unit": "Wh/kg",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 223Ah; Rated Voltage 3.73V; Dimension 41*173*204(mm); Application Commercial Vehicles; Energy Density 248Wh/kg; Cycle Life 4500 Cycles; Fast Charging (10%~80%) 0.8C"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 4500,
+      "unit": "cycles",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 223Ah; Rated Voltage 3.73V; Dimension 41*173*204(mm); Application Commercial Vehicles; Energy Density 248Wh/kg; Cycle Life 4500 Cycles; Fast Charging (10%~80%) 0.8C"
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 0.8,
+      "unit": "C",
+      "conditions": {
+        "soc_window": "10-80%",
+        "unstated": [
+          "temperature_c"
+        ]
+      },
+      "locator": {
+        "quote": "Capacity 223Ah; Rated Voltage 3.73V; Dimension 41*173*204(mm); Application Commercial Vehicles; Energy Density 248Wh/kg; Cycle Life 4500 Cycles; Fast Charging (10%~80%) 0.8C"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Charging Operating Temperature -20℃≤T≤55℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 55,
+      "unit": "°C",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Charging Operating Temperature -20℃≤T≤55℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -30,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Discharging Operating Temperature -30℃≤T≤55℃"
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 55,
+      "unit": "°C",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ],
+        "verbatim": "temperature_reference=cell"
+      },
+      "locator": {
+        "quote": "Discharging Operating Temperature -30℃≤T≤55℃"
+      }
+    }
+  ]
+}

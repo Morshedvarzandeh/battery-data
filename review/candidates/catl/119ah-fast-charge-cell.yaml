@@ -1,0 +1,39 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/catl/119ah-fast-charge-cell",
+    "kind": "cell",
+    "manufacturer": "CATL",
+    "model_number": "119Ah fast-charge cell",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/catl-1022",
+    "kind": "manufacturer_web",
+    "title": "CATL showcases all-scenario solutions and services for commercial applications at IAA Transportation 2022",
+    "url": "https://www.catl.com/en/news/1022.html",
+    "document_date": "2022-09-20",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 119,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "rate_value",
+          "rate_unit",
+          "voltage_lower_v"
+        ],
+        "verbatim": "temperature_c=room temperature"
+      },
+      "locator": {
+        "quote": "The 119 Ah cell, which can be used on both BEV and PHEV, guarantees an 80% charge in 15 minutes at room temperature"
+      }
+    }
+  ]
+}

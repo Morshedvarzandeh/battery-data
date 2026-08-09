@@ -1,0 +1,78 @@
+# =====================================================================
+# Adopt candidate issues whose files never reached the repository.
+#
+# The research process that opens [candidate] issues has repeatedly opened
+# them without committing the review/candidates/ file the issue names. The
+# approval checkbox then fails with "no candidate file at ...", and the
+# owner is left approving something that is not there.
+#
+# This closes the loop at the moment the issue appears: re-derive the
+# candidate from the issue body (the same text the owner will review),
+# rebuild the deterministic batch, validate everything, and commit. By the
+# time anyone reads the issue, its file exists and the checkbox works.
+#
+# Issue bodies are untrusted input -- anyone can open one. The recovery
+# tool validates shape, vocabulary and quantity registry per issue and
+# skips what fails, the builders only write inside review/candidates/, and
+# nothing here is accepted data: every recovered candidate stays
+# pending_review until the owner checks the box, where promotion
+# re-validates from scratch. No model API is involved.
+# =====================================================================
+name: adopt-candidate
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+# Shares the promotion group: an adoption and an approval both rewrite
+# review/index.json on the default branch, so they must not interleave.
+concurrency:
+  group: candidate-library-promotion
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  adopt:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (startsWith(github.event.issue.title, '[candidate] ') &&
+       contains(github.event.issue.body, '<!-- battery-candidate:'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install pyyaml jsonschema
+
+      - name: Recover orphaned candidates from their issues
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python tools/recover_issue_candidates.py
+          python tools/build_review_batch.py
+          python tools/render_review_issues.py
+
+      - name: Validate what adoption produced
+        run: |
+          python tools/validate_contrib.py review/candidates/
+          python tools/validate_review.py
+          python tools/build_web_data.py
+
+      - name: Commit the adopted candidates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add review/ web/index.html
+          if git diff --cached --quiet; then
+            echo "queue already coherent; nothing to adopt"
+            exit 0
+          fi
+          git commit -m "Adopt orphaned candidate issues into the review queue"
+          git pull --rebase origin "${{ github.event.repository.default_branch }}"
+          git push origin "HEAD:${{ github.event.repository.default_branch }}"
