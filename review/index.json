@@ -3,7 +3,7 @@
   "batch": "2026-08-06-manufacturer-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 245,
+  "candidate_count": 244,
   "total_record_count": 291,
   "candidates": [
     {
@@ -973,7 +973,8 @@
       "source_url": "https://www.evemall.eu/power-battery/eu-warehouse/mb31",
       "source_title": "EVE Energy MB31 product page",
       "observation_count": 12,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eve/mb31.yaml",
       "issue_number": 252,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/252"
     },
