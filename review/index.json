@@ -3,7 +3,7 @@
   "batch": "2026-08-06-manufacturer-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 270,
+  "candidate_count": 269,
   "total_record_count": 291,
   "candidates": [
     {
@@ -3806,7 +3806,8 @@
       "source_url": "https://www.reptbattero.com/79ah-battery-cell/",
       "source_title": "REPT BATTERO 79Ah battery cell",
       "observation_count": 12,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/rept/79ah.yaml",
       "issue_number": 294,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/294"
     }
