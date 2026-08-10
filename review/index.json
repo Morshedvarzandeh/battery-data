@@ -3,7 +3,7 @@
   "batch": "2026-08-06-manufacturer-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 246,
+  "candidate_count": 245,
   "total_record_count": 291,
   "candidates": [
     {
@@ -840,7 +840,8 @@
       "source_url": "https://www.evemall.eu/power-battery/eu-warehouse/lf105",
       "source_title": "EVE Energy LF105 product page",
       "observation_count": 12,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eve/lf105.yaml",
       "issue_number": 251,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/251"
     },
