@@ -3,7 +3,7 @@
   "batch": "2026-08-06-manufacturer-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 255,
+  "candidate_count": 254,
   "total_record_count": 291,
   "candidates": [
     {
@@ -3597,7 +3597,8 @@
       "source_url": "https://www.reptbattero.com/230ah-battery-cell-2/",
       "source_title": "REPT BATTERO 230Ah battery cell",
       "observation_count": 13,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/rept/230ah.yaml",
       "issue_number": 285,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/285"
     },
