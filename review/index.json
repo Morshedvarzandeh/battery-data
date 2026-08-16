@@ -5528,7 +5528,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 439,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/439"
     },
     {
       "uid": "cell/eemb/lp562438",
@@ -5578,7 +5580,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 440,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/440"
     },
     {
       "uid": "cell/eemb/lp503450",
@@ -5589,7 +5593,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 441,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/441"
     },
     {
       "uid": "cell/eemb/lp104765",
@@ -5600,7 +5606,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 442,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/442"
     },
     {
       "uid": "cell/eemb/lp103454",
@@ -5611,7 +5619,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 443,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/443"
     },
     {
       "uid": "cell/eemb/lp323450",
@@ -5622,7 +5632,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 444,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/444"
     },
     {
       "uid": "cell/eemb/lp311620",
@@ -5633,7 +5645,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 445,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/445"
     },
     {
       "uid": "cell/eemb/lp305884",
@@ -5644,7 +5658,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 446,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/446"
     },
     {
       "uid": "cell/eemb/lp305590",
@@ -5655,7 +5671,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 447,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/447"
     },
     {
       "uid": "cell/eemb/lp502030",
@@ -5666,7 +5684,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 448,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/448"
     },
     {
       "uid": "cell/eemb/lp452030",
@@ -5677,7 +5697,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 449,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/449"
     },
     {
       "uid": "cell/eemb/lp402030",
@@ -5688,7 +5710,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 450,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/450"
     },
     {
       "uid": "cell/eemb/lp401745",
@@ -5699,7 +5723,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 451,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/451"
     },
     {
       "uid": "cell/eemb/lp601730",
@@ -5710,7 +5736,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 452,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/452"
     },
     {
       "uid": "cell/eemb/lp401730",
@@ -5721,7 +5749,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 453,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/453"
     },
     {
       "uid": "cell/eemb/lp601622",
@@ -5732,7 +5762,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 454,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/454"
     },
     {
       "uid": "cell/eemb/lp401429",
@@ -5743,7 +5775,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 455,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/455"
     },
     {
       "uid": "cell/eemb/lp501230",
@@ -5754,7 +5788,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 456,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/456"
     },
     {
       "uid": "cell/eemb/lp401230",
@@ -5765,7 +5801,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 457,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/457"
     },
     {
       "uid": "cell/eemb/lp451124",
@@ -5776,7 +5814,9 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 458,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/458"
     }
   ]
 }
