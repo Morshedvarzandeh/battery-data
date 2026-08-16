@@ -1,0 +1,116 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "primary_cell/maxell/cr17500au",
+    "kind": "primary_cell",
+    "manufacturer": "Maxell",
+    "model_number": "CR17500AU",
+    "form_factor": "cylindrical",
+    "is_rechargeable": false
+  },
+  "source": {
+    "uid": "src/maxell-cr-cylindrical-web-2026-08-16",
+    "kind": "manufacturer_web",
+    "title": "Cylindrical Type Lithium Manganese Dioxide Batteries (CR)",
+    "url": "https://biz.maxell.com/en/primary_batteries/cr_cylinder.html",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Retrieved 2026-08-16. Locator quotes are model-specific normalized transcriptions of the manufacturer's Specifications table. Header labels and values are preserved; separators, whitespace, trailing zeros, and footnote markers may be normalized. The live HTML page states no document revision or pagination and says that data and dimensions are not guaranteed. When using at temperatures exceeding 60 deg. C, Maxell instructs users to consult it in advance for conditions of use. These products are available only to equipment manufacturers as built-in parts and are not supplied directly as replacements."
+  },
+  "chemistry": {
+    "designation": "Li/MnO2",
+    "locator": {
+      "quote": "uses manganese dioxide (MnO2) as its positive active material and lithium (Li) as its negative active material",
+      "section": "Principle and Reactions"
+    },
+    "cathode_text": "manganese dioxide (MnO2)",
+    "anode_text": "lithium (Li)"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 3.5,
+      "unit": "Ah",
+      "locator": {
+        "quote": "Model CR17500AU; Nominal Capacity (mAh) 3500; Nominal Discharge Current (mA) 1; voltage drops to 1.5 V at 20 deg. C",
+        "section": "Specifications; nominal-capacity footnote"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "rate_value": 1,
+        "rate_unit": "mA",
+        "temperature_c": 20,
+        "voltage_lower_v": 1.5
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3,
+      "unit": "V",
+      "locator": {
+        "quote": "Model CR17500AU; Nominal Voltage (V) 3",
+        "section": "Specifications"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "diameter",
+      "value": 17.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model CR17500AU; Diameter (mm) 17",
+        "section": "Specifications"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 50.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model CR17500AU; Height (mm) 50",
+        "section": "Specifications"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 26,
+      "unit": "g",
+      "locator": {
+        "quote": "Model CR17500AU; Weight (g) 26",
+        "section": "Specifications"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "quote": "Model CR17500AU; Operating Temperature Range (deg. C) -40 to +85",
+        "section": "Specifications; Warnings"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 85,
+      "unit": "°C",
+      "locator": {
+        "quote": "Model CR17500AU; Operating Temperature Range (deg. C) -40 to +85",
+        "section": "Specifications; Warnings"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    }
+  ]
+}

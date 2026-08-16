@@ -1,0 +1,117 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "primary_cell/maxell/cr2032h",
+    "kind": "primary_cell",
+    "manufacturer": "Maxell",
+    "model_number": "CR2032H",
+    "form_factor": "coin",
+    "is_rechargeable": false
+  },
+  "source": {
+    "uid": "src/maxell-cr-coin-web-2026-08-16",
+    "kind": "manufacturer_web",
+    "title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
+    "url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Retrieved 2026-08-16. Locator quotes are model-specific normalized transcriptions of the manufacturer's Specifications table. Header labels and values are preserved; separators, whitespace, trailing zeros, and footnote markers may be normalized. The live HTML page states no document revision or pagination and says that data and dimensions are not guaranteed. When using these batteries at temperatures outside the range of 0 to +40 deg. C, Maxell instructs users to consult it in advance for conditions of use."
+  },
+  "chemistry": {
+    "designation": "Li/MnO2",
+    "locator": {
+      "quote": "uses manganese dioxide (MnO2) as its positive active material, lithium (Li) as its negative active material, and an organic electrolyte",
+      "section": "Principle and Reactions"
+    },
+    "cathode_text": "manganese dioxide (MnO2)",
+    "anode_text": "lithium (Li)",
+    "electrolyte_text": "organic electrolyte"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 0.24,
+      "unit": "Ah",
+      "locator": {
+        "quote": "Model CR2032H; Nominal Capacity (mAh) 240; Nominal Discharge Current (mA) 0.2; voltage drops to 2 V at 20 deg. C",
+        "section": "Specifications; nominal-capacity footnote"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "rate_value": 0.2,
+        "rate_unit": "mA",
+        "temperature_c": 20,
+        "voltage_lower_v": 2.0
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3,
+      "unit": "V",
+      "locator": {
+        "quote": "Model CR2032H; Nominal Voltage (V) 3",
+        "section": "Specifications"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "diameter",
+      "value": 20.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model CR2032H; Diameter (mm) 20",
+        "section": "Specifications"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 3.2,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model CR2032H; Height (mm) 3.2",
+        "section": "Specifications"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 3.0,
+      "unit": "g",
+      "locator": {
+        "quote": "Model CR2032H; Weight (g) 3",
+        "section": "Specifications"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "locator": {
+        "quote": "Model CR2032H; Operating Temperature Range (deg. C) -20 to +85",
+        "section": "Specifications; Warnings"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 85,
+      "unit": "°C",
+      "locator": {
+        "quote": "Model CR2032H; Operating Temperature Range (deg. C) -20 to +85",
+        "section": "Specifications; Warnings"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    }
+  ]
+}

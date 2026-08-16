@@ -6,7 +6,8 @@ source-backed proposals waiting for a human decision.
 Every candidate has one GitHub issue containing:
 
 - the product type and source revision;
-- every proposed value, unit, condition, and exact source excerpt;
+- every proposed value, unit, condition, and source locator excerpt, with any
+  normalized table transcription disclosed in the source notes;
 - one owner-only approval checkbox;
 - a hidden, path-safe link to exactly one candidate file.
 
@@ -21,8 +22,12 @@ It does not use a model API, and it does not read any model API secret.
 
 `tools/build_review_batch.py` deterministically rebuilds every candidate file
 and `index.json`. `tools/render_review_issues.py` produces the matching issue
-payloads. `tools/validate_review.py` is a dependency-free preflight; CI also
-runs the full contribution validator after promotion.
+payloads; use `--unmapped-only` when opening issues for a new batch so existing
+pending candidates are not filed again. `tools/validate_review.py` is a
+dependency-free preflight; CI also runs the full contribution validator after
+promotion. `tools/check_duplicates.py` compares pending and accepted products
+using exact UIDs, normalized identities, aliases, sources and key physical
+specifications.
 
 ## Where a candidate is declared
 
@@ -30,7 +35,8 @@ Two kinds of declaration feed the builder, and both are checked in:
 
 | Declaration | Emitted by | Covers |
 |---|---|---|
-| Python builders in `tools/build_review_batch.py` | the six manufacturer functions | the 2026-08-06 batch |
+| Python builders in `tools/build_review_batch.py` | the original six manufacturer functions | the 2026-08-06 batch |
+| `tools/expansion_aug_2026.py` | Maxell, Panasonic Energy and EEMB tables | the 2026-08-16 152-cell expansion |
 | JSON files in `review/batches/` | `recovered()` | candidates re-derived from their issues |
 
 The second kind exists because the research process opens `[candidate]` issues

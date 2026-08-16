@@ -1,0 +1,118 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "primary_cell/panasonic/br3032",
+    "kind": "primary_cell",
+    "manufacturer": "Panasonic Energy",
+    "model_number": "BR3032",
+    "form_factor": "coin",
+    "is_rechargeable": false
+  },
+  "source": {
+    "uid": "src/panasonic-coin-primary-lineup-march-2026",
+    "kind": "datasheet",
+    "title": "Panasonic Coin type Primary Lithium Batteries",
+    "url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
+    "revision": "March 2026 cover; lineup tables state contents valid as of September 2022",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Retrieved 2026-08-16. Table-row locator quotes normalize whitespace from the PDF."
+  },
+  "chemistry": {
+    "designation": "BR series primary lithium",
+    "locator": {
+      "quote": "BR series Coin type Primary Lithium Batteries Line up",
+      "page": 4
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 0.5,
+      "unit": "Ah",
+      "locator": {
+        "quote": "BR3032 500 0.03 30.0 3.2 5.7",
+        "page": 4
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3,
+      "unit": "V",
+      "locator": {
+        "quote": "Nominal voltage (V) 3",
+        "page": 4
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "diameter",
+      "value": 30.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "BR3032 500 0.03 30.0 3.2 5.7",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 3.2,
+      "unit": "mm",
+      "locator": {
+        "quote": "BR3032 500 0.03 30.0 3.2 5.7",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 5.7,
+      "unit": "g",
+      "locator": {
+        "quote": "BR3032 500 0.03 30.0 3.2 5.7",
+        "page": 4
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating temperature range (°C) -40 ～ 85",
+        "page": 4
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 85,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating temperature range (°C) -40 ～ 85",
+        "page": 4
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    }
+  ]
+}

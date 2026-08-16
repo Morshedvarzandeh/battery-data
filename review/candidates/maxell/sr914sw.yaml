@@ -1,0 +1,83 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "primary_cell/maxell/sr914sw",
+    "kind": "primary_cell",
+    "manufacturer": "Maxell",
+    "model_number": "SR914SW",
+    "form_factor": "button",
+    "is_rechargeable": false
+  },
+  "source": {
+    "uid": "src/maxell-sr-lr-web-2026-08-16",
+    "kind": "manufacturer_web",
+    "title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
+    "url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Retrieved 2026-08-16. Manufacturer table; the nominal-capacity footnote supplies load, 20 °C and 1.2 V cutoff conditions. Locator quotes are model-specific normalized transcriptions of the manufacturer's Specifications table. Header labels and values are preserved; separators, whitespace, trailing zeros, and footnote markers may be normalized. The live HTML page states no document revision or pagination and says that data and dimensions are not guaranteed."
+  },
+  "chemistry": {
+    "designation": "silver oxide / zinc",
+    "locator": {
+      "quote": "uses silver oxide and zinc as the main positive electrode and negative electrode active materials"
+    },
+    "cathode_text": "silver oxide",
+    "anode_text": "zinc"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 0.022,
+      "unit": "Ah",
+      "locator": {
+        "quote": "Model SR914SW; Nominal Capacity (mAh) 22; Nominal Discharge Current (µA) 35; voltage drops to 1.2 V at 20 deg. C",
+        "section": "Specifications > SR: Long-life low-drain type (SW); nominal-capacity footnote"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "rate_value": 0.035,
+        "rate_unit": "mA",
+        "temperature_c": 20,
+        "voltage_lower_v": 1.2
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 1.55,
+      "unit": "V",
+      "locator": {
+        "quote": "Model SR914SW; Nominal Voltage (V) 1.55",
+        "section": "Specifications > SR: Long-life low-drain type (SW)"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "diameter",
+      "value": 9.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model SR914SW; Diameter (mm) 9.5",
+        "section": "Specifications > SR: Long-life low-drain type (SW)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 1.45,
+      "unit": "mm",
+      "locator": {
+        "quote": "Model SR914SW; Height (mm) 1.45",
+        "section": "Specifications > SR: Long-life low-drain type (SW)"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 0.45,
+      "unit": "g",
+      "locator": {
+        "quote": "Model SR914SW; Weight (g) 0.45",
+        "section": "Specifications > SR: Long-life low-drain type (SW)"
+      }
+    }
+  ]
+}

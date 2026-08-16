@@ -1,0 +1,97 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/eemb/lp103042",
+    "kind": "cell",
+    "manufacturer": "EEMB",
+    "model_number": "LP103042",
+    "form_factor": "pouch",
+    "is_rechargeable": true,
+    "form_factor_code": "EEMB Size 103042"
+  },
+  "source": {
+    "uid": "src/eemb-lithium-polymer-standard-web-2026-08-16",
+    "kind": "manufacturer_web",
+    "title": "EEMB Lithium Polymer Standard Type Battery",
+    "url": "https://www.eemb.com/products-55",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Retrieved 2026-08-16. The manufacturer Size field is preserved verbatim as form_factor_code. Its axes, units and tolerances are not stated, so no dimensional observations are inferred from it."
+  },
+  "chemistry": {
+    "designation": "Lithium-ion polymer",
+    "locator": {
+      "quote": "Lithium-ion Polymer Battery is a type of Lithium-ion battery in foil-type (polymer laminate) case."
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 1.25,
+      "unit": "Ah",
+      "locator": {
+        "quote": "LP103042 | 103042 | 25 g | 3.7 V | 1250 mAh",
+        "section": "Lithium Polymer Standard Type Battery product table"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.7,
+      "unit": "V",
+      "locator": {
+        "quote": "LP103042 | 103042 | 25 g | 3.7 V | 1250 mAh",
+        "section": "Lithium Polymer Standard Type Battery product table"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "mass",
+      "value": 25,
+      "unit": "g",
+      "locator": {
+        "quote": "LP103042 | 103042 | 25 g | 3.7 V | 1250 mAh",
+        "section": "Lithium Polymer Standard Type Battery product table"
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating temperature range of -20°C to +60°C",
+        "section": "Main Features"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating temperature range of -20°C to +60°C",
+        "section": "Main Features"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    }
+  ]
+}

@@ -232,6 +232,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | `agents/literature-miner/` | Papers and datasets → structured records with provenance |
 | `crosswalk/` | Generated BDF ↔ EMMO ↔ BPX ↔ Battery Passport mapping |
 | `tools/validate_contrib.py` | CI gate: refuses a contribution whose values lack their conditions |
+| `tools/check_duplicates.py` | Cross-library identity gate for exact UIDs, normalized model aliases, and specification conflicts |
 
 ### The query no other battery schema can express
 

@@ -81,6 +81,8 @@ jobs:
         run: python tools/cyclers.py selftest
       - name: Filter grammar - parsing, type checking, injection safety
         run: python api/filter_grammar.py
+      - name: Python regression tests
+        run: python -m unittest discover -s tests -p 'test_*.py'
 
   contrib:
     runs-on: ubuntu-latest
@@ -98,6 +100,7 @@ jobs:
           # and the owner finds that out from a red cross instead of from CI.
           python tools/validate_contrib.py review/candidates/
           python tools/validate_review.py
+          python tools/check_duplicates.py
           python tools/build_review_batch.py
           python tools/render_review_issues.py
           git diff --exit-code -- review/ || {

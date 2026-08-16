@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the deterministic 2026-08-06 manufacturer review batch.
+"""Build the deterministic manufacturer review queue and expansion batches.
 
 The output files are JSON documents with a ``.yaml`` suffix. JSON is a strict
 subset of YAML, so the existing validator reads them without another emitter
@@ -13,6 +13,8 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+
+import expansion_aug_2026
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "review" / "candidates"
@@ -509,9 +511,10 @@ def main():
     records = []
     for builder in (byd, hithium, cnte, samsung, lg, catl, recovered):
         builder(records)
+    expansion_aug_2026.build(records, register, observation)
     index = {
         "schema_version": 1,
-        "batch": "2026-08-06-manufacturer-expansion",
+        "batch": "2026-08-16-100-plus-cell-expansion",
         "status": "pending_review",
         "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
         "candidate_count": sum(item["state"] == "pending_review" for item in records),

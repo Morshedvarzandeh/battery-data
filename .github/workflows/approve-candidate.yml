@@ -50,6 +50,7 @@ jobs:
         run: |
           python tools/validate_contrib.py contrib/
           python tools/validate_review.py
+          python tools/check_duplicates.py
           python tools/render_review_issues.py
           python tools/build_web_data.py
 

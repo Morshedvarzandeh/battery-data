@@ -2,6 +2,7 @@
 """Render one human-reviewable GitHub issue payload per candidate."""
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
@@ -18,10 +19,22 @@ def conditions_text(value):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--unmapped-only", action="store_true",
+        help="render only pending candidates that do not yet have an issue number",
+    )
+    parser.add_argument(
+        "--out", default="review/issues.json",
+        help="output path, relative to the repository root unless absolute",
+    )
+    args = parser.parse_args()
     index = json.loads((ROOT / "review/index.json").read_text())
     payloads = []
     for item in index["candidates"]:
         if item["state"] != "pending_review":
+            continue
+        if args.unmapped_only and item.get("issue_number"):
             continue
         path = ROOT / item["candidate_file"]
         doc = json.loads(path.read_text())
@@ -41,7 +54,7 @@ def main():
             f"**Source:** [{source.get('title', source['uid'])}]({source.get('url', '')})  ",
             f"**Source revision/date:** {source.get('revision') or source.get('document_date') or 'not stated'}",
             "",
-            "| Quantity | Value | Conditions | Exact source excerpt |",
+            "| Quantity | Value | Conditions | Source locator excerpt |",
             "|---|---:|---|---|",
             *rows,
             "",
@@ -64,7 +77,10 @@ def main():
             "candidate_file": item["candidate_file"],
             "uid": product["uid"],
         })
-    out = ROOT / "review/issues.json"
+    out = Path(args.out)
+    if not out.is_absolute():
+        out = ROOT / out
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(payloads, indent=2, ensure_ascii=False) + "\n")
     print(f"wrote {len(payloads)} issue payloads")
 
