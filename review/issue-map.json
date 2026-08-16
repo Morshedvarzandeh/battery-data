@@ -1162,5 +1162,533 @@
   "cell/rept/72ah": {
     "issue_number": 298,
     "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/298"
+  },
+  "primary_cell/maxell/sr44sw": {
+    "issue_number": 307,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/307"
+  },
+  "primary_cell/maxell/sr43sw": {
+    "issue_number": 308,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/308"
+  },
+  "primary_cell/maxell/sr1136sw": {
+    "issue_number": 309,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/309"
+  },
+  "primary_cell/maxell/sr1116sw": {
+    "issue_number": 310,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/310"
+  },
+  "primary_cell/maxell/sr1130sw": {
+    "issue_number": 311,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/311"
+  },
+  "primary_cell/maxell/sr1120sw": {
+    "issue_number": 312,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/312"
+  },
+  "primary_cell/maxell/sr927sw": {
+    "issue_number": 313,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/313"
+  },
+  "primary_cell/maxell/sr936sw": {
+    "issue_number": 314,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/314"
+  },
+  "primary_cell/maxell/sr914sw": {
+    "issue_number": 315,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/315"
+  },
+  "primary_cell/maxell/sr916sw": {
+    "issue_number": 316,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/316"
+  },
+  "primary_cell/maxell/sr920sw": {
+    "issue_number": 317,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/317"
+  },
+  "primary_cell/maxell/sr41sw": {
+    "issue_number": 318,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/318"
+  },
+  "primary_cell/maxell/sr726sw": {
+    "issue_number": 319,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/319"
+  },
+  "primary_cell/maxell/sr721sw": {
+    "issue_number": 320,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/320"
+  },
+  "primary_cell/maxell/sr716sw": {
+    "issue_number": 321,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/321"
+  },
+  "primary_cell/maxell/sr731sw": {
+    "issue_number": 322,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/322"
+  },
+  "primary_cell/maxell/sr616sw": {
+    "issue_number": 323,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/323"
+  },
+  "primary_cell/maxell/sr527sw": {
+    "issue_number": 324,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/324"
+  },
+  "primary_cell/maxell/sr621sw": {
+    "issue_number": 325,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/325"
+  },
+  "primary_cell/maxell/sr712sw": {
+    "issue_number": 326,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/326"
+  },
+  "primary_cell/maxell/sr626sw": {
+    "issue_number": 327,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/327"
+  },
+  "primary_cell/maxell/sr521sw": {
+    "issue_number": 328,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/328"
+  },
+  "primary_cell/maxell/sr512sw": {
+    "issue_number": 329,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/329"
+  },
+  "primary_cell/maxell/sr516sw": {
+    "issue_number": 330,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/330"
+  },
+  "primary_cell/maxell/sr421sw": {
+    "issue_number": 331,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/331"
+  },
+  "primary_cell/maxell/sr416sw": {
+    "issue_number": 332,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/332"
+  },
+  "primary_cell/maxell/sr43w": {
+    "issue_number": 333,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/333"
+  },
+  "primary_cell/maxell/sr44w": {
+    "issue_number": 334,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/334"
+  },
+  "primary_cell/maxell/sr1130w": {
+    "issue_number": 335,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/335"
+  },
+  "primary_cell/maxell/sr1120w": {
+    "issue_number": 336,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/336"
+  },
+  "primary_cell/maxell/sr927w": {
+    "issue_number": 337,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/337"
+  },
+  "primary_cell/maxell/sr936w": {
+    "issue_number": 338,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/338"
+  },
+  "primary_cell/maxell/sr916w": {
+    "issue_number": 339,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/339"
+  },
+  "primary_cell/maxell/sr41w": {
+    "issue_number": 340,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/340"
+  },
+  "primary_cell/maxell/sr920w": {
+    "issue_number": 341,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/341"
+  },
+  "primary_cell/maxell/sr726w": {
+    "issue_number": 342,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/342"
+  },
+  "primary_cell/maxell/sr626w": {
+    "issue_number": 343,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/343"
+  },
+  "primary_cell/maxell/lr44": {
+    "issue_number": 344,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/344"
+  },
+  "primary_cell/maxell/sr721w": {
+    "issue_number": 345,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/345"
+  },
+  "primary_cell/maxell/lr43": {
+    "issue_number": 346,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/346"
+  },
+  "primary_cell/maxell/sr716w": {
+    "issue_number": 347,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/347"
+  },
+  "primary_cell/maxell/lr1130": {
+    "issue_number": 348,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/348"
+  },
+  "primary_cell/maxell/sr621w": {
+    "issue_number": 349,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/349"
+  },
+  "primary_cell/maxell/lr41": {
+    "issue_number": 350,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/350"
+  },
+  "primary_cell/maxell/cr2032": {
+    "issue_number": 351,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/351"
+  },
+  "primary_cell/maxell/lr1120": {
+    "issue_number": 352,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/352"
+  },
+  "primary_cell/maxell/cr2032h": {
+    "issue_number": 353,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/353"
+  },
+  "primary_cell/maxell/cr1616": {
+    "issue_number": 354,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/354"
+  },
+  "primary_cell/maxell/cr1220": {
+    "issue_number": 355,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/355"
+  },
+  "primary_cell/maxell/cr2032s": {
+    "issue_number": 356,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/356"
+  },
+  "primary_cell/maxell/cr1216": {
+    "issue_number": 357,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/357"
+  },
+  "primary_cell/maxell/cr1620": {
+    "issue_number": 358,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/358"
+  },
+  "primary_cell/maxell/cr2016": {
+    "issue_number": 359,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/359"
+  },
+  "primary_cell/maxell/cr2032hr": {
+    "issue_number": 360,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/360"
+  },
+  "primary_cell/maxell/cr2025": {
+    "issue_number": 361,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/361"
+  },
+  "primary_cell/maxell/cr1632": {
+    "issue_number": 362,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/362"
+  },
+  "primary_cell/maxell/cr17335a": {
+    "issue_number": 363,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/363"
+  },
+  "primary_cell/maxell/cr2032hrs": {
+    "issue_number": 364,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/364"
+  },
+  "primary_cell/maxell/cr17450a": {
+    "issue_number": 365,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/365"
+  },
+  "primary_cell/maxell/cr17450ah": {
+    "issue_number": 366,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/366"
+  },
+  "primary_cell/maxell/cr2050hr": {
+    "issue_number": 367,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/367"
+  },
+  "primary_cell/maxell/cr2450hr": {
+    "issue_number": 368,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/368"
+  },
+  "primary_cell/maxell/cr17500au": {
+    "issue_number": 369,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/369"
+  },
+  "cell/maxell/ml2016h": {
+    "issue_number": 370,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/370"
+  },
+  "cell/maxell/ml2032": {
+    "issue_number": 371,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/371"
+  },
+  "primary_cell/panasonic/cr1025": {
+    "issue_number": 372,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/372"
+  },
+  "primary_cell/panasonic/cr1216": {
+    "issue_number": 373,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/373"
+  },
+  "primary_cell/panasonic/cr1220": {
+    "issue_number": 374,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/374"
+  },
+  "primary_cell/panasonic/cr1620": {
+    "issue_number": 375,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/375"
+  },
+  "primary_cell/panasonic/cr1616": {
+    "issue_number": 376,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/376"
+  },
+  "primary_cell/panasonic/cr2012": {
+    "issue_number": 377,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/377"
+  },
+  "primary_cell/panasonic/cr1632": {
+    "issue_number": 378,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/378"
+  },
+  "primary_cell/panasonic/cr2025": {
+    "issue_number": 379,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/379"
+  },
+  "primary_cell/panasonic/cr2412": {
+    "issue_number": 380,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/380"
+  },
+  "primary_cell/panasonic/cr3032": {
+    "issue_number": 381,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/381"
+  },
+  "primary_cell/panasonic/cr2477": {
+    "issue_number": 382,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/382"
+  },
+  "primary_cell/panasonic/cr2032a": {
+    "issue_number": 383,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/383"
+  },
+  "primary_cell/panasonic/cr2032b": {
+    "issue_number": 384,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/384"
+  },
+  "primary_cell/panasonic/br1220": {
+    "issue_number": 385,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/385"
+  },
+  "primary_cell/panasonic/cr2050b2": {
+    "issue_number": 386,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/386"
+  },
+  "primary_cell/panasonic/cr2050a": {
+    "issue_number": 387,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/387"
+  },
+  "primary_cell/panasonic/br1225": {
+    "issue_number": 388,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/388"
+  },
+  "primary_cell/panasonic/cr2450b": {
+    "issue_number": 389,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/389"
+  },
+  "primary_cell/panasonic/br2032": {
+    "issue_number": 390,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/390"
+  },
+  "primary_cell/panasonic/br2330": {
+    "issue_number": 391,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/391"
+  },
+  "primary_cell/panasonic/br2325": {
+    "issue_number": 392,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/392"
+  },
+  "primary_cell/panasonic/br1632": {
+    "issue_number": 393,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/393"
+  },
+  "primary_cell/panasonic/br3032": {
+    "issue_number": 394,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/394"
+  },
+  "primary_cell/panasonic/br1632a": {
+    "issue_number": 395,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/395"
+  },
+  "primary_cell/panasonic/br2330a": {
+    "issue_number": 396,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/396"
+  },
+  "primary_cell/panasonic/br2477a": {
+    "issue_number": 397,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/397"
+  },
+  "cell/eemb/lp452235": {
+    "issue_number": 398,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/398"
+  },
+  "cell/eemb/lp505464": {
+    "issue_number": 399,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/399"
+  },
+  "primary_cell/panasonic/br1225a": {
+    "issue_number": 400,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/400"
+  },
+  "cell/eemb/lp604765": {
+    "issue_number": 401,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/401"
+  },
+  "cell/eemb/lp702030": {
+    "issue_number": 402,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/402"
+  },
+  "cell/eemb/lp652438": {
+    "issue_number": 403,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/403"
+  },
+  "cell/eemb/lp605590": {
+    "issue_number": 404,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/404"
+  },
+  "cell/eemb/lp404261": {
+    "issue_number": 405,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/405"
+  },
+  "cell/eemb/lp603448": {
+    "issue_number": 406,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/406"
+  },
+  "cell/eemb/lp822245": {
+    "issue_number": 407,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/407"
+  },
+  "cell/eemb/lp803450": {
+    "issue_number": 408,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/408"
+  },
+  "cell/eemb/lp653042": {
+    "issue_number": 409,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/409"
+  },
+  "cell/eemb/lp402535": {
+    "issue_number": 410,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/410"
+  },
+  "cell/eemb/lp583759": {
+    "issue_number": 411,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/411"
+  },
+  "cell/eemb/lp604374": {
+    "issue_number": 412,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/412"
+  },
+  "cell/eemb/lp604040": {
+    "issue_number": 413,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/413"
+  },
+  "cell/eemb/lp383450": {
+    "issue_number": 414,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/414"
+  },
+  "cell/eemb/lp453048": {
+    "issue_number": 415,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/415"
+  },
+  "cell/eemb/lp103042": {
+    "issue_number": 416,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/416"
+  },
+  "cell/eemb/lp603436": {
+    "issue_number": 417,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/417"
+  },
+  "cell/eemb/lp103395": {
+    "issue_number": 418,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/418"
+  },
+  "cell/eemb/lp902977": {
+    "issue_number": 419,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/419"
+  },
+  "cell/eemb/lp403026": {
+    "issue_number": 420,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/420"
+  },
+  "cell/eemb/lp553250": {
+    "issue_number": 421,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/421"
+  },
+  "cell/eemb/lp602945": {
+    "issue_number": 422,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/422"
+  },
+  "cell/eemb/lp503759": {
+    "issue_number": 423,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/423"
+  },
+  "cell/eemb/lp752726": {
+    "issue_number": 424,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/424"
+  },
+  "cell/eemb/lp503048": {
+    "issue_number": 425,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/425"
+  },
+  "cell/eemb/lp9051109": {
+    "issue_number": 426,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/426"
+  },
+  "cell/eemb/lp902030": {
+    "issue_number": 427,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/427"
+  },
+  "cell/eemb/lp7545135": {
+    "issue_number": 428,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/428"
+  },
+  "cell/eemb/lp722977": {
+    "issue_number": 429,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/429"
+  },
+  "cell/eemb/lp803448": {
+    "issue_number": 430,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/430"
+  },
+  "cell/eemb/lp603048": {
+    "issue_number": 431,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/431"
+  },
+  "cell/eemb/lp603449": {
+    "issue_number": 432,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/432"
+  },
+  "cell/eemb/lp603030": {
+    "issue_number": 433,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/433"
+  },
+  "cell/eemb/lp602248": {
+    "issue_number": 434,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/434"
+  },
+  "cell/eemb/lp703450": {
+    "issue_number": 435,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/435"
+  },
+  "cell/eemb/lp542730": {
+    "issue_number": 436,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/436"
+  },
+  "cell/eemb/lp562438": {
+    "issue_number": 437,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/437"
+  },
+  "cell/eemb/lp552025": {
+    "issue_number": 438,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/438"
   }
 }
