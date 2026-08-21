@@ -84,6 +84,46 @@ at the landing page before redistributing anything.
 
 ---
 
+## EU-funded battery research
+
+The EU research corpus uses official project/result services as metadata and
+provenance sources:
+
+| Source | Use | Reproduction rule |
+|---|---|---|
+| [CORDIS projects](https://cordis.europa.eu/projects) and official bulk distributions | Project, organisation, deliverable, publication and report-summary metadata | Store normalized facts, provenance and official links. |
+| [CORDIS archived search](https://cordis.europa.eu/about/search) | Historical and non-framework project discovery | Screen every keyword match for battery centrality. |
+| [EURIO](https://cordis.europa.eu/about/sparql) | Project/result and concept relationships | Treat the graph as source evidence, not the canonical store. |
+| [Funding & Tenders APIs](https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/support/apis) | Signed awards, calls/topics and non-CORDIS programmes | Preserve source status and programme namespace. |
+| OpenAIRE records linked from CORDIS | Publications, datasets and software | Record DOI/repository metadata; verify access and licence independently. |
+
+The project/result contract is documented in
+[`08-eu-research-data-contract.md`](08-eu-research-data-contract.md), with the
+field crosswalk in [`09-cordis-crosswalk.md`](09-cordis-crosswalk.md).
+Release manifests and their NDJSON files are checked with:
+
+```bash
+python tools/validate_eu_research_release.py path/to/manifest.json
+```
+
+Full releases also carry a hashed source-observation ledger, so the indexed-row
+total and its access, relevance, type and seed-project partitions are derived
+from one auditable disposition row per harvested result rather than copied from
+a report.
+
+Public access is not a blanket reuse licence. EU-owned material may be reusable
+under the applicable Commission terms, while beneficiary and third-party
+reports, articles, software, datasets, images and logos can carry different
+rights. The default is metadata plus a link. An external asset is copied only
+after its own licence or permission is recorded and verified.
+
+Relevant legal sources:
+
+- [CORDIS legal notice](https://cordis.europa.eu/about/legal)
+- [Horizon Results Platform legal provisions](https://ec.europa.eu/info/funding-tenders/opportunities/docs/project-result/Legal_Provisions_for_the_use_of_the_Horizon_Results_Platform.pdf)
+
+---
+
 ## What this repository does reproduce
 
 Extracted facts from manufacturer specifications, each carrying its
