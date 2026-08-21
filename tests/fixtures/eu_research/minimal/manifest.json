@@ -1,0 +1,275 @@
+{
+  "$schema": "../../../../json-schema/eu-research-release.schema.json",
+  "contract_version": "1.0.0",
+  "release_id": "snapshot/eu-battery/2026-08-21.1",
+  "release_kind": "TEST_FIXTURE",
+  "status": "CANDIDATE",
+  "as_of_date": "2026-08-21",
+  "generated_at": "2026-08-21T21:03:26Z",
+  "methodology_version": "eu-battery-scope/1.0.0",
+  "supersedes": null,
+  "coverage_claim": {
+    "kind": "BOUNDED_SOURCE_SNAPSHOT",
+    "statement": "Representative contract fixture derived from the documented EU battery-project corpus as observed on 2026-08-21.",
+    "known_limitations": [
+      "This is a small contract fixture, not the production corpus.",
+      "Confidential, unreported, removed or later-added results are outside the bounded public-source snapshot."
+    ]
+  },
+  "source_snapshots": [
+    {
+      "source_id": "source_snapshot/cordis/bulk-2026-08",
+      "publisher": "European Commission",
+      "official_url": "https://cordis.europa.eu/projects",
+      "retrieved_at": "2026-08-21T00:00:00Z",
+      "coverage": "CORDIS project, organisation, deliverable, publication and report-summary distributions",
+      "query_or_distribution": "Official monthly bulk files plus archived project search",
+      "snapshot_sha256": null,
+      "source_system": "CORDIS_BULK",
+      "artifacts": [
+        {
+          "artifact_id": "source_artifact/cordis/bulk-2026-08/fixture-observation",
+          "official_url": "https://cordis.europa.eu/projects",
+          "retrieved_at": "2026-08-21T00:00:00Z",
+          "request_or_distribution": "Official monthly bulk files plus archived project search",
+          "media_type": "application/octet-stream",
+          "byte_size": null,
+          "sha256": null,
+          "dataset_ids": [
+            "cordis/fp7-projects",
+            "cordis/h2020-organisations",
+            "cordis/h2020-project-publications",
+            "cordis/h2020-projects"
+          ],
+          "retained_path": null
+        }
+      ]
+    },
+    {
+      "source_id": "source_snapshot/eurio/2026-08-21",
+      "publisher": "European Commission",
+      "official_url": "https://cordis.europa.eu/about/sparql",
+      "retrieved_at": "2026-08-21T00:00:00Z",
+      "coverage": "FP7, Horizon 2020 and Horizon Europe project-result relationships",
+      "query_or_distribution": "EURIO SPARQL project-result queries",
+      "snapshot_sha256": null,
+      "source_system": "EURIO",
+      "artifacts": [
+        {
+          "artifact_id": "source_artifact/eurio/2026-08-21/fixture-observation",
+          "official_url": "https://cordis.europa.eu/about/sparql",
+          "retrieved_at": "2026-08-21T00:00:00Z",
+          "request_or_distribution": "EURIO SPARQL project-result queries",
+          "media_type": "application/octet-stream",
+          "byte_size": null,
+          "sha256": null,
+          "dataset_ids": [
+            "eurio/project-result"
+          ],
+          "retained_path": null
+        }
+      ]
+    },
+    {
+      "source_id": "source_snapshot/funding-tenders/2026-08-21",
+      "publisher": "European Commission",
+      "official_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/support/apis",
+      "retrieved_at": "2026-08-21T00:00:00Z",
+      "coverage": "Signed awards and projects outside the primary CORDIS framework datasets",
+      "query_or_distribution": "Battery project searches and project document records",
+      "snapshot_sha256": null,
+      "source_system": "FUNDING_TENDERS",
+      "artifacts": [
+        {
+          "artifact_id": "source_artifact/funding-tenders/2026-08-21/fixture-observation",
+          "official_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/support/apis",
+          "retrieved_at": "2026-08-21T00:00:00Z",
+          "request_or_distribution": "Battery project searches and project document records",
+          "media_type": "application/octet-stream",
+          "byte_size": null,
+          "sha256": null,
+          "dataset_ids": [
+            "funding-tenders/projects"
+          ],
+          "retained_path": null
+        }
+      ]
+    },
+    {
+      "source_id": "source_snapshot/curation/methodology-1.0.0",
+      "source_system": "CURATOR",
+      "publisher": "battery-data maintainers",
+      "official_url": "https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/08-eu-research-data-contract.md",
+      "retrieved_at": "2026-08-21T00:00:00Z",
+      "coverage": "Independent fixture scope, relevance and exclusion decisions",
+      "query_or_distribution": "eu-battery-scope/1.0.0 fixture review decisions",
+      "snapshot_sha256": null,
+      "artifacts": [
+        {
+          "artifact_id": "source_artifact/curation/methodology-1.0.0/contract",
+          "official_url": "https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/08-eu-research-data-contract.md",
+          "retrieved_at": "2026-08-21T00:00:00Z",
+          "request_or_distribution": "EU battery-research contract fixture methodology",
+          "media_type": "text/markdown",
+          "byte_size": null,
+          "sha256": null,
+          "dataset_ids": [
+            "curator/eu-battery-scope/1.0.0"
+          ],
+          "retained_path": null
+        }
+      ]
+    }
+  ],
+  "record_sets": [
+    {
+      "record_type": "PROJECT",
+      "path": "projects.ndjson",
+      "media_type": "application/x-ndjson",
+      "visibility": "PUBLIC",
+      "canonical": true,
+      "record_count": 2,
+      "byte_size": 6934,
+      "sha256": "5966b9f3058be3337a3f59ab22f22c8d6ca8ad9d0de05c2664b3d549748fc780",
+      "record_schema": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/record.schema.json",
+      "record_schema_sha256": "bfe3c9270cab302e1d29bd49806dbecaf94e501d9060ce24ccd8b2d422c0b974"
+    },
+    {
+      "record_type": "RESULT",
+      "path": "results.ndjson",
+      "media_type": "application/x-ndjson",
+      "visibility": "PUBLIC",
+      "canonical": true,
+      "record_count": 1,
+      "byte_size": 2273,
+      "sha256": "b08bede89aeab1ba0ce7aa7d1c4d0fba3ba69f643e8a9e92933015833bdc57b1",
+      "record_schema": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/record.schema.json",
+      "record_schema_sha256": "bfe3c9270cab302e1d29bd49806dbecaf94e501d9060ce24ccd8b2d422c0b974"
+    },
+    {
+      "record_type": "PROJECT_RESULT",
+      "path": "project_results.ndjson",
+      "media_type": "application/x-ndjson",
+      "visibility": "PUBLIC",
+      "canonical": true,
+      "record_count": 1,
+      "byte_size": 2971,
+      "sha256": "3340d3887ad632396054bd39a6fd05299a32c3e817c668dcedcd15e2af225767",
+      "record_schema": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/record.schema.json",
+      "record_schema_sha256": "bfe3c9270cab302e1d29bd49806dbecaf94e501d9060ce24ccd8b2d422c0b974"
+    },
+    {
+      "record_type": "PARTICIPATION",
+      "path": "participations.ndjson",
+      "media_type": "application/x-ndjson",
+      "visibility": "PUBLIC",
+      "canonical": true,
+      "record_count": 1,
+      "byte_size": 1868,
+      "sha256": "23fd844502409c073596ee19d0c448266432358b9b429050fd0146eb72f19bcf",
+      "record_schema": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/record.schema.json",
+      "record_schema_sha256": "bfe3c9270cab302e1d29bd49806dbecaf94e501d9060ce24ccd8b2d422c0b974"
+    },
+    {
+      "record_type": "REVIEW_CANDIDATE",
+      "path": "review_queue.ndjson",
+      "media_type": "application/x-ndjson",
+      "visibility": "INTERNAL",
+      "canonical": false,
+      "record_count": 1,
+      "byte_size": 2969,
+      "sha256": "8d0443cad53bd97b0ceeafdbd6138aeca6d68f069fa698c8a6afe1b37f0ad3e2",
+      "record_schema": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/record.schema.json",
+      "record_schema_sha256": "bfe3c9270cab302e1d29bd49806dbecaf94e501d9060ce24ccd8b2d422c0b974"
+    },
+    {
+      "record_type": "EXCLUDED_MATCH",
+      "path": "excluded.ndjson",
+      "media_type": "application/x-ndjson",
+      "visibility": "INTERNAL",
+      "canonical": false,
+      "record_count": 1,
+      "byte_size": 2989,
+      "sha256": "3c0e709dd9c0c3dc43f977d059cf8c956a7ab9f536f8b89d93ea18d2e60b0095",
+      "record_schema": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/record.schema.json",
+      "record_schema_sha256": "bfe3c9270cab302e1d29bd49806dbecaf94e501d9060ce24ccd8b2d422c0b974"
+    }
+  ],
+  "summary": {
+    "projects": 2,
+    "results": 1,
+    "project_result_links": 1,
+    "participations": 1,
+    "result_assets": 0,
+    "review_candidates": 1,
+    "excluded_matches": 1
+  },
+  "licensing": {
+    "metadata_policy": "SOURCE_AND_FIELD_SPECIFIC",
+    "source_asset_default": "LINK_ONLY_UNLESS_EXPLICITLY_ALLOWED",
+    "attribution": "Source: European Union—CORDIS and EU Funding & Tenders Portal; retrieved 21 August 2026. Adapted, filtered and classified by battery-data; changes indicated. No EU endorsement implied.",
+    "cordis_legal_url": "https://cordis.europa.eu/about/legal",
+    "funding_results_legal_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/project-result/Legal_Provisions_for_the_use_of_the_Horizon_Results_Platform.pdf"
+  },
+  "integrity": {
+    "hash_algorithm": "SHA-256",
+    "record_encoding": "UTF-8_NDJSON_LF",
+    "record_order": "RECORD_ID_ASCENDING",
+    "duplicate_record_ids": "FATAL"
+  },
+  "quality_gates": [
+    {
+      "gate": "MANIFEST_SCHEMA",
+      "status": "PASSED",
+      "evidence": "Validated with Draft 2020-12 and format checking."
+    },
+    {
+      "gate": "SOURCE_PROVENANCE",
+      "status": "PASSED",
+      "evidence": "Every fixture record contains at least one official-source claim."
+    },
+    {
+      "gate": "CANONICAL_IDENTIFIERS",
+      "status": "PASSED",
+      "evidence": "Namespaced project IDs and deterministic UUIDv5 relationship IDs are used."
+    },
+    {
+      "gate": "COUNT_RECONCILIATION",
+      "status": "PASSED",
+      "evidence": "Manifest counts equal the fixture files."
+    },
+    {
+      "gate": "REFERENTIAL_INTEGRITY",
+      "status": "PASSED",
+      "evidence": "Project-result and participation references resolve inside the fixture."
+    },
+    {
+      "gate": "SCOPE_CLASSIFICATION",
+      "status": "PASSED",
+      "evidence": "The fixture includes reviewed core and integrated projects."
+    },
+    {
+      "gate": "ACCESS_VERIFICATION",
+      "status": "PASSED",
+      "evidence": "The publication is explicitly metadata-only and contains no asset."
+    },
+    {
+      "gate": "RIGHTS_REVIEW",
+      "status": "PASSED",
+      "evidence": "Source assets default to link-only and none are bundled."
+    },
+    {
+      "gate": "DETERMINISTIC_BUILD",
+      "status": "PASSED",
+      "evidence": "Record and file hashes are recomputed by the contract tests."
+    },
+    {
+      "gate": "SANITIZED_EXPORT",
+      "status": "PASSED",
+      "evidence": "No machine-local paths, credentials or personal contact data are present."
+    }
+  ],
+  "baseline": null,
+  "source_observation_summary": null,
+  "source_observation_ledger": null
+}
