@@ -3,7 +3,7 @@
   "batch": "2026-08-16-100-plus-cell-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 375,
+  "candidate_count": 374,
   "total_record_count": 443,
   "candidates": [
     {
@@ -5503,7 +5503,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp603030.yaml",
       "issue_number": 433,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/433"
     },
