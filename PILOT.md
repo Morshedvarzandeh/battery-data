@@ -9,7 +9,13 @@
 
 # battery-data — Design partner agreement
 
-**Free evaluation access. Version 1.0.**
+**Free evaluation access. Version 1.1.**
+
+> **This is pre-release software and a pre-release dataset.** It is supplied
+> for evaluation, not for production use, and it has not been validated for
+> any purpose. Values must be independently verified against the
+> manufacturer's own datasheet before they are relied on for anything. See
+> §6.
 
 This is the agreement for the period before battery-data is sold. It gives a
 small number of engineering teams full access to the curated corpus at no
@@ -103,11 +109,13 @@ Economic Law permit it notwithstanding contractual restriction.
 not decoration, and a value separated from its conditions is the failure this
 project exists to prevent.
 
-**Rights reserved.** The sui generis database right in the corpus (Directive
-96/9/EC; in Belgium, Book XI, Title 7 of the Code of Economic Law) is
-reserved, as is the right of reproduction for text and data mining under art.
-4(3) of Directive (EU) 2019/790. Free access is not a licence to any of it
-beyond §2.
+**Rights reserved.** The corpus is a protected database. The producer's sui
+generis right under **art. XI.306 of the Belgian Code of Economic Law**
+(Directive 96/9/EC) is reserved: extraction or re-utilisation of a substantial
+part, and repeated systematic extraction of insubstantial parts, are
+prohibited independently of this agreement. The right of reproduction for text
+and data mining under art. 4(3) of Directive (EU) 2019/790 is likewise
+reserved. Free access is a licence to §2 and to nothing else.
 
 ---
 
@@ -191,18 +199,29 @@ intentionnelle*), including that of persons for whom it is responsible; for
 death or harm to physical or psychological integrity; or for anything else
 that cannot lawfully be excluded under Belgian law.
 
-**8.2** Subject to §8.1, and because this access is supplied free of charge, we
-accept no liability for any loss arising from your use of or reliance on the
-corpus, including indirect and consequential loss and loss of profit, revenue,
-data or anticipated saving. To the extent a limit rather than an exclusion is
-required for this to be effective, our total liability is limited to **€500**.
+**8.2 What we undertake.** We undertake, using reasonable care, to reproduce
+what source documents state and to keep each value's provenance — source URL,
+content hash, retrieval date — intact. That is the whole of our obligation. We
+do not undertake that a source document was itself correct, complete or
+current, and we give no warranty of fitness for any purpose.
 
-**8.3** Subject to §8.1, §8.2 applies to any claim however arising — in
-contract, extracontractually or otherwise — and is stipulated also for the
-benefit of anyone we engage.
+**8.3 Cap.** Subject to §8.1, our total aggregate liability arising out of or
+in connection with this agreement is limited to **€500**. The limit reflects
+that this access is supplied free of charge, and that you — not we — are the
+party able to verify a value against the manufacturer's controlled document
+before relying on it.
 
-**8.4** You confirm that you have read §6, and that you will not rely on the
-corpus in a safety-critical application without the verification §6 requires.
+**8.4** Subject to §8.1, we are not liable for indirect or consequential loss,
+nor for loss of profit, revenue, business, goodwill, anticipated saving or
+data.
+
+**8.5** Subject to §8.1, §§8.3 and 8.4 apply to any claim however arising — in
+contract, extracontractually (in tort) or otherwise — and are stipulated also
+for the benefit of anyone we engage, who may invoke them directly.
+
+**8.6** You confirm that you have read §6, that you will not rely on the corpus
+in a safety-critical application without the verification §6 requires, and that
+you will not present the corpus to anyone downstream of you as validated data.
 
 ---
 
