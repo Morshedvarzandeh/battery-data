@@ -36,7 +36,9 @@ to be worth before you would pay for it.
 
 ## 1. The parties
 
-**Us:** Morshed Varzandeh, trading as **Lemonergy**, of [ADDRESS], Belgium.
+**Us:** Morshed Varzandeh, trading as **Lemonergy**, of [ADDRESS], Belgium —
+acting personally for now, and for a Belgian company to be formed to continue
+this business, to which this agreement may be transferred under §9.5.
 Contact: **legal@lemonergy.com**.
 
 **You:** the company, university, research institute or other organisation
@@ -223,7 +225,17 @@ of the place where we are established have jurisdiction.
 **9.4** Notices go by email — to us at legal@lemonergy.com, to you at the
 address access was requested from.
 
-**9.5** This is the whole agreement about free access. It replaces nothing and
+**9.5 If we incorporate.** This project is expected to move into a company.
+You agree in advance that we may transfer this agreement, in whole, to a
+company formed to continue the business — including one not yet incorporated
+when you accept. The transfer takes effect on written notice to you, from
+which point that company stands in our place and the transferring individual
+is released from anything arising after the notice. Nothing about your access
+or these terms changes because of it, and if you would rather end the
+agreement than continue with the company, §7.1 lets you do that at any time
+for any reason.
+
+**9.6** This is the whole agreement about free access. It replaces nothing and
 commits neither side to a paid relationship. When and if you subscribe, the
 [Terms of Service](TERMS.md) take over from the start date of that
 subscription.
