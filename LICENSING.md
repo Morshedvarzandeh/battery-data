@@ -36,9 +36,12 @@ open; the thing that is sold is not here.**
 It would be easier to put one licence file at the root and move on. That would
 also be wrong, for a reason worth stating plainly.
 
-**Facts are not copyrightable.** In the United States, *Feist v. Rural Telephone*
-holds that a compilation of facts attracts copyright only in its selection and
-arrangement, and only thinly. "4900 mAh at 0.2 C to 2.5 V" is a fact about a
+**Facts are not copyrightable.** The rule that governs here is the European
+one — Article 3 of the Database Directive and the CJEU's *Football Dataco*:
+copyright reaches only an original selection or arrangement, never the facts,
+and labour alone earns nothing. The United States lands in the same place via
+*Feist v. Rural Telephone*, which holds that a compilation of facts attracts
+copyright only in its selection and arrangement, and only thinly. "4900 mAh at 0.2 C to 2.5 V" is a fact about a
 Samsung cell. No licence this project publishes can stop anyone from repeating
 it, and any document claiming otherwise is bluffing — expensively, because a
 bluff that gets tested in court is worse than no claim at all.
@@ -49,7 +52,12 @@ four other things, in descending order of strength:
 1. **Contract.** Every API subscriber agrees to [`TERMS.md`](TERMS.md) before
    receiving a key. Contract binds regardless of whether the underlying material
    is copyrightable, which is exactly why it is the primary instrument here.
-2. **The sui generis database right** (EU and UK). This one *does* protect a
+   Two honest limits: it binds only those who accepted it — against a stranger
+   republishing corpus data, the database right does the work — and even
+   against subscribers it cannot remove a lawful user's statutory right to
+   extract insubstantial parts, which is why the terms ban substantial and
+   systematic extraction rather than "any extraction".
+2. **The sui generis database right** (EU/EEA). This one *does* protect a
    factual compilation as such — see below. It is the reason the corpus is worth
    defending in Europe in a way it would not be in the US alone.
 3. **AGPL-3.0 on the code.** A competitor may self-host. A competitor may not
@@ -150,9 +158,15 @@ method is not convincing at 64 cells it will not become convincing at 6,400.
 
 ## The database right
 
-**The Licensor asserts the sui generis database right under Directive 96/9/EC
-and the UK Copyright and Rights in Databases Regulations 1997 in the curated
-corpus and in this repository's compilation, to the extent such rights subsist.**
+**The Licensor asserts the sui generis database right in the curated corpus
+and in this repository's compilation under Directive 96/9/EC — in Belgium, the
+Licensor's home jurisdiction, under Book XI, Title 7 (articles XI.305 and
+following) of the Code of Economic Law — and under the other EU/EEA
+transpositions, to the extent such rights subsist.** No UK database right is
+claimed: since Brexit the UK right arises only for UK-connected makers, so for
+this corpus none subsists, and in the UK protection rests on the subscription
+contract and on copyright in the code and documentation. Asserting a right
+that does not exist is how the rest of a rights notice loses credibility.
 
 This is the one intellectual property right that protects a collection of facts
 *as a collection*, and it is worth understanding rather than reciting:
@@ -166,9 +180,14 @@ This is the one intellectual property right that protects a collection of facts
 - It prohibits **extraction or re-utilisation of a substantial part**, measured
   qualitatively or quantitatively, and prohibits **repeated and systematic
   extraction of insubstantial parts** where that conflicts with normal
-  exploitation. Scraping the API a page at a time is the second of those.
-- It runs **15 years**, restarting on each substantial new investment. A database
-  under continuous curation is, in practice, continuously renewed.
+  exploitation. Under the CJEU's *BHB v William Hill*, the second limb catches
+  page-at-a-time scraping whose cumulative effect would reconstitute a
+  substantial part of the database — which is exactly what corpus-rebuilding
+  scraping is.
+- It runs **15 years**, and the term is renewable where a new, demonstrably
+  substantial investment is made. The producer bears the burden of proving that
+  investment — which is why dated, versioned snapshots of the corpus are kept
+  as evidence rather than the renewal being assumed.
 
 The grant in CC-BY-4.0 Section 4 applies to the sample published in this
 repository. **All database rights in the corpus are reserved.**
@@ -178,11 +197,15 @@ repository. **All database rights in the corpus are reserved.**
 ## Text and data mining, and model training
 
 The Licensor **expressly reserves** the right of reproduction for text and data
-mining in the corpus and the API, under Article 4(3) of Directive (EU) 2019/790.
-This reservation is made in machine-readable form at
-[`web/.well-known/tdmrep.json`](web/.well-known/tdmrep.json) and in [`web/robots.txt`](web/robots.txt), per the
-W3C TDM Reservation Protocol. The API serves the same reservation at
-`/.well-known/tdmrep.json` and in a `TDM-Reservation` header on every response.
+mining in the corpus and the API, under Article 4(3) of Directive (EU) 2019/790
+as transposed into Belgian law (Book XI of the Code of Economic Law).
+The reservation is made in machine-readable form three ways: a
+[`tdmrep.json`](web/.well-known/tdmrep.json) file under the TDM Reservation
+Protocol (a W3C Community Group Final Report — established practice, not yet a
+formal standard), a `TDM-Reservation` header on every API response, and
+separately in [`robots.txt`](web/robots.txt) under the Robots Exclusion
+Protocol. No single signal is yet officially certified as sufficient, which is
+the argument for sending all three.
 
 In plain terms:
 
@@ -192,6 +215,11 @@ In plain terms:
 - **The corpus and the API**: training, fine-tuning, embedding, distillation or
   benchmark construction requires a separate written licence. Ask — this is a
   product, not a refusal, and the answer is usually a price rather than a no.
+  One exception is mandatory and honoured rather than resisted: text and data
+  mining for scientific research by research organisations with lawful access
+  (art. 3 DSM; arts. XI.191/1–2 and XI.310 of the Belgian Code of Economic
+  Law) applies notwithstanding any reservation — which costs this project
+  little, since academic use is free here anyway.
 
 A reservation only works if it is stated before the mining happens, which is why
 it is stated here, in the terms, in `robots.txt` and in an HTTP header on every
@@ -336,9 +364,10 @@ Yes — CC-BY-4.0, attribute it. That is a real grant and it is not going to be
 withdrawn.
 
 **Can I scrape the API to rebuild the corpus?**
-No. It breaches the terms you accepted for your key, and in the EU and UK it
-infringes the database right independently of the contract. It is also the
-specific behaviour the terms are written to catch.
+No. It breaches the terms you accepted for your key, and in the EU/EEA it
+infringes the database right independently of the contract. (In the UK, where
+no database right subsists for this corpus, the contract alone does the work.)
+It is also the specific behaviour the terms are written to catch.
 
 **Can I train a model on it?**
 On the CC-BY-4.0 sample here, yes, with attribution. On the corpus or API output,

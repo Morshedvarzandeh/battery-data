@@ -1,9 +1,10 @@
 # battery-data
 #
 # Ordinary search indexing is welcome. Bulk extraction and model training are
-# not, and the reservation below is made in machine-readable form under the
-# W3C TDM Reservation Protocol as Article 4(3) of Directive (EU) 2019/790
-# requires. See /.well-known/tdmrep.json, and LICENSING.md in the repository.
+# not. The reservation Article 4(3) of Directive (EU) 2019/790 requires is
+# made machine-readably here, in /.well-known/tdmrep.json (TDM Reservation
+# Protocol, a W3C Community Group Final Report), and in a TDM-Reservation
+# header on every API response. See LICENSING.md in the repository.
 #
 # The curated corpus is not published here at all. It is served by a
 # subscription API under the terms in TERMS.md. A licence for mining or model

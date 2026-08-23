@@ -1,6 +1,6 @@
 <!--
   Section 2 is the legally operative part: it is what allows a contributed row
-  to be served through the paid API. [LEGAL ENTITY] is still blank there.
+  to be served through the paid API.
   Not reviewed by a lawyer. Have one read it before you rely on it.
 -->
 
@@ -91,7 +91,9 @@ competing project. Nothing in this section takes anything away from you.
 
 ### 2.2 What you grant
 
-You grant the Licensor ([LEGAL ENTITY], and its successors in the business) a
+You grant the Licensor (Morshed Varzandeh, trading as Lemonergy, Belgium — and
+the successors of that business, including any company the battery-data
+activity is later brought into) a
 **perpetual, worldwide, non-exclusive, royalty-free, irrevocable, transferable
 licence, with the right to sub-license through multiple tiers**, to:
 

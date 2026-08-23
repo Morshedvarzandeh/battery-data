@@ -201,13 +201,14 @@ jobs:
           echo "ok: every commit is signed off"
 
       - name: Licensing blanks are filled in
-        # Warns rather than fails. The domain is settled; what is left are the
-        # business facts a lawyer settles with the owner - the contracting
-        # entity, its registered address, the governing law and the effective
-        # date. Terms that name no counterparty are terms nobody can accept,
-        # and it is the kind of blank that survives a launch unnoticed.
+        # Warns rather than fails. Governing law and entity are settled (Belgian
+        # law; Morshed Varzandeh trading as Lemonergy). What is left arrives
+        # with business registration: the enterprise number the guichet
+        # d'entreprises assigns, the registered address, and the effective
+        # date. Terms with those blank are terms nobody can accept, and it is
+        # the kind of blank that survives a launch unnoticed.
         run: |
-          hits=$(grep -rln '\[LEGAL ENTITY\]\|\[REGISTERED ADDRESS\]\|\[GOVERNING LAW\]\|\[COURTS\]\|\[EFFECTIVE DATE\]' \
+          hits=$(grep -rln '\[ENTERPRISE NUMBER\]\|\[REGISTERED ADDRESS\]\|\[EFFECTIVE DATE\]' \
                    --exclude-dir=.git --exclude-dir=LICENSES . || true)
           if [ -n "$hits" ]; then
             echo "::warning::commercial terms still have unfilled blanks in:"

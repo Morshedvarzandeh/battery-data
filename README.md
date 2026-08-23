@@ -317,7 +317,7 @@ curation. That boundary is the commercial model, and it is drawn precisely in
 
 The honest version of why it is arranged this way: a spec number off a datasheet
 is a *fact*, and facts are not copyrightable. No data licence protects this
-corpus. What protects it is a subscription contract, the EU/UK database right
+corpus. What protects it is a subscription contract, the EU/EEA database right
 (asserted — see `LICENSING.md`), a machine-readable TDM reservation, and the
 freshness a scraped copy does not have. A licence that claimed more would be a
 bluff, and a bluff that gets tested is worse than no claim.
