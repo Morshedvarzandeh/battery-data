@@ -106,9 +106,94 @@ def normalise_url(url: str) -> str:
 
 
 def slugify(text: str) -> str:
+    """Slug, cut at a word boundary rather than mid-syllable."""
     ascii_text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
-    slug = re.sub(r"[^A-Za-z0-9]+", "-", ascii_text).strip("-").lower()
-    return re.sub(r"-+", "-", slug)[:MAX_SLUG].strip("-")
+    slug = re.sub(r"-+", "-", re.sub(r"[^A-Za-z0-9]+", "-", ascii_text).strip("-").lower())
+    if len(slug) <= MAX_SLUG:
+        return slug
+    cut = slug[:MAX_SLUG]
+    # Prefer the last complete word; fall back to a hard cut for a single
+    # very long token, which is rare enough not to matter.
+    return (cut.rsplit("-", 1)[0] if "-" in cut else cut).strip("-")
+
+
+# Tokens that must not be title-cased: legal forms that are conventionally
+# capitalised a particular way, and anything that is an acronym rather than
+# a word. Everything else in an all-caps name is a shouted word.
+LEGAL_FORMS = {
+    "bv": "BV", "nv": "NV", "sa": "SA", "srl": "SRL", "sl": "SL", "sro": "SRO",
+    "spa": "SpA", "gmbh": "GmbH", "ag": "AG", "kg": "KG", "ev": "eV", "as": "AS",
+    "ab": "AB", "oy": "OY", "aps": "ApS", "plc": "PLC", "ltd": "Ltd", "llc": "LLC",
+    "inc": "Inc", "sas": "SAS", "sarl": "SARL", "scpa": "ScpA", "zoo": "ZOO",
+    "doo": "DOO", "ou": "OU", "uab": "UAB", "sia": "SIA", "kft": "Kft", "sp": "SP",
+    "vzw": "VZW", "asbl": "ASBL", "aisbl": "AISBL", "sca": "SCA", "sce": "SCE",
+    "cic": "CIC", "llp": "LLP", "pte": "Pte", "pty": "Pty", "bhd": "Bhd",
+}
+
+# Small words that stay lowercase inside a name, unless they lead it.
+MINOR_WORDS = {
+    "and", "of", "the", "for", "in", "on", "at", "to", "de", "du", "des", "da",
+    "di", "del", "della", "der", "die", "das", "den", "van", "von", "y", "e",
+    "et", "la", "le", "les", "el", "il", "och", "og", "voor", "en", "za", "na",
+    # German, Dutch, Nordic and Slavic connectives that are short enough to
+    # be mistaken for acronyms. DECHEMA's registered name contains "FUR".
+    "fur", "und", "mit", "zur", "zum", "auf", "aus", "bei", "im", "am", "ter",
+    "ve", "og", "pa", "av", "til", "og", "i", "u", "w", "z", "s", "o", "a",
+    "per", "con", "com", "dos", "das", "dei", "ed", "og", "es", "si",
+}
+
+
+def display_name(name: str) -> str:
+    """CORDIS shouts. `legal_name` keeps the shout; `name` is for reading.
+
+    Only all-caps strings are touched, and only word-shaped tokens within
+    them: an acronym, an initialism or anything carrying a digit or an
+    internal full stop is left exactly as the Commission wrote it.
+    """
+    if not name or not name.isupper():
+        return name
+
+    def fix(token: str, first: bool) -> str:
+        bare = re.sub(r"[^A-Za-z]", "", token)
+        if not bare:
+            return token
+        low = bare.lower()
+        if low in LEGAL_FORMS:
+            return token.replace(bare, LEGAL_FORMS[low])
+        # Acronyms and initialisms: too short to be a word, or punctuated
+        # like one (R.FLO, S.P.A.), or carrying digits.
+        if len(bare) <= 3 and low not in MINOR_WORDS:
+            return token
+        if re.search(r"[0-9]", token) or re.search(r"[A-Z]\.[A-Z]", token):
+            return token
+        if low in MINOR_WORDS and not first:
+            return token.replace(bare, low)
+        return token.replace(bare, bare.capitalize())
+
+    tokens = name.split()
+    return " ".join(fix(t, i == 0) for i, t in enumerate(tokens))
+
+
+def normalise_for_match(name: str) -> str:
+    ascii_name = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
+    stripped = re.sub(r"[^a-z0-9 ]", " ", ascii_name.lower())
+    words = [w for w in stripped.split() if w not in LEGAL_FORMS]
+    return " ".join(words)
+
+
+def find_duplicate_groups(records: list[dict]) -> list[list[dict]]:
+    """Organisations that look like the same body under two PICs.
+
+    Not merged - CORDIS genuinely issues more than one PIC to some bodies,
+    and separately, unrelated organisations share a name across borders.
+    Telling those apart is a human's job, so this only reports.
+    """
+    groups: dict[str, list[dict]] = {}
+    for record in records:
+        key = normalise_for_match(record["short"] or record["legal"])
+        if key:
+            groups.setdefault(key, []).append(record)
+    return [sorted(g, key=lambda r: r["pic"]) for g in groups.values() if len(g) > 1]
 
 
 def sql_str(value: str | None) -> str:
@@ -148,6 +233,18 @@ def read_rows(path: Path, sheet_hint: str = "participant") -> list[dict]:
             {k: (v or "").strip() for k, v in row.items()}
             for row in csv.DictReader(handle)
         ]
+
+
+def is_name_like(text: str) -> bool:
+    """Reject a 'short name' that is really a registration number.
+
+    One participant has its German VAT number, DE29 581 94 16, in the
+    short-name field while the legal name reads EVTEC GmbH. A name has
+    more letters than digits.
+    """
+    letters = sum(c.isalpha() for c in text)
+    digits = sum(c.isdigit() for c in text)
+    return letters > digits and letters >= 2
 
 
 def pick(row: dict, *names: str) -> str:
@@ -200,16 +297,28 @@ def collapse(rows: list[dict], keep_projects: set[str] | None = None) -> list[di
             ("activity", ("Activity Type", "activityType")),
         ):
             value = unquote(pick(row, *columns))
+            if key == "short" and value and not is_name_like(value):
+                continue
             if value and not record[key]:
                 record[key] = value
     return sorted(by_pic.values(), key=lambda r: int(r["pic"]))
 
 
 def assign_uids(records: list[dict]) -> None:
-    """Slug from the legal name; disambiguate the handful that collide."""
-    counts = Counter(slugify(r["legal"]) for r in records)
+    """Slug from the name a person would use, not the one on the charter.
+
+    Trinity College Dublin is registered as "The Provost, Fellows,
+    Foundation Scholars and the other members of Board...", which slugs to
+    something no one will ever type or recognise. The short name is the
+    better identifier wherever CORDIS supplies one; the legal name is the
+    fallback, and the PIC breaks the ties.
+    """
+    def base(record: dict) -> str:
+        return slugify(record["short"]) or slugify(record["legal"])
+
+    counts = Counter(base(r) for r in records)
     for record in records:
-        slug = slugify(record["legal"]) or f"pic-{record['pic']}"
+        slug = base(record) or f"pic-{record['pic']}"
         if counts[slug] > 1:
             slug = f"{slug}-pic{record['pic']}"
         record["uid"] = f"org/{slug}"
@@ -231,8 +340,11 @@ def build_sql(records: list[dict], source_name: str, retrieved: str, scope: str)
         stats["role lab" if roles == "{lab}" else "role unknown"] += 1
 
         # `name` is what a person would write; `legal_name` is what the
-        # grant was signed as. They are often not the same string.
-        display = record["short"] or record["legal"]
+        # grant was signed as, kept verbatim. They are often not the same
+        # string, and CORDIS writes both in capitals.
+        display = display_name(record["short"] or record["legal"])
+        if display != (record["short"] or record["legal"]):
+            stats["name un-shouted"] += 1
         values.append(
             "  ({uid}, {name}, {legal}, {country}, '{roles}', {url}, {pic})".format(
                 uid=sql_str(record["uid"]),
@@ -283,8 +395,9 @@ def build_sql(records: list[dict], source_name: str, retrieved: str, scope: str)
 -- No organization_alias rows: CORDIS gives a legal name and a short name,
 -- and both already have a column of their own.
 --
--- ON CONFLICT DO NOTHING throughout, so this composes with 001 and 002
--- in any order and can be re-run after a refreshed CORDIS export.
+-- Re-runnable, and composes with 001 and 002 in any order. Where an
+-- organisation is already present as curated data, only empty columns are
+-- filled: a curated name, role or country is never overwritten by CORDIS.
 -- =====================================================================
 
 SET search_path = bd, public;
@@ -295,9 +408,43 @@ SET search_path = bd, public;
 INSERT INTO organization (uid, name, legal_name, country, roles, website, pic) VALUES
 """
 
-    body = ",\n".join(values) + "\nON CONFLICT (uid) DO NOTHING;\n"
+    # An organisation may already be here as curated data - Audi arrives via
+    # seed/002 with roles={manufacturer}. DO NOTHING would drop its PIC on
+    # the floor, so instead fill the holes and touch nothing that was set
+    # deliberately: name, roles and country stay exactly as curated.
+    body = ",\n".join(values) + """
+ON CONFLICT (uid) DO UPDATE SET
+      pic        = COALESCE(organization.pic, EXCLUDED.pic),
+      legal_name = COALESCE(organization.legal_name, EXCLUDED.legal_name),
+      website    = COALESCE(organization.website, EXCLUDED.website),
+      updated_at = now()
+  WHERE organization.pic IS NULL
+     OR organization.legal_name IS NULL
+     OR organization.website IS NULL;
+"""
 
-    footer = f"""
+    duplicate_note = ""
+    groups = find_duplicate_groups(records)
+    if groups:
+        lines = []
+        for group in sorted(groups, key=lambda g: g[0]["legal"]):
+            names = " | ".join(
+                f"{r['pic']} {EU_TO_ISO.get(r['country'], r['country']) or '??'}"
+                for r in group
+            )
+            lines.append(f"--   {group[0]['short'] or group[0]['legal']}: {names}")
+        duplicate_note = (
+            "\n-- ---------------------------------------------------------------------\n"
+            f"-- {len(groups)} name collisions across {sum(len(g) for g in groups)} rows, listed\n"
+            "-- rather than merged. Some are one body holding two PICs; others are\n"
+            "-- unrelated organisations that share a name across two countries.\n"
+            "-- Telling those apart is a human's job.\n"
+            "-- ---------------------------------------------------------------------\n"
+            + "\n".join(lines)
+            + "\n"
+        )
+
+    footer = duplicate_note + f"""
 -- ---------------------------------------------------------------------
 -- Counts, so a failed load is obvious rather than silent.
 -- ---------------------------------------------------------------------
@@ -359,6 +506,9 @@ def main() -> None:
     print(f"  -> {len(records):,} organisations, {len(set(r['uid'] for r in records)):,} unique uids")
     for key in sorted(stats):
         print(f"     {stats[key]:>6,}  {key}")
+    groups = find_duplicate_groups(records)
+    if groups:
+        print(f"     {sum(len(g) for g in groups):>6,}  rows in {len(groups)} name collisions (listed in the seed, not merged)")
     print(f"  -> {args.output} ({args.output.stat().st_size:,} bytes)")
 
 
