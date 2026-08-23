@@ -73,6 +73,9 @@ the Corpus and nothing in these terms restricts your rights in it.
 
 **"Plan"** — the subscription tier, quota and fees agreed between us.
 
+**"Commencement Date"** — the date access begins, stated in your Plan. It is
+set by us and is normally five to ten working days after signature.
+
 ---
 
 ## 2. Acceptance
@@ -352,7 +355,9 @@ that §11.3 is practical rather than rhetorical. Use them.
 
 ## 12. Term, suspension and termination
 
-**12.1** These terms run from acceptance until terminated. A subscription
+**12.1** These terms run from acceptance until terminated. Access, and the
+fees for it, begin on the Commencement Date rather than on signature — signing
+early costs you nothing and is often the point. A subscription
 renews automatically for successive periods equal to its billing period unless
 cancelled under §12.2 before the renewal date; for billing periods of one year
 or longer, we send a renewal reminder to the email on your account at least 30

@@ -171,7 +171,8 @@ there is no support contract behind this, and no service level.
 
 ## 7. Term, and how it ends
 
-**7.1** This agreement runs from the day access is granted until either side
+**7.1** This agreement runs from the day access is granted — which may be
+some days after you accept, and is not the day you accept — until either side
 ends it. Either side may end it at any time, for any reason, on written
 notice. No notice period, no penalty, no explanation required.
 
