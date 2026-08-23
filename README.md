@@ -208,7 +208,9 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 | [`LICENSING.md`](LICENSING.md) | **What is open, what is sold, and why the line sits where it does** |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | The contribution licence, and what contributors get back |
-| [`TERMS.md`](TERMS.md) | API subscription terms — governs the hosted corpus, not this repository |
+| [`PILOT.md`](PILOT.md) | **Free design-partner access to the full corpus — the current phase** |
+| [`TERMS.md`](TERMS.md) | API subscription terms, for when the service is sold |
+| [`PRIVACY.md`](PRIVACY.md) | What is logged, why, and for how long |
 
 ---
 
@@ -311,8 +313,9 @@ thing in the repository — a standards mapping nobody may adopt is a mapping
 nobody adopts.
 
 **On the corpus.** The full curated corpus is not published here. It is served
-by subscription API under [`TERMS.md`](TERMS.md), which is what funds the
-curation. That boundary is the commercial model, and it is drawn precisely in
+by API under [`PILOT.md`](PILOT.md) — free design-partner access, which is the
+current phase — and later by subscription under [`TERMS.md`](TERMS.md), which
+is what funds the curation. That boundary is the commercial model, and it is drawn precisely in
 `LICENSING.md` rather than left to be inferred.
 
 The honest version of why it is arranged this way: a spec number off a datasheet

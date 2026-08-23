@@ -208,7 +208,7 @@ jobs:
         # date. Terms with those blank are terms nobody can accept, and it is
         # the kind of blank that survives a launch unnoticed.
         run: |
-          hits=$(grep -rln '\[ENTERPRISE NUMBER\]\|\[REGISTERED ADDRESS\]\|\[EFFECTIVE DATE\]' \
+          hits=$(grep -rln '\[ENTERPRISE NUMBER\]\|\[REGISTERED ADDRESS\]\|\[EFFECTIVE DATE\]\|\[ADDRESS\]' \
                    --exclude-dir=.git --exclude-dir=LICENSES . || true)
           if [ -n "$hits" ]; then
             echo "::warning::commercial terms still have unfilled blanks in:"

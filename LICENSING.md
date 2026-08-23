@@ -310,8 +310,12 @@ choice and it is better made now than after a dispute.
 Three separate things are for sale. They are unrelated and you may want one
 without the others.
 
-**1. API subscription** — hosted access to the curated corpus. The main product.
-Terms: [`TERMS.md`](TERMS.md).
+**0. Design partner access** — free, full corpus, for teams willing to say what
+is wrong with it. This is where the project is now, and it is not a reduced
+tier: partners get what a subscriber would. Terms: [`PILOT.md`](PILOT.md).
+
+**1. API subscription** — hosted access to the curated corpus. The main product,
+once there is one. Terms: [`TERMS.md`](TERMS.md).
 
 **2. Bulk / redistribution licence** — a snapshot you may hold, embed in a
 product, or redistribute to your own customers. Not available under the API
