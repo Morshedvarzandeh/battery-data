@@ -7,7 +7,7 @@
 #
 # The curated corpus is not published here at all. It is served by a
 # subscription API under the terms in TERMS.md. A licence for mining or model
-# training is available and priced — write to licensing@YOURDOMAIN.example
+# training is available and priced — write to licensing@lemonergy.com
 # rather than taking it.
 
 User-agent: *

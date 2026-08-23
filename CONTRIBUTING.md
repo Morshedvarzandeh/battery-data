@@ -1,7 +1,7 @@
 <!--
-  BEFORE PUBLISHING: replace YOURDOMAIN.example placeholders.
-  Section 2 is the legally operative part. It has not been reviewed by a
-  lawyer. Have one read it before you rely on it to sell contributed data.
+  Section 2 is the legally operative part: it is what allows a contributed row
+  to be served through the paid API. [LEGAL ENTITY] is still blank there.
+  Not reviewed by a lawyer. Have one read it before you rely on it.
 -->
 
 # Contributing
@@ -91,7 +91,7 @@ competing project. Nothing in this section takes anything away from you.
 
 ### 2.2 What you grant
 
-You grant the Licensor ([legal entity], and its successors in the business) a
+You grant the Licensor ([LEGAL ENTITY], and its successors in the business) a
 **perpetual, worldwide, non-exclusive, royalty-free, irrevocable, transferable
 licence, with the right to sub-license through multiple tiers**, to:
 
@@ -160,7 +160,7 @@ cause real trouble;
 you did.
 
 If you later discover any of this was wrong, tell us at
-[legal@YOURDOMAIN.example]. Reporting your own mistake is treated as good faith.
+legal@lemonergy.com. Reporting your own mistake is treated as good faith.
 Concealing one is not.
 
 ### 2.6 On facts, honestly
@@ -213,9 +213,9 @@ to a database whose entire claim is provenance than adding another row is, and i
 is the contribution most projects fail to reward.
 
 Academic and standards-body use of the corpus is free regardless of whether you
-have contributed. Write to [licensing@YOURDOMAIN.example] and say which you are.
+have contributed. Write to licensing@lemonergy.com and say which you are.
 
-Claim access at [licensing@YOURDOMAIN.example] with a link to your merged work.
+Claim access at licensing@lemonergy.com with a link to your merged work.
 
 ---
 
@@ -278,5 +278,5 @@ most right now:
 ## 7. Questions
 
 Open an issue. Licensing questions that you would rather not ask in public go to
-[legal@YOURDOMAIN.example], and asking before you contribute is always better than
+legal@lemonergy.com, and asking before you contribute is always better than
 asking afterwards.

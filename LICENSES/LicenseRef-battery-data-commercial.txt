@@ -12,7 +12,7 @@ snapshot or derived dataset supplied by the Licensor.
 
 Access is granted only under a written subscription agreement. The governing
 terms are published at TERMS.md in this repository and at
-<https://YOURDOMAIN.example/terms>.
+<https://www.lemonergy.com/terms>.
 
 Nothing in this repository grants a licence to that corpus. The open licences
 that apply to this repository (AGPL-3.0-or-later for code, CC-BY-4.0 for the

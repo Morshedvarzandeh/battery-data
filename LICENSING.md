@@ -1,8 +1,8 @@
 <!--
-  BEFORE PUBLISHING: replace every occurrence of YOURDOMAIN.example and every
-  [bracketed] placeholder across LICENSING.md, TERMS.md, CONTRIBUTING.md,
-  NOTICE and LICENSES/LicenseRef-battery-data-commercial.txt.
-  Find them with:  grep -rn "YOURDOMAIN.example\|\[legal entity\]\|\[jurisdiction\]" .
+  Open items: the contracting entity, its registered address, the governing law
+  and the effective date are still blank in TERMS.md. CI warns until they are
+  filled. Find them with:
+    grep -rn "\[LEGAL ENTITY\]\|\[REGISTERED ADDRESS\]\|\[GOVERNING LAW\]\|\[COURTS\]\|\[EFFECTIVE DATE\]" .
   This file states a position. It is not legal advice, and it has not been
   reviewed by a lawyer. Have one read it before you take money against it.
 -->
@@ -132,7 +132,7 @@ licensed by anything in this repository:
 - **The curated corpus** — the full accumulated set of products, revisions,
   observations, condition sets, test runs, protocol records and provenance
   chains held in the production database.
-- **The hosted API** at `YOURDOMAIN.example`, and any extract, export, feed,
+- **The hosted API** at `lemonergy.com`, and any extract, export, feed,
   snapshot or derived dataset supplied from it.
 - **Ingestion output not yet published here**, including extractions awaiting
   review.
@@ -296,7 +296,7 @@ for you, you do not need this and should not buy it.
 
 **Model training** sits under (2), priced separately.
 
-Ask at **[legal contact — licensing@YOURDOMAIN.example]**. If you are an academic
+Ask at **licensing@lemonergy.com**. If you are an academic
 group, a standards body, or an open-source project, say so — the answer is
 different and it is usually free.
 
@@ -357,7 +357,7 @@ copyright and can use your own work however you like.
 
 **I found my company's datasheet data in here.**
 Then the provenance chain is doing its job — mail
-**[legal contact — legal@YOURDOMAIN.example]**. Every value carries the source
+**legal@lemonergy.com**. Every value carries the source
 URL, the content hash and the retrieval date, so a source can be identified and
 removed precisely rather than approximately. Note that facts stated in a
 published datasheet are generally not removable as a matter of copyright, but
@@ -406,10 +406,10 @@ most likely to be useful to someone who never touches the rest.
 
 | For | Write to |
 |---|---|
-| API subscriptions, pricing, bulk and model-training licences | [licensing@YOURDOMAIN.example] |
-| Commercial licence for the AGPL code | [licensing@YOURDOMAIN.example] |
-| Takedown, source removal, IP questions | [legal@YOURDOMAIN.example] |
-| Academic, standards-body and open-source use | [licensing@YOURDOMAIN.example] — say which, the terms differ |
+| API subscriptions, pricing, bulk and model-training licences | licensing@lemonergy.com |
+| Commercial licence for the AGPL code | licensing@lemonergy.com |
+| Takedown, source removal, IP questions | legal@lemonergy.com |
+| Academic, standards-body and open-source use | licensing@lemonergy.com — say which, the terms differ |
 | Anything about the schema itself | GitHub issues |
 
 ---

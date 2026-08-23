@@ -1,14 +1,14 @@
 <!--
-  BEFORE PUBLISHING: replace YOURDOMAIN.example, [legal entity], [jurisdiction],
-  [courts], and the pricing/limit placeholders in §9 and §10.
-  Find them with:  grep -n "YOURDOMAIN.example\|\[.*\]" TERMS.md
+  Open items for legal review: [LEGAL ENTITY], [REGISTERED ADDRESS],
+  [GOVERNING LAW], [COURTS] and [EFFECTIVE DATE]. The notice periods in
+  sections 8, 9, 12 and 16 are drafted defaults - confirm them.
   This is a drafted starting point, not legal advice, and it has not been
   reviewed by a lawyer. Have one read it before you take money against it.
 -->
 
 # battery-data API — Terms of Service
 
-**Version 1.0 · Effective [date]**
+**Version 1.0 · Effective [EFFECTIVE DATE]**
 
 These terms govern access to the hosted battery-data API and to the curated
 corpus it serves. They do **not** govern the public repository at
@@ -44,7 +44,7 @@ is built, certified or shipped. See §11.
 
 ## 1. Definitions
 
-**"Licensor"**, **"we"**, **"us"** — [legal entity], of [address].
+**"Licensor"**, **"we"**, **"us"** — [LEGAL ENTITY], of [REGISTERED ADDRESS].
 
 **"You"**, **"Subscriber"** — the individual or organisation accepting these
 terms. Where an individual accepts on behalf of an organisation, that individual
@@ -177,7 +177,7 @@ property rights. They are independent: a breach of one does not require a breach
 of the other.
 
 **5.4** A separate licence for mining and model training is available. Write to
-[licensing@YOURDOMAIN.example].
+licensing@lemonergy.com.
 
 ---
 
@@ -187,7 +187,7 @@ Where you publish a specific value, figure, chart or table derived from the
 Output — in a paper, report, datasheet, marketing material or product interface
 — attribute it as:
 
-> Source: battery-data (YOURDOMAIN.example), retrieved [date].
+> Source: battery-data (lemonergy.com), retrieved [date].
 
 You do not need to attribute internal use, and you do not need to attribute
 values you have independently verified against the manufacturer's datasheet and
@@ -209,7 +209,7 @@ and shared documents.
 **7.2** You are responsible for all use under your keys, including use by anyone
 who obtains one from you, however they obtained it.
 
-**7.3** Tell us promptly at [security@YOURDOMAIN.example] if a key is exposed. We
+**7.3** Tell us promptly at security@lemonergy.com if a key is exposed. We
 will rotate it. Prompt disclosure of your own leak is treated as good faith, not
 as a breach.
 
@@ -225,7 +225,7 @@ where we can. Unless your Plan includes a written service level agreement, the
 API is provided on a reasonable-efforts basis with **no uptime guarantee**.
 
 **8.2** We may change, deprecate or withdraw endpoints and fields. Breaking
-changes to a versioned endpoint will be announced at least **[90] days** in
+changes to a versioned endpoint will be announced at least **90 days** in
 advance and the previous version kept available during that period. Additive
 changes may ship at any time; write clients that tolerate unknown fields.
 
@@ -236,15 +236,15 @@ changes may ship at any time; write clients that tolerate unknown fields.
 ## 9. Fees and payment
 
 **9.1** Fees, quotas and the billing period are as set out in your Plan at
-[https://YOURDOMAIN.example/pricing] or in your order form.
+https://www.lemonergy.com/pricing or in your order form.
 
 **9.2** Fees are exclusive of VAT and other applicable taxes, which you pay in
 addition where they apply.
 
-**9.3** Invoices are due within **[30] days**. We may suspend access to an account
-overdue by more than **[30] days** after written notice.
+**9.3** Invoices are due within **30 days**. We may suspend access to an account
+overdue by more than **30 days** after written notice.
 
-**9.4** We may change fees on **[60] days'** notice, effective at your next
+**9.4** We may change fees on **60 days'** notice, effective at your next
 renewal. If you do not accept a change, you may terminate under §12.2 before it
 takes effect.
 
@@ -307,7 +307,7 @@ period.
 **12.3 By us.** We may suspend or terminate immediately on written notice for
 material breach — §4 in particular — or for non-payment under §9.3. Where a
 suspicion of breach is capable of being cured and is not deliberate, we will give
-you **[14] days'** notice and a chance to fix it first.
+you **14 days'** notice and a chance to fix it first.
 
 **12.4** If we terminate for convenience, we refund the unused portion of fees
 already paid. If you terminate for our uncured material breach, likewise.
@@ -316,7 +316,7 @@ already paid. If you terminate for our uncured material breach, likewise.
 
 - your keys stop working, and your rights under §3 end;
 - you must stop using the Output for new work, and delete stored Output and
-  caches within **[30] days**;
+  caches within **30 days**;
 - **but you may keep, indefinitely:** Output already incorporated into a design,
   analysis, report, publication or deliverable completed before termination, and
   Output you must retain to meet a legal, regulatory or contractual record-keeping
@@ -343,7 +343,7 @@ query patterns to compete with you or to inform anyone else's product decisions.
 Aggregate, non-identifiable statistics about API usage may be published.
 
 **13.3** Personal data is handled per our privacy policy at
-[https://YOURDOMAIN.example/privacy].
+https://www.lemonergy.com/privacy.
 
 ---
 
@@ -375,18 +375,18 @@ notwithstanding anything else in these terms.
 
 ## 16. Changes to these terms
 
-We may change these terms on **[30] days'** written notice to the email on your
+We may change these terms on **30 days'** written notice to the email on your
 account. Material changes will be identified as such. If you do not accept a
 change, terminate under §12.2 before it takes effect; continued use afterwards is
 acceptance. The current version is always at
-[https://YOURDOMAIN.example/terms] and in the Open Repository.
+https://www.lemonergy.com/terms and in the Open Repository.
 
 ---
 
 ## 17. General
 
-**17.1 Governing law.** These terms are governed by the law of [jurisdiction],
-and the courts of [courts] have exclusive jurisdiction.
+**17.1 Governing law.** These terms are governed by the law of [GOVERNING LAW],
+and the courts of [COURTS] have exclusive jurisdiction.
 
 **17.2 Entire agreement.** These terms and your Plan are the whole agreement
 between us on this subject, and replace any prior understanding. Nothing here
@@ -415,10 +415,10 @@ relationship.
 
 | For | Write to |
 |---|---|
-| Subscriptions, quotas, pricing | [sales@YOURDOMAIN.example] |
-| Bulk, redistribution and model-training licences | [licensing@YOURDOMAIN.example] |
-| Key exposure and security | [security@YOURDOMAIN.example] |
-| Legal, takedown, contract questions | [legal@YOURDOMAIN.example] |
+| Subscriptions, quotas, pricing | sales@lemonergy.com |
+| Bulk, redistribution and model-training licences | licensing@lemonergy.com |
+| Key exposure and security | security@lemonergy.com |
+| Legal, takedown, contract questions | legal@lemonergy.com |
 
 ---
 

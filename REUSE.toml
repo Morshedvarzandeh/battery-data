@@ -1,6 +1,6 @@
 version = 1
 SPDX-PackageName = "battery-data"
-SPDX-PackageSupplier = "Morshed Varzandeh <legal@YOURDOMAIN.example>"
+SPDX-PackageSupplier = "Morshed Varzandeh <legal@lemonergy.com>"
 SPDX-PackageDownloadLocation = "https://github.com/Morshedvarzandeh/battery-data"
 SPDX-PackageComment = """
 Two licences, one boundary. Code is AGPL-3.0-or-later; documentation, the

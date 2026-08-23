@@ -2,6 +2,6 @@
   {
     "location": "/",
     "tdm-reservation": 1,
-    "tdm-policy": "https://YOURDOMAIN.example/tdm-policy.json"
+    "tdm-policy": "https://www.lemonergy.com/tdm-policy.json"
   }
 ]

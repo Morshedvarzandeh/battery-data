@@ -36,5 +36,5 @@
   like. You grant a sub-licensable licence, which is what lets contributed rows
   be served through the paid API that funds the curation. §3 sets out what
   contributors get back, including free API access. Ask before you submit if
-  anything there is unclear — legal@YOURDOMAIN.example.
+  anything there is unclear — legal@lemonergy.com.
 -->

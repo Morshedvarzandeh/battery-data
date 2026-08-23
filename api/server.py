@@ -57,9 +57,9 @@ PROVIDER = {
 # that makes the subscription contract the operative instrument over a corpus
 # of facts that copyright barely reaches. See LICENSING.md.
 TERMS_URL = os.environ.get(
-    "BD_TERMS_URL", "https://YOURDOMAIN.example/terms")
+    "BD_TERMS_URL", "https://www.lemonergy.com/terms")
 TDM_POLICY_URL = os.environ.get(
-    "BD_TDM_POLICY_URL", "https://YOURDOMAIN.example/tdm-policy.json")
+    "BD_TDM_POLICY_URL", "https://www.lemonergy.com/tdm-policy.json")
 
 # What THIS server instance serves. A self-hosted AGPL deployment loaded with
 # your own data is not serving the commercial corpus, so it says so.

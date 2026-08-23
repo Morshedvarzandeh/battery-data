@@ -200,18 +200,19 @@ jobs:
           fi
           echo "ok: every commit is signed off"
 
-      - name: Licensing placeholders are filled in
-        # Warns rather than fails: the placeholders are correct in the
-        # repository until the commercial site exists, and wrong the moment it
-        # does. .example is a reserved TLD (RFC 2606) and can never resolve, so
-        # an unreplaced placeholder is inert rather than dangerous - but terms
-        # that point at nowhere are not terms anyone can accept.
+      - name: Licensing blanks are filled in
+        # Warns rather than fails. The domain is settled; what is left are the
+        # business facts a lawyer settles with the owner - the contracting
+        # entity, its registered address, the governing law and the effective
+        # date. Terms that name no counterparty are terms nobody can accept,
+        # and it is the kind of blank that survives a launch unnoticed.
         run: |
-          hits=$(grep -rln 'YOURDOMAIN\.example' \
+          hits=$(grep -rln '\[LEGAL ENTITY\]\|\[REGISTERED ADDRESS\]\|\[GOVERNING LAW\]\|\[COURTS\]\|\[EFFECTIVE DATE\]' \
                    --exclude-dir=.git --exclude-dir=LICENSES . || true)
           if [ -n "$hits" ]; then
-            echo "::warning::commercial terms still contain YOURDOMAIN.example placeholders:"
+            echo "::warning::commercial terms still have unfilled blanks in:"
             echo "$hits" | sed 's/^/  /'
+            echo "These are the items for legal review. See TERMS.md section 1 and 17."
           else
-            echo "ok: no placeholders left"
+            echo "ok: no blanks left"
           fi
