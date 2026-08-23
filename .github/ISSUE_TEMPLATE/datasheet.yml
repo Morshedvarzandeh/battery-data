@@ -87,7 +87,7 @@ body:
   - type: checkboxes
     id: redistributable
     attributes:
-      label: Licence
+      label: Document redistribution
       options:
         - label: >
             The licence permits this repository to store the document body.
@@ -105,3 +105,22 @@ body:
         table, a revision date printed somewhere odd.
     validations:
       required: false
+
+  - type: checkboxes
+    id: contribution-terms
+    attributes:
+      label: Contribution terms
+      description: >
+        This project publishes an open repository and sells a hosted API over a
+        larger curated corpus. Data accepted from this issue may be served
+        through that paid API. You keep your copyright and may still use your
+        own work however you like — CONTRIBUTING.md §2 sets out precisely what
+        you grant and §3 what you get back, including free API access for
+        contributors.
+      options:
+        - label: >
+            I have read and agree to the contribution licence in
+            [CONTRIBUTING.md §2](../blob/main/CONTRIBUTING.md#2-contribution-licence),
+            and I have the right to submit this document — it is not covered by
+            an NDA or an employment agreement that would prevent it.
+          required: true

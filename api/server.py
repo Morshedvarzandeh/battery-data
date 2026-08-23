@@ -48,6 +48,40 @@ PROVIDER = {
     "homepage": "https://github.com/Morshedvarzandeh/battery-data",
 }
 
+# Licensing served at the point of use, not only in a file somebody might read.
+#
+# Two of these are load-bearing rather than decorative. A text-and-data-mining
+# reservation under Article 4(3) of Directive (EU) 2019/790 only works if it is
+# machine-readable and given BEFORE the mining happens, so it travels on every
+# response and at /.well-known/tdmrep.json. And the terms link is the notice
+# that makes the subscription contract the operative instrument over a corpus
+# of facts that copyright barely reaches. See LICENSING.md.
+TERMS_URL = os.environ.get(
+    "BD_TERMS_URL", "https://YOURDOMAIN.example/terms")
+TDM_POLICY_URL = os.environ.get(
+    "BD_TDM_POLICY_URL", "https://YOURDOMAIN.example/tdm-policy.json")
+
+# What THIS server instance serves. A self-hosted AGPL deployment loaded with
+# your own data is not serving the commercial corpus, so it says so.
+CORPUS_LICENSE = os.environ.get("BD_CORPUS_LICENSE", "CC-BY-4.0")
+
+LICENSE_INFO = {
+    "code": "AGPL-3.0-or-later",
+    "data": CORPUS_LICENSE,
+    "terms": TERMS_URL,
+    "documentation":
+        "https://github.com/Morshedvarzandeh/battery-data/blob/main/LICENSING.md",
+    "tdm_reservation": True,
+    "tdm_policy": TDM_POLICY_URL,
+    "attribution": "battery-data",
+    "note": ("Source documents are not redistributed. Every value carries a "
+             "source URL, content hash and retrieval date so it can be checked "
+             "against the manufacturer's controlled document - do that before "
+             "anything is built, certified or shipped."),
+}
+
+TDMREP = [{"location": "/", "tdm-reservation": 1, "tdm-policy": TDM_POLICY_URL}]
+
 
 # =====================================================================
 # Storage adapter
@@ -233,12 +267,18 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, fmt, *args):
         sys.stderr.write("  %s\n" % (fmt % args))
 
-    def _send(self, code: int, payload: dict):
+    def _send(self, code: int, payload: dict, content_type: str | None = None):
         body = json.dumps(payload, indent=2, default=str).encode()
         self.send_response(code)
-        self.send_header("Content-Type", "application/vnd.api+json")
+        self.send_header("Content-Type",
+                         content_type or "application/vnd.api+json")
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Access-Control-Allow-Origin", "*")
+        # Notice given with the data itself. A reservation that arrives after
+        # the response has been consumed has not been given at all.
+        self.send_header("Link", f'<{TERMS_URL}>; rel="license"')
+        self.send_header("TDM-Reservation", "1")
+        self.send_header("TDM-Policy", TDM_POLICY_URL)
         self.end_headers()
         self.wfile.write(body)
 
@@ -262,6 +302,16 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"available_api_versions":
                                         [{"url": "/v1", "version": API_VERSION}],
                                         "provider": PROVIDER})
+            if path == "/.well-known/tdmrep.json":
+                # W3C TDM Reservation Protocol. Served from the API root as
+                # well as the site root, because a caller that never visits
+                # the site still has to be able to find the reservation.
+                return self._send(200, TDMREP, content_type="application/json")
+            if path == "/v1/license" or path == "/v1/licence":
+                return self._send(200, {"meta": {"api_version": API_VERSION,
+                                                 "provider": PROVIDER},
+                                        "data": {"type": "license", "id": "/",
+                                                 **LICENSE_INFO}})
             if path == "/v1/info":
                 return self._info()
             if path == "/v1/info/cells":
@@ -295,10 +345,9 @@ class Handler(BaseHTTPRequestHandler):
             "api_version": API_VERSION,
             "entry_types_by_format": {"json": ["cells"]},
             "available_endpoints": ["info", "links", "cells", "crosswalk",
-                                    "versions"],
+                                    "versions", "license"],
             "formats": ["json"],
-            "license": "CC-BY-4.0 for curated data; source documents are not "
-                       "redistributed",
+            "license": LICENSE_INFO,
         }})
 
     def _info_cells(self):

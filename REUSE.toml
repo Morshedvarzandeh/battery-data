@@ -1,0 +1,82 @@
+version = 1
+SPDX-PackageName = "battery-data"
+SPDX-PackageSupplier = "Morshed Varzandeh <legal@YOURDOMAIN.example>"
+SPDX-PackageDownloadLocation = "https://github.com/Morshedvarzandeh/battery-data"
+SPDX-PackageComment = """
+Two licences, one boundary. Code is AGPL-3.0-or-later; documentation, the
+standards crosswalk and the published sample data are CC-BY-4.0. The curated
+corpus served by the hosted API is under neither and is not in this repository
+— see LICENSING.md. Later annotations override earlier ones, so the catch-all
+below is deliberately first.
+"""
+
+# ---------------------------------------------------------------- catch-all
+# Anything not matched more specifically. Documentation-shaped by default,
+# because an unclassified file here is far more likely to be prose than code.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Morshed Varzandeh and battery-data contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# ---------------------------------------------------------------- code
+[[annotations]]
+path = [
+  "schema/**",
+  "tools/**",
+  "api/**",
+  "agents/**",
+  "tests/**",
+  ".github/scripts/**",
+  ".github/workflows/**",
+  "setup.sh",
+  "Dockerfile",
+  "docker-compose.yml",
+  ".gitignore",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Morshed Varzandeh and battery-data contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+# ---------------------------------------------------------------- data + docs
+# The published sample, not the corpus. LICENSING.md draws that line.
+[[annotations]]
+path = [
+  "docs/**",
+  "crosswalk/**",
+  "json-schema/**",
+  "seed/**",
+  "contrib/**",
+  "review/**",
+  "web/**",
+  "*.md",
+  "DCO",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Morshed Varzandeh and battery-data contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# web/index.html is a generated page: CC-BY-4.0 content, AGPL-licensed
+# behaviour, built by tools/build_web_data.py. Dual-marked rather than guessed.
+[[annotations]]
+path = "web/index.html"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Morshed Varzandeh and battery-data contributors"
+SPDX-License-Identifier = "CC-BY-4.0 AND AGPL-3.0-or-later"
+
+# ---------------------------------------------------------------- licence texts
+# The DCO is the Linux Foundation's document, reproduced verbatim as it
+# requires. It is not this project's to relicense.
+[[annotations]]
+path = "DCO"
+precedence = "override"
+SPDX-FileCopyrightText = "2004, 2006 The Linux Foundation and its contributors"
+SPDX-License-Identifier = "LicenseRef-DCO-1.1"
+
+# ---------------------------------------------------------------- not licensed
+# Present so tooling records the assertion, not because these grant anything.
+[[annotations]]
+path = ["TERMS.md", "LICENSES/LicenseRef-battery-data-commercial.txt"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Morshed Varzandeh. All rights reserved."
+SPDX-License-Identifier = "LicenseRef-battery-data-commercial"

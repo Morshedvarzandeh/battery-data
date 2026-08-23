@@ -151,3 +151,67 @@ jobs:
           x' python .github/scripts/issue_form.py && {
             echo "FAIL: accepted a file:// datasheet URL"; exit 1; }
           echo "ok: non-http datasheet URL refused"
+
+  licensing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+
+      - name: Every file declares a licence
+        # The licensing split is only worth anything if it is true of every
+        # file, and a split asserted in prose drifts the moment someone adds a
+        # directory. REUSE.toml is the machine-readable version and this is
+        # what keeps it honest: a new path with no annotation fails here rather
+        # than being discovered during a licensing dispute.
+        run: |
+          pip install reuse
+          reuse lint
+
+      - name: Commits are signed off
+        # The sign-off is what carries the contribution licence in
+        # CONTRIBUTING.md §2. Without it, a contributed row cannot lawfully be
+        # served through the paid API, and that is not a thing to find out
+        # after the fact.
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          fail=0
+          while read -r sha; do
+            [ -z "$sha" ] && continue
+            author=$(git log -1 --format='%an <%ae>' "$sha")
+            if git log -1 --format='%B' "$sha" | grep -qiE '^Signed-off-by: .+ <.+@.+>'; then
+              continue
+            fi
+            # Merge commits and bot commits are not contributions.
+            if [ "$(git rev-list --parents -n1 "$sha" | wc -w)" -gt 2 ]; then continue; fi
+            case "$author" in *"[bot]"*) continue;; esac
+            echo "::error::commit $sha ($author) has no Signed-off-by line"
+            fail=1
+          done < <(git rev-list "$BASE..$HEAD")
+          if [ "$fail" -ne 0 ]; then
+            echo "Fix with: git commit --amend -s   (or git rebase --signoff $BASE)"
+            echo "See CONTRIBUTING.md section 4."
+            exit 1
+          fi
+          echo "ok: every commit is signed off"
+
+      - name: Licensing placeholders are filled in
+        # Warns rather than fails: the placeholders are correct in the
+        # repository until the commercial site exists, and wrong the moment it
+        # does. .example is a reserved TLD (RFC 2606) and can never resolve, so
+        # an unreplaced placeholder is inert rather than dangerous - but terms
+        # that point at nowhere are not terms anyone can accept.
+        run: |
+          hits=$(grep -rln 'YOURDOMAIN\.example' \
+                   --exclude-dir=.git --exclude-dir=LICENSES . || true)
+          if [ -n "$hits" ]; then
+            echo "::warning::commercial terms still contain YOURDOMAIN.example placeholders:"
+            echo "$hits" | sed 's/^/  /'
+          else
+            echo "ok: no placeholders left"
+          fi

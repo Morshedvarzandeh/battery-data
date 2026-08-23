@@ -1,0 +1,65 @@
+battery-data
+Copyright (c) 2026 Morshed Varzandeh and battery-data contributors
+
+This product includes software and data developed for the battery-data project
+<https://github.com/Morshedvarzandeh/battery-data>.
+
+LICENCES
+--------
+Code (schema/, tools/, api/, agents/, tests/, .github/scripts/, setup.sh,
+Dockerfile, docker-compose.yml) is licensed under the GNU Affero General Public
+Licence, version 3 or later. See LICENSES/AGPL-3.0-or-later.txt.
+
+Documentation, the standards crosswalk, and the published sample data (docs/,
+crosswalk/, json-schema/, seed/, contrib/, review/, web/) are licensed under the
+Creative Commons Attribution 4.0 International Licence. See
+LICENSES/CC-BY-4.0.txt.
+
+Per-file licensing is declared in REUSE.toml, in the format specified by the
+REUSE Specification 3.3. The human-readable account, including the reasoning, is
+in LICENSING.md.
+
+NOT LICENSED BY THIS REPOSITORY
+-------------------------------
+The curated battery-data corpus and the hosted API that serves it are not part
+of this repository and are not licensed by anything in it. They are available
+under a subscription agreement; see TERMS.md.
+
+DATABASE RIGHTS
+---------------
+The sui generis database right under Directive 96/9/EC and the UK Copyright and
+Rights in Databases Regulations 1997 is asserted in the curated corpus and in
+this repository's compilation, to the extent it subsists. The grant in
+CC-BY-4.0 Section 4 reaches the sample published here. All database rights in
+the corpus are reserved.
+
+TEXT AND DATA MINING
+--------------------
+The reproduction right for text and data mining in the corpus and the API is
+expressly reserved under Article 4(3) of Directive (EU) 2019/790, in
+machine-readable form at /.well-known/tdmrep.json and in robots.txt. Mining and
+model training on the CC-BY-4.0 sample in this repository are permitted with
+attribution.
+
+THIRD-PARTY MATERIAL
+--------------------
+Manufacturer datasheets are not redistributed. Values are stored with a source
+URL, a content hash and a retrieval date; source.redistributable governs whether
+a document body may be stored at all.
+
+Standards text (IEC, ISO, SAE, UN) is never reproduced. Clause identifiers and
+citations are stored as references.
+
+Vocabularies (BDF, EMMO/BattINFO, OPTIMADE, BPX) remain under their own
+licences, recorded per row in vocabulary.license. Materials data is federated by
+identifier to Materials Project, OQMD, AFLOW and NOMAD rather than re-hosted.
+
+The Developer Certificate of Origin 1.1 (DCO) is Copyright (C) 2004, 2006 The
+Linux Foundation and its contributors, reproduced verbatim as its terms require.
+
+NO WARRANTY — SAFETY
+--------------------
+This database is not a substitute for the manufacturer's controlled datasheet
+and is not qualified for safety-critical design. Verify every value against the
+manufacturer's current document before it is used in design, certification,
+manufacture or operation. Every value carries the provenance needed to do so.

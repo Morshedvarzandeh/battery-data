@@ -206,6 +206,9 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
+| [`LICENSING.md`](LICENSING.md) | **What is open, what is sold, and why the line sits where it does** |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | The contribution licence, and what contributors get back |
+| [`TERMS.md`](TERMS.md) | API subscription terms — governs the hosted corpus, not this repository |
 
 ---
 
@@ -285,20 +288,59 @@ and propose the metadata layer upstream to the Battery Data Alliance.
 
 ## Licence
 
-Code **AGPL-3.0-or-later** — see [LICENSE](LICENSE). Schema, loaders and API
-are copyleft: run a modified version as a service and the modifications are
-owed back to whoever uses it. Querying the database, loading your own data and
-running it inside a business trigger nothing.
+Two licences and one boundary. The full account, with the reasoning, is in
+**[`LICENSING.md`](LICENSING.md)**; the machine-readable version is
+[`REUSE.toml`](REUSE.toml), and CI fails if a file is not covered by it.
 
-Curated data stays **CC-BY-4.0**, unchanged — the code licence does not reach
-the facts. Attribution is the only condition, and every row already carries the
-provenance needed to give it.
+| What | Licence |
+|---|---|
+| Code — `schema/` `tools/` `api/` `agents/` `tests/` | **AGPL-3.0-or-later** |
+| Docs, crosswalk, and the published sample — `docs/` `crosswalk/` `json-schema/` `seed/` `contrib/` `review/` `web/` | **CC-BY-4.0** |
+| The curated corpus and the hosted API | **not in this repository** — [`TERMS.md`](TERMS.md) |
 
-Manufacturer datasheets are **not** redistributed: `source.redistributable`
-governs whether a document body is stored, and every value keeps a URL, hash
-and retrieval date so any takedown request is answerable. `source.license`
-records the terms each source arrived under, which is not the same question as
-the terms this repository ships under.
+**On the code.** Run a modified version as a service and the modifications are
+owed back to whoever uses it. Querying the database, loading your own data, and
+running it inside a business trigger nothing. Calling the hosted API from closed
+commercial software triggers nothing either — the AGPL binds people who modify
+and serve the program, not people who talk to a server someone else runs.
+
+**On the data.** The sample published here is CC-BY-4.0 and that will not be
+withdrawn; attribution is the only condition, and every row already carries the
+provenance needed to give it. `crosswalk/` is deliberately the most permissive
+thing in the repository — a standards mapping nobody may adopt is a mapping
+nobody adopts.
+
+**On the corpus.** The full curated corpus is not published here. It is served
+by subscription API under [`TERMS.md`](TERMS.md), which is what funds the
+curation. That boundary is the commercial model, and it is drawn precisely in
+`LICENSING.md` rather than left to be inferred.
+
+The honest version of why it is arranged this way: a spec number off a datasheet
+is a *fact*, and facts are not copyrightable. No data licence protects this
+corpus. What protects it is a subscription contract, the EU/UK database right
+(asserted — see `LICENSING.md`), a machine-readable TDM reservation, and the
+freshness a scraped copy does not have. A licence that claimed more would be a
+bluff, and a bluff that gets tested is worse than no claim.
+
+**Datasheets are not redistributed.** `source.redistributable` governs whether a
+document body is stored, and every value keeps a URL, hash and retrieval date so
+any takedown request is answerable. `source.license` records the terms each
+source arrived under, which is not the same question as the terms this
+repository ships under.
+
+**This database is not a substitute for the manufacturer's controlled datasheet
+and is not qualified for safety-critical design.** Verify before anything is
+built, certified or shipped. The provenance exists so that you can.
 
 The relicence from MIT applies going forward. Earlier commits were published
 under MIT and those rights do not expire.
+
+## Contributing
+
+[`CONTRIBUTING.md`](CONTRIBUTING.md). One thing to know before you start: your
+contribution may be served through the paid API, you keep your copyright, and
+contributors get free API access. §2 states exactly what you grant and §3 what
+you get back — read them before you open a pull request rather than after.
+
+Sign your commits off with `git commit -s`. That line carries both the
+[DCO](DCO) and the contribution licence, and CI checks for it.

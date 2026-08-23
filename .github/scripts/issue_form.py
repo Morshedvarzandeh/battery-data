@@ -95,9 +95,13 @@ def main() -> int:
         "model": fields.get("model number", ""),
         "kind": kind,
         "source_url": fields.get("landing page", ""),
-        # A ticked checkbox renders as '- [X] label'.
+        # A ticked checkbox renders as '- [X] label'. The block was once
+        # labelled "Licence"; issues opened before the rename still are, and
+        # they have to keep parsing.
         "redistributable": bool(
-            re.search(r"^\s*-\s*\[[xX]\]", fields.get("licence", ""), re.M)),
+            re.search(r"^\s*-\s*\[[xX]\]",
+                      fields.get("document redistribution")
+                      or fields.get("licence", ""), re.M)),
         "notes": fields.get("anything the extractor should know", "")[:2000],
     }
     missing = [k for k in ("manufacturer", "model") if not req[k]]

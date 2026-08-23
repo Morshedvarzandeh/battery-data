@@ -1,0 +1,22 @@
+battery-data Commercial Corpus Licence (reference)
+SPDX-License-Identifier: LicenseRef-battery-data-commercial
+
+This identifier marks material that is NOT published under an open licence and
+is NOT contained in this repository.
+
+It covers the curated battery-data corpus and the hosted API that serves it:
+the accumulated product records, revisions, observations, condition sets,
+test runs, protocol identifiers, crosswalk linkages and provenance chains
+held in the production database, together with any extract, export, feed,
+snapshot or derived dataset supplied by the Licensor.
+
+Access is granted only under a written subscription agreement. The governing
+terms are published at TERMS.md in this repository and at
+<https://YOURDOMAIN.example/terms>.
+
+Nothing in this repository grants a licence to that corpus. The open licences
+that apply to this repository (AGPL-3.0-or-later for code, CC-BY-4.0 for the
+published sample and documentation) apply only to the files actually present
+here, and are bounded by LICENSING.md.
+
+Copyright (c) 2026 Morshed Varzandeh. All rights reserved.

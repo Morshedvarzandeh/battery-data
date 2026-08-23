@@ -1,0 +1,63 @@
+# battery-data
+#
+# Ordinary search indexing is welcome. Bulk extraction and model training are
+# not, and the reservation below is made in machine-readable form under the
+# W3C TDM Reservation Protocol as Article 4(3) of Directive (EU) 2019/790
+# requires. See /.well-known/tdmrep.json, and LICENSING.md in the repository.
+#
+# The curated corpus is not published here at all. It is served by a
+# subscription API under the terms in TERMS.md. A licence for mining or model
+# training is available and priced — write to licensing@YOURDOMAIN.example
+# rather than taking it.
+
+User-agent: *
+Allow: /
+
+# Text and data mining / model training crawlers.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
