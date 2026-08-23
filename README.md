@@ -142,6 +142,7 @@ New to the repo? **[`START-HERE.md`](START-HERE.md)** is the one-page version.
 createdb batterydb
 ./tools/build_db.sh batterydb          # 67 tables, 10 views, 98 quantities
 psql -d batterydb -f seed/001_reference_cells.sql
+psql -d batterydb -f seed/003_cordis_organisations.sql   # EU research organisations
 python tools/load_contrib.py --dsn dbname=batterydb   # accepted contributions
 psql -d batterydb -f tests/010_killer_queries.sql
 ```

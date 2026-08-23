@@ -66,7 +66,7 @@ Everything else is reference material. Read it when you need it.
 | Folder | You touch this when |
 |---|---|
 | `schema/` | changing what the database can store |
-| `seed/` | adding reference cells by hand |
+| `seed/` | adding reference cells by hand; `003_*` is generated, see `tools/` |
 | `contrib/` | adding cells as versioned YAML (CI checks them) |
 | `tools/` | ingesting cycler files, validating, exporting |
 | `api/` | serving the data over HTTP |

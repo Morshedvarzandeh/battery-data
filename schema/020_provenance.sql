@@ -28,9 +28,17 @@ CREATE TABLE organization (
   website      text,
   ror_id       text,                            -- Research Organization Registry
   gleif_lei    text,
+  pic          text,                            -- EU Participant Identification Code
   created_at   timestamptz NOT NULL DEFAULT now(),
   updated_at   timestamptz NOT NULL DEFAULT now()
 );
+
+-- PIC is the identifier the European Commission uses for every organisation
+-- that has ever signed an EU grant. Like ROR and LEI it is externally
+-- assigned and stable across renamings, so it belongs beside them rather
+-- than in organization_alias, which is for names people actually write.
+-- Partial index: most organisations here have never touched EU funding.
+CREATE UNIQUE INDEX organization_pic_key ON organization (pic) WHERE pic IS NOT NULL;
 
 -- Sanyo -> Panasonic, E-One Moli -> Molicel, and so on. Without this,
 -- the same cell appears under three manufacturers.
