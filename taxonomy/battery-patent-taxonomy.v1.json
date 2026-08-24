@@ -304,7 +304,7 @@
     },
 
     {
-      "id": "pack/module_pack_architecture",
+      "id": "pack_system/module_pack_architecture",
       "facet": "pack_system",
       "code": "module_pack_architecture",
       "label": "Module and pack architecture",
@@ -314,7 +314,7 @@
       }
     },
     {
-      "id": "pack/electrical_interconnection",
+      "id": "pack_system/electrical_interconnection",
       "facet": "pack_system",
       "code": "electrical_interconnection",
       "label": "Electrical interconnection",
@@ -324,7 +324,7 @@
       }
     },
     {
-      "id": "pack/bms_estimation",
+      "id": "pack_system/bms_estimation",
       "facet": "pack_system",
       "code": "bms_estimation",
       "label": "BMS and state estimation",
@@ -334,7 +334,7 @@
       }
     },
     {
-      "id": "pack/balancing",
+      "id": "pack_system/balancing",
       "facet": "pack_system",
       "code": "balancing",
       "label": "Cell balancing",
@@ -344,7 +344,7 @@
       }
     },
     {
-      "id": "pack/thermal_management",
+      "id": "pack_system/thermal_management",
       "facet": "pack_system",
       "code": "thermal_management",
       "label": "Battery thermal management",
@@ -354,7 +354,7 @@
       }
     },
     {
-      "id": "pack/safety_venting_propagation",
+      "id": "pack_system/safety_venting_propagation",
       "facet": "pack_system",
       "code": "safety_venting_propagation",
       "label": "Venting and thermal-runaway propagation",
@@ -364,7 +364,7 @@
       }
     },
     {
-      "id": "pack/contactors_precharge_protection",
+      "id": "pack_system/contactors_precharge_protection",
       "facet": "pack_system",
       "code": "contactors_precharge_protection",
       "label": "Contactors, precharge and protection",

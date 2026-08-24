@@ -130,7 +130,7 @@ ON CONFLICT (uid) DO NOTHING;
 INSERT INTO bd.patent_annotation
   (patent_document_id, taxon_id, method, score, rule_id, evidence_text, provenance_id)
 SELECT d.id, t.id, 'classification_rule', 0.98,
-       '1.0.0:pack/thermal_management', 'H01M10/625', p.id
+       '1.0.0:pack_system/thermal_management', 'H01M10/625', p.id
   FROM bd.patent_document d
   CROSS JOIN bd.patent_taxon t
   CROSS JOIN bd.provenance p
