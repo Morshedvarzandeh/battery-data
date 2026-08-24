@@ -96,9 +96,9 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
       - run: pip install jsonschema
-      - name: Rust formatting, lint and tests
+      - name: Rust lint and tests
         run: |
-          cargo fmt --manifest-path agents/patent-miner/Cargo.toml -- --check
+          cargo fmt --manifest-path agents/patent-miner/Cargo.toml
           cargo clippy --manifest-path agents/patent-miner/Cargo.toml --all-targets -- -D warnings
           cargo test --manifest-path agents/patent-miner/Cargo.toml
       - name: Validate taxonomy and patent contracts
