@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/observation.schema.json",
+  "title": "battery-data EU research source-result observation",
+  "description": "One lossless disposition row from the bounded public-result harvest. These rows audit source coverage and are not canonical RESULT records.",
+  "type": "object",
+  "required": [
+    "observation_id",
+    "release_id",
+    "source_artifact_id",
+    "source_system",
+    "source_dataset",
+    "source_record_id",
+    "source_row_number",
+    "project_id",
+    "result_type",
+    "access_status",
+    "battery_relevance",
+    "disposition",
+    "project_result_id",
+    "disposition_note"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "observation_id": {
+      "type": "string",
+      "pattern": "^source_observation/sha256/[0-9a-f]{64}$"
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^snapshot/eu-battery/[0-9]{4}-[0-9]{2}-[0-9]{2}\\.[1-9][0-9]*$"
+    },
+    "source_artifact_id": {
+      "type": "string",
+      "pattern": "^source_artifact/[a-z0-9._/-]+$"
+    },
+    "source_system": {
+      "enum": [
+        "CORDIS_BULK",
+        "CORDIS_LIVE",
+        "FUNDING_TENDERS",
+        "EURIO",
+        "OPENAIRE",
+        "PROJECT_REPOSITORY"
+      ]
+    },
+    "source_dataset": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._/-][a-z0-9]+)*$"
+    },
+    "source_record_id": { "type": ["string", "null"] },
+    "source_row_number": { "type": "integer", "minimum": 1 },
+    "project_id": {
+      "type": "string",
+      "pattern": "^research_project/eu-[a-z0-9._-]+/(?:[A-Za-z0-9._~-]|%[0-9A-F]{2})+$"
+    },
+    "result_type": {
+      "enum": [
+        "COMMUNICATION_DISSEMINATION",
+        "CONFERENCE_PUBLICATION",
+        "DATASET_DATABASE",
+        "PROJECT_REPORT_SUMMARY",
+        "HARDWARE_PROTOTYPE_DESIGN",
+        "JOURNAL_PUBLICATION",
+        "LCA_TEA_COST_MARKET",
+        "MODEL_SIMULATOR_DIGITAL_TWIN",
+        "OTHER_PUBLIC_RESULT",
+        "PATENT_IP",
+        "PROJECT_ADMINISTRATION",
+        "SOFTWARE_SOURCE_CODE",
+        "STANDARD_ROADMAP_POLICY",
+        "TECHNICAL_DELIVERABLE",
+        "TEST_METHOD_PROTOCOL",
+        "TRAINING_EDUCATION"
+      ]
+    },
+    "access_status": {
+      "enum": [
+        "OPEN_FULL_CONTENT",
+        "OPEN_REPOSITORY_LANDING_PAGE",
+        "METADATA_ONLY",
+        "PAYWALLED",
+        "RESTRICTED_OR_CONFIDENTIAL",
+        "BROKEN_OR_MISSING"
+      ]
+    },
+    "battery_relevance": {
+      "enum": [
+        "DIRECT_BATTERY_RESULT",
+        "RESULT_FROM_BATTERY_PROJECT",
+        "UNCLASSIFIED"
+      ]
+    },
+    "disposition": {
+      "enum": [
+        "CANONICAL_LINK",
+        "DUPLICATE_LINK",
+        "QUARANTINED_IDENTITY",
+        "EXCLUDED_NONPUBLIC"
+      ]
+    },
+    "project_result_id": {
+      "type": ["string", "null"],
+      "pattern": "^project_result/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "disposition_note": { "type": ["string", "null"], "minLength": 1 }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "disposition": { "enum": ["CANONICAL_LINK", "DUPLICATE_LINK"] }
+        },
+        "required": ["disposition"]
+      },
+      "then": {
+        "properties": {
+          "project_result_id": { "type": "string" }
+        }
+      },
+      "else": {
+        "properties": {
+          "project_result_id": { "type": "null" },
+          "disposition_note": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  ]
+}

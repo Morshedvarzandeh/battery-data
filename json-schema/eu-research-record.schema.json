@@ -1,0 +1,1220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/record.schema.json",
+  "title": "battery-data EU research record contract",
+  "description": "Versioned project, result, participation, relationship, asset and curation records for the EU battery-research corpus. This contract is independent of the future SQL storage model.",
+  "oneOf": [
+    { "$ref": "#/$defs/project" },
+    { "$ref": "#/$defs/result" },
+    { "$ref": "#/$defs/projectResult" },
+    { "$ref": "#/$defs/participation" },
+    { "$ref": "#/$defs/resultAsset" },
+    { "$ref": "#/$defs/reviewCandidate" },
+    { "$ref": "#/$defs/excludedMatch" }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^snapshot/eu-battery/[0-9]{4}-[0-9]{2}-[0-9]{2}\\.[1-9][0-9]*$"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^research_project/eu-[a-z0-9._-]+/(?:[A-Za-z0-9._~-]|%[0-9A-F]{2})+$"
+    },
+    "resultId": {
+      "type": "string",
+      "pattern": "^research_result/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "projectResultId": {
+      "type": "string",
+      "pattern": "^project_result/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "participationId": {
+      "type": "string",
+      "pattern": "^project_participation/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "datasetId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._/-][a-z0-9]+)*$"
+    },
+    "domain": {
+      "enum": [
+        "RAW_MATERIALS",
+        "ACTIVE_MATERIALS",
+        "CELL_CHEMISTRY",
+        "CELL_DESIGN",
+        "MANUFACTURING",
+        "TESTING_CHARACTERISATION",
+        "MODELLING",
+        "BMS_DIAGNOSTICS",
+        "SAFETY_THERMAL",
+        "MODULE_PACK",
+        "CHARGING",
+        "STATIONARY",
+        "ROAD",
+        "RAIL",
+        "MARINE",
+        "AVIATION",
+        "SECOND_LIFE",
+        "RECYCLING",
+        "SUSTAINABILITY_LCA",
+        "PASSPORT_TRACEABILITY",
+        "STANDARDS_ECOSYSTEM"
+      ]
+    },
+    "resultType": {
+      "enum": [
+        "COMMUNICATION_DISSEMINATION",
+        "CONFERENCE_PUBLICATION",
+        "DATASET_DATABASE",
+        "PROJECT_REPORT_SUMMARY",
+        "HARDWARE_PROTOTYPE_DESIGN",
+        "JOURNAL_PUBLICATION",
+        "LCA_TEA_COST_MARKET",
+        "MODEL_SIMULATOR_DIGITAL_TWIN",
+        "OTHER_PUBLIC_RESULT",
+        "PATENT_IP",
+        "PROJECT_ADMINISTRATION",
+        "SOFTWARE_SOURCE_CODE",
+        "STANDARD_ROADMAP_POLICY",
+        "TECHNICAL_DELIVERABLE",
+        "TEST_METHOD_PROTOCOL",
+        "TRAINING_EDUCATION"
+      ]
+    },
+    "provenanceClaim": {
+      "type": "object",
+      "required": [
+        "claim_id",
+        "source_snapshot_id",
+        "source_artifact_id",
+        "source_system",
+        "source_dataset",
+        "source_url",
+        "retrieved_at",
+        "extraction_method",
+        "asserted_fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "pattern": "^claim/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "source_snapshot_id": {
+          "type": "string",
+          "pattern": "^source_snapshot/[a-z0-9._/-]+$"
+        },
+        "source_artifact_id": {
+          "type": "string",
+          "pattern": "^source_artifact/[a-z0-9._/-]+$"
+        },
+        "source_system": {
+          "enum": [
+            "CORDIS_BULK",
+            "CORDIS_LIVE",
+            "FUNDING_TENDERS",
+            "EURIO",
+            "OPENAIRE",
+            "PROJECT_REPOSITORY",
+            "CURATOR"
+          ]
+        },
+        "source_dataset": { "$ref": "#/$defs/datasetId" },
+        "source_record_id": {
+          "type": ["string", "null"]
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "extraction_method": {
+          "enum": [
+            "BULK_FILE",
+            "REST_API",
+            "SPARQL",
+            "RESULT_PAGE",
+            "RULE_BASED",
+            "MANUAL_REVIEW"
+          ]
+        },
+        "evidence_locator": {
+          "type": ["string", "null"]
+        },
+        "asserted_fields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^/"
+          }
+        },
+        "payload_sha256": {
+          "oneOf": [
+            { "$ref": "#/$defs/sha256" },
+            { "type": "null" }
+          ]
+        },
+        "review": {
+          "type": "object",
+          "required": [
+            "reviewer_id",
+            "reviewed_at",
+            "methodology_version",
+            "decision",
+            "evidence"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "reviewer_id": {
+              "type": "string",
+              "pattern": "^reviewer/[a-z0-9._/-]+$"
+            },
+            "reviewed_at": { "type": "string", "format": "date-time" },
+            "methodology_version": {
+              "type": "string",
+              "pattern": "^eu-battery-scope/[0-9]+\\.[0-9]+\\.[0-9]+$"
+            },
+            "decision": {
+              "enum": ["ACCEPT", "REJECT", "DISPUTE", "DEFER"]
+            },
+            "evidence": { "type": "string", "minLength": 1 }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["extraction_method"],
+            "properties": { "extraction_method": { "const": "MANUAL_REVIEW" } }
+          },
+          "then": { "required": ["review"] }
+        }
+      ]
+    },
+    "rightsAssertion": {
+      "type": "object",
+      "required": [
+        "applies_to",
+        "metadata_redistribution",
+        "source_content_licence_status",
+        "source_asset_redistribution",
+        "evidence_url"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "applies_to": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^/" }
+        },
+        "metadata_redistribution": {
+          "enum": ["ALLOWED", "LINK_ONLY", "PROHIBITED", "UNKNOWN"]
+        },
+        "source_content_licence_status": {
+          "enum": [
+            "OPEN_LICENSE_VERIFIED",
+            "PUBLIC_DOMAIN_VERIFIED",
+            "EXPLICIT_REUSE_PERMISSION",
+            "RESTRICTED",
+            "NO_LICENSE_FOUND",
+            "SOURCE_SPECIFIC",
+            "UNKNOWN"
+          ]
+        },
+        "source_asset_redistribution": {
+          "enum": ["ALLOWED", "LINK_ONLY", "PROHIBITED", "UNKNOWN"]
+        },
+        "licence": {
+          "type": ["string", "null"]
+        },
+        "licence_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "evidence_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "rights_note": {
+          "type": ["string", "null"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["source_content_licence_status"],
+            "properties": {
+              "source_content_licence_status": {
+                "enum": [
+                  "OPEN_LICENSE_VERIFIED",
+                  "PUBLIC_DOMAIN_VERIFIED",
+                  "EXPLICIT_REUSE_PERMISSION"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": ["licence", "licence_url"],
+            "properties": {
+              "licence": { "type": "string", "minLength": 1 },
+              "licence_url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["source_asset_redistribution"],
+            "properties": {
+              "source_asset_redistribution": { "const": "ALLOWED" }
+            }
+          },
+          "then": {
+            "required": ["licence", "licence_url"],
+            "properties": {
+              "source_content_licence_status": {
+                "enum": [
+                  "OPEN_LICENSE_VERIFIED",
+                  "PUBLIC_DOMAIN_VERIFIED",
+                  "EXPLICIT_REUSE_PERMISSION"
+                ]
+              },
+              "licence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "licence_url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "rights": {
+      "type": "object",
+      "required": ["field_assertions"],
+      "additionalProperties": false,
+      "properties": {
+        "field_assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/rightsAssertion" }
+        },
+        "record_note": { "type": ["string", "null"] }
+      }
+    },
+    "envelope": {
+      "type": "object",
+      "required": [
+        "contract_version",
+        "release_id",
+        "record_type",
+        "record_id",
+        "record_version",
+        "record_lifecycle_state",
+        "curation_state",
+        "first_seen_on",
+        "last_seen_on",
+        "content_hash",
+        "provenance",
+        "rights",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": { "const": "1.0.0" },
+        "release_id": { "$ref": "#/$defs/releaseId" },
+        "record_type": {
+          "enum": [
+            "PROJECT",
+            "RESULT",
+            "PROJECT_RESULT",
+            "PARTICIPATION",
+            "RESULT_ASSET",
+            "REVIEW_CANDIDATE",
+            "EXCLUDED_MATCH"
+          ]
+        },
+        "record_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "record_lifecycle_state": {
+          "enum": ["CURRENT", "SUPERSEDED", "WITHDRAWN"]
+        },
+        "curation_state": {
+          "enum": ["ACCEPTED", "PENDING_REVIEW", "REJECTED", "DISPUTED"]
+        },
+        "first_seen_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "last_seen_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "content_hash": { "$ref": "#/$defs/sha256" },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/provenanceClaim" }
+        },
+        "rights": { "$ref": "#/$defs/rights" },
+        "data": {
+          "type": "object"
+        }
+      }
+    },
+    "projectData": {
+      "type": "object",
+      "required": [
+        "official_project_id",
+        "programme_namespace",
+        "framework_programme",
+        "title",
+        "normalized_status",
+        "scope_class",
+        "battery_domains",
+        "official_urls"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "official_project_id": { "type": "string", "minLength": 1 },
+        "programme_namespace": {
+          "enum": [
+            "eu-cef2027",
+            "eu-digital",
+            "eu-ecsc",
+            "eu-edf",
+            "eu-emff",
+            "eu-eng",
+            "eu-env",
+            "eu-erasmus-plus",
+            "eu-fp1",
+            "eu-fp2",
+            "eu-fp3",
+            "eu-fp4",
+            "eu-fp5",
+            "eu-fp6",
+            "eu-fp7",
+            "eu-h2020",
+            "eu-horizon",
+            "eu-i3",
+            "eu-ic",
+            "eu-innovation-fund",
+            "eu-life",
+            "eu-pre-fwp",
+            "eu-rfcs2027",
+            "eu-single-market-programme",
+            "eu-socpl"
+          ]
+        },
+        "framework_programme": { "type": "string", "minLength": 1 },
+        "source_project_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "rcn": { "type": ["string", "null"] },
+        "acronym": { "type": ["string", "null"] },
+        "title": { "type": "string", "minLength": 1 },
+        "objective": { "type": ["string", "null"] },
+        "keywords": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "euroscivoc_concepts": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "format": "uri" }
+        },
+        "source_status": { "type": ["string", "null"] },
+        "normalized_status": {
+          "enum": ["UPCOMING", "ACTIVE", "ENDED", "TERMINATED", "UNKNOWN"]
+        },
+        "start_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "end_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "signature_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "content_update_date": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "total_cost_eur": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9]+(?:\\.[0-9]{1,2})?$"
+        },
+        "eu_contribution_eur": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9]+(?:\\.[0-9]{1,2})?$"
+        },
+        "grant_doi": {
+          "type": ["string", "null"],
+          "pattern": "^10\\.3030/[A-Za-z0-9._~-]+$"
+        },
+        "scope_class": {
+          "enum": ["BATTERY_CORE", "BATTERY_INTEGRATED", "BATTERY_ECOSYSTEM"]
+        },
+        "battery_domains": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/domain" }
+        },
+        "chemistry_labels": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "component_labels": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "coordinator_org_id": {
+          "type": ["string", "null"],
+          "pattern": "^org/eu-pic/[0-9]{9}$"
+        },
+        "topic_codes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "topic_titles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "call_codes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "call_titles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "funding_scheme": { "type": ["string", "null"] },
+        "master_call_code": { "type": ["string", "null"] },
+        "classification_score": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "classification_reasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "classification_evidence": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "official_urls": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "cordis_project": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            },
+            "cordis_results": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            },
+            "funding_tenders": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            }
+          }
+        }
+      }
+    },
+    "resultData": {
+      "type": "object",
+      "required": [
+        "identity_basis",
+        "identity_value",
+        "title",
+        "result_type",
+        "access_status",
+        "asset_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "identity_basis": {
+          "enum": ["DOI", "OFFICIAL_URI", "SOURCE_RECORD", "FINGERPRINT"]
+        },
+        "identity_value": { "type": "string", "minLength": 1 },
+        "identity_project_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/projectId" },
+            { "type": "null" }
+          ]
+        },
+        "identity_source_system": {
+          "oneOf": [
+            {
+              "enum": [
+                "CORDIS_BULK",
+                "CORDIS_LIVE",
+                "FUNDING_TENDERS",
+                "EURIO",
+                "OPENAIRE",
+                "PROJECT_REPOSITORY"
+              ]
+            },
+            { "type": "null" }
+          ]
+        },
+        "identity_source_dataset": {
+          "oneOf": [
+            { "$ref": "#/$defs/datasetId" },
+            { "type": "null" }
+          ]
+        },
+        "source_result_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": ["string", "null"] },
+        "abstract": { "type": ["string", "null"] },
+        "result_type": { "$ref": "#/$defs/resultType" },
+        "source_result_type_detail": { "type": ["string", "null"] },
+        "rdf_types": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "doi": {
+          "type": ["string", "null"],
+          "pattern": "^10\\.[0-9]{4,9}/\\S+$"
+        },
+        "official_result_uri": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "direct_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "published_year": {
+          "type": ["integer", "null"],
+          "minimum": 1900,
+          "maximum": 2200
+        },
+        "publisher": { "type": ["string", "null"] },
+        "journal_title": { "type": ["string", "null"] },
+        "journal_number": { "type": ["string", "null"] },
+        "published_pages": { "type": ["string", "null"] },
+        "issn": { "type": ["string", "null"] },
+        "isbn": { "type": ["string", "null"] },
+        "language": { "type": ["string", "null"] },
+        "authors": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "access_status": {
+          "enum": [
+            "OPEN_FULL_CONTENT",
+            "OPEN_REPOSITORY_LANDING_PAGE",
+            "METADATA_ONLY",
+            "PAYWALLED",
+            "RESTRICTED_OR_CONFIDENTIAL",
+            "BROKEN_OR_MISSING"
+          ]
+        },
+        "access_verified_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "access_http_status": {
+          "type": ["integer", "null"],
+          "minimum": 100,
+          "maximum": 599
+        },
+        "access_content_type": { "type": ["string", "null"] },
+        "access_final_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "access_anonymous": { "type": ["boolean", "null"] },
+        "access_check_method": {
+          "enum": ["GET", "HEAD", null]
+        },
+        "access_evidence_kind": {
+          "enum": [
+            "SUBSTANTIVE_FILE",
+            "OFFICIAL_FULL_NARRATIVE",
+            "LANDING_PAGE",
+            null
+          ]
+        },
+        "availability_note": { "type": ["string", "null"] },
+        "report_finality": {
+          "enum": ["PERIODIC", "FINAL", "NOT_APPLICABLE", "UNKNOWN"]
+        },
+        "period_number": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "period_from": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "period_to": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "work_performed": { "type": ["string", "null"] },
+        "final_results": { "type": ["string", "null"] },
+        "content_update_date": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "asset_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^result_asset/sha256/[0-9a-f]{64}$"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["result_type"],
+            "properties": {
+              "result_type": { "const": "PROJECT_REPORT_SUMMARY" }
+            }
+          },
+          "then": { "required": ["report_finality"] }
+        },
+        {
+          "if": {
+            "required": ["identity_basis"],
+            "properties": { "identity_basis": { "const": "DOI" } }
+          },
+          "then": {
+            "required": ["doi"],
+            "properties": { "doi": { "type": "string" } }
+          }
+        },
+        {
+          "if": {
+            "required": ["identity_basis"],
+            "properties": { "identity_basis": { "const": "OFFICIAL_URI" } }
+          },
+          "then": {
+            "required": ["official_result_uri"],
+            "properties": { "official_result_uri": { "type": "string", "format": "uri" } }
+          }
+        },
+        {
+          "if": {
+            "required": ["identity_basis"],
+            "properties": { "identity_basis": { "const": "SOURCE_RECORD" } }
+          },
+          "then": {
+            "required": [
+              "identity_project_id",
+              "identity_source_system",
+              "identity_source_dataset"
+            ],
+            "properties": {
+              "identity_project_id": { "$ref": "#/$defs/projectId" },
+              "identity_source_system": { "type": "string" },
+              "identity_source_dataset": { "$ref": "#/$defs/datasetId" }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["identity_basis"],
+            "properties": { "identity_basis": { "const": "FINGERPRINT" } }
+          },
+          "then": {
+            "required": ["identity_project_id"],
+            "properties": {
+              "identity_project_id": { "$ref": "#/$defs/projectId" }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["access_status"],
+            "properties": {
+              "access_status": {
+                "enum": [
+                  "OPEN_FULL_CONTENT",
+                  "OPEN_REPOSITORY_LANDING_PAGE",
+                  "PAYWALLED",
+                  "RESTRICTED_OR_CONFIDENTIAL",
+                  "BROKEN_OR_MISSING"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": ["direct_url", "access_verified_at"],
+            "properties": {
+              "direct_url": { "type": "string", "format": "uri" },
+              "access_verified_at": { "type": "string", "format": "date-time" }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["access_status"],
+            "properties": {
+              "access_status": {
+                "enum": [
+                  "OPEN_FULL_CONTENT",
+                  "OPEN_REPOSITORY_LANDING_PAGE"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "access_http_status",
+              "access_content_type",
+              "access_final_url",
+              "access_anonymous",
+              "access_check_method",
+              "access_evidence_kind"
+            ],
+            "properties": {
+              "access_http_status": { "type": "integer" },
+              "access_content_type": { "type": "string", "minLength": 1 },
+              "access_final_url": { "type": "string", "format": "uri" },
+              "access_anonymous": { "const": true },
+              "access_check_method": { "const": "GET" }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["access_status"],
+            "properties": { "access_status": { "const": "METADATA_ONLY" } }
+          },
+          "then": {
+            "properties": {
+              "asset_ids": { "maxItems": 0 }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["access_status"],
+            "properties": {
+              "access_status": { "const": "OPEN_REPOSITORY_LANDING_PAGE" }
+            }
+          },
+          "then": {
+            "required": ["availability_note"],
+            "properties": {
+              "access_evidence_kind": { "const": "LANDING_PAGE" },
+              "availability_note": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["access_status"],
+            "properties": {
+              "access_status": { "const": "OPEN_FULL_CONTENT" }
+            }
+          },
+          "then": {
+            "properties": {
+              "access_evidence_kind": {
+                "enum": ["SUBSTANTIVE_FILE", "OFFICIAL_FULL_NARRATIVE"]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "projectResultData": {
+      "type": "object",
+      "required": ["project_id", "result_id", "battery_relevance", "battery_domains"],
+      "additionalProperties": false,
+      "properties": {
+        "project_id": { "$ref": "#/$defs/projectId" },
+        "result_id": { "$ref": "#/$defs/resultId" },
+        "battery_relevance": {
+          "enum": [
+            "DIRECT_BATTERY_RESULT",
+            "RESULT_FROM_BATTERY_PROJECT",
+            "UNCLASSIFIED"
+          ]
+        },
+        "battery_domains": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/domain" }
+        }
+      }
+    },
+    "participationData": {
+      "type": "object",
+      "required": [
+        "project_id",
+        "organization_id",
+        "source_organization_id",
+        "legal_name",
+        "roles"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "project_id": { "$ref": "#/$defs/projectId" },
+        "organization_id": {
+          "type": "string",
+          "pattern": "^org/eu-pic/[0-9]{9}$"
+        },
+        "source_organization_id": {
+          "type": "string",
+          "pattern": "^[0-9]{9}$"
+        },
+        "legal_name": { "type": "string", "minLength": 1 },
+        "short_name": { "type": ["string", "null"] },
+        "activity_type": { "type": ["string", "null"] },
+        "city": { "type": ["string", "null"] },
+        "country": {
+          "type": ["string", "null"],
+          "pattern": "^[A-Z]{2}$"
+        },
+        "roles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "COORDINATOR",
+              "PARTICIPANT",
+              "THIRD_PARTY",
+              "AFFILIATED_ENTITY",
+              "PARTNER",
+              "UNKNOWN"
+            ]
+          }
+        },
+        "sme": {
+          "type": ["boolean", "null"]
+        },
+        "organization_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "ec_contribution_eur": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9]+(?:\\.[0-9]{1,2})?$"
+        },
+        "total_cost_eur": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9]+(?:\\.[0-9]{1,2})?$"
+        },
+        "net_ec_contribution_eur": {
+          "type": ["string", "null"],
+          "pattern": "^-?[0-9]+(?:\\.[0-9]{1,2})?$"
+        }
+      }
+    },
+    "resultAssetData": {
+      "type": "object",
+      "required": [
+        "result_id",
+        "asset_sha256",
+        "byte_size",
+        "media_type",
+        "archive_path",
+        "source_url",
+        "retrieved_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "result_id": { "$ref": "#/$defs/resultId" },
+        "asset_sha256": { "$ref": "#/$defs/sha256" },
+        "byte_size": { "type": "integer", "minimum": 1 },
+        "media_type": { "type": "string", "minLength": 1 },
+        "archive_path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "reviewCandidateData": {
+      "type": "object",
+      "required": [
+        "candidate_project_id",
+        "title",
+        "suggested_scope",
+        "match_reasons",
+        "evidence",
+        "decision_state"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "candidate_project_id": { "$ref": "#/$defs/projectId" },
+        "framework_programme": { "type": ["string", "null"] },
+        "acronym": { "type": ["string", "null"] },
+        "title": { "type": "string", "minLength": 1 },
+        "objective": { "type": ["string", "null"] },
+        "suggested_scope": {
+          "enum": [
+            "BATTERY_CORE",
+            "BATTERY_INTEGRATED",
+            "BATTERY_ECOSYSTEM",
+            "EXCLUDE"
+          ]
+        },
+        "match_reasons": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "evidence": { "type": "string", "minLength": 1 },
+        "classification_score": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "decision_state": { "const": "NEEDS_REVIEW" }
+      }
+    },
+    "excludedMatchData": {
+      "type": "object",
+      "required": ["candidate_project_id", "title", "reason", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "candidate_project_id": { "$ref": "#/$defs/projectId" },
+        "framework_programme": { "type": ["string", "null"] },
+        "acronym": { "type": ["string", "null"] },
+        "title": { "type": "string", "minLength": 1 },
+        "objective": { "type": ["string", "null"] },
+        "reason": {
+          "enum": [
+            "INCIDENTAL_USE",
+            "SEMANTIC_FALSE_POSITIVE",
+            "NON_BATTERY_STORAGE",
+            "BATTERYLESS_TECHNOLOGY",
+            "OTHER_DOCUMENTED_EXCLUSION"
+          ]
+        },
+        "evidence": { "type": "string", "minLength": 1 }
+      }
+    },
+    "project": {
+      "allOf": [
+        { "$ref": "#/$defs/envelope" },
+        {
+          "properties": {
+            "record_type": { "const": "PROJECT" },
+            "record_id": { "$ref": "#/$defs/projectId" },
+            "provenance": {
+              "contains": {
+                "type": "object",
+                "required": ["source_system", "extraction_method", "review"],
+                "properties": {
+                  "source_system": { "const": "CURATOR" },
+                  "extraction_method": { "const": "MANUAL_REVIEW" },
+                  "review": {
+                    "type": "object",
+                    "required": ["decision"],
+                    "properties": { "decision": { "const": "ACCEPT" } }
+                  }
+                }
+              }
+            },
+            "data": { "$ref": "#/$defs/projectData" }
+          }
+        }
+      ]
+    },
+    "result": {
+      "allOf": [
+        { "$ref": "#/$defs/envelope" },
+        {
+          "properties": {
+            "record_type": { "const": "RESULT" },
+            "record_id": { "$ref": "#/$defs/resultId" },
+            "data": { "$ref": "#/$defs/resultData" }
+          }
+        }
+      ]
+    },
+    "projectResult": {
+      "allOf": [
+        { "$ref": "#/$defs/envelope" },
+        {
+          "properties": {
+            "record_type": { "const": "PROJECT_RESULT" },
+            "record_id": { "$ref": "#/$defs/projectResultId" },
+            "provenance": {
+              "contains": {
+                "type": "object",
+                "required": ["source_system", "extraction_method", "review"],
+                "properties": {
+                  "source_system": { "const": "CURATOR" },
+                  "extraction_method": { "const": "MANUAL_REVIEW" },
+                  "review": {
+                    "type": "object",
+                    "required": ["decision"],
+                    "properties": { "decision": { "const": "ACCEPT" } }
+                  }
+                }
+              }
+            },
+            "data": { "$ref": "#/$defs/projectResultData" }
+          }
+        }
+      ]
+    },
+    "participation": {
+      "allOf": [
+        { "$ref": "#/$defs/envelope" },
+        {
+          "properties": {
+            "record_type": { "const": "PARTICIPATION" },
+            "record_id": { "$ref": "#/$defs/participationId" },
+            "data": { "$ref": "#/$defs/participationData" }
+          }
+        }
+      ]
+    },
+    "resultAsset": {
+      "allOf": [
+        { "$ref": "#/$defs/envelope" },
+        {
+          "properties": {
+            "record_type": { "const": "RESULT_ASSET" },
+            "record_id": {
+              "type": "string",
+              "pattern": "^result_asset/sha256/[0-9a-f]{64}$"
+            },
+            "curation_state": { "const": "ACCEPTED" },
+            "rights": {
+              "allOf": [
+                { "$ref": "#/$defs/rights" },
+                {
+                  "properties": {
+                    "field_assertions": {
+                      "contains": {
+                        "properties": {
+                          "source_asset_redistribution": { "const": "ALLOWED" }
+                        },
+                        "required": ["source_asset_redistribution"]
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "data": { "$ref": "#/$defs/resultAssetData" }
+          }
+        }
+      ]
+    },
+    "reviewCandidate": {
+      "allOf": [
+        { "$ref": "#/$defs/envelope" },
+        {
+          "properties": {
+            "record_type": { "const": "REVIEW_CANDIDATE" },
+            "record_id": {
+              "type": "string",
+              "pattern": "^research_review/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "curation_state": { "const": "PENDING_REVIEW" },
+            "data": { "$ref": "#/$defs/reviewCandidateData" }
+          }
+        }
+      ]
+    },
+    "excludedMatch": {
+      "allOf": [
+        { "$ref": "#/$defs/envelope" },
+        {
+          "properties": {
+            "record_type": { "const": "EXCLUDED_MATCH" },
+            "record_id": {
+              "type": "string",
+              "pattern": "^research_exclusion/[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "curation_state": { "const": "REJECTED" },
+            "provenance": {
+              "contains": {
+                "type": "object",
+                "required": ["source_system", "extraction_method", "review"],
+                "properties": {
+                  "source_system": { "const": "CURATOR" },
+                  "extraction_method": { "const": "MANUAL_REVIEW" },
+                  "review": {
+                    "type": "object",
+                    "required": ["decision"],
+                    "properties": { "decision": { "const": "REJECT" } }
+                  }
+                }
+              }
+            },
+            "data": { "$ref": "#/$defs/excludedMatchData" }
+          }
+        }
+      ]
+    }
+  }
+}

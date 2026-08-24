@@ -1,0 +1,485 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/release.schema.json",
+  "title": "battery-data EU research release manifest",
+  "description": "Integrity, provenance, coverage and rights contract for one immutable EU battery-research corpus release.",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "release_id",
+    "release_kind",
+    "status",
+    "as_of_date",
+    "generated_at",
+    "methodology_version",
+    "baseline",
+    "source_observation_summary",
+    "source_observation_ledger",
+    "coverage_claim",
+    "source_snapshots",
+    "record_sets",
+    "summary",
+    "licensing",
+    "integrity",
+    "quality_gates"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "countMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "datasetId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._/-][a-z0-9]+)*$"
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "contract_version": { "const": "1.0.0" },
+    "release_id": {
+      "type": "string",
+      "pattern": "^snapshot/eu-battery/[0-9]{4}-[0-9]{2}-[0-9]{2}\\.[1-9][0-9]*$"
+    },
+    "release_kind": {
+      "enum": ["FULL_SNAPSHOT", "TEST_FIXTURE"]
+    },
+    "status": {
+      "enum": ["CANDIDATE", "APPROVED", "SUPERSEDED", "WITHDRAWN"]
+    },
+    "as_of_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "methodology_version": {
+      "type": "string",
+      "pattern": "^eu-battery-scope/[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "supersedes": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^snapshot/eu-battery/[0-9]{4}-[0-9]{2}-[0-9]{2}\\.[1-9][0-9]*$"
+        },
+        { "type": "null" }
+      ]
+    },
+    "baseline": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["baseline_id", "path", "sha256"],
+          "additionalProperties": false,
+          "properties": {
+            "baseline_id": {
+              "type": "string",
+              "pattern": "^baseline/eu-battery/[0-9]{4}-[0-9]{2}-[0-9]{2}\\.[1-9][0-9]*$"
+            },
+            "path": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"
+            },
+            "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        },
+        { "type": "null" }
+      ]
+    },
+    "source_observation_summary": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "source_result_rows",
+            "source_row_access_counts",
+            "source_row_result_relevance_counts",
+            "source_row_result_type_counts",
+            "primary_project_source_counts",
+            "seed_project_result_rows"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "source_result_rows": { "type": "integer", "minimum": 0 },
+            "source_row_access_counts": { "$ref": "#/$defs/countMap" },
+            "source_row_result_relevance_counts": { "$ref": "#/$defs/countMap" },
+            "source_row_result_type_counts": { "$ref": "#/$defs/countMap" },
+            "primary_project_source_counts": { "$ref": "#/$defs/countMap" },
+            "seed_project_result_rows": { "$ref": "#/$defs/countMap" }
+          }
+        },
+        { "type": "null" }
+      ]
+    },
+    "source_observation_ledger": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "path",
+            "media_type",
+            "record_count",
+            "byte_size",
+            "sha256",
+            "observation_schema",
+            "observation_schema_sha256",
+            "input_artifact_id"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^source_observations/[A-Za-z0-9._/-]+$"
+            },
+            "media_type": { "const": "application/x-ndjson" },
+            "record_count": { "type": "integer", "minimum": 0 },
+            "byte_size": { "type": "integer", "minimum": 0 },
+            "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "observation_schema": {
+              "const": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/observation.schema.json"
+            },
+            "observation_schema_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "input_artifact_id": {
+              "type": "string",
+              "pattern": "^source_artifact/[a-z0-9._/-]+$"
+            }
+          }
+        },
+        { "type": "null" }
+      ]
+    },
+    "coverage_claim": {
+      "type": "object",
+      "required": ["kind", "statement", "known_limitations"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "BOUNDED_SOURCE_SNAPSHOT" },
+        "statement": { "type": "string", "minLength": 1 },
+        "known_limitations": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "source_snapshots": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "source_system",
+          "publisher",
+          "official_url",
+          "retrieved_at",
+          "coverage",
+          "query_or_distribution",
+          "snapshot_sha256",
+          "artifacts"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "pattern": "^source_snapshot/[a-z0-9._/-]+$"
+          },
+          "source_system": {
+            "enum": [
+              "CORDIS_BULK",
+              "CORDIS_LIVE",
+              "FUNDING_TENDERS",
+              "EURIO",
+              "OPENAIRE",
+              "PROJECT_REPOSITORY",
+              "CURATOR"
+            ]
+          },
+          "publisher": { "type": "string", "minLength": 1 },
+          "official_url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "coverage": { "type": "string", "minLength": 1 },
+          "query_or_distribution": { "type": "string", "minLength": 1 },
+          "snapshot_sha256": {
+            "type": ["string", "null"],
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "artifacts": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "artifact_id",
+                "dataset_ids",
+                "official_url",
+                "retrieved_at",
+                "request_or_distribution",
+                "media_type",
+                "byte_size",
+                "sha256",
+                "retained_path"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "artifact_id": {
+                  "type": "string",
+                  "pattern": "^source_artifact/[a-z0-9._/-]+$"
+                },
+                "dataset_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": { "$ref": "#/$defs/datasetId" }
+                },
+                "official_url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^https://"
+                },
+                "retrieved_at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "request_or_distribution": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "media_type": { "type": "string", "minLength": 1 },
+                "byte_size": { "type": ["integer", "null"], "minimum": 0 },
+                "sha256": {
+                  "type": ["string", "null"],
+                  "pattern": "^sha256:[0-9a-f]{64}$"
+                },
+                "retained_path": {
+                  "type": ["string", "null"],
+                  "pattern": "^source_artifacts/[A-Za-z0-9._/-]+$"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "record_sets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "record_type",
+          "path",
+          "media_type",
+          "visibility",
+          "canonical",
+          "record_count",
+          "byte_size",
+          "sha256",
+          "record_schema",
+          "record_schema_sha256"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "record_type": {
+            "enum": [
+              "PROJECT",
+              "RESULT",
+              "PROJECT_RESULT",
+              "PARTICIPATION",
+              "RESULT_ASSET",
+              "REVIEW_CANDIDATE",
+              "EXCLUDED_MATCH"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"
+          },
+          "media_type": { "const": "application/x-ndjson" },
+          "visibility": { "enum": ["PUBLIC", "INTERNAL"] },
+          "canonical": { "type": "boolean" },
+          "record_count": { "type": "integer", "minimum": 0 },
+          "byte_size": { "type": "integer", "minimum": 0 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "record_schema": {
+            "const": "https://github.com/Morshedvarzandeh/battery-data/json-schema/eu-research/1.0.0/record.schema.json"
+          },
+          "record_schema_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "required": ["record_type"],
+              "properties": {
+                "record_type": {
+                  "enum": ["REVIEW_CANDIDATE", "EXCLUDED_MATCH"]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "visibility": { "const": "INTERNAL" },
+                "canonical": { "const": false }
+              }
+            },
+            "else": {
+              "properties": {
+                "visibility": { "const": "PUBLIC" },
+                "canonical": { "const": true }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "projects",
+        "results",
+        "project_result_links",
+        "participations",
+        "result_assets",
+        "review_candidates",
+        "excluded_matches"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "projects": { "type": "integer", "minimum": 0 },
+        "results": { "type": "integer", "minimum": 0 },
+        "project_result_links": { "type": "integer", "minimum": 0 },
+        "participations": { "type": "integer", "minimum": 0 },
+        "result_assets": { "type": "integer", "minimum": 0 },
+        "review_candidates": { "type": "integer", "minimum": 0 },
+        "excluded_matches": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "licensing": {
+      "type": "object",
+      "required": [
+        "metadata_policy",
+        "source_asset_default",
+        "attribution",
+        "cordis_legal_url",
+        "funding_results_legal_url"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "metadata_policy": { "const": "SOURCE_AND_FIELD_SPECIFIC" },
+        "source_asset_default": { "const": "LINK_ONLY_UNLESS_EXPLICITLY_ALLOWED" },
+        "attribution": { "type": "string", "minLength": 1 },
+        "cordis_legal_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "funding_results_legal_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "hash_algorithm",
+        "record_encoding",
+        "record_order",
+        "duplicate_record_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "hash_algorithm": { "const": "SHA-256" },
+        "record_encoding": { "const": "UTF-8_NDJSON_LF" },
+        "record_order": { "const": "RECORD_ID_ASCENDING" },
+        "duplicate_record_ids": { "const": "FATAL" }
+      }
+    },
+    "quality_gates": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": ["gate", "status", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "gate": {
+            "enum": [
+              "MANIFEST_SCHEMA",
+              "SOURCE_PROVENANCE",
+              "CANONICAL_IDENTIFIERS",
+              "COUNT_RECONCILIATION",
+              "REFERENTIAL_INTEGRITY",
+              "SCOPE_CLASSIFICATION",
+              "ACCESS_VERIFICATION",
+              "RIGHTS_REVIEW",
+              "DETERMINISTIC_BUILD",
+              "SANITIZED_EXPORT"
+            ]
+          },
+          "status": { "enum": ["PENDING", "PASSED", "FAILED", "WAIVED"] },
+          "evidence": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["release_kind"],
+        "properties": { "release_kind": { "const": "FULL_SNAPSHOT" } }
+      },
+      "then": {
+        "properties": {
+          "baseline": { "type": "object" },
+          "source_observation_summary": { "type": "object" },
+          "source_observation_ledger": { "type": "object" }
+        }
+      },
+      "else": {
+        "properties": {
+          "baseline": { "type": "null" },
+          "source_observation_summary": { "type": "null" },
+          "source_observation_ledger": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["status"],
+        "properties": { "status": { "const": "APPROVED" } }
+      },
+      "then": {
+        "properties": {
+          "record_sets": { "minItems": 1 }
+        }
+      }
+    }
+  ]
+}

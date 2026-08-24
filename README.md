@@ -205,6 +205,8 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/05-data-sources.md`](docs/05-data-sources.md) | Sources credited but not reproduced, and the bulk cycling datasets |
 | [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
+| [`docs/08-eu-research-data-contract.md`](docs/08-eu-research-data-contract.md) | Versioned EU battery-project/result identity, provenance, rights and release gates |
+| [`docs/09-cordis-crosswalk.md`](docs/09-cordis-crosswalk.md) | CORDIS, EURIO, Funding & Tenders and OpenAIRE source mapping |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---
@@ -219,6 +221,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | **Materials** | Cathode/anode/electrolyte/separator, suppliers, federated to OPTIMADE |
 | **Test data** | Capacity/RPT, HPPC, EIS+DRT, cycle life, calendar aging, OCV/GITT/PITT, ICA/DVA, HPC, self-discharge, formation, thermal (ARC, entropic, heat capacity, anisotropic conductivity), abuse and vent gas, mechanical swelling, drive cycles, three-electrode, post-mortem |
 | **Models** | BPX (DFN/SPM/SPMe) stored verbatim; ECM as an (SOC, T) lookup surface with fit provenance |
+| **EU research intelligence** | Contract defined for funded battery projects and public-result metadata; production records are not loaded yet |
 
 ---
 
@@ -233,6 +236,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | `crosswalk/` | Generated BDF ↔ EMMO ↔ BPX ↔ Battery Passport mapping |
 | `tools/validate_contrib.py` | CI gate: refuses a contribution whose values lack their conditions |
 | `tools/check_duplicates.py` | Cross-library identity gate for exact UIDs, normalized model aliases, and specification conflicts |
+| `tools/validate_eu_research_release.py` | Fails closed on EU research release identities, provenance, rights, files, references and approval gates |
 
 ### The query no other battery schema can express
 
@@ -290,9 +294,14 @@ are copyleft: run a modified version as a service and the modifications are
 owed back to whoever uses it. Querying the database, loading your own data and
 running it inside a business trigger nothing.
 
-Curated data stays **CC-BY-4.0**, unchanged — the code licence does not reach
-the facts. Attribution is the only condition, and every row already carries the
-provenance needed to give it.
+Repository-authored curation metadata and annotations are released under
+**CC-BY-4.0** unless marked otherwise. Imported facts, metadata, text and assets
+do not acquire that licence merely because this repository harvests, normalises
+or links them. In particular, EU programme metadata and beneficiary documents,
+datasets, software and images retain their applicable source-, field- and
+asset-specific terms. Every imported field and asset therefore carries
+provenance and rights evidence, and redistribution follows those recorded terms;
+public availability alone is not reuse permission.
 
 Manufacturer datasheets are **not** redistributed: `source.redistributable`
 governs whether a document body is stored, and every value keeps a URL, hash
