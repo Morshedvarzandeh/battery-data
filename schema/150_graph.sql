@@ -79,6 +79,26 @@ SELECT 'Source', 'src:'||s.id, s.uid, COALESCE(s.title,s.uid),
                           'revision',s.revision,'license',s.license)
   FROM bd.source s
 UNION ALL
+SELECT 'PatentFamily', 'pfam:'||f.id, f.uid, COALESCE(f.canonical_title,f.uid),
+       jsonb_build_object('kind',f.kind,'provider',f.provider,
+                          'earliest_priority',f.earliest_priority)
+  FROM bd.patent_family f
+UNION ALL
+SELECT 'PatentDocument', 'pdoc:'||d.id, d.uid, d.publication_number,
+       jsonb_build_object('authority',d.authority,'kind_code',d.kind_code,
+                          'priority_date',d.priority_date,
+                          'publication_date',d.publication_date)
+  FROM bd.patent_document d
+UNION ALL
+SELECT 'PatentParty', 'pparty:'||p.id, p.uid, p.name_as_published,
+       jsonb_build_object('normalised_name',p.normalized_name,'country',p.country)
+  FROM bd.patent_party p
+UNION ALL
+SELECT 'PatentTaxon', 'ptax:'||t.id, t.uid, t.label,
+       jsonb_build_object('version',t.taxonomy_version,'facet',t.facet,
+                          'code',t.code,'active',t.active)
+  FROM bd.patent_taxon t
+UNION ALL
 SELECT 'Dataset', 'ds:'||d.id, d.uid, d.file_name,
        jsonb_build_object('storage',d.storage,'n_rows',d.n_rows,
                           'columns',d.columns_present)
@@ -174,6 +194,43 @@ UNION ALL
 -- campaign published as a source
 SELECT 'PUBLISHED_AS', 'camp:'||c.id, 'src:'||c.source_id, '{}'::jsonb
   FROM bd.campaign c WHERE c.source_id IS NOT NULL
+UNION ALL
+-- patent families, provenance, citations and user-controlled taxonomy
+SELECT 'MEMBER_OF', 'pdoc:'||fm.patent_document_id, 'pfam:'||fm.patent_family_id,
+       jsonb_build_object('representative',fm.is_representative)
+  FROM bd.patent_family_member fm
+UNION ALL
+SELECT 'SOURCED_FROM', 'pdoc:'||d.id, 'src:'||d.source_id,
+       jsonb_build_object('record_id',d.source_record_id,
+                          'record_sha256',d.record_sha256)
+  FROM bd.patent_document d
+UNION ALL
+SELECT 'CITES', 'pdoc:'||c.citing_document_id, 'pdoc:'||c.cited_document_id,
+       jsonb_build_object('category',c.category,'cited_by',c.cited_by)
+  FROM bd.patent_citation c WHERE c.cited_document_id IS NOT NULL
+UNION ALL
+SELECT 'HAS_PARTY', 'pdoc:'||dp.patent_document_id, 'pparty:'||dp.patent_party_id,
+       jsonb_build_object('role',dp.role,'sequence',dp.sequence_no)
+  FROM bd.patent_document_party dp
+UNION ALL
+SELECT 'RESOLVES_TO', 'pparty:'||p.id, 'org:'||p.organization_id,
+       '{}'::jsonb
+  FROM bd.patent_party p WHERE p.organization_id IS NOT NULL
+UNION ALL
+SELECT 'CLASSIFIED_AS', 'pdoc:'||pa.patent_document_id, 'ptax:'||pa.taxon_id,
+       jsonb_build_object('method',pa.method,'score',pa.score,'rule',pa.rule_id)
+  FROM bd.patent_annotation pa WHERE pa.patent_document_id IS NOT NULL
+UNION ALL
+SELECT 'CLASSIFIED_AS', 'pfam:'||pa.patent_family_id, 'ptax:'||pa.taxon_id,
+       jsonb_build_object('method',pa.method,'score',pa.score,'rule',pa.rule_id)
+  FROM bd.patent_annotation pa WHERE pa.patent_family_id IS NOT NULL
+UNION ALL
+SELECT 'SUBCLASS_OF', 'ptax:'||t.id, 'ptax:'||t.parent_id, '{}'::jsonb
+  FROM bd.patent_taxon t WHERE t.parent_id IS NOT NULL
+UNION ALL
+SELECT l.relation, 'pdoc:'||l.patent_document_id, l.entity_key,
+       jsonb_build_object('provenance_id',l.provenance_id)
+  FROM bd.patent_entity_link l
 UNION ALL
 -- equivalence / second sourcing
 SELECT 'EQUIVALENT_TO', 'prod:'||pe.product_a_id, 'prod:'||pe.product_b_id,

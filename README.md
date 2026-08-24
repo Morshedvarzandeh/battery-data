@@ -206,6 +206,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
+| [`agents/patent-miner/AGENT.md`](agents/patent-miner/AGENT.md) | The global patent → family/taxonomy agent |
 
 ---
 
@@ -230,6 +231,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | `tools/cyclers.py` | Arbin / Maccor / Neware / BioLogic / BDF adapters. **Determines conventions from the data** rather than assuming them, and recovers the `[aging, RPT, aging, RPT]` structure automatically |
 | `api/` | Read API on OPTIMADE conventions, with an OPTIMADE-style filter grammar |
 | `agents/literature-miner/` | Papers and datasets → structured records with provenance |
+| `agents/patent-miner/` | Rust patent discovery, normalization, family dedupe, classification and release manifests |
 | `crosswalk/` | Generated BDF ↔ EMMO ↔ BPX ↔ Battery Passport mapping |
 | `tools/validate_contrib.py` | CI gate: refuses a contribution whose values lack their conditions |
 | `tools/check_duplicates.py` | Cross-library identity gate for exact UIDs, normalized model aliases, and specification conflicts |

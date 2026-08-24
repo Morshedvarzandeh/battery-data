@@ -51,6 +51,8 @@ jobs:
         run: psql -v ON_ERROR_STOP=1 -d batterydb -f tests/010_killer_queries.sql
       - name: Run valuation queries
         run: psql -v ON_ERROR_STOP=1 -d batterydb -f tests/020_valuation_queries.sql
+      - name: Run patent intelligence invariants
+        run: psql -v ON_ERROR_STOP=1 -d batterydb -f tests/030_patent_queries.sql
       - name: Assert the schema refuses uninterpretable data
         run: |
           # A bare internal resistance with no conditions MUST fail.
@@ -83,6 +85,78 @@ jobs:
         run: python api/filter_grammar.py
       - name: Python regression tests
         run: python -m unittest discover -s tests -p 'test_*.py'
+
+  patents:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install jsonschema
+      - name: Rust formatting, lint and tests
+        run: |
+          cargo fmt --manifest-path agents/patent-miner/Cargo.toml -- --check
+          cargo clippy --manifest-path agents/patent-miner/Cargo.toml --all-targets -- -D warnings
+          cargo test --manifest-path agents/patent-miner/Cargo.toml
+      - name: Validate taxonomy and patent contracts
+        run: |
+          python - <<'PY'
+          import json, jsonschema
+          pairs = [
+            ('json-schema/battery-patent-taxonomy.schema.json',
+             'taxonomy/battery-patent-taxonomy.v1.json'),
+          ]
+          for schema_path, instance_path in pairs:
+              schema = json.load(open(schema_path))
+              jsonschema.Draft202012Validator.check_schema(schema)
+              jsonschema.validate(json.load(open(instance_path)), schema)
+          for schema_path in [
+              'json-schema/battery-patent-record.schema.json',
+              'json-schema/battery-patent-release.schema.json',
+          ]:
+              jsonschema.Draft202012Validator.check_schema(json.load(open(schema_path)))
+          print('ok: taxonomy and patent JSON Schemas')
+          PY
+      - name: End-to-end fixture - normalize, classify, manifest, stage
+        run: |
+          work="$(mktemp -d)"
+          cargo run --manifest-path agents/patent-miner/Cargo.toml -- \
+            ingest-google --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --input tests/fixtures/patents/google-public-data.ndjson \
+            --output "$work/candidates.ndjson" --rejects "$work/rejects.ndjson" \
+            --retrieved-at 2026-08-24T20:00:00Z
+          test "$(wc -l < "$work/candidates.ndjson")" -eq 1
+          test ! -s "$work/rejects.ndjson"
+          cargo run --manifest-path agents/patent-miner/Cargo.toml -- \
+            validate --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --input "$work/candidates.ndjson"
+          cargo run --manifest-path agents/patent-miner/Cargo.toml -- \
+            manifest --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --input "$work/candidates.ndjson" --output "$work/release.json" \
+            --release-version fixture-v1 --source-provider google_patents_public_data \
+            --source-retrieved-at 2026-08-24T20:00:00Z \
+            --source-terms-url https://console.cloud.google.com/marketplace/product/google_patents_public_datasets/google-patents-public-data
+          cargo run --manifest-path agents/patent-miner/Cargo.toml -- \
+            stage-sql --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --input "$work/candidates.ndjson" --output "$work/stage.sql"
+          grep -q 'bd_stage.patent_candidate' "$work/stage.sql"
+          if grep -q 'INSERT INTO bd.patent_document' "$work/stage.sql"; then
+            echo 'FAIL: agent generated an accepted-table write'
+            exit 1
+          fi
+          python - "$work" <<'PY'
+          import json, jsonschema, pathlib, sys
+          work = pathlib.Path(sys.argv[1])
+          record_schema = json.load(open('json-schema/battery-patent-record.schema.json'))
+          release_schema = json.load(open('json-schema/battery-patent-release.schema.json'))
+          for line in (work/'candidates.ndjson').read_text().splitlines():
+              jsonschema.validate(json.loads(line), record_schema)
+          jsonschema.validate(json.load(open(work/'release.json')), release_schema)
+          print('ok: fixture output satisfies release contracts')
+          PY
 
   contrib:
     runs-on: ubuntu-latest
