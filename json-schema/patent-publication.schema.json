@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://battery-data.example/schema/patent-publication.schema.json",
+  "title": "Patent publication review candidate",
+  "type": "object",
+  "required": [
+    "schema_version", "record_type", "publication_uid", "publication_number", "title",
+    "source_observation_ids", "projects", "classification", "family", "legal_status", "review_state"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "patent_publication_candidate"},
+    "publication_uid": {"type": "string", "pattern": "^patent-publication/[a-z0-9]+$"},
+    "publication_number": {"type": "string", "pattern": "^[A-Z]{2}[A-Z0-9]{6,}$"},
+    "title": {"type": "string", "minLength": 1},
+    "source_observation_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "source_record_count": {"type": "integer", "minimum": 1},
+    "projects": {"type": "array", "minItems": 1},
+    "classification": {"type": "object"},
+    "family": {
+      "type": "object",
+      "required": ["docdb_family_id", "status"],
+      "properties": {
+        "docdb_family_id": {"type": ["string", "null"]},
+        "status": {"const": "needs_docdb_resolution"}
+      }
+    },
+    "legal_status": {
+      "type": "object",
+      "required": ["status", "jurisdiction", "as_of"],
+      "properties": {
+        "status": {"const": "unknown"},
+        "jurisdiction": {"type": ["string", "null"]},
+        "as_of": {"type": ["string", "null"], "format": "date"}
+      }
+    },
+    "review_state": {"const": "pending_review"}
+  }
+}

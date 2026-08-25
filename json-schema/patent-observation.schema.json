@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://battery-data.example/schema/patent-observation.schema.json",
+  "title": "CORDIS patent/IP source observation",
+  "type": "object",
+  "required": [
+    "schema_version", "record_type", "observation_uid", "source_row", "project",
+    "result", "battery_relevance", "source", "patent_identity", "classification", "review_state"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "cordis_patent_ip_observation"},
+    "observation_uid": {"type": "string", "pattern": "^cordis/[^/]+/[^/]+/[a-f0-9]{12}$"},
+    "source_row": {"type": "integer", "minimum": 2},
+    "project": {
+      "type": "object",
+      "required": ["grant_id", "acronym", "framework"],
+      "properties": {
+        "grant_id": {"type": "string", "minLength": 1},
+        "acronym": {"type": "string"},
+        "framework": {"type": "string"}
+      }
+    },
+    "result": {
+      "type": "object",
+      "required": ["id", "type", "title"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "type": {"const": "PATENT_IP"},
+        "title": {"type": "string"}
+      }
+    },
+    "battery_relevance": {"type": "string"},
+    "source": {
+      "type": "object",
+      "required": ["workbook", "sheet", "snapshot_date", "row_sha256"],
+      "properties": {
+        "row_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "snapshot_date": {"type": "string", "format": "date"}
+      }
+    },
+    "patent_identity": {
+      "type": "object",
+      "required": ["status", "publication_number", "family_status", "evidence"],
+      "properties": {
+        "status": {"enum": ["source_label_only", "verified_publication"]},
+        "publication_number": {"type": ["string", "null"]},
+        "family_status": {"enum": ["not_applicable", "needs_docdb_resolution"]},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "classification": {"type": "object"},
+    "review_state": {"const": "pending_review"}
+  }
+}

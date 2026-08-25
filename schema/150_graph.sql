@@ -86,7 +86,20 @@ SELECT 'Dataset', 'ds:'||d.id, d.uid, d.file_name,
 UNION ALL
 SELECT 'Model', 'model:'||m.id, m.uid, m.name,
        jsonb_build_object('kind',m.kind,'format',m.format_name)
-  FROM bd.model_parameterisation m;
+  FROM bd.model_parameterisation m
+UNION ALL
+SELECT 'PatentFamily', 'patfam:'||pf.id, pf.uid, pf.title,
+       jsonb_build_object('docdb_family_id',pf.docdb_family_id,
+                          'priority_date',pf.earliest_priority_date,
+                          'primary_category',pf.primary_category)
+  FROM bd.patent_family pf WHERE pf.review='accepted'
+UNION ALL
+SELECT 'PatentPublication', 'patpub:'||pp.id, pp.uid, pp.title,
+       jsonb_build_object('publication_number',pp.publication_number,
+                          'jurisdiction',pp.jurisdiction,
+                          'legal_status',pp.legal_status,
+                          'legal_status_as_of',pp.legal_status_as_of)
+  FROM bd.patent_publication pp WHERE pp.review='accepted';
 
 CREATE UNIQUE INDEX ON bd_graph.node (node_key);
 CREATE INDEX ON bd_graph.node (label);
@@ -189,7 +202,30 @@ SELECT 'EVIDENCED_BY', 'rev:'||o.product_revision_id, 'src:'||sl.source_id,
   JOIN bd.quantity q ON q.id=o.quantity_id
   JOIN bd.provenance pv ON pv.id=o.provenance_id
   JOIN bd.source_location sl ON sl.id=pv.source_location_id
- WHERE o.product_revision_id IS NOT NULL;
+ WHERE o.product_revision_id IS NOT NULL
+UNION ALL
+-- accepted patent family -> publication -> source
+SELECT 'HAS_PUBLICATION', 'patfam:'||pp.family_id, 'patpub:'||pp.id,
+       jsonb_build_object('publication_number',pp.publication_number)
+  FROM bd.patent_publication pp
+ WHERE pp.family_id IS NOT NULL AND pp.review='accepted'
+UNION ALL
+SELECT 'PUBLISHED_AS', 'patpub:'||pp.id, 'src:'||pp.source_id,
+       jsonb_build_object('publication_number',pp.publication_number)
+  FROM bd.patent_publication pp
+ WHERE pp.source_id IS NOT NULL AND pp.review='accepted'
+UNION ALL
+-- reviewed links keep the relationship label as evidence-bearing metadata
+SELECT 'PATENT_RELATES_TO', 'patfam:'||pel.family_id,
+       CASE
+         WHEN pel.product_id IS NOT NULL THEN 'prod:'||pel.product_id
+         WHEN pel.product_revision_id IS NOT NULL THEN 'rev:'||pel.product_revision_id
+         WHEN pel.material_id IS NOT NULL THEN 'mat:'||pel.material_id
+         ELSE 'org:'||pel.organization_id
+       END,
+       jsonb_build_object('relation',pel.relation,'confidence',pel.confidence)
+  FROM bd.patent_entity_link pel
+ WHERE pel.review='accepted';
 
 CREATE INDEX ON bd_graph.edge (src_key);
 CREATE INDEX ON bd_graph.edge (dst_key);
@@ -277,3 +313,4 @@ BEGIN
   RETURN format('AGE present. %s nodes / %s edges staged for graph "%s". '
                 'Run tools/load_age.py to populate.', n_nodes, n_edges, graph_name);
 END$$;
+

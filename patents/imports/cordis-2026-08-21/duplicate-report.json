@@ -1,0 +1,109 @@
+{
+  "exact_publication_duplicate_groups": [
+    {
+      "observation_ids": [
+        "cordis/285949/2369327/735d09a42d84",
+        "cordis/285949/2369327/ccef75898294"
+      ],
+      "publication_number": "EP2369327A2",
+      "source_record_count": 2
+    },
+    {
+      "observation_ids": [
+        "cordis/231962/20100479/71090e6f986a",
+        "cordis/231962/20100479/e177b7e4678b"
+      ],
+      "publication_number": "RS20100479A2",
+      "source_record_count": 2
+    },
+    {
+      "observation_ids": [
+        "cordis/231962/20100480/23dd725c61e2",
+        "cordis/231962/20100480/e4c125266e7b"
+      ],
+      "publication_number": "RS20100480A2",
+      "source_record_count": 2
+    },
+    {
+      "observation_ids": [
+        "cordis/246791/2013092762/6460ae28ad27",
+        "cordis/312483/2013092762/5d71e0b0c97c"
+      ],
+      "publication_number": "WO2013092762A1",
+      "source_record_count": 2
+    },
+    {
+      "observation_ids": [
+        "cordis/246791/2013092764/ea69cf0dcf37",
+        "cordis/312483/2013092764/efdf9c8b295d"
+      ],
+      "publication_number": "WO2013092764A1",
+      "source_record_count": 2
+    },
+    {
+      "observation_ids": [
+        "cordis/285268/2015062985/2748198c90fc",
+        "cordis/285268/2015062985/9898591dfd73"
+      ],
+      "publication_number": "WO2015062985A1",
+      "source_record_count": 2
+    }
+  ],
+  "family_duplicate_status": "not_computed_until_docdb_family_resolution",
+  "normalized_title_collision_groups": 7,
+  "source_observation_count": 1155,
+  "source_result_collision_groups": [
+    {
+      "observation_ids": [
+        "cordis/231962/20100478/73f55c28fb3b",
+        "cordis/231962/20100478/95e888ee8812"
+      ],
+      "publication_numbers": [
+        "RS20100478A2",
+        "RS20100478A3"
+      ],
+      "source_result_key": "231962::20100478"
+    },
+    {
+      "observation_ids": [
+        "cordis/231962/20100479/71090e6f986a",
+        "cordis/231962/20100479/e177b7e4678b"
+      ],
+      "publication_numbers": [
+        "RS20100479A2"
+      ],
+      "source_result_key": "231962::20100479"
+    },
+    {
+      "observation_ids": [
+        "cordis/231962/20100480/23dd725c61e2",
+        "cordis/231962/20100480/e4c125266e7b"
+      ],
+      "publication_numbers": [
+        "RS20100480A2"
+      ],
+      "source_result_key": "231962::20100480"
+    },
+    {
+      "observation_ids": [
+        "cordis/285268/2015062985/2748198c90fc",
+        "cordis/285268/2015062985/9898591dfd73"
+      ],
+      "publication_numbers": [
+        "WO2015062985A1"
+      ],
+      "source_result_key": "285268::2015062985"
+    },
+    {
+      "observation_ids": [
+        "cordis/285949/2369327/735d09a42d84",
+        "cordis/285949/2369327/ccef75898294"
+      ],
+      "publication_numbers": [
+        "EP2369327A2"
+      ],
+      "source_result_key": "285949::2369327"
+    }
+  ],
+  "unique_observation_uid_count": 1155
+}

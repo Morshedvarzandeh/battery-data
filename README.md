@@ -205,6 +205,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/05-data-sources.md`](docs/05-data-sources.md) | Sources credited but not reproduced, and the bulk cycling datasets |
 | [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
+| [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---
@@ -233,6 +234,8 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | `crosswalk/` | Generated BDF ↔ EMMO ↔ BPX ↔ Battery Passport mapping |
 | `tools/validate_contrib.py` | CI gate: refuses a contribution whose values lack their conditions |
 | `tools/check_duplicates.py` | Cross-library identity gate for exact UIDs, normalized model aliases, and specification conflicts |
+| `patents/` | Raw patent/IP observations, publication candidates, taxonomy, reconciliation and duplicate reports |
+| `tools/validate_patents.py` | Patent import gate: identity evidence, review boundary, categories and source-row reconciliation |
 
 ### The query no other battery schema can express
 
@@ -302,3 +305,4 @@ the terms this repository ships under.
 
 The relicence from MIT applies going forward. Earlier commits were published
 under MIT and those rights do not expire.
+

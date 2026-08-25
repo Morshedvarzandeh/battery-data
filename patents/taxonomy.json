@@ -1,0 +1,119 @@
+{
+  "version": "battery-patent-taxonomy-1.0.0",
+  "classification_mode": "multi_label",
+  "primary_category_rule": "highest keyword score; ties follow primary_priority",
+  "requested_categories": ["electrical", "mechanical", "software", "hardware"],
+  "primary_priority": [
+    "software_control",
+    "electrical_power",
+    "electronics_hardware",
+    "mechanical_structures",
+    "thermal_safety",
+    "charging_infrastructure",
+    "recycling_second_life",
+    "manufacturing_process",
+    "electrochemistry_materials"
+  ],
+  "categories": {
+    "electrical_power": {
+      "label": "Electrical & power",
+      "requested_category": "electrical",
+      "definition": "Power paths, BMS electrical functions, switching, conversion, charging and grid interfaces.",
+      "keywords": [
+        "electrical", "electric power", "power supply", "power converter", "power conversion",
+        "inverter", "dc dc", "ac dc", "voltage", "current control", "busbar", "contactor",
+        "fuse", "cell balancing", "battery management system", "bms", "power electronics",
+        "energy management", "electrical connection", "electrical connector"
+      ]
+    },
+    "mechanical_structures": {
+      "label": "Mechanical",
+      "requested_category": "mechanical",
+      "definition": "Structures, housings, compression, joining, impact protection, sealing and vent mechanics.",
+      "keywords": [
+        "mechanical", "structure", "structural", "enclosure", "housing", "casing", "frame",
+        "compression", "clamp", "mounting", "crash", "impact protection", "vibration",
+        "weld joint", "joining", "seal", "sealing", "pressure relief", "vent valve", "fastener"
+      ]
+    },
+    "software_control": {
+      "label": "Software & control",
+      "requested_category": "software",
+      "definition": "Algorithms, estimation, diagnostics, optimisation, digital twins, cybersecurity and control software.",
+      "keywords": [
+        "software", "algorithm", "machine learning", "neural network", "artificial intelligence",
+        "digital twin", "simulation", "simulator", "state of charge", "state of health",
+        "state of power", "soc estimation", "soh estimation", "diagnostic", "fault detection",
+        "prediction", "predictive", "optimization", "optimisation", "cybersecurity", "cloud",
+        "data processing", "control method", "control system"
+      ]
+    },
+    "electronics_hardware": {
+      "label": "Electronics & hardware",
+      "requested_category": "hardware",
+      "definition": "Circuits, PCBs, ASICs, controllers, sensors, gateways and physical electronic devices.",
+      "keywords": [
+        "hardware", "printed circuit board", "pcb", "circuit", "integrated circuit", "asic",
+        "microcontroller", "processor", "controller", "electronic device", "electronic apparatus",
+        "sensor", "detector", "gateway", "transceiver", "semiconductor", "measurement device",
+        "monitoring device", "charger device"
+      ]
+    },
+    "electrochemistry_materials": {
+      "label": "Electrochemistry & materials",
+      "requested_category": null,
+      "definition": "Active materials, electrolytes, separators, electrodes and cell chemistry.",
+      "keywords": [
+        "electrode", "cathode", "anode", "electrolyte", "separator", "active material",
+        "lithium ion", "lithium battery", "sodium ion", "solid state battery", "electrochemical cell",
+        "battery cell", "redox", "intercalation", "nanoparticle", "graphite", "silicon anode"
+      ]
+    },
+    "manufacturing_process": {
+      "label": "Manufacturing",
+      "requested_category": null,
+      "definition": "Electrode, cell, module and pack production, assembly, coating and process control.",
+      "keywords": [
+        "manufacturing", "production method", "method for producing", "fabrication", "assembly process",
+        "coating", "calendering", "drying", "formation process", "welding process", "quality control",
+        "process control", "manufacturing line"
+      ]
+    },
+    "thermal_safety": {
+      "label": "Thermal & safety",
+      "requested_category": null,
+      "definition": "Thermal management, abuse prevention, fire protection, runaway detection and venting safety.",
+      "keywords": [
+        "thermal", "cooling", "heating", "heat exchanger", "temperature control", "thermal runaway",
+        "fire", "flame", "safety device", "overcharge protection", "short circuit protection",
+        "gas detection", "venting", "abuse protection"
+      ]
+    },
+    "charging_infrastructure": {
+      "label": "Charging infrastructure",
+      "requested_category": null,
+      "definition": "Vehicle, marine, stationary and grid-connected charging equipment and interfaces.",
+      "keywords": [
+        "charging station", "charging infrastructure", "electric vehicle charger", "fast charger",
+        "wireless charging", "inductive charging", "charging connector", "shore power", "vehicle to grid",
+        "smart charging"
+      ]
+    },
+    "recycling_second_life": {
+      "label": "Recycling & second life",
+      "requested_category": null,
+      "definition": "Recovery, disassembly, sorting, repurposing and second-life use.",
+      "keywords": [
+        "recycling", "recycle", "recovery of", "material recovery", "hydrometallurgical",
+        "pyrometallurgical", "disassembly", "dismantling", "sorting", "second life", "repurposing",
+        "waste battery", "waste printed circuit board"
+      ]
+    }
+  },
+  "obvious_non_patent_title_markers": [
+    "website", "social media", "dissemination", "communication plan", "newsletter", "brochure",
+    "workshop", "training", "stage event", "conference", "project event", "data management plan",
+    "project identity", "video", "roadmap", "public report", "periodic report", "final report",
+    "report on ipr", "book that introduces", "press release"
+  ]
+}

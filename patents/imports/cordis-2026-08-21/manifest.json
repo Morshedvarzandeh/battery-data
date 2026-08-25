@@ -1,0 +1,147 @@
+{
+  "acceptance_boundary": {
+    "legal_status_is_not_freedom_to_operate_advice": true,
+    "publication_candidates_are_accepted_patent_families": false,
+    "raw_rows_are_accepted_patents": false,
+    "requires_docdb_family_resolution": true,
+    "requires_human_review": true
+  },
+  "classification": {
+    "labels_are_provisional": true,
+    "publication_primary_category_counts": {
+      "electrical_power": 6,
+      "electrochemistry_materials": 27,
+      "electronics_hardware": 10,
+      "manufacturing_process": 15,
+      "mechanical_structures": 9,
+      "recycling_second_life": 2,
+      "thermal_safety": 3,
+      "unclassified": 183
+    },
+    "publication_requested_category_counts": {
+      "electrical": 6,
+      "hardware": 10,
+      "mechanical": 9
+    },
+    "source_primary_category_counts": {
+      "charging_infrastructure": 2,
+      "electrical_power": 7,
+      "electrochemistry_materials": 31,
+      "electronics_hardware": 14,
+      "manufacturing_process": 18,
+      "mechanical_structures": 21,
+      "recycling_second_life": 8,
+      "software_control": 3,
+      "thermal_safety": 4,
+      "unclassified": 1047
+    },
+    "source_requested_category_counts": {
+      "electrical": 7,
+      "hardware": 14,
+      "mechanical": 21,
+      "software": 3
+    },
+    "taxonomy_version": "battery-patent-taxonomy-1.0.0"
+  },
+  "counts": {
+    "collapsed_duplicate_publication_rows": 6,
+    "direct_battery_publication_candidates": 20,
+    "obvious_non_patent_title_rows": 512,
+    "source_label_only_rows": 894,
+    "source_rows": 1155,
+    "unique_publication_candidates": 255,
+    "verified_publication_rows": 261
+  },
+  "created_at": "2026-08-25",
+  "files": {
+    "duplicate-report.json": {
+      "sha256": "46b8646bb28b102dd3cdf9f8eed6d9fd6ba15019a0c242dc93626cb6a29f3ef2"
+    },
+    "publication-candidates/part-0001.jsonl": {
+      "records": 85,
+      "sha256": "54735ce86cd1f32dd504ed6d0ce639a4de16d72046aac09602cd0703a3061d1f"
+    },
+    "publication-candidates/part-0002.jsonl": {
+      "records": 85,
+      "sha256": "0f609804b2b237c96f4d7f67472cfc43d822f9f7268607cce1738fbe52be6bdd"
+    },
+    "publication-candidates/part-0003.jsonl": {
+      "records": 85,
+      "sha256": "7eac62d0e96cc6305b96306b7c08da9d4ddeb93bb9e488836c9b608b3387d4ba"
+    },
+    "source-observations/part-0001.jsonl": {
+      "records": 75,
+      "sha256": "26dc9ca6f2f54c10d1411cc2c50ff899b6f1a5b79fc7a00a2d3fb16066ac4370"
+    },
+    "source-observations/part-0002.jsonl": {
+      "records": 75,
+      "sha256": "2b618d0edb5840eacb1d1b19b0eb58ab3f02edb62f8713c556b863aebac272af"
+    },
+    "source-observations/part-0003.jsonl": {
+      "records": 75,
+      "sha256": "cc93b2bb4cfb0f079ffdd372424d5c8736edfc6d3c89c7a6ca324a865ac3b641"
+    },
+    "source-observations/part-0004.jsonl": {
+      "records": 75,
+      "sha256": "d05fd967fe101050f87b000899a4f0a839400cd23b6a7c4668c943e941c313e6"
+    },
+    "source-observations/part-0005.jsonl": {
+      "records": 75,
+      "sha256": "68e2de78ab389e3101286e0090e40231abac0fa90e142fdf64c9b2fa98873074"
+    },
+    "source-observations/part-0006.jsonl": {
+      "records": 75,
+      "sha256": "90e62d82bc50f5e6db4a9cd015a355ff5df126bcd849cfb5ccaefba7a4397ce8"
+    },
+    "source-observations/part-0007.jsonl": {
+      "records": 75,
+      "sha256": "e3ea46bf5c23584a15738813273a5018d3e7e33dd0be71a4f218f15b126e8296"
+    },
+    "source-observations/part-0008.jsonl": {
+      "records": 75,
+      "sha256": "06fccd6a8dcbca187dc5709fa2436a2a8cbdd271fe82ce369a49a38f5468a79a"
+    },
+    "source-observations/part-0009.jsonl": {
+      "records": 75,
+      "sha256": "a6e62d2beb66707fa1d2a0d4e37d15743b0a6b67038e2ce09c86cbf8a811fa5e"
+    },
+    "source-observations/part-0010.jsonl": {
+      "records": 75,
+      "sha256": "63d1e9492c65118e5fd9532454e3c915c4d925109a2feabc15b320a759cb6725"
+    },
+    "source-observations/part-0011.jsonl": {
+      "records": 75,
+      "sha256": "9a32d18d553c7b313a871e733e17097a32287748c69f1653d1754676b291255f"
+    },
+    "source-observations/part-0012.jsonl": {
+      "records": 75,
+      "sha256": "1876e72095a650236dfcc2ed2075f1ea1e7d983375370e568c0853607f24567f"
+    },
+    "source-observations/part-0013.jsonl": {
+      "records": 75,
+      "sha256": "57919cff65bf23b7782ecdb86a60d54e402acc352634c26df4b7519990ec0c8d"
+    },
+    "source-observations/part-0014.jsonl": {
+      "records": 75,
+      "sha256": "4a1656b831ac75808f1da01ac23ff67983a8a846b849ec5090c2c3812d5ba7d8"
+    },
+    "source-observations/part-0015.jsonl": {
+      "records": 75,
+      "sha256": "bbecc5cb40f54fa71b176b9fe1c2941cd7ca2698d1d809c5ae71563f760ea71b"
+    },
+    "source-observations/part-0016.jsonl": {
+      "records": 30,
+      "sha256": "67e8389d4edd9e1592425424fb89359963aeda12bd14aaaa3117d1ab4428f896"
+    }
+  },
+  "import_id": "cordis-patent-ip-2026-08-21",
+  "schema_version": "1.0.0",
+  "source": {
+    "official_landing_url": "https://cordis.europa.eu/projects",
+    "sheet": "Deliverables & Other",
+    "snapshot_date": "2026-08-21",
+    "workbook": "EU_CORDIS_Battery_Projects_Public_Results_2026-08-21.xlsx",
+    "workbook_sha256": "054050a64c4b455e648a2d6eb50c8bc6cbab4671406de773aa141798ff0facd6",
+    "workbook_size_bytes": 20411579
+  }
+}
