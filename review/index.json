@@ -3,7 +3,7 @@
   "batch": "2026-08-16-100-plus-cell-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
-  "candidate_count": 372,
+  "candidate_count": 36,
   "total_record_count": 443,
   "candidates": [
     {
@@ -224,7 +224,8 @@
       "source_url": "https://en.cntepower.com/ci-ess/",
       "source_title": "CNTE C&I Energy Storage System specifications",
       "observation_count": 10,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/cnte/star-x.yaml",
       "issue_number": 32,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/32"
     },
@@ -237,7 +238,8 @@
       "source_url": "https://en.cntepower.com/ci-ess/",
       "source_title": "CNTE C&I Energy Storage System specifications",
       "observation_count": 10,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/cnte/star-h-232.yaml",
       "issue_number": 29,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/29"
     },
@@ -250,7 +252,8 @@
       "source_url": "https://en.cntepower.com/ci-ess/",
       "source_title": "CNTE C&I Energy Storage System specifications",
       "observation_count": 10,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/cnte/star-h-254-sp.yaml",
       "issue_number": 30,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/30"
     },
@@ -263,7 +266,8 @@
       "source_url": "https://en.cntepower.com/ci-ess/",
       "source_title": "CNTE C&I Energy Storage System specifications",
       "observation_count": 11,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/cnte/star-h-plus-306ah.yaml",
       "issue_number": 33,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/33"
     },
@@ -276,7 +280,8 @@
       "source_url": "https://en.cntepower.com/ci-ess/",
       "source_title": "CNTE C&I Energy Storage System specifications",
       "observation_count": 11,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/cnte/star-h-plus-314ah.yaml",
       "issue_number": 31,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/31"
     },
@@ -289,7 +294,8 @@
       "source_url": "https://en.cntepower.com/ci-ess/",
       "source_title": "CNTE C&I Energy Storage System specifications",
       "observation_count": 10,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/cnte/star-h-max.yaml",
       "issue_number": 35,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/35"
     },
@@ -315,7 +321,8 @@
       "source_url": "https://www.samsungsdi.com/upload/ess_brochure/Samsung%20SDI%20brochure_EN.pdf",
       "source_title": "Samsung SDI Smart Battery Systems for Energy Storage",
       "observation_count": 8,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/samsung-sdi/m2994.yaml",
       "issue_number": 34,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/34"
     },
@@ -328,7 +335,8 @@
       "source_url": "https://www.samsungsdi.com/upload/ess_brochure/Samsung%20SDI%20brochure_EN.pdf",
       "source_title": "Samsung SDI Smart Battery Systems for Energy Storage",
       "observation_count": 8,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/samsung-sdi/m2963-m2968.yaml",
       "issue_number": 38,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/38"
     },
@@ -341,7 +349,8 @@
       "source_url": "https://www.samsungsdi.com/upload/ess_brochure/Samsung%20SDI%20brochure_EN.pdf",
       "source_title": "Samsung SDI Smart Battery Systems for Energy Storage",
       "observation_count": 8,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/samsung-sdi/m8994-e2.yaml",
       "issue_number": 37,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/37"
     },
@@ -354,7 +363,8 @@
       "source_url": "https://www.samsungsdi.com/upload/ess_brochure/Samsung%20SDI%20brochure_EN.pdf",
       "source_title": "Samsung SDI Smart Battery Systems for Energy Storage",
       "observation_count": 8,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/samsung-sdi/m8194-m2.yaml",
       "issue_number": 39,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/39"
     },
@@ -367,7 +377,8 @@
       "source_url": "https://www.samsungsdi.com/upload/ess_brochure/Samsung%20SDI%20brochure_EN.pdf",
       "source_title": "Samsung SDI Smart Battery Systems for Energy Storage",
       "observation_count": 8,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/samsung-sdi/m8068-p2.yaml",
       "issue_number": 41,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/41"
     },
@@ -380,7 +391,8 @@
       "source_url": "https://www.lgessbattery.com/m/eu/home-battery/product-info.lg",
       "source_title": "LG Energy Solution Home Battery product information",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/lg-energy-solution/resu7h-type-r.yaml",
       "issue_number": 43,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/43"
     },
@@ -393,7 +405,8 @@
       "source_url": "https://www.lgessbattery.com/m/eu/home-battery/product-info.lg",
       "source_title": "LG Energy Solution Home Battery product information",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/lg-energy-solution/resu10h-type-r.yaml",
       "issue_number": 40,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/40"
     },
@@ -406,7 +419,8 @@
       "source_url": "https://www.lgessbattery.com/m/eu/home-battery/product-info.lg",
       "source_title": "LG Energy Solution Home Battery product information",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/lg-energy-solution/resu10h-type-c.yaml",
       "issue_number": 42,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/42"
     },
@@ -419,7 +433,8 @@
       "source_url": "https://www.lgessbattery.com/m/eu/home-battery/product-info.lg",
       "source_title": "LG Energy Solution Home Battery product information",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/lg-energy-solution/10h-prime.yaml",
       "issue_number": 44,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/44"
     },
@@ -432,7 +447,8 @@
       "source_url": "https://www.lgessbattery.com/m/eu/home-battery/product-info.lg",
       "source_title": "LG Energy Solution Home Battery product information",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/lg-energy-solution/16h-prime.yaml",
       "issue_number": 48,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/48"
     },
@@ -445,7 +461,8 @@
       "source_url": "https://www.catl.com/en/news/935.html",
       "source_title": "CATL’s EnerOne battery storage system won ees AWARD 2022",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/catl/enerone.yaml",
       "issue_number": 45,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/45"
     },
@@ -458,7 +475,8 @@
       "source_url": "https://www.catl.com/en/news/6232.html",
       "source_title": "CATL unveils TENER 6.25 MWh energy storage system",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/catl/tener.yaml",
       "issue_number": 47,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/47"
     },
@@ -471,7 +489,8 @@
       "source_url": "https://www.catl.com/en/news/6410.html",
       "source_title": "CATL launches 9 MWh TENER Stack",
       "observation_count": 1,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/catl/tener-stack.yaml",
       "issue_number": 46,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/46"
     },
@@ -484,7 +503,8 @@
       "source_url": "https://www.catl.com/en/news/6291.html?pagesense_source=531883000126269001",
       "source_title": "CATL unveils TENER Flex rack energy storage system",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/catl/tener-flex.yaml",
       "issue_number": 49,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/49"
     },
@@ -497,7 +517,8 @@
       "source_url": "https://www.bakpower.com/uploads/cpxl_table1_en/N18650CH_en.pdf",
       "source_title": "BAK N18650CH product data sheet",
       "observation_count": 15,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/bak/n18650ch.yaml",
       "issue_number": 234,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/234"
     },
@@ -510,7 +531,8 @@
       "source_url": "https://www.bakpower.com/uploads/cpxl_table1_en/N18650CL-29_en.pdf",
       "source_title": "BAK N18650CL-29 product data sheet",
       "observation_count": 15,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/bak/n18650cl-29.yaml",
       "issue_number": 232,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/232"
     },
@@ -523,7 +545,8 @@
       "source_url": "https://www.bakpower.com/uploads/cpxl_table1_en/N18650CR-35E_en.pdf",
       "source_title": "BAK N18650CR-35E product data sheet",
       "observation_count": 15,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/bak/n18650cr-35e.yaml",
       "issue_number": 235,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/235"
     },
@@ -536,7 +559,8 @@
       "source_url": "https://www.bakpower.com/uploads/cpxl_table1_en/N21700CD-53E_en.pdf",
       "source_title": "BAK N21700CD-53E product data sheet",
       "observation_count": 15,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/bak/n21700cd-53e.yaml",
       "issue_number": 233,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/233"
     },
@@ -549,7 +573,8 @@
       "source_url": "https://www.bakpower.com/uploads/cpxl_table1_en/Cylindrical%20Battery%28Middle%20power%20cells%29-N21700CG-50E_en.pdf",
       "source_title": "BAK N21700CG-50E product data sheet",
       "observation_count": 15,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/bak/n21700cg-50e.yaml",
       "issue_number": 236,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/236"
     },
@@ -562,7 +587,8 @@
       "source_url": "https://www.bakpower.com/uploads/cpxl_table1_en/N21700CGP_en.pdf",
       "source_title": "BAK N21700CGP product data sheet",
       "observation_count": 15,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/bak/n21700cgp.yaml",
       "issue_number": 237,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/237"
     },
@@ -575,7 +601,8 @@
       "source_url": "https://www.catl.com/en/news/1022.html",
       "source_title": "CATL showcases all-scenario solutions and services for commercial applications at IAA Transportation 2022",
       "observation_count": 1,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/catl/119ah-fast-charge-cell.yaml",
       "issue_number": 249,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/249"
     },
@@ -588,7 +615,8 @@
       "source_url": "https://www.catl.com/en/news/1022.html",
       "source_title": "CATL showcases all-scenario solutions and services for commercial applications at IAA Transportation 2022",
       "observation_count": 1,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/catl/228ah-high-energy-density-cell.yaml",
       "issue_number": 245,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/245"
     },
@@ -627,7 +655,8 @@
       "source_url": "https://www.catl.com/en/news/1022.html",
       "source_title": "CATL showcases all-scenario solutions and services for commercial applications at IAA Transportation 2022",
       "observation_count": 1,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/catl/first-generation-sodium-ion-cell.yaml",
       "issue_number": 247,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/247"
     },
@@ -695,7 +724,8 @@
       "source_url": "https://www.evemall.eu/consumer-battery/cylindrical-ncm-cell/18650-30p",
       "source_title": "EVE Energy 18650 30P product page",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eve/18650-30p.yaml",
       "issue_number": 270,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/270"
     },
@@ -993,7 +1023,8 @@
       "source_url": "https://www.molicel.com/product/inr-18650-m30a/",
       "source_title": "Molicel INR-18650-M30A product page",
       "observation_count": 9,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr18650-m30a.yaml",
       "issue_number": 62,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/62"
     },
@@ -1006,7 +1037,8 @@
       "source_url": "https://www.molicel.com/product/inr-18650-m35a/",
       "source_title": "Molicel INR-18650-M35A product page",
       "observation_count": 9,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr18650-m35a.yaml",
       "issue_number": 63,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/63"
     },
@@ -1019,7 +1051,8 @@
       "source_url": "https://www.molicel.com/product/inr-18650-p22s/",
       "source_title": "Molicel INR-18650-P22S product page",
       "observation_count": 9,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr18650-p22s.yaml",
       "issue_number": 60,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/60"
     },
@@ -1032,7 +1065,8 @@
       "source_url": "https://www.molicel.com/product/inr-18650-p26a/",
       "source_title": "Molicel INR-18650-P26A product page",
       "observation_count": 9,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr18650-p26a.yaml",
       "issue_number": 57,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/57"
     },
@@ -1045,7 +1079,8 @@
       "source_url": "https://www.molicel.com/product/inr-18650-p28a/",
       "source_title": "Molicel INR-18650-P28A product page",
       "observation_count": 9,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr18650-p28a.yaml",
       "issue_number": 58,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/58"
     },
@@ -1058,7 +1093,8 @@
       "source_url": "https://www.molicel.com/inr-18650-p30b/",
       "source_title": "Molicel INR-18650-P30B product page",
       "observation_count": 11,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr18650-p30b.yaml",
       "issue_number": 59,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/59"
     },
@@ -1071,7 +1107,8 @@
       "source_url": "https://www.molicel.com/product/inr-18650-p30s/",
       "source_title": "Molicel INR-18650-P30S product page",
       "observation_count": 9,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr18650-p30s.yaml",
       "issue_number": 61,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/61"
     },
@@ -1084,7 +1121,8 @@
       "source_url": "https://www.molicel.com/inr-21700-m65a/",
       "source_title": "Molicel INR-21700-M65A product page",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr21700-m65a.yaml",
       "issue_number": 56,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/56"
     },
@@ -1097,7 +1135,8 @@
       "source_url": "https://www.molicel.com/wp-content/uploads/INR21700P42A_1.7_Product-Data-Sheet-of-INR-21700-P42A-80092.pdf",
       "source_title": "Molicel INR-21700-P42A product data sheet",
       "observation_count": 11,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr21700-p42a.yaml",
       "issue_number": 51,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/51"
     },
@@ -1110,7 +1149,8 @@
       "source_url": "https://www.molicel.com/inr-21700-p45b/",
       "source_title": "Molicel INR21700-P45B product page",
       "observation_count": 8,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr21700-p45b.yaml",
       "issue_number": 52,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/52"
     },
@@ -1123,7 +1163,8 @@
       "source_url": "https://www.molicel.com/inr-21700-p50b/",
       "source_title": "Molicel INR-21700-P50B product page",
       "observation_count": 8,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr21700-p50b.yaml",
       "issue_number": 53,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/53"
     },
@@ -1136,7 +1177,8 @@
       "source_url": "https://www.molicel.com/product/inr-21700-p50s/",
       "source_title": "Molicel INR-21700-P50S product page",
       "observation_count": 9,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/molicel/inr21700-p50s.yaml",
       "issue_number": 55,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/55"
     },
@@ -1162,7 +1204,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us18650ftc1.yaml",
       "issue_number": 72,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/72"
     },
@@ -1175,7 +1218,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us18650nc1.yaml",
       "issue_number": 69,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/69"
     },
@@ -1188,7 +1232,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us18650vc7.yaml",
       "issue_number": 71,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/71"
     },
@@ -1201,7 +1246,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us18650vtc4.yaml",
       "issue_number": 64,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/64"
     },
@@ -1214,7 +1260,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us18650vtc4a.yaml",
       "issue_number": 65,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/65"
     },
@@ -1227,7 +1274,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us18650vtc5.yaml",
       "issue_number": 66,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/66"
     },
@@ -1240,7 +1288,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us18650vtc5a.yaml",
       "issue_number": 67,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/67"
     },
@@ -1253,7 +1302,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us18650vtc5d.yaml",
       "issue_number": 68,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/68"
     },
@@ -1266,7 +1316,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us18650vtc6.yaml",
       "issue_number": 70,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/70"
     },
@@ -1279,7 +1330,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us21700vtc6a.yaml",
       "issue_number": 73,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/73"
     },
@@ -1292,7 +1344,8 @@
       "source_url": "https://www.murata.com/products/batteries/cylindrical/products-search",
       "source_title": "Murata Cylindrical Type Lithium Ion Secondary Batteries lineup",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/murata/us26650ftc1a.yaml",
       "issue_number": 74,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/74"
     },
@@ -1388,7 +1441,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1025.yaml",
       "issue_number": 75,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/75"
     },
@@ -1401,7 +1455,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1025fv-lf.yaml",
       "issue_number": 92,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/92"
     },
@@ -1414,7 +1469,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1025fv1-lf.yaml",
       "issue_number": 96,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/96"
     },
@@ -1427,7 +1483,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1025sm.yaml",
       "issue_number": 114,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/114"
     },
@@ -1440,7 +1497,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1216-mfr-fh.yaml",
       "issue_number": 131,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/131"
     },
@@ -1453,7 +1511,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1216-mfr-fv.yaml",
       "issue_number": 97,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/97"
     },
@@ -1466,7 +1525,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1216-mfr-sm.yaml",
       "issue_number": 117,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/117"
     },
@@ -1479,7 +1539,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1216-mfr.yaml",
       "issue_number": 77,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/77"
     },
@@ -1492,7 +1553,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1220-mfr-fh.yaml",
       "issue_number": 134,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/134"
     },
@@ -1505,7 +1567,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1220-mfr-fv.yaml",
       "issue_number": 94,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/94"
     },
@@ -1518,7 +1581,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1220-mfr-sm.yaml",
       "issue_number": 116,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/116"
     },
@@ -1531,7 +1595,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1220-mfr.yaml",
       "issue_number": 76,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/76"
     },
@@ -1544,7 +1609,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1225.yaml",
       "issue_number": 79,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/79"
     },
@@ -1557,7 +1623,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1225ah.yaml",
       "issue_number": 164,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/164"
     },
@@ -1584,7 +1651,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1225fv-lf.yaml",
       "issue_number": 98,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/98"
     },
@@ -1597,7 +1665,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1225sm.yaml",
       "issue_number": 113,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/113"
     },
@@ -1610,7 +1679,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1616.yaml",
       "issue_number": 80,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/80"
     },
@@ -1623,7 +1693,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1616fh-lf.yaml",
       "issue_number": 130,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/130"
     },
@@ -1636,7 +1707,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1616fv-lf.yaml",
       "issue_number": 99,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/99"
     },
@@ -1649,7 +1721,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1616sm.yaml",
       "issue_number": 119,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/119"
     },
@@ -1662,7 +1735,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1620.yaml",
       "issue_number": 78,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/78"
     },
@@ -1675,7 +1749,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1620fh-lf.yaml",
       "issue_number": 129,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/129"
     },
@@ -1688,7 +1763,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1620fv-lf.yaml",
       "issue_number": 100,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/100"
     },
@@ -1701,7 +1777,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1620sm.yaml",
       "issue_number": 118,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/118"
     },
@@ -1714,7 +1791,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1632.yaml",
       "issue_number": 87,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/87"
     },
@@ -1727,7 +1805,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1632ah1.yaml",
       "issue_number": 163,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/163"
     },
@@ -1740,7 +1819,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1632fh-lf.yaml",
       "issue_number": 132,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/132"
     },
@@ -1753,7 +1833,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1632fh1-lf.yaml",
       "issue_number": 136,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/136"
     },
@@ -1766,7 +1847,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1632fv-lf.yaml",
       "issue_number": 101,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/101"
     },
@@ -1779,7 +1861,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1632rh-lf.yaml",
       "issue_number": 175,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/175"
     },
@@ -1792,7 +1875,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr1632sm.yaml",
       "issue_number": 122,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/122"
     },
@@ -1805,7 +1889,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2016-mfr-fh.yaml",
       "issue_number": 135,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/135"
     },
@@ -1818,7 +1903,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2016-mfr-fh1.yaml",
       "issue_number": 137,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/137"
     },
@@ -1831,7 +1917,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2016-mfr-fv.yaml",
       "issue_number": 106,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/106"
     },
@@ -1844,7 +1931,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2016-mfr-hf.yaml",
       "issue_number": 138,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/138"
     },
@@ -1857,7 +1945,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2016-mfr-hf1.yaml",
       "issue_number": 142,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/142"
     },
@@ -1870,7 +1959,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2016-mfr-hr.yaml",
       "issue_number": 177,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/177"
     },
@@ -1883,7 +1973,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2016-mfr-rh.yaml",
       "issue_number": 172,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/172"
     },
@@ -1896,7 +1987,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2016-mfr-sm.yaml",
       "issue_number": 120,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/120"
     },
@@ -1909,7 +2001,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2016-mfr-vf.yaml",
       "issue_number": 107,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/107"
     },
@@ -1948,7 +2041,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-ah.yaml",
       "issue_number": 167,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/167"
     },
@@ -1961,7 +2055,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-fh.yaml",
       "issue_number": 144,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/144"
     },
@@ -1974,7 +2069,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-fh1.yaml",
       "issue_number": 140,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/140"
     },
@@ -1987,7 +2083,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-hf.yaml",
       "issue_number": 139,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/139"
     },
@@ -2000,7 +2097,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-hf1.yaml",
       "issue_number": 141,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/141"
     },
@@ -2013,7 +2111,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-hf3.yaml",
       "issue_number": 146,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/146"
     },
@@ -2026,7 +2125,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-hf4.yaml",
       "issue_number": 143,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/143"
     },
@@ -2039,7 +2139,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-hr.yaml",
       "issue_number": 174,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/174"
     },
@@ -2052,7 +2153,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-rh.yaml",
       "issue_number": 176,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/176"
     },
@@ -2065,7 +2167,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-rv.yaml",
       "issue_number": 195,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/195"
     },
@@ -2078,7 +2181,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2025-mfr-sm.yaml",
       "issue_number": 126,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/126"
     },
@@ -2117,7 +2221,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-ah.yaml",
       "issue_number": 165,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/165"
     },
@@ -2130,7 +2235,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-ah0.yaml",
       "issue_number": 161,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/161"
     },
@@ -2143,7 +2249,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-ah1.yaml",
       "issue_number": 168,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/168"
     },
@@ -2156,7 +2263,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-fh.yaml",
       "issue_number": 147,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/147"
     },
@@ -2169,7 +2277,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-fh0.yaml",
       "issue_number": 145,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/145"
     },
@@ -2182,7 +2291,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-fh1.yaml",
       "issue_number": 156,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/156"
     },
@@ -2195,7 +2305,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-fh2.yaml",
       "issue_number": 155,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/155"
     },
@@ -2208,7 +2319,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-fv.yaml",
       "issue_number": 102,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/102"
     },
@@ -2221,7 +2333,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-hf.yaml",
       "issue_number": 154,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/154"
     },
@@ -2234,7 +2347,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-hf0.yaml",
       "issue_number": 157,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/157"
     },
@@ -2247,7 +2361,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-hf1.yaml",
       "issue_number": 152,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/152"
     },
@@ -2260,7 +2375,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-hf2.yaml",
       "issue_number": 148,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/148"
     },
@@ -2273,7 +2389,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-hf3.yaml",
       "issue_number": 149,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/149"
     },
@@ -2286,7 +2403,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-hf4.yaml",
       "issue_number": 151,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/151"
     },
@@ -2299,7 +2417,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-hr.yaml",
       "issue_number": 173,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/173"
     },
@@ -2312,7 +2431,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-hr1.yaml",
       "issue_number": 178,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/178"
     },
@@ -2325,7 +2445,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-hr2.yaml",
       "issue_number": 179,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/179"
     },
@@ -2338,7 +2459,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-rh.yaml",
       "issue_number": 180,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/180"
     },
@@ -2351,7 +2473,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-rh1.yaml",
       "issue_number": 182,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/182"
     },
@@ -2364,7 +2487,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-rh2.yaml",
       "issue_number": 181,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/181"
     },
@@ -2377,7 +2501,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-rv.yaml",
       "issue_number": 190,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/190"
     },
@@ -2390,7 +2515,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-sm.yaml",
       "issue_number": 123,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/123"
     },
@@ -2403,7 +2529,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-vf.yaml",
       "issue_number": 103,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/103"
     },
@@ -2416,7 +2543,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2032-mfr-vf3.yaml",
       "issue_number": 105,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/105"
     },
@@ -2455,7 +2583,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2320.yaml",
       "issue_number": 89,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/89"
     },
@@ -2468,7 +2597,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2320fv-lf.yaml",
       "issue_number": 104,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/104"
     },
@@ -2481,7 +2611,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2320sm.yaml",
       "issue_number": 125,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/125"
     },
@@ -2494,7 +2625,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2325.yaml",
       "issue_number": 88,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/88"
     },
@@ -2507,7 +2639,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2325fh-lf.yaml",
       "issue_number": 153,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/153"
     },
@@ -2520,7 +2653,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2325fv-lf.yaml",
       "issue_number": 108,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/108"
     },
@@ -2533,7 +2667,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2325rh-lf.yaml",
       "issue_number": 183,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/183"
     },
@@ -2546,7 +2681,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2325rv-lf.yaml",
       "issue_number": 196,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/196"
     },
@@ -2559,7 +2695,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2325sm.yaml",
       "issue_number": 124,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/124"
     },
@@ -2572,7 +2709,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2430.yaml",
       "issue_number": 95,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/95"
     },
@@ -2585,7 +2723,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2430ah.yaml",
       "issue_number": 169,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/169"
     },
@@ -2598,7 +2737,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2430fh-lf.yaml",
       "issue_number": 150,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/150"
     },
@@ -2611,7 +2751,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2430fh1-lf.yaml",
       "issue_number": 158,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/158"
     },
@@ -2624,7 +2765,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2430fv-lf.yaml",
       "issue_number": 112,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/112"
     },
@@ -2637,7 +2779,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2430rh-lf.yaml",
       "issue_number": 184,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/184"
     },
@@ -2650,7 +2793,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2430rh1-lf.yaml",
       "issue_number": 186,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/186"
     },
@@ -2663,7 +2807,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2430rv-lf.yaml",
       "issue_number": 193,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/193"
     },
@@ -2676,7 +2821,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2430sm.yaml",
       "issue_number": 121,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/121"
     },
@@ -2689,7 +2835,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450n-mfr-hf.yaml",
       "issue_number": 159,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/159"
     },
@@ -2702,7 +2849,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450n-mfr-hf3.yaml",
       "issue_number": 162,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/162"
     },
@@ -2715,7 +2863,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450n-mfr-hr.yaml",
       "issue_number": 187,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/187"
     },
@@ -2728,7 +2877,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450n-mfr-hr1.yaml",
       "issue_number": 185,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/185"
     },
@@ -2741,7 +2891,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450n-mfr-rv.yaml",
       "issue_number": 197,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/197"
     },
@@ -2754,7 +2905,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450n-mfr-vf.yaml",
       "issue_number": 109,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/109"
     },
@@ -2767,7 +2919,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450n-mfr-vf3.yaml",
       "issue_number": 110,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/110"
     },
@@ -2780,7 +2933,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450n-mfr.yaml",
       "issue_number": 91,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/91"
     },
@@ -2793,7 +2947,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450n.yaml",
       "issue_number": 93,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/93"
     },
@@ -2806,7 +2961,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450nah.yaml",
       "issue_number": 170,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/170"
     },
@@ -2819,7 +2975,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450nfh-lf.yaml",
       "issue_number": 166,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/166"
     },
@@ -2832,7 +2989,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450nfv-lf.yaml",
       "issue_number": 111,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/111"
     },
@@ -2845,7 +3003,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450nrh-lf.yaml",
       "issue_number": 189,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/189"
     },
@@ -2858,7 +3017,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450nrh1-lf.yaml",
       "issue_number": 188,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/188"
     },
@@ -2871,7 +3031,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450nrv-lf.yaml",
       "issue_number": 192,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/192"
     },
@@ -2884,7 +3045,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2450nsm.yaml",
       "issue_number": 127,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/127"
     },
@@ -2897,7 +3059,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-batteries/",
       "source_title": "Renata lithium batteries and tabbed lithium coin cells",
       "observation_count": 3,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2477n.yaml",
       "issue_number": 90,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/90"
     },
@@ -2910,7 +3073,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2477nah.yaml",
       "issue_number": 171,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/171"
     },
@@ -2923,7 +3087,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2477nfh-lf.yaml",
       "issue_number": 160,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/160"
     },
@@ -2936,7 +3101,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2477nfv-lf.yaml",
       "issue_number": 115,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/115"
     },
@@ -2949,7 +3115,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2477nrh-lf.yaml",
       "issue_number": 194,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/194"
     },
@@ -2962,7 +3129,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2477nrv-lf.yaml",
       "issue_number": 191,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/191"
     },
@@ -2975,7 +3143,8 @@
       "source_url": "https://www.renata.com/en-us/products/tabbed-lithium-coin-cells/",
       "source_title": "Renata tabbed lithium coin cells",
       "observation_count": 2,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/cr2477nsm.yaml",
       "issue_number": 128,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/128"
     },
@@ -2988,7 +3157,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp281029hpg.yaml",
       "issue_number": 207,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/207"
     },
@@ -3001,7 +3171,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp303450pa-02.yaml",
       "issue_number": 222,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/222"
     },
@@ -3014,7 +3185,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp331319pm.yaml",
       "issue_number": 199,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/199"
     },
@@ -3027,7 +3199,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp341018pm.yaml",
       "issue_number": 198,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/198"
     },
@@ -3040,7 +3213,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp390831pr.yaml",
       "issue_number": 201,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/201"
     },
@@ -3053,7 +3227,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp401230upr.yaml",
       "issue_number": 205,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/205"
     },
@@ -3066,7 +3241,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp401835tprt.yaml",
       "issue_number": 216,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/216"
     },
@@ -3079,7 +3255,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp402025pc-01.yaml",
       "issue_number": 214,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/214"
     },
@@ -3092,7 +3269,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp402035.yaml",
       "issue_number": 210,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/210"
     },
@@ -3105,7 +3283,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp402050pr.yaml",
       "issue_number": 226,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/226"
     },
@@ -3118,7 +3297,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp403029pl-02.yaml",
       "issue_number": 220,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/220"
     },
@@ -3131,7 +3311,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp422339pr.yaml",
       "issue_number": 225,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/225"
     },
@@ -3144,7 +3325,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp501022upm.yaml",
       "issue_number": 202,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/202"
     },
@@ -3157,7 +3339,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp501230.yaml",
       "issue_number": 208,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/208"
     },
@@ -3170,7 +3353,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp501230ps-03.yaml",
       "issue_number": 209,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/209"
     },
@@ -3183,7 +3367,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp501233pa-02.yaml",
       "issue_number": 217,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/217"
     },
@@ -3196,7 +3381,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp501421ps-01.yaml",
       "issue_number": 203,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/203"
     },
@@ -3209,7 +3395,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp521522ps.yaml",
       "issue_number": 206,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/206"
     },
@@ -3222,7 +3409,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp521630pm-01.yaml",
       "issue_number": 215,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/215"
     },
@@ -3235,7 +3423,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp543759pmt.yaml",
       "issue_number": 229,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/229"
     },
@@ -3248,7 +3437,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp581323pa-01.yaml",
       "issue_number": 211,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/211"
     },
@@ -3261,7 +3451,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp582035pr-01.yaml",
       "issue_number": 223,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/223"
     },
@@ -3274,7 +3465,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp582930pr-01.yaml",
       "issue_number": 224,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/224"
     },
@@ -3287,7 +3479,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp602823pa-01.yaml",
       "issue_number": 227,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/227"
     },
@@ -3300,7 +3493,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp606168prt.yaml",
       "issue_number": 230,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/230"
     },
@@ -3313,7 +3507,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp621333hpmt.yaml",
       "issue_number": 218,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/218"
     },
@@ -3326,7 +3521,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp621333pa-01.yaml",
       "issue_number": 212,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/212"
     },
@@ -3339,7 +3535,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp622540pmt.yaml",
       "issue_number": 228,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/228"
     },
@@ -3352,7 +3549,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp632136hpst.yaml",
       "issue_number": 221,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/221"
     },
@@ -3365,7 +3563,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp641414pe.yaml",
       "issue_number": 200,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/200"
     },
@@ -3378,7 +3577,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp641620pa-01.yaml",
       "issue_number": 213,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/213"
     },
@@ -3391,7 +3591,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp651321pa-01.yaml",
       "issue_number": 204,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/204"
     },
@@ -3404,7 +3605,8 @@
       "source_url": "https://www.renata.com/en-us/products/lithium-polymer-batteries/",
       "source_title": "Renata Lithium Polymer batteries",
       "observation_count": 6,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/renata/icp682828hpmt.yaml",
       "issue_number": 219,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/219"
     },
@@ -3851,7 +4053,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr44sw.yaml",
       "issue_number": 307,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/307"
     },
@@ -3864,7 +4067,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr43sw.yaml",
       "issue_number": 308,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/308"
     },
@@ -3877,7 +4081,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr1136sw.yaml",
       "issue_number": 309,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/309"
     },
@@ -3890,7 +4095,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr1130sw.yaml",
       "issue_number": 311,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/311"
     },
@@ -3903,7 +4109,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr1120sw.yaml",
       "issue_number": 312,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/312"
     },
@@ -3916,7 +4123,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr1116sw.yaml",
       "issue_number": 310,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/310"
     },
@@ -3929,7 +4137,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr936sw.yaml",
       "issue_number": 314,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/314"
     },
@@ -3942,7 +4151,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr927sw.yaml",
       "issue_number": 313,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/313"
     },
@@ -3955,7 +4165,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr920sw.yaml",
       "issue_number": 317,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/317"
     },
@@ -3968,7 +4179,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr916sw.yaml",
       "issue_number": 316,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/316"
     },
@@ -3981,7 +4193,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr914sw.yaml",
       "issue_number": 315,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/315"
     },
@@ -3994,7 +4207,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr41sw.yaml",
       "issue_number": 318,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/318"
     },
@@ -4007,7 +4221,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr731sw.yaml",
       "issue_number": 322,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/322"
     },
@@ -4020,7 +4235,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr726sw.yaml",
       "issue_number": 319,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/319"
     },
@@ -4033,7 +4249,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr721sw.yaml",
       "issue_number": 320,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/320"
     },
@@ -4046,7 +4263,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr716sw.yaml",
       "issue_number": 321,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/321"
     },
@@ -4059,7 +4277,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr712sw.yaml",
       "issue_number": 326,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/326"
     },
@@ -4072,7 +4291,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr626sw.yaml",
       "issue_number": 327,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/327"
     },
@@ -4085,7 +4305,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr621sw.yaml",
       "issue_number": 325,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/325"
     },
@@ -4098,7 +4319,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr616sw.yaml",
       "issue_number": 323,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/323"
     },
@@ -4111,7 +4333,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr527sw.yaml",
       "issue_number": 324,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/324"
     },
@@ -4124,7 +4347,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr521sw.yaml",
       "issue_number": 328,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/328"
     },
@@ -4137,7 +4361,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr516sw.yaml",
       "issue_number": 330,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/330"
     },
@@ -4150,7 +4375,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr512sw.yaml",
       "issue_number": 329,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/329"
     },
@@ -4163,7 +4389,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr421sw.yaml",
       "issue_number": 331,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/331"
     },
@@ -4176,7 +4403,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr416sw.yaml",
       "issue_number": 332,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/332"
     },
@@ -4189,7 +4417,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr44w.yaml",
       "issue_number": 334,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/334"
     },
@@ -4202,7 +4431,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr43w.yaml",
       "issue_number": 333,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/333"
     },
@@ -4215,7 +4445,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr1130w.yaml",
       "issue_number": 335,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/335"
     },
@@ -4228,7 +4459,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr1120w.yaml",
       "issue_number": 336,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/336"
     },
@@ -4241,7 +4473,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr936w.yaml",
       "issue_number": 338,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/338"
     },
@@ -4254,7 +4487,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr927w.yaml",
       "issue_number": 337,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/337"
     },
@@ -4267,7 +4501,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr920w.yaml",
       "issue_number": 341,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/341"
     },
@@ -4280,7 +4515,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr916w.yaml",
       "issue_number": 339,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/339"
     },
@@ -4293,7 +4529,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr41w.yaml",
       "issue_number": 340,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/340"
     },
@@ -4306,7 +4543,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr726w.yaml",
       "issue_number": 342,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/342"
     },
@@ -4319,7 +4557,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr721w.yaml",
       "issue_number": 345,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/345"
     },
@@ -4332,7 +4571,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr716w.yaml",
       "issue_number": 347,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/347"
     },
@@ -4345,7 +4585,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr626w.yaml",
       "issue_number": 343,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/343"
     },
@@ -4358,7 +4599,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/sr621w.yaml",
       "issue_number": 349,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/349"
     },
@@ -4371,7 +4613,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/lr44.yaml",
       "issue_number": 344,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/344"
     },
@@ -4384,7 +4627,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/lr43.yaml",
       "issue_number": 346,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/346"
     },
@@ -4397,7 +4641,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/lr1130.yaml",
       "issue_number": 348,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/348"
     },
@@ -4410,7 +4655,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/lr1120.yaml",
       "issue_number": 352,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/352"
     },
@@ -4423,7 +4669,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/sr_coin.html",
       "source_title": "Silver Oxide Batteries (SR)/Alkaline Button Batteries (LR)",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/lr41.yaml",
       "issue_number": 350,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/350"
     },
@@ -4436,7 +4683,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr2032.yaml",
       "issue_number": 351,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/351"
     },
@@ -4449,7 +4697,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr2032h.yaml",
       "issue_number": 353,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/353"
     },
@@ -4462,7 +4711,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr2032s.yaml",
       "issue_number": 356,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/356"
     },
@@ -4475,7 +4725,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr1216.yaml",
       "issue_number": 357,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/357"
     },
@@ -4488,7 +4739,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr1220.yaml",
       "issue_number": 355,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/355"
     },
@@ -4501,7 +4753,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr1616.yaml",
       "issue_number": 354,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/354"
     },
@@ -4514,7 +4767,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr1620.yaml",
       "issue_number": 358,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/358"
     },
@@ -4527,7 +4781,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr1632.yaml",
       "issue_number": 362,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/362"
     },
@@ -4540,7 +4795,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr2016.yaml",
       "issue_number": 359,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/359"
     },
@@ -4553,7 +4809,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_coin.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr2025.yaml",
       "issue_number": 361,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/361"
     },
@@ -4566,7 +4823,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_heat-resisting.html",
       "source_title": "Heat Resistant Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr2032hrs.yaml",
       "issue_number": 364,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/364"
     },
@@ -4579,7 +4837,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_heat-resisting.html",
       "source_title": "Heat Resistant Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr2032hr.yaml",
       "issue_number": 360,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/360"
     },
@@ -4592,7 +4851,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_heat-resisting.html",
       "source_title": "Heat Resistant Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr2050hr.yaml",
       "issue_number": 367,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/367"
     },
@@ -4605,7 +4865,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_heat-resisting.html",
       "source_title": "Heat Resistant Coin Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr2450hr.yaml",
       "issue_number": 368,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/368"
     },
@@ -4618,7 +4879,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_cylinder.html",
       "source_title": "Cylindrical Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr17335a.yaml",
       "issue_number": 363,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/363"
     },
@@ -4631,7 +4893,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_cylinder.html",
       "source_title": "Cylindrical Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr17450a.yaml",
       "issue_number": 365,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/365"
     },
@@ -4644,7 +4907,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_cylinder.html",
       "source_title": "Cylindrical Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr17450ah.yaml",
       "issue_number": 366,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/366"
     },
@@ -4657,7 +4921,8 @@
       "source_url": "https://biz.maxell.com/en/primary_batteries/cr_cylinder.html",
       "source_title": "Cylindrical Type Lithium Manganese Dioxide Batteries (CR)",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/cr17500au.yaml",
       "issue_number": 369,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/369"
     },
@@ -4670,7 +4935,8 @@
       "source_url": "https://biz.maxell.com/en/rechargeable_batteries/ml.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Rechargeable Batteries (ML)",
       "observation_count": 9,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/ml2016h.yaml",
       "issue_number": 370,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/370"
     },
@@ -4683,7 +4949,8 @@
       "source_url": "https://biz.maxell.com/en/rechargeable_batteries/ml.html",
       "source_title": "Coin Type Lithium Manganese Dioxide Rechargeable Batteries (ML)",
       "observation_count": 9,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/maxell/ml2032.yaml",
       "issue_number": 371,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/371"
     },
@@ -4696,7 +4963,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr1025.yaml",
       "issue_number": 372,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/372"
     },
@@ -4709,7 +4977,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr1216.yaml",
       "issue_number": 373,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/373"
     },
@@ -4722,7 +4991,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr1220.yaml",
       "issue_number": 374,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/374"
     },
@@ -4735,7 +5005,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr1616.yaml",
       "issue_number": 376,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/376"
     },
@@ -4748,7 +5019,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr1620.yaml",
       "issue_number": 375,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/375"
     },
@@ -4761,7 +5033,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr1632.yaml",
       "issue_number": 378,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/378"
     },
@@ -4774,7 +5047,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr2012.yaml",
       "issue_number": 377,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/377"
     },
@@ -4787,7 +5061,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr2025.yaml",
       "issue_number": 379,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/379"
     },
@@ -4800,7 +5075,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr2412.yaml",
       "issue_number": 380,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/380"
     },
@@ -4813,7 +5089,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr2477.yaml",
       "issue_number": 382,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/382"
     },
@@ -4826,7 +5103,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr3032.yaml",
       "issue_number": 381,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/381"
     },
@@ -4839,7 +5117,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr2032a.yaml",
       "issue_number": 383,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/383"
     },
@@ -4852,7 +5131,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr2032b.yaml",
       "issue_number": 384,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/384"
     },
@@ -4865,7 +5145,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr2050a.yaml",
       "issue_number": 387,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/387"
     },
@@ -4878,7 +5159,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr2050b2.yaml",
       "issue_number": 386,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/386"
     },
@@ -4891,7 +5173,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/cr2450b.yaml",
       "issue_number": 389,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/389"
     },
@@ -4904,7 +5187,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br1220.yaml",
       "issue_number": 385,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/385"
     },
@@ -4917,7 +5201,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br1225.yaml",
       "issue_number": 388,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/388"
     },
@@ -4930,7 +5215,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br1632.yaml",
       "issue_number": 393,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/393"
     },
@@ -4943,7 +5229,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br2032.yaml",
       "issue_number": 390,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/390"
     },
@@ -4956,7 +5243,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br2325.yaml",
       "issue_number": 392,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/392"
     },
@@ -4969,7 +5257,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br2330.yaml",
       "issue_number": 391,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/391"
     },
@@ -4982,7 +5271,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br3032.yaml",
       "issue_number": 394,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/394"
     },
@@ -4995,7 +5285,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br1225a.yaml",
       "issue_number": 400,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/400"
     },
@@ -5008,7 +5299,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br1632a.yaml",
       "issue_number": 395,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/395"
     },
@@ -5021,7 +5313,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br2330a.yaml",
       "issue_number": 396,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/396"
     },
@@ -5034,7 +5327,8 @@
       "source_url": "https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf",
       "source_title": "Panasonic Coin type Primary Lithium Batteries",
       "observation_count": 7,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/panasonic/br2477a.yaml",
       "issue_number": 397,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/397"
     },
@@ -5047,7 +5341,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp452235.yaml",
       "issue_number": 398,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/398"
     },
@@ -5060,7 +5355,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp605590.yaml",
       "issue_number": 404,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/404"
     },
@@ -5073,7 +5369,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp652438.yaml",
       "issue_number": 403,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/403"
     },
@@ -5086,7 +5383,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp505464.yaml",
       "issue_number": 399,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/399"
     },
@@ -5099,7 +5397,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp604765.yaml",
       "issue_number": 401,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/401"
     },
@@ -5112,7 +5411,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp702030.yaml",
       "issue_number": 402,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/402"
     },
@@ -5125,7 +5425,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp404261.yaml",
       "issue_number": 405,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/405"
     },
@@ -5138,7 +5439,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp822245.yaml",
       "issue_number": 407,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/407"
     },
@@ -5151,7 +5453,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp603448.yaml",
       "issue_number": 406,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/406"
     },
@@ -5164,7 +5467,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp653042.yaml",
       "issue_number": 409,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/409"
     },
@@ -5177,7 +5481,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp803450.yaml",
       "issue_number": 408,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/408"
     },
@@ -5190,7 +5495,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp402535.yaml",
       "issue_number": 410,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/410"
     },
@@ -5203,7 +5509,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp583759.yaml",
       "issue_number": 411,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/411"
     },
@@ -5216,7 +5523,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp604374.yaml",
       "issue_number": 412,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/412"
     },
@@ -5229,7 +5537,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp604040.yaml",
       "issue_number": 413,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/413"
     },
@@ -5242,7 +5551,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp383450.yaml",
       "issue_number": 414,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/414"
     },
@@ -5255,7 +5565,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp453048.yaml",
       "issue_number": 415,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/415"
     },
@@ -5268,7 +5579,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp103395.yaml",
       "issue_number": 418,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/418"
     },
@@ -5281,7 +5593,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp103042.yaml",
       "issue_number": 416,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/416"
     },
@@ -5294,7 +5607,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp603436.yaml",
       "issue_number": 417,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/417"
     },
@@ -5307,7 +5621,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp902977.yaml",
       "issue_number": 419,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/419"
     },
@@ -5320,7 +5635,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp403026.yaml",
       "issue_number": 420,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/420"
     },
@@ -5333,7 +5649,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp752726.yaml",
       "issue_number": 424,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/424"
     },
@@ -5346,7 +5663,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp503048.yaml",
       "issue_number": 425,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/425"
     },
@@ -5359,7 +5677,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp553250.yaml",
       "issue_number": 421,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/421"
     },
@@ -5372,7 +5691,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp602945.yaml",
       "issue_number": 422,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/422"
     },
@@ -5385,7 +5705,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp503759.yaml",
       "issue_number": 423,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/423"
     },
@@ -5398,7 +5719,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp9051109.yaml",
       "issue_number": 426,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/426"
     },
@@ -5411,7 +5733,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp902030.yaml",
       "issue_number": 427,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/427"
     },
@@ -5424,7 +5747,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp803448.yaml",
       "issue_number": 430,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/430"
     },
@@ -5437,7 +5761,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp7545135.yaml",
       "issue_number": 428,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/428"
     },
@@ -5450,7 +5775,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp722977.yaml",
       "issue_number": 429,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/429"
     },
@@ -5477,7 +5803,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp603449.yaml",
       "issue_number": 432,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/432"
     },
@@ -5546,7 +5873,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp562438.yaml",
       "issue_number": 437,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/437"
     },
@@ -5573,7 +5901,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp542730.yaml",
       "issue_number": 436,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/436"
     },
@@ -5628,7 +5957,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp103454.yaml",
       "issue_number": 443,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/443"
     },
@@ -5641,7 +5971,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp323450.yaml",
       "issue_number": 444,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/444"
     },
@@ -5654,7 +5985,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp311620.yaml",
       "issue_number": 445,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/445"
     },
@@ -5709,7 +6041,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp452030.yaml",
       "issue_number": 449,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/449"
     },
@@ -5722,7 +6055,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp402030.yaml",
       "issue_number": 450,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/450"
     },
@@ -5763,7 +6097,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp401730.yaml",
       "issue_number": 453,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/453"
     },
@@ -5776,7 +6111,8 @@
       "source_url": "https://www.eemb.com/products-55",
       "source_title": "EEMB Lithium Polymer Standard Type Battery",
       "observation_count": 5,
-      "state": "pending_review",
+      "state": "accepted",
+      "accepted_file": "contrib/cells/eemb/lp601622.yaml",
       "issue_number": 454,
       "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/454"
     },
