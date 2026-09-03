@@ -17,6 +17,7 @@ SET search_path = bd, public;
 
 CREATE TYPE model_kind AS ENUM (
   'bpx_dfn', 'bpx_spme', 'bpx_spm', 'bpx_partial',
+  'dfn_parameter_set',        -- a published physics parameter set in a non-BPX format (PyBaMM dict)
   'ecm_rint', 'ecm_1rc', 'ecm_2rc', 'ecm_nrc', 'ecm_hysteresis',
   'empirical_degradation', 'semi_empirical_degradation',
   'thermal_lumped', 'thermal_2d', 'data_driven', 'other'

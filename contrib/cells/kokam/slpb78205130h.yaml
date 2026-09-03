@@ -1,0 +1,60 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/kokam/slpb78205130h",
+    "kind": "cell",
+    "manufacturer": "Kokam",
+    "model_number": "SLPB78205130H",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/pybamm-v24.1-marquis2019",
+    "kind": "journal_article",
+    "title": "{An asymptotic derivation of a single particle model with electrolyte}",
+    "doi": "10.1149/2.0341915jes",
+    "url": "https://raw.githubusercontent.com/pybamm-team/PyBaMM/v24.1/pybamm/input/parameters/lithium_ion/Marquis2019.py",
+    "sha256": "5c14462c6632ff468377f39781993b9d14d5e3226c1dad37f257e7520ffa90a2",
+    "license": "BSD-3-Clause (PyBaMM); parameter values as published in the cited articles",
+    "note": "Cell-level values read from PyBaMM's Marquis2019.py at tag v24.1, a transcription of the cited parameterisation article. A starting point for a datasheet-backed record, not a datasheet: rate and temperature for the nominal capacity are not stated in the parameter file."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "statistic": "nominal",
+      "value": 0.680616,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ],
+        "voltage_lower_v": 3.105
+      },
+      "locator": {
+        "section": "get_parameter_values()",
+        "quote": "\"Nominal cell capacity [A.h]\": 0.680616,"
+      }
+    },
+    {
+      "quantity": "charge_cutoff_voltage",
+      "statistic": "nominal",
+      "value": 4.1,
+      "unit": "V",
+      "locator": {
+        "section": "get_parameter_values()",
+        "quote": "\"Upper voltage cut-off [V]\": 4.1,"
+      }
+    },
+    {
+      "quantity": "discharge_cutoff_voltage",
+      "statistic": "nominal",
+      "value": 3.105,
+      "unit": "V",
+      "locator": {
+        "section": "get_parameter_values()",
+        "quote": "\"Lower voltage cut-off [V]\": 3.105,"
+      }
+    }
+  ]
+}

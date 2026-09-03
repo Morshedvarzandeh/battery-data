@@ -1,0 +1,63 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/lg-energy-solution/inr21700-m50",
+    "kind": "cell",
+    "manufacturer": "LG Energy Solution",
+    "model_number": "INR21700-M50",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/pybamm-v24.1-chen2020",
+    "kind": "journal_article",
+    "title": "{Development of Experimental Techniques for Parameterization of Multi-scale Lithium-ion Battery Models}",
+    "doi": "10.1149/1945-7111/ab9050",
+    "url": "https://raw.githubusercontent.com/pybamm-team/PyBaMM/v24.1/pybamm/input/parameters/lithium_ion/Chen2020.py",
+    "sha256": "17490718e7f92a443005ba61da0f809f56a7a48f11fb6526e8a4f8c2dadedd2e",
+    "license": "BSD-3-Clause (PyBaMM); parameter values as published in the cited articles",
+    "note": "Cell-level values read from PyBaMM's Chen2020.py at tag v24.1, a transcription of the cited parameterisation article. A starting point for a datasheet-backed record, not a datasheet: rate and temperature for the nominal capacity are not stated in the parameter file."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "statistic": "nominal",
+      "value": 5.0,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ],
+        "voltage_lower_v": 2.5
+      },
+      "locator": {
+        "section": "get_parameter_values()",
+        "quote": "\"Nominal cell capacity [A.h]\": 5.0,"
+      }
+    },
+    {
+      "quantity": "charge_cutoff_voltage",
+      "statistic": "nominal",
+      "value": 4.2,
+      "unit": "V",
+      "locator": {
+        "section": "get_parameter_values()",
+        "quote": "\"Upper voltage cut-off [V]\": 4.2,"
+      }
+    },
+    {
+      "quantity": "discharge_cutoff_voltage",
+      "statistic": "nominal",
+      "value": 2.5,
+      "unit": "V",
+      "locator": {
+        "section": "get_parameter_values()",
+        "quote": "\"Lower voltage cut-off [V]\": 2.5,"
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "NMC"
+  }
+}

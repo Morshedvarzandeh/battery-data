@@ -1,0 +1,242 @@
+{
+ "schema_version": "1",
+ "model": {
+  "uid": "model/kokam/slpb75106100/ecker2015",
+  "name": "Ecker2015 parameter set for the SLPB 75106100 (PyBaMM v24.1)",
+  "kind": "dfn_parameter_set",
+  "format_name": "pybamm_dict",
+  "format_version": "PyBaMM v24.1",
+  "product_uid": "cell/kokam/slpb75106100",
+  "reference_temperature_c": 23.0,
+  "notes": "Parameters for a Kokam SLPB 75106100 cell, from the papers :footcite:t:`Ecker2015i`\nand :footcite:t:`Ecker2015ii`\n\nThe tab placement parameters are taken from measurements in :footcite:t:`Hales2019`\n\nThe thermal material properties are for a 5 Ah power pouch cell by Kokam. The data\nare extracted from :footcite:t:`Zhao2018`\n\nGraphite negative electrode parameters\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nThe fits to data for the electrode and electrolyte properties are those provided\nby Dr. Simon O'Kane in the paper :footcite:t:`Richardson2020`\n\nSEI parameters are example parameters for SEI growth from the papers\n:footcite:t:`Ramadass2004`, :footcite:t:`ploehn2004solvent`,\n:footcite:t:`single2018identifying`, :footcite:t:`safari2008multimodal`, and\n:footcite:t:`Yang2017`\n\n.. note::\n    This parameter set does not claim to be representative of the true parameter\n    values. Instead these are parameter values that were used to fit SEI models to\n    observed experimental data in the referenced papers."
+ },
+ "source": {
+  "uid": "src/pybamm-v24.1-ecker2015",
+  "kind": "journal_article",
+  "title": "{Parameterization of a Physico-Chemical Model of a Lithium-Ion Battery: I. Determination of Parameters}",
+  "doi": "10.1149/2.0551509jes",
+  "url": "https://raw.githubusercontent.com/pybamm-team/PyBaMM/v24.1/pybamm/input/parameters/lithium_ion/Ecker2015.py",
+  "sha256": "0281d8f901a188a4c246f5a2758a0b453fa0944e128109af6eb9e4765e95ef3d",
+  "license": "BSD-3-Clause (PyBaMM); parameter values as published in the cited articles",
+  "note": "Values read from PyBaMM's Ecker2015.py at tag v24.1, which cites the articles listed under citations. Function-valued parameters carry the source code of the fitted expression. The set's own note applies: these are values used to fit models in the cited papers, not guaranteed cell parameters."
+ },
+ "citations": [
+  {
+   "key": "Ecker2015i",
+   "doi": "10.1149/2.0551509jes",
+   "title": "{Parameterization of a Physico-Chemical Model of a Lithium-Ion Battery: I. Determination of Parameters}",
+   "journal": "Journal of the Electrochemical Society",
+   "year": "2015",
+   "author": "Ecker, Madeleine and Tran, Thi Kim Dung and Dechent, Philipp and K{\\\"a}bitz, Stefan and Warnecke, Alexander and Sauer, Dirk Uwe"
+  },
+  {
+   "key": "Ecker2015ii",
+   "doi": "10.1149/2.0541509jes",
+   "title": "{Parameterization of a Physico-Chemical Model of a Lithium-Ion Battery: II. Model Validation}",
+   "journal": "Journal of The Electrochemical Society",
+   "year": "2015",
+   "author": "Ecker, Madeleine and K{\\\"a}bitz, Stefan and Laresgoiti, Izaro and Sauer, Dirk Uwe"
+  },
+  {
+   "key": "Hales2019",
+   "doi": null,
+   "title": "The cell cooling coefficient: a standard to define heat rejection from lithium-ion batteries",
+   "journal": "Journal of The Electrochemical Society",
+   "year": "2019",
+   "author": "Hales, Alastair and Diaz, Laura Bravo and Marzook, Mohamed Waseem and Zhao, Yan and Patel, Yatish and Offer, Gregory"
+  },
+  {
+   "key": "Ramadass2004",
+   "doi": "10.1149/1.1634273",
+   "title": "Development of first principles capacity fade model for Li-ion cells",
+   "journal": "Journal of the Electrochemical Society",
+   "year": "2004",
+   "author": "Ramadass, P and Haran, Bala and Gomadam, Parthasarathy M and White, Ralph and Popov, Branko N"
+  },
+  {
+   "key": "Richardson2020",
+   "doi": "10.1016/j.electacta.2020.135862",
+   "title": "Generalised single particle models for high-rate operation of graded lithium-ion electrodes: systematic derivation and validation",
+   "journal": "Electrochimica Acta",
+   "year": "2020",
+   "author": "Richardson, Giles and Korotkin, Ivan and Ranom, Rahifa and Castle, Michael and Foster, Jamie M."
+  },
+  {
+   "key": "Yang2017",
+   "doi": "10.1016/j.jpowsour.2017.05.110",
+   "title": "Modeling of lithium plating induced aging of lithium-ion batteries: Transition from linear to nonlinear aging",
+   "journal": "Journal of Power Sources",
+   "year": "2017",
+   "author": "Yang, Xiao Guang and Leng, Yongjun and Zhang, Guangsheng and Ge, Shanhai and Wang, Chao Yang"
+  },
+  {
+   "key": "Zhao2018",
+   "doi": null,
+   "title": "Modeling the effects of thermal gradients induced by tab and surface cooling on lithium ion cell performance",
+   "journal": "Journal of The Electrochemical Society",
+   "year": "2018",
+   "author": "Zhao, Yan and Patel, Yatish and Zhang, Teng and Offer, Gregory J"
+  },
+  {
+   "key": "ploehn2004solvent",
+   "doi": null,
+   "title": "Solvent diffusion model for aging of lithium-ion battery cells",
+   "journal": "Journal of The Electrochemical Society",
+   "year": "2004",
+   "author": "Ploehn, Harry J and Ramadass, Premanand and White, Ralph E"
+  },
+  {
+   "key": "safari2008multimodal",
+   "doi": null,
+   "title": "Multimodal physics-based aging model for life prediction of Li-ion batteries",
+   "journal": "Journal of The Electrochemical Society",
+   "year": "2008",
+   "author": "Safari, M and Morcrette, Mathieu and Teyssot, A and Delacourt, Charles"
+  },
+  {
+   "key": "single2018identifying",
+   "doi": null,
+   "title": "Identifying the mechanism of continued growth of the solid--electrolyte interphase",
+   "journal": "ChemSusChem",
+   "year": "2018",
+   "author": "Single, Fabian and Latz, Arnulf and Horstmann, Birger"
+  }
+ ],
+ "payload": {
+  "chemistry": "lithium_ion",
+  "Ratio of lithium moles to SEI moles": 2.0,
+  "Inner SEI reaction proportion": 0.5,
+  "Inner SEI partial molar volume [m3.mol-1]": 9.585e-05,
+  "Outer SEI partial molar volume [m3.mol-1]": 9.585e-05,
+  "SEI reaction exchange current density [A.m-2]": 1.5e-07,
+  "SEI resistivity [Ohm.m]": 200000.0,
+  "Outer SEI solvent diffusivity [m2.s-1]": 2.5000000000000002e-22,
+  "Bulk solvent concentration [mol.m-3]": 2636.0,
+  "Inner SEI open-circuit potential [V]": 0.1,
+  "Outer SEI open-circuit potential [V]": 0.8,
+  "Inner SEI electron conductivity [S.m-1]": 8.95e-14,
+  "Inner SEI lithium interstitial diffusivity [m2.s-1]": 1e-20,
+  "Lithium interstitial reference concentration [mol.m-3]": 15.0,
+  "Initial inner SEI thickness [m]": 2.5e-09,
+  "Initial outer SEI thickness [m]": 2.5e-09,
+  "EC initial concentration in electrolyte [mol.m-3]": 4541.0,
+  "EC diffusivity [m2.s-1]": 2e-18,
+  "SEI kinetic rate constant [m.s-1]": 1e-12,
+  "SEI open-circuit potential [V]": 0.4,
+  "SEI growth activation energy [J.mol-1]": 0.0,
+  "Negative electrode reaction-driven LAM factor [m3.mol-1]": 0.0,
+  "Positive electrode reaction-driven LAM factor [m3.mol-1]": 0.0,
+  "Negative current collector thickness [m]": 1.4e-05,
+  "Negative electrode thickness [m]": 7.4e-05,
+  "Separator thickness [m]": 2e-05,
+  "Positive electrode thickness [m]": 5.4e-05,
+  "Positive current collector thickness [m]": 1.5e-05,
+  "Electrode height [m]": 0.101,
+  "Electrode width [m]": 0.085,
+  "Negative tab width [m]": 0.007,
+  "Negative tab centre y-coordinate [m]": 0.0045,
+  "Negative tab centre z-coordinate [m]": 0.101,
+  "Positive tab width [m]": 0.0069,
+  "Positive tab centre y-coordinate [m]": 0.0309,
+  "Positive tab centre z-coordinate [m]": 0.101,
+  "Cell cooling surface area [m2]": 0.0172,
+  "Cell volume [m3]": 1.52e-06,
+  "Negative current collector conductivity [S.m-1]": 58411000.0,
+  "Positive current collector conductivity [S.m-1]": 36914000.0,
+  "Negative current collector density [kg.m-3]": 8933.0,
+  "Positive current collector density [kg.m-3]": 2702.0,
+  "Negative current collector specific heat capacity [J.kg-1.K-1]": 385.0,
+  "Positive current collector specific heat capacity [J.kg-1.K-1]": 903.0,
+  "Negative current collector thermal conductivity [W.m-1.K-1]": 398.0,
+  "Positive current collector thermal conductivity [W.m-1.K-1]": 238.0,
+  "Nominal cell capacity [A.h]": 0.15625,
+  "Current function [A]": 0.15652,
+  "Contact resistance [Ohm]": 0,
+  "Negative electrode conductivity [S.m-1]": 14.0,
+  "Maximum concentration in negative electrode [mol.m-3]": 31920.0,
+  "Negative electrode diffusivity [m2.s-1]": {
+   "function": "graphite_diffusivity_Ecker2015",
+   "source": null
+  },
+  "Negative electrode OCP [V]": {
+   "function": "graphite_ocp_Ecker2015",
+   "source": null
+  },
+  "Negative electrode porosity": 0.329,
+  "Negative electrode active material volume fraction": 0.372403,
+  "Negative particle radius [m]": 1.37e-05,
+  "Negative electrode Bruggeman coefficient (electrolyte)": 1.6372789338386007,
+  "Negative electrode Bruggeman coefficient (electrode)": 0.0,
+  "Negative electrode exchange-current density [A.m-2]": {
+   "function": "graphite_electrolyte_exchange_current_density_Ecker2015",
+   "source": null
+  },
+  "Negative electrode density [kg.m-3]": 1555.0,
+  "Negative electrode specific heat capacity [J.kg-1.K-1]": 1437.0,
+  "Negative electrode thermal conductivity [W.m-1.K-1]": 1.58,
+  "Negative electrode OCP entropic change [V.K-1]": 0.0,
+  "Positive electrode conductivity [S.m-1]": 68.1,
+  "Maximum concentration in positive electrode [mol.m-3]": 48580.0,
+  "Positive electrode diffusivity [m2.s-1]": {
+   "function": "nco_diffusivity_Ecker2015",
+   "source": null
+  },
+  "Positive electrode OCP [V]": {
+   "function": "nco_ocp_Ecker2015",
+   "source": null
+  },
+  "Positive electrode porosity": 0.296,
+  "Positive electrode active material volume fraction": 0.40832,
+  "Positive particle radius [m]": 6.5e-06,
+  "Positive electrode Bruggeman coefficient (electrolyte)": 1.5442267190786427,
+  "Positive electrode Bruggeman coefficient (electrode)": 0.0,
+  "Positive electrode exchange-current density [A.m-2]": {
+   "function": "nco_electrolyte_exchange_current_density_Ecker2015",
+   "source": null
+  },
+  "Positive electrode density [kg.m-3]": 2895.0,
+  "Positive electrode specific heat capacity [J.kg-1.K-1]": 1270.0,
+  "Positive electrode thermal conductivity [W.m-1.K-1]": 1.04,
+  "Positive electrode OCP entropic change [V.K-1]": 0.0,
+  "Separator porosity": 0.508,
+  "Separator Bruggeman coefficient (electrolyte)": 1.9804586773134945,
+  "Separator density [kg.m-3]": 1017.0,
+  "Separator specific heat capacity [J.kg-1.K-1]": 1978.0,
+  "Separator thermal conductivity [W.m-1.K-1]": 0.34,
+  "Initial concentration in electrolyte [mol.m-3]": 1000.0,
+  "Cation transference number": 0.26,
+  "Thermodynamic factor": 1.0,
+  "Electrolyte diffusivity [m2.s-1]": {
+   "function": "electrolyte_diffusivity_Ecker2015",
+   "source": null
+  },
+  "Electrolyte conductivity [S.m-1]": {
+   "function": "electrolyte_conductivity_Ecker2015",
+   "source": null
+  },
+  "Reference temperature [K]": 296.15,
+  "Negative current collector surface heat transfer coefficient [W.m-2.K-1]": 10.0,
+  "Positive current collector surface heat transfer coefficient [W.m-2.K-1]": 10.0,
+  "Negative tab heat transfer coefficient [W.m-2.K-1]": 10.0,
+  "Positive tab heat transfer coefficient [W.m-2.K-1]": 10.0,
+  "Edge heat transfer coefficient [W.m-2.K-1]": 10.0,
+  "Total heat transfer coefficient [W.m-2.K-1]": 10.0,
+  "Ambient temperature [K]": 298.15,
+  "Number of electrodes connected in parallel to make a cell": 1.0,
+  "Number of cells connected in series to make a battery": 1.0,
+  "Lower voltage cut-off [V]": 2.5,
+  "Upper voltage cut-off [V]": 4.2,
+  "Open-circuit voltage at 0% SOC [V]": 2.5,
+  "Open-circuit voltage at 100% SOC [V]": 4.2,
+  "Initial concentration in negative electrode [mol.m-3]": 26120.05,
+  "Initial concentration in positive electrode [mol.m-3]": 12630.8,
+  "Initial temperature [K]": 298.15,
+  "citations": [
+   "Ecker2015i",
+   "Ecker2015ii",
+   "Zhao2018",
+   "Hales2019",
+   "Richardson2020"
+  ]
+ }
+}

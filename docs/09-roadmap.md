@@ -93,7 +93,7 @@ Format first, then data. Each value carries its conditions and a locator.
 - [x] **3.6 Commercial and lifecycle layers.** Price and availability as a time series, active or end-of-life status, rebadge and second-source equivalences.
 - [x] **3.7 Assembly links.** Packs, modules and systems name their cells so the graph has something to traverse.
 - [ ] **3.8 EU passport fields.** Carbon footprint, recycled content, expected lifetime in cycles and years, power at −10 °C.
-- [ ] **3.9 Model parameters.** A BPX set and an ECM surface for at least one cell.
+- [x] **3.9 Model parameters.** A BPX set and an ECM surface for at least one cell.
 - [ ] **3.10 A second source per product.** Distributor listings or a second revision for the top cells, so the contradiction view has something to detect.
 
 ## 4. Everything around the battery
@@ -162,3 +162,4 @@ Entries are appended as items are ticked, newest last.
 - 2026-09-03 · **3.6** · offers as a price time series (seller, region, currency, price, MOQ, lead time, grade, observed_at) into bd.product_offer, lifecycle status on the product, equivalences into bd.product_equivalence; the validator refuses a duplicate seller/region/date and an equivalence to a product outside the library.
 - 2026-09-03 · **3.7** · contains in the contribution format: child uid, quantity, series and parallel counts, topology, evidence. The validator refuses a child not in the library; the loader applies links after every file has loaded, so a pack may name a cell later in the run. Toshiba's catalogue and BYD's datasheet name module counts but not the cell part numbers, so no link is asserted yet.
 - 2026-09-03 · **4.6** · The same contains block carries contactors, fuses, BMS and converters once their records exist; product_assembly accepts any product kind and the CONTAINS edge is what bd_graph.reachable() walks.
+- 2026-09-03 · **3.9** · Five published DFN parameter sets imported from PyBaMM at tag v24.1 with tools/import_pybamm_parameters.py: Chen 2020, O'Regan 2022 and O'Kane 2022 for the LG INR21700-M50, Marquis 2019 for the Kokam SLPB78205130H, Ecker 2015 for the Kokam SLPB 75106100. Each carries the article it transcribes (DOI from PyBaMM's own CITATIONS.bib), the file URL, tag and sha256, function-valued parameters as source code, and lands in bd.model_parameterisation through tools/load_models.py, which CI runs. The three cells enter the library with the capacity and cut-offs the sets state, quoting the file line. An ECM surface still needs a source with a fitted table.

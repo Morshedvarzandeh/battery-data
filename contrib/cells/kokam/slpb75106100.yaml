@@ -1,0 +1,60 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/kokam/slpb75106100",
+    "kind": "cell",
+    "manufacturer": "Kokam",
+    "model_number": "SLPB 75106100",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/pybamm-v24.1-ecker2015",
+    "kind": "journal_article",
+    "title": "{Parameterization of a Physico-Chemical Model of a Lithium-Ion Battery: I. Determination of Parameters}",
+    "doi": "10.1149/2.0551509jes",
+    "url": "https://raw.githubusercontent.com/pybamm-team/PyBaMM/v24.1/pybamm/input/parameters/lithium_ion/Ecker2015.py",
+    "sha256": "0281d8f901a188a4c246f5a2758a0b453fa0944e128109af6eb9e4765e95ef3d",
+    "license": "BSD-3-Clause (PyBaMM); parameter values as published in the cited articles",
+    "note": "Cell-level values read from PyBaMM's Ecker2015.py at tag v24.1, a transcription of the cited parameterisation article. A starting point for a datasheet-backed record, not a datasheet: rate and temperature for the nominal capacity are not stated in the parameter file."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "statistic": "nominal",
+      "value": 0.15625,
+      "unit": "Ah",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ],
+        "voltage_lower_v": 2.5
+      },
+      "locator": {
+        "section": "get_parameter_values()",
+        "quote": "\"Nominal cell capacity [A.h]\": 0.15625,"
+      }
+    },
+    {
+      "quantity": "charge_cutoff_voltage",
+      "statistic": "nominal",
+      "value": 4.2,
+      "unit": "V",
+      "locator": {
+        "section": "get_parameter_values()",
+        "quote": "\"Upper voltage cut-off [V]\": 4.2,"
+      }
+    },
+    {
+      "quantity": "discharge_cutoff_voltage",
+      "statistic": "nominal",
+      "value": 2.5,
+      "unit": "V",
+      "locator": {
+        "section": "get_parameter_values()",
+        "quote": "\"Lower voltage cut-off [V]\": 2.5,"
+      }
+    }
+  ]
+}
