@@ -7,10 +7,31 @@ ticked only when its change is committed **and** the CI gates still pass
 `tools/validate_review.py`, `tools/build_web_data.py --check`, and the review
 builders producing no diff).
 
+The target is the largest open, provenance-first dataset of batteries and of
+everything around them: every chemistry from lead-acid to sodium-ion to solid
+state, every level from cell to grid container, and the components a battery
+cannot work without: DC-DC converters, contactors, fuses, pyro-fuses, BMS,
+busbars, sensors, chargers and thermal hardware.
+
 The rule that governs every item below is the repository's own: **a value
 without its conditions, its page and its quote is not a fact.** Nothing on this
 list is satisfied by a number typed from memory, and where a source could not
 be reached the item says so instead of being ticked.
+
+### The environment this pass ran in
+
+The session that works this list can reach GitHub and PyPI and nothing else:
+every manufacturer, distributor, archive, publisher and dataset host is blocked
+by the network egress policy. So this pass does three kinds of work, and says
+which is which in the log:
+
+1. **Structure**: schema, contribution format, validators, loaders, page and
+   API, so the dataset can hold the full scope and scale without a rewrite.
+2. **Data already in reach**: the review queue, the SQL reference cells, and
+   parameter sets and datasets published on GitHub with their citations.
+3. **Data that needs the network**: datasheet re-extraction and every new
+   manufacturer document. Those items stay open, each with the exact command to
+   run from a machine that can reach the source.
 
 ## Where the library stood when this was written
 
@@ -74,6 +95,31 @@ Format first, then data. Each value carries its conditions and a locator.
 - [ ] **3.8 EU passport fields.** Carbon footprint, recycled content, expected lifetime in cycles and years, power at −10 °C.
 - [ ] **3.9 Model parameters.** A BPX set and an ECM surface for at least one cell.
 - [ ] **3.10 A second source per product.** Distributor listings or a second revision for the top cells, so the contradiction view has something to detect.
+
+## 4. Everything around the battery
+
+A pack is a cell plus the hardware that lets it be used safely. The same rule
+applies to that hardware as to the cell: a contactor's breaking capacity
+without the circuit voltage and time constant it was tested at is not a fact,
+and a fuse's current rating without the ambient temperature is a derating
+curve pretending to be a number.
+
+- [ ] **4.1 Component taxonomy.** A `component_kind` on the product: DC-DC converter, contactor, relay, fuse, pyro-fuse, BMS, battery disconnect unit, busbar, cell contact system, current sensor, temperature sensor, pre-charge resistor, service disconnect, isolation monitor, on-board charger, inverter or PCS, cooling plate, chiller, heater, thermal interface material, vent, enclosure, connector, cable.
+- [ ] **4.2 Quantities for switching and protection.** Rated voltage, rated current with its ambient, breaking capacity with circuit voltage and time constant, pre-arcing and total I²t, minimum breaking current, contact resistance at its test current, coil voltage, coil hold power, electrical and mechanical endurance, dielectric strength with its duration, insulation resistance, voltage drop, cold resistance.
+- [ ] **4.3 Quantities for power conversion and sensing.** Input and output voltage windows, output current at ambient, conversion efficiency at a stated load and input voltage, switching frequency, standby draw, measurement range and accuracy, balancing current.
+- [ ] **4.4 Component curves.** Time-current characteristic, current derating against ambient, efficiency against load, breaking capability against voltage.
+- [ ] **4.5 Component coverage list.** The contactor, fuse, pyro-fuse, DC-DC, BMS, sensor, isolation-monitor and charger products a reference must carry, as a wishlist that turns into numbers as documents land.
+- [ ] **4.6 Bill of materials.** Packs and systems name their contactors, fuses, BMS and DC-DC through `contains`, so the graph traverses the whole battery system.
+- [ ] **4.7 Page and API for components.** Component kinds in the Compare filter with their own column set, a component sheet, and a components endpoint.
+
+## 5. Every chemistry
+
+- [ ] **5.1 Chemistry family and construction.** A `family` on the chemistry block: lithium-ion, lithium metal, lithium primary, sodium-ion, sodium-sulfur, sodium-nickel-chloride, lead-acid, nickel-metal-hydride, nickel-cadmium, nickel-zinc, zinc-air, alkaline, silver oxide, flow vanadium, flow zinc-bromine, flow iron, solid state, supercapacitor. A `construction` for lead-acid: flooded, AGM, gel, tubular plate, flat plate, bipolar, carbon-enhanced.
+- [ ] **5.2 Lead-acid quantities.** Cold cranking current with temperature, duration, cutoff and the standard it follows; reserve capacity with its load and cutoff; float and cycle charge voltages with temperature; temperature compensation coefficient; design life on float at temperature; capacity at the 20-hour, 10-hour and 5-hour rates as separate observations.
+- [ ] **5.3 Lead-acid and AGM coverage list.** Automotive, motive-power, stationary and UPS ranges from the makers a reference must carry.
+- [ ] **5.4 Sodium coverage list.** Sodium-ion cells and packs from the makers shipping or sampling them, plus sodium-sulfur and sodium-nickel-chloride stationary products.
+- [ ] **5.5 Nickel, zinc, flow and supercapacitor coverage lists.** NiMH and NiCd cells and packs, nickel-zinc, zinc-air, flow batteries by electrolyte, and supercapacitor cells and modules.
+- [ ] **5.6 Conventions for the new chemistries.** The places these chemistries disagree with each other and with lithium practice, written into `docs/02-conventions.md` and enforced as required conditions.
 
 ## Log
 
