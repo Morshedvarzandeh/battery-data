@@ -58,9 +58,9 @@ which is which in the log:
 
 ## 1. The Report tab
 
-- [ ] **1.1 Stale caption.** The report header still prints "figures provisional, no source locators", left over from the hand-typed seed page. Replace it with a per-column stated-or-derived flag.
-- [ ] **1.2 Define the capacity rule.** Wh/kg is built from the first capacity observation in the file whatever its rate. Rank on the lowest stated rate, prefer the standard or typical figure, and print the rate next to the number.
-- [ ] **1.3 Completeness column.** Fields present out of the twelve the completeness view tracks, plus the count of conditions the source leaves unstated, on the Compare table and the Report.
+- [x] **1.1 Stale caption.** The report header still prints "figures provisional, no source locators", left over from the hand-typed seed page. Replace it with a per-column stated-or-derived flag.
+- [x] **1.2 Define the capacity rule.** Wh/kg is built from the first capacity observation in the file whatever its rate. Rank on the lowest stated rate, prefer the standard or typical figure, and print the rate next to the number.
+- [x] **1.3 Completeness column.** Fields present out of the twelve the completeness view tracks, plus the count of conditions the source leaves unstated, on the Compare table and the Report.
 - [ ] **1.4 Coverage wiring.** Targets that already exist in `contrib/` must carry their uid in `web/data/coverage.json` so they count as sourced.
 - [ ] **1.5 Reference cells reach the page.** The four seed cells and the SQL pack catalogue never reach the page because it reads only `contrib/`. Port the reference cells to YAML without doubling them in the database.
 - [ ] **1.6 Columns an engineer selects on.** Max continuous discharge current at its temperature, DC resistance with method and duration, cycle life with its conditions, operating window, standard charge current, source kind, revision and date.
@@ -138,4 +138,6 @@ covers the whole scope above, components and applications included.
 ## Log
 
 Entries are appended as items are ticked, newest last.
-
+- 2026-09-03 · **1.1** · The Report header now states that every figure traces to a contribution and counts derived figures and issue-rebuilt records; density columns carry a stated-or-derived basis column; the source pill shows datasheet, maker web page or rebuilt-from-issue instead of a blanket 'datasheet'.
+- 2026-09-03 · **1.2** · capacity_key() in tools/build_web_data.py: a stated rate beats an unstated one, the lowest stated rate wins, ties break standard > typical > rated. The winning rate is printed in the 'Ah at' column and the full basis is the hover text.
+- 2026-09-03 · **1.3** · Fields present out of the twelve bd.v_completeness tracks, the missing list, and the count of unstated conditions, on the Compare table, the Report (new Completeness section, Markdown and CSV) and as a 'most complete record' leader.

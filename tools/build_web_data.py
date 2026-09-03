@@ -112,12 +112,16 @@ def product(doc: dict, path: str) -> dict:
     for o in doc.get("observations", []):
         cond = dict(o.get("conditions") or {})
         unstated = cond.pop("unstated", [])
-        cond.pop("verbatim", None), cond.pop("extra", None)
+        cond.pop("verbatim", None)
+        extra = cond.pop("extra", None)
         loc = o["locator"]
-        obs.append({"q": o["quantity"], "v": o["value"], "u": o["unit"],
-                    "stat": o.get("statistic"), "cond": cond,
-                    "unstated": unstated, "pg": loc.get("page"),
-                    "quote": loc["quote"], "src": src.get("kind")})
+        row = {"q": o["quantity"], "v": o["value"], "u": o["unit"],
+               "stat": o.get("statistic"), "cond": cond,
+               "unstated": unstated, "pg": loc.get("page"),
+               "quote": loc["quote"], "src": src.get("kind")}
+        if extra:
+            row["extra"] = extra
+        obs.append(row)
 
     dims = None
     by = {o["q"]: o["v"] for o in obs}
@@ -137,6 +141,7 @@ def product(doc: dict, path: str) -> dict:
                         if k not in ("unstated", "verbatim", "extra")}}
               for c in doc.get("curves", [])]
 
+    m = metrics(obs, dims, SHAPE.get(p.get("form_factor", ""), "pri"), errs)
     return {
         "uid": p["uid"], "kind": p["kind"],
         "cell": f"{p['manufacturer']} {p['model_number']}",
@@ -155,8 +160,8 @@ def product(doc: dict, path: str) -> dict:
                    "date": src.get("document_date"), "kind": src.get("kind"),
                    "url": src.get("url"), "sha256": src.get("sha256"),
                    "note": src.get("note")},
-        "obs": obs, "curves": curves, "pulse": pulse_map(curves, by.get("capacity")),
-        "m": metrics(obs, dims, SHAPE.get(p.get("form_factor", ""), "pri"), errs),
+        "obs": obs, "curves": curves, "pulse": pulse_map(curves, m.get("ah")),
+        "m": m,
         "file": os.path.relpath(path, ROOT),
         "unit_errors": errs,
         "verified": True,
@@ -188,27 +193,141 @@ TO_MM = {"mm": 1.0, "cm": 10.0, "m": 1000.0}
 TO_AH = {"Ah": 1.0, "mAh": 0.001}
 TO_V = {"V": 1.0, "mV": 0.001}
 TO_W = {"W": 1.0, "kW": 1000.0, "mW": 0.001}
+TO_A = {"A": 1.0, "mA": 0.001, "kA": 1000.0}
+TO_MOHM = {"mΩ": 1.0, "mohm": 1.0, "Ω": 1000.0, "ohm": 1000.0, "uohm": 0.001, "µΩ": 0.001}
+# temperature: (factor, offset) into degrees Celsius
+TO_C = {"°C": (1.0, 0.0), "degC": (1.0, 0.0), "C": (1.0, 0.0), "K": (1.0, -273.15)}
 
 # Every unit a metric consumes must be listed. An unknown unit is a hard stop:
 # silently treating 4900 mAh as 4900 Ah puts a cell on the chart at a thousand
 # times its real energy, and it looks like a plausible outlier rather than a bug.
 SCALES = {"mass": TO_G, "capacity": TO_AH, "nominal_voltage": TO_V,
-          "peak_power": TO_W, "max_continuous_discharge_current": {"A": 1.0, "mA": 0.001},
+          "charge_cutoff_voltage": TO_V, "discharge_cutoff_voltage": TO_V,
+          "peak_power": TO_W, "rated_power": TO_W,
+          "max_continuous_discharge_current": TO_A,
+          "max_continuous_charge_current": TO_A,
+          "max_pulse_discharge_current": TO_A, "standard_charge_current": TO_A,
+          "internal_resistance_ac": TO_MOHM, "internal_resistance_dc": TO_MOHM,
           "length": TO_MM, "width": TO_MM, "thickness": TO_MM,
           "height": TO_MM, "diameter": TO_MM}
+TEMPERATURES = {"operating_temperature_min", "operating_temperature_max",
+                "storage_temperature_min", "storage_temperature_max"}
+
+# The quantities bd.v_completeness tracks. The page reports the same twelve so
+# a number on the site and a number in a query mean the same thing.
+TRACKED = ["capacity", "nominal_voltage", "mass", "max_continuous_discharge_current",
+           "internal_resistance_ac", "internal_resistance_dc", "cycle_life",
+           "operating_temperature_min", "operating_temperature_max", "energy",
+           "charge_cutoff_voltage", "discharge_cutoff_voltage"]
+
+# Which stated figure to lead with when a datasheet states several. Lower is
+# preferred. "standard" and "typical" are what the maker measured under its
+# reference procedure; "rated" and "minimum" are guarantees; "maximum" is a
+# ceiling and never a central figure.
+STAT_RANK = {"standard": 0, "typical": 1, "nominal": 2, "rated": 3, "initial": 4,
+             "minimum": 5, "design": 6, "guaranteed": 7, "mean": 8, "median": 9,
+             "measured": 10, "maximum": 11, "absolute_max": 12, "absolute_min": 12}
+MASS_RANK = {"typical": 0, "nominal": 1, "standard": 2, "mean": 3, "measured": 4,
+             "rated": 5, "maximum": 6, "minimum": 7}
 
 
-def scaled(v: dict, u: dict, q: str, errs: list[str]):
-    """A quantity in its canonical unit, or None -- never a bare number."""
-    if v.get(q) is None:
-        return None
+def convert(o: dict, errs: list[str]):
+    """One observation in its canonical unit, or None -- never a bare number."""
+    q, u = o["q"], o["u"]
+    if q in TEMPERATURES:
+        if u not in TO_C:
+            errs.append(f"{q}: unit {u!r} is not a temperature unit; add it to TO_C")
+            return None
+        k, off = TO_C[u]
+        return o["v"] * k + off
     table = SCALES.get(q)
     if table is None:
-        return v[q]
-    if u.get(q) not in table:
-        errs.append(f"{q}: unit {u.get(q)!r} is not convertible; add it to SCALES")
+        return o["v"]
+    if u not in table:
+        errs.append(f"{q}: unit {u!r} is not convertible; add it to SCALES")
         return None
-    return v[q] * table[u[q]]
+    return o["v"] * table[u]
+
+
+def c_rate(o: dict, nameplate_ah: float | None) -> tuple[float | None, str | None]:
+    """The rate an observation was taken at, as a C-rate and as text.
+
+    C and It rates are used as stated. An absolute current is divided by the
+    nameplate so two cells of different capacity compare, and the text keeps
+    the current as printed. Constant power (EVE's "0.5P") is stated but not a
+    C-rate, and is never converted: the text carries it, the number stays None.
+    """
+    cond = o.get("cond") or {}
+    rv, ru = cond.get("rate_value"), cond.get("rate_unit")
+    if rv is None or ru in (None, "unspecified"):
+        return None, None
+    if ru in ("C", "It"):
+        return float(rv), f"{rv:g}{ru}"
+    if ru in TO_A:
+        amps = rv * TO_A[ru]
+        return (amps / nameplate_ah if nameplate_ah else None), f"{rv:g} {ru}"
+    return None, f"{rv:g}{ru}" if ru == "P" else f"{rv:g} {ru}"
+
+
+def capacity_key(o: dict, nameplate_ah: float | None):
+    """THE CAPACITY RULE.
+
+    A datasheet states several capacities and they are not interchangeable:
+    the Samsung 50E's 4900 mAh at 0.2C and 4753 mAh at 1C sit on one page. The
+    figure the page leads with is chosen by this rule and only this rule:
+
+      1. a capacity whose rate the source states beats one whose rate it does
+         not, so a bare number never outranks a conditioned one;
+      2. among stated rates, the lowest rate wins -- that is the maker's own
+         "standard" figure, the one taken nearest equilibrium;
+      3. ties break on the statistic, standard before typical before rated;
+      4. then the larger value, so a range's upper figure is not hidden.
+
+    The rate that won is printed next to the number. A reader who wants the
+    1C figure opens the cell sheet, where every stated capacity is listed.
+    """
+    rate, text = c_rate(o, nameplate_ah)
+    stated = text is not None
+    return (0 if stated else 1, 0 if rate is not None else 1, rate or 0.0,
+            STAT_RANK.get(o.get("stat"), 13), -o["v"])
+
+
+def pick(obs: list[dict], q: str, key):
+    rows = [o for o in obs if o["q"] == q]
+    return min(rows, key=key) if rows else None
+
+
+def nearest(obs: list[dict], q: str, temperature_c: float = 25.0):
+    """The observation of q taken nearest a temperature; higher value on ties.
+
+    A current limit is a surface over temperature (the LG M50LT has three).
+    Absent a stated temperature the row is taken as the room-temperature
+    figure, which is what bd.v_cell_selection does too, and the page says so.
+    """
+    def key(o):
+        t = (o.get("cond") or {}).get("temperature_c")
+        return (abs((25.0 if t is None else t) - temperature_c), -o["v"])
+    return pick(obs, q, key)
+
+
+def temperature_limit(obs: list[dict], q: str, errs: list[str]):
+    """Operating limit in Celsius, discharge direction preferred."""
+    def key(o):
+        d = (o.get("cond") or {}).get("direction")
+        return (0 if d == "discharge" else 1 if d in (None, "symmetric") else 2,
+                (o["v"] if q.endswith("_min") else -o["v"]))
+    o = pick(obs, q, key)
+    return convert(o, errs) if o else None
+
+
+def basis_text(o: dict | None, nameplate_ah: float | None) -> dict | None:
+    if not o:
+        return None
+    cond = o.get("cond") or {}
+    rate, text = c_rate(o, nameplate_ah)
+    return {"stat": o.get("stat"), "rate": text or "rate unstated", "rate_c": rate,
+            "temp": cond.get("temperature_c"), "cutoff": cond.get("voltage_lower_v"),
+            "unstated": o.get("unstated") or []}
 
 
 def metrics(obs: list[dict], dims: list | None, shape: str,
@@ -219,68 +338,112 @@ def metrics(obs: list[dict], dims: list | None, shape: str,
     a new fact, and the distinction is worth keeping visible: a reader should
     be able to tell which of two cells had its specific energy printed on the
     datasheet and which one we divided. Nothing is computed from a value the
-    source did not state.
+    source did not state, and the capacity that feeds the arithmetic is chosen
+    by capacity_key(), never by position in the file.
     """
-    v, u = {}, {}
-    for o in obs:                       # first statement of a quantity wins
-        v.setdefault(o["q"], o["v"]), u.setdefault(o["q"], o["u"])
+    caps = [convert(o, []) for o in obs if o["q"] == "capacity"]
+    nameplate = max((c for c in caps if c), default=None)
 
-    g = scaled(v, u, "mass", errs)
-    ah, volt = scaled(v, u, "capacity", errs), scaled(v, u, "nominal_voltage", errs)
+    cap = pick(obs, "capacity", lambda o: capacity_key(o, nameplate))
+    ah = convert(cap, errs) if cap else None
+    volt_o = pick(obs, "nominal_voltage", lambda o: (STAT_RANK.get(o.get("stat"), 13),))
+    volt = convert(volt_o, errs) if volt_o else None
+    mass_o = pick(obs, "mass", lambda o: (MASS_RANK.get(o.get("stat"), 8),))
+    g = convert(mass_o, errs) if mass_o else None
     wh = ah * volt if ah is not None and volt is not None else None
 
     litres = None
     if dims:
-        d = [x * TO_MM.get(u.get(k, "mm"), 1.0) for x, k in
-             zip(dims, ("length", "width", "thickness"))]  # dims already mm
-        litres = (math.pi * (d[0] / 2) ** 2 * d[1] / 1e6 if shape == "cyl" and len(d) == 2
-                  else d[0] * d[1] * d[2] / 1e6 if len(d) == 3 else None)
+        litres = (math.pi * (dims[0] / 2) ** 2 * dims[1] / 1e6
+                  if shape == "cyl" and len(dims) == 2
+                  else dims[0] * dims[1] * dims[2] / 1e6 if len(dims) == 3 else None)
 
-    out = {"wh": wh, "mass_g": g, "litres": litres}
+    out = {"wh": wh, "mass_g": g, "litres": litres, "ah": ah, "v": volt,
+           "cap_basis": basis_text(cap, nameplate),
+           "v_basis": volt_o.get("stat") if volt_o else None,
+           "mass_basis": mass_o.get("stat") if mass_o else None}
+
+    # Stated density figures beat derived ones; typical beats the rest.
     for key, stated, num, den in (("whkg", "specific_energy", wh, g and g / 1000),
                                   ("whl", "energy_density", wh, litres)):
-        if v.get(stated) is not None:
-            out[key], out[key + "_derived"] = v[stated], False
+        so = pick(obs, stated, lambda o: (STAT_RANK.get(o.get("stat"), 13),))
+        if so is not None:
+            out[key], out[key + "_derived"] = so["v"], False
         elif num and den:
             out[key], out[key + "_derived"] = round(num / den, 1), True
         else:
             out[key], out[key + "_derived"] = None, False
 
-    peak = scaled(v, u, "peak_power", errs)
-    cur = scaled(v, u, "max_continuous_discharge_current", errs)
+    # Current limits are a surface over temperature; lead with the row nearest
+    # room temperature and say what temperature that row was stated at.
+    cur_o = nearest(obs, "max_continuous_discharge_current")
+    cur = convert(cur_o, errs) if cur_o else None
+    out["a"] = cur
+    out["a_temp"] = (cur_o.get("cond") or {}).get("temperature_c") if cur_o else None
+    out["a_unstated"] = bool(cur_o and "temperature_c" in (cur_o.get("unstated") or []))
+    out["crate"] = round(cur / ah, 2) if cur and ah else None
+
+    peak_o = pick(obs, "peak_power", lambda o: (STAT_RANK.get(o.get("stat"), 13),))
+    peak = convert(peak_o, errs) if peak_o else None
     out["wkg"] = (round(peak / (g / 1000), 1) if peak and g else
                   round(cur * volt / (g / 1000), 1) if cur and g and volt else None)
-    out["ah"], out["v"], out["a"] = ah, volt, cur
-    out["crate"] = round(cur / ah, 2) if cur and ah else None
+
+    # Resistance is never one number: method, duration, SOC and temperature
+    # travel with it or it does not appear.
+    def resistance(q):
+        def key(o):
+            c = o.get("cond") or {}
+            t, soc = c.get("temperature_c"), c.get("soc_pct")
+            return (abs((25 if t is None else t) - 25), abs((50 if soc is None else soc) - 50))
+        o = pick(obs, q, key)
+        if not o:
+            return None
+        c = o.get("cond") or {}
+        return {"mohm": convert(o, errs), "dur": c.get("pulse_duration_s"),
+                "freq": c.get("frequency_hz"), "soc": c.get("soc_pct"),
+                "temp": c.get("temperature_c"), "dir": c.get("direction"),
+                "stat": o.get("stat"), "unstated": o.get("unstated") or []}
+    out["dcir"] = resistance("internal_resistance_dc")
+    out["acir"] = resistance("internal_resistance_ac")
+
+    # Cycle life is a function, not a number: lead with the claim that states
+    # the most of its conditions, and carry those conditions with it.
+    def cycles_key(o):
+        c = o.get("cond") or {}
+        return (-sum(1 for k in ("temperature_c", "dod_pct", "rate_value") if c.get(k) is not None),
+                -o["v"])
+    cyc = pick(obs, "cycle_life", cycles_key)
+    if cyc:
+        c = cyc.get("cond") or {}
+        _, rate_text = c_rate(cyc, nameplate)
+        extra = cyc.get("extra") or {}
+        out["cycles"] = {"n": cyc["v"], "dod": c.get("dod_pct"), "rate": rate_text,
+                         "temp": c.get("temperature_c"),
+                         "eol": extra.get("eol_criterion_pct"),
+                         "unstated": cyc.get("unstated") or []}
+    else:
+        out["cycles"] = None
+
+    out["tmin"] = temperature_limit(obs, "operating_temperature_min", errs)
+    out["tmax"] = temperature_limit(obs, "operating_temperature_max", errs)
+    chg = pick(obs, "standard_charge_current", lambda o: (STAT_RANK.get(o.get("stat"), 13),))
+    out["chg"] = convert(chg, errs) if chg else None
+    chg_max = nearest(obs, "max_continuous_charge_current")
+    out["chg_max"] = convert(chg_max, errs) if chg_max else None
+    for key, q in (("vchg", "charge_cutoff_voltage"), ("vdis", "discharge_cutoff_voltage")):
+        o = pick(obs, q, lambda o: (STAT_RANK.get(o.get("stat"), 13),))
+        out[key] = convert(o, errs) if o else None
+
+    # Completeness: what the record has against what an engineer needs, and
+    # how much of what it has rests on conditions the source never states.
+    present = {o["q"] for o in obs}
+    out["complete"] = sum(1 for q in TRACKED if q in present)
+    out["tracked"] = len(TRACKED)
+    out["missing"] = [q for q in TRACKED if q not in present]
+    out["unstated"] = sum(len(o.get("unstated") or []) for o in obs)
+    out["obs_unstated"] = sum(1 for o in obs if o.get("unstated"))
+    out["n_obs"] = len(obs)
     return out
-
-
-def seed(products: list[dict]) -> list[dict]:
-    """The comparison chart: cells with enough sourced numbers to place a point.
-
-    A cell missing any of capacity, voltage or mass is left off rather than
-    filled in. An absent point is a gap someone can close; a guessed one is a
-    lie that plots.
-    """
-    rows = []
-    for p in products:
-        if p["kind"] != "cell":
-            continue
-        by = {}
-        for o in p["obs"]:
-            by.setdefault(o["q"], o)
-        need = ("capacity", "nominal_voltage", "mass")
-        if not all(q in by for q in need):
-            continue
-        g = by["mass"]["v"] * (1000 if by["mass"]["u"] == "kg" else 1)
-        cur = by.get("max_continuous_discharge_current")
-        rows.append({"cell": p["cell"], "manu": p["manu"],
-                     "chem": p["chem"]["designation"] or "?", "fmt": p["fmt"],
-                     "shape": p["shape"], "dims": p["dims"],
-                     "ah": by["capacity"]["v"], "v": by["nominal_voltage"]["v"],
-                     "g": round(g, 1), "a": cur["v"] if cur else None,
-                     "uid": p["uid"]})
-    return sorted(rows, key=lambda r: (-r["ah"], r["cell"]))
 
 
 def coverage(segments: list[dict], products: list[dict]) -> list[dict]:
