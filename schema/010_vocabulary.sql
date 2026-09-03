@@ -276,6 +276,7 @@ CREATE TABLE quantity (
   bdf_name        text,                      -- Battery Data Format machine name
   bpx_key         text,                      -- BPX parameter key
   battery_pass_path text,                    -- io.BatteryPass.* aspect path
+  qudt_quantity_kind text,                   -- http://qudt.org/vocab/quantitykind/...
   -- which condition dimensions MUST be present for this quantity to be
   -- interpretable. Enforced by validate_observation(); this is what stops
   -- a bare "internal_resistance = 15 mΩ" from ever entering the database.
@@ -296,7 +297,8 @@ CREATE TABLE unit (
   si_symbol   text NOT NULL,
   factor      double precision NOT NULL,   -- value_si = value*factor + offset
   offset_     double precision NOT NULL DEFAULT 0,
-  dimension   text
+  dimension   text,
+  qudt_iri    text                            -- http://qudt.org/vocab/unit/..., set by 175
 );
 
 INSERT INTO unit (symbol, si_symbol, factor, offset_, dimension) VALUES

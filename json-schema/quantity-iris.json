@@ -1,0 +1,848 @@
+{
+ "classes": {
+  "chemistry_designations": {
+   "LCO": "https://w3id.org/emmo/domain/battery#battery_4f0b1312_da2f_4039_a06d_d571ce51f835",
+   "LFP": "https://w3id.org/emmo/domain/battery#battery_04a4e5a4_e6fd_43af_b1ca_4a16d5f8886c",
+   "LMFP": "https://w3id.org/emmo/domain/battery#battery_c429bb30_50d6_4cec_ae7e_279f59c36ccd",
+   "LMO": "https://w3id.org/emmo/domain/battery#battery_45804eeb_fba3_49dd_ae79_6b4e958d6e09",
+   "LTO": "https://w3id.org/emmo/domain/battery#battery_fd811dc3_8c37_4741_a099_78e26e4110ef",
+   "Li-MnO2": "https://w3id.org/emmo/domain/battery#battery_3b0b0d6e_8b0e_4491_885e_8421d3eb3b69",
+   "Lithium-ion polymer": "https://w3id.org/emmo/domain/battery#battery_72542944_ee85_4335_9f6d_621840e38686",
+   "NCA": "https://w3id.org/emmo/domain/battery#battery_217e44ed_efd9_4b9e_9cb4_1f7488d996b2",
+   "NFPP/HC": "https://w3id.org/emmo/domain/battery#battery_d3855d31_6aad_4b6d_ab35_c61669df583e",
+   "NMC": "https://w3id.org/emmo/domain/battery#battery_834095fa_f684_4368_a7ce_853579a1362a",
+   "NMC811": "https://w3id.org/emmo/domain/battery#battery_834095fa_f684_4368_a7ce_853579a1362a",
+   "Zn/MnO2": "https://w3id.org/emmo/domain/battery#battery_b572826a_b4e4_4986_b57d_f7b945061f8b"
+  },
+  "chemistry_families": {
+   "alkaline": "https://w3id.org/emmo/domain/battery#battery_b572826a_b4e4_4986_b57d_f7b945061f8b",
+   "flow_iron": "https://w3id.org/emmo/domain/battery#battery_31a80cd5_d4eb_4f7d_a990_f32a5a75ea86",
+   "flow_other": "https://w3id.org/emmo/domain/battery#battery_8f363e2e_8258_415d_8784_9a60fce9aeef",
+   "flow_vanadium": "https://w3id.org/emmo/domain/battery#battery_e2aac68e_f880_4be5_87e6_73eba9f75955",
+   "flow_zinc_bromine": "https://w3id.org/emmo/domain/battery#battery_7b28d3a1_24d5_477b_afd8_af2bac480724",
+   "lead_acid": "https://w3id.org/emmo/domain/battery#battery_7eb62323_1001_4320_8fb5_c590ce93d3ce",
+   "lithium_ion": "https://w3id.org/emmo/domain/battery#battery_96addc62_ea04_449a_8237_4cd541dd8e5f",
+   "lithium_metal": "https://w3id.org/emmo/domain/battery#battery_ada13509_4eed_4e40_a7b1_4cc488144154",
+   "lithium_primary": "https://w3id.org/emmo/domain/battery#battery_3b0b0d6e_8b0e_4491_885e_8421d3eb3b69",
+   "nickel_cadmium": "https://w3id.org/emmo/domain/battery#battery_14ffa830_2789_429d_8c05_d2ae0ca51732",
+   "nickel_iron": "https://w3id.org/emmo/domain/battery#battery_a316de25_e469_4a60_81fa_fcb0f372502f",
+   "nickel_metal_hydride": "https://w3id.org/emmo/domain/battery#battery_75cab90d_4bff_472a_be0f_48e61a272d01",
+   "nickel_zinc": "https://w3id.org/emmo/domain/battery#battery_0c3674b5_3f7b_4308_9bed_0ade6eb69a4e",
+   "silver_oxide": "https://w3id.org/emmo/domain/battery#battery_d95593e8_03cd_404b_8b2b_beb97417a16a",
+   "sodium_ion": "https://w3id.org/emmo/domain/battery#battery_42329a95_03fe_4ec1_83cb_b7e8ed52f68a",
+   "solid_state": "https://w3id.org/emmo/domain/battery#battery_ef6a6244_fe3d_406e_8456_f72b45bb1fdf",
+   "supercapacitor": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_dc6abae7_39b0_4d22_b52e_14d088a4bd5f",
+   "zinc_air": "https://w3id.org/emmo/domain/battery#battery_e8eada73_3811_4bbe_8f65_f6ee089d439f",
+   "zinc_carbon": "https://w3id.org/emmo/domain/battery#battery_aaaa6f4b_435b_425b_acb1_e8a427c3489a"
+  },
+  "form_factors": {
+   "blade": "https://w3id.org/emmo/domain/battery#battery_86c9ca80-de6f-417f-afdc-a7e52fa6322d",
+   "button": "https://w3id.org/emmo/domain/battery#battery_b7fdab58_6e91_4c84_b097_b06eff86a124",
+   "coin": "https://w3id.org/emmo/domain/battery#battery_b7fdab58_6e91_4c84_b097_b06eff86a124",
+   "cylindrical": "https://w3id.org/emmo/domain/battery#battery_ac604ecd_cc60_4b98_b57c_74cd5d3ccd40",
+   "pouch": "https://w3id.org/emmo/domain/battery#battery_392b3f47_d62a_4bd4_a819_b58b09b8843a",
+   "prismatic_hardcase": "https://w3id.org/emmo/domain/battery#battery_86c9ca80-de6f-417f-afdc-a7e52fa6322d"
+  },
+  "lead_acid_constructions": {
+   "agm": "https://w3id.org/emmo/domain/battery#battery_0c7bde43_72dd_486c_a4a0_296bae9ccdc4",
+   "flooded": "https://w3id.org/emmo/domain/battery#battery_7eb62323_1001_4320_8fb5_c590ce93d3ce",
+   "gel": "https://w3id.org/emmo/domain/battery#battery_0c7bde43_72dd_486c_a4a0_296bae9ccdc4"
+  },
+  "product_kinds": {
+   "cell": "https://w3id.org/emmo/domain/battery#battery_68ed592a_7924_45d0_a108_94d6275d57f0",
+   "component": null,
+   "module": "https://w3id.org/emmo/domain/battery#battery_9acfeea6_ca7f_4b97_9844_c38edf6387ec",
+   "pack": "https://w3id.org/emmo/domain/battery#battery_be3b35a7_75a3_4be0_9265_beb178ea7b00",
+   "primary_cell": "https://w3id.org/emmo/domain/battery#battery_3b0b0d6e_8b0e_4491_885e_8421d3eb3b69",
+   "system": "https://w3id.org/emmo/domain/battery#battery_88b7849f_4c33_4206_a674_2489bf08d8b8"
+  },
+  "product_revision_by_kind": {
+   "cell": "https://w3id.org/emmo/domain/battery#battery_1cfbba6c_8824_4932_a23e_2141483acef7",
+   "module": "https://w3id.org/emmo/domain/battery#battery_142a444e_2575_41dd_8d69_52e438fc66d3",
+   "pack": "https://w3id.org/emmo/domain/battery#battery_c25c3fb4_14ce_4640_abcc_d4a6e641fee4",
+   "system": "https://w3id.org/emmo/domain/battery#battery_10702b58_1640_439a_8db6_ffda82beda70"
+  }
+ },
+ "organization": "https://w3id.org/emmo#EMMO_c0afb341_7d31_4883_a307_ae4606df2a1b",
+ "product_revision": "https://w3id.org/emmo/domain/battery#battery_a4ba7f50_5fe0_43f4_9862_4dd57e87a44c",
+ "quantities": {
+  "absolute_max_voltage": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_6dcd5baf_58cd_43f5_a692_51508e036c88",
+   "emmo_label": "UpperVoltageLimit",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "absolute_min_voltage": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_5ebeea80_af22_456b_9087_78c2a8465c58",
+   "emmo_label": "VoltageLimit",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "area_specific_impedance": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_79a02de5_b884_4eab_bc18_f67997d597a2",
+   "emmo_label": "ElectricImpedance",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "areal_capacity": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_bcb33f7e_5573_4bc2_b636_4ea313a9dd3a",
+   "emmo_label": "AreicCapacity",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricChargePerArea"
+  },
+  "calendar_life": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_743c71a3_b80c_42e3_92fa_13a67b8167df",
+   "emmo_label": "CalendarLife",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Time"
+  },
+  "capacity": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_791c1915_a791_4450_acd8_7f94764743b5",
+   "emmo_label": "Capacity",
+   "emmo_relation": "exact",
+   "emmo_statistics": {
+    "maximum": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_b7781ebc_90a7_4f19_997f_aed28dee1b01",
+    "minimum": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_d3c0078e_c1d3_461e_873d_e5c3adf441c5",
+    "nominal": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_8abde9d0_84f6_4b4f_a87e_86028a397100",
+    "rated": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_9b3b4668_0795_4a35_9965_2af383497a26",
+    "typical": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_34d6cdd9_d3a7_4302_a54d_9dbd8a3b5e68"
+   },
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCharge"
+  },
+  "capacity_retention": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_b8d4042d_329a_450f_9088_2fc0e16a8667",
+   "emmo_label": "RetainedCapacity",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "carbon_footprint_per_kwh": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/MassPerEnergy"
+  },
+  "charge_cutoff_voltage": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_6dcd5baf_58cd_43f5_a692_51508e036c88",
+   "emmo_label": "UpperVoltageLimit",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "charge_transfer_resistance": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1",
+   "emmo_label": "ElectricResistance",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "cooling_capacity": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
+  },
+  "coulombic_efficiency": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_a5962e05_466d_46a4_8951_bea59d7326e5",
+   "emmo_label": "CoulombicEfficiency",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Efficiency"
+  },
+  "current": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+   "emmo_label": "ElectricCurrent",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "cv_cutoff_current": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_74de2c33_84fc_4c2f_afe1_56d169149114",
+   "emmo_label": "CurrentLimit",
+   "emmo_relation": "related",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "cycle_life": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ae782b14_88ce_4cdd_9418_12aca00be937",
+   "emmo_label": "CycleLife",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Count"
+  },
+  "cycle_number": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_5766a819_c319_48ba_ab9a_ce3bd8fedee8",
+   "emmo_label": "CycleIndex",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Count"
+  },
+  "diameter": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_c1c8ac3c_8a1c_4777_8e0b_14c1f9f9b0c6",
+   "emmo_label": "Diameter",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Diameter"
+  },
+  "diffusion_coefficient": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_931a725b_926d_4f60_8955_61fe17fce98b",
+   "emmo_label": "DiffusionCoefficient",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DiffusionCoefficient"
+  },
+  "discharge_cutoff_voltage": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_5ebeea80_af22_456b_9087_78c2a8465c58",
+   "emmo_label": "VoltageLimit",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "displacement": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_4024a7f8_2991_4d80_bcc9_63705aa0c750",
+   "emmo_label": "Displacement",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Displacement"
+  },
+  "dqdv": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_10104499_6580_4867_9c5d_b9882c89c2f7",
+   "emmo_label": "DifferentialCapacity",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Capacitance"
+  },
+  "drt_gamma": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "dvdq": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": null
+  },
+  "electrode_area": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_96f39f77_44dc_491b_8fa7_30d887fe0890",
+   "emmo_label": "Area",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Area"
+  },
+  "energy": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_31ec09ba_1713_42cb_83c7_b38bf6f9ced2",
+   "emmo_label": "Energy",
+   "emmo_relation": "exact",
+   "emmo_statistics": {
+    "nominal": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_19e27aa3_0970_43a6_86d3_e3cdd956134d",
+    "rated": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_da215d1a_196a_465f_9de8_89f6fbb76982"
+   },
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Energy"
+  },
+  "energy_density": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_4aa1b96e_44a0_4b1a_a0ac_723d0223d80b",
+   "emmo_label": "EnergyDensity",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/EnergyDensity"
+  },
+  "energy_efficiency": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79198264_cdf5_4fc3_8bcf_e5140a52547a",
+   "emmo_label": "EnergyEfficiency",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Efficiency"
+  },
+  "energy_retention": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "entropic_coefficient": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_3bb5ae23_59fa_4bc7_9495_803eb6719f28",
+   "emmo_label": "TemperatureCoefficientOfTheOpenCircuitVoltage",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": null
+  },
+  "expansion_force": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_1f087811_06cb_42d5_90fb_25d0e7e068ef",
+   "emmo_label": "Force",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Force"
+  },
+  "first_cycle_efficiency": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_469b9516_a96d_4aa2_b8e5_05ae982e2084",
+   "emmo_label": "InitialCoulombicEfficiency",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Efficiency"
+  },
+  "force": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_1f087811_06cb_42d5_90fb_25d0e7e068ef",
+   "emmo_label": "Force",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Force"
+  },
+  "frequency": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a",
+   "emmo_label": "Frequency",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Frequency"
+  },
+  "heat_generation_rate": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_91a99750_7914_42be_9fe5_b82c59183450",
+   "emmo_label": "HeatFlowRate",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
+  },
+  "height": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_08bcf1d6_e719_46c8_bb21_24bc9bf34dba",
+   "emmo_label": "Height",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Height"
+  },
+  "impedance_imag": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_0089729b_5890_4c15_aa09_1244d41f8626",
+   "emmo_label": "ImaginaryElectricImpedance",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Reactance"
+  },
+  "impedance_real": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f",
+   "emmo_label": "RealElectricImpedance",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "intensity": {
+   "emmo_iri": "https://w3id.org/emmo#emmo_fd2aa864_eef7_4c3d_8243_9ea832d9df3e",
+   "emmo_label": "Intensity",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Dimensionless"
+  },
+  "internal_resistance_ac": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_964cd426_f3cf_4a52_8c5d_0490cf48edb5",
+   "emmo_label": "ACInternalResistance",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "internal_resistance_dc": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_7b3eb826_b968_493a_8396_cc3a5f09ecb3",
+   "emmo_label": "DCInternalResistance",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "irreversible_expansion": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "knee_point_cycle": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Count"
+  },
+  "leakage_current": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_c55ec02c_b727_4df1_97ce_91d7bb5d5e91",
+   "emmo_label": "Leakage",
+   "emmo_relation": "related",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "length": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_cd2cd0de_e0cc_4ef1_b27e_2e88db027bac",
+   "emmo_label": "Length",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Length"
+  },
+  "lithium_content": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Mass"
+  },
+  "mass": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_ed4af7ae_63a2_497e_bb88_2309619ea405",
+   "emmo_label": "Mass",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Mass"
+  },
+  "max_continuous_charge_current": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_39d8a6ee_cd55_4855_8b5b_d42bef95ac78",
+   "emmo_label": "MaximumContinuousChargingCurrent",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "max_continuous_discharge_current": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ba7ac581_0e13_4815_b888_013c378932f5",
+   "emmo_label": "MaximumContinuousDischargingCurrent",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "max_pulse_discharge_current": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_3e54f9e3_a31d_4821_9bfb_ef953a42c35b",
+   "emmo_label": "MaximumPulseDischargingCurrent",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "max_runaway_temperature": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_04f28ce3_251d_429e_aa85_ab3eb45bbcd2",
+   "emmo_label": "ThermalRunaway",
+   "emmo_relation": "related",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "nominal_voltage": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_639b844a_e801_436b_985d_28926129ead6",
+   "emmo_label": "NominalVoltage",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "ohmic_resistance": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1",
+   "emmo_label": "ElectricResistance",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "open_circuit_voltage": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_9c657fdc_b9d3_4964_907c_f9a6e8c5f52b",
+   "emmo_label": "OpenCircuitVoltage",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "operating_temperature_max": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_e999bd7d_93ad_47fb_8d8d_dd667e4ef553",
+   "emmo_label": "MaximumOperatingTemperature",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "operating_temperature_min": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_08a73f4b_3242_4356_af24_68ba0bf66d51",
+   "emmo_label": "MinimumOperatingTemperature",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "parallel_count": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Count"
+  },
+  "peak_power": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_4e6c4e9d_64cb_4c24_a0f3_5b4146ebbeb0",
+   "emmo_label": "MaximumPower",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
+  },
+  "power": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2",
+   "emmo_label": "Power",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
+  },
+  "pressure": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_50a44256_9dc5_434b_bad4_74a4d9a29989",
+   "emmo_label": "Pressure",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Pressure"
+  },
+  "rated_power": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2",
+   "emmo_label": "Power",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
+  },
+  "recycled_content_cobalt": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/MassFraction"
+  },
+  "recycled_content_lead": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/MassFraction"
+  },
+  "recycled_content_lithium": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/MassFraction"
+  },
+  "recycled_content_nickel": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/MassFraction"
+  },
+  "relaxation_time": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_26c6f1b3_c33f_4804_a3e8_3c5c931582b3",
+   "emmo_label": "RelaxationTime",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Time"
+  },
+  "resistance_growth": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "reversible_expansion": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "round_trip_efficiency": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_c413d29a_b814_4d88_8db0_0fd0171cff11",
+   "emmo_label": "RoundTripEnergyEfficiency",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Efficiency"
+  },
+  "runaway_onset_temperature": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_04f28ce3_251d_429e_aa85_ab3eb45bbcd2",
+   "emmo_label": "ThermalRunaway",
+   "emmo_relation": "related",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "self_discharge_rate": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_c3e97d58_1854_4c23_bb42_d2972172865e",
+   "emmo_label": "SelfDischargeRate",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "series_count": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Count"
+  },
+  "service_life_hours": {
+   "emmo_iri": "https://w3id.org/emmo/domain/battery#battery_be5d1b4f_5579_4702_9dbb_6c15e577e8dc",
+   "emmo_label": "ServiceLife",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Time"
+  },
+  "shipping_voltage": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "soc_estimation_accuracy": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "soh_estimation_accuracy": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "specific_capacity": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_1e3dc60d_dd6b_47d6_8161_70004fc5ee30",
+   "emmo_label": "SpecificCapacity",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricChargePerMass"
+  },
+  "specific_energy": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_e218c625_6a39_47a9_8d08_a2ef41c152a9",
+   "emmo_label": "SpecificEnergy",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/SpecificEnergy"
+  },
+  "specific_heat_capacity": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_b4f4ed28_d24c_4a00_9583_62ab839abeca",
+   "emmo_label": "SpecificHeatCapacity",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/SpecificHeatCapacity"
+  },
+  "specific_power": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_c762a928_5a74_46fd_9929_4ac2d7a3a8d7",
+   "emmo_label": "SpecificPower",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/SpecificPower"
+  },
+  "stack_pressure": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_50a44256_9dc5_434b_bad4_74a4d9a29989",
+   "emmo_label": "Pressure",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Pressure"
+  },
+  "standard_charge_current": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79551e01_4bc6_4292_916e_08fe28a84600",
+   "emmo_label": "ChargingCurrent",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "standby_consumption": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
+  },
+  "state_of_charge": {
+   "emmo_iri": "https://w3id.org/emmo/domain/battery#battery_17591da0_34ec_41b9_b3c1_3a4446dc6f0a",
+   "emmo_label": "StateOfCharge",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "state_of_health": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_a7a4614f_2426_46f3_8475_cda4a9fabfce",
+   "emmo_label": "StateOfHealth",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "storage_temperature_max": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_0ea4d188_9701_4699_a5ca_812a98a9afa7",
+   "emmo_label": "MaximumStorageTemperature",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "storage_temperature_min": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_0ddfd57a_d338_4690_be45_b26884ed6302",
+   "emmo_label": "MinimumStorageTemperature",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "temperature": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22",
+   "emmo_label": "CelsiusTemperature",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "thermal_conductivity_in_plane": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_8dd40ec6_2c5a_43f3_bf64_cadcd447a1c1",
+   "emmo_label": "ThermalConductivity",
+   "emmo_relation": "narrower",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ThermalConductivity"
+  },
+  "thermal_conductivity_through_plane": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_8dd40ec6_2c5a_43f3_bf64_cadcd447a1c1",
+   "emmo_label": "ThermalConductivity",
+   "emmo_relation": "narrower",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ThermalConductivity"
+  },
+  "thickness": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_43003c86_9d15_433b_9789_ee2940920656",
+   "emmo_label": "Thickness",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Thickness"
+  },
+  "time": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7",
+   "emmo_label": "Time",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Time"
+  },
+  "two_theta": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_034bc7dd_a8c2_4ed0_8b51_66ac9b00342f",
+   "emmo_label": "BraggAngle",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/PlaneAngle"
+  },
+  "usable_energy": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3",
+   "emmo_label": "StoredEnergy",
+   "emmo_relation": "related",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Energy"
+  },
+  "voltage": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "volume": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_f1a51559_aa3d_43a0_9327_918039f0dfed",
+   "emmo_label": "Volume",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Volume"
+  },
+  "warranty_cycles": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Count"
+  },
+  "warranty_throughput": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Energy"
+  },
+  "width": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_e4de48b1_dabb_4490_ac2b_040f926c64f0",
+   "emmo_label": "Width",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Width"
+  }
+ },
+ "sources": {
+  "emmo": {
+   "sha256": "5a0657932a577e765bf7c1daf1ad74b3c128f2ce54c33935fa9e18518cf8f873",
+   "url": "https://raw.githubusercontent.com/emmo-repo/domain-battery/gh-pages/battery-inferred.ttl",
+   "version_iri": "https://w3id.org/emmo/domain/battery/0.20.2/battery"
+  },
+  "qudt": {
+   "quantitykinds": {
+    "sha256": "729dc6c4f429a808d4c5d6766f1be13a3dc1196fd95f5bdb417a19f251cbce8f",
+    "url": "https://raw.githubusercontent.com/qudt/qudt-public-repo/main/src/main/rdf/vocab/quantitykinds/VOCAB_QUDT-QUANTITY-KINDS-ALL.ttl"
+   },
+   "units": {
+    "sha256": "9d7daff4a3711b3ae8650ed9fab20263ca80aef1d8f4786c98dfa5450dd2826e",
+    "url": "https://raw.githubusercontent.com/qudt/qudt-public-repo/main/src/main/rdf/vocab/unit/VOCAB_QUDT-UNITS-ALL.ttl"
+   }
+  }
+ },
+ "units": {
+  "%": "http://qudt.org/vocab/unit/PERCENT",
+  "%/month": null,
+  "%/year": null,
+  "1": "http://qudt.org/vocab/unit/UNITLESS",
+  "A": "http://qudt.org/vocab/unit/A",
+  "Ah": "http://qudt.org/vocab/unit/A-HR",
+  "C": "http://qudt.org/vocab/unit/C",
+  "Hz": "http://qudt.org/vocab/unit/HZ",
+  "J": "http://qudt.org/vocab/unit/J",
+  "J_per_kgK": "http://qudt.org/vocab/unit/J-PER-KiloGM-K",
+  "K": "http://qudt.org/vocab/unit/K",
+  "L": "http://qudt.org/vocab/unit/L",
+  "MPa": "http://qudt.org/vocab/unit/MegaPA",
+  "N": "http://qudt.org/vocab/unit/N",
+  "Pa": "http://qudt.org/vocab/unit/PA",
+  "V": "http://qudt.org/vocab/unit/V",
+  "V_per_K": "http://qudt.org/vocab/unit/V-PER-K",
+  "W": "http://qudt.org/vocab/unit/W",
+  "W_per_kg": "http://qudt.org/vocab/unit/W-PER-KiloGM",
+  "W_per_mK": "http://qudt.org/vocab/unit/W-PER-M-K",
+  "Wh": "http://qudt.org/vocab/unit/W-HR",
+  "Wh/L": "http://qudt.org/vocab/unit/W-HR-PER-L",
+  "Wh/kg": "http://qudt.org/vocab/unit/W-HR-PER-KiloGM",
+  "Wh_per_L": "http://qudt.org/vocab/unit/W-HR-PER-L",
+  "Wh_per_kg": "http://qudt.org/vocab/unit/W-HR-PER-KiloGM",
+  "bar": "http://qudt.org/vocab/unit/BAR",
+  "cm2": "http://qudt.org/vocab/unit/CentiM2",
+  "cm3": "http://qudt.org/vocab/unit/CentiM3",
+  "cycles": "http://qudt.org/vocab/unit/NUM",
+  "day": "http://qudt.org/vocab/unit/DAY",
+  "deg": "http://qudt.org/vocab/unit/DEG",
+  "degC": "http://qudt.org/vocab/unit/DEG_C",
+  "g": "http://qudt.org/vocab/unit/GM",
+  "h": "http://qudt.org/vocab/unit/HR",
+  "kA": "http://qudt.org/vocab/unit/KiloA",
+  "kHz": "http://qudt.org/vocab/unit/KiloHZ",
+  "kN": "http://qudt.org/vocab/unit/KiloN",
+  "kPa": "http://qudt.org/vocab/unit/KiloPA",
+  "kW": "http://qudt.org/vocab/unit/KiloW",
+  "kWh": "http://qudt.org/vocab/unit/KiloW-HR",
+  "kg": "http://qudt.org/vocab/unit/KiloGM",
+  "kgf": "http://qudt.org/vocab/unit/KiloGM_F",
+  "m": "http://qudt.org/vocab/unit/M",
+  "m2": "http://qudt.org/vocab/unit/M2",
+  "mA": "http://qudt.org/vocab/unit/MilliA",
+  "mAh": "http://qudt.org/vocab/unit/MilliA-HR",
+  "mHz": "http://qudt.org/vocab/unit/MilliHZ",
+  "mV": "http://qudt.org/vocab/unit/MilliV",
+  "mV/day": null,
+  "mV_per_K": null,
+  "mWh": null,
+  "mm": "http://qudt.org/vocab/unit/MilliM",
+  "mohm": "http://qudt.org/vocab/unit/MilliOHM",
+  "mΩ": "http://qudt.org/vocab/unit/MilliOHM",
+  "ohm": "http://qudt.org/vocab/unit/OHM",
+  "ohm_cm2": null,
+  "pct": "http://qudt.org/vocab/unit/PERCENT",
+  "s": "http://qudt.org/vocab/unit/SEC",
+  "uA": "http://qudt.org/vocab/unit/MicroA",
+  "um": "http://qudt.org/vocab/unit/MicroM",
+  "uohm": "http://qudt.org/vocab/unit/MicroOHM",
+  "year": "http://qudt.org/vocab/unit/YR",
+  "°C": "http://qudt.org/vocab/unit/DEG_C",
+  "Ω": "http://qudt.org/vocab/unit/OHM"
+ }
+}

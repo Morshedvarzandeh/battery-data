@@ -91,8 +91,83 @@ Rows marked `no_equivalent` are deliberate content, not omissions.
 
 | Quantity | SI unit | External term | Relation | Verified | Note |
 |---|---|---|---|---|---|
+| `absolute_max_voltage` | V | `UpperVoltageLimit` | close | yes |  |
+| `absolute_min_voltage` | V | `VoltageLimit` | broader | yes |  |
+| `area_specific_impedance` | ohm*m2 | `ElectricImpedance` | broader | yes |  |
+| `areal_capacity` | C/m2 | `AreicCapacity` | exact | yes |  |
+| `calendar_life` | s | `CalendarLife` | exact | yes |  |
+| `capacity` | C | `Capacity` | exact | yes |  |
+| `capacity_retention` | 1 | `RetainedCapacity` | close | yes | Ours is a fraction of the reference capacity; EMMO's is the capacity itself. |
+| `charge_cutoff_voltage` | V | `UpperVoltageLimit` | close | yes | EMMO's limit is a window bound; ours is the charge termination voltage, which is the same value on a datasheet. |
+| `charge_transfer_resistance` | ohm | `ElectricResistance` | broader | yes |  |
+| `coulombic_efficiency` | 1 | `CoulombicEfficiency` | exact | yes |  |
+| `current` | A | `ElectricCurrent` | exact | yes |  |
+| `cv_cutoff_current` | A | `CurrentLimit` | related | yes |  |
 | `cycle_life` | 1 | `ServiceLife` | related | pending |  |
-| `state_of_charge` | 1 | `StateOfCharge` | exact | pending |  |
+| `cycle_life` | 1 | `CycleLife` | exact | yes |  |
+| `cycle_number` | 1 | `CycleIndex` | exact | yes |  |
+| `diameter` | m | `Diameter` | exact | yes |  |
+| `diffusion_coefficient` | m2/s | `DiffusionCoefficient` | exact | yes |  |
+| `discharge_cutoff_voltage` | V | `VoltageLimit` | broader | yes | No lower-limit class in the published ontology. |
+| `displacement` | m | `Displacement` | exact | yes |  |
+| `dqdv` | C/V | `DifferentialCapacity` | exact | yes |  |
+| `electrode_area` | m2 | `Area` | broader | yes | EMMO has no electrode-area quantity; the area_kind condition carries which area is meant. |
+| `energy` | J | `Energy` | exact | yes |  |
+| `energy_density` | J/m3 | `EnergyDensity` | exact | yes |  |
+| `energy_efficiency` | 1 | `EnergyEfficiency` | exact | yes |  |
+| `entropic_coefficient` | V/K | `TemperatureCoefficientOfTheOpenCircuitVoltage` | exact | yes |  |
+| `expansion_force` | N | `Force` | broader | yes |  |
+| `first_cycle_efficiency` | 1 | `InitialCoulombicEfficiency` | exact | yes |  |
+| `force` | N | `Force` | exact | yes |  |
+| `frequency` | Hz | `Frequency` | exact | yes |  |
+| `heat_generation_rate` | W | `HeatFlowRate` | close | yes |  |
+| `height` | m | `Height` | exact | yes |  |
+| `impedance_imag` | ohm | `ImaginaryElectricImpedance` | exact | yes |  |
+| `impedance_real` | ohm | `RealElectricImpedance` | exact | yes |  |
+| `intensity` | 1 | `Intensity` | exact | yes |  |
+| `internal_resistance_ac` | ohm | `ACInternalResistance` | exact | yes |  |
+| `internal_resistance_dc` | ohm | `DCInternalResistance` | exact | yes |  |
+| `leakage_current` | A | `Leakage` | related | yes |  |
+| `length` | m | `Length` | exact | yes |  |
+| `mass` | kg | `Mass` | exact | yes |  |
+| `max_continuous_charge_current` | A | `MaximumContinuousChargingCurrent` | exact | yes |  |
+| `max_continuous_discharge_current` | A | `MaximumContinuousDischargingCurrent` | exact | yes |  |
+| `max_pulse_discharge_current` | A | `MaximumPulseDischargingCurrent` | exact | yes |  |
+| `max_runaway_temperature` | K | `ThermalRunaway` | related | yes |  |
+| `nominal_voltage` | V | `NominalVoltage` | exact | yes |  |
+| `ohmic_resistance` | ohm | `ElectricResistance` | broader | yes | The high-frequency real-axis intercept; EMMO has no dedicated class. |
+| `open_circuit_voltage` | V | `OpenCircuitVoltage` | exact | yes |  |
+| `operating_temperature_max` | K | `MaximumOperatingTemperature` | exact | yes |  |
+| `operating_temperature_min` | K | `MinimumOperatingTemperature` | exact | yes |  |
+| `peak_power` | W | `MaximumPower` | close | yes |  |
+| `power` | W | `Power` | exact | yes |  |
+| `pressure` | Pa | `Pressure` | exact | yes |  |
+| `rated_power` | W | `Power` | broader | yes |  |
+| `relaxation_time` | s | `RelaxationTime` | exact | yes |  |
+| `round_trip_efficiency` | 1 | `RoundTripEnergyEfficiency` | exact | yes |  |
+| `runaway_onset_temperature` | K | `ThermalRunaway` | related | yes | EMMO models the process, not the onset temperature. |
+| `self_discharge_rate` | 1 | `SelfDischargeRate` | exact | yes |  |
+| `service_life_hours` | s | `ServiceLife` | close | yes | Service life against a stated load, schedule and cutoff; EMMO's term does not carry the load. |
+| `specific_capacity` | C/kg | `SpecificCapacity` | exact | yes |  |
+| `specific_energy` | J/kg | `SpecificEnergy` | exact | yes |  |
+| `specific_heat_capacity` | J/(kg*K) | `SpecificHeatCapacity` | exact | yes |  |
+| `specific_power` | W/kg | `SpecificPower` | exact | yes |  |
+| `stack_pressure` | Pa | `Pressure` | broader | yes |  |
+| `standard_charge_current` | A | `ChargingCurrent` | close | yes |  |
+| `state_of_charge` | 1 | `StateOfCharge` | exact | yes |  |
+| `state_of_health` | 1 | `StateOfHealth` | exact | yes |  |
+| `storage_temperature_max` | K | `MaximumStorageTemperature` | exact | yes |  |
+| `storage_temperature_min` | K | `MinimumStorageTemperature` | exact | yes |  |
+| `temperature` | K | `CelsiusTemperature` | close | yes | Stored in kelvin as SI, quoted in Celsius by every source. |
+| `thermal_conductivity_in_plane` | W/(m*K) | `ThermalConductivity` | narrower | yes |  |
+| `thermal_conductivity_through_plane` | W/(m*K) | `ThermalConductivity` | narrower | yes | EMMO's is scalar; ours is the through-plane component of a tensor (docs/02-conventions.md section 20). |
+| `thickness` | m | `Thickness` | exact | yes |  |
+| `time` | s | `Time` | exact | yes |  |
+| `two_theta` | deg | `BraggAngle` | close | yes |  |
+| `usable_energy` | J | `StoredEnergy` | related | yes | Usable energy is the stored energy the boundary and depth of discharge allow out; the boundary condition carries the rest. |
+| `voltage` | V | `Voltage` | exact | yes |  |
+| `volume` | m3 | `Volume` | exact | yes |  |
+| `width` | m | `Width` | exact | yes |  |
 
 ## emmo_electrochemistry
 

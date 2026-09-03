@@ -1,0 +1,600 @@
+{
+  "_comment": "Curated bindings from this schema's terms to external vocabularies. Labels, never IRIs: tools/sync_vocabularies.py resolves each label against the published ontology and refuses to emit a binding it cannot find. relation records mapping fidelity as in bd.quantity_mapping.",
+  "emmo": {
+    "source": {
+      "name": "EMMO domain-battery (inferred, with electrochemistry and EMMO core)",
+      "url": "https://raw.githubusercontent.com/emmo-repo/domain-battery/gh-pages/battery-inferred.ttl",
+      "namespace_prefixes": {
+        "battery": "https://w3id.org/emmo/domain/battery#",
+        "echem": "https://w3id.org/emmo/domain/electrochemistry#",
+        "emmo": "https://w3id.org/emmo#"
+      }
+    },
+    "quantities": {
+      "mass": {
+        "label": "Mass",
+        "relation": "exact"
+      },
+      "diameter": {
+        "label": "Diameter",
+        "relation": "exact"
+      },
+      "height": {
+        "label": "Height",
+        "relation": "exact"
+      },
+      "length": {
+        "label": "Length",
+        "relation": "exact"
+      },
+      "width": {
+        "label": "Width",
+        "relation": "exact"
+      },
+      "thickness": {
+        "label": "Thickness",
+        "relation": "exact"
+      },
+      "volume": {
+        "label": "Volume",
+        "relation": "exact"
+      },
+      "electrode_area": {
+        "label": "Area",
+        "relation": "broader",
+        "note": "EMMO has no electrode-area quantity; the area_kind condition carries which area is meant."
+      },
+      "nominal_voltage": {
+        "label": "NominalVoltage",
+        "relation": "exact"
+      },
+      "charge_cutoff_voltage": {
+        "label": "UpperVoltageLimit",
+        "relation": "close",
+        "note": "EMMO's limit is a window bound; ours is the charge termination voltage, which is the same value on a datasheet."
+      },
+      "discharge_cutoff_voltage": {
+        "label": "VoltageLimit",
+        "relation": "broader",
+        "note": "No lower-limit class in the published ontology."
+      },
+      "absolute_max_voltage": {
+        "label": "UpperVoltageLimit",
+        "relation": "close"
+      },
+      "absolute_min_voltage": {
+        "label": "VoltageLimit",
+        "relation": "broader"
+      },
+      "shipping_voltage": null,
+      "series_count": null,
+      "parallel_count": null,
+      "lithium_content": null,
+      "capacity": {
+        "label": "Capacity",
+        "relation": "exact",
+        "statistics": {
+          "nominal": "NominalCapacity",
+          "rated": "RatedCapacity",
+          "typical": "TypicalCapacity",
+          "minimum": "MinimumCapacity",
+          "maximum": "MaximumCapacity"
+        }
+      },
+      "energy": {
+        "label": "Energy",
+        "relation": "exact",
+        "statistics": {
+          "nominal": "NominalEnergy",
+          "rated": "RatedEnergy"
+        }
+      },
+      "usable_energy": {
+        "label": "StoredEnergy",
+        "relation": "related",
+        "note": "Usable energy is the stored energy the boundary and depth of discharge allow out; the boundary condition carries the rest."
+      },
+      "specific_energy": {
+        "label": "SpecificEnergy",
+        "relation": "exact"
+      },
+      "energy_density": {
+        "label": "EnergyDensity",
+        "relation": "exact"
+      },
+      "specific_power": {
+        "label": "SpecificPower",
+        "relation": "exact"
+      },
+      "service_life_hours": {
+        "label": "ServiceLife",
+        "relation": "close",
+        "note": "Service life against a stated load, schedule and cutoff; EMMO's term does not carry the load."
+      },
+      "internal_resistance_ac": {
+        "label": "ACInternalResistance",
+        "relation": "exact"
+      },
+      "internal_resistance_dc": {
+        "label": "DCInternalResistance",
+        "relation": "exact"
+      },
+      "area_specific_impedance": {
+        "label": "ElectricImpedance",
+        "relation": "broader"
+      },
+      "ohmic_resistance": {
+        "label": "ElectricResistance",
+        "relation": "broader",
+        "note": "The high-frequency real-axis intercept; EMMO has no dedicated class."
+      },
+      "charge_transfer_resistance": {
+        "label": "ElectricResistance",
+        "relation": "broader"
+      },
+      "max_continuous_discharge_current": {
+        "label": "MaximumContinuousDischargingCurrent",
+        "relation": "exact"
+      },
+      "max_continuous_charge_current": {
+        "label": "MaximumContinuousChargingCurrent",
+        "relation": "exact"
+      },
+      "max_pulse_discharge_current": {
+        "label": "MaximumPulseDischargingCurrent",
+        "relation": "exact"
+      },
+      "standard_charge_current": {
+        "label": "ChargingCurrent",
+        "relation": "close"
+      },
+      "cv_cutoff_current": {
+        "label": "CurrentLimit",
+        "relation": "related"
+      },
+      "rated_power": {
+        "label": "Power",
+        "relation": "broader"
+      },
+      "peak_power": {
+        "label": "MaximumPower",
+        "relation": "close"
+      },
+      "round_trip_efficiency": {
+        "label": "RoundTripEnergyEfficiency",
+        "relation": "exact"
+      },
+      "coulombic_efficiency": {
+        "label": "CoulombicEfficiency",
+        "relation": "exact"
+      },
+      "energy_efficiency": {
+        "label": "EnergyEfficiency",
+        "relation": "exact"
+      },
+      "cycle_life": {
+        "label": "CycleLife",
+        "relation": "exact"
+      },
+      "capacity_retention": {
+        "label": "RetainedCapacity",
+        "relation": "close",
+        "note": "Ours is a fraction of the reference capacity; EMMO's is the capacity itself."
+      },
+      "energy_retention": null,
+      "resistance_growth": null,
+      "calendar_life": {
+        "label": "CalendarLife",
+        "relation": "exact"
+      },
+      "knee_point_cycle": null,
+      "self_discharge_rate": {
+        "label": "SelfDischargeRate",
+        "relation": "exact"
+      },
+      "leakage_current": {
+        "label": "Leakage",
+        "relation": "related"
+      },
+      "specific_heat_capacity": {
+        "label": "SpecificHeatCapacity",
+        "relation": "exact"
+      },
+      "thermal_conductivity_through_plane": {
+        "label": "ThermalConductivity",
+        "relation": "narrower",
+        "note": "EMMO's is scalar; ours is the through-plane component of a tensor (docs/02-conventions.md section 20)."
+      },
+      "thermal_conductivity_in_plane": {
+        "label": "ThermalConductivity",
+        "relation": "narrower"
+      },
+      "entropic_coefficient": {
+        "label": "TemperatureCoefficientOfTheOpenCircuitVoltage",
+        "relation": "exact"
+      },
+      "heat_generation_rate": {
+        "label": "HeatFlowRate",
+        "relation": "close"
+      },
+      "runaway_onset_temperature": {
+        "label": "ThermalRunaway",
+        "relation": "related",
+        "note": "EMMO models the process, not the onset temperature."
+      },
+      "max_runaway_temperature": {
+        "label": "ThermalRunaway",
+        "relation": "related"
+      },
+      "reversible_expansion": null,
+      "irreversible_expansion": null,
+      "stack_pressure": {
+        "label": "Pressure",
+        "relation": "broader"
+      },
+      "expansion_force": {
+        "label": "Force",
+        "relation": "broader"
+      },
+      "operating_temperature_min": {
+        "label": "MinimumOperatingTemperature",
+        "relation": "exact"
+      },
+      "operating_temperature_max": {
+        "label": "MaximumOperatingTemperature",
+        "relation": "exact"
+      },
+      "storage_temperature_min": {
+        "label": "MinimumStorageTemperature",
+        "relation": "exact"
+      },
+      "storage_temperature_max": {
+        "label": "MaximumStorageTemperature",
+        "relation": "exact"
+      },
+      "specific_capacity": {
+        "label": "SpecificCapacity",
+        "relation": "exact"
+      },
+      "areal_capacity": {
+        "label": "AreicCapacity",
+        "relation": "exact"
+      },
+      "first_cycle_efficiency": {
+        "label": "InitialCoulombicEfficiency",
+        "relation": "exact"
+      },
+      "diffusion_coefficient": {
+        "label": "DiffusionCoefficient",
+        "relation": "exact"
+      },
+      "open_circuit_voltage": {
+        "label": "OpenCircuitVoltage",
+        "relation": "exact"
+      },
+      "soc_estimation_accuracy": null,
+      "soh_estimation_accuracy": null,
+      "standby_consumption": null,
+      "cooling_capacity": null,
+      "warranty_throughput": null,
+      "warranty_cycles": null,
+      "carbon_footprint_per_kwh": null,
+      "recycled_content_cobalt": null,
+      "recycled_content_lithium": null,
+      "recycled_content_nickel": null,
+      "recycled_content_lead": null,
+      "state_of_health": {
+        "label": "StateOfHealth",
+        "relation": "exact"
+      },
+      "time": {
+        "label": "Time",
+        "relation": "exact"
+      },
+      "voltage": {
+        "label": "Voltage",
+        "relation": "exact"
+      },
+      "current": {
+        "label": "ElectricCurrent",
+        "relation": "exact"
+      },
+      "temperature": {
+        "label": "CelsiusTemperature",
+        "relation": "close",
+        "note": "Stored in kelvin as SI, quoted in Celsius by every source."
+      },
+      "state_of_charge": {
+        "label": "StateOfCharge",
+        "relation": "exact"
+      },
+      "cycle_number": {
+        "label": "CycleIndex",
+        "relation": "exact"
+      },
+      "frequency": {
+        "label": "Frequency",
+        "relation": "exact"
+      },
+      "impedance_real": {
+        "label": "RealElectricImpedance",
+        "relation": "exact"
+      },
+      "impedance_imag": {
+        "label": "ImaginaryElectricImpedance",
+        "relation": "exact"
+      },
+      "dqdv": {
+        "label": "DifferentialCapacity",
+        "relation": "exact"
+      },
+      "dvdq": null,
+      "relaxation_time": {
+        "label": "RelaxationTime",
+        "relation": "exact"
+      },
+      "drt_gamma": null,
+      "power": {
+        "label": "Power",
+        "relation": "exact"
+      },
+      "pressure": {
+        "label": "Pressure",
+        "relation": "exact"
+      },
+      "displacement": {
+        "label": "Displacement",
+        "relation": "exact"
+      },
+      "force": {
+        "label": "Force",
+        "relation": "exact"
+      },
+      "two_theta": {
+        "label": "BraggAngle",
+        "relation": "close"
+      },
+      "intensity": {
+        "label": "Intensity",
+        "relation": "exact"
+      }
+    },
+    "product_kinds": {
+      "cell": "BatteryCell",
+      "module": "BatteryModule",
+      "pack": "BatteryPack",
+      "system": "BatterySystem",
+      "primary_cell": "PrimaryBattery",
+      "component": null
+    },
+    "product_revision": "BatterySpecification",
+    "product_revision_by_kind": {
+      "cell": "BatteryCellSpecification",
+      "module": "BatteryModuleSpecification",
+      "pack": "BatteryPackSpecification",
+      "system": "BatterySystemSpecification"
+    },
+    "organization": "Manufacturer",
+    "form_factors": {
+      "cylindrical": "CylindricalBattery",
+      "pouch": "PouchCell",
+      "prismatic_hardcase": "PrismaticBattery",
+      "coin": "CoinCell",
+      "button": "CoinCell",
+      "blade": "PrismaticBattery"
+    },
+    "chemistry_families": {
+      "lithium_ion": "LithiumIonBattery",
+      "lithium_metal": "LithiumMetalBattery",
+      "lithium_primary": "PrimaryBattery",
+      "sodium_ion": "SodiumIonBattery",
+      "lead_acid": "LeadAcidBattery",
+      "nickel_metal_hydride": "NickelMetalHydrideBattery",
+      "nickel_cadmium": "NickelCadmiumBattery",
+      "nickel_zinc": "NickelZincBattery",
+      "nickel_iron": "NickelIronBattery",
+      "zinc_air": "ZincAirBattery",
+      "alkaline": "AlkalineZincManganeseDioxideBattery",
+      "zinc_carbon": "ZincCarbonBattery",
+      "silver_oxide": "SilverOxideBattery",
+      "flow_vanadium": "VanadiumRedoxFlowBattery",
+      "flow_zinc_bromine": "ZincBromineFlowBattery",
+      "flow_iron": "IronRedoxFlowBattery",
+      "flow_other": "RedoxFlowBattery",
+      "solid_state": "SolidStateBattery",
+      "supercapacitor": "Supercapacitor"
+    },
+    "chemistry_designations": {
+      "LFP": "LithiumIonIronPhosphateBattery",
+      "NMC": "LithiumIonNickelManganeseCobaltOxideBattery",
+      "NMC811": "LithiumIonNickelManganeseCobaltOxideBattery",
+      "NCA": "LithiumIonNickelCobaltAluminiumOxideBattery",
+      "LTO": "LithiumIonTitanateBattery",
+      "LMFP": "LithiumIonManganeseIronPhosphateBattery",
+      "LMO": "LithiumIonManganeseOxideBattery",
+      "LCO": "LithiumIonCobaltOxideBattery",
+      "Lithium-ion polymer": "LithiumIonPolymerBattery",
+      "Zn/MnO2": "AlkalineZincManganeseDioxideBattery",
+      "Li-MnO2": "PrimaryBattery",
+      "NFPP/HC": "SodiumIonHardCarbonBattery"
+    },
+    "lead_acid_constructions": {
+      "agm": "ValveRegulatedLeadAcidBattery",
+      "gel": "ValveRegulatedLeadAcidBattery",
+      "flooded": "LeadAcidBattery"
+    }
+  },
+  "qudt": {
+    "source": {
+      "quantitykinds": "https://raw.githubusercontent.com/qudt/qudt-public-repo/main/src/main/rdf/vocab/quantitykinds/VOCAB_QUDT-QUANTITY-KINDS-ALL.ttl",
+      "units": "https://raw.githubusercontent.com/qudt/qudt-public-repo/main/src/main/rdf/vocab/unit/VOCAB_QUDT-UNITS-ALL.ttl"
+    },
+    "quantity_kinds": {
+      "mass": "Mass",
+      "diameter": "Diameter",
+      "height": "Height",
+      "length": "Length",
+      "width": "Width",
+      "thickness": "Thickness",
+      "volume": "Volume",
+      "electrode_area": "Area",
+      "nominal_voltage": "Voltage",
+      "charge_cutoff_voltage": "Voltage",
+      "discharge_cutoff_voltage": "Voltage",
+      "absolute_max_voltage": "Voltage",
+      "absolute_min_voltage": "Voltage",
+      "shipping_voltage": "Voltage",
+      "series_count": "Count",
+      "parallel_count": "Count",
+      "lithium_content": "Mass",
+      "capacity": "ElectricCharge",
+      "energy": "Energy",
+      "usable_energy": "Energy",
+      "specific_energy": "SpecificEnergy",
+      "energy_density": "EnergyDensity",
+      "specific_power": "SpecificPower",
+      "service_life_hours": "Time",
+      "internal_resistance_ac": "Resistance",
+      "internal_resistance_dc": "Resistance",
+      "area_specific_impedance": "Resistance",
+      "ohmic_resistance": "Resistance",
+      "charge_transfer_resistance": "Resistance",
+      "max_continuous_discharge_current": "ElectricCurrent",
+      "max_continuous_charge_current": "ElectricCurrent",
+      "max_pulse_discharge_current": "ElectricCurrent",
+      "standard_charge_current": "ElectricCurrent",
+      "cv_cutoff_current": "ElectricCurrent",
+      "rated_power": "Power",
+      "peak_power": "Power",
+      "round_trip_efficiency": "Efficiency",
+      "coulombic_efficiency": "Efficiency",
+      "energy_efficiency": "Efficiency",
+      "cycle_life": "Count",
+      "capacity_retention": "DimensionlessRatio",
+      "energy_retention": "DimensionlessRatio",
+      "resistance_growth": "DimensionlessRatio",
+      "calendar_life": "Time",
+      "knee_point_cycle": "Count",
+      "self_discharge_rate": "DimensionlessRatio",
+      "leakage_current": "ElectricCurrent",
+      "specific_heat_capacity": "SpecificHeatCapacity",
+      "thermal_conductivity_through_plane": "ThermalConductivity",
+      "thermal_conductivity_in_plane": "ThermalConductivity",
+      "entropic_coefficient": null,
+      "heat_generation_rate": "Power",
+      "runaway_onset_temperature": "Temperature",
+      "max_runaway_temperature": "Temperature",
+      "reversible_expansion": "DimensionlessRatio",
+      "irreversible_expansion": "DimensionlessRatio",
+      "stack_pressure": "Pressure",
+      "expansion_force": "Force",
+      "operating_temperature_min": "Temperature",
+      "operating_temperature_max": "Temperature",
+      "storage_temperature_min": "Temperature",
+      "storage_temperature_max": "Temperature",
+      "specific_capacity": "ElectricChargePerMass",
+      "areal_capacity": "ElectricChargePerArea",
+      "first_cycle_efficiency": "Efficiency",
+      "diffusion_coefficient": "DiffusionCoefficient",
+      "open_circuit_voltage": "Voltage",
+      "soc_estimation_accuracy": "DimensionlessRatio",
+      "soh_estimation_accuracy": "DimensionlessRatio",
+      "standby_consumption": "Power",
+      "cooling_capacity": "Power",
+      "warranty_throughput": "Energy",
+      "warranty_cycles": "Count",
+      "carbon_footprint_per_kwh": "MassPerEnergy",
+      "recycled_content_cobalt": "MassFraction",
+      "recycled_content_lithium": "MassFraction",
+      "recycled_content_nickel": "MassFraction",
+      "recycled_content_lead": "MassFraction",
+      "state_of_health": "DimensionlessRatio",
+      "time": "Time",
+      "voltage": "Voltage",
+      "current": "ElectricCurrent",
+      "temperature": "Temperature",
+      "state_of_charge": "DimensionlessRatio",
+      "cycle_number": "Count",
+      "frequency": "Frequency",
+      "impedance_real": "Resistance",
+      "impedance_imag": "Reactance",
+      "dqdv": "Capacitance",
+      "dvdq": null,
+      "relaxation_time": "Time",
+      "drt_gamma": "Resistance",
+      "power": "Power",
+      "pressure": "Pressure",
+      "displacement": "Displacement",
+      "force": "Force",
+      "two_theta": "PlaneAngle",
+      "intensity": "Dimensionless"
+    },
+    "units": {
+      "A": "A",
+      "mA": "MilliA",
+      "uA": "MicroA",
+      "kA": "KiloA",
+      "V": "V",
+      "mV": "MilliV",
+      "ohm": "OHM",
+      "mohm": "MilliOHM",
+      "Ω": "OHM",
+      "mΩ": "MilliOHM",
+      "uohm": "MicroOHM",
+      "Wh": "W-HR",
+      "kWh": "KiloW-HR",
+      "mWh": null,
+      "J": "J",
+      "Wh/kg": "W-HR-PER-KiloGM",
+      "Wh_per_kg": "W-HR-PER-KiloGM",
+      "Wh/L": "W-HR-PER-L",
+      "Wh_per_L": "W-HR-PER-L",
+      "W": "W",
+      "kW": "KiloW",
+      "W_per_kg": "W-PER-KiloGM",
+      "g": "GM",
+      "kg": "KiloGM",
+      "mm": "MilliM",
+      "m": "M",
+      "um": "MicroM",
+      "cm2": "CentiM2",
+      "m2": "M2",
+      "cm3": "CentiM3",
+      "L": "L",
+      "s": "SEC",
+      "h": "HR",
+      "day": "DAY",
+      "year": "YR",
+      "degC": "DEG_C",
+      "°C": "DEG_C",
+      "K": "K",
+      "Hz": "HZ",
+      "kHz": "KiloHZ",
+      "mHz": "MilliHZ",
+      "N": "N",
+      "kN": "KiloN",
+      "kgf": "KiloGM_F",
+      "Pa": "PA",
+      "kPa": "KiloPA",
+      "MPa": "MegaPA",
+      "bar": "BAR",
+      "pct": "PERCENT",
+      "%": "PERCENT",
+      "1": "UNITLESS",
+      "Ah": "A-HR",
+      "mAh": "MilliA-HR",
+      "C": "C",
+      "mV_per_K": null,
+      "V_per_K": "V-PER-K",
+      "W_per_mK": "W-PER-M-K",
+      "J_per_kgK": "J-PER-KiloGM-K",
+      "cycles": "NUM",
+      "deg": "DEG",
+      "ohm_cm2": null,
+      "%/month": null,
+      "%/year": null,
+      "mV/day": null
+    },
+    "_note": "A null quantity kind or unit records that QUDT has no term: the entropic coefficient (V/K) and dV/dQ have none, and QUDT defines no milliwatt-hour or millivolt-per-kelvin unit."
+  }
+}

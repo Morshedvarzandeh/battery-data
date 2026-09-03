@@ -124,6 +124,9 @@ jobs:
           python tools/check_duplicates.py
           python tools/validate_patents.py
           python tools/check_patent_duplicates.py --fail-on exact
+          # Ontology bindings are generated from the published vocabularies;
+          # a label edited by hand without a rerun would leave stale IRIs.
+          python tools/sync_vocabularies.py check
           python tools/build_review_batch.py
           python tools/render_review_issues.py
           git diff --exit-code -- review/ || {
