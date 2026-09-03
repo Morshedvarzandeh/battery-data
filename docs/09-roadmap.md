@@ -121,6 +121,20 @@ curve pretending to be a number.
 - [ ] **5.5 Nickel, zinc, flow and supercapacitor coverage lists.** NiMH and NiCd cells and packs, nickel-zinc, zinc-air, flow batteries by electrolyte, and supercapacitor cells and modules.
 - [ ] **5.6 Conventions for the new chemistries.** The places these chemistries disagree with each other and with lithium practice, written into `docs/02-conventions.md` and enforced as required conditions.
 
+## 6. Ontology and knowledge graph
+
+The relational store is the source of truth; the graph and the semantic
+export are derived from it. Compatibility means three things: every quantity
+and unit resolves to a published IRI, every record can be emitted as RDF that
+a triple store or a knowledge graph loads unchanged, and the graph projection
+covers the whole scope above, components and applications included.
+
+- [ ] **6.1 EMMO and BattINFO bindings, generated.** `tools/sync_vocabularies.py` pulls the EMMO domain-battery and domain-electrochemistry ontologies, checks in their label-to-IRI tables with the commit they came from, and binds `quantity.emmo_iri` from a curated label map instead of hand-copied IRIs.
+- [ ] **6.2 QUDT bindings, verified.** Every quantity carries a QUDT quantity-kind IRI and every unit a QUDT unit IRI, checked against the QUDT vocabulary rather than typed.
+- [ ] **6.3 RDF export.** The accepted library as JSON-LD and Turtle: products and revisions as schema.org and BattINFO classes, observations as SOSA observations with QUDT quantity values, conditions as typed properties, provenance as PROV-O, all deterministic and checked in CI.
+- [ ] **6.4 Graph projection covers the whole scope.** Nodes and edges for applications, components inside packs, datasets and models, with a Neo4j and Apache AGE export.
+- [ ] **6.5 Alignment document.** One table per external vocabulary saying which class or property each concept here maps to, and where the mapping is only approximate.
+
 ## Log
 
 Entries are appended as items are ticked, newest last.
