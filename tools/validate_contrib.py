@@ -42,9 +42,10 @@ def load_registry(dsn: str | None) -> dict[str, list[str]]:
     sys.exit(f"no registry at {REGISTRY}; run tools/dump_quantities.py or pass --dsn")
 
 
-def check(path: str, schema: dict, registry: dict) -> list[str]:
+def check(path: str, schema: dict, registry: dict, known: set[str] | None = None) -> list[str]:
     errs: list[str] = []
     doc = yaml.safe_load(open(path))
+    known = known or set()
 
     try:
         jsonschema.validate(doc, schema)
@@ -88,6 +89,41 @@ def check(path: str, schema: dict, registry: dict) -> list[str]:
         errs += check_c_rate(where, curve.get("conditions") or {})
 
     errs += check_applications(path, doc)
+    errs += check_links(path, doc, known)
+    return errs
+
+
+def check_links(path: str, doc: dict, known: set[str]) -> list[str]:
+    """Bill-of-materials and equivalence links point at library products.
+
+    A `contains` entry naming a product that is not in the library would land
+    nowhere: the loader has no revision to attach it to. It is an error here
+    so the missing child is written first, not discovered as a silent gap in
+    the graph. An equivalence to a product outside the library is a claim
+    that cannot be checked either way, so it is a warning-grade error too.
+    """
+    errs = []
+    me = doc["product"]["uid"]
+    for i, link in enumerate(doc.get("contains") or []):
+        where = f"{path}: contains[{i}] ({link.get('uid')})"
+        if link.get("uid") == me:
+            errs.append(f"{where}: a product cannot contain itself")
+        elif known and link.get("uid") not in known:
+            errs.append(f"{where}: child product is not in the library; add its "
+                        f"contribution first so the assembly edge has something to point at")
+    for i, link in enumerate(doc.get("equivalences") or []):
+        where = f"{path}: equivalences[{i}] ({link.get('uid')})"
+        if link.get("uid") == me:
+            errs.append(f"{where}: a product cannot be equivalent to itself")
+        elif known and link.get("uid") not in known:
+            errs.append(f"{where}: the other product is not in the library")
+    seen = set()
+    for i, offer in enumerate(doc.get("offers") or []):
+        key = (offer.get("seller"), offer.get("region"), offer.get("observed_at"))
+        if key in seen:
+            errs.append(f"{path}: offers[{i}]: duplicate seller/region/date; a price is a "
+                        f"time series with one point per observation date")
+        seen.add(key)
     return errs
 
 
@@ -167,9 +203,18 @@ def main() -> int:
         print(f"no contribution files under {a.path}")
         return 0
 
+    # Every uid under contrib/, so bill-of-materials links can be checked
+    # against the library as a whole rather than the file being validated.
+    known = set()
+    for f in sorted(glob.glob(os.path.join(ROOT, "contrib", "**", "*.y*ml"), recursive=True)):
+        try:
+            known.add(yaml.safe_load(open(f))["product"]["uid"])
+        except Exception:
+            pass
+
     all_errs = []
     for f in files:
-        e = check(f, schema, registry)
+        e = check(f, schema, registry, known)
         rel = os.path.relpath(f, ROOT)
         print(f"  {'FAIL' if e else 'ok  '}  {rel}")
         all_errs += e

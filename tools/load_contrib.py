@@ -135,6 +135,9 @@ def ensure_product(cur, product: dict, org_id: int) -> int:
          product.get("component_kind"), product.get("iec_designation"),
          product.get("ansi_neda"), product.get("is_rechargeable")))
     product_id = scalar(cur, "SELECT id FROM bd.product WHERE uid = %s", (product["uid"],))
+    if product.get("lifecycle"):
+        cur.execute("UPDATE bd.product SET lifecycle = %s WHERE id = %s",
+                    (product["lifecycle"], product_id))
     for alias in product.get("aliases") or []:
         cur.execute(
             """INSERT INTO bd.product_alias (product_id, alias, kind)
@@ -366,6 +369,151 @@ def promote_curve(cur, index: int, curve: dict, product: dict, revision_id: int,
          curve["y_quantity"], curve.get("z_quantity"), curve["x_quantity"]))
 
 
+def locate(cur, source_id: int, locator: dict, evidence: str, extraction: str,
+           reviewer_id: int, note: str) -> int:
+    """A source_location and an accepted provenance row for one claim."""
+    locator = locator or {}
+    location_id = scalar(cur,
+        """INSERT INTO bd.source_location (source_id, page, section, quote)
+           VALUES (%s, %s, %s, %s) RETURNING id""",
+        (source_id, locator.get("page"), locator.get("section"), locator.get("quote")))
+    return scalar(cur,
+        """INSERT INTO bd.provenance (source_location_id, evidence, extraction, review,
+                                      contributor_id, reviewed_by, reviewed_at, review_note)
+           VALUES (%s, %s, %s, 'accepted', %s, %s, now(), %s) RETURNING id""",
+        (location_id, evidence, extraction, reviewer_id, reviewer_id, note))
+
+
+def promote_certifications(cur, document: dict, revision_id: int, source_id: int,
+                           evidence: str, extraction: str, reviewer_id: int, note: str) -> int:
+    """Certification claims. 'claimed' is the default status on purpose: the
+    document says it, nobody here has seen the certificate."""
+    n = 0
+    for cert in document.get("certifications") or []:
+        provenance_id = locate(cur, source_id, cert.get("locator"), evidence, extraction,
+                               reviewer_id, note)
+        cur.execute(
+            """INSERT INTO bd.certification
+                 (product_revision_id, standard_text, scope, status, certificate_number,
+                  certifying_body, listing_type, issued_date, expiry_date, provenance_id)
+               VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+            (revision_id, cert["standard"], cert.get("scope") or "unspecified",
+             cert.get("status") or "claimed", cert.get("certificate_number"),
+             cert.get("certifying_body"), cert.get("listing_type"),
+             cert.get("issued_date"), cert.get("expiry_date"), provenance_id))
+        n += 1
+    return n
+
+
+def promote_transport(cur, document: dict, revision_id: int, source_id: int,
+                      evidence: str, extraction: str, reviewer_id: int, note: str) -> int:
+    t = document.get("transport")
+    if not t:
+        return 0
+    provenance_id = locate(cur, source_id, t.get("locator"), evidence, extraction,
+                           reviewer_id, note)
+    cur.execute(
+        """INSERT INTO bd.transport_classification
+             (product_revision_id, un_number, hazard_class, packing_instruction,
+              watt_hour_rating, lithium_content_g, max_soc_for_transport,
+              un38_3_summary_url, provenance_id)
+           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+        (revision_id, t.get("un_number"), t.get("hazard_class"), t.get("packing_instruction"),
+         t.get("watt_hour_rating"), t.get("lithium_content_g"), t.get("max_soc_for_transport"),
+         t.get("un38_3_summary_url"), provenance_id))
+    return 1
+
+
+def promote_offers(cur, document: dict, product_id: int, source_id: int, evidence: str,
+                   extraction: str, reviewer_id: int, note: str) -> int:
+    """Price is a time series. One row per seller per observation date, and a
+    reload never overwrites an earlier point."""
+    n = 0
+    for offer in document.get("offers") or []:
+        slug = re.sub(r"[^a-z0-9]+", "-", offer["seller"].lower()).strip("-")
+        cur.execute(
+            """INSERT INTO bd.organization (uid, name, roles) VALUES (%s, %s, '{distributor}')
+               ON CONFLICT (uid) DO NOTHING""", (f"org/{slug}", offer["seller"]))
+        seller_id = scalar(cur, "SELECT id FROM bd.organization WHERE uid = %s", (f"org/{slug}",))
+        provenance_id = locate(cur, source_id, offer.get("locator"), evidence, extraction,
+                               reviewer_id, note)
+        cur.execute(
+            """INSERT INTO bd.product_offer
+                 (product_id, seller_org_id, region, currency, unit_price, price_per_kwh,
+                  min_order_qty, price_break_qty, lead_time_days, in_stock, grade,
+                  observed_at, provenance_id)
+               VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+            (product_id, seller_id, offer.get("region"), offer.get("currency"),
+             offer.get("unit_price"), offer.get("price_per_kwh"), offer.get("min_order_qty"),
+             offer.get("price_break_qty"), offer.get("lead_time_days"), offer.get("in_stock"),
+             offer.get("grade"), offer["observed_at"], provenance_id))
+        n += 1
+    return n
+
+
+# Bill-of-materials and equivalence links are applied after every file has
+# loaded, because the child a pack names may sit later in the same run.
+DEFERRED: list[dict] = []
+
+
+def defer_links(document: dict, product_id: int, revision_id: int, source_id: int,
+                evidence: str, extraction: str, reviewer_id: int, note: str) -> None:
+    for link in document.get("contains") or []:
+        DEFERRED.append({"kind": "contains", "link": link, "product_id": product_id,
+                         "revision_id": revision_id, "source_id": source_id,
+                         "evidence": evidence, "extraction": extraction,
+                         "reviewer_id": reviewer_id, "note": note})
+    for link in document.get("equivalences") or []:
+        DEFERRED.append({"kind": "equivalence", "link": link, "product_id": product_id,
+                         "revision_id": revision_id, "source_id": source_id,
+                         "evidence": evidence, "extraction": extraction,
+                         "reviewer_id": reviewer_id, "note": note})
+
+
+def apply_links(cur) -> dict:
+    """Assembly and equivalence edges, once every product that can exist does."""
+    counts = {"contains": 0, "equivalence": 0, "skipped": []}
+    for d in DEFERRED:
+        link = d["link"]
+        other_id = scalar(cur, "SELECT id FROM bd.product WHERE uid = %s", (link["uid"],))
+        if other_id is None:
+            counts["skipped"].append(f"{link['uid']} (not in the library)")
+            continue
+        provenance_id = locate(cur, d["source_id"], link.get("locator"), d["evidence"],
+                               d["extraction"], d["reviewer_id"], d["note"])
+        if d["kind"] == "contains":
+            child_rev = scalar(cur,
+                "SELECT product_revision_id FROM bd.v_current_revision WHERE product_id = %s",
+                (other_id,))
+            if child_rev is None:
+                counts["skipped"].append(f"{link['uid']} (no accepted revision)")
+                continue
+            cur.execute(
+                """INSERT INTO bd.product_assembly
+                     (parent_revision_id, child_revision_id, quantity, series_count,
+                      parallel_count, topology_string, provenance_id)
+                   VALUES (%s, %s, %s, %s, %s, %s, %s)
+                   ON CONFLICT (parent_revision_id, child_revision_id) DO UPDATE
+                     SET quantity = EXCLUDED.quantity, series_count = EXCLUDED.series_count,
+                         parallel_count = EXCLUDED.parallel_count,
+                         topology_string = EXCLUDED.topology_string,
+                         provenance_id = EXCLUDED.provenance_id""",
+                (d["revision_id"], child_rev, link["quantity"], link.get("series_count"),
+                 link.get("parallel_count"), link.get("topology"), provenance_id))
+            counts["contains"] += 1
+        else:
+            a, b, relation = d["product_id"], other_id, link["relation"]
+            if relation == "predecessor":      # stored once, as the successor edge
+                a, b, relation = other_id, d["product_id"], "successor"
+            cur.execute(
+                """INSERT INTO bd.product_equivalence (product_a_id, product_b_id, relation,
+                                                       provenance_id)
+                   VALUES (%s, %s, %s, %s) ON CONFLICT DO NOTHING""",
+                (a, b, relation, provenance_id))
+            counts["equivalence"] += 1
+    return counts
+
+
 def promote_application(cur, application: dict, revision_id: int, source_id: int,
                         evidence: str, extraction: str, reviewer_id: int, note: str) -> None:
     locator = application.get("locator") or {}
@@ -554,6 +702,14 @@ def promote_file(cur, document: dict, org_id: int, source_id: int, staged: list,
     for application in document.get("applications") or []:
         promote_application(cur, application, revision_id, source_id, evidence,
                             args.extraction, reviewer_id, note)
+    promote_certifications(cur, document, revision_id, source_id, evidence,
+                           args.extraction, reviewer_id, note)
+    promote_transport(cur, document, revision_id, source_id, evidence,
+                      args.extraction, reviewer_id, note)
+    promote_offers(cur, document, product_id, source_id, evidence,
+                   args.extraction, reviewer_id, note)
+    defer_links(document, product_id, revision_id, source_id, evidence,
+                args.extraction, reviewer_id, note)
     return promoted, restated
 
 
@@ -588,6 +744,7 @@ def main() -> int:
                 results.append(result)
                 if result.get("invalid"):
                     failed += 1
+            links = apply_links(cur) if not args.stage_only else None
     connection.close()
 
     for result in results:
@@ -610,6 +767,9 @@ def main() -> int:
         for quantity, errors in result["invalid"]:
             print(f"          {quantity}: {'; '.join(errors)}", file=sys.stderr)
 
+    if links:
+        print(f"\n{links['contains']} assembly link(s), {links['equivalence']} equivalence(s)"
+              + (f"; skipped: {', '.join(links['skipped'])}" if links["skipped"] else ""))
     loaded = sum(1 for r in results if not r.get("skipped"))
     print(f"\n{loaded} file(s) loaded, {sum(r.get('promoted', 0) for r in results)} "
           f"observation(s) promoted, {failed} file(s) rejected")

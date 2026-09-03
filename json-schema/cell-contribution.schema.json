@@ -113,6 +113,18 @@
             "other"
           ],
           "description": "Which piece of the hardware around the cell this is. Required when kind is component."
+        },
+        "lifecycle": {
+          "enum": [
+            "announced",
+            "sampling",
+            "active",
+            "nrnd",
+            "last_time_buy",
+            "obsolete",
+            "unknown"
+          ],
+          "description": "Where the product is in its life as the source states it. A maker's page that lists it is evidence of 'active'; an end-of-life notice is evidence of 'obsolete'."
         }
       },
       "allOf": [
@@ -283,6 +295,38 @@
       "description": "Where this product is actually fielded. Each entry is a claim about a relationship, so it carries its own basis and locator - see schema/045_application.sql.",
       "items": {
         "$ref": "#/$defs/application"
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "description": "Certification and listing claims: UN 38.3, IEC 62133, UL 1642, UL 1973, UL 9540A. Scope and status both matter: 'system listed to UL 9540, cells listed to UL 1642' is two rows, and 'pending' is not 'certified'.",
+      "items": {
+        "$ref": "#/$defs/certification"
+      }
+    },
+    "transport": {
+      "$ref": "#/$defs/transport",
+      "description": "UN transport classification: the Wh rating that decides PI965 against PI966 depends on the nominal voltage convention, which is itself a stored choice."
+    },
+    "contains": {
+      "type": "array",
+      "description": "Bill of materials: the cells, modules and components this product is built from, by uid. Each entry is a claim with its own locator. The child must be in the library for the link to land.",
+      "items": {
+        "$ref": "#/$defs/contains"
+      }
+    },
+    "equivalences": {
+      "type": "array",
+      "description": "Drop-in, rebadge, second-source, successor and predecessor relations to other products in the library, each with its evidence.",
+      "items": {
+        "$ref": "#/$defs/equivalence"
+      }
+    },
+    "offers": {
+      "type": "array",
+      "description": "Price and availability as a time series: one entry per seller per observation date, never overwritten.",
+      "items": {
+        "$ref": "#/$defs/offer"
       }
     }
   },
@@ -717,6 +761,233 @@
         },
         "processing": {
           "type": "object"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "certification": {
+      "type": "object",
+      "required": [
+        "standard",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "standard": {
+          "type": "string",
+          "minLength": 3,
+          "description": "Verbatim, e.g. 'IEC 62133-2:2017+AMD1:2021', 'UN 38.3', 'UL 1642'."
+        },
+        "scope": {
+          "enum": [
+            "cell",
+            "module",
+            "rack",
+            "pack",
+            "system",
+            "installation",
+            "unspecified"
+          ]
+        },
+        "status": {
+          "enum": [
+            "claimed",
+            "certified",
+            "pending",
+            "withdrawn"
+          ],
+          "description": "Default 'claimed': the document says it, nobody here checked a certificate."
+        },
+        "certificate_number": {
+          "type": "string"
+        },
+        "certifying_body": {
+          "type": "string"
+        },
+        "listing_type": {
+          "enum": [
+            "listed",
+            "recognized_component",
+            "tested",
+            "self_declared"
+          ]
+        },
+        "issued_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "expiry_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "transport": {
+      "type": "object",
+      "required": [
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "un_number": {
+          "type": "string",
+          "pattern": "^UN[0-9]{4}$"
+        },
+        "hazard_class": {
+          "type": "string"
+        },
+        "packing_instruction": {
+          "type": "string",
+          "description": "PI965 to PI970 for lithium; PI872 for nickel-metal hydride; UN2794/UN2800 lead-acid carry none."
+        },
+        "watt_hour_rating": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "lithium_content_g": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_soc_for_transport": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "un38_3_summary_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "contains": {
+      "type": "object",
+      "required": [
+        "uid",
+        "quantity",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "uid": {
+          "type": "string",
+          "pattern": "^[a-z_]+/[a-z0-9-]+/[a-z0-9._-]+$",
+          "description": "The child product's uid, which must exist in the library."
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "series_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "parallel_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "topology": {
+          "type": "string",
+          "description": "'2P52S', '4S3P' as the document writes it."
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "equivalence": {
+      "type": "object",
+      "required": [
+        "uid",
+        "relation",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "uid": {
+          "type": "string",
+          "pattern": "^[a-z_]+/[a-z0-9-]+/[a-z0-9._-]+$"
+        },
+        "relation": {
+          "enum": [
+            "drop_in",
+            "rebadge",
+            "second_source",
+            "successor",
+            "predecessor"
+          ]
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "offer": {
+      "type": "object",
+      "required": [
+        "seller",
+        "observed_at",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "seller": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "unit_price": {
+          "type": "number",
+          "minimum": 0
+        },
+        "price_per_kwh": {
+          "type": "number",
+          "minimum": 0
+        },
+        "min_order_qty": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "price_break_qty": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lead_time_days": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "in_stock": {
+          "type": "boolean"
+        },
+        "grade": {
+          "enum": [
+            "A",
+            "B",
+            "used",
+            "recovered",
+            "unspecified"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date",
+          "description": "The date the listing was read. A price is a time series."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
         },
         "locator": {
           "$ref": "#/$defs/locator"

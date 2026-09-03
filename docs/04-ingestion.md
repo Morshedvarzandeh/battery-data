@@ -76,6 +76,54 @@ observations:
 
 A contributor cannot submit a capacity without a rate. This is the point.
 
+### Beyond observations
+
+A contribution can carry more than numbers, each block with its own locator
+because each is a claim:
+
+```yaml
+product:
+  lifecycle: active                 # as the source states it
+certifications:
+  - standard: "UN 38.3"
+    scope: cell
+    status: claimed                 # 'certified' only with a certificate seen
+    locator: {page: 6, quote: "..."}
+transport:
+  un_number: UN3480
+  packing_instruction: PI965
+  watt_hour_rating: 17.6
+  locator: {page: 6, quote: "..."}
+contains:                           # bill of materials, by library uid
+  - uid: cell/example-co/ex-cell
+    quantity: 104
+    series_count: 52
+    parallel_count: 2
+    topology: 2P52S
+    locator: {page: 2, quote: "..."}
+equivalences:
+  - uid: cell/example-co/ex-cell-v2
+    relation: successor             # drop_in | rebadge | second_source | successor | predecessor
+    locator: {page: 1, quote: "..."}
+offers:                             # a price is a time series
+  - seller: Example Distributor
+    region: EU
+    currency: EUR
+    unit_price: 4.20
+    observed_at: "2026-09-01"
+    url: https://example.invalid/listing
+    locator: {quote: "..."}
+```
+
+`contains` and `equivalences` name products that must already be in the
+library; the validator refuses a link to a product it cannot find, and the
+loader applies the links after every file has loaded so a pack may name a
+cell that sits later in the same run. Certifications default to `claimed`:
+a datasheet line is evidence that the maker says so, not that a certificate
+exists. Transport classification carries the Wh rating that decides the
+packing instruction, which depends on the nominal-voltage convention the
+schema already records as a choice.
+
 ### Getting an accepted contribution into the library
 
 Merging a contribution, or approving its review issue, puts the file in

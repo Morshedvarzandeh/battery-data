@@ -77,8 +77,8 @@ Format first, then data. Each value carries its conditions and a locator.
 - [ ] **2.6 Life**: cycle life with DoD, rate, temperature and end-of-life criterion, clamp force for prismatics, calendar life.
 - [ ] **2.7 Envelope**: operating window by direction, storage window banded by duration, self-discharge with its period.
 - [ ] **2.8 Physical**: dimensions with basis, mass basis, volume, the maker's own Wh/kg and Wh/L.
-- [ ] **2.9 Identity**: chemistry with cathode and anode text, form factor, IEC designation, aliases, lifecycle status, successor.
-- [ ] **2.10 Compliance**: UN 38.3, IEC 62133, UL 1642, UL 9540A claims with certificate numbers. Add the section to the contribution format and loader.
+- [x] **2.9 Identity**: chemistry with cathode and anode text, form factor, IEC designation, aliases, lifecycle status, successor.
+- [x] **2.10 Compliance**: UN 38.3, IEC 62133, UL 1642, UL 9540A claims with certificate numbers. Add the section to the contribution format and loader.
 - [ ] **2.11 Curves**: discharge curves at several rates and temperatures, cycle-life curve, OCV against SOC both directions, derating maps.
 - [ ] **2.12 Applications**: where the cell is fielded, with basis and confidence.
 - [ ] **2.13 Source hygiene**: sha256, retrieval date, revision, page number and a `statistic` on every value; re-extract the records rebuilt from issue text from their real documents.
@@ -90,8 +90,8 @@ Format first, then data. Each value carries its conditions and a locator.
 - [ ] **3.3 Other chemistries the scope promises.** Li-SOCl2 and Li-MnO2 primary cells; alkaline and Li-FeS2; NiMH; silicon-anode and LMFP cells.
 - [ ] **3.4 Measured test data.** Register and ingest Severson 2019, Oxford 2017, NASA PCoE and CALCE, with their cells as products and runs linked to units.
 - [ ] **3.5 Independent characterisation.** Third-party tests and teardown chemistry under their own evidence basis.
-- [ ] **3.6 Commercial and lifecycle layers.** Price and availability as a time series, active or end-of-life status, rebadge and second-source equivalences.
-- [ ] **3.7 Assembly links.** Packs, modules and systems name their cells so the graph has something to traverse.
+- [x] **3.6 Commercial and lifecycle layers.** Price and availability as a time series, active or end-of-life status, rebadge and second-source equivalences.
+- [x] **3.7 Assembly links.** Packs, modules and systems name their cells so the graph has something to traverse.
 - [ ] **3.8 EU passport fields.** Carbon footprint, recycled content, expected lifetime in cycles and years, power at −10 °C.
 - [ ] **3.9 Model parameters.** A BPX set and an ECM surface for at least one cell.
 - [ ] **3.10 A second source per product.** Distributor listings or a second revision for the top cells, so the contradiction view has something to detect.
@@ -109,7 +109,7 @@ curve pretending to be a number.
 - [x] **4.3 Quantities for power conversion and sensing.** Input and output voltage windows, output current at ambient, conversion efficiency at a stated load and input voltage, switching frequency, standby draw, measurement range and accuracy, balancing current.
 - [ ] **4.4 Component curves.** Time-current characteristic, current derating against ambient, efficiency against load, breaking capability against voltage.
 - [x] **4.5 Component coverage list.** The contactor, fuse, pyro-fuse, DC-DC, BMS, sensor, isolation-monitor and charger products a reference must carry, as a wishlist that turns into numbers as documents land.
-- [ ] **4.6 Bill of materials.** Packs and systems name their contactors, fuses, BMS and DC-DC through `contains`, so the graph traverses the whole battery system.
+- [x] **4.6 Bill of materials.** Packs and systems name their contactors, fuses, BMS and DC-DC through `contains`, so the graph traverses the whole battery system.
 - [ ] **4.7 Page and API for components.** Component kinds in the Compare filter with their own column set, a component sheet, and a components endpoint.
 
 ## 5. Every chemistry
@@ -157,3 +157,8 @@ Entries are appended as items are ticked, newest last.
 - 2026-09-03 · **5.3** · Sixteen lead-acid and AGM targets across automotive, motive power, stationary and UPS ranges.
 - 2026-09-03 · **5.4** · Sodium-ion targets with three already sourced (CATL gen 1, CATL Naxtra, Hithium N162Ah), plus sodium-sulfur and sodium-nickel-chloride.
 - 2026-09-03 · **5.5** · Nickel and zinc, flow battery and supercapacitor segments on the coverage list.
+- 2026-09-03 · **2.9** · Format and loader: product.lifecycle, aliases, iec/ansi designations, equivalences with drop_in, rebadge, second_source, successor and predecessor relations, each with its evidence. Filling chemistry, form factor and lifecycle on the 457 existing records needs their documents (see the log under 2.13).
+- 2026-09-03 · **2.10** · certifications (standard, scope, status defaulting to claimed, certificate number, body, dates) and transport (UN number, packing instruction, Wh rating, lithium content, transport SOC) in the contribution format and loader, into bd.certification and bd.transport_classification with provenance. Values follow when documents are re-extracted.
+- 2026-09-03 · **3.6** · offers as a price time series (seller, region, currency, price, MOQ, lead time, grade, observed_at) into bd.product_offer, lifecycle status on the product, equivalences into bd.product_equivalence; the validator refuses a duplicate seller/region/date and an equivalence to a product outside the library.
+- 2026-09-03 · **3.7** · contains in the contribution format: child uid, quantity, series and parallel counts, topology, evidence. The validator refuses a child not in the library; the loader applies links after every file has loaded, so a pack may name a cell later in the run. Toshiba's catalogue and BYD's datasheet name module counts but not the cell part numbers, so no link is asserted yet.
+- 2026-09-03 · **4.6** · The same contains block carries contactors, fuses, BMS and converters once their records exist; product_assembly accepts any product kind and the CONTAINS edge is what bd_graph.reachable() walks.
