@@ -1,5 +1,7 @@
 [
  {
+  "segment": "EV prismatic LFP",
+  "note": "the volume segment of the market",
   "cells": [
    {
     "name": "CATL 302Ah",
@@ -12,46 +14,86 @@
     "name": "BYD Blade"
    },
    {
-    "name": "EVE LF280K"
+    "name": "EVE LF280K",
+    "uid": "cell/eve-energy/lf280k"
    },
    {
-    "name": "EVE LF304"
+    "name": "EVE LF304",
+    "uid": "cell/eve/lf304"
+   },
+   {
+    "name": "EVE LF105",
+    "uid": "cell/eve/lf105"
    },
    {
     "name": "Gotion L600"
    },
    {
-    "name": "REPT 320Ah"
+    "name": "REPT 314Ah",
+    "uid": "cell/rept/314ah"
    },
    {
-    "name": "Hithium 314Ah"
+    "name": "Hithium 314Ah",
+    "uid": "cell/hithium/ess-cell-314ah"
+   },
+   {
+    "name": "CATL 119Ah fast-charge",
+    "uid": "cell/catl/119ah-fast-charge-cell"
    }
-  ],
-  "note": "the volume segment of the market",
-  "segment": "EV prismatic LFP"
+  ]
  },
  {
+  "segment": "ESS prismatic LFP",
+  "note": "grid storage, 280 to 600 Ah class",
   "cells": [
    {
-    "name": "EVE LF280K"
+    "name": "EVE LF280K",
+    "uid": "cell/eve-energy/lf280k"
+   },
+   {
+    "name": "EVE LF560K"
+   },
+   {
+    "name": "CATL 280Ah BESS",
+    "uid": "cell/catl/280ah-lfp-bess-cell"
    },
    {
     "name": "CATL 314Ah"
    },
    {
-    "name": "Hithium 314Ah"
+    "name": "Hithium 314Ah",
+    "uid": "cell/hithium/ess-cell-314ah"
    },
    {
-    "name": "REPT 320Ah"
+    "name": "Hithium 587Ah",
+    "uid": "cell/hithium/infinity-cell-587ah"
+   },
+   {
+    "name": "REPT 314Ah",
+    "uid": "cell/rept/314ah"
+   },
+   {
+    "name": "REPT 324Ah",
+    "uid": "cell/rept/324ah"
+   },
+   {
+    "name": "REPT 587Ah",
+    "uid": "cell/rept/587ah"
    },
    {
     "name": "Great Power 314Ah"
+   },
+   {
+    "name": "Gotion 314Ah"
+   },
+   {
+    "name": "Sunwoda 314Ah"
    }
-  ],
-  "note": "grid storage, 280-320Ah class",
-  "segment": "ESS prismatic LFP"
+  ]
  },
  {
+  "segment": "EV prismatic NMC",
+  "note": "premium range segment",
   "cells": [
    {
     "name": "CATL NMC prismatic"
@@ -64,12 +106,16 @@
    },
    {
     "name": "LG NMC prismatic"
+   },
+   {
+    "name": "CATL 228Ah high energy",
+    "uid": "cell/catl/228ah-high-energy-density-cell"
    }
-  ],
-  "note": "premium range segment",
-  "segment": "EV prismatic NMC"
+  ]
  },
  {
+  "segment": "EV cylindrical 4680",
+  "note": "the format the industry is retooling for",
   "cells": [
    {
     "name": "Tesla 4680"
@@ -82,12 +128,18 @@
    },
    {
     "name": "EVE 4695"
+   },
+   {
+    "name": "BAK 4680"
+   },
+   {
+    "name": "Samsung SDI 46-series"
    }
-  ],
-  "note": "the format the industry is retooling for",
-  "segment": "EV cylindrical 4680"
+  ]
  },
  {
+  "segment": "EV / power cylindrical 21700",
+  "note": "",
   "cells": [
    {
     "name": "Panasonic NCA 2170"
@@ -96,47 +148,101 @@
     "name": "LG INR21700-M50"
    },
    {
+    "name": "LG INR21700-M50LT",
+    "uid": "cell/lg-energy-solution/inr21700-m50lt"
+   },
+   {
     "name": "Samsung INR21700-50E",
     "uid": "cell/samsung-sdi/inr21700-50e"
    },
    {
-    "name": "Molicel P42A"
+    "name": "Samsung INR21700-40T"
    },
    {
-    "name": "Molicel P45B"
+    "name": "Samsung INR21700-50S"
    },
    {
-    "name": "EVE 40PL"
+    "name": "Molicel P42A",
+    "uid": "cell/molicel/inr21700-p42a"
+   },
+   {
+    "name": "Molicel P45B",
+    "uid": "cell/molicel/inr21700-p45b"
+   },
+   {
+    "name": "Molicel P50B",
+    "uid": "cell/molicel/inr21700-p50b"
+   },
+   {
+    "name": "Murata VTC6A",
+    "uid": "cell/murata/us21700vtc6a"
+   },
+   {
+    "name": "EVE 40PL",
+    "uid": "cell/eve/21700-40pl"
+   },
+   {
+    "name": "EVE 50E",
+    "uid": "cell/eve/21700-50e"
+   },
+   {
+    "name": "BAK N21700CG-50E",
+    "uid": "cell/bak/n21700cg-50e"
    }
-  ],
-  "note": "",
-  "segment": "EV / power cylindrical 21700"
+  ]
  },
  {
+  "segment": "Consumer / power 18650",
+  "note": "mature, still shipping in volume",
   "cells": [
    {
     "name": "Samsung INR18650-35E"
    },
    {
+    "name": "Samsung 30Q"
+   },
+   {
     "name": "LG INR18650-MJ1"
+   },
+   {
+    "name": "LG HG2"
    },
    {
     "name": "Panasonic NCR18650B"
    },
    {
-    "name": "Murata VTC6"
+    "name": "Panasonic NCR18650GA",
+    "uid": "cell/panasonic/ncr-18650ga"
    },
    {
-    "name": "Molicel P26A"
+    "name": "Murata VTC6",
+    "uid": "cell/murata/us18650vtc6"
    },
    {
-    "name": "Samsung 30Q"
+    "name": "Murata VTC5A",
+    "uid": "cell/murata/us18650vtc5a"
+   },
+   {
+    "name": "Molicel P26A",
+    "uid": "cell/molicel/inr18650-p26a"
+   },
+   {
+    "name": "Molicel P28A",
+    "uid": "cell/molicel/inr18650-p28a"
+   },
+   {
+    "name": "BAK N18650CH",
+    "uid": "cell/bak/n18650ch"
+   },
+   {
+    "name": "EVE 18650 30P",
+    "uid": "cell/eve/18650-30p"
    }
-  ],
-  "note": "mature, still shipping in volume",
-  "segment": "Consumer / power 18650"
+  ]
  },
  {
+  "segment": "EV pouch NMC",
+  "note": "",
   "cells": [
    {
     "name": "LG pouch NMC"
@@ -146,51 +252,125 @@
    },
    {
     "name": "AESC pouch"
+   },
+   {
+    "name": "Farasis pouch"
    }
-  ],
-  "note": "",
-  "segment": "EV pouch NMC"
+  ]
  },
  {
+  "segment": "Small pouch and consumer lithium",
+  "note": "wearables, IoT, portable devices",
   "cells": [
    {
-    "name": "Toshiba SCiB 20Ah"
+    "name": "EEMB LP503450",
+    "uid": "cell/eemb/lp503450"
    },
    {
-    "name": "Toshiba SCiB 23Ah"
+    "name": "EEMB LP103454",
+    "uid": "cell/eemb/lp103454"
    },
    {
-    "name": "Toshiba SCiB 10Ah"
+    "name": "EEMB LP803450",
+    "uid": "cell/eemb/lp803450"
    },
    {
-    "name": "Toshiba SCiB 2.9Ah"
+    "name": "Renata ICP501230",
+    "uid": "pack/renata/icp501230"
+   },
+   {
+    "name": "ATL pouch"
+   },
+   {
+    "name": "LG small pouch"
+   },
+   {
+    "name": "Grepow shaped cell"
+   }
+  ]
+ },
+ {
+  "segment": "LTO",
+  "note": "fast charge and cold climate",
+  "cells": [
+   {
+    "name": "Toshiba SCiB 20Ah",
+    "uid": "cell/toshiba/scib-20ah"
+   },
+   {
+    "name": "Toshiba SCiB 23Ah",
+    "uid": "cell/toshiba/scib-23ah"
+   },
+   {
+    "name": "Toshiba SCiB 10Ah",
+    "uid": "cell/toshiba/scib-10ah"
+   },
+   {
+    "name": "Toshiba SCiB 2.9Ah",
+    "uid": "cell/toshiba/scib-2-9ah"
    },
    {
     "name": "Altairnano"
    },
    {
     "name": "Yinlong LTO"
+   },
+   {
+    "name": "Microvast LpTO"
    }
-  ],
-  "note": "fast charge and cold climate",
-  "segment": "LTO"
+  ]
  },
  {
+  "segment": "Sodium-ion",
+  "note": "early market, moving fast",
   "cells": [
    {
-    "name": "CATL sodium-ion"
+    "name": "CATL sodium-ion gen 1",
+    "uid": "cell/catl/first-generation-sodium-ion-cell"
+   },
+   {
+    "name": "CATL Naxtra",
+    "uid": "cell/catl/naxtra-passenger-sodium-ion-cell"
+   },
+   {
+    "name": "Hithium N162Ah",
+    "uid": "cell/hithium/infinity-cell-n162ah"
    },
    {
     "name": "HiNa NaCR32140"
    },
    {
     "name": "Natron Blue Tray"
+   },
+   {
+    "name": "BYD sodium-ion"
+   },
+   {
+    "name": "Faradion"
+   },
+   {
+    "name": "Tiamat"
+   },
+   {
+    "name": "Altris"
    }
-  ],
-  "note": "early market, moving fast",
-  "segment": "Sodium-ion"
+  ]
  },
  {
+  "segment": "Sodium beyond sodium-ion",
+  "note": "high-temperature stationary chemistries",
+  "cells": [
+   {
+    "name": "NGK NAS"
+   },
+   {
+    "name": "FZSoNick SoNick (ZEBRA)"
+   }
+  ]
+ },
+ {
+  "segment": "Semi-solid / solid-state",
+  "note": "pre-volume, worth tracking",
   "cells": [
    {
     "name": "WeLion semi-solid"
@@ -203,9 +383,519 @@
    },
    {
     "name": "ProLogium"
+   },
+   {
+    "name": "Factorial FEST"
    }
-  ],
-  "note": "pre-volume, worth tracking",
-  "segment": "Semi-solid / solid-state"
+  ]
+ },
+ {
+  "segment": "Home and C&I storage systems",
+  "note": "packs and systems, the level a buyer sees",
+  "cells": [
+   {
+    "name": "BYD Battery-Box HVS 5.1",
+    "uid": "system/byd/battery-box-premium-hvs-5.1"
+   },
+   {
+    "name": "BYD Battery-Box HVM 22.1",
+    "uid": "system/byd/battery-box-premium-hvm-22.1"
+   },
+   {
+    "name": "LG RESU10H",
+    "uid": "pack/lg-energy-solution/resu10h-type-r"
+   },
+   {
+    "name": "Samsung SDI M8994 E2",
+    "uid": "module/samsung-sdi/m8994-e2"
+   },
+   {
+    "name": "CATL EnerOne",
+    "uid": "system/catl/enerone"
+   },
+   {
+    "name": "CATL TENER",
+    "uid": "system/catl/tener"
+   },
+   {
+    "name": "CNTE STAR X",
+    "uid": "system/cnte/star-x"
+   },
+   {
+    "name": "Tesla Powerwall 3"
+   },
+   {
+    "name": "Tesla Megapack 2 XL"
+   },
+   {
+    "name": "Sungrow PowerTitan"
+   },
+   {
+    "name": "Fluence Gridstack"
+   },
+   {
+    "name": "Huawei LUNA2000"
+   },
+   {
+    "name": "Pylontech US5000"
+   },
+   {
+    "name": "sonnenBatterie"
+   },
+   {
+    "name": "Enphase IQ Battery 5P"
+   }
+  ]
+ },
+ {
+  "segment": "Coin and button primary cells",
+  "note": "CR, BR, SR and LR sizes",
+  "cells": [
+   {
+    "name": "Panasonic CR2032",
+    "uid": "primary_cell/panasonic/cr2032"
+   },
+   {
+    "name": "Panasonic BR2032",
+    "uid": "primary_cell/panasonic/br2032"
+   },
+   {
+    "name": "Renata CR2032 MFR",
+    "uid": "primary_cell/renata/cr2032-mfr"
+   },
+   {
+    "name": "Maxell CR2032",
+    "uid": "primary_cell/maxell/cr2032"
+   },
+   {
+    "name": "Maxell SR626SW",
+    "uid": "primary_cell/maxell/sr626sw"
+   },
+   {
+    "name": "Maxell LR44",
+    "uid": "primary_cell/maxell/lr44"
+   },
+   {
+    "name": "Energizer CR2032"
+   },
+   {
+    "name": "Varta CR2032"
+   },
+   {
+    "name": "Duracell DL2032"
+   },
+   {
+    "name": "Murata CR2032"
+   }
+  ]
+ },
+ {
+  "segment": "Alkaline and lithium primary",
+  "note": "AA, AAA, C, D, 9V, CR123A and Li-SOCl2",
+  "cells": [
+   {
+    "name": "Energizer E91",
+    "uid": "primary_cell/energizer/e91"
+   },
+   {
+    "name": "Energizer L91"
+   },
+   {
+    "name": "Duracell MN1500"
+   },
+   {
+    "name": "Varta Longlife Power AA"
+   },
+   {
+    "name": "Saft LS14500"
+   },
+   {
+    "name": "Tadiran TL-5903"
+   },
+   {
+    "name": "Panasonic CR123A"
+   },
+   {
+    "name": "Energizer 2L76"
+   }
+  ]
+ },
+ {
+  "segment": "Lead-acid and AGM",
+  "note": "automotive, motive power, stationary and UPS",
+  "cells": [
+   {
+    "name": "Clarios Varta Silver Dynamic AGM"
+   },
+   {
+    "name": "Exide EK800 AGM"
+   },
+   {
+    "name": "EnerSys Odyssey PC1500"
+   },
+   {
+    "name": "East Penn Deka Intimidator"
+   },
+   {
+    "name": "Trojan T-105"
+   },
+   {
+    "name": "Rolls S6-460 AGM"
+   },
+   {
+    "name": "GS Yuasa YBX7"
+   },
+   {
+    "name": "Hoppecke grid.power"
+   },
+   {
+    "name": "FIAMM FGL"
+   },
+   {
+    "name": "Leoch LP12-100"
+   },
+   {
+    "name": "Narada 12NDT100"
+   },
+   {
+    "name": "CSB HR1234W"
+   },
+   {
+    "name": "Northstar NSB Blue+"
+   },
+   {
+    "name": "Optima YellowTop"
+   },
+   {
+    "name": "Panasonic LC-R127R2"
+   },
+   {
+    "name": "Yuasa NP7-12"
+   }
+  ]
+ },
+ {
+  "segment": "Nickel and zinc",
+  "note": "NiMH, NiCd, NiZn",
+  "cells": [
+   {
+    "name": "Panasonic Eneloop BK-3MCCE"
+   },
+   {
+    "name": "FDK HR-AAU"
+   },
+   {
+    "name": "GP ReCyko AA"
+   },
+   {
+    "name": "Saft VHT D NiMH"
+   },
+   {
+    "name": "Saft Sunica.plus NiCd"
+   },
+   {
+    "name": "Duracell NiMH AA"
+   },
+   {
+    "name": "ZincFive NiZn"
+   },
+   {
+    "name": "Eos Znyth"
+   }
+  ]
+ },
+ {
+  "segment": "Flow batteries",
+  "note": "by electrolyte",
+  "cells": [
+   {
+    "name": "Invinity VS3"
+   },
+   {
+    "name": "Sumitomo Electric VRFB"
+   },
+   {
+    "name": "CellCube FB"
+   },
+   {
+    "name": "ESS Inc Energy Warehouse"
+   },
+   {
+    "name": "Redflow ZBM3"
+   },
+   {
+    "name": "Rongke Power VRFB"
+   }
+  ]
+ },
+ {
+  "segment": "Supercapacitors",
+  "note": "cells and modules",
+  "cells": [
+   {
+    "name": "Maxwell BCAP3000"
+   },
+   {
+    "name": "Skeleton SkelCap"
+   },
+   {
+    "name": "Eaton XL60"
+   },
+   {
+    "name": "LS Materials LSUC"
+   },
+   {
+    "name": "Kyocera AVX SCC"
+   },
+   {
+    "name": "Nichicon EVerCAP"
+   },
+   {
+    "name": "VINATech VEC"
+   }
+  ]
+ },
+ {
+  "segment": "Contactors and relays",
+  "note": "the switch between the pack and everything else",
+  "cells": [
+   {
+    "name": "TE Kilovac EV200"
+   },
+   {
+    "name": "TE EVC 250"
+   },
+   {
+    "name": "Gigavac GX14"
+   },
+   {
+    "name": "Gigavac GV200"
+   },
+   {
+    "name": "Sensata GXNC"
+   },
+   {
+    "name": "Hongfa HFE82V"
+   },
+   {
+    "name": "Panasonic AEV"
+   },
+   {
+    "name": "Omron G9EJ"
+   },
+   {
+    "name": "Schaltbau C310"
+   },
+   {
+    "name": "Denso EV relay"
+   }
+  ]
+ },
+ {
+  "segment": "Fuses and pyro-fuses",
+  "note": "interrupt ratings live or die on circuit voltage and L/R",
+  "cells": [
+   {
+    "name": "Littelfuse EVK"
+   },
+   {
+    "name": "Eaton Bussmann EV series"
+   },
+   {
+    "name": "Mersen EV fuse"
+   },
+   {
+    "name": "Bel Fuse EVR"
+   },
+   {
+    "name": "SIBA EV fuse"
+   },
+   {
+    "name": "Pacific Engineering pyro-fuse"
+   },
+   {
+    "name": "Daicel pyro-fuse"
+   },
+   {
+    "name": "Autoliv pyro-fuse"
+   },
+   {
+    "name": "Littelfuse pyro-fuse"
+   }
+  ]
+ },
+ {
+  "segment": "DC-DC converters and chargers",
+  "note": "efficiency is a surface over load and input voltage",
+  "cells": [
+   {
+    "name": "Victron Orion-Tr Smart"
+   },
+   {
+    "name": "Vicor BCM"
+   },
+   {
+    "name": "Delta EV DC-DC"
+   },
+   {
+    "name": "Brusa BSC6"
+   },
+   {
+    "name": "TDK-Lambda EVS"
+   },
+   {
+    "name": "Mean Well DDR"
+   },
+   {
+    "name": "Bel Power DC-DC"
+   },
+   {
+    "name": "Eltek Flatpack"
+   },
+   {
+    "name": "Brusa NLG6 charger"
+   },
+   {
+    "name": "Delta-Q IC650"
+   }
+  ]
+ },
+ {
+  "segment": "BMS and disconnect units",
+  "note": "from the monitor chip to the finished unit",
+  "cells": [
+   {
+    "name": "Orion BMS 2"
+   },
+   {
+    "name": "Nuvation Energy BMS"
+   },
+   {
+    "name": "Sensata Lithium Balance"
+   },
+   {
+    "name": "Analog Devices LTC6813"
+   },
+   {
+    "name": "TI BQ79616"
+   },
+   {
+    "name": "NXP MC33771"
+   },
+   {
+    "name": "Infineon TLE9012"
+   },
+   {
+    "name": "REC BMS"
+   },
+   {
+    "name": "Batrium Watchmon"
+   }
+  ]
+ },
+ {
+  "segment": "Sensors and isolation monitors",
+  "note": "current, voltage, temperature, insulation",
+  "cells": [
+   {
+    "name": "LEM DHAB"
+   },
+   {
+    "name": "LEM CAB"
+   },
+   {
+    "name": "Isabellenhütte IVT-S"
+   },
+   {
+    "name": "Sensata current sensor"
+   },
+   {
+    "name": "Bender ISOMETER iso165C"
+   },
+   {
+    "name": "Bender iso175"
+   },
+   {
+    "name": "Melexis MLX91209"
+   },
+   {
+    "name": "Allegro ACS37610"
+   }
+  ]
+ },
+ {
+  "segment": "Busbars and cell contact systems",
+  "note": "",
+  "cells": [
+   {
+    "name": "Rogers ROLINX laminated busbar"
+   },
+   {
+    "name": "Mersen laminated bus"
+   },
+   {
+    "name": "Miba FLEXcooler"
+   },
+   {
+    "name": "TE cell contact system"
+   },
+   {
+    "name": "Diehl cell contact system"
+   },
+   {
+    "name": "Amphenol busbar"
+   }
+  ]
+ },
+ {
+  "segment": "Thermal management",
+  "note": "chillers, cold plates, interface materials, heaters",
+  "cells": [
+   {
+    "name": "Modine battery chiller"
+   },
+   {
+    "name": "Valeo battery chiller"
+   },
+   {
+    "name": "Dana cold plate"
+   },
+   {
+    "name": "Boyd cold plate"
+   },
+   {
+    "name": "Henkel gap filler"
+   },
+   {
+    "name": "Parker Chomerics TIM"
+   },
+   {
+    "name": "Webasto HV heater"
+   }
+  ]
+ },
+ {
+  "segment": "Connectors and service disconnects",
+  "note": "",
+  "cells": [
+   {
+    "name": "Amphenol PowerLok"
+   },
+   {
+    "name": "TE HVP800"
+   },
+   {
+    "name": "Rosenberger HVR"
+   },
+   {
+    "name": "Littelfuse MSD"
+   },
+   {
+    "name": "Eaton Bussmann MSD"
+   },
+   {
+    "name": "Aptiv HV connector"
+   }
+  ]
  }
 ]

@@ -61,7 +61,7 @@ which is which in the log:
 - [x] **1.1 Stale caption.** The report header still prints "figures provisional, no source locators", left over from the hand-typed seed page. Replace it with a per-column stated-or-derived flag.
 - [x] **1.2 Define the capacity rule.** Wh/kg is built from the first capacity observation in the file whatever its rate. Rank on the lowest stated rate, prefer the standard or typical figure, and print the rate next to the number.
 - [x] **1.3 Completeness column.** Fields present out of the twelve the completeness view tracks, plus the count of conditions the source leaves unstated, on the Compare table and the Report.
-- [ ] **1.4 Coverage wiring.** Targets that already exist in `contrib/` must carry their uid in `web/data/coverage.json` so they count as sourced.
+- [x] **1.4 Coverage wiring.** Targets that already exist in `contrib/` must carry their uid in `web/data/coverage.json` so they count as sourced.
 - [x] **1.5 Reference cells reach the page.** The four seed cells and the SQL pack catalogue never reach the page because it reads only `contrib/`. Port the reference cells to YAML without doubling them in the database.
 - [x] **1.6 Columns an engineer selects on.** Max continuous discharge current at its temperature, DC resistance with method and duration, cycle life with its conditions, operating window, standard charge current, source kind, revision and date.
 
@@ -108,7 +108,7 @@ curve pretending to be a number.
 - [x] **4.2 Quantities for switching and protection.** Rated voltage, rated current with its ambient, breaking capacity with circuit voltage and time constant, pre-arcing and total I²t, minimum breaking current, contact resistance at its test current, coil voltage, coil hold power, electrical and mechanical endurance, dielectric strength with its duration, insulation resistance, voltage drop, cold resistance.
 - [x] **4.3 Quantities for power conversion and sensing.** Input and output voltage windows, output current at ambient, conversion efficiency at a stated load and input voltage, switching frequency, standby draw, measurement range and accuracy, balancing current.
 - [ ] **4.4 Component curves.** Time-current characteristic, current derating against ambient, efficiency against load, breaking capability against voltage.
-- [ ] **4.5 Component coverage list.** The contactor, fuse, pyro-fuse, DC-DC, BMS, sensor, isolation-monitor and charger products a reference must carry, as a wishlist that turns into numbers as documents land.
+- [x] **4.5 Component coverage list.** The contactor, fuse, pyro-fuse, DC-DC, BMS, sensor, isolation-monitor and charger products a reference must carry, as a wishlist that turns into numbers as documents land.
 - [ ] **4.6 Bill of materials.** Packs and systems name their contactors, fuses, BMS and DC-DC through `contains`, so the graph traverses the whole battery system.
 - [ ] **4.7 Page and API for components.** Component kinds in the Compare filter with their own column set, a component sheet, and a components endpoint.
 
@@ -116,9 +116,9 @@ curve pretending to be a number.
 
 - [x] **5.1 Chemistry family and construction.** A `family` on the chemistry block: lithium-ion, lithium metal, lithium primary, sodium-ion, sodium-sulfur, sodium-nickel-chloride, lead-acid, nickel-metal-hydride, nickel-cadmium, nickel-zinc, zinc-air, alkaline, silver oxide, flow vanadium, flow zinc-bromine, flow iron, solid state, supercapacitor. A `construction` for lead-acid: flooded, AGM, gel, tubular plate, flat plate, bipolar, carbon-enhanced.
 - [x] **5.2 Lead-acid quantities.** Cold cranking current with temperature, duration, cutoff and the standard it follows; reserve capacity with its load and cutoff; float and cycle charge voltages with temperature; temperature compensation coefficient; design life on float at temperature; capacity at the 20-hour, 10-hour and 5-hour rates as separate observations.
-- [ ] **5.3 Lead-acid and AGM coverage list.** Automotive, motive-power, stationary and UPS ranges from the makers a reference must carry.
-- [ ] **5.4 Sodium coverage list.** Sodium-ion cells and packs from the makers shipping or sampling them, plus sodium-sulfur and sodium-nickel-chloride stationary products.
-- [ ] **5.5 Nickel, zinc, flow and supercapacitor coverage lists.** NiMH and NiCd cells and packs, nickel-zinc, zinc-air, flow batteries by electrolyte, and supercapacitor cells and modules.
+- [x] **5.3 Lead-acid and AGM coverage list.** Automotive, motive-power, stationary and UPS ranges from the makers a reference must carry.
+- [x] **5.4 Sodium coverage list.** Sodium-ion cells and packs from the makers shipping or sampling them, plus sodium-sulfur and sodium-nickel-chloride stationary products.
+- [x] **5.5 Nickel, zinc, flow and supercapacitor coverage lists.** NiMH and NiCd cells and packs, nickel-zinc, zinc-air, flow batteries by electrolyte, and supercapacitor cells and modules.
 - [x] **5.6 Conventions for the new chemistries.** The places these chemistries disagree with each other and with lithium practice, written into `docs/02-conventions.md` and enforced as required conditions.
 
 ## 6. Ontology and knowledge graph
@@ -152,3 +152,8 @@ Entries are appended as items are ticked, newest last.
 - 2026-09-03 · **5.1** · chemistry.family (22 families) and chemistry.construction (lead-acid: flooded, AGM, gel, tubular, flat, bipolar, carbon-enhanced) in schema, format and loader, with a CHECK that construction only appears on lead-acid; both bound to their EMMO classes.
 - 2026-09-03 · **5.2** · cold_cranking_current (temperature, duration, cutoff required; standard in extra), reserve_capacity_minutes (load, cutoff, temperature), float and cycle charge voltages (temperature), temperature compensation coefficient; capacity at the 20-, 10- and 5-hour rates as separate observations.
 - 2026-09-03 · **5.6** · docs/02-conventions.md sections 28 to 33: DC breaking capacity and the circuit it was broken in, fuse ratings as derating curves, contact resistance at its test current, converter efficiency as a surface, four different cold-cranking tests, lead-acid capacity per rate and float against cycle voltage.
+- 2026-09-03 · **1.4** · web/data/coverage.json carries uids for every target the library already holds, the Toshiba SCiB cells and the reference cells included; the Coverage page now counts 56 of 227 targets sourced across 27 segments.
+- 2026-09-03 · **4.5** · Eight component segments on the coverage list: contactors and relays, fuses and pyro-fuses, DC-DC converters and chargers, BMS and disconnect units, sensors and isolation monitors, busbars and cell contact systems, thermal management, connectors and service disconnects. Names only until a document lands.
+- 2026-09-03 · **5.3** · Sixteen lead-acid and AGM targets across automotive, motive power, stationary and UPS ranges.
+- 2026-09-03 · **5.4** · Sodium-ion targets with three already sourced (CATL gen 1, CATL Naxtra, Hithium N162Ah), plus sodium-sulfur and sodium-nickel-chloride.
+- 2026-09-03 · **5.5** · Nickel and zinc, flow battery and supercapacitor segments on the coverage list.
