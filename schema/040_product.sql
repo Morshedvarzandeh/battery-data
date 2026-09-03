@@ -33,6 +33,8 @@ CREATE TABLE product (
   product_family   text,
   form_factor      form_factor,
   form_factor_code text,                        -- '21700', '4680', 'AA', 'CR2032'
+  -- which piece of the hardware around the cell this is, when kind='component'
+  component_kind   component_kind,
   -- designation systems for consumer / primary cells. These are NOT one
   -- string: an AA alkaline is simultaneously ANSI 15A and IEC LR6.
   iec_designation  text,                        -- 'LR6', 'INR21700', 'CR2032'
@@ -99,13 +101,18 @@ CREATE TABLE product_chemistry (
   id                    bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   product_revision_id   bigint NOT NULL REFERENCES product_revision(id) ON DELETE CASCADE,
   designation           text,                 -- 'NMC811','LFP','NCA','Li-SOCl2','Zn/MnO2'
+  family                chemistry_family,     -- the enum a query filters on
+  construction          lead_acid_construction, -- flooded / AGM / gel, lead-acid only
   cathode_text          text,                 -- verbatim from the source
   anode_text            text,
   electrolyte_text      text,
   separator_text        text,
   system_string         text,                 -- e.g. 'Graphite - LiNixMnyCozO2'
   provenance_id         bigint NOT NULL REFERENCES provenance(id),
-  UNIQUE (product_revision_id)
+  UNIQUE (product_revision_id),
+  CONSTRAINT construction_is_lead_acid CHECK (
+    construction IS NULL OR family IS NULL OR family = 'lead_acid'
+  )
 );
 
 -- Resolved material composition, typically from teardown/literature.

@@ -140,7 +140,7 @@ New to the repo? **[`START-HERE.md`](START-HERE.md)** is the one-page version.
 
 ```bash
 createdb batterydb
-./tools/build_db.sh batterydb          # 67 tables, 10 views, 98 quantities
+./tools/build_db.sh batterydb          # 86 tables, 13 views, 136 quantities
 psql -d batterydb -f seed/001_reference_cells.sql
 python tools/load_contrib.py --dsn dbname=batterydb   # accepted contributions
 psql -d batterydb -f tests/010_killer_queries.sql
@@ -207,6 +207,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
 | [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary |
 | [`docs/09-roadmap.md`](docs/09-roadmap.md) | **The checklist**: what is being added to make this the best open battery dataset, ticked as it lands |
+| [`docs/10-components-and-chemistries.md`](docs/10-components-and-chemistries.md) | The hardware around the cell and every chemistry: component kinds, chemistry families, lead-acid and switching quantities |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---
@@ -218,6 +219,8 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | **Cells** | Cylindrical (18650/21700/4680/26650/32700/46xx), pouch, prismatic, coin |
 | **Modules / packs / systems** | EV packs, home ESS, grid BESS containers, tool and drone packs |
 | **Consumer & primary** | Alkaline, Li-SOCl₂, Li-MnO₂, Li-FeS₂, button cells, NiMH |
+| **Every chemistry** | Lead-acid (flooded, AGM, gel), sodium-ion and sodium-sulfur, NiMH, NiCd, NiZn, zinc-air, flow (vanadium, zinc-bromine, iron), solid state, supercapacitors — `chemistry.family` and `construction`, see [`docs/10-components-and-chemistries.md`](docs/10-components-and-chemistries.md) |
+| **Components around the battery** | Contactors, fuses and pyro-fuses, BMS and disconnect units, busbars and cell contact systems, current and temperature sensors, isolation monitors, DC-DC converters, chargers, inverters, cooling plates, chillers, heaters — `component_kind`, with breaking capacity, I²t, contact resistance and efficiency carrying the conditions they depend on |
 | **Materials** | Cathode/anode/electrolyte/separator, suppliers, federated to OPTIMADE |
 | **Test data** | Capacity/RPT, HPPC, EIS+DRT, cycle life, calendar aging, OCV/GITT/PITT, ICA/DVA, HPC, self-discharge, formation, thermal (ARC, entropic, heat capacity, anisotropic conductivity), abuse and vent gas, mechanical swelling, drive cycles, three-electrode, post-mortem |
 | **Models** | BPX (DFN/SPM/SPMe) stored verbatim; ECM as an (SOC, T) lookup surface with fit provenance |
@@ -228,7 +231,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 
 | Path | What it is |
 |---|---|
-| `schema/` | 67 tables, 10 views, 98-quantity registry. Loads on stock Postgres 16 |
+| `schema/` | 86 tables, 13 views, 136-quantity registry with EMMO and QUDT bindings. Loads on stock Postgres 16 |
 | `tools/cyclers.py` | Arbin / Maccor / Neware / BioLogic / BDF adapters. **Determines conventions from the data** rather than assuming them, and recovers the `[aging, RPT, aging, RPT]` structure automatically |
 | `api/` | Read API on OPTIMADE conventions, with an OPTIMADE-style filter grammar |
 | `agents/literature-miner/` | Papers and datasets → structured records with provenance |

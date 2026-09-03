@@ -75,8 +75,65 @@
           "items": {
             "type": "string"
           }
+        },
+        "component_kind": {
+          "enum": [
+            "dc_dc_converter",
+            "on_board_charger",
+            "inverter",
+            "pcs",
+            "contactor",
+            "relay",
+            "fuse",
+            "pyro_fuse",
+            "circuit_breaker",
+            "bms",
+            "battery_disconnect_unit",
+            "busbar",
+            "cell_contact_system",
+            "current_sensor",
+            "voltage_sensor",
+            "temperature_sensor",
+            "pre_charge_resistor",
+            "service_disconnect",
+            "isolation_monitor",
+            "cooling_plate",
+            "chiller",
+            "heater",
+            "thermal_interface_material",
+            "vent",
+            "enclosure",
+            "cell_holder",
+            "connector",
+            "cable",
+            "wire_harness",
+            "electrode",
+            "separator",
+            "electrolyte",
+            "other"
+          ],
+          "description": "Which piece of the hardware around the cell this is. Required when kind is component."
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "component"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "component_kind"
+            ]
+          }
+        }
+      ]
     },
     "source": {
       "type": "object",
@@ -165,6 +222,46 @@
         },
         "locator": {
           "$ref": "#/$defs/locator"
+        },
+        "family": {
+          "enum": [
+            "lithium_ion",
+            "lithium_metal",
+            "lithium_primary",
+            "sodium_ion",
+            "sodium_sulfur",
+            "sodium_nickel_chloride",
+            "lead_acid",
+            "nickel_metal_hydride",
+            "nickel_cadmium",
+            "nickel_zinc",
+            "nickel_iron",
+            "zinc_air",
+            "zinc_carbon",
+            "alkaline",
+            "silver_oxide",
+            "flow_vanadium",
+            "flow_zinc_bromine",
+            "flow_iron",
+            "flow_other",
+            "solid_state",
+            "supercapacitor",
+            "other"
+          ],
+          "description": "The family a query filters on and an ontology export binds to; designation stays the maker's own string."
+        },
+        "construction": {
+          "enum": [
+            "flooded",
+            "agm",
+            "gel",
+            "tubular_plate",
+            "flat_plate",
+            "bipolar",
+            "carbon_enhanced",
+            "other"
+          ],
+          "description": "Lead-acid only: decides charge voltages, orientation, gassing and cycle life more than the chemistry does."
         }
       }
     },
@@ -251,6 +348,7 @@
             "P",
             "W_per_kg",
             "ohm",
+            "pct",
             "unspecified"
           ]
         },
@@ -382,6 +480,15 @@
         },
         "verbatim": {
           "type": "string"
+        },
+        "circuit_voltage_v": {
+          "type": "number",
+          "description": "Circuit voltage a breaking, making or endurance rating, or a converter efficiency, was stated at."
+        },
+        "time_constant_ms": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "L/R time constant of the test circuit for a DC interrupt rating."
         }
       }
     },

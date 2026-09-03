@@ -357,7 +357,131 @@
       "intensity": {
         "label": "Intensity",
         "relation": "exact"
-      }
+      },
+      "max_pulse_charge_current": {
+        "label": "MaximumPulseChargingCurrent",
+        "relation": "exact"
+      },
+      "short_circuit_current": {
+        "label": "ShortCircuitCurrent",
+        "relation": "exact"
+      },
+      "rated_voltage": {
+        "label": "Voltage",
+        "relation": "broader"
+      },
+      "rated_current": {
+        "label": "ElectricCurrent",
+        "relation": "broader"
+      },
+      "breaking_capacity": null,
+      "making_capacity": null,
+      "i2t_prearcing": null,
+      "i2t_total": null,
+      "minimum_breaking_current": null,
+      "contact_resistance": {
+        "label": "ElectricResistance",
+        "relation": "broader"
+      },
+      "coil_voltage": {
+        "label": "Voltage",
+        "relation": "broader"
+      },
+      "coil_power": {
+        "label": "Power",
+        "relation": "broader"
+      },
+      "pickup_voltage": {
+        "label": "Voltage",
+        "relation": "broader"
+      },
+      "dropout_voltage": {
+        "label": "Voltage",
+        "relation": "broader"
+      },
+      "electrical_endurance": null,
+      "mechanical_endurance": null,
+      "dielectric_strength": null,
+      "insulation_resistance": {
+        "label": "ElectricResistance",
+        "relation": "broader"
+      },
+      "voltage_drop": {
+        "label": "Voltage",
+        "relation": "broader"
+      },
+      "cold_resistance": {
+        "label": "ElectricResistance",
+        "relation": "broader"
+      },
+      "power_dissipation": {
+        "label": "Power",
+        "relation": "broader"
+      },
+      "operate_time": {
+        "label": "Time",
+        "relation": "broader"
+      },
+      "release_time": {
+        "label": "Time",
+        "relation": "broader"
+      },
+      "input_voltage_min": {
+        "label": "Voltage",
+        "relation": "broader"
+      },
+      "input_voltage_max": {
+        "label": "Voltage",
+        "relation": "broader"
+      },
+      "output_voltage_min": {
+        "label": "Voltage",
+        "relation": "broader"
+      },
+      "output_voltage_max": {
+        "label": "Voltage",
+        "relation": "broader"
+      },
+      "output_current": {
+        "label": "ElectricCurrent",
+        "relation": "broader"
+      },
+      "conversion_efficiency": {
+        "label": "EnergyEfficiency",
+        "relation": "close",
+        "note": "A converter's efficiency at one load point and input voltage; the conditions carry the operating point."
+      },
+      "switching_frequency": {
+        "label": "Frequency",
+        "relation": "broader"
+      },
+      "measurement_range_max": {
+        "label": "ElectricCurrent",
+        "relation": "broader"
+      },
+      "measurement_accuracy": null,
+      "balancing_current": {
+        "label": "ElectricCurrent",
+        "relation": "broader"
+      },
+      "cold_cranking_current": {
+        "label": "ElectricCurrent",
+        "relation": "broader",
+        "note": "No cranking-current class in EMMO; the standard followed lives in condition_set.extra.standard."
+      },
+      "reserve_capacity_minutes": {
+        "label": "Time",
+        "relation": "broader"
+      },
+      "float_charge_voltage": {
+        "label": "ChargingVoltage",
+        "relation": "close"
+      },
+      "cycle_charge_voltage": {
+        "label": "ChargingVoltage",
+        "relation": "close"
+      },
+      "temperature_compensation_coefficient": null
     },
     "product_kinds": {
       "cell": "BatteryCell",
@@ -527,7 +651,45 @@
       "displacement": "Displacement",
       "force": "Force",
       "two_theta": "PlaneAngle",
-      "intensity": "Dimensionless"
+      "intensity": "Dimensionless",
+      "max_pulse_charge_current": "ElectricCurrent",
+      "short_circuit_current": "ElectricCurrent",
+      "rated_voltage": "Voltage",
+      "rated_current": "ElectricCurrent",
+      "breaking_capacity": "ElectricCurrent",
+      "making_capacity": "ElectricCurrent",
+      "i2t_prearcing": null,
+      "i2t_total": null,
+      "minimum_breaking_current": "ElectricCurrent",
+      "contact_resistance": "Resistance",
+      "coil_voltage": "Voltage",
+      "coil_power": "Power",
+      "pickup_voltage": "Voltage",
+      "dropout_voltage": "Voltage",
+      "electrical_endurance": "Count",
+      "mechanical_endurance": "Count",
+      "dielectric_strength": "Voltage",
+      "insulation_resistance": "Resistance",
+      "voltage_drop": "Voltage",
+      "cold_resistance": "Resistance",
+      "power_dissipation": "Power",
+      "operate_time": "Time",
+      "release_time": "Time",
+      "input_voltage_min": "Voltage",
+      "input_voltage_max": "Voltage",
+      "output_voltage_min": "Voltage",
+      "output_voltage_max": "Voltage",
+      "output_current": "ElectricCurrent",
+      "conversion_efficiency": "Efficiency",
+      "switching_frequency": "Frequency",
+      "measurement_range_max": "ElectricCurrent",
+      "measurement_accuracy": "DimensionlessRatio",
+      "balancing_current": "ElectricCurrent",
+      "cold_cranking_current": "ElectricCurrent",
+      "reserve_capacity_minutes": "Time",
+      "float_charge_voltage": "Voltage",
+      "cycle_charge_voltage": "Voltage",
+      "temperature_compensation_coefficient": null
     },
     "units": {
       "A": "A",
@@ -593,7 +755,20 @@
       "ohm_cm2": null,
       "%/month": null,
       "%/year": null,
-      "mV/day": null
+      "mV/day": null,
+      "A2s": null,
+      "kA2s": null,
+      "min": "MIN",
+      "ms": "MilliSEC",
+      "us": "MicroSEC",
+      "mV/°C": null,
+      "mV/degC": null,
+      "mV/K": null,
+      "MΩ": "MegaOHM",
+      "Mohm": "MegaOHM",
+      "kΩ": "KiloOHM",
+      "kohm": "KiloOHM",
+      "operations": "NUM"
     },
     "_note": "A null quantity kind or unit records that QUDT has no term: the entropic coefficient (V/K) and dV/dQ have none, and QUDT defines no milliwatt-hour or millivolt-per-kelvin unit."
   }

@@ -263,6 +263,82 @@ protocol translation as the field's **top unsolved problem**.
 **Decision:** store the vendor blob verbatim, plus a parsed step table, plus a
 hash. Nothing else in the ecosystem does this.
 
+## 28. DC breaking capacity needs the circuit it was broken in
+
+`condition_set.circuit_voltage_v` + `time_constant_ms` — required for
+`breaking_capacity`
+
+A contactor or fuse interrupts a DC current against the energy stored in
+the circuit's inductance, so the same device carries different interrupt
+ratings at different circuit voltages and L/R time constants, and EV
+contactor datasheets state both (a rating at 450 V with L/R = 1 ms is not a
+rating at 800 V). A breaking capacity without them is not comparable.
+
+**Decision:** both are required conditions. `making_capacity`, `i2t_total`,
+`minimum_breaking_current`, `insulation_resistance` and
+`electrical_endurance` require the circuit voltage for the same reason.
+
+## 29. A fuse's rated current is a derating curve
+
+`rated_current` requires `temperature_c`
+
+Fuse and contactor carry ratings are stated at an ambient and fall above it;
+the derating curve is the fact and the headline number is one point on it.
+
+**Decision:** the ambient is a required condition, and the curve is stored
+as a `derating` curve when the document prints one. Pre-arcing I²t is
+voltage-independent and stored without conditions; total clearing I²t
+depends on the arc and carries the circuit voltage.
+
+## 30. Contact resistance depends on the test current
+
+`contact_resistance` requires `rate_value`, `rate_unit`
+
+Film resistance dominates at low currents, so a contact resistance quoted at
+100 A and one quoted at 1 A on the same part differ by more than the
+manufacturing spread. The test current travels with the number.
+
+## 31. Converter efficiency is a surface
+
+`conversion_efficiency` requires `circuit_voltage_v`, `rate_value`,
+`rate_unit` (with `rate_unit: pct` for a load stated as a fraction of rating)
+
+A "96% efficient" DC-DC converter is 96% at one input voltage and one load.
+The efficiency curve over load, at each input voltage, is what a pack
+designer sizes cooling from.
+
+**Decision:** the operating point is required, and a full curve is stored as
+an `efficiency` curve.
+
+## 32. Cold cranking amps mean four different tests
+
+`cold_cranking_current` requires `temperature_c`, `duration_s`,
+`cutoff_voltage_v`; `condition_set.extra.standard` names the standard
+
+SAE J537 discharges at −18 °C for 30 s to 7.2 V. EN 50342-1 uses two
+different procedures under one name. DIN 43539 and JIS D 5301 use their own
+durations and cutoffs. The same battery carries a different "CCA" under
+each, and retailers print whichever is largest.
+
+**Decision:** temperature, duration and cutoff are required; the standard is
+recorded; no figure is converted between standards.
+
+## 33. Lead-acid capacity is quoted at a rate, and the rates are not one number
+
+`capacity` on a lead-acid battery requires the same conditions as on a
+lithium cell, and the 20-hour, 10-hour and 5-hour figures are separate
+observations
+
+Peukert's exponent makes the 5-hour capacity of a flooded battery
+10 to 20% lower than its 20-hour capacity. Float and cycle charge voltages
+are likewise two quantities, each temperature-compensated at a stated
+coefficient per cell or per battery.
+
+**Decision:** one observation per stated rate, `rate_value` in hours
+expressed as a C-rate (C/20 is 0.05C with the 20-hour capacity as the
+reference); `float_charge_voltage` and `cycle_charge_voltage` are separate
+quantities with `temperature_c` required.
+
 ---
 
 ## Bonus: sensor identity

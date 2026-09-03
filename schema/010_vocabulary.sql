@@ -35,6 +35,44 @@ CREATE TYPE lifecycle_status AS ENUM (
 );
 
 -- ---------------------------------------------------------------------
+-- The hardware around the cell. A pack is a cell plus the components that
+-- let it be used safely, and they are products with datasheets like any
+-- cell: a contactor's breaking capacity, a fuse's I2t, a converter's
+-- efficiency surface. product.kind = 'component' says it is one of these;
+-- component_kind says which.
+-- ---------------------------------------------------------------------
+CREATE TYPE component_kind AS ENUM (
+  'dc_dc_converter', 'on_board_charger', 'inverter', 'pcs',
+  'contactor', 'relay', 'fuse', 'pyro_fuse', 'circuit_breaker',
+  'bms', 'battery_disconnect_unit', 'busbar', 'cell_contact_system',
+  'current_sensor', 'voltage_sensor', 'temperature_sensor',
+  'pre_charge_resistor', 'service_disconnect', 'isolation_monitor',
+  'cooling_plate', 'chiller', 'heater', 'thermal_interface_material',
+  'vent', 'enclosure', 'cell_holder', 'connector', 'cable', 'wire_harness',
+  'electrode', 'separator', 'electrolyte', 'other'
+);
+
+-- Every chemistry a reference has to hold. The designation string stays
+-- free text ("NMC811", "Li-SOCl2", "AGM 12V"); the family is the enum a
+-- query filters on and the class an ontology export binds to.
+CREATE TYPE chemistry_family AS ENUM (
+  'lithium_ion', 'lithium_metal', 'lithium_primary',
+  'sodium_ion', 'sodium_sulfur', 'sodium_nickel_chloride',
+  'lead_acid',
+  'nickel_metal_hydride', 'nickel_cadmium', 'nickel_zinc', 'nickel_iron',
+  'zinc_air', 'zinc_carbon', 'alkaline', 'silver_oxide',
+  'flow_vanadium', 'flow_zinc_bromine', 'flow_iron', 'flow_other',
+  'solid_state', 'supercapacitor', 'other'
+);
+
+-- Lead-acid construction decides the charge voltages, the orientation, the
+-- gassing and the cycle life more than the chemistry does.
+CREATE TYPE lead_acid_construction AS ENUM (
+  'flooded', 'agm', 'gel', 'tubular_plate', 'flat_plate', 'bipolar',
+  'carbon_enhanced', 'other'
+);
+
+-- ---------------------------------------------------------------------
 -- Provenance and evidence
 -- ---------------------------------------------------------------------
 CREATE TYPE source_kind AS ENUM (
@@ -113,8 +151,10 @@ CREATE TYPE temperature_reference AS ENUM (
 -- notation and constant-POWER rating are not interconvertible without
 -- extra information. EVE rates the LF280K in constant power ("0.5P").
 CREATE TYPE rate_unit AS ENUM (
-  'A', 'mA', 'C', 'It', 'W', 'P', 'W_per_kg', 'ohm', 'unspecified'
+  'A', 'mA', 'C', 'It', 'W', 'P', 'W_per_kg', 'ohm', 'pct', 'unspecified'
 );
+-- 'pct' is a load point as a fraction of rating: a converter's efficiency
+-- "at 50% load" is stated against its own rated output, not an ampere.
 
 -- How SOC was established. Voltage-based SOC is unusable on LFP.
 CREATE TYPE soc_method AS ENUM (

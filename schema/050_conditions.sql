@@ -50,6 +50,15 @@ CREATE TABLE condition_set (
   rate_reference_source    text,                    -- 'nameplate'|'measured_c1'|'measured_c25'|'declared'
   direction                text,                    -- 'charge'|'discharge'|'rest'|'symmetric'
 
+  -- ---- circuit (contactors, fuses, converters) ---------------------
+  -- A DC interrupt rating is a function of the circuit it was tested in:
+  -- the voltage and the L/R time constant. A contactor that breaks 2000 A
+  -- at 450 V with L/R = 1 ms is a different claim from the same figure at
+  -- a longer time constant, and datasheets state both. Efficiency and
+  -- output ratings of a converter likewise carry the input voltage here.
+  circuit_voltage_v        double precision,
+  time_constant_ms         double precision,
+
   -- ---- voltage window --------------------------------------------
   voltage_upper_v          double precision,
   voltage_lower_v          double precision,

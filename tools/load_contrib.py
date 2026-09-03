@@ -126,14 +126,14 @@ def ensure_source(cur, source: dict, org_id: int) -> int:
 def ensure_product(cur, product: dict, org_id: int) -> int:
     cur.execute(
         """INSERT INTO bd.product (uid, kind, manufacturer_id, model_number, form_factor,
-                                   form_factor_code, iec_designation, ansi_neda,
-                                   is_rechargeable)
-           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                                   form_factor_code, component_kind, iec_designation,
+                                   ansi_neda, is_rechargeable)
+           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
            ON CONFLICT (uid) DO NOTHING""",
         (product["uid"], product["kind"], org_id, product["model_number"],
          product.get("form_factor"), product.get("form_factor_code"),
-         product.get("iec_designation"), product.get("ansi_neda"),
-         product.get("is_rechargeable")))
+         product.get("component_kind"), product.get("iec_designation"),
+         product.get("ansi_neda"), product.get("is_rechargeable")))
     product_id = scalar(cur, "SELECT id FROM bd.product WHERE uid = %s", (product["uid"],))
     for alias in product.get("aliases") or []:
         cur.execute(
@@ -519,13 +519,16 @@ def promote_file(cur, document: dict, org_id: int, source_id: int, staged: list,
                RETURNING id""",
             (source_id, evidence, args.extraction, reviewer_id, reviewer_id, note))
         cur.execute(
-            """INSERT INTO bd.product_chemistry (product_revision_id, designation,
-                                                 cathode_text, anode_text, system_string,
-                                                 provenance_id)
-               SELECT %s, %s, %s, %s, %s, %s WHERE NOT EXISTS (
+            """INSERT INTO bd.product_chemistry (product_revision_id, designation, family,
+                                                 construction, cathode_text, anode_text,
+                                                 electrolyte_text, separator_text,
+                                                 system_string, provenance_id)
+               SELECT %s, %s, %s, %s, %s, %s, %s, %s, %s, %s WHERE NOT EXISTS (
                  SELECT 1 FROM bd.product_chemistry WHERE product_revision_id = %s)""",
-            (revision_id, chemistry.get("designation"), chemistry.get("cathode_text"),
-             chemistry.get("anode_text"), chemistry.get("system_string"),
+            (revision_id, chemistry.get("designation"), chemistry.get("family"),
+             chemistry.get("construction"), chemistry.get("cathode_text"),
+             chemistry.get("anode_text"), chemistry.get("electrolyte_text"),
+             chemistry.get("separator_text"), chemistry.get("system_string"),
              chemistry_provenance, revision_id))
     promoted, restated = 0, 0
     for candidate_id, observation, _, _ in staged:

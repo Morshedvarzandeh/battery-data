@@ -11,7 +11,9 @@
    "cv_cutoff_current",
    "peak_power",
    "rated_power",
-   "power"
+   "power",
+   "max_pulse_charge_current",
+   "short_circuit_current"
   ],
   "Curve axes and signals": [
    "current",
@@ -122,6 +124,48 @@
    "runaway_onset_temperature",
    "max_runaway_temperature",
    "heat_generation_rate"
+  ],
+  "Switching and protection": [
+   "rated_voltage",
+   "rated_current",
+   "breaking_capacity",
+   "making_capacity",
+   "i2t_prearcing",
+   "i2t_total",
+   "minimum_breaking_current",
+   "contact_resistance",
+   "coil_voltage",
+   "coil_power",
+   "pickup_voltage",
+   "dropout_voltage",
+   "electrical_endurance",
+   "mechanical_endurance",
+   "dielectric_strength",
+   "insulation_resistance",
+   "voltage_drop",
+   "cold_resistance",
+   "power_dissipation",
+   "operate_time",
+   "release_time"
+  ],
+  "Power conversion and sensing": [
+   "input_voltage_min",
+   "input_voltage_max",
+   "output_voltage_min",
+   "output_voltage_max",
+   "output_current",
+   "conversion_efficiency",
+   "switching_frequency",
+   "measurement_range_max",
+   "measurement_accuracy",
+   "balancing_current"
+  ],
+  "Lead-acid": [
+   "cold_cranking_current",
+   "reserve_capacity_minutes",
+   "float_charge_voltage",
+   "cycle_charge_voltage",
+   "temperature_compensation_coefficient"
   ]
  }
 }

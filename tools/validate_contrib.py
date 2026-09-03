@@ -77,8 +77,15 @@ def check(path: str, schema: dict, registry: dict) -> list[str]:
         errs += check_c_rate(where, cond)
 
     for i, curve in enumerate(doc.get("curves", [])):
-        errs += check_c_rate(f"{path}: curves[{i}] ({curve.get('curve_kind')})",
-                             curve.get("conditions") or {})
+        where = f"{path}: curves[{i}] ({curve.get('curve_kind')})"
+        # A curve whose axis names a quantity the registry lacks is dropped by
+        # the loader without a word; the CATL charge derating map was, until
+        # max_pulse_charge_current existed.
+        for axis in ("x_quantity", "y_quantity", "z_quantity"):
+            code = curve.get(axis)
+            if code is not None and code not in registry:
+                errs.append(f"{where}: {axis} {code!r} is not a registry quantity")
+        errs += check_c_rate(where, curve.get("conditions") or {})
 
     errs += check_applications(path, doc)
     return errs

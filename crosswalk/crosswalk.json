@@ -833,6 +833,21 @@
       "note": null
     },
     {
+      "quantity": "balancing_current",
+      "label": "Balancing current",
+      "si_unit": "A",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ElectricCurrent",
+      "external_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
       "quantity": "calendar_life",
       "label": "Calendar life",
       "si_unit": "s",
@@ -924,6 +939,107 @@
       "note": null
     },
     {
+      "quantity": "coil_power",
+      "label": "Coil power",
+      "si_unit": "W",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Power",
+      "external_iri": "https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "coil_voltage",
+      "label": "Coil voltage",
+      "si_unit": "V",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Voltage",
+      "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "cold_cranking_current",
+      "label": "Cold cranking current",
+      "si_unit": "A",
+      "required_conditions": [
+        "temperature_c",
+        "duration_s",
+        "cutoff_voltage_v"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ElectricCurrent",
+      "external_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": "No cranking-current class in EMMO; the standard followed lives in condition_set.extra.standard."
+    },
+    {
+      "quantity": "cold_resistance",
+      "label": "Cold resistance",
+      "si_unit": "ohm",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ElectricResistance",
+      "external_iri": "https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "contact_resistance",
+      "label": "Contact resistance",
+      "si_unit": "ohm",
+      "required_conditions": [
+        "rate_value",
+        "rate_unit"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ElectricResistance",
+      "external_iri": "https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "conversion_efficiency",
+      "label": "Conversion efficiency",
+      "si_unit": "1",
+      "required_conditions": [
+        "circuit_voltage_v",
+        "rate_value",
+        "rate_unit"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "EnergyEfficiency",
+      "external_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79198264_cdf5_4fc3_8bcf_e5140a52547a",
+      "external_unit": null,
+      "relation": "close",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": "A converter's efficiency at one load point and input voltage; the conditions carry the operating point."
+    },
+    {
       "quantity": "coulombic_efficiency",
       "label": "Coulombic efficiency",
       "si_unit": "1",
@@ -969,6 +1085,23 @@
       "external_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_74de2c33_84fc_4c2f_afe1_56d169149114",
       "external_unit": null,
       "relation": "related",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "cycle_charge_voltage",
+      "label": "Cycle charge voltage",
+      "si_unit": "V",
+      "required_conditions": [
+        "temperature_c"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ChargingVoltage",
+      "external_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79a9e1be_35b0_4c3c_8087_b5f967ca0e87",
+      "external_unit": null,
+      "relation": "close",
       "verified": true,
       "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
       "note": null
@@ -1082,6 +1215,21 @@
       "external_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_10104499_6580_4867_9c5d_b9882c89c2f7",
       "external_unit": null,
       "relation": "exact",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "dropout_voltage",
+      "label": "Dropout voltage",
+      "si_unit": "V",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Voltage",
+      "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+      "external_unit": null,
+      "relation": "broader",
       "verified": true,
       "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
       "note": null
@@ -1214,6 +1362,23 @@
       "note": null
     },
     {
+      "quantity": "float_charge_voltage",
+      "label": "Float charge voltage",
+      "si_unit": "V",
+      "required_conditions": [
+        "temperature_c"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ChargingVoltage",
+      "external_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79a9e1be_35b0_4c3c_8087_b5f967ca0e87",
+      "external_unit": null,
+      "relation": "close",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
       "quantity": "force",
       "label": "Force",
       "si_unit": "N",
@@ -1304,6 +1469,53 @@
       "external_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f",
       "external_unit": null,
       "relation": "exact",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "input_voltage_max",
+      "label": "Maximum input voltage",
+      "si_unit": "V",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Voltage",
+      "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "input_voltage_min",
+      "label": "Minimum input voltage",
+      "si_unit": "V",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Voltage",
+      "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "insulation_resistance",
+      "label": "Insulation resistance",
+      "si_unit": "ohm",
+      "required_conditions": [
+        "circuit_voltage_v"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ElectricResistance",
+      "external_iri": "https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1",
+      "external_unit": null,
+      "relation": "broader",
       "verified": true,
       "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
       "note": null
@@ -1446,6 +1658,24 @@
       "note": null
     },
     {
+      "quantity": "max_pulse_charge_current",
+      "label": "Max pulse charge current",
+      "si_unit": "A",
+      "required_conditions": [
+        "pulse_duration_s",
+        "temperature_c"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "MaximumPulseChargingCurrent",
+      "external_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_1b2a7137_64d4_483a_8437_dcb3bedcb6da",
+      "external_unit": null,
+      "relation": "exact",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
       "quantity": "max_pulse_discharge_current",
       "label": "Max pulse discharge current",
       "si_unit": "A",
@@ -1476,6 +1706,21 @@
       "external_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_04f28ce3_251d_429e_aa85_ab3eb45bbcd2",
       "external_unit": null,
       "relation": "related",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "measurement_range_max",
+      "label": "Measurement range",
+      "si_unit": "A",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ElectricCurrent",
+      "external_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+      "external_unit": null,
+      "relation": "broader",
       "verified": true,
       "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
       "note": null
@@ -1534,6 +1779,21 @@
       "note": null
     },
     {
+      "quantity": "operate_time",
+      "label": "Operate time",
+      "si_unit": "s",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Time",
+      "external_iri": "https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
       "quantity": "operating_temperature_max",
       "label": "Maximum operating temperature",
       "si_unit": "K",
@@ -1570,6 +1830,53 @@
       "note": null
     },
     {
+      "quantity": "output_current",
+      "label": "Output current",
+      "si_unit": "A",
+      "required_conditions": [
+        "temperature_c"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ElectricCurrent",
+      "external_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "output_voltage_max",
+      "label": "Maximum output voltage",
+      "si_unit": "V",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Voltage",
+      "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "output_voltage_min",
+      "label": "Minimum output voltage",
+      "si_unit": "V",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Voltage",
+      "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
       "quantity": "peak_power",
       "label": "Peak power",
       "si_unit": "W",
@@ -1590,6 +1897,21 @@
       "note": null
     },
     {
+      "quantity": "pickup_voltage",
+      "label": "Pickup voltage",
+      "si_unit": "V",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Voltage",
+      "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
       "quantity": "power",
       "label": "Power",
       "si_unit": "W",
@@ -1605,6 +1927,24 @@
       "note": null
     },
     {
+      "quantity": "power_dissipation",
+      "label": "Power dissipation",
+      "si_unit": "W",
+      "required_conditions": [
+        "rate_value",
+        "rate_unit"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Power",
+      "external_iri": "https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
       "quantity": "pressure",
       "label": "Pressure",
       "si_unit": "Pa",
@@ -1615,6 +1955,23 @@
       "external_iri": "https://w3id.org/emmo#EMMO_50a44256_9dc5_434b_bad4_74a4d9a29989",
       "external_unit": null,
       "relation": "exact",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "rated_current",
+      "label": "Rated current",
+      "si_unit": "A",
+      "required_conditions": [
+        "temperature_c"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ElectricCurrent",
+      "external_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+      "external_unit": null,
+      "relation": "broader",
       "verified": true,
       "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
       "note": null
@@ -1638,6 +1995,21 @@
       "note": null
     },
     {
+      "quantity": "rated_voltage",
+      "label": "Rated voltage",
+      "si_unit": "V",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Voltage",
+      "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
       "quantity": "relaxation_time",
       "label": "Relaxation time",
       "si_unit": "s",
@@ -1648,6 +2020,41 @@
       "external_iri": "https://w3id.org/emmo#EMMO_26c6f1b3_c33f_4804_a3e8_3c5c931582b3",
       "external_unit": null,
       "relation": "exact",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "release_time",
+      "label": "Release time",
+      "si_unit": "s",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Time",
+      "external_iri": "https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "reserve_capacity_minutes",
+      "label": "Reserve capacity",
+      "si_unit": "s",
+      "required_conditions": [
+        "load_value",
+        "load_unit",
+        "cutoff_voltage_v",
+        "temperature_c"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Time",
+      "external_iri": "https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7",
+      "external_unit": null,
+      "relation": "broader",
       "verified": true,
       "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
       "note": null
@@ -1728,6 +2135,21 @@
       "verified": true,
       "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
       "note": "Service life against a stated load, schedule and cutoff; EMMO's term does not carry the load."
+    },
+    {
+      "quantity": "short_circuit_current",
+      "label": "Short-circuit current",
+      "si_unit": "A",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "ShortCircuitCurrent",
+      "external_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_75c28dc8_3d7d_4b6e_861e_6c8b1ad7d644",
+      "external_unit": null,
+      "relation": "exact",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
     },
     {
       "quantity": "specific_capacity",
@@ -1909,6 +2331,21 @@
       "note": null
     },
     {
+      "quantity": "switching_frequency",
+      "label": "Switching frequency",
+      "si_unit": "Hz",
+      "required_conditions": [],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Frequency",
+      "external_iri": "https://w3id.org/emmo#EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a",
+      "external_unit": null,
+      "relation": "broader",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
       "quantity": "temperature",
       "label": "Temperature",
       "si_unit": "K",
@@ -2031,6 +2468,24 @@
       "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
       "external_unit": null,
       "relation": "exact",
+      "verified": true,
+      "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
+      "note": null
+    },
+    {
+      "quantity": "voltage_drop",
+      "label": "Voltage drop",
+      "si_unit": "V",
+      "required_conditions": [
+        "rate_value",
+        "rate_unit"
+      ],
+      "vocabulary": "emmo_battery",
+      "vocabulary_version": "0.20.0",
+      "external_term": "Voltage",
+      "external_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+      "external_unit": null,
+      "relation": "broader",
       "verified": true,
       "verified_against": "https://w3id.org/emmo/domain/battery/0.20.2/battery",
       "note": null

@@ -94,6 +94,20 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricChargePerArea"
   },
+  "balancing_current": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+   "emmo_label": "ElectricCurrent",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "breaking_capacity": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
   "calendar_life": {
    "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_743c71a3_b80c_42e3_92fa_13a67b8167df",
    "emmo_label": "CalendarLife",
@@ -142,6 +156,48 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
   },
+  "coil_power": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2",
+   "emmo_label": "Power",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
+  },
+  "coil_voltage": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "cold_cranking_current": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+   "emmo_label": "ElectricCurrent",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "cold_resistance": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1",
+   "emmo_label": "ElectricResistance",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "contact_resistance": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1",
+   "emmo_label": "ElectricResistance",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "conversion_efficiency": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79198264_cdf5_4fc3_8bcf_e5140a52547a",
+   "emmo_label": "EnergyEfficiency",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Efficiency"
+  },
   "cooling_capacity": {
    "emmo_iri": null,
    "emmo_label": null,
@@ -170,6 +226,13 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
   },
+  "cycle_charge_voltage": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79a9e1be_35b0_4c3c_8087_b5f967ca0e87",
+   "emmo_label": "ChargingVoltage",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
   "cycle_life": {
    "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ae782b14_88ce_4cdd_9418_12aca00be937",
    "emmo_label": "CycleLife",
@@ -190,6 +253,13 @@
    "emmo_relation": "exact",
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Diameter"
+  },
+  "dielectric_strength": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
   },
   "diffusion_coefficient": {
    "emmo_iri": "https://w3id.org/emmo#EMMO_931a725b_926d_4f60_8955_61fe17fce98b",
@@ -219,6 +289,13 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Capacitance"
   },
+  "dropout_voltage": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
   "drt_gamma": {
    "emmo_iri": null,
    "emmo_label": null,
@@ -232,6 +309,13 @@
    "emmo_relation": null,
    "emmo_statistics": null,
    "qudt_quantity_kind": null
+  },
+  "electrical_endurance": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Count"
   },
   "electrode_area": {
    "emmo_iri": "https://w3id.org/emmo#EMMO_96f39f77_44dc_491b_8fa7_30d887fe0890",
@@ -292,6 +376,13 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Efficiency"
   },
+  "float_charge_voltage": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79a9e1be_35b0_4c3c_8087_b5f967ca0e87",
+   "emmo_label": "ChargingVoltage",
+   "emmo_relation": "close",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
   "force": {
    "emmo_iri": "https://w3id.org/emmo#EMMO_1f087811_06cb_42d5_90fb_25d0e7e068ef",
    "emmo_label": "Force",
@@ -320,6 +411,20 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Height"
   },
+  "i2t_prearcing": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": null
+  },
+  "i2t_total": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": null
+  },
   "impedance_imag": {
    "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_0089729b_5890_4c15_aa09_1244d41f8626",
    "emmo_label": "ImaginaryElectricImpedance",
@@ -331,6 +436,27 @@
    "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f",
    "emmo_label": "RealElectricImpedance",
    "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
+  },
+  "input_voltage_max": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "input_voltage_min": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "insulation_resistance": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1",
+   "emmo_label": "ElectricResistance",
+   "emmo_relation": "broader",
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Resistance"
   },
@@ -390,6 +516,13 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Mass"
   },
+  "making_capacity": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
   "mass": {
    "emmo_iri": "https://w3id.org/emmo#EMMO_ed4af7ae_63a2_497e_bb88_2309619ea405",
    "emmo_label": "Mass",
@@ -411,6 +544,13 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
   },
+  "max_pulse_charge_current": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_1b2a7137_64d4_483a_8437_dcb3bedcb6da",
+   "emmo_label": "MaximumPulseChargingCurrent",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
   "max_pulse_discharge_current": {
    "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_3e54f9e3_a31d_4821_9bfb_ef953a42c35b",
    "emmo_label": "MaximumPulseDischargingCurrent",
@@ -424,6 +564,34 @@
    "emmo_relation": "related",
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "measurement_accuracy": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/DimensionlessRatio"
+  },
+  "measurement_range_max": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+   "emmo_label": "ElectricCurrent",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "mechanical_endurance": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Count"
+  },
+  "minimum_breaking_current": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
   },
   "nominal_voltage": {
    "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_639b844a_e801_436b_985d_28926129ead6",
@@ -446,6 +614,13 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
   },
+  "operate_time": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7",
+   "emmo_label": "Time",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Time"
+  },
   "operating_temperature_max": {
    "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_e999bd7d_93ad_47fb_8d8d_dd667e4ef553",
    "emmo_label": "MaximumOperatingTemperature",
@@ -459,6 +634,27 @@
    "emmo_relation": "exact",
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "output_current": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+   "emmo_label": "ElectricCurrent",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
+  "output_voltage_max": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "output_voltage_min": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
   },
   "parallel_count": {
    "emmo_iri": null,
@@ -474,10 +670,24 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
   },
+  "pickup_voltage": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
   "power": {
    "emmo_iri": "https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2",
    "emmo_label": "Power",
    "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
+  },
+  "power_dissipation": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2",
+   "emmo_label": "Power",
+   "emmo_relation": "broader",
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
   },
@@ -488,12 +698,26 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Pressure"
   },
+  "rated_current": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88",
+   "emmo_label": "ElectricCurrent",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
+  },
   "rated_power": {
    "emmo_iri": "https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2",
    "emmo_label": "Power",
    "emmo_relation": "broader",
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Power"
+  },
+  "rated_voltage": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
   },
   "recycled_content_cobalt": {
    "emmo_iri": null,
@@ -527,6 +751,20 @@
    "emmo_iri": "https://w3id.org/emmo#EMMO_26c6f1b3_c33f_4804_a3e8_3c5c931582b3",
    "emmo_label": "RelaxationTime",
    "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Time"
+  },
+  "release_time": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7",
+   "emmo_label": "Time",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Time"
+  },
+  "reserve_capacity_minutes": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7",
+   "emmo_label": "Time",
+   "emmo_relation": "broader",
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Time"
   },
@@ -585,6 +823,13 @@
    "emmo_relation": null,
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "short_circuit_current": {
+   "emmo_iri": "https://w3id.org/emmo/domain/electrochemistry#electrochemistry_75c28dc8_3d7d_4b6e_861e_6c8b1ad7d644",
+   "emmo_label": "ShortCircuitCurrent",
+   "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/ElectricCurrent"
   },
   "soc_estimation_accuracy": {
    "emmo_iri": null,
@@ -677,12 +922,26 @@
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
   },
+  "switching_frequency": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a",
+   "emmo_label": "Frequency",
+   "emmo_relation": "broader",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Frequency"
+  },
   "temperature": {
    "emmo_iri": "https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22",
    "emmo_label": "CelsiusTemperature",
    "emmo_relation": "close",
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Temperature"
+  },
+  "temperature_compensation_coefficient": {
+   "emmo_iri": null,
+   "emmo_label": null,
+   "emmo_relation": null,
+   "emmo_statistics": null,
+   "qudt_quantity_kind": null
   },
   "thermal_conductivity_in_plane": {
    "emmo_iri": "https://w3id.org/emmo#EMMO_8dd40ec6_2c5a_43f3_bf64_cadcd447a1c1",
@@ -730,6 +989,13 @@
    "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
    "emmo_label": "Voltage",
    "emmo_relation": "exact",
+   "emmo_statistics": null,
+   "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
+  },
+  "voltage_drop": {
+   "emmo_iri": "https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee",
+   "emmo_label": "Voltage",
+   "emmo_relation": "broader",
    "emmo_statistics": null,
    "qudt_quantity_kind": "http://qudt.org/vocab/quantitykind/Voltage"
   },
@@ -785,6 +1051,7 @@
   "%/year": null,
   "1": "http://qudt.org/vocab/unit/UNITLESS",
   "A": "http://qudt.org/vocab/unit/A",
+  "A2s": null,
   "Ah": "http://qudt.org/vocab/unit/A-HR",
   "C": "http://qudt.org/vocab/unit/C",
   "Hz": "http://qudt.org/vocab/unit/HZ",
@@ -793,6 +1060,8 @@
   "K": "http://qudt.org/vocab/unit/K",
   "L": "http://qudt.org/vocab/unit/L",
   "MPa": "http://qudt.org/vocab/unit/MegaPA",
+  "Mohm": "http://qudt.org/vocab/unit/MegaOHM",
+  "MΩ": "http://qudt.org/vocab/unit/MegaOHM",
   "N": "http://qudt.org/vocab/unit/N",
   "Pa": "http://qudt.org/vocab/unit/PA",
   "V": "http://qudt.org/vocab/unit/V",
@@ -815,6 +1084,7 @@
   "g": "http://qudt.org/vocab/unit/GM",
   "h": "http://qudt.org/vocab/unit/HR",
   "kA": "http://qudt.org/vocab/unit/KiloA",
+  "kA2s": null,
   "kHz": "http://qudt.org/vocab/unit/KiloHZ",
   "kN": "http://qudt.org/vocab/unit/KiloN",
   "kPa": "http://qudt.org/vocab/unit/KiloPA",
@@ -822,25 +1092,34 @@
   "kWh": "http://qudt.org/vocab/unit/KiloW-HR",
   "kg": "http://qudt.org/vocab/unit/KiloGM",
   "kgf": "http://qudt.org/vocab/unit/KiloGM_F",
+  "kohm": "http://qudt.org/vocab/unit/KiloOHM",
+  "kΩ": "http://qudt.org/vocab/unit/KiloOHM",
   "m": "http://qudt.org/vocab/unit/M",
   "m2": "http://qudt.org/vocab/unit/M2",
   "mA": "http://qudt.org/vocab/unit/MilliA",
   "mAh": "http://qudt.org/vocab/unit/MilliA-HR",
   "mHz": "http://qudt.org/vocab/unit/MilliHZ",
   "mV": "http://qudt.org/vocab/unit/MilliV",
+  "mV/K": null,
   "mV/day": null,
+  "mV/degC": null,
+  "mV/°C": null,
   "mV_per_K": null,
   "mWh": null,
+  "min": "http://qudt.org/vocab/unit/MIN",
   "mm": "http://qudt.org/vocab/unit/MilliM",
   "mohm": "http://qudt.org/vocab/unit/MilliOHM",
+  "ms": "http://qudt.org/vocab/unit/MilliSEC",
   "mΩ": "http://qudt.org/vocab/unit/MilliOHM",
   "ohm": "http://qudt.org/vocab/unit/OHM",
   "ohm_cm2": null,
+  "operations": "http://qudt.org/vocab/unit/NUM",
   "pct": "http://qudt.org/vocab/unit/PERCENT",
   "s": "http://qudt.org/vocab/unit/SEC",
   "uA": "http://qudt.org/vocab/unit/MicroA",
   "um": "http://qudt.org/vocab/unit/MicroM",
   "uohm": "http://qudt.org/vocab/unit/MicroOHM",
+  "us": "http://qudt.org/vocab/unit/MicroSEC",
   "year": "http://qudt.org/vocab/unit/YR",
   "°C": "http://qudt.org/vocab/unit/DEG_C",
   "Ω": "http://qudt.org/vocab/unit/OHM"

@@ -45,6 +45,14 @@ SELECT q.id, v.id, 'AreicCapacity', 'https://w3id.org/emmo/domain/electrochemist
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88' WHERE code = 'balancing_current';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ElectricCurrent', 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'balancing_current' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_743c71a3_b80c_42e3_92fa_13a67b8167df' WHERE code = 'calendar_life';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'CalendarLife', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_743c71a3_b80c_42e3_92fa_13a67b8167df', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
@@ -85,6 +93,54 @@ SELECT q.id, v.id, 'ElectricResistance', 'https://w3id.org/emmo#EMMO_e88f75d6_9a
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2' WHERE code = 'coil_power';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Power', 'https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'coil_power' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee' WHERE code = 'coil_voltage';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'coil_voltage' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88' WHERE code = 'cold_cranking_current';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ElectricCurrent', 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88', 'broader', 'No cranking-current class in EMMO; the standard followed lives in condition_set.extra.standard.', true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'cold_cranking_current' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1' WHERE code = 'cold_resistance';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ElectricResistance', 'https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'cold_resistance' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1' WHERE code = 'contact_resistance';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ElectricResistance', 'https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'contact_resistance' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79198264_cdf5_4fc3_8bcf_e5140a52547a' WHERE code = 'conversion_efficiency';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'EnergyEfficiency', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79198264_cdf5_4fc3_8bcf_e5140a52547a', 'close', 'A converter''s efficiency at one load point and input voltage; the conditions carry the operating point.', true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'conversion_efficiency' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_a5962e05_466d_46a4_8951_bea59d7326e5' WHERE code = 'coulombic_efficiency';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'CoulombicEfficiency', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_a5962e05_466d_46a4_8951_bea59d7326e5', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
@@ -106,6 +162,14 @@ INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, externa
 SELECT q.id, v.id, 'CurrentLimit', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_74de2c33_84fc_4c2f_afe1_56d169149114', 'related', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
   FROM quantity q, vocabulary v
  WHERE q.code = 'cv_cutoff_current' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79a9e1be_35b0_4c3c_8087_b5f967ca0e87' WHERE code = 'cycle_charge_voltage';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ChargingVoltage', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79a9e1be_35b0_4c3c_8087_b5f967ca0e87', 'close', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'cycle_charge_voltage' AND v.code = 'emmo_battery'
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
@@ -165,6 +229,14 @@ SELECT q.id, v.id, 'DifferentialCapacity', 'https://w3id.org/emmo/domain/electro
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee' WHERE code = 'dropout_voltage';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'dropout_voltage' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_96f39f77_44dc_491b_8fa7_30d887fe0890' WHERE code = 'electrode_area';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'Area', 'https://w3id.org/emmo#EMMO_96f39f77_44dc_491b_8fa7_30d887fe0890', 'broader', 'EMMO has no electrode-area quantity; the area_kind condition carries which area is meant.', true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
@@ -221,6 +293,14 @@ SELECT q.id, v.id, 'InitialCoulombicEfficiency', 'https://w3id.org/emmo/domain/e
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79a9e1be_35b0_4c3c_8087_b5f967ca0e87' WHERE code = 'float_charge_voltage';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ChargingVoltage', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_79a9e1be_35b0_4c3c_8087_b5f967ca0e87', 'close', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'float_charge_voltage' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_1f087811_06cb_42d5_90fb_25d0e7e068ef' WHERE code = 'force';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'Force', 'https://w3id.org/emmo#EMMO_1f087811_06cb_42d5_90fb_25d0e7e068ef', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
@@ -266,6 +346,30 @@ INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, externa
 SELECT q.id, v.id, 'RealElectricImpedance', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
   FROM quantity q, vocabulary v
  WHERE q.code = 'impedance_real' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee' WHERE code = 'input_voltage_max';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'input_voltage_max' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee' WHERE code = 'input_voltage_min';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'input_voltage_min' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1' WHERE code = 'insulation_resistance';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ElectricResistance', 'https://w3id.org/emmo#EMMO_e88f75d6_9a17_4cfc_bdf7_43d7cea5a9a1', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'insulation_resistance' AND v.code = 'emmo_battery'
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
@@ -333,6 +437,14 @@ SELECT q.id, v.id, 'MaximumContinuousDischargingCurrent', 'https://w3id.org/emmo
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_1b2a7137_64d4_483a_8437_dcb3bedcb6da' WHERE code = 'max_pulse_charge_current';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'MaximumPulseChargingCurrent', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_1b2a7137_64d4_483a_8437_dcb3bedcb6da', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'max_pulse_charge_current' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_3e54f9e3_a31d_4821_9bfb_ef953a42c35b' WHERE code = 'max_pulse_discharge_current';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'MaximumPulseDischargingCurrent', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_3e54f9e3_a31d_4821_9bfb_ef953a42c35b', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
@@ -346,6 +458,14 @@ INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, externa
 SELECT q.id, v.id, 'ThermalRunaway', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_04f28ce3_251d_429e_aa85_ab3eb45bbcd2', 'related', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
   FROM quantity q, vocabulary v
  WHERE q.code = 'max_runaway_temperature' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88' WHERE code = 'measurement_range_max';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ElectricCurrent', 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'measurement_range_max' AND v.code = 'emmo_battery'
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
@@ -373,6 +493,14 @@ SELECT q.id, v.id, 'OpenCircuitVoltage', 'https://w3id.org/emmo/domain/electroch
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7' WHERE code = 'operate_time';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Time', 'https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'operate_time' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_e999bd7d_93ad_47fb_8d8d_dd667e4ef553' WHERE code = 'operating_temperature_max';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'MaximumOperatingTemperature', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_e999bd7d_93ad_47fb_8d8d_dd667e4ef553', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
@@ -389,11 +517,43 @@ SELECT q.id, v.id, 'MinimumOperatingTemperature', 'https://w3id.org/emmo/domain/
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88' WHERE code = 'output_current';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ElectricCurrent', 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'output_current' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee' WHERE code = 'output_voltage_max';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'output_voltage_max' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee' WHERE code = 'output_voltage_min';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'output_voltage_min' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_4e6c4e9d_64cb_4c24_a0f3_5b4146ebbeb0' WHERE code = 'peak_power';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'MaximumPower', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_4e6c4e9d_64cb_4c24_a0f3_5b4146ebbeb0', 'close', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
   FROM quantity q, vocabulary v
  WHERE q.code = 'peak_power' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee' WHERE code = 'pickup_voltage';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'pickup_voltage' AND v.code = 'emmo_battery'
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
@@ -405,11 +565,27 @@ SELECT q.id, v.id, 'Power', 'https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2' WHERE code = 'power_dissipation';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Power', 'https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_0a764b472bc2', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'power_dissipation' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_50a44256_9dc5_434b_bad4_74a4d9a29989' WHERE code = 'pressure';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'Pressure', 'https://w3id.org/emmo#EMMO_50a44256_9dc5_434b_bad4_74a4d9a29989', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
   FROM quantity q, vocabulary v
  WHERE q.code = 'pressure' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88' WHERE code = 'rated_current';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ElectricCurrent', 'https://w3id.org/emmo#EMMO_c995ae70_3b84_4ebb_bcfc_69e6a281bb88', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'rated_current' AND v.code = 'emmo_battery'
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
@@ -421,11 +597,35 @@ SELECT q.id, v.id, 'Power', 'https://w3id.org/emmo#EMMO_09b9021b_f97b_43eb_b83d_
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee' WHERE code = 'rated_voltage';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'rated_voltage' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_26c6f1b3_c33f_4804_a3e8_3c5c931582b3' WHERE code = 'relaxation_time';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'RelaxationTime', 'https://w3id.org/emmo#EMMO_26c6f1b3_c33f_4804_a3e8_3c5c931582b3', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
   FROM quantity q, vocabulary v
  WHERE q.code = 'relaxation_time' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7' WHERE code = 'release_time';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Time', 'https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'release_time' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7' WHERE code = 'reserve_capacity_minutes';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Time', 'https://w3id.org/emmo#EMMO_d4f7d378_5e3b_468a_baa1_a7e98358cda7', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'reserve_capacity_minutes' AND v.code = 'emmo_battery'
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
@@ -458,6 +658,14 @@ INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, externa
 SELECT q.id, v.id, 'ServiceLife', 'https://w3id.org/emmo/domain/battery#battery_be5d1b4f_5579_4702_9dbb_6c15e577e8dc', 'close', 'Service life against a stated load, schedule and cutoff; EMMO''s term does not carry the load.', true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
   FROM quantity q, vocabulary v
  WHERE q.code = 'service_life_hours' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_75c28dc8_3d7d_4b6e_861e_6c8b1ad7d644' WHERE code = 'short_circuit_current';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'ShortCircuitCurrent', 'https://w3id.org/emmo/domain/electrochemistry#electrochemistry_75c28dc8_3d7d_4b6e_861e_6c8b1ad7d644', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'short_circuit_current' AND v.code = 'emmo_battery'
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
@@ -541,6 +749,14 @@ SELECT q.id, v.id, 'MinimumStorageTemperature', 'https://w3id.org/emmo/domain/el
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a' WHERE code = 'switching_frequency';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Frequency', 'https://w3id.org/emmo#EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'switching_frequency' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22' WHERE code = 'temperature';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'CelsiusTemperature', 'https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22', 'close', 'Stored in kelvin as SI, quoted in Celsius by every source.', true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
@@ -605,6 +821,14 @@ SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb6
 ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
    SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
        note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
+UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee' WHERE code = 'voltage_drop';
+INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
+SELECT q.id, v.id, 'Voltage', 'https://w3id.org/emmo#EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee', 'broader', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
+  FROM quantity q, vocabulary v
+ WHERE q.code = 'voltage_drop' AND v.code = 'emmo_battery'
+ON CONFLICT (quantity_id, vocabulary_id, external_term) DO UPDATE
+   SET external_iri = EXCLUDED.external_iri, relation = EXCLUDED.relation,
+       note = EXCLUDED.note, verified = true, verified_against = EXCLUDED.verified_against;
 UPDATE quantity SET emmo_iri = 'https://w3id.org/emmo#EMMO_f1a51559_aa3d_43a0_9327_918039f0dfed' WHERE code = 'volume';
 INSERT INTO quantity_mapping (quantity_id, vocabulary_id, external_term, external_iri, relation, note, verified, verified_against)
 SELECT q.id, v.id, 'Volume', 'https://w3id.org/emmo#EMMO_f1a51559_aa3d_43a0_9327_918039f0dfed', 'exact', NULL, true, 'https://w3id.org/emmo/domain/battery/0.20.2/battery'
@@ -626,24 +850,36 @@ UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Vol
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'absolute_min_voltage';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'area_specific_impedance';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricChargePerArea' WHERE code = 'areal_capacity';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'balancing_current';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'breaking_capacity';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Time' WHERE code = 'calendar_life';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCharge' WHERE code = 'capacity';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/DimensionlessRatio' WHERE code = 'capacity_retention';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/MassPerEnergy' WHERE code = 'carbon_footprint_per_kwh';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'charge_cutoff_voltage';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'charge_transfer_resistance';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Power' WHERE code = 'coil_power';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'coil_voltage';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'cold_cranking_current';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'cold_resistance';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'contact_resistance';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Efficiency' WHERE code = 'conversion_efficiency';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Power' WHERE code = 'cooling_capacity';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Efficiency' WHERE code = 'coulombic_efficiency';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'current';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'cv_cutoff_current';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'cycle_charge_voltage';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Count' WHERE code = 'cycle_life';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Count' WHERE code = 'cycle_number';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Diameter' WHERE code = 'diameter';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'dielectric_strength';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/DiffusionCoefficient' WHERE code = 'diffusion_coefficient';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'discharge_cutoff_voltage';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Displacement' WHERE code = 'displacement';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Capacitance' WHERE code = 'dqdv';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'dropout_voltage';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'drt_gamma';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Count' WHERE code = 'electrical_endurance';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Area' WHERE code = 'electrode_area';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Energy' WHERE code = 'energy';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/EnergyDensity' WHERE code = 'energy_density';
@@ -651,12 +887,16 @@ UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Eff
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/DimensionlessRatio' WHERE code = 'energy_retention';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Force' WHERE code = 'expansion_force';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Efficiency' WHERE code = 'first_cycle_efficiency';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'float_charge_voltage';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Force' WHERE code = 'force';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Frequency' WHERE code = 'frequency';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Power' WHERE code = 'heat_generation_rate';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Height' WHERE code = 'height';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Reactance' WHERE code = 'impedance_imag';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'impedance_real';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'input_voltage_max';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'input_voltage_min';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'insulation_resistance';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Dimensionless' WHERE code = 'intensity';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'internal_resistance_ac';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'internal_resistance_dc';
@@ -665,26 +905,42 @@ UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Cou
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'leakage_current';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Length' WHERE code = 'length';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Mass' WHERE code = 'lithium_content';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'making_capacity';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Mass' WHERE code = 'mass';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'max_continuous_charge_current';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'max_continuous_discharge_current';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'max_pulse_charge_current';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'max_pulse_discharge_current';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Temperature' WHERE code = 'max_runaway_temperature';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/DimensionlessRatio' WHERE code = 'measurement_accuracy';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'measurement_range_max';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Count' WHERE code = 'mechanical_endurance';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'minimum_breaking_current';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'nominal_voltage';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Resistance' WHERE code = 'ohmic_resistance';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'open_circuit_voltage';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Time' WHERE code = 'operate_time';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Temperature' WHERE code = 'operating_temperature_max';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Temperature' WHERE code = 'operating_temperature_min';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'output_current';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'output_voltage_max';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'output_voltage_min';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Count' WHERE code = 'parallel_count';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Power' WHERE code = 'peak_power';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'pickup_voltage';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Power' WHERE code = 'power';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Power' WHERE code = 'power_dissipation';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Pressure' WHERE code = 'pressure';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'rated_current';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Power' WHERE code = 'rated_power';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'rated_voltage';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/MassFraction' WHERE code = 'recycled_content_cobalt';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/MassFraction' WHERE code = 'recycled_content_lead';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/MassFraction' WHERE code = 'recycled_content_lithium';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/MassFraction' WHERE code = 'recycled_content_nickel';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Time' WHERE code = 'relaxation_time';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Time' WHERE code = 'release_time';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Time' WHERE code = 'reserve_capacity_minutes';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/DimensionlessRatio' WHERE code = 'resistance_growth';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/DimensionlessRatio' WHERE code = 'reversible_expansion';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Efficiency' WHERE code = 'round_trip_efficiency';
@@ -693,6 +949,7 @@ UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Dim
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Count' WHERE code = 'series_count';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Time' WHERE code = 'service_life_hours';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'shipping_voltage';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricCurrent' WHERE code = 'short_circuit_current';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/DimensionlessRatio' WHERE code = 'soc_estimation_accuracy';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/DimensionlessRatio' WHERE code = 'soh_estimation_accuracy';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ElectricChargePerMass' WHERE code = 'specific_capacity';
@@ -706,6 +963,7 @@ UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Dim
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/DimensionlessRatio' WHERE code = 'state_of_health';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Temperature' WHERE code = 'storage_temperature_max';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Temperature' WHERE code = 'storage_temperature_min';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Frequency' WHERE code = 'switching_frequency';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Temperature' WHERE code = 'temperature';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ThermalConductivity' WHERE code = 'thermal_conductivity_in_plane';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/ThermalConductivity' WHERE code = 'thermal_conductivity_through_plane';
@@ -714,6 +972,7 @@ UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Tim
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/PlaneAngle' WHERE code = 'two_theta';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Energy' WHERE code = 'usable_energy';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'voltage';
+UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Voltage' WHERE code = 'voltage_drop';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Volume' WHERE code = 'volume';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Count' WHERE code = 'warranty_cycles';
 UPDATE quantity SET qudt_quantity_kind = 'http://qudt.org/vocab/quantitykind/Energy' WHERE code = 'warranty_throughput';
@@ -730,6 +989,8 @@ UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/J-PER-KiloGM-K' WHERE sym
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/K' WHERE symbol = 'K';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/L' WHERE symbol = 'L';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MegaPA' WHERE symbol = 'MPa';
+UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MegaOHM' WHERE symbol = 'Mohm';
+UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MegaOHM' WHERE symbol = 'MΩ';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/N' WHERE symbol = 'N';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/PA' WHERE symbol = 'Pa';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/V' WHERE symbol = 'V';
@@ -759,21 +1020,27 @@ UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/KiloW' WHERE symbol = 'kW
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/KiloW-HR' WHERE symbol = 'kWh';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/KiloGM' WHERE symbol = 'kg';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/KiloGM_F' WHERE symbol = 'kgf';
+UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/KiloOHM' WHERE symbol = 'kohm';
+UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/KiloOHM' WHERE symbol = 'kΩ';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/M' WHERE symbol = 'm';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/M2' WHERE symbol = 'm2';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MilliA' WHERE symbol = 'mA';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MilliA-HR' WHERE symbol = 'mAh';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MilliHZ' WHERE symbol = 'mHz';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MilliV' WHERE symbol = 'mV';
+UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MIN' WHERE symbol = 'min';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MilliM' WHERE symbol = 'mm';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MilliOHM' WHERE symbol = 'mohm';
+UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MilliSEC' WHERE symbol = 'ms';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MilliOHM' WHERE symbol = 'mΩ';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/OHM' WHERE symbol = 'ohm';
+UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/NUM' WHERE symbol = 'operations';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/PERCENT' WHERE symbol = 'pct';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/SEC' WHERE symbol = 's';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MicroA' WHERE symbol = 'uA';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MicroM' WHERE symbol = 'um';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MicroOHM' WHERE symbol = 'uohm';
+UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/MicroSEC' WHERE symbol = 'us';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/YR' WHERE symbol = 'year';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/DEG_C' WHERE symbol = '°C';
 UPDATE unit SET qudt_iri = 'http://qudt.org/vocab/unit/OHM' WHERE symbol = 'Ω';

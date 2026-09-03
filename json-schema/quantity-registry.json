@@ -13,6 +13,11 @@
   "rate_unit",
   "area_kind"
  ],
+ "balancing_current": [],
+ "breaking_capacity": [
+  "circuit_voltage_v",
+  "time_constant_ms"
+ ],
  "calendar_life": [
   "temperature_c",
   "soc_pct"
@@ -35,6 +40,23 @@
   "soc_pct",
   "temperature_c"
  ],
+ "coil_power": [],
+ "coil_voltage": [],
+ "cold_cranking_current": [
+  "temperature_c",
+  "duration_s",
+  "cutoff_voltage_v"
+ ],
+ "cold_resistance": [],
+ "contact_resistance": [
+  "rate_value",
+  "rate_unit"
+ ],
+ "conversion_efficiency": [
+  "circuit_voltage_v",
+  "rate_value",
+  "rate_unit"
+ ],
  "cooling_capacity": [
   "temperature_c"
  ],
@@ -46,6 +68,9 @@
  ],
  "current": [],
  "cv_cutoff_current": [],
+ "cycle_charge_voltage": [
+  "temperature_c"
+ ],
  "cycle_life": [
   "temperature_c",
   "dod_pct",
@@ -54,6 +79,9 @@
  ],
  "cycle_number": [],
  "diameter": [],
+ "dielectric_strength": [
+  "duration_s"
+ ],
  "diffusion_coefficient": [
   "soc_pct",
   "temperature_c"
@@ -61,8 +89,14 @@
  "discharge_cutoff_voltage": [],
  "displacement": [],
  "dqdv": [],
+ "dropout_voltage": [],
  "drt_gamma": [],
  "dvdq": [],
+ "electrical_endurance": [
+  "circuit_voltage_v",
+  "rate_value",
+  "rate_unit"
+ ],
  "electrode_area": [],
  "energy": [
   "rate_value",
@@ -96,6 +130,9 @@
   "rate_unit",
   "temperature_c"
  ],
+ "float_charge_voltage": [
+  "temperature_c"
+ ],
  "force": [],
  "frequency": [],
  "heat_generation_rate": [
@@ -105,8 +142,17 @@
   "temperature_c"
  ],
  "height": [],
+ "i2t_prearcing": [],
+ "i2t_total": [
+  "circuit_voltage_v"
+ ],
  "impedance_imag": [],
  "impedance_real": [],
+ "input_voltage_max": [],
+ "input_voltage_min": [],
+ "insulation_resistance": [
+  "circuit_voltage_v"
+ ],
  "intensity": [],
  "internal_resistance_ac": [
   "frequency_hz",
@@ -134,11 +180,18 @@
  ],
  "length": [],
  "lithium_content": [],
+ "making_capacity": [
+  "circuit_voltage_v"
+ ],
  "mass": [],
  "max_continuous_charge_current": [
   "temperature_c"
  ],
  "max_continuous_discharge_current": [
+  "temperature_c"
+ ],
+ "max_pulse_charge_current": [
+  "pulse_duration_s",
   "temperature_c"
  ],
  "max_pulse_discharge_current": [
@@ -147,6 +200,14 @@
  ],
  "max_runaway_temperature": [
   "soc_pct"
+ ],
+ "measurement_accuracy": [
+  "temperature_c"
+ ],
+ "measurement_range_max": [],
+ "mechanical_endurance": [],
+ "minimum_breaking_current": [
+  "circuit_voltage_v"
  ],
  "nominal_voltage": [],
  "ohmic_resistance": [
@@ -159,6 +220,7 @@
   "direction",
   "rest_before_s"
  ],
+ "operate_time": [],
  "operating_temperature_max": [
   "temperature_reference",
   "direction"
@@ -167,6 +229,11 @@
   "temperature_reference",
   "direction"
  ],
+ "output_current": [
+  "temperature_c"
+ ],
+ "output_voltage_max": [],
+ "output_voltage_min": [],
  "parallel_count": [],
  "peak_power": [
   "pulse_duration_s",
@@ -174,17 +241,33 @@
   "temperature_c",
   "boundary"
  ],
+ "pickup_voltage": [],
  "power": [],
+ "power_dissipation": [
+  "rate_value",
+  "rate_unit"
+ ],
  "pressure": [],
+ "rated_current": [
+  "temperature_c"
+ ],
  "rated_power": [
   "temperature_c",
   "boundary"
  ],
+ "rated_voltage": [],
  "recycled_content_cobalt": [],
  "recycled_content_lead": [],
  "recycled_content_lithium": [],
  "recycled_content_nickel": [],
  "relaxation_time": [],
+ "release_time": [],
+ "reserve_capacity_minutes": [
+  "load_value",
+  "load_unit",
+  "cutoff_voltage_v",
+  "temperature_c"
+ ],
  "resistance_growth": [
   "cycle_index",
   "temperature_c",
@@ -218,6 +301,7 @@
   "temperature_c"
  ],
  "shipping_voltage": [],
+ "short_circuit_current": [],
  "soc_estimation_accuracy": [],
  "soh_estimation_accuracy": [],
  "specific_capacity": [
@@ -260,7 +344,9 @@
  "storage_temperature_min": [
   "duration_s"
  ],
+ "switching_frequency": [],
  "temperature": [],
+ "temperature_compensation_coefficient": [],
  "thermal_conductivity_in_plane": [
   "temperature_c"
  ],
@@ -275,6 +361,10 @@
   "dod_pct"
  ],
  "voltage": [],
+ "voltage_drop": [
+  "rate_value",
+  "rate_unit"
+ ],
  "volume": [],
  "warranty_cycles": [],
  "warranty_throughput": [],
