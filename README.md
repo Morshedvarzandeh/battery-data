@@ -208,6 +208,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary |
 | [`docs/09-roadmap.md`](docs/09-roadmap.md) | **The checklist**: what is being added to make this the best open battery dataset, ticked as it lands |
 | [`docs/10-components-and-chemistries.md`](docs/10-components-and-chemistries.md) | The hardware around the cell and every chemistry: component kinds, chemistry families, lead-acid and switching quantities |
+| [`docs/11-ontology.md`](docs/11-ontology.md) | Ontology and knowledge-graph alignment: EMMO, QUDT, SOSA, PROV-O, schema.org, the RDF export and the graph projection |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---
@@ -240,6 +241,11 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | `tools/check_duplicates.py` | Cross-library identity gate for exact UIDs, normalized model aliases, and specification conflicts |
 | `patents/` | Raw patent/IP observations, publication candidates, taxonomy, reconciliation and duplicate reports |
 | `tools/validate_patents.py` | Patent import gate: identity evidence, review boundary, categories and source-row reconciliation |
+| `vocab/` + `tools/sync_vocabularies.py` | EMMO/BattINFO and QUDT bindings generated from the published ontologies, never hand-copied |
+| `rdf/` + `tools/export_rdf.py` | The accepted library as RDF (SOSA observations, QUDT values, PROV-O provenance, EMMO classes) for any triple store |
+| `tools/export_graph.py` / `tools/load_age.py` | The graph projection for Neo4j (CSV + Cypher) and Apache AGE |
+| `contrib/models/` + `tools/load_models.py` | Published physics parameter sets (PyBaMM transcriptions of parameterisation papers) with their citations |
+| `tools/promote_candidates.py` | Bulk form of the approval box, for accepting the review queue wholesale |
 
 ### The query no other battery schema can express
 

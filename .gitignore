@@ -8,3 +8,4 @@ data/parquet/
 .DS_Store
 *.tar.gz
 vocab/cache/
+graph/

@@ -44,10 +44,17 @@ compete with it.
 
 Class IRIs are opaque UUIDs (`BatteryCell` =
 `battery_68ed592a_7924_45d0_a108_94d6275d57f0`); human labels live in
-`skos:prefLabel`. `tools/sync_vocabularies.py` parses `battery.ttl` and
-`electrochemistry.ttl` at build time and populates `quantity.emmo_iri`.
+`skos:prefLabel`. `tools/sync_vocabularies.py` pulls the inferred battery
+ontology (its whole import closure), indexes every class by label into
+`vocab/emmo-index.json`, and resolves the labels curated in
+`vocab/bindings.json` into `schema/175_vocabulary_bindings.sql` and
+`json-schema/quantity-iris.json`. A label the ontology does not define is an
+error; a term it lacks is recorded as `null`. The same tool binds QUDT
+quantity kinds and units. CI checks the generated files are current.
 
-Do NOT hand-copy IRIs from documentation — generate them.
+Do NOT hand-copy IRIs from documentation — generate them. The full alignment,
+including the RDF export and the graph projection, is in
+[`docs/11-ontology.md`](11-ontology.md).
 
 EMMO's `hasDescription` / `isDescriptionFor` relation encodes exactly this
 schema's `product_revision` ↔ `product_unit` split, and BattINFO's

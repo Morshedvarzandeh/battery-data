@@ -42,14 +42,31 @@ UNION ALL
 SELECT 'Product', 'prod:'||p.id, p.uid, p.model_number,
        jsonb_build_object('kind',p.kind,'form_factor',p.form_factor,
                           'form_factor_code',p.form_factor_code,
+                          'component_kind',p.component_kind,
                           'lifecycle',p.lifecycle)
   FROM bd.product p
 UNION ALL
 SELECT 'ProductRevision', 'rev:'||pr.id, pr.uid, pr.revision_label,
        jsonb_build_object('effective_date',pr.effective_date,
                           'preliminary',pr.is_preliminary,
-                          'region_scope',pr.region_scope)
+                          'region_scope',pr.region_scope,
+                          'chemistry',pc.designation,'family',pc.family,
+                          'construction',pc.construction)
   FROM bd.product_revision pr
+  LEFT JOIN bd.product_chemistry pc ON pc.product_revision_id = pr.id
+UNION ALL
+-- where a battery is fielded: a vehicle, a rail programme, a grid site
+SELECT 'Application', 'app:'||a.id, a.uid, a.name,
+       jsonb_build_object('sector',a.sector,'operator',a.operator_text,
+                          'region',a.region,'in_service_from',a.in_service_from)
+  FROM bd.application a
+UNION ALL
+-- a certification claim is its own node so scope and status stay visible
+SELECT 'Certification', 'cert:'||c.id, 'cert/'||c.id, c.standard_text,
+       jsonb_build_object('scope',c.scope,'status',c.status,
+                          'certificate_number',c.certificate_number,
+                          'certifying_body',c.certifying_body)
+  FROM bd.certification c
 UNION ALL
 SELECT 'ProductUnit', 'unit:'||pu.id, pu.uid, pu.serial_number,
        jsonb_build_object('lot',pu.lot_code,'status',pu.battery_status,
@@ -192,6 +209,30 @@ UNION ALL
 SELECT 'EQUIVALENT_TO', 'prod:'||pe.product_a_id, 'prod:'||pe.product_b_id,
        jsonb_build_object('relation',pe.relation)
   FROM bd.product_equivalence pe
+UNION ALL
+-- FIELDED_IN: the claim that a revision, a product or a brand family is
+-- used in an application, at the granularity the source supports.
+SELECT 'FIELDED_IN',
+       CASE WHEN pa.product_revision_id IS NOT NULL THEN 'rev:'||pa.product_revision_id
+            WHEN pa.product_id IS NOT NULL THEN 'prod:'||pa.product_id
+            ELSE 'org:'||pa.brand_org_id END,
+       'app:'||pa.application_id,
+       jsonb_build_object('basis',pa.basis,'confidence',pa.confidence,'role',pa.role,
+                          'brand_family',pa.brand_family,'quantity_per_unit',pa.quantity_per_unit)
+  FROM bd.product_application pa
+UNION ALL
+SELECT 'HOLDS_CERTIFICATION', 'rev:'||c.product_revision_id, 'cert:'||c.id,
+       jsonb_build_object('status',c.status,'scope',c.scope)
+  FROM bd.certification c
+UNION ALL
+SELECT 'CERTIFIED_TO', 'cert:'||c.id, 'std:'||c.standard_id, '{}'::jsonb
+  FROM bd.certification c WHERE c.standard_id IS NOT NULL
+UNION ALL
+-- OFFERED_BY: who sells it; price and date live on the edge
+SELECT 'OFFERED_BY', 'prod:'||po.product_id, 'org:'||po.seller_org_id,
+       jsonb_build_object('observed_at',po.observed_at,'currency',po.currency,
+                          'unit_price',po.unit_price,'region',po.region)
+  FROM bd.product_offer po WHERE po.seller_org_id IS NOT NULL
 UNION ALL
 -- EVIDENCE edges: every observation ties a subject to the source that
 -- asserts it. This is what makes "trace this number back" a traversal.

@@ -47,6 +47,11 @@ jobs:
               RAISE NOTICE 'ok: % contributed observation(s) in the library', n;
             END\$\$;"
 
+      - name: Load model parameter sets
+        # Published parameter sets (PyBaMM transcriptions of parameterisation
+        # papers) land in bd.model_parameterisation against their cell.
+        run: python tools/load_models.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
+
       - name: Load patent review corpus into staging
         run: |
           python tools/load_patents.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
@@ -86,8 +91,11 @@ jobs:
             exit 1
           fi
           echo "ok: uninterpretable data rejected"
-      - name: Refresh graph projection
-        run: psql -v ON_ERROR_STOP=1 -d batterydb -c "SELECT bd_graph.refresh();"
+      - name: Refresh graph projection and export it
+        run: |
+          psql -v ON_ERROR_STOP=1 -d batterydb -c "SELECT bd_graph.refresh();"
+          python tools/export_graph.py batterydb
+          python tools/load_age.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
       - name: Export the standards crosswalk
         run: python tools/export_crosswalk.py batterydb
 
@@ -127,6 +135,9 @@ jobs:
           # Ontology bindings are generated from the published vocabularies;
           # a label edited by hand without a rerun would leave stale IRIs.
           python tools/sync_vocabularies.py check
+          # The library as RDF is generated from contrib/ and committed; a
+          # stale file would hand a triple store yesterday's data.
+          python tools/export_rdf.py --check
           python tools/build_review_batch.py
           python tools/render_review_issues.py
           git diff --exit-code -- review/ || {
