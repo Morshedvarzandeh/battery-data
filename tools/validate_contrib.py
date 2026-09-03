@@ -74,9 +74,33 @@ def check(path: str, schema: dict, registry: dict) -> list[str]:
         # Conditions on a quantity that needs none is a smell, not an error.
         if not registry[q] and cond and set(cond) - {"verbatim", "extra", "unstated"}:
             pass
+        errs += check_c_rate(where, cond)
+
+    for i, curve in enumerate(doc.get("curves", [])):
+        errs += check_c_rate(f"{path}: curves[{i}] ({curve.get('curve_kind')})",
+                             curve.get("conditions") or {})
 
     errs += check_applications(path, doc)
     return errs
+
+
+def check_c_rate(where: str, cond: dict) -> list[str]:
+    """A C-rate is self-referential; the database refuses one with no reference.
+
+    LG calls 1C 4800 mA and Samsung 4900 mA (docs/02-conventions.md section 4),
+    so "0.2C" is a different current per vendor. bd.condition_set enforces
+    this with a CHECK, and a file that passes here only to be refused at load
+    time is a promotion that looks accepted and is not. Say which capacity the
+    rate refers to, or say the document does not: rate_reference_source
+    'unstated' with rate_reference_capacity_ah listed as unstated.
+    """
+    if cond.get("rate_unit") != "C":
+        return []
+    if cond.get("rate_reference_capacity_ah") is not None or cond.get("rate_reference_source"):
+        return []
+    return [f"{where}: a C-rate needs its reference capacity. Set "
+            f"rate_reference_capacity_ah, or rate_reference_source: unstated when the "
+            f"document never defines 1C (and list rate_reference_capacity_ah in unstated)."]
 
 
 # Bases where somebody with direct knowledge put the claim in writing. Anything

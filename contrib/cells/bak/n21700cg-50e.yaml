@@ -26,8 +26,10 @@
         "rate_unit": "C",
         "voltage_lower_v": 2.5,
         "unstated": [
-          "temperature_c"
-        ]
+          "temperature_c",
+          "rate_reference_capacity_ah"
+        ],
+        "rate_reference_source": "unstated"
       },
       "locator": {
         "quote": "Model N21700CG-50E; Materials Hi-Ni; Diameter 21.25±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 67 g; Max Charge Current 1C; Max Discharge Current 3C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"

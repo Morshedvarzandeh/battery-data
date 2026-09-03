@@ -108,8 +108,10 @@
         "rate_unit": "C",
         "unstated": [
           "temperature_c",
-          "dod_pct"
-        ]
+          "dod_pct",
+          "rate_reference_capacity_ah"
+        ],
+        "rate_reference_source": "unstated"
       },
       "locator": {
         "quote": "Extended Cycle Life of over 1000 cycles (+1C charge, 1C discharge)"

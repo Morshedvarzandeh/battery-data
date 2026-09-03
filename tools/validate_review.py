@@ -62,6 +62,10 @@ def main() -> int:
                 supplied = conditions.get(required) not in (None, "unspecified")
                 if not supplied and required not in unstated:
                     errors.append(f"{where}: missing condition {required}")
+            if (conditions.get("rate_unit") == "C"
+                    and conditions.get("rate_reference_capacity_ah") is None
+                    and not conditions.get("rate_reference_source")):
+                errors.append(f"{where}: C-rate without rate_reference_capacity_ah or rate_reference_source")
 
     actual = {str(path.relative_to(ROOT)) for path in files}
     for rel in sorted(actual - indexed):

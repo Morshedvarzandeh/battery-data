@@ -26,8 +26,10 @@
         "rate_unit": "C",
         "voltage_lower_v": 2.5,
         "unstated": [
-          "temperature_c"
-        ]
+          "temperature_c",
+          "rate_reference_capacity_ah"
+        ],
+        "rate_reference_source": "unstated"
       },
       "locator": {
         "quote": "Model N21700CGP; Materials Hi-Ni; Diameter 21.15±0.15 mm; Height 70.05±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 4 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 2A; Standard discharge current 0.8A; Internal Resistance 12 mΩ; Cell Weight 67 g; Max Charge Current 6A; Max Discharge Current 40A; Charge 0–55 °C; Discharge -20–75 °C (cell surface)"
