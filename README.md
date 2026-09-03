@@ -206,6 +206,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
 | [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary |
+| [`docs/09-roadmap.md`](docs/09-roadmap.md) | **The checklist**: what is being added to make this the best open battery dataset, ticked as it lands |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---
