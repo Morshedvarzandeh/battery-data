@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate web/index.html's data blobs from contrib/ and the registry.
+"""Regenerate the two web pages' data blobs from contrib/ and the registry.
 
 WHY THIS EXISTS
 ---------------
@@ -32,8 +32,19 @@ The hand-curated files are presentation and intent. They are still checked:
 a heading may not name a quantity that does not exist, and may not silently
 drop one that does. That check is what would have caught the invented registry.
 
-    python tools/build_web_data.py          # rewrite the page
-    python tools/build_web_data.py --check  # fail if the page is stale (CI)
+TWO PAGES, ONE SOURCE
+---------------------
+web/index.html  the public site      -> SITE   (one product at a time, in prose)
+web/bench.html  the comparison tool  -> REGISTRY, TAXONOMY, CONTRIB
+
+Both are generated from the same contributions, so neither can show a product
+the other does not have. The site's copy is the smaller one: it drops the
+curves and the pulse grid it never draws, and stores each source sentence once
+per product instead of once per value read out of it -- a single sentence
+usually carries five.
+
+    python tools/build_web_data.py          # rewrite both pages
+    python tools/build_web_data.py --check  # fail if either is stale (CI)
 """
 from __future__ import annotations
 import argparse, glob, json, math, os, re, sys
@@ -44,12 +55,17 @@ except ImportError:
     sys.exit("pip install pyyaml")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGE = os.path.join(ROOT, "web", "index.html")
+SITE_PAGE = os.path.join(ROOT, "web", "index.html")
+BENCH_PAGE = os.path.join(ROOT, "web", "bench.html")
 DATA = os.path.join(ROOT, "web", "data")
 REGISTRY = os.path.join(ROOT, "json-schema", "quantity-registry.json")
 VOCAB = os.path.join(ROOT, "schema", "010_vocabulary.sql")
 
-# Marker pairs in the page. Everything between them is machine-owned; edit the
+# Which blobs each page carries. A page is rewritten only between its markers.
+PAGES = {SITE_PAGE: ("SITE",),
+         BENCH_PAGE: ("REGISTRY", "TAXONOMY", "CONTRIB")}
+
+# Marker pairs in the pages. Everything between them is machine-owned; edit the
 # contribution or the file in web/data/, never the region.
 BEGIN = "/* GENERATED: {} -- do not edit, run tools/build_web_data.py */"
 END = "/* END GENERATED: {} */"
@@ -283,6 +299,60 @@ def seed(products: list[dict]) -> list[dict]:
     return sorted(rows, key=lambda r: (-r["ah"], r["cell"]))
 
 
+def site(products: list[dict], groups: dict) -> dict:
+    """The public site's copy: every product, none of the bench's machinery.
+
+    The site shows one product at a time and says where each number came from,
+    so it needs the value, the conditions attached to it, the conditions the
+    document never stated, and the sentence it was read out of. It does not
+    need the curves or the pulse grid, which only the bench draws.
+
+    Quotes are stored once per product and referenced by index. One sentence on
+    a datasheet routinely carries five values -- capacity, voltage, dimensions,
+    weight, cycle life -- and repeating it per value tripled the page.
+    """
+    out, quoted = [], 0
+    for p in products:
+        quotes, seen, obs = [], {}, []
+        for o in p["obs"]:
+            q = o["quote"]
+            if q not in seen:
+                seen[q] = len(quotes)
+                quotes.append(q)
+            row = {"q": o["q"], "v": o["v"], "u": o["u"], "qi": seen[q]}
+            for key in ("stat", "cond", "unstated", "pg"):
+                if o.get(key):                  # empty dict, [] and None all mean absent
+                    row[key] = o[key]
+            obs.append(row)
+        quoted += len(obs)
+        chem = p["chem"]
+        out.append({
+            "uid": p["uid"], "kind": p["kind"], "name": p["cell"],
+            "manu": p["manu"], "model": p["model"],
+            "fmt": p["fmt"], "shape": p["shape"], "dims": p["dims"],
+            "chem": {k: chem.get(k) for k in
+                     ("designation", "cathode", "anode", "electrolyte", "separator")},
+            "m": p["m"], "src": p["source"], "obs": obs, "quotes": quotes,
+            "file": p["file"], "curves": len(p["curves"]),
+        })
+
+    kinds = {}
+    for p in out:
+        kinds[p["kind"]] = kinds.get(p["kind"], 0) + 1
+    return {
+        "PRODUCTS": out,
+        # The same headings the bench groups its datasheet slots under, so a
+        # quantity cannot sit under one name here and another there.
+        "GROUPS": groups,
+        # The counts the front page prints. Derived here so the headline number
+        # and the grid below it can never disagree.
+        "TOTALS": {"products": len(out), "makers": len({p["manu"] for p in out}),
+                   "observations": quoted, "kinds": kinds,
+                   "quotes": sum(len(p["quotes"]) for p in out),
+                   "datasheets": sum(1 for p in out if p["src"].get("kind") == "datasheet")},
+    }
+
+
 def coverage(segments: list[dict], products: list[dict]) -> list[dict]:
     """Mark each target sourced or missing by looking, not by being told.
 
@@ -322,17 +392,19 @@ def build() -> dict:
         "REGISTRY": {"REG": registry,
                      "GROUPS": {k: v for k, v in groups.items() if k not in axis_only}},
         "TAXONOMY": {"FAM": tf["FAM"], "LANDS": tf["LANDS"]},
+        "SITE": site(products, {k: v for k, v in groups.items() if k not in axis_only}),
         "CONTRIB": {"PRODUCTS": products,
                     "COVERAGE": coverage(load(os.path.join(DATA, "coverage.json")), products),
                     "FAMILY_CLAIMS": load(os.path.join(DATA, "family-claims.json"))},
     }
 
 
-def render(page: str, blobs: dict) -> str:
-    for name, payload in blobs.items():
+def render(page: str, blobs: dict, names: tuple[str, ...], path: str) -> str:
+    for name in names:
+        payload = blobs[name]
         b, e = BEGIN.format(name), END.format(name)
         if b not in page or e not in page:
-            sys.exit(f"page is missing the {name} marker pair")
+            sys.exit(f"{os.path.relpath(path, ROOT)} is missing the {name} marker pair")
         body = f"const _{name} = {json.dumps(payload, ensure_ascii=False, sort_keys=True)};"
         page = re.sub(re.escape(b) + r".*?" + re.escape(e),
                       lambda _: f"{b}\n{body}\n{e}", page, flags=re.S)
@@ -346,22 +418,32 @@ def main() -> int:
     a = ap.parse_args()
 
     blobs = build()
-    current = open(PAGE).read()
-    new = render(current, blobs)
-
     n = len(blobs["CONTRIB"]["PRODUCTS"])
     charted = sum(1 for p in blobs["CONTRIB"]["PRODUCTS"]
                   if p["kind"] == "cell" and p["m"]["whkg"])
+
+    stale = []
+    for path, names in PAGES.items():
+        rel = os.path.relpath(path, ROOT)
+        current = open(path).read()
+        new_page = render(current, blobs, names, path)
+        if new_page == current:
+            if a.check:
+                print(f"{rel} is up to date ({n} products, {charted} charted)")
+            continue
+        if a.check:
+            stale.append(rel)
+            continue
+        open(path, "w").write(new_page)
+        print(f"wrote {rel}: {n} products, {charted} on the chart")
+
     if a.check:
-        if new != current:
-            print("web/index.html is stale. Run: python tools/build_web_data.py",
+        if stale:
+            print(f"{', '.join(stale)} stale. Run: python tools/build_web_data.py",
                   file=sys.stderr)
             return 1
-        print(f"web/index.html is up to date ({n} products, {charted} charted)")
         return 0
 
-    open(PAGE, "w").write(new)
-    print(f"wrote {os.path.relpath(PAGE, ROOT)}: {n} products, {charted} on the chart")
     for p in blobs["CONTRIB"]["PRODUCTS"]:
         print(f"  {p['kind']:7} {p['cell']:38} {len(p['obs']):3} obs "
               f"{len(p['curves']):3} curves")

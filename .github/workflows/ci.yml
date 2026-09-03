@@ -84,6 +84,19 @@ jobs:
       - name: Python regression tests
         run: python -m unittest discover -s tests -p 'test_*.py'
 
+  wasm:
+    # The discharge model on the product pages is Rust, compiled to
+    # WebAssembly and inlined into web/sim.js. The artefact is committed so
+    # nobody needs Rust to work on the site; this rebuilds it from source and
+    # fails if the two have parted company.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: The model compiles, and matches what the site ships
+        run: |
+          rustup target add wasm32-unknown-unknown
+          tools/build_wasm.sh --check
+
   contrib:
     runs-on: ubuntu-latest
     steps:
@@ -107,15 +120,15 @@ jobs:
             echo "::error::review batch is stale. Run the deterministic builders"
             exit 1
           }
-      - name: The page is generated, not maintained
-        # web/index.html carries a copy of the contribution data. If the two
-        # can drift, a merged submission lands in contrib/ and never appears
-        # in the UI -- which makes a working submission flow look broken. This
-        # regenerates and fails on any difference, so the copy cannot rot.
+      - name: The pages are generated, not maintained
+        # Both web pages carry a copy of the contribution data. If they can
+        # drift, a merged submission lands in contrib/ and never appears in the
+        # UI -- which makes a working submission flow look broken. This
+        # regenerates and fails on any difference, so the copies cannot rot.
         run: |
           python tools/build_web_data.py
-          git diff --exit-code -- web/index.html || {
-            echo "::error::web/index.html is stale. Run: python tools/build_web_data.py"
+          git diff --exit-code -- web/index.html web/bench.html || {
+            echo "::error::the web pages are stale. Run: python tools/build_web_data.py"
             exit 1
           }
       - name: Extraction schema builds from the contribution schema

@@ -1,0 +1,16 @@
+[package]
+name = "battery-sim"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "A cell discharge model, compiled to WebAssembly for the site's interactive card."
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+opt-level = "z"
+lto = true
+panic = "abort"
+codegen-units = 1
+strip = true

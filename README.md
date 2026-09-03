@@ -233,6 +233,9 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | `crosswalk/` | Generated BDF ↔ EMMO ↔ BPX ↔ Battery Passport mapping |
 | `tools/validate_contrib.py` | CI gate: refuses a contribution whose values lack their conditions |
 | `tools/check_duplicates.py` | Cross-library identity gate for exact UIDs, normalized model aliases, and specification conflicts |
+| `web/index.html` | The public site: the product family, the cell library, one product per page with its conditions and its sources. Generated from `contrib/`, opens from a file path |
+| `web/bench.html` | The comparison bench: filter, chart, print a sourced report, see what is still missing |
+| `wasm/battery-sim/` | The discharge model behind the *Take it for a run* card. Rust, `no_std`, 1.3 kB of WebAssembly, inlined into `web/sim.js` |
 
 ### The query no other battery schema can express
 
@@ -273,6 +276,36 @@ curl -G localhost:8080/v1/cells \
 Cell detail responses carry the observations they were derived from, each with
 its conditions and a page-level citation. An API that dropped provenance would
 undo the point of the schema.
+
+## The website
+
+```bash
+open web/index.html          # or: python -m http.server -d web 8000
+```
+
+Two pages, no build step, no dependencies, no network calls. Both carry their
+data inline, so they work from a file path as well as from a server.
+
+* **`web/index.html`** — the front of the house. An isometric drawing of the
+  library where every solid stands at the size its maker published; the product
+  family; the cell library with filters; one page per product listing every
+  value with the conditions it was measured under and the sentence it was read
+  from; and *Take it for a run*, a discharge model you can drag two dials on.
+* **`web/bench.html`** — the working tool, unchanged: compare, chart, export,
+  print a sourced report.
+
+Regenerating them:
+
+```bash
+python tools/build_web_data.py     # product data into both pages, from contrib/
+tools/build_wasm.sh                # the Rust model into web/sim.js (needs Rust)
+```
+
+CI regenerates both and fails on any difference, so neither page can drift from
+the library. `web/sim.js` is committed, so Rust is only needed to change the
+model itself.
+
+---
 
 ## Status
 

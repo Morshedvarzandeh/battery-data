@@ -7,3 +7,6 @@ data/parquet/
 *.log
 .DS_Store
 *.tar.gz
+
+# Rust build tree for the WebAssembly model; web/sim.js is the committed artefact
+wasm/battery-sim/target/
