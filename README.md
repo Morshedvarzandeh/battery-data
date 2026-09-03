@@ -290,11 +290,20 @@ undo the point of the schema.
 ## Status
 
 Schema, query layer, graph projection, staging/review, cycler adapters, read API,
-literature-miner and the standards crosswalk are complete and tested. Seeded with
-four reference cells chosen because each breaks a naive schema differently.
+literature-miner, the standards crosswalk, the EMMO and QUDT bindings and the
+RDF export are complete and tested. The accepted library holds 460 products
+across cells, primary cells, modules, packs and systems, five published physics
+parameter sets, and 34 curves; every value carries its conditions and a locator.
 
-Next: wire the literature-miner to a model provider, EIS/`.mpr` binary parsing,
-and propose the metadata layer upstream to the Battery Data Alliance.
+`review/hygiene.json` says what each record rests on and lists the
+re-extractions that would turn web-page and issue-text records into
+datasheet-backed ones. [`docs/09-roadmap.md`](docs/09-roadmap.md) is the
+checklist, ticked as work lands.
+
+Next: run the re-extraction manifest from a machine that can reach the
+sources, ingest the registered open cycling datasets, wire the
+literature-miner to a model provider, and propose the metadata layer upstream
+to the Battery Data Alliance.
 
 ## Licence
 

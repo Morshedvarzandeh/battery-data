@@ -142,8 +142,11 @@ def product(doc: dict, path: str) -> dict:
               for c in doc.get("curves", [])]
 
     m = metrics(obs, dims, SHAPE.get(p.get("form_factor", ""), "pri"), errs)
+    if p["kind"] == "component":
+        m["component"] = component_metrics(obs, errs)
     return {
         "uid": p["uid"], "kind": p["kind"],
+        "component_kind": p.get("component_kind"),
         "cell": f"{p['manufacturer']} {p['model_number']}",
         "manu": p["manufacturer"], "model": p["model_number"],
         "fmt": p.get("form_factor") or "", "shape": SHAPE.get(p.get("form_factor", ""), "pri"),
@@ -443,6 +446,52 @@ def metrics(obs: list[dict], dims: list | None, shape: str,
     out["unstated"] = sum(len(o.get("unstated") or []) for o in obs)
     out["obs_unstated"] = sum(1 for o in obs if o.get("unstated"))
     out["n_obs"] = len(obs)
+    return out
+
+
+def component_metrics(obs: list[dict], errs: list[str]) -> dict:
+    """The figures a component is selected on, each with the condition it was
+    stated at. Nothing is invented: a contactor without a stated L/R shows its
+    breaking capacity with the time constant marked unstated."""
+    def first(q, key=None):
+        rows = [o for o in obs if o["q"] == q]
+        if not rows:
+            return None
+        return min(rows, key=key) if key else rows[0]
+    def val(o, table):
+        if not o:
+            return None
+        if o["u"] not in table:
+            errs.append(f"{o['q']}: unit {o['u']!r} is not convertible; add it to the component table")
+            return None
+        return o["v"] * table[o["u"]]
+    TO_MOHM_C = {"mΩ": 1.0, "mohm": 1.0, "Ω": 1000.0, "ohm": 1000.0, "uohm": 0.001}
+    out = {}
+    o = first("rated_voltage");           out["rated_v"] = val(o, TO_V)
+    o = nearest(obs, "rated_current");    out["rated_a"] = val(o, TO_A)
+    out["rated_a_temp"] = (o.get("cond") or {}).get("temperature_c") if o else None
+    o = first("breaking_capacity", key=lambda x: -x["v"])
+    out["breaking_a"] = val(o, TO_A)
+    c = (o.get("cond") or {}) if o else {}
+    out["breaking_v"], out["breaking_lr"] = c.get("circuit_voltage_v"), c.get("time_constant_ms")
+    o = first("coil_voltage");            out["coil_v"] = val(o, TO_V)
+    o = first("coil_power");              out["coil_w"] = val(o, TO_W)
+    o = first("contact_resistance");      out["contact_mohm"] = val(o, TO_MOHM_C)
+    out["contact_a"] = (o.get("cond") or {}).get("rate_value") if o else None
+    o = first("conversion_efficiency", key=lambda x: -x["v"])
+    out["eff"] = o["v"] if o else None
+    c = (o.get("cond") or {}) if o else {}
+    out["eff_load"] = (f"{c.get('rate_value'):g} {c.get('rate_unit')}" if c.get("rate_value") is not None else None)
+    out["eff_vin"] = c.get("circuit_voltage_v")
+    o = first("input_voltage_min");       vin_lo = val(o, TO_V)
+    o = first("input_voltage_max");       vin_hi = val(o, TO_V)
+    out["vin"] = f"{vin_lo:g}–{vin_hi:g}" if vin_lo is not None and vin_hi is not None else None
+    o = first("output_voltage_min");      vo_lo = val(o, TO_V)
+    o = first("output_voltage_max");      vo_hi = val(o, TO_V)
+    out["vout"] = f"{vo_lo:g}–{vo_hi:g}" if vo_lo is not None and vo_hi is not None else None
+    o = nearest(obs, "output_current");   out["iout"] = val(o, TO_A)
+    o = first("i2t_prearcing");           out["i2t"] = o["v"] if o else None
+    o = first("electrical_endurance");    out["endurance"] = o["v"] if o else None
     return out
 
 

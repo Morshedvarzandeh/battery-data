@@ -38,7 +38,7 @@ import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from filter_grammar import FIELDS, FilterError, parse_filter, to_psycopg  # noqa: E402
+from filter_grammar import FIELDS, COMPONENT_FIELDS, FilterError, parse_filter, to_psycopg  # noqa: E402
 
 API_VERSION = "1.0.0"
 PROVIDER = {
@@ -144,6 +144,21 @@ SELECT product_uid, manufacturer, model_number, form_factor, form_factor_code,
        cycle_life_rate_unit, cycle_life_temp_c,
        revision_label, product_revision_id
   FROM bd.v_cell_selection
+"""
+
+# The hardware around the cell. Same grammar, a different field map, and
+# every figure with the condition it was stated at.
+COMPONENT_SELECT = """
+SELECT product_uid, manufacturer, model_number, component_kind,
+       rated_voltage_v, rated_current_a, rated_current_temp_c,
+       breaking_capacity_a, breaking_circuit_v, breaking_time_constant_ms,
+       i2t_prearcing_a2s, coil_voltage_v, coil_power_w,
+       contact_resistance_mohm, contact_test_current_a, mechanical_endurance,
+       input_voltage_min_v, input_voltage_max_v, output_voltage_min_v, output_voltage_max_v,
+       output_current_a, output_current_temp_c,
+       efficiency, efficiency_input_v, efficiency_load_value, efficiency_load_unit,
+       switching_frequency_hz, mass_kg, revision_label, product_revision_id
+  FROM bd.v_component_selection
 """
 
 PROVENANCE_SELECT = """
@@ -281,6 +296,11 @@ class Handler(BaseHTTPRequestHandler):
                 return self._cell_detail(urllib.parse.unquote(m.group(1)), q)
             if path == "/v1/packs":
                 return self._packs(q, self.path)
+            if path == "/v1/components":
+                return self._components(q, self.path)
+            m = re.fullmatch(r"/v1/components/(.+)", path)
+            if m:
+                return self._component_detail(urllib.parse.unquote(m.group(1)))
             if path == "/v1/crosswalk":
                 return self._crosswalk()
             return self._error(404, "Not found",
@@ -393,6 +413,51 @@ class Handler(BaseHTTPRequestHandler):
                 f"/v1/cells?filter={urllib.parse.quote(expr)}"
                 f"&page_limit={limit}&page_offset={offset + limit}")
         self._send(200, payload)
+
+    def _components(self, q: dict, request_url: str):
+        expr = (q.get("filter") or [""])[0]
+        limit = min(int((q.get("page_limit") or [20])[0]), 500)
+        offset = int((q.get("page_offset") or [0])[0])
+        sort = (q.get("sort") or [""])[0]
+        where, params = parse_filter(expr, COMPONENT_FIELDS)
+        sql, params = to_psycopg(f"{COMPONENT_SELECT} WHERE {where}", params)
+        order = "manufacturer, model_number"
+        if sort:
+            desc = sort.startswith("-")
+            key = sort.lstrip("-")
+            if key not in COMPONENT_FIELDS:
+                raise FilterError(f"cannot sort by unknown field {key!r}")
+            order = f"{COMPONENT_FIELDS[key]['col']} {'DESC' if desc else 'ASC'} NULLS LAST"
+        sql += f" ORDER BY {order} LIMIT %s OFFSET %s"
+        rows = self.db.query(sql, params + [limit + 1, offset])
+        more = len(rows) > limit
+        rows = rows[:limit]
+        data = [{"type": "components", "id": r.pop("product_uid"), "attributes": r} for r in rows]
+        payload = envelope(data, request_url=request_url, returned=len(data), more=more,
+                           extra_meta={"note": ("Each rating keeps the condition it was stated "
+                                                "at: a breaking capacity with its circuit voltage "
+                                                "and L/R, a rated current with its ambient, an "
+                                                "efficiency with its input voltage and load.")})
+        payload["links"] = {"base_url": "/v1"}
+        if more:
+            payload["links"]["next"] = (
+                f"/v1/components?filter={urllib.parse.quote(expr)}"
+                f"&page_limit={limit}&page_offset={offset + limit}")
+        self._send(200, payload)
+
+    def _component_detail(self, uid: str):
+        sql, params = to_psycopg(f"{COMPONENT_SELECT} WHERE product_uid = $1", [uid])
+        rows = self.db.query(sql, params)
+        if not rows:
+            return self._error(404, "Not found", f"No component with id {uid!r}")
+        comp = rows[0]
+        rev_id = comp.get("product_revision_id")
+        obs = self.db.query(*to_psycopg(PROVENANCE_SELECT.replace("%s", "$1"),
+                                        [rev_id])) if rev_id else []
+        self._send(200, envelope(
+            [{"type": "components", "id": uid, "attributes": comp,
+              "relationships": {"observations": {"data": obs}}}],
+            request_url=self.path, returned=1, more=False))
 
     def _packs(self, q: dict, request_url: str):
         limit = min(int((q.get("page_limit") or [200])[0]), 500)

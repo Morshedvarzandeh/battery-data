@@ -75,6 +75,37 @@ FIELDS: dict[str, dict] = {
     "_bd_capacity_rate_c": {"col": "capacity_low_rate_c", "type": "number"},
 }
 
+# The hardware around the cell is selected on other figures, each carrying
+# the condition it was stated at (see bd.v_component_selection).
+COMPONENT_FIELDS: dict[str, dict] = {
+    "product_uid":        {"col": "product_uid",        "type": "string"},
+    "manufacturer":       {"col": "manufacturer",       "type": "string"},
+    "model_number":       {"col": "model_number",       "type": "string"},
+    "component_kind":     {"col": "component_kind",     "type": "string"},
+    "rated_voltage_v":    {"col": "rated_voltage_v",    "type": "number"},
+    "rated_current_a":    {"col": "rated_current_a",    "type": "number"},
+    "rated_current_temp_c": {"col": "rated_current_temp_c", "type": "number"},
+    "breaking_capacity_a": {"col": "breaking_capacity_a", "type": "number"},
+    "breaking_circuit_v": {"col": "breaking_circuit_v", "type": "number"},
+    "breaking_time_constant_ms": {"col": "breaking_time_constant_ms", "type": "number"},
+    "i2t_prearcing_a2s":  {"col": "i2t_prearcing_a2s",  "type": "number"},
+    "coil_voltage_v":     {"col": "coil_voltage_v",     "type": "number"},
+    "coil_power_w":       {"col": "coil_power_w",       "type": "number"},
+    "contact_resistance_mohm": {"col": "contact_resistance_mohm", "type": "number"},
+    "contact_test_current_a": {"col": "contact_test_current_a", "type": "number"},
+    "mechanical_endurance": {"col": "mechanical_endurance", "type": "number"},
+    "input_voltage_min_v": {"col": "input_voltage_min_v", "type": "number"},
+    "input_voltage_max_v": {"col": "input_voltage_max_v", "type": "number"},
+    "output_voltage_min_v": {"col": "output_voltage_min_v", "type": "number"},
+    "output_voltage_max_v": {"col": "output_voltage_max_v", "type": "number"},
+    "output_current_a":   {"col": "output_current_a",   "type": "number"},
+    "efficiency":         {"col": "efficiency",         "type": "number"},
+    "efficiency_input_v": {"col": "efficiency_input_v", "type": "number"},
+    "switching_frequency_hz": {"col": "switching_frequency_hz", "type": "number"},
+    "mass_kg":            {"col": "mass_kg",            "type": "number"},
+    "_bd_revision":       {"col": "revision_label",     "type": "string"},
+}
+
 COMPARISON = {"=": "=", "!=": "<>", "<": "<", "<=": "<=", ">": ">", ">=": ">="}
 
 
@@ -136,8 +167,9 @@ def tokenize(s: str) -> list[Token]:
 #   factor  := NOT factor | '(' expr ')' | predicate
 # ---------------------------------------------------------------------
 class Parser:
-    def __init__(self, tokens: list[Token]):
+    def __init__(self, tokens: list[Token], fields=None):
         self.t, self.i, self.params = tokens, 0, []
+        self.fields = fields or FIELDS
 
     # -- helpers ------------------------------------------------------
     def peek(self) -> Token | None:
@@ -203,12 +235,12 @@ class Parser:
         if tok.kind != "word":
             raise FilterError(f"expected a field name, got {tok.value!r}")
         name = tok.value
-        if name not in FIELDS:
+        if name not in self.fields:
             raise FilterError(
                 f"unknown field {name!r}. "
-                f"Did you mean one of: {', '.join(_suggest(name))}?")
-        col = FIELDS[name]["col"]
-        ftype = FIELDS[name]["type"]
+                f"Did you mean one of: {', '.join(_suggest(name, fields=self.fields))}?")
+        col = self.fields[name]["col"]
+        ftype = self.fields[name]["type"]
 
         nxt = self.peek()
         if nxt is None:
@@ -278,7 +310,7 @@ def _typecheck(name: str, ftype: str, tok: Token) -> None:
                           f'as "{tok.value}"')
 
 
-def _suggest(name: str, n: int = 3) -> list[str]:
+def _suggest(name: str, n: int = 3, fields=None) -> list[str]:
     """Cheap edit-distance suggestion so a typo is a helpful error."""
     def dist(a: str, b: str) -> int:
         prev = list(range(len(b) + 1))
@@ -289,14 +321,14 @@ def _suggest(name: str, n: int = 3) -> list[str]:
                                prev[j - 1] + (ca != cb)))
             prev = cur
         return prev[-1]
-    return sorted(FIELDS, key=lambda f: dist(name.lower(), f.lower()))[:n]
+    return sorted(fields or FIELDS, key=lambda f: dist(name.lower(), f.lower()))[:n]
 
 
-def parse_filter(expr: str) -> tuple[str, list]:
+def parse_filter(expr: str, fields: dict | None = None) -> tuple[str, list]:
     """Return (SQL WHERE fragment with $1..$n placeholders, params)."""
     if not expr or not expr.strip():
         return "TRUE", []
-    return Parser(tokenize(expr)).parse()
+    return Parser(tokenize(expr), fields).parse()
 
 
 def to_psycopg(sql: str, params: list) -> tuple[str, list]:

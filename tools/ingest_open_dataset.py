@@ -300,8 +300,21 @@ def cmd_list(_a) -> int:
     for k, d in DATASETS.items():
         print(f"  {k:18} {d['landing']}")
     print("\nLicences are a starting point. Verify before redistributing.")
-    return 0
+    
 
+    if getattr(_a, "json", None):
+        registry = {"note": ("Landing pages, citations and licence notes for the open cycling "
+                             "datasets tools/ingest_open_dataset.py knows how to ingest. Licence "
+                             "fields are a starting point, not a ruling: verify at the landing "
+                             "page before redistributing anything. The files are not in this "
+                             "repository; fetch them, then run `ingest <key> <dir>`."),
+                    "datasets": {k: DATASETS[k] for k in sorted(DATASETS)}}
+        os.makedirs(os.path.dirname(os.path.abspath(_a.json)), exist_ok=True)
+        with open(_a.json, "w", encoding="utf-8") as fh:
+            json.dump(registry, fh, indent=1, ensure_ascii=False, sort_keys=True)
+            fh.write("\n")
+        print(f"\nwrote {_a.json}")
+    return 0
 
 def cmd_fetch(a) -> int:
     """
@@ -508,7 +521,9 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="ingest_open_dataset")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
-    sub.add_parser("list", help="show the dataset registry")
+    lp = sub.add_parser("list", help="show the dataset registry")
+    lp.add_argument("--json", help="also write the registry to this path, "
+                                   "e.g. datasets/registry.json")
 
     f = sub.add_parser("fetch", help="download dataset files and record hashes")
     f.add_argument("dataset", choices=sorted(DATASETS))

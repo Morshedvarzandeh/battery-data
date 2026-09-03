@@ -138,6 +138,8 @@ jobs:
           # The library as RDF is generated from contrib/ and committed; a
           # stale file would hand a triple store yesterday's data.
           python tools/export_rdf.py --check
+          # What every record rests on, and the re-extraction list, kept current.
+          python tools/hygiene_report.py --check
           python tools/build_review_batch.py
           python tools/render_review_issues.py
           git diff --exit-code -- review/ || {

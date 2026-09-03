@@ -303,6 +303,105 @@ COMMENT ON VIEW v_cell_selection IS
   'is how comparison tables become wrong.';
 
 -- ---------------------------------------------------------------------
+-- COMPONENT SELECTION. The hardware around the cell, selected on the
+-- figures its datasheet is read for. Every figure keeps the condition it
+-- was stated at: a breaking capacity is nothing without its circuit
+-- voltage and time constant, a rated current without its ambient.
+-- ---------------------------------------------------------------------
+CREATE VIEW v_component_selection AS
+WITH comps AS (
+  SELECT cr.product_revision_id, cr.product_id, cr.revision_label
+    FROM v_current_revision cr
+    JOIN product p ON p.id = cr.product_id
+   WHERE p.kind = 'component'
+),
+one AS (   -- first stated value of a conditionless quantity
+  SELECT DISTINCT ON (o.product_revision_id, q.code)
+         o.product_revision_id, q.code, o.value_si
+    FROM observation o JOIN quantity q ON q.id = o.quantity_id
+   WHERE q.code IN ('rated_voltage','coil_voltage','coil_power','i2t_prearcing',
+                    'mechanical_endurance','input_voltage_min','input_voltage_max',
+                    'output_voltage_min','output_voltage_max','switching_frequency',
+                    'mass','short_circuit_current')
+   ORDER BY o.product_revision_id, q.code, o.id
+),
+rated AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si AS rated_current_a, c.temperature_c AS rated_current_temp_c
+    FROM observation o JOIN quantity q ON q.id=o.quantity_id AND q.code='rated_current'
+    LEFT JOIN condition_set c ON c.id=o.condition_set_id
+   ORDER BY o.product_revision_id, abs(COALESCE(c.temperature_c,25) - 25) ASC, o.value_si DESC
+),
+breaking AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si AS breaking_capacity_a,
+         c.circuit_voltage_v AS breaking_circuit_v, c.time_constant_ms AS breaking_time_constant_ms
+    FROM observation o JOIN quantity q ON q.id=o.quantity_id AND q.code='breaking_capacity'
+    LEFT JOIN condition_set c ON c.id=o.condition_set_id
+   ORDER BY o.product_revision_id, o.value_si DESC
+),
+contact AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si*1000 AS contact_resistance_mohm,
+         c.rate_value AS contact_test_current_a
+    FROM observation o JOIN quantity q ON q.id=o.quantity_id AND q.code='contact_resistance'
+    LEFT JOIN condition_set c ON c.id=o.condition_set_id
+   ORDER BY o.product_revision_id, o.id
+),
+eff AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si AS efficiency,
+         c.circuit_voltage_v AS efficiency_input_v, c.rate_value AS efficiency_load_value,
+         c.rate_unit::text AS efficiency_load_unit
+    FROM observation o JOIN quantity q ON q.id=o.quantity_id AND q.code='conversion_efficiency'
+    LEFT JOIN condition_set c ON c.id=o.condition_set_id
+   ORDER BY o.product_revision_id, o.value_si DESC
+),
+iout AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si AS output_current_a, c.temperature_c AS output_current_temp_c
+    FROM observation o JOIN quantity q ON q.id=o.quantity_id AND q.code='output_current'
+    LEFT JOIN condition_set c ON c.id=o.condition_set_id
+   ORDER BY o.product_revision_id, abs(COALESCE(c.temperature_c,25) - 25) ASC, o.value_si DESC
+)
+SELECT p.uid                          AS product_uid,
+       org.name                       AS manufacturer,
+       p.model_number,
+       p.component_kind::text         AS component_kind,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='rated_voltage')     AS rated_voltage_v,
+       r.rated_current_a, r.rated_current_temp_c,
+       b.breaking_capacity_a, b.breaking_circuit_v, b.breaking_time_constant_ms,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='i2t_prearcing')     AS i2t_prearcing_a2s,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='coil_voltage')      AS coil_voltage_v,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='coil_power')        AS coil_power_w,
+       ct.contact_resistance_mohm, ct.contact_test_current_a,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='mechanical_endurance') AS mechanical_endurance,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='input_voltage_min') AS input_voltage_min_v,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='input_voltage_max') AS input_voltage_max_v,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='output_voltage_min') AS output_voltage_min_v,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='output_voltage_max') AS output_voltage_max_v,
+       io.output_current_a, io.output_current_temp_c,
+       e.efficiency, e.efficiency_input_v, e.efficiency_load_value, e.efficiency_load_unit,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='switching_frequency') AS switching_frequency_hz,
+       (SELECT value_si FROM one WHERE one.product_revision_id=cr.product_revision_id AND code='mass')              AS mass_kg,
+       cr.revision_label,
+       cr.product_revision_id
+  FROM comps cr
+  JOIN product p        ON p.id = cr.product_id
+  JOIN organization org ON org.id = p.manufacturer_id
+  LEFT JOIN rated    r  ON r.product_revision_id  = cr.product_revision_id
+  LEFT JOIN breaking b  ON b.product_revision_id  = cr.product_revision_id
+  LEFT JOIN contact  ct ON ct.product_revision_id = cr.product_revision_id
+  LEFT JOIN eff      e  ON e.product_revision_id  = cr.product_revision_id
+  LEFT JOIN iout     io ON io.product_revision_id = cr.product_revision_id;
+
+COMMENT ON VIEW v_component_selection IS
+  'Selection surface for the hardware around the cell. Each figure carries '
+  'the condition it was stated at, because a breaking capacity without its '
+  'circuit voltage and L/R, or a rated current without its ambient, is not '
+  'a comparable number.';
+
+-- ---------------------------------------------------------------------
 -- Resistance, exploded by method. Never presented as a single number.
 -- ---------------------------------------------------------------------
 CREATE VIEW v_resistance AS
