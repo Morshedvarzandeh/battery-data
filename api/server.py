@@ -136,6 +136,12 @@ SELECT product_uid, manufacturer, model_number, form_factor, form_factor_code,
        capacity_low_rate_ah, capacity_low_rate_c, capacity_low_rate_statistic,
        capacity_1c_ah, max_cont_discharge_a, nominal_voltage_v, mass_kg,
        specific_energy_wh_per_kg_derived, discharge_temp_min_c,
+       discharge_temp_max_c, max_cont_charge_a, standard_charge_a,
+       charge_cutoff_v, discharge_cutoff_v,
+       dcir_mohm, dcir_pulse_s, dcir_soc_pct, dcir_temp_c,
+       acir_mohm, acir_frequency_hz, acir_soc_pct, acir_temp_c,
+       cycle_life_cycles, cycle_life_dod_pct, cycle_life_rate_value,
+       cycle_life_rate_unit, cycle_life_temp_c,
        revision_label, product_revision_id
   FROM bd.v_cell_selection
 """

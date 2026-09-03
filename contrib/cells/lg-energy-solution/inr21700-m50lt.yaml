@@ -1,0 +1,214 @@
+# battery-data community contribution
+# Ported from seed/001_reference_cells.sql so the reference cells reach the
+# same library, page and API as every other accepted product. The seed carries
+# one table-level locator for this document; see source.note.
+schema_version: "1"
+
+product:
+  uid: cell/lg-energy-solution/inr21700-m50lt
+  kind: cell
+  manufacturer: LG Energy Solution
+  model_number: INR21700-M50LT
+  form_factor: cylindrical
+  form_factor_code: "21700"
+  iec_designation: INR21700
+  is_rechargeable: true
+
+source:
+  uid: src/lg-m50lt-rev0
+  kind: datasheet
+  title: LG INR21700-M50LT Cell Specification
+  url: https://www.dnkpower.com/wp-content/uploads/2022/07/LG-INR21700_M50LT_-CELL-SPECIFICATION.pdf
+  revision: "0"
+  document_date: "2020-08-27"
+  is_final: false
+  license: proprietary
+  redistributable: false
+  note: >-
+    Ported from seed/001_reference_cells.sql. Document number 2020-LSD-MBD-b00082;
+    the document is stamped "this is NOT the final version". The seed records one
+    table-level locator (page 4, Table 3 - Electrical Characteristics) and verbatim
+    text only for the two resistance rows, so every other value below carries the
+    table-level reference rather than a per-value quote. Re-extracting from the PDF
+    through the submit-datasheet workflow restores per-value quotes.
+
+chemistry:
+  designation: NMC811
+  cathode_text: Li(NiMnCo)O2
+  anode_text: Graphite + Si
+
+observations:
+  # LG publishes no Ah rating for this cell, only Wh, and defines end of life
+  # on energy. No capacity is invented from the energy figure.
+  - quantity: energy
+    statistic: nominal
+    value: 18.2
+    unit: Wh
+    conditions:
+      temperature_c: 25
+      rate_value: 0.2
+      rate_unit: C
+      rate_reference_capacity_ah: 4.8
+      rate_reference_source: declared_1c_4800mA
+      voltage_lower_v: 2.5
+      direction: discharge
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "Table 3 - Electrical Characteristics: nominal energy 18.2 Wh at 0.2C, 25 degC, 2.5 V cut-off; LG declares 1C = 4800 mA (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: energy
+    statistic: minimum
+    value: 17.6
+    unit: Wh
+    conditions:
+      temperature_c: 25
+      rate_value: 0.2
+      rate_unit: C
+      rate_reference_capacity_ah: 4.8
+      rate_reference_source: declared_1c_4800mA
+      voltage_lower_v: 2.5
+      direction: discharge
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "Table 3 - Electrical Characteristics: minimum energy 17.6 Wh at 0.2C, 25 degC, 2.5 V cut-off (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: nominal_voltage
+    statistic: nominal
+    value: 3.69
+    unit: V
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "Table 3 - Electrical Characteristics: nominal voltage 3.69 V (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+
+  # The two resistances. 15 vs 23 mohm. Same cell. Both correct.
+  - quantity: internal_resistance_ac
+    statistic: typical
+    value: 15
+    unit: mohm
+    tol_plus: 6
+    tol_minus: 6
+    conditions:
+      frequency_hz: 1000
+      soc_pct: 50
+      soc_method: unspecified
+      temperature_c: 25
+      temperature_reference: ambient
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "AC Internal Impedance (1kHz) 15 +/- 6 mOhm; DC Internal Resistance 23 +/- 6 mOhm (50% SOC, 0.5C, 10s, 25degC)"
+  - quantity: internal_resistance_dc
+    statistic: typical
+    value: 23
+    unit: mohm
+    tol_plus: 6
+    tol_minus: 6
+    conditions:
+      pulse_duration_s: 10
+      pulse_current_a: 2.4
+      soc_pct: 50
+      soc_method: coulomb_counted
+      temperature_c: 25
+      temperature_reference: ambient
+      direction: discharge
+      rate_value: 0.5
+      rate_unit: C
+      rate_reference_capacity_ah: 4.8
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "AC Internal Impedance (1kHz) 15 +/- 6 mOhm; DC Internal Resistance 23 +/- 6 mOhm (50% SOC, 0.5C, 10s, 25degC)"
+
+  # Temperature-banded current limits: three rows, not one scalar.
+  - quantity: max_continuous_discharge_current
+    statistic: maximum
+    value: 2.4
+    unit: A
+    conditions:
+      temperature_c: -5
+      temperature_reference: ambient
+      direction: discharge
+      extra:
+        band_min_c: -20
+        band_max_c: 10
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "Table 3 - Electrical Characteristics: max continuous discharge 2.4 A (0.5C) in the -20 to 10 degC band (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: max_continuous_discharge_current
+    statistic: maximum
+    value: 14.4
+    unit: A
+    conditions:
+      temperature_c: 17
+      temperature_reference: ambient
+      direction: discharge
+      extra:
+        band_min_c: 10
+        band_max_c: 25
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "Table 3 - Electrical Characteristics: max continuous discharge 14.4 A (3.0C) in the 10 to 25 degC band (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: max_continuous_discharge_current
+    statistic: maximum
+    value: 7.2
+    unit: A
+    conditions:
+      temperature_c: 40
+      temperature_reference: ambient
+      direction: discharge
+      extra:
+        band_min_c: 25
+        band_max_c: 55
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "Table 3 - Electrical Characteristics: max continuous discharge 7.2 A (1.5C) in the 25 to 55 degC band (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: mass
+    statistic: typical
+    value: 68.2
+    unit: g
+    tol_plus: 1.0
+    tol_minus: 1.0
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "Table 3 - Electrical Characteristics: weight 68.2 +/- 1.0 g (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: cycle_life
+    statistic: minimum
+    value: 1000
+    unit: cycles
+    conditions:
+      temperature_c: 25
+      dod_pct: 100
+      rate_value: 0.5
+      rate_unit: C
+      rate_reference_capacity_ah: 4.8
+      extra:
+        eol_criterion_pct: 80
+        eol_reference: measured_bol_energy
+        note: LG defines EOL on ENERGY not capacity
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "Table 3 - Electrical Characteristics: cycle life 1000 cycles to 80% of initial energy at 0.5C, 100% DoD, 25 degC (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+
+curves:
+  # A rate-capability table, which no scalar column can hold.
+  - curve_kind: rate_capability
+    x_quantity: current
+    y_quantity: capacity
+    x_unit: A
+    y_unit: Ah
+    x_values: [0.96, 4.8, 9.6, 14.4]
+    y_values: [4.85, 4.80, 4.72, 4.60]
+    conditions:
+      temperature_c: 25
+      voltage_lower_v: 2.5
+      direction: discharge
+    locator:
+      page: 4
+      section: Table 3 - Electrical Characteristics
+      quote: "Discharge capacity against discharge current at 25 degC to 2.5 V: 0.96 A 4.85 Ah, 4.8 A 4.80 Ah, 9.6 A 4.72 Ah, 14.4 A 4.60 Ah (values carried from seed/001_reference_cells.sql)"

@@ -1,0 +1,99 @@
+# battery-data community contribution
+# Ported from seed/001_reference_cells.sql. A primary cell: no capacity field
+# exists on the datasheet at all, only service hours against a load, a duty
+# schedule and a cutoff voltage.
+schema_version: "1"
+
+product:
+  uid: primary_cell/energizer/e91
+  kind: primary_cell
+  manufacturer: Energizer Holdings
+  model_number: E91
+  form_factor: cylindrical
+  form_factor_code: AA
+  iec_designation: LR6
+  ansi_neda: 15A
+  is_rechargeable: false
+  aliases: ["15A"]
+
+source:
+  uid: src/energizer-e91
+  kind: datasheet
+  title: Energizer E91 Alkaline AA Product Datasheet
+  url: https://data.energizer.com/pdfs/e91.pdf
+  document_date: "2018-01-01"
+  is_final: true
+  license: proprietary
+  redistributable: false
+  note: >-
+    Ported from seed/001_reference_cells.sql. The seed records one table-level
+    locator (page 1, Constant Current Service Hours); values below carry that
+    reference rather than a per-value quote. Re-extract from the PDF for
+    per-value quotes.
+
+chemistry:
+  designation: Zn/MnO2
+  system_string: Zinc-Manganese Dioxide (Zn/MnO2)
+
+observations:
+  - quantity: service_life_hours
+    statistic: typical
+    value: 40.6
+    unit: h
+    conditions:
+      load_value: 25
+      load_unit: mA
+      duty_schedule: continuous
+      cutoff_voltage_v: 0.8
+      temperature_c: 21
+    locator:
+      page: 1
+      section: Constant Current Service Hours
+      quote: "Service hours to 0.8 V cutoff at 21 degC, continuous discharge: 25 mA 40.6 h (value carried from seed/001_reference_cells.sql)"
+  - quantity: service_life_hours
+    statistic: typical
+    value: 6.4
+    unit: h
+    conditions:
+      load_value: 250
+      load_unit: mA
+      duty_schedule: continuous
+      cutoff_voltage_v: 0.8
+      temperature_c: 21
+    locator:
+      page: 1
+      section: Constant Current Service Hours
+      quote: "Service hours to 0.8 V cutoff at 21 degC, continuous discharge: 250 mA 6.4 h (value carried from seed/001_reference_cells.sql)"
+  - quantity: nominal_voltage
+    statistic: nominal
+    value: 1.5
+    unit: V
+    locator:
+      page: 1
+      section: Specifications
+      quote: "Specifications: nominal voltage 1.5 V (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: mass
+    statistic: typical
+    value: 23.0
+    unit: g
+    locator:
+      page: 1
+      section: Specifications
+      quote: "Specifications: typical weight 23.0 g (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: internal_resistance_ac
+    statistic: typical
+    value: 225
+    unit: mohm
+    value_min: 150
+    value_max: 300
+    conditions:
+      frequency_hz: 1000
+      soc_pct: 100
+      temperature_c: 21
+      extra:
+        stated_range_mohm: [150, 300]
+        note: datasheet gives a range
+    locator:
+      page: 1
+      section: Specifications
+      quote: "Specifications: internal resistance 150 to 300 milliohms at 1 kHz, fresh cell, 21 degC (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"

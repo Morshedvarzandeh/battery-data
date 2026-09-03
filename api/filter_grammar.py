@@ -49,6 +49,25 @@ FIELDS: dict[str, dict] = {
                               "type": "number"},
     "mass_kg":            {"col": "mass_kg",            "type": "number"},
     "discharge_temp_min_c": {"col": "discharge_temp_min_c", "type": "number"},
+    "discharge_temp_max_c": {"col": "discharge_temp_max_c", "type": "number"},
+    "max_cont_charge_a":   {"col": "max_cont_charge_a",   "type": "number"},
+    "standard_charge_a":   {"col": "standard_charge_a",   "type": "number"},
+    "charge_cutoff_v":     {"col": "charge_cutoff_v",     "type": "number"},
+    "discharge_cutoff_v":  {"col": "discharge_cutoff_v",  "type": "number"},
+    # resistance never travels without its method: the pulse duration or the
+    # frequency is filterable alongside the number
+    "dcir_mohm":           {"col": "dcir_mohm",           "type": "number"},
+    "dcir_pulse_s":        {"col": "dcir_pulse_s",        "type": "number"},
+    "dcir_soc_pct":        {"col": "dcir_soc_pct",        "type": "number"},
+    "dcir_temp_c":         {"col": "dcir_temp_c",         "type": "number"},
+    "acir_mohm":           {"col": "acir_mohm",           "type": "number"},
+    "acir_frequency_hz":   {"col": "acir_frequency_hz",   "type": "number"},
+    # cycle life with the conditions the claim was made under
+    "cycle_life_cycles":   {"col": "cycle_life_cycles",   "type": "number"},
+    "cycle_life_dod_pct":  {"col": "cycle_life_dod_pct",  "type": "number"},
+    "cycle_life_rate_value": {"col": "cycle_life_rate_value", "type": "number"},
+    "cycle_life_rate_unit": {"col": "cycle_life_rate_unit", "type": "string"},
+    "cycle_life_temp_c":   {"col": "cycle_life_temp_c",   "type": "number"},
     # vendor extensions
     "_bd_revision":       {"col": "revision_label",     "type": "string"},
     "_bd_capacity_statistic": {"col": "capacity_low_rate_statistic",

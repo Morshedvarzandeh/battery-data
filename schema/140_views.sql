@@ -162,6 +162,82 @@ tmin AS (
    WHERE COALESCE(c.direction,'discharge')='discharge'
    ORDER BY o.product_revision_id, o.value_si ASC
 ),
+chg AS (      -- max continuous charge current, room temperature band
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si AS max_cont_charge_a
+    FROM observation o
+    JOIN quantity q ON q.id=o.quantity_id AND q.code='max_continuous_charge_current'
+    LEFT JOIN condition_set c ON c.id=o.condition_set_id
+   ORDER BY o.product_revision_id,
+            abs(COALESCE(c.temperature_c,25) - 25) ASC, o.value_si DESC
+),
+stdchg AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si AS standard_charge_a
+    FROM observation o
+    JOIN quantity q ON q.id=o.quantity_id AND q.code='standard_charge_current'
+   ORDER BY o.product_revision_id, o.id
+),
+-- Resistance travels with its method. The row nearest 50% SOC and 25 C leads;
+-- the pulse duration or frequency comes with it because without them the
+-- number is a rumour (docs/02-conventions.md section 7 and 8).
+dcir AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si*1000 AS dcir_mohm,
+         c.pulse_duration_s AS dcir_pulse_s, c.soc_pct AS dcir_soc_pct,
+         c.temperature_c AS dcir_temp_c
+    FROM observation o
+    JOIN quantity q ON q.id=o.quantity_id AND q.code='internal_resistance_dc'
+    JOIN condition_set c ON c.id=o.condition_set_id
+   ORDER BY o.product_revision_id,
+            abs(COALESCE(c.soc_pct,50) - 50) ASC,
+            abs(COALESCE(c.temperature_c,25) - 25) ASC, o.id
+),
+acir AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si*1000 AS acir_mohm,
+         c.frequency_hz AS acir_frequency_hz, c.soc_pct AS acir_soc_pct,
+         c.temperature_c AS acir_temp_c
+    FROM observation o
+    JOIN quantity q ON q.id=o.quantity_id AND q.code='internal_resistance_ac'
+    JOIN condition_set c ON c.id=o.condition_set_id
+   ORDER BY o.product_revision_id,
+            abs(COALESCE(c.soc_pct,50) - 50) ASC,
+            abs(COALESCE(c.temperature_c,25) - 25) ASC, o.id
+),
+-- Cycle life is a function, not a number: lead with the claim that states
+-- the most of its conditions and carry those conditions alongside.
+life AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si AS cycle_life_cycles,
+         c.dod_pct AS cycle_life_dod_pct, c.rate_value AS cycle_life_rate_value,
+         c.rate_unit::text AS cycle_life_rate_unit, c.temperature_c AS cycle_life_temp_c
+    FROM observation o
+    JOIN quantity q ON q.id=o.quantity_id AND q.code='cycle_life'
+    LEFT JOIN condition_set c ON c.id=o.condition_set_id
+   ORDER BY o.product_revision_id,
+            ((c.temperature_c IS NOT NULL)::int + (c.dod_pct IS NOT NULL)::int
+             + (c.rate_value IS NOT NULL)::int) DESC, o.value_si DESC
+),
+tmax AS (
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si-273.15 AS discharge_temp_max_c
+    FROM observation o
+    JOIN quantity q ON q.id=o.quantity_id AND q.code='operating_temperature_max'
+    LEFT JOIN condition_set c ON c.id=o.condition_set_id
+   WHERE COALESCE(c.direction,'discharge')='discharge'
+   ORDER BY o.product_revision_id, o.value_si DESC
+),
+vchg AS (
+  SELECT DISTINCT ON (o.product_revision_id) o.product_revision_id, o.value_si AS charge_cutoff_v
+    FROM observation o JOIN quantity q ON q.id=o.quantity_id AND q.code='charge_cutoff_voltage'
+   ORDER BY o.product_revision_id, o.id
+),
+vdis AS (
+  SELECT DISTINCT ON (o.product_revision_id) o.product_revision_id, o.value_si AS discharge_cutoff_v
+    FROM observation o JOIN quantity q ON q.id=o.quantity_id AND q.code='discharge_cutoff_voltage'
+   ORDER BY o.product_revision_id, o.id
+),
 chem AS (
   SELECT product_revision_id, designation, cathode_text, anode_text
     FROM product_chemistry
@@ -186,6 +262,15 @@ SELECT p.uid                     AS product_uid,
        m.mass_kg,
        nv.value_si               AS nominal_voltage_v,
        t.discharge_temp_min_c,
+       tx.discharge_temp_max_c,
+       g.max_cont_charge_a,
+       sc.standard_charge_a,
+       vc.charge_cutoff_v,
+       vd.discharge_cutoff_v,
+       r.dcir_mohm, r.dcir_pulse_s, r.dcir_soc_pct, r.dcir_temp_c,
+       a.acir_mohm, a.acir_frequency_hz, a.acir_soc_pct, a.acir_temp_c,
+       l.cycle_life_cycles, l.cycle_life_dod_pct, l.cycle_life_rate_value,
+       l.cycle_life_rate_unit, l.cycle_life_temp_c,
        cr.revision_label,
        cr.product_revision_id
   FROM cells cr
@@ -196,6 +281,14 @@ SELECT p.uid                     AS product_uid,
   LEFT JOIN disch   d  ON d.product_revision_id  = cr.product_revision_id
   LEFT JOIN mass    m  ON m.product_revision_id  = cr.product_revision_id
   LEFT JOIN tmin    t  ON t.product_revision_id  = cr.product_revision_id
+  LEFT JOIN tmax    tx ON tx.product_revision_id = cr.product_revision_id
+  LEFT JOIN chg     g  ON g.product_revision_id  = cr.product_revision_id
+  LEFT JOIN stdchg  sc ON sc.product_revision_id = cr.product_revision_id
+  LEFT JOIN vchg    vc ON vc.product_revision_id = cr.product_revision_id
+  LEFT JOIN vdis    vd ON vd.product_revision_id = cr.product_revision_id
+  LEFT JOIN dcir    r  ON r.product_revision_id  = cr.product_revision_id
+  LEFT JOIN acir    a  ON a.product_revision_id  = cr.product_revision_id
+  LEFT JOIN life    l  ON l.product_revision_id  = cr.product_revision_id
   LEFT JOIN chem       ON chem.product_revision_id = cr.product_revision_id
   LEFT JOIN LATERAL (
         SELECT o.value_si FROM observation o

@@ -1,0 +1,128 @@
+# battery-data community contribution
+# Ported from seed/001_reference_cells.sql. Rated in constant POWER, cycle life
+# needs a clamp force, and the datasheet carries two contradictory end-of-life
+# definitions. All three are recorded as the document states them.
+schema_version: "1"
+
+product:
+  uid: cell/eve-energy/lf280k
+  kind: cell
+  manufacturer: EVE Energy
+  model_number: LF280K
+  form_factor: prismatic_hardcase
+  form_factor_code: "173x72x207"
+  is_rechargeable: true
+
+source:
+  uid: src/eve-lf280k-revb
+  kind: datasheet
+  title: EVE LF280K 280Ah Product Specification
+  url: https://www.battery-germany.de/wp-content/uploads/2022/02/LF280K-280Ah-Product-Specification-Version-B-2023.pdf
+  revision: "B"
+  document_date: "2023-02-01"
+  is_final: true
+  license: proprietary
+  redistributable: false
+  note: >-
+    Ported from seed/001_reference_cells.sql. The seed records one table-level
+    locator (page 2, Table 1 - Cell Performance) whose quote covers the capacity
+    and cycle-life rows; the other values carry the table-level reference rather
+    than a per-value quote. Re-extract from the PDF for per-value quotes.
+
+chemistry:
+  designation: LFP
+  cathode_text: LiFePO4
+  anode_text: Graphite
+
+observations:
+  - quantity: capacity
+    statistic: nominal
+    value: 280
+    unit: Ah
+    is_lower_bound: true
+    conditions:
+      temperature_c: 25
+      temperature_reference: ambient
+      rate_value: 0.5
+      rate_unit: P
+      voltage_upper_v: 3.65
+      voltage_lower_v: 2.5
+      direction: discharge
+      constraint_mode: constant_force
+      clamp_force_n: 2942
+      verbatim: "0.5P (448 W constant power), 3.65 V to 2.5 V, 25 degC"
+    locator:
+      page: 2
+      section: Table 1 - Cell Performance
+      quote: "Nominal capacity >= 280 Ah (0.5P, 448 W constant power, 25 degC, 3.65 V to 2.5 V); Cycle life 6000 cycles to 80% energy retention under 300 kgf +/- 20 kgf clamping force"
+  - quantity: nominal_voltage
+    statistic: nominal
+    value: 3.2
+    unit: V
+    locator:
+      page: 2
+      section: Table 1 - Cell Performance
+      quote: "Table 1 - Cell Performance: nominal voltage 3.2 V (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: internal_resistance_ac
+    statistic: maximum
+    value: 0.25
+    unit: mohm
+    conditions:
+      frequency_hz: 1000
+      soc_pct: 40
+      temperature_c: 25
+    locator:
+      page: 2
+      section: Table 1 - Cell Performance
+      quote: "Table 1 - Cell Performance: AC impedance (1 kHz) <= 0.25 mohm at 40% SOC, 25 degC (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  # Cycle life. Requires clamp force or it is not reproducible.
+  - quantity: cycle_life
+    statistic: minimum
+    value: 6000
+    unit: cycles
+    conditions:
+      temperature_c: 25
+      dod_pct: 100
+      rate_value: 0.5
+      rate_unit: P
+      constraint_mode: constant_force
+      clamp_force_n: 2942
+      extra:
+        clamp_force_kgf: 300
+        clamp_tolerance_kgf: 20
+        eol_criterion_pct: 80
+        eol_reference: measured_bol_energy
+    locator:
+      page: 2
+      section: Table 1 - Cell Performance
+      quote: "Nominal capacity >= 280 Ah (0.5P, 448 W constant power, 25 degC, 3.65 V to 2.5 V); Cycle life 6000 cycles to 80% energy retention under 300 kgf +/- 20 kgf clamping force"
+  # The SECOND, contradictory end-of-life definition on the same datasheet.
+  - quantity: capacity_retention
+    statistic: minimum
+    value: 0.60
+    unit: "1"
+    conditions:
+      cycle_index: 6000
+      temperature_c: 25
+      rate_value: 0.5
+      rate_unit: P
+      extra:
+        definition: product_end_of_life
+        note: same datasheet also defines product EOL as IR > 150% of initial OR capacity < 60% of nominal, which contradicts the 80% figure used for the 6000-cycle claim
+    locator:
+      page: 2
+      section: Table 1 - Cell Performance
+      quote: "Table 1 - Cell Performance: product end of life defined as IR > 150% of initial OR capacity < 60% of nominal (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
+  - quantity: round_trip_efficiency
+    statistic: minimum
+    value: 0.935
+    unit: "1"
+    conditions:
+      boundary: cell
+      rate_value: 0.5
+      rate_unit: P
+      temperature_c: 25
+    locator:
+      page: 2
+      section: Table 1 - Cell Performance
+      quote: "Table 1 - Cell Performance: energy efficiency >= 93.5% at 0.5P, 25 degC, cell terminals (value carried from seed/001_reference_cells.sql; per-value quote not recorded in the seed)"
