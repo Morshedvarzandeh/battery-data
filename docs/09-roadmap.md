@@ -135,6 +135,36 @@ covers the whole scope above, components and applications included.
 - [x] **6.4 Graph projection covers the whole scope.** Nodes and edges for applications, components inside packs, datasets and models, with a Neo4j and Apache AGE export.
 - [x] **6.5 Alignment document.** One table per external vocabulary saying which class or property each concept here maps to, and where the mapping is only approximate.
 
+## 7. Upstream, distribution and market
+
+A cell's datasheet says nothing about where its lithium was mined, which
+refinery turned it into hydroxide, which factory built the cell, who
+distributes it, or what the market paid for any of that. Those are the
+questions a buyer, an investor or a regulator asks first. The same rule
+applies: a resource estimate without its reporting code and cut-off grade, a
+capacity without whether it is nameplate or actual, a price without its
+basis, region and period, is not a fact.
+
+- [ ] **7.1 Sites.** Mines, refineries, chemical and cathode plants, cell and pack factories, recyclers and distribution centres as first-class entities with operator, country, coordinates, status and what they produce.
+- [ ] **7.2 Resources and reserves.** Tonnage, grade, cut-off grade, contained metal, category and the reporting code they were declared under, dated.
+- [ ] **7.3 Capacity and output.** Nameplate, planned and actual capacity and production per site and period, in the unit the source states.
+- [ ] **7.4 Ownership and supply agreements.** Who owns what share of which site, and who has agreed to sell what to whom, for how long.
+- [ ] **7.5 Prices.** Commodity price series with basis, market, grade and period, and cell and pack price indices, from sources whose licence allows redistribution; licensed assessments are recorded as sources to join, never copied.
+- [ ] **7.6 Market volumes.** Production, shipments, installations and sales by maker, region, segment and chemistry family, per period.
+- [ ] **7.7 Trade flows.** Imports and exports by reporter, partner, HS code and period.
+- [ ] **7.8 Distribution.** Distributors, the makers they are authorised for, the regions they serve, and the listings already carried as offers.
+- [ ] **7.9 Contribution formats, validators and loaders** for sites and market series, with the same locator-per-claim discipline.
+- [ ] **7.10 Coverage list** for mines, refineries, factories, recyclers, distributors and open statistical sources.
+- [ ] **7.11 Views, graph and RDF** for the new layer: sites as places, ownership and supply as edges, prices and volumes as queryable series.
+
+## 8. One API for every layer
+
+- [ ] **8.1 A resource registry.** Every queryable view registered once, with its field map derived from the database rather than typed, so a new view is queryable the day it exists.
+- [ ] **8.2 One grammar, one envelope.** `/v1/{resource}` and `/v1/{resource}/{id}` for every registered resource, with the OPTIMADE-style filter, sort, pagination and field selection the cells endpoint already has.
+- [ ] **8.3 A query endpoint and a graph endpoint.** `POST /v1/query` taking a resource, filter, fields, sort and limit as JSON; `/v1/graph/reachable` for multi-hop questions; provenance carried on every row that has it.
+- [ ] **8.4 OpenAPI.** `/v1/openapi.json` generated from the registry so clients and agents discover every resource and field.
+- [ ] **8.5 Documentation.** `docs/12-market-and-supply-chain.md` and `docs/13-api.md`.
+
 ## Log
 
 Entries are appended as items are ticked, newest last.
