@@ -1,5 +1,5 @@
 -- =====================================================================
--- battery-data : 150_graph.sql
+-- battery-data : 190_graph.sql
 --
 -- THE GRAPH LAYER, AND WHY IT IS A PROJECTION RATHER THAN THE STORE.
 --
@@ -31,7 +31,8 @@ SET search_path = bd_graph, bd, public;
 CREATE MATERIALIZED VIEW bd_graph.node AS
 SELECT 'Organization'      AS label, 'org:'||o.id       AS node_key, o.uid,
        o.name              AS title,
-       jsonb_build_object('country',o.country,'roles',o.roles) AS props
+       jsonb_build_object('country',o.country,'roles',o.roles,
+                          'stages',bd.organization_stages(o.id)) AS props
   FROM bd.organization o
 UNION ALL
 SELECT 'Material', 'mat:'||m.id, m.uid, COALESCE(m.common_name,m.name),
@@ -67,6 +68,14 @@ SELECT 'Certification', 'cert:'||c.id, 'cert/'||c.id, c.standard_text,
                           'certificate_number',c.certificate_number,
                           'certifying_body',c.certifying_body)
   FROM bd.certification c
+UNION ALL
+-- upstream: where materials are dug, refined and made into cells
+SELECT 'Site', 'site:'||s.id, s.uid, s.name,
+       jsonb_build_object('kind',s.kind,'stage',bd.site_stage(s.kind),
+                          'status',s.status,'country',s.country,
+                          'latitude',s.latitude,'longitude',s.longitude,
+                          'commodities',s.commodities,'products',s.products)
+  FROM bd.site s
 UNION ALL
 SELECT 'ProductUnit', 'unit:'||pu.id, pu.uid, pu.serial_number,
        jsonb_build_object('lot',pu.lot_code,'status',pu.battery_status,
@@ -209,6 +218,34 @@ UNION ALL
 SELECT 'EQUIVALENT_TO', 'prod:'||pe.product_a_id, 'prod:'||pe.product_b_id,
        jsonb_build_object('relation',pe.relation)
   FROM bd.product_equivalence pe
+UNION ALL
+-- upstream and market edges
+SELECT 'OPERATES', 'org:'||s.operator_org_id, 'site:'||s.id, '{}'::jsonb
+  FROM bd.site s WHERE s.operator_org_id IS NOT NULL
+UNION ALL
+SELECT 'OWNS', 'org:'||so.org_id, 'site:'||so.site_id,
+       jsonb_build_object('share_pct',so.share_pct,'role',so.role,
+                          'valid_from',so.valid_from,'valid_to',so.valid_to)
+  FROM bd.site_ownership so
+UNION ALL
+SELECT 'SUPPLIES', 'org:'||sa.supplier_org_id, 'org:'||sa.buyer_org_id,
+       jsonb_build_object('subject',sa.subject,'kind',sa.kind,'volume',sa.volume,
+                          'volume_unit',sa.volume_unit,'valid_from',sa.valid_from,
+                          'valid_to',sa.valid_to,'uid',sa.uid)
+  FROM bd.supply_agreement sa
+UNION ALL
+SELECT 'SUPPLIED_FROM', 'org:'||sa.buyer_org_id, 'site:'||sa.site_id,
+       jsonb_build_object('subject',sa.subject,'uid',sa.uid)
+  FROM bd.supply_agreement sa WHERE sa.site_id IS NOT NULL
+UNION ALL
+SELECT 'DISTRIBUTES', 'org:'||d.distributor_org_id, 'org:'||d.manufacturer_org_id,
+       jsonb_build_object('status',d.status,'regions',d.regions)
+  FROM bd.distribution d WHERE d.manufacturer_org_id IS NOT NULL
+UNION ALL
+-- company relations, one relationship type per relation kind
+SELECT upper(r.relation::text), 'org:'||r.org_id, 'org:'||r.related_org_id,
+       jsonb_build_object('share_pct',r.share_pct,'valid_from',r.valid_from,'valid_to',r.valid_to)
+  FROM bd.organization_relation r
 UNION ALL
 -- FIELDED_IN: the claim that a revision, a product or a brand family is
 -- used in an application, at the granularity the source supports.
