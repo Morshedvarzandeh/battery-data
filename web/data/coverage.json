@@ -897,5 +897,890 @@
     "name": "Aptiv HV connector"
    }
   ]
+ },
+ {
+  "segment": "Lithium mines and brines",
+  "note": "the ground the lithium comes from; resources need their reporting code and cut-off",
+  "cells": [
+   {
+    "name": "Greenbushes (Talison)"
+   },
+   {
+    "name": "Pilgangoora (Pilbara Minerals)"
+   },
+   {
+    "name": "Wodgina (MARBL)"
+   },
+   {
+    "name": "Mt Marion"
+   },
+   {
+    "name": "Kathleen Valley (Liontown)"
+   },
+   {
+    "name": "Salar de Atacama (SQM)"
+   },
+   {
+    "name": "Salar de Atacama (Albemarle)"
+   },
+   {
+    "name": "Salar de Olaroz (Arcadium)"
+   },
+   {
+    "name": "Fenix, Salar del Hombre Muerto"
+   },
+   {
+    "name": "Cauchari-Olaroz"
+   },
+   {
+    "name": "Silver Peak (Albemarle)"
+   },
+   {
+    "name": "Thacker Pass (Lithium Americas)"
+   },
+   {
+    "name": "Goulamina"
+   },
+   {
+    "name": "Grota do Cirilo (Sigma Lithium)"
+   },
+   {
+    "name": "Bikita"
+   },
+   {
+    "name": "Arcadia (Huayou)"
+   },
+   {
+    "name": "Jiajika"
+   },
+   {
+    "name": "Chaerhan Salt Lake"
+   },
+   {
+    "name": "Zhabuye"
+   }
+  ]
+ },
+ {
+  "segment": "Nickel, cobalt, manganese and graphite mines",
+  "note": "the rest of the cathode and the anode",
+  "cells": [
+   {
+    "name": "Tenke Fungurume (CMOC)"
+   },
+   {
+    "name": "Mutanda (Glencore)"
+   },
+   {
+    "name": "Kamoto (KCC)"
+   },
+   {
+    "name": "Kinsevere"
+   },
+   {
+    "name": "Kisanfu"
+   },
+   {
+    "name": "Morowali IMIP"
+   },
+   {
+    "name": "Weda Bay"
+   },
+   {
+    "name": "Sorowako (Vale Indonesia)"
+   },
+   {
+    "name": "Goro"
+   },
+   {
+    "name": "Ambatovy"
+   },
+   {
+    "name": "Talnakh (Nornickel)"
+   },
+   {
+    "name": "Murrin Murrin"
+   },
+   {
+    "name": "Balama (Syrah)"
+   },
+   {
+    "name": "Jixi graphite"
+   },
+   {
+    "name": "Molo (NextSource)"
+   },
+   {
+    "name": "GEMCO manganese"
+   },
+   {
+    "name": "Nchwaning (Assmang)"
+   },
+   {
+    "name": "Kalahari manganese"
+   }
+  ]
+ },
+ {
+  "segment": "Refineries and chemical plants",
+  "note": "concentrate and brine into battery-grade chemicals",
+  "cells": [
+   {
+    "name": "Kwinana lithium hydroxide (Tianqi/IGO)"
+   },
+   {
+    "name": "Kemerton (Albemarle)"
+   },
+   {
+    "name": "Kwinana (Covalent)"
+   },
+   {
+    "name": "Meishan (Albemarle)"
+   },
+   {
+    "name": "Xinyu (Ganfeng)"
+   },
+   {
+    "name": "Shehong (Tianqi)"
+   },
+   {
+    "name": "Bessemer City (Arcadium)"
+   },
+   {
+    "name": "Becancour (Nemaska)"
+   },
+   {
+    "name": "Landau (Vulcan)"
+   },
+   {
+    "name": "Salar del Carmen (SQM)"
+   },
+   {
+    "name": "Harjavalta nickel (Nornickel)"
+   },
+   {
+    "name": "Kokkola cobalt (Umicore)"
+   },
+   {
+    "name": "Sotkamo (Terrafame)"
+   },
+   {
+    "name": "Quzhou (Huayou)"
+   },
+   {
+    "name": "Morowali HPAL (Huayue)"
+   },
+   {
+    "name": "Obi Island HPAL (Halmahera)"
+   }
+  ]
+ },
+ {
+  "segment": "Precursor, cathode and anode plants",
+  "note": "pCAM, CAM and AAM, the stage a cell's chemistry is decided at",
+  "cells": [
+   {
+    "name": "Ecopro BM Cheongju"
+   },
+   {
+    "name": "Posco Future M Gwangyang"
+   },
+   {
+    "name": "LG Chem Cheongju"
+   },
+   {
+    "name": "LG Chem Clarksville"
+   },
+   {
+    "name": "Umicore Nysa"
+   },
+   {
+    "name": "BASF Schwarzheide"
+   },
+   {
+    "name": "Umicore Cheonan"
+   },
+   {
+    "name": "Ronbay Xianning"
+   },
+   {
+    "name": "Easpring Changzhou"
+   },
+   {
+    "name": "Hunan Yuneng LFP"
+   },
+   {
+    "name": "Dynanonic LFP"
+   },
+   {
+    "name": "Huayou Tongxiang"
+   },
+   {
+    "name": "BTR Shenzhen anode"
+   },
+   {
+    "name": "Shanshan anode"
+   },
+   {
+    "name": "Putailai anode"
+   },
+   {
+    "name": "Syrah Vidalia (anode)"
+   },
+   {
+    "name": "Novonix Chattanooga"
+   },
+   {
+    "name": "Talga Lulea"
+   },
+   {
+    "name": "Posco Future M anode"
+   },
+   {
+    "name": "Nouveau Monde Becancour"
+   }
+  ]
+ },
+ {
+  "segment": "Cell, module and pack factories",
+  "note": "where the cells in the library are made",
+  "cells": [
+   {
+    "name": "CATL Ningde"
+   },
+   {
+    "name": "CATL Erfurt"
+   },
+   {
+    "name": "CATL Debrecen"
+   },
+   {
+    "name": "BYD Shenzhen"
+   },
+   {
+    "name": "LG Energy Solution Ochang"
+   },
+   {
+    "name": "LG Energy Solution Wroclaw"
+   },
+   {
+    "name": "LG Energy Solution Holland MI"
+   },
+   {
+    "name": "Samsung SDI Cheonan"
+   },
+   {
+    "name": "Samsung SDI God"
+   },
+   {
+    "name": "SK On Komarom"
+   },
+   {
+    "name": "SK On Seosan"
+   },
+   {
+    "name": "Panasonic Nevada"
+   },
+   {
+    "name": "Panasonic De Soto"
+   },
+   {
+    "name": "Tesla Fremont 4680"
+   },
+   {
+    "name": "Tesla Austin 4680"
+   },
+   {
+    "name": "Northvolt Ett Skelleftea"
+   },
+   {
+    "name": "ACC Billy-Berclau"
+   },
+   {
+    "name": "Ultium Cells Warren"
+   },
+   {
+    "name": "BlueOval SK Glendale"
+   },
+   {
+    "name": "Envision AESC Sunderland"
+   },
+   {
+    "name": "Verkor Dunkirk"
+   },
+   {
+    "name": "PowerCo Salzgitter"
+   },
+   {
+    "name": "EVE Jingmen"
+   },
+   {
+    "name": "Gotion Hefei"
+   },
+   {
+    "name": "CALB Changzhou"
+   },
+   {
+    "name": "Svolt Changshu"
+   },
+   {
+    "name": "Sunwoda Nanchang"
+   },
+   {
+    "name": "Molicel Taiwan"
+   }
+  ]
+ },
+ {
+  "segment": "Component factories",
+  "note": "contactors, fuses, BMS and converters have factories too",
+  "cells": [
+   {
+    "name": "TE Connectivity Kilovac"
+   },
+   {
+    "name": "Sensata Gigavac"
+   },
+   {
+    "name": "Littelfuse"
+   },
+   {
+    "name": "Mersen"
+   },
+   {
+    "name": "Eaton Bussmann"
+   },
+   {
+    "name": "Schaltbau"
+   },
+   {
+    "name": "Hongfa Xiamen"
+   },
+   {
+    "name": "Panasonic Industry relays"
+   },
+   {
+    "name": "Bosch Battery Systems"
+   },
+   {
+    "name": "Infineon BMS"
+   },
+   {
+    "name": "NXP BMS"
+   },
+   {
+    "name": "Analog Devices BMS"
+   },
+   {
+    "name": "TI BMS"
+   },
+   {
+    "name": "Bender isolation monitors"
+   },
+   {
+    "name": "Dukosi"
+   },
+   {
+    "name": "Amphenol"
+   },
+   {
+    "name": "Aptiv"
+   },
+   {
+    "name": "Rogers busbars"
+   }
+  ]
+ },
+ {
+  "segment": "Test laboratories and certification bodies",
+  "note": "who measured and certified what the datasheets claim",
+  "cells": [
+   {
+    "name": "TUV SUD Garching"
+   },
+   {
+    "name": "TUV Rheinland"
+   },
+   {
+    "name": "UL Solutions Northbrook"
+   },
+   {
+    "name": "Intertek"
+   },
+   {
+    "name": "SGS"
+   },
+   {
+    "name": "DEKRA Arnhem"
+   },
+   {
+    "name": "CSA Group"
+   },
+   {
+    "name": "BAM Berlin"
+   },
+   {
+    "name": "NREL Golden"
+   },
+   {
+    "name": "Sandia Albuquerque"
+   },
+   {
+    "name": "Idaho National Laboratory"
+   },
+   {
+    "name": "Argonne CAMP"
+   },
+   {
+    "name": "Fraunhofer ISE"
+   },
+   {
+    "name": "ZSW Ulm"
+   },
+   {
+    "name": "KIT Karlsruhe"
+   },
+   {
+    "name": "PEC Leuven"
+   },
+   {
+    "name": "JET Japan"
+   },
+   {
+    "name": "KTL Korea"
+   },
+   {
+    "name": "CATARC Tianjin"
+   },
+   {
+    "name": "CTI Shenzhen"
+   },
+   {
+    "name": "Warwick WMG"
+   },
+   {
+    "name": "Oxford Battery Modelling"
+   }
+  ]
+ },
+ {
+  "segment": "Recyclers, collection and second life",
+  "note": "black mass and back: collection points, dismantlers, hydro- and pyrometallurgy, repurposers",
+  "cells": [
+   {
+    "name": "Li-Cycle Rochester"
+   },
+   {
+    "name": "Redwood Materials Nevada"
+   },
+   {
+    "name": "Ascend Elements Hopkinsville"
+   },
+   {
+    "name": "Cirba Solutions Lancaster"
+   },
+   {
+    "name": "Umicore Hoboken"
+   },
+   {
+    "name": "Northvolt Revolt"
+   },
+   {
+    "name": "Hydrovolt Fredrikstad"
+   },
+   {
+    "name": "Fortum Harjavalta"
+   },
+   {
+    "name": "Duesenfeld"
+   },
+   {
+    "name": "Accurec"
+   },
+   {
+    "name": "SungEel HiTech"
+   },
+   {
+    "name": "Brunp Foshan (CATL)"
+   },
+   {
+    "name": "GEM Jingmen"
+   },
+   {
+    "name": "Huayou Recycling"
+   },
+   {
+    "name": "Glencore Nikkelverk"
+   },
+   {
+    "name": "Stena Recycling Halmstad"
+   },
+   {
+    "name": "Cylib"
+   },
+   {
+    "name": "tozero"
+   },
+   {
+    "name": "BASF Schwarzheide black mass"
+   },
+   {
+    "name": "Connected Energy (second life)"
+   },
+   {
+    "name": "B2U Storage (second life)"
+   },
+   {
+    "name": "Moment Energy (second life)"
+   },
+   {
+    "name": "Zenobe (second life)"
+   }
+  ]
+ },
+ {
+  "segment": "Distributors and marketplaces",
+  "note": "who actually sells the cells, and the listings that become offers",
+  "cells": [
+   {
+    "name": "Digi-Key"
+   },
+   {
+    "name": "Mouser"
+   },
+   {
+    "name": "Farnell / Newark"
+   },
+   {
+    "name": "RS Components"
+   },
+   {
+    "name": "Arrow"
+   },
+   {
+    "name": "Avnet"
+   },
+   {
+    "name": "TME"
+   },
+   {
+    "name": "Conrad"
+   },
+   {
+    "name": "Distrelec"
+   },
+   {
+    "name": "Master Instruments"
+   },
+   {
+    "name": "IMR Batteries"
+   },
+   {
+    "name": "18650BatteryStore"
+   },
+   {
+    "name": "Nkon"
+   },
+   {
+    "name": "Akkuteile"
+   },
+   {
+    "name": "Fogstar"
+   },
+   {
+    "name": "Battery Junction"
+   },
+   {
+    "name": "BatterySpace"
+   },
+   {
+    "name": "Voltaplex"
+   },
+   {
+    "name": "Alibaba (marketplace)"
+   },
+   {
+    "name": "Amazon (marketplace)"
+   }
+  ]
+ },
+ {
+  "segment": "Companies to profile",
+  "note": "one uid per company, roles by stage, dated relations",
+  "cells": [
+   {
+    "name": "Albemarle"
+   },
+   {
+    "name": "SQM"
+   },
+   {
+    "name": "Ganfeng Lithium"
+   },
+   {
+    "name": "Tianqi Lithium"
+   },
+   {
+    "name": "Pilbara Minerals"
+   },
+   {
+    "name": "Mineral Resources"
+   },
+   {
+    "name": "Arcadium Lithium"
+   },
+   {
+    "name": "Lithium Americas"
+   },
+   {
+    "name": "Sigma Lithium"
+   },
+   {
+    "name": "Glencore"
+   },
+   {
+    "name": "CMOC"
+   },
+   {
+    "name": "Vale"
+   },
+   {
+    "name": "Nornickel"
+   },
+   {
+    "name": "Huayou Cobalt"
+   },
+   {
+    "name": "Tsingshan"
+   },
+   {
+    "name": "Umicore"
+   },
+   {
+    "name": "BASF"
+   },
+   {
+    "name": "Ecopro"
+   },
+   {
+    "name": "Posco Future M"
+   },
+   {
+    "name": "LG Chem"
+   },
+   {
+    "name": "Ronbay"
+   },
+   {
+    "name": "Hunan Yuneng"
+   },
+   {
+    "name": "BTR"
+   },
+   {
+    "name": "Shanshan"
+   },
+   {
+    "name": "CATL"
+   },
+   {
+    "name": "BYD"
+   },
+   {
+    "name": "LG Energy Solution"
+   },
+   {
+    "name": "Samsung SDI"
+   },
+   {
+    "name": "SK On"
+   },
+   {
+    "name": "Panasonic Energy"
+   },
+   {
+    "name": "EVE Energy"
+   },
+   {
+    "name": "Gotion High-Tech"
+   },
+   {
+    "name": "CALB"
+   },
+   {
+    "name": "Svolt"
+   },
+   {
+    "name": "Northvolt"
+   },
+   {
+    "name": "ACC"
+   },
+   {
+    "name": "PowerCo"
+   },
+   {
+    "name": "Envision AESC"
+   },
+   {
+    "name": "Sunwoda"
+   },
+   {
+    "name": "REPT Battero"
+   },
+   {
+    "name": "Hithium"
+   },
+   {
+    "name": "TE Connectivity"
+   },
+   {
+    "name": "Sensata"
+   },
+   {
+    "name": "Littelfuse"
+   },
+   {
+    "name": "Mersen"
+   },
+   {
+    "name": "Eaton"
+   },
+   {
+    "name": "Infineon"
+   },
+   {
+    "name": "NXP"
+   },
+   {
+    "name": "Analog Devices"
+   },
+   {
+    "name": "Texas Instruments"
+   },
+   {
+    "name": "Li-Cycle"
+   },
+   {
+    "name": "Redwood Materials"
+   },
+   {
+    "name": "Ascend Elements"
+   },
+   {
+    "name": "Cirba Solutions"
+   },
+   {
+    "name": "TUV SUD"
+   },
+   {
+    "name": "UL Solutions"
+   },
+   {
+    "name": "Intertek"
+   },
+   {
+    "name": "SGS"
+   },
+   {
+    "name": "DEKRA"
+   },
+   {
+    "name": "NREL"
+   }
+  ]
+ },
+ {
+  "segment": "Open statistical and patent sources",
+  "note": "public-domain and open-licence series that may be loaded; licensed assessments are joined, never copied",
+  "cells": [
+   {
+    "name": "USGS Mineral Commodity Summaries"
+   },
+   {
+    "name": "USGS Minerals Yearbook"
+   },
+   {
+    "name": "UN Comtrade"
+   },
+   {
+    "name": "Eurostat Comext"
+   },
+   {
+    "name": "US ITC DataWeb"
+   },
+   {
+    "name": "Australia Resources and Energy Quarterly"
+   },
+   {
+    "name": "Cochilco (Chile)"
+   },
+   {
+    "name": "DRC Ministry of Mines statistics"
+   },
+   {
+    "name": "IEA Global EV Outlook"
+   },
+   {
+    "name": "IEA Critical Minerals Outlook"
+   },
+   {
+    "name": "IEA Batteries and Secure Energy Transitions"
+   },
+   {
+    "name": "Argonne EV sales monthly"
+   },
+   {
+    "name": "ICCT"
+   },
+   {
+    "name": "EPO Espacenet and OPS (patents)"
+   },
+   {
+    "name": "USPTO PatentsView (patents)"
+   },
+   {
+    "name": "WIPO PATENTSCOPE (patents)"
+   },
+   {
+    "name": "Google Patents Public Data"
+   },
+   {
+    "name": "Lens.org"
+   },
+   {
+    "name": "GLEIF LEI (company identifiers)"
+   },
+   {
+    "name": "ROR (research organisations)"
+   },
+   {
+    "name": "Fastmarkets (licensed: join, never copy)"
+   },
+   {
+    "name": "Benchmark Mineral Intelligence (licensed: join, never copy)"
+   },
+   {
+    "name": "SMM (licensed: join, never copy)"
+   },
+   {
+    "name": "Argus (licensed: join, never copy)"
+   },
+   {
+    "name": "LME (licensed: join, never copy)"
+   },
+   {
+    "name": "CME lithium hydroxide futures (licensed: join, never copy)"
+   },
+   {
+    "name": "BNEF battery price survey (licensed: join, never copy)"
+   },
+   {
+    "name": "SNE Research (licensed: join, never copy)"
+   },
+   {
+    "name": "EV Volumes (licensed: join, never copy)"
+   }
+  ]
  }
 ]

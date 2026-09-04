@@ -73,6 +73,30 @@ jobs:
                 source_rows, publication_candidates;
             END\$\$;"
 
+      - name: Load the other layers
+        # Sites, companies, market series and patents go through their own
+        # validator and loader. contrib/ holds none yet; the fictional
+        # examples prove the loader in a throwaway copy so the path cannot rot.
+        run: |
+          python tools/load_layers.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
+          createdb -T batterydb layerscheck
+          python tools/load_layers.py docs/examples --dsn "dbname=layerscheck host=localhost user=postgres password=postgres"
+          psql -v ON_ERROR_STOP=1 -d layerscheck -c "
+            DO \$\$
+            DECLARE sites int; agreements int; fams int; orgs int;
+            BEGIN
+              SELECT count(*) INTO sites FROM bd.v_site WHERE stage IN ('mining','testing','recycling');
+              SELECT count(*) INTO agreements FROM bd.v_supply_agreement WHERE site_uid IS NOT NULL;
+              SELECT count(*) INTO fams FROM bd.v_patent_family WHERE review = 'accepted';
+              SELECT count(*) INTO orgs FROM bd.organization WHERE uid LIKE 'org/example-lithium%';
+              IF sites <> 3 OR agreements <> 1 OR fams <> 1 OR orgs <> 1 THEN
+                RAISE EXCEPTION 'layer loader reconciliation failed: % sites / % agreements / % families / % lithium orgs',
+                  sites, agreements, fams, orgs;
+              END IF;
+              RAISE NOTICE 'ok: the example layers load and one company stays one uid';
+            END\$\$;"
+          dropdb layerscheck
+
       - name: Run killer queries
         run: psql -v ON_ERROR_STOP=1 -d batterydb -f tests/010_killer_queries.sql
       - name: Run valuation queries
@@ -98,6 +122,39 @@ jobs:
           python tools/load_age.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
       - name: Export the standards crosswalk
         run: python tools/export_crosswalk.py batterydb
+      - name: The API answers for every layer
+        # Every registered resource lists, the detail carries its related
+        # rows, the query endpoint and the graph endpoint answer, and the
+        # OpenAPI document is generated whole.
+        run: |
+          python api/server.py --port 8089 --dsn "dbname=batterydb host=localhost user=postgres password=postgres" &
+          sleep 2
+          python - <<'PY'
+          import json, urllib.request, urllib.parse, sys
+          sys.path.insert(0, "api")
+          from resources import RESOURCES
+          B = "http://127.0.0.1:8089"
+          def get(path):
+              with urllib.request.urlopen(B + path) as r:
+                  return json.load(r)
+          info = get("/v1/info")["data"]
+          assert len(info["layers"]) == 11, info["layers"]
+          for name, res in RESOURCES.items():
+              d = get(f"/v1/{name}?page_limit=1")
+              assert "data" in d, (name, d)
+          d = get("/v1/cells/" + urllib.parse.quote("cell/lg-energy-solution/inr21700-m50lt", safe=""))
+          assert d["data"][0]["relationships"]["observations"]["data"], "cell detail carries observations"
+          q = json.dumps({"resource": "companies", "filter": 'stages HAS "cell"', "fields": ["name", "stages"], "page_limit": 3}).encode()
+          req = urllib.request.Request(B + "/v1/query", data=q, headers={"Content-Type": "application/json"})
+          with urllib.request.urlopen(req) as r:
+              assert json.load(r)["meta"]["data_returned"] == 3
+          d = get("/v1/graph/reachable?" + urllib.parse.urlencode({"start": "cell/lg-energy-solution/inr21700-m50lt", "depth": 2}))
+          assert d["meta"]["data_returned"] > 0, d
+          spec = get("/v1/openapi.json")
+          assert "/v1/sites/{id}" in spec["paths"] and spec["openapi"] == "3.1.0"
+          print(f"ok: {len(RESOURCES)} resources, {len(spec['paths'])} OpenAPI paths")
+          PY
+          kill %1
 
   units:
     runs-on: ubuntu-latest
@@ -122,7 +179,10 @@ jobs:
       - run: pip install pyyaml jsonschema
       - name: Validate community contributions
         run: |
-          python tools/validate_contrib.py contrib/
+          python tools/validate_contrib.py contrib/cells/
+          # Sites, companies, market series and patents: their own validator,
+          # and the fictional examples that document the formats.
+          python tools/validate_layers.py --examples
           # A pending candidate has to clear the contribution schema too, not
           # just the lighter review rules. Approval promotes the file as-is, so
           # anything the schema rejects turns a checked box into a failed run,

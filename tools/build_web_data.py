@@ -495,6 +495,23 @@ def component_metrics(obs: list[dict], errs: list[str]) -> dict:
     return out
 
 
+def layer_uids() -> set:
+    """Site, company and source uids the other layers already hold, so a
+    mine, a laboratory, a company or a statistical series on the coverage
+    list counts as sourced the day its file lands."""
+    uids = set()
+    for sub, key in (("sites", "site"), ("companies", "organization"), ("market", "source"), ("patents", "family")):
+        for f in glob.glob(os.path.join(ROOT, "contrib", sub, "**", "*.y*ml"), recursive=True):
+            try:
+                doc = yaml.safe_load(open(f, encoding="utf-8"))
+                uids.add(doc[key]["uid"])
+                if "source" in doc:
+                    uids.add(doc["source"]["uid"])
+            except Exception:                              # noqa: BLE001
+                continue
+    return uids
+
+
 def coverage(segments: list[dict], products: list[dict]) -> list[dict]:
     """Mark each target sourced or missing by looking, not by being told.
 
@@ -502,7 +519,7 @@ def coverage(segments: list[dict], products: list[dict]) -> list[dict]:
     and it drifted the wrong way once already: eight cells sat marked
     'provisional' on the strength of numbers that had no document at all.
     """
-    known = {p["uid"] for p in products}
+    known = {p["uid"] for p in products} | layer_uids()
     out = []
     for seg in segments:
         cells = [{**c, "status": "sourced" if c.get("uid") in known else "missing"}

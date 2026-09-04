@@ -252,6 +252,8 @@ class Parser:
             v = self.next()
             if v.kind not in ("string", "number"):
                 raise FilterError(f"expected a value after {op}, got {v.value!r}")
+            if ftype == "list":
+                raise FilterError(f"field {name!r} is a list; use HAS, HAS ALL, HAS ANY or HAS ONLY")
             _typecheck(name, ftype, v)
             return f"{col} {op} {self.bind(v.value)}"
 
@@ -278,10 +280,17 @@ class Parser:
             pat = {"CONTAINS": f"%{v.value}%",
                    "STARTS": f"{v.value}%",
                    "ENDS": f"%{v.value}"}[kw]
+            if ftype == "number":
+                raise FilterError(f"field {name!r} is numeric; {kw} needs a string field")
+            if ftype == "list":
+                # a substring anywhere in the list's elements
+                return f"array_to_string({col}, ' ') ILIKE {self.bind(pat)}"
             return f"{col} ILIKE {self.bind(pat)}"
 
         # field HAS [ALL|ANY|ONLY] v1, v2, ...
         if kw == "HAS":
+            if ftype != "list":
+                raise FilterError(f"field {name!r} is not a list; HAS applies to list fields")
             mode = "ANY"
             for m in ("ALL", "ANY", "ONLY"):
                 if self.accept_kw(m):

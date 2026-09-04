@@ -68,6 +68,35 @@ provenance, and API guarantees**, not in the rows.
 
 ---
 
+## The map
+
+One database, several layers, one rule: **a claim, by a source, under
+conditions, with the page it came from.** Read top to bottom, this is the
+order a battery is made and used, and the order `GET /v1/info` lists them in.
+[`docs/00-map.md`](docs/00-map.md) is the full map.
+
+| Layer | What it holds | Contribute under | Query as |
+|---|---|---|---|
+| **Chemistry and materials** | designations, families, constructions; active materials, electrolytes, separators, traded forms | the `chemistry` block of a product file | `/v1/chemistries`, `/v1/materials` |
+| **Products** | cells, primary cells, modules, packs, systems; every value with statistic, conditions and locator; curves; parameter sets | `contrib/cells/` | `/v1/cells`, `/v1/products`, `/v1/observations`, `/v1/curves`, `/v1/models` |
+| **Components around the battery** | contactors, fuses, BMS, converters, chargers, sensors, thermal hardware, connectors | `contrib/cells/` with `kind: component` | `/v1/components` |
+| **Companies** | roles by supply-chain stage, identifiers, dated relations, one uid per company | `contrib/companies/` | `/v1/companies`, `/v1/company_relations` |
+| **Supply chain** | mines, brines, refineries, precursor, cathode and anode plants, cell and component factories, **test laboratories**, **recyclers**, second-life facilities, distribution centres; resources and reserves, capacity and output, ownership, supply agreements, distribution | `contrib/sites/`, `contrib/market/` | `/v1/sites`, `/v1/resource_estimates`, `/v1/site_metrics`, `/v1/supply_agreements`, `/v1/distributions`, `/v1/stages` |
+| **Market** | commodity prices, cell and pack price indices, volumes, trade flows, offers; licensed assessments are joined, never copied | `contrib/market/` | `/v1/commodity_prices`, `/v1/price_indices`, `/v1/market_volumes`, `/v1/trade_flows`, `/v1/offers` |
+| **Patents** | reviewed DOCDB families, publications, categories, links to companies, products and materials | `contrib/patents/` | `/v1/patent_families`, `/v1/patents`, `/v1/patent_categories` |
+| **Standards and certifications** | standards referenced, certifications held, transport classification | the `certifications` and `transport` blocks of a product file | `/v1/standards`, `/v1/certifications` |
+| **Applications** | the vehicles, installations and devices batteries are fielded in | the `applications` block of a product file | `/v1/applications` |
+| **Sources and vocabulary** | every document cited; the quantity registry with EMMO and QUDT bindings; the crosswalk | created by the loaders | `/v1/sources`, `/v1/quantities`, `/v1/units`, `/v1/crosswalk` |
+
+Sites and companies sit on one ordered vocabulary of fourteen supply-chain
+stages, from mining to collection and recycling, so "who is upstream of this
+cell" is a query. Nothing in `contrib/sites`, `contrib/companies`,
+`contrib/market` or `contrib/patents` exists yet: the formats, validators,
+loaders, views, graph, RDF and API are in place, and the Coverage tab of the
+page is the work order.
+
+---
+
 ## Architecture
 
 **Postgres is the source of truth. The graph is a derived, rebuildable projection.**
@@ -140,9 +169,10 @@ New to the repo? **[`START-HERE.md`](START-HERE.md)** is the one-page version.
 
 ```bash
 createdb batterydb
-./tools/build_db.sh batterydb          # 86 tables, 13 views, 136 quantities
+./tools/build_db.sh batterydb          # 100 tables, 43 views, 136 quantities
 psql -d batterydb -f seed/001_reference_cells.sql
-python tools/load_contrib.py --dsn dbname=batterydb   # accepted contributions
+python tools/load_contrib.py --dsn dbname=batterydb   # accepted product contributions
+python tools/load_layers.py  --dsn dbname=batterydb   # sites, companies, market, patents
 psql -d batterydb -f tests/010_killer_queries.sql
 ```
 </details>
@@ -205,10 +235,14 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/05-data-sources.md`](docs/05-data-sources.md) | Sources credited but not reproduced, and the bulk cycling datasets |
 | [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
-| [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary |
+| [`docs/00-map.md`](docs/00-map.md) | **The map**: the layers, where each one's data lives, how it gets in and how it comes out; the fourteen supply-chain stages; one company, one uid |
+| [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary, and the contribution file that takes a reviewed family into the accepted tables |
 | [`docs/09-roadmap.md`](docs/09-roadmap.md) | **The checklist**: what is being added to make this the best open battery dataset, ticked as it lands |
 | [`docs/10-components-and-chemistries.md`](docs/10-components-and-chemistries.md) | The hardware around the cell and every chemistry: component kinds, chemistry families, lead-acid and switching quantities |
 | [`docs/11-ontology.md`](docs/11-ontology.md) | Ontology and knowledge-graph alignment: EMMO, QUDT, SOSA, PROV-O, schema.org, the RDF export and the graph projection |
+| [`docs/12-market-and-supply-chain.md`](docs/12-market-and-supply-chain.md) | Sites from mine to recycler, test laboratories, resources and reserves, capacity and output, ownership, supply agreements, distribution, prices, volumes, trade, and the licence rule |
+| [`docs/13-api.md`](docs/13-api.md) | One API for every layer: the registry, the filter grammar, `POST /v1/query`, the graph endpoint, OpenAPI |
+| [`docs/examples/`](docs/examples/README.md) | A fictional example file for each non-product layer |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---
@@ -223,6 +257,10 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | **Every chemistry** | Lead-acid (flooded, AGM, gel), sodium-ion and sodium-sulfur, NiMH, NiCd, NiZn, zinc-air, flow (vanadium, zinc-bromine, iron), solid state, supercapacitors — `chemistry.family` and `construction`, see [`docs/10-components-and-chemistries.md`](docs/10-components-and-chemistries.md) |
 | **Components around the battery** | Contactors, fuses and pyro-fuses, BMS and disconnect units, busbars and cell contact systems, current and temperature sensors, isolation monitors, DC-DC converters, chargers, inverters, cooling plates, chillers, heaters — `component_kind`, with breaking capacity, I²t, contact resistance and efficiency carrying the conditions they depend on |
 | **Materials** | Cathode/anode/electrolyte/separator, suppliers, federated to OPTIMADE |
+| **Companies** | One uid per company, roles on fourteen supply-chain stages, LEI/ROR/ticker, dated parent, subsidiary, joint-venture and former-name relations |
+| **Supply chain** | Mines and brines, refineries, precursor, cathode and anode plants, cell, module and component factories, test laboratories and certification bodies, research facilities, second-life facilities, collection points and recyclers, distribution centres; resources and reserves with reporting code and cut-off, capacity and output with status, ownership, supply agreements, distribution |
+| **Market** | Commodity prices with traded form, basis, market and period; cell and pack price indices; volumes; trade flows by HS code; offers. Licensed assessments are recorded as providers to join, never copied |
+| **Patents** | Reviewed DOCDB families and publications under a versioned taxonomy, linked to companies, products and materials |
 | **Test data** | Capacity/RPT, HPPC, EIS+DRT, cycle life, calendar aging, OCV/GITT/PITT, ICA/DVA, HPC, self-discharge, formation, thermal (ARC, entropic, heat capacity, anisotropic conductivity), abuse and vent gas, mechanical swelling, drive cycles, three-electrode, post-mortem |
 | **Models** | BPX (DFN/SPM/SPMe) stored verbatim; ECM as an (SOC, T) lookup surface with fit provenance |
 
@@ -232,12 +270,13 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 
 | Path | What it is |
 |---|---|
-| `schema/` | 86 tables, 13 views, 136-quantity registry with EMMO and QUDT bindings. Loads on stock Postgres 16 |
+| `schema/` | 100 tables, 43 views, 136-quantity registry with EMMO and QUDT bindings, the supply-chain stage map as data. Loads on stock Postgres 16 |
 | `tools/cyclers.py` | Arbin / Maccor / Neware / BioLogic / BDF adapters. **Determines conventions from the data** rather than assuming them, and recovers the `[aging, RPT, aging, RPT]` structure automatically |
-| `api/` | Read API on OPTIMADE conventions, with an OPTIMADE-style filter grammar |
+| `api/` | One read API for every layer: `api/resources.py` registers each view once, field maps come from the database, OPTIMADE-style filter grammar, `POST /v1/query`, the graph endpoint, generated OpenAPI |
 | `agents/literature-miner/` | Papers and datasets → structured records with provenance |
 | `crosswalk/` | Generated BDF ↔ EMMO ↔ BPX ↔ Battery Passport mapping |
-| `tools/validate_contrib.py` | CI gate: refuses a contribution whose values lack their conditions |
+| `tools/validate_contrib.py` | CI gate: refuses a product contribution whose values lack their conditions |
+| `tools/validate_layers.py` / `tools/load_layers.py` | The other layers: sites, companies, market series and patents, validated and loaded with the same locator-per-claim rule; a price from a licensed source is refused |
 | `tools/check_duplicates.py` | Cross-library identity gate for exact UIDs, normalized model aliases, and specification conflicts |
 | `patents/` | Raw patent/IP observations, publication candidates, taxonomy, reconciliation and duplicate reports |
 | `tools/validate_patents.py` | Patent import gate: identity evidence, review boundary, categories and source-row reconciliation |
@@ -277,21 +316,35 @@ flagged rather than silently defaulted.
 
 ### API
 
+One API for every layer ([`docs/13-api.md`](docs/13-api.md)):
+
 ```bash
 python api/server.py --port 8080
+curl localhost:8080/v1/info                                   # the layers and their resources
 curl -G localhost:8080/v1/cells \
      --data-urlencode 'filter=capacity_ah >= 4.5 AND form_factor_code = "21700"'
+curl -G localhost:8080/v1/sites \
+     --data-urlencode 'filter=kind = "mine" AND commodities HAS "lithium"'
+curl -G localhost:8080/v1/companies --data-urlencode 'filter=stages HAS "recycling"'
+curl -X POST localhost:8080/v1/query -H 'Content-Type: application/json' \
+     -d '{"resource":"patents","filter":"jurisdiction = \"EP\" AND grant_date IS KNOWN","page_limit":20}'
+curl -G localhost:8080/v1/graph/reachable --data-urlencode 'start=org/panasonic' --data-urlencode 'depth=3'
+curl localhost:8080/v1/openapi.json
 ```
 
-Cell detail responses carry the observations they were derived from, each with
-its conditions and a page-level citation. An API that dropped provenance would
-undo the point of the schema.
+Every resource takes the same filter grammar, sort, field selection and
+paging; every row that has a source carries its `source_uid`, `source_url`,
+`page` and `quote`; a detail response carries the related rows a reader wants
+next (a cell its observations, a company its sites and agreements). An API
+that dropped provenance would undo the point of the schema.
 
 ## Status
 
-Schema, query layer, graph projection, staging/review, cycler adapters, read API,
-literature-miner, the standards crosswalk, the EMMO and QUDT bindings and the
-RDF export are complete and tested. The accepted library holds 460 products
+Schema, query layer, graph projection, staging/review, cycler adapters, the
+read API for every layer, literature-miner, the standards crosswalk, the EMMO
+and QUDT bindings, the RDF export, and the supply-chain, company, market and
+patent layers (formats, validators, loaders, views, graph, RDF, API) are
+complete and tested. The accepted library holds 460 products
 across cells, primary cells, modules, packs and systems, five published physics
 parameter sets, and 34 curves; every value carries its conditions and a locator.
 

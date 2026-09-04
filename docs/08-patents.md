@@ -50,6 +50,28 @@ An accepted family requires a DOCDB family ID and provenance. An accepted
 publication requires a family, source and provenance. A legal status cannot be
 stored without a jurisdiction and observation date.
 
+## From review to the accepted tables
+
+A family that has been resolved and reviewed enters the accepted tables
+through a contribution file, `contrib/patents/<docdb-family-id>.yaml`
+([format](../json-schema/patent-contribution.schema.json), fictional example
+in [`docs/examples/patent.yaml`](examples/patent.yaml)): the family with its
+DOCDB id and primary category, each publication with its dates, applicants,
+inventors, categories and legal status observed on a date, and the links to
+companies, products and materials, every one with a locator into the office
+record. `tools/validate_layers.py` checks it offline (jurisdiction against the
+number, one primary category, a legal status with its jurisdiction and date,
+links to uids the library holds); `tools/load_layers.py` writes it as
+`review = accepted` with provenance, which is the only way rows reach
+`bd.patent_family` and `bd.patent_publication`. The staging import never
+promotes anything, and CI checks that it did not.
+
+Accepted patents are queryable as `/v1/patent_families`, `/v1/patents` and
+`/v1/patent_categories` ([`docs/13-api.md`](13-api.md)), appear in the graph
+projection as `PatentFamily` and `PatentPublication` nodes with
+`HAS_PUBLICATION`, `PUBLISHED_AS` and `PATENT_RELATES_TO` edges, and in the
+RDF export as `bdv:PatentFamily` and `bdv:PatentPublication`.
+
 ## Authoritative enrichment sources
 
 - EPO Open Patent Services (OPS): bibliographic, family, citation and legal data
