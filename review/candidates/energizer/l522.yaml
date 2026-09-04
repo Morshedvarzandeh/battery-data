@@ -1,0 +1,182 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "pack/energizer/l522",
+    "kind": "pack",
+    "manufacturer": "Energizer",
+    "model_number": "L522",
+    "form_factor": "other",
+    "is_rechargeable": false,
+    "aliases": [
+      "ANSI 1604LC"
+    ]
+  },
+  "source": {
+    "uid": "src/energizer-l522-form-no-l522gl1119",
+    "kind": "datasheet",
+    "title": "Energizer L522 product datasheet",
+    "url": "https://data.energizer.com/pdfs/l522-1119.pdf",
+    "revision": "Form No. L522GL1119",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "0a7ae3569f46eac7862ab24917eb9cc884e015ce43f36b10d569ed8d24f535d4",
+    "note": "Retrieved 2026-09-04 from Energizer's official technical-information catalog. Facts only; the PDF body is not redistributed. The manufacturer states that the sheet contains typical information, does not constitute a warranty, and is for reference only. Diagram dimension excerpts below are normalized transcriptions: labels and values are preserved while visual layout and whitespace are not."
+  },
+  "chemistry": {
+    "designation": "Li/MnO2",
+    "locator": {
+      "page": 1,
+      "quote": "Chemical System: Lithium-Manganese Dioxide (Li/MnO2)"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "nominal_voltage",
+      "value": 9.0,
+      "unit": "V",
+      "locator": {
+        "quote": "Nominal Voltage: 9 Volts",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "mass",
+      "value": 33.9,
+      "unit": "g",
+      "locator": {
+        "quote": "Typical Weight: 33.9 grams",
+        "page": 1
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "volume",
+      "value": 21.4,
+      "unit": "cm3",
+      "locator": {
+        "quote": "Typical Volume: 21.4 cubic centimeters",
+        "page": 1
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "height",
+      "value": 49.0,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): height maximum 49; length maximum 26.5; width maximum 17.5",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "length",
+      "value": 26.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): height maximum 49; length maximum 26.5; width maximum 17.5",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "width",
+      "value": 17.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): height maximum 49; length maximum 26.5; width maximum 17.5",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating Temp: -40°C to 60°C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating Temp: -40°C to 60°C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "storage_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "quote": "Storage: -40°C to 60°C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "duration_s"
+        ]
+      }
+    },
+    {
+      "quantity": "storage_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "quote": "Storage: -40°C to 60°C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "duration_s"
+        ]
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 1.0,
+      "unit": "A",
+      "locator": {
+        "quote": "Max Discharge: 1 A continuous",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "lithium_content",
+      "value": 1.35,
+      "unit": "g",
+      "locator": {
+        "quote": "Typical Li Content: 1.35 grams",
+        "page": 1
+      },
+      "statistic": "typical"
+    }
+  ]
+}

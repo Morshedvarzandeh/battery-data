@@ -1,0 +1,204 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "primary_cell/energizer/2l76",
+    "kind": "primary_cell",
+    "manufacturer": "Energizer",
+    "model_number": "2L76",
+    "form_factor": "cylindrical",
+    "is_rechargeable": false,
+    "aliases": [
+      "CR11108"
+    ]
+  },
+  "source": {
+    "uid": "src/energizer-2l76-form-no-2l76na1117",
+    "kind": "datasheet",
+    "title": "Energizer 2L76 product datasheet",
+    "url": "https://data.energizer.com/pdfs/2l76.pdf",
+    "revision": "Form No. 2L76NA1117",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "d12aaa9b56e305f2e78bc1343a02d903d03bf200cc8ee3cf7d91237cf2206797",
+    "note": "Retrieved 2026-09-04 from Energizer's official technical-information catalog. Facts only; the PDF body is not redistributed. The manufacturer states that the sheet contains typical information, does not constitute a warranty, and is for reference only. Diagram dimension excerpts below are normalized transcriptions: labels and values are preserved while visual layout and whitespace are not."
+  },
+  "chemistry": {
+    "designation": "Li/MnO2",
+    "locator": {
+      "page": 1,
+      "quote": "Chemical System: Lithium / Manganese Dioxide (Li/MnO2)"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.0,
+      "unit": "V",
+      "locator": {
+        "quote": "Nominal Voltage: 3 Volts",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "mass",
+      "value": 3.0,
+      "unit": "g",
+      "locator": {
+        "quote": "Typical Weight: 3 grams",
+        "page": 1
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "volume",
+      "value": 1.1,
+      "unit": "cm3",
+      "locator": {
+        "quote": "Typical Volume: 1.1 cubic centimeters",
+        "page": 1
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "diameter",
+      "value": 11.6,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): diameter maximum 11.6; height maximum 10.8",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "height",
+      "value": 10.8,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): diameter maximum 11.6; height maximum 10.8",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating Temp: -40°C to 60°C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "quote": "Operating Temp: -40°C to 60°C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "storage_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "quote": "Storage: -40°C to 60°C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "duration_s"
+        ]
+      }
+    },
+    {
+      "quantity": "storage_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "quote": "Storage: -40°C to 60°C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "duration_s"
+        ]
+      }
+    },
+    {
+      "quantity": "capacity",
+      "value": 0.16,
+      "unit": "Ah",
+      "locator": {
+        "quote": "Typical Capacity: 160 mAh (to 2.0 volts); Rated at 15000 ohms at 21°C",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "rate_value": 15000,
+        "rate_unit": "ohm",
+        "temperature_c": 21,
+        "voltage_lower_v": 2.0
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 0.06,
+      "unit": "A",
+      "locator": {
+        "quote": "Max Discharge: 0.06 A continuous",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "max_pulse_discharge_current",
+      "value": 0.08,
+      "unit": "A",
+      "locator": {
+        "quote": "Max Discharge: 0.08 A pulse",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "pulse_duration_s"
+        ]
+      }
+    },
+    {
+      "quantity": "lithium_content",
+      "value": 0.056,
+      "unit": "g",
+      "locator": {
+        "quote": "Typical Li Content: 0.056 grams",
+        "page": 1
+      },
+      "statistic": "typical"
+    }
+  ]
+}

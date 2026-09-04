@@ -1,0 +1,202 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "pack/energizer/nh22-175",
+    "kind": "pack",
+    "manufacturer": "Energizer",
+    "model_number": "NH22-175",
+    "form_factor": "other",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/energizer-nh22-175-form-no-nh22-175gl1118",
+    "kind": "datasheet",
+    "title": "Energizer NH22-175 product datasheet",
+    "url": "https://data.energizer.com/pdfs/nh22-175.pdf",
+    "revision": "Form No. NH22-175GL1118",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "5aad5daa5e53a72128a07b98e10a5e56bcb6596c5ffac1ba6079153bdcf9c3c1",
+    "note": "Retrieved 2026-09-04 from Energizer's official technical-information catalog. Facts only; the PDF body is not redistributed. The manufacturer states that the sheet contains typical information, does not constitute a warranty, and is for reference only. Diagram dimension excerpts below are normalized transcriptions: labels and values are preserved while visual layout and whitespace are not."
+  },
+  "chemistry": {
+    "designation": "NiMH",
+    "locator": {
+      "page": 1,
+      "quote": "Chemical System: Nickel-Metal Hydride (NiMH)"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "nominal_voltage",
+      "value": 8.4,
+      "unit": "V",
+      "locator": {
+        "quote": "Nominal Voltage: 8.4 Volts",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "mass",
+      "value": 42.0,
+      "unit": "g",
+      "locator": {
+        "quote": "Typical Weight: 42 grams",
+        "page": 1
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "volume",
+      "value": 22.0,
+      "unit": "cm3",
+      "locator": {
+        "quote": "Typical Volume: 22 cubic centimeters",
+        "page": 1
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "height",
+      "value": 48.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): height maximum 48.5; length maximum 26.5; width maximum 17.5",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "length",
+      "value": 26.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): height maximum 48.5; length maximum 26.5; width maximum 17.5",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "width",
+      "value": 17.5,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): height maximum 48.5; length maximum 26.5; width maximum 17.5",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "capacity",
+      "value": 0.175,
+      "unit": "Ah",
+      "locator": {
+        "quote": "Rated Capacity: 175 mAh to 1 volts at 21°C; based on 0.2C discharge rate",
+        "page": 1
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 0.2,
+        "rate_unit": "C",
+        "temperature_c": 21,
+        "voltage_lower_v": 1.0
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "locator": {
+        "quote": "Charge: 0°C to 40°C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 40,
+      "unit": "°C",
+      "locator": {
+        "quote": "Charge: 0°C to 40°C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "locator": {
+        "quote": "Discharge: 0°C to 50°C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 50,
+      "unit": "°C",
+      "locator": {
+        "quote": "Discharge: 0°C to 50°C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "storage_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "locator": {
+        "quote": "Storage: -20°C to 30°C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "duration_s"
+        ]
+      }
+    },
+    {
+      "quantity": "storage_temperature_max",
+      "value": 30,
+      "unit": "°C",
+      "locator": {
+        "quote": "Storage: -20°C to 30°C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "duration_s"
+        ]
+      }
+    }
+  ]
+}

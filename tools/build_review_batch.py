@@ -15,6 +15,7 @@ import json
 from pathlib import Path
 
 import expansion_aug_2026
+import expansion_sep_2026
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "review" / "candidates"
@@ -512,9 +513,10 @@ def main():
     for builder in (byd, hithium, cnte, samsung, lg, catl, recovered):
         builder(records)
     expansion_aug_2026.build(records, register, observation)
+    expansion_sep_2026.build(records, register, observation)
     index = {
         "schema_version": 1,
-        "batch": "2026-08-16-100-plus-cell-expansion",
+        "batch": "2026-09-04-official-datasheet-expansion",
         "status": "pending_review",
         "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
         "candidate_count": sum(item["state"] == "pending_review" for item in records),

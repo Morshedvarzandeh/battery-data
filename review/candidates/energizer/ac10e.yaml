@@ -1,0 +1,86 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "primary_cell/energizer/ac10e",
+    "kind": "primary_cell",
+    "manufacturer": "Energizer",
+    "model_number": "AC10E",
+    "form_factor": "button",
+    "is_rechargeable": false,
+    "aliases": [
+      "ANSI 7005ZD",
+      "IEC PR70"
+    ]
+  },
+  "source": {
+    "uid": "src/energizer-ac10e-form-no-10gl0824",
+    "kind": "datasheet",
+    "title": "Energizer AC10E product datasheet",
+    "url": "https://data.energizer.com/pdfs/ENR_AC10E-1.pdf",
+    "revision": "Form No. 10GL0824",
+    "is_final": true,
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "17586110949ef9db55af017bec4bd9c7e9c152c93c8c1cfb94fc4ac0ea02af2d",
+    "note": "Retrieved 2026-09-04 from Energizer's official technical-information catalog. Facts only; the PDF body is not redistributed. The manufacturer states that the sheet contains typical information, does not constitute a warranty, and is for reference only. Diagram dimension excerpts below are normalized transcriptions: labels and values are preserved while visual layout and whitespace are not."
+  },
+  "chemistry": {
+    "designation": "Zn/O2",
+    "locator": {
+      "page": 1,
+      "quote": "Chemical System: Zinc Air (Zn/O2)"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "nominal_voltage",
+      "value": 1.45,
+      "unit": "V",
+      "locator": {
+        "quote": "Nominal Voltage: 1.45 Volts",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "mass",
+      "value": 0.3,
+      "unit": "g",
+      "locator": {
+        "quote": "Typical Weight: 0.3 grams",
+        "page": 1
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "volume",
+      "value": 0.08,
+      "unit": "cm3",
+      "locator": {
+        "quote": "Typical Volume: 0.08 cubic centimeters",
+        "page": 1
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "diameter",
+      "value": 5.8,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): diameter maximum 5.8; height maximum 3.6",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "height",
+      "value": 3.6,
+      "unit": "mm",
+      "locator": {
+        "quote": "Industry Standard Dimensions (mm): diameter maximum 5.8; height maximum 3.6",
+        "page": 1
+      },
+      "statistic": "maximum"
+    }
+  ]
+}
