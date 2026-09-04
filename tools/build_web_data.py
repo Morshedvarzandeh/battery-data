@@ -18,7 +18,7 @@ is no other door.
 
 WHAT IS DERIVED AND WHAT IS NOT
 -------------------------------
-Derived from contrib/**/*.yaml            -> products, observations, curves, the chart
+Derived from contrib/cells/**/*.yaml            -> products, observations, curves, the chart
 Derived from json-schema/quantity-registry -> the quantity registry the entry form reads
 Derived from schema/010_vocabulary.sql     -> the test-kind taxonomy
 
@@ -523,7 +523,7 @@ def build() -> dict:
             print(f"  {e}", file=sys.stderr)
         sys.exit(f"\n{len(errs)} grouping error(s); page not written")
 
-    files = sorted(glob.glob(os.path.join(ROOT, "contrib", "**", "*.y*ml"),
+    files = sorted(glob.glob(os.path.join(ROOT, "contrib", "cells", "**", "*.y*ml"),
                              recursive=True))
     products = [product(yaml.safe_load(open(f)), f) for f in files]
 

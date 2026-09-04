@@ -170,7 +170,7 @@ SELECT cp.id, cp.commodity, tf.code AS traded_form, tf.contained_fraction, cp.gr
   JOIN v_provenance v ON v.provenance_id = cp.provenance_id;
 
 CREATE VIEW v_price_index AS
-SELECT pi.id, pi.segment, pi.chemistry_family::text AS chemistry_family, pi.sector, pi.region,
+SELECT pi.id, pi.segment, pi.chemistry_family::text AS chemistry_family, pi.chemistry, pi.sector, pi.region,
        pi.currency, pi.value, pi.per_unit, pi.basis::text AS basis, pi.period_start, pi.period_end,
        pi.provider, v.source_uid, v.source_title, v.source_url, v.source_license, v.page, v.quote
   FROM price_index pi
@@ -178,7 +178,7 @@ SELECT pi.id, pi.segment, pi.chemistry_family::text AS chemistry_family, pi.sect
 
 CREATE VIEW v_market_volume AS
 SELECT mv.id, mv.metric::text AS metric, org.name AS organization, org.uid AS organization_uid,
-       mv.region, mv.country, mv.sector, mv.chemistry_family::text AS chemistry_family,
+       mv.region, mv.country, mv.sector, mv.chemistry_family::text AS chemistry_family, mv.chemistry,
        mv.value, mv.unit, mv.share_pct, mv.rank, mv.period_start, mv.period_end, mv.provider,
        v.source_uid, v.source_title, v.source_url, v.source_license, v.page, v.quote
   FROM market_volume mv

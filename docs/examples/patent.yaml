@@ -1,0 +1,66 @@
+# FICTIONAL example of a patent contribution: one reviewed DOCDB family.
+schema_version: "1"
+family:
+  uid: patent/900000001
+  docdb_family_id: "900000001"
+  title: Lithium-ion cell with a silicon-graphite anode and a fluorinated electrolyte additive
+  earliest_priority_date: 2019-03-01
+  primary_category: electrochemistry_materials
+source:
+  uid: src/example-patent-office-900000001
+  kind: patent
+  title: Example Patent Office family record 900000001 (fictional)
+  url: https://example.org/patents/family/900000001
+  document_date: "2025-01-10"
+  note: FICTIONAL example for the format; never loaded.
+locator:
+  quote: "INPADOC family 900000001: EP9000001B1, US2020900001A1"
+publications:
+  - publication_number: EP9000001B1
+    application_number: EP20190900001
+    jurisdiction: EP
+    kind_code: B1
+    title: Lithium-ion cell with a silicon-graphite anode and a fluorinated electrolyte additive
+    priority_date: 2019-03-01
+    filing_date: 2020-02-28
+    publication_date: 2020-09-09
+    grant_date: 2022-06-15
+    applicants: [Example Lithium Ltd]
+    assignees: [Example Lithium Ltd]
+    inventors: [A. Example, B. Example]
+    publication_url: https://example.org/patents/EP9000001B1
+    legal_status: granted, in force
+    legal_status_jurisdiction: DE
+    legal_status_as_of: 2025-01-10
+    categories:
+      - code: electrochemistry_materials
+        primary: true
+        confidence: 0.9
+        basis: CPC H01M 4/386, H01M 10/0567 (2024.01); abstract
+      - code: manufacturing_process
+        confidence: 0.4
+        basis: claims 12 to 15 describe the coating step
+    locator:
+      quote: "EP9000001B1, granted 2022-06-15, applicant Example Lithium Ltd"
+  - publication_number: US2020900001A1
+    jurisdiction: US
+    kind_code: A1
+    title: Lithium-ion cell with a silicon-graphite anode and a fluorinated electrolyte additive
+    priority_date: 2019-03-01
+    filing_date: 2020-02-28
+    publication_date: 2020-09-10
+    applicants: [Example Lithium Ltd]
+    inventors: [A. Example, B. Example]
+    publication_url: https://example.org/patents/US2020900001A1
+    categories:
+      - code: electrochemistry_materials
+        primary: true
+        basis: same family, same claims
+    locator:
+      quote: "US2020900001A1, published 2020-09-10"
+links:
+  - relation: assigned_to
+    organization: Example Lithium Ltd
+    confidence: 1.0
+    locator:
+      quote: "assignee: Example Lithium Ltd"

@@ -187,9 +187,23 @@ def check_applications(path: str, doc: dict) -> list[str]:
     return errs
 
 
+def product_files(files: list[str]) -> tuple[list[str], list[str]]:
+    """Product contributions carry a `product` key; sites, companies, market
+    series and patents are other layers with their own validator."""
+    products, other = [], []
+    for f in files:
+        try:
+            doc = yaml.safe_load(open(f, encoding="utf-8"))
+        except Exception:                                  # noqa: BLE001
+            products.append(f)                             # let check() report it
+            continue
+        (products if isinstance(doc, dict) and "product" in doc else other).append(f)
+    return products, other
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("path", nargs="?", default=os.path.join(ROOT, "contrib"))
+    ap.add_argument("path", nargs="?", default=os.path.join(ROOT, "contrib", "cells"))
     ap.add_argument("--dsn")
     a = ap.parse_args()
 
@@ -199,14 +213,18 @@ def main() -> int:
 
     files = ([a.path] if a.path.endswith((".yaml", ".yml"))
              else sorted(glob.glob(os.path.join(a.path, "**", "*.y*ml"), recursive=True)))
+    files, other = product_files(files)
+    for f in other:
+        print(f"  --    {os.path.relpath(f, ROOT)}  (not a product contribution; "
+              f"tools/validate_layers.py covers sites, companies, market and patents)")
     if not files:
-        print(f"no contribution files under {a.path}")
+        print(f"no product contribution files under {a.path}")
         return 0
 
-    # Every uid under contrib/, so bill-of-materials links can be checked
+    # Every uid under contrib/cells/, so bill-of-materials links can be checked
     # against the library as a whole rather than the file being validated.
     known = set()
-    for f in sorted(glob.glob(os.path.join(ROOT, "contrib", "**", "*.y*ml"), recursive=True)):
+    for f in sorted(glob.glob(os.path.join(ROOT, "contrib", "cells", "**", "*.y*ml"), recursive=True)):
         try:
             known.add(yaml.safe_load(open(f))["product"]["uid"])
         except Exception:

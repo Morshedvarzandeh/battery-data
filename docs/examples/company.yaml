@@ -1,0 +1,44 @@
+# FICTIONAL example of a company contribution.
+schema_version: "1"
+organization:
+  uid: org/example-lithium
+  name: Example Lithium Ltd
+  legal_name: Example Lithium Limited
+  aliases: [EXL, Example Lithium]
+  former_names: [Example Minerals NL]
+  country: AU
+  hq_region: Western Australia
+  hq_locality: Perth
+  founded_year: 2004
+  website: https://example.org/example-lithium
+  roles: [miner, refiner]
+  lei: 5493001KJTIIGC8Y1R12
+  ticker: EXL
+  exchange: ASX
+  description: Hard-rock lithium miner with a hydroxide refinery under construction.
+source:
+  uid: src/example-lithium-annual-report-2025
+  kind: regulatory_filing
+  title: Example Lithium Ltd annual report 2025 (fictional)
+  url: https://example.org/example-lithium/annual-report-2025.pdf
+  document_date: "2025-08-20"
+  note: FICTIONAL example for the format; never loaded.
+locator:
+  page: 2
+  section: Corporate directory
+  quote: "Example Lithium Limited (ASX: EXL), formerly Example Minerals NL, Perth, Western Australia"
+relations:
+  - relation: subsidiary_of
+    organization: Example Holdings Pty Ltd
+    share_pct: 100
+    valid_from: 2004-05-01
+    locator:
+      page: 60
+      quote: "Example Lithium Limited is a wholly owned subsidiary of Example Holdings Pty Ltd"
+  - relation: minority_stake_in
+    organization: Example Cathode Co
+    share_pct: 20
+    valid_from: 2024-11-01
+    locator:
+      page: 15
+      quote: "acquired a 20% interest in Example Cathode Co in November 2024"

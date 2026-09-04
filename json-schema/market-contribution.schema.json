@@ -1,0 +1,631 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/market-contribution.schema.json",
+  "title": "battery-data market contribution",
+  "description": "Price series, price indices, market volumes, trade flows, supply agreements and distribution relationships from one source. Price rows are refused unless the source says its data may be redistributed; licensed assessments are listed under providers as sources to join, never copied.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "uid",
+        "kind",
+        "url",
+        "license",
+        "data_redistributable"
+      ],
+      "properties": {
+        "uid": {
+          "type": "string",
+          "pattern": "^src/[a-z0-9._-]+$"
+        },
+        "kind": {
+          "enum": [
+            "dataset",
+            "regulatory_filing",
+            "manufacturer_web",
+            "journal_article",
+            "standard",
+            "third_party_test",
+            "distributor_listing",
+            "datasheet",
+            "preprint",
+            "user_submission"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "doi": {
+          "type": "string"
+        },
+        "document_date": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string",
+          "description": "The licence the DATA arrived under: 'public domain', 'CC-BY-4.0', 'terms of use', 'proprietary'."
+        },
+        "data_redistributable": {
+          "type": "boolean",
+          "description": "Whether the numbers may be republished here. False refuses every price, index and volume row in the file."
+        },
+        "redistributable": {
+          "type": "boolean"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "providers": {
+      "type": "array",
+      "description": "Licensed assessments and feeds referenced but not reproduced, so a consumer knows what to join.",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "url",
+          "what",
+          "terms"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "what": {
+            "type": "string"
+          },
+          "terms": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "commodity_prices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/commodity_price"
+      }
+    },
+    "price_indices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/price_index"
+      }
+    },
+    "market_volumes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/market_volume"
+      }
+    },
+    "trade_flows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/trade_flow"
+      }
+    },
+    "supply_agreements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/supply_agreement"
+      }
+    },
+    "distributions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/distribution"
+      }
+    }
+  },
+  "$defs": {
+    "locator": {
+      "type": "object",
+      "required": [
+        "quote"
+      ],
+      "properties": {
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 8
+        }
+      }
+    },
+    "period": {
+      "type": "string",
+      "format": "date"
+    },
+    "commodity_price": {
+      "type": "object",
+      "required": [
+        "commodity",
+        "market",
+        "currency",
+        "value",
+        "per_unit",
+        "period_start",
+        "period_end",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "commodity": {
+          "type": "string"
+        },
+        "traded_form": {
+          "type": "string",
+          "description": "A bd.traded_form code, e.g. lithium_carbonate, when the form is modelled."
+        },
+        "grade": {
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "spot",
+            "contract",
+            "assessment",
+            "exchange_settlement",
+            "annual_average",
+            "monthly_average",
+            "tender",
+            "list_price",
+            "realised",
+            "unspecified"
+          ]
+        },
+        "market": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "per_unit": {
+          "type": "string"
+        },
+        "period_start": {
+          "$ref": "#/$defs/period"
+        },
+        "period_end": {
+          "$ref": "#/$defs/period"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "price_index": {
+      "type": "object",
+      "required": [
+        "segment",
+        "region",
+        "currency",
+        "value",
+        "period_start",
+        "period_end",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "segment": {
+          "enum": [
+            "cell",
+            "module",
+            "pack",
+            "system"
+          ]
+        },
+        "chemistry_family": {
+          "enum": [
+            "lithium_ion",
+            "lithium_metal",
+            "lithium_primary",
+            "sodium_ion",
+            "sodium_sulfur",
+            "sodium_nickel_chloride",
+            "lead_acid",
+            "nickel_metal_hydride",
+            "nickel_cadmium",
+            "nickel_zinc",
+            "nickel_iron",
+            "zinc_air",
+            "zinc_carbon",
+            "alkaline",
+            "silver_oxide",
+            "flow_vanadium",
+            "flow_zinc_bromine",
+            "flow_iron",
+            "flow_other",
+            "solid_state",
+            "supercapacitor",
+            "other"
+          ],
+          "description": "bd.chemistry_family code."
+        },
+        "sector": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "per_unit": {
+          "type": "string",
+          "default": "kWh"
+        },
+        "basis": {
+          "enum": [
+            "spot",
+            "contract",
+            "assessment",
+            "exchange_settlement",
+            "annual_average",
+            "monthly_average",
+            "tender",
+            "list_price",
+            "realised",
+            "unspecified"
+          ]
+        },
+        "period_start": {
+          "$ref": "#/$defs/period"
+        },
+        "period_end": {
+          "$ref": "#/$defs/period"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        },
+        "chemistry": {
+          "type": "string",
+          "description": "The designation the source quotes: 'LFP', 'NMC', 'NCA', 'LCO'."
+        }
+      }
+    },
+    "market_volume": {
+      "type": "object",
+      "required": [
+        "metric",
+        "value",
+        "unit",
+        "period_start",
+        "period_end",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "metric": {
+          "enum": [
+            "production",
+            "shipment",
+            "installation",
+            "sales",
+            "capacity",
+            "demand",
+            "inventory",
+            "unspecified"
+          ]
+        },
+        "organization": {
+          "type": "string"
+        },
+        "organization_uid": {
+          "type": "string",
+          "pattern": "^org/[a-z0-9-]+$"
+        },
+        "region": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "sector": {
+          "type": "string"
+        },
+        "chemistry_family": {
+          "enum": [
+            "lithium_ion",
+            "lithium_metal",
+            "lithium_primary",
+            "sodium_ion",
+            "sodium_sulfur",
+            "sodium_nickel_chloride",
+            "lead_acid",
+            "nickel_metal_hydride",
+            "nickel_cadmium",
+            "nickel_zinc",
+            "nickel_iron",
+            "zinc_air",
+            "zinc_carbon",
+            "alkaline",
+            "silver_oxide",
+            "flow_vanadium",
+            "flow_zinc_bromine",
+            "flow_iron",
+            "flow_other",
+            "solid_state",
+            "supercapacitor",
+            "other"
+          ],
+          "description": "bd.chemistry_family code."
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string"
+        },
+        "share_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "period_start": {
+          "$ref": "#/$defs/period"
+        },
+        "period_end": {
+          "$ref": "#/$defs/period"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        },
+        "chemistry": {
+          "type": "string",
+          "description": "The designation the source quotes: 'LFP', 'NMC', 'NCA', 'LCO'."
+        }
+      }
+    },
+    "trade_flow": {
+      "type": "object",
+      "required": [
+        "reporter_country",
+        "partner_country",
+        "hs_code",
+        "direction",
+        "period_start",
+        "period_end",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "reporter_country": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "partner_country": {
+          "type": "string",
+          "pattern": "^([A-Z]{2}|WLD)$"
+        },
+        "hs_code": {
+          "type": "string",
+          "pattern": "^[0-9]{4,10}$"
+        },
+        "commodity": {
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "import",
+            "export",
+            "re_export"
+          ]
+        },
+        "period_start": {
+          "$ref": "#/$defs/period"
+        },
+        "period_end": {
+          "$ref": "#/$defs/period"
+        },
+        "value_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "quantity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "quantity_unit": {
+          "type": "string"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "supply_agreement": {
+      "type": "object",
+      "required": [
+        "uid",
+        "supplier",
+        "buyer",
+        "subject",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "uid": {
+          "type": "string",
+          "pattern": "^agreement/[a-z0-9._-]+$"
+        },
+        "supplier": {
+          "type": "string"
+        },
+        "supplier_uid": {
+          "type": "string",
+          "pattern": "^org/[a-z0-9-]+$"
+        },
+        "buyer": {
+          "type": "string"
+        },
+        "buyer_uid": {
+          "type": "string",
+          "pattern": "^org/[a-z0-9-]+$"
+        },
+        "kind": {
+          "enum": [
+            "offtake",
+            "supply",
+            "tolling",
+            "licensing",
+            "joint_venture",
+            "prepayment",
+            "unspecified"
+          ]
+        },
+        "subject": {
+          "type": "string"
+        },
+        "site_uid": {
+          "type": "string",
+          "pattern": "^site/[a-z0-9-]+/[a-z0-9._-]+$"
+        },
+        "traded_form": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "number",
+          "minimum": 0
+        },
+        "volume_unit": {
+          "type": "string"
+        },
+        "volume_period": {
+          "enum": [
+            "per year",
+            "total",
+            "per month"
+          ]
+        },
+        "valid_from": {
+          "$ref": "#/$defs/period"
+        },
+        "valid_to": {
+          "$ref": "#/$defs/period"
+        },
+        "announced_on": {
+          "$ref": "#/$defs/period"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "distribution": {
+      "type": "object",
+      "required": [
+        "distributor",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "distributor": {
+          "type": "string"
+        },
+        "distributor_uid": {
+          "type": "string",
+          "pattern": "^org/[a-z0-9-]+$"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "manufacturer_uid": {
+          "type": "string",
+          "pattern": "^org/[a-z0-9-]+$"
+        },
+        "status": {
+          "enum": [
+            "authorized",
+            "franchised",
+            "independent",
+            "broker",
+            "online_marketplace",
+            "unspecified"
+          ]
+        },
+        "regions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "product_families": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "valid_from": {
+          "$ref": "#/$defs/period"
+        },
+        "valid_to": {
+          "$ref": "#/$defs/period"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    }
+  }
+}

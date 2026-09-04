@@ -1,0 +1,435 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/site-contribution.schema.json",
+  "title": "battery-data site contribution",
+  "description": "A mine, brine operation, refinery, plant, factory, test laboratory, research facility, second-life facility, collection point, recycler, distribution centre or port, with its resource estimates, capacity and output series and ownership. Every claim carries a locator. Files live under contrib/sites/<operator>/<site>.yaml.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "site",
+    "source",
+    "locator"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "site": {
+      "type": "object",
+      "required": [
+        "uid",
+        "kind",
+        "name",
+        "country"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "uid": {
+          "type": "string",
+          "pattern": "^site/[a-z0-9-]+/[a-z0-9._-]+$",
+          "description": "site/<operator-slug>/<site-slug>"
+        },
+        "kind": {
+          "enum": [
+            "mine",
+            "brine_operation",
+            "refinery",
+            "chemical_plant",
+            "precursor_plant",
+            "cathode_plant",
+            "anode_plant",
+            "electrolyte_plant",
+            "separator_plant",
+            "cell_factory",
+            "module_pack_factory",
+            "component_factory",
+            "distribution_centre",
+            "port",
+            "test_laboratory",
+            "research_facility",
+            "second_life_facility",
+            "collection_point",
+            "recycling_plant",
+            "other"
+          ],
+          "description": "Every kind but 'other' belongs to a stage of bd.supply_chain_stage; a test laboratory, a research facility or a recycler is a site like any factory."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "operator": {
+          "type": "string",
+          "description": "The organisation running it, as named by the source."
+        },
+        "operator_uid": {
+          "type": "string",
+          "pattern": "^org/[a-z0-9-]+$",
+          "description": "Pin to an existing organisation uid instead of a name."
+        },
+        "country": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "region": {
+          "type": "string"
+        },
+        "locality": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "status": {
+          "enum": [
+            "exploration",
+            "development",
+            "construction",
+            "commissioning",
+            "operating",
+            "care_and_maintenance",
+            "idle",
+            "closed",
+            "announced",
+            "cancelled",
+            "unknown"
+          ]
+        },
+        "status_as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "commodities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "What leaves the site: 'spodumene concentrate', '21700 cells', 'black mass'; for a laboratory, the services it offers: 'UN 38.3', 'IEC 62660 cycle life', 'abuse testing'."
+        },
+        "deposit_type": {
+          "type": "string"
+        },
+        "opened_year": {
+          "type": "integer",
+          "minimum": 1800,
+          "maximum": 2100
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "locator": {
+      "$ref": "#/$defs/locator",
+      "description": "Where the source establishes the site itself: its name, operator, location, status."
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/resource"
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/metric"
+      }
+    },
+    "ownership": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ownership"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "uid",
+        "kind",
+        "url"
+      ],
+      "properties": {
+        "uid": {
+          "type": "string",
+          "pattern": "^src/[a-z0-9._-]+$"
+        },
+        "kind": {
+          "enum": [
+            "datasheet",
+            "manufacturer_web",
+            "standard",
+            "journal_article",
+            "preprint",
+            "dataset",
+            "regulatory_filing",
+            "third_party_test",
+            "teardown_report",
+            "distributor_listing",
+            "user_submission"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "doi": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "document_date": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "redistributable": {
+          "type": "boolean"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "locator": {
+      "type": "object",
+      "required": [
+        "quote"
+      ],
+      "properties": {
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 8
+        }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "required": [
+        "commodity",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "commodity": {
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "measured",
+            "indicated",
+            "inferred",
+            "measured_indicated",
+            "total_resource",
+            "proven",
+            "probable",
+            "total_reserve",
+            "unspecified"
+          ]
+        },
+        "reporting_code": {
+          "type": "string",
+          "description": "'JORC 2012', 'NI 43-101', 'SAMREC', 'SEC S-K 1300', 'PERC', 'GB/T 17766'. Required, or listed in unstated."
+        },
+        "tonnage": {
+          "type": "number",
+          "minimum": 0
+        },
+        "tonnage_unit": {
+          "type": "string"
+        },
+        "grade": {
+          "type": "number",
+          "minimum": 0
+        },
+        "grade_unit": {
+          "type": "string"
+        },
+        "cutoff_grade": {
+          "type": "number",
+          "minimum": 0
+        },
+        "cutoff_unit": {
+          "type": "string"
+        },
+        "contained_metal": {
+          "type": "number",
+          "minimum": 0
+        },
+        "contained_unit": {
+          "type": "string"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "unstated": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "reporting_code",
+              "cutoff_grade",
+              "as_of",
+              "grade"
+            ]
+          }
+        },
+        "notes": {
+          "type": "string"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "required": [
+        "metric",
+        "value",
+        "unit",
+        "period_start",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "metric": {
+          "enum": [
+            "capacity",
+            "production",
+            "throughput",
+            "recovery_rate",
+            "capex",
+            "energy_use",
+            "headcount",
+            "test_channels",
+            "test_chambers",
+            "collection_volume"
+          ],
+          "description": "capacity and production must say their status. test_channels and test_chambers are a laboratory's capacity; collection_volume is what a collection point or recycler took in."
+        },
+        "subject": {
+          "type": "string",
+          "description": "What the number is of: 'lithium hydroxide', 'spodumene concentrate', 'cells'."
+        },
+        "status": {
+          "enum": [
+            "nameplate",
+            "planned",
+            "announced",
+            "under_construction",
+            "actual",
+            "estimated",
+            "unspecified"
+          ]
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string"
+        },
+        "period_start": {
+          "type": "string",
+          "format": "date"
+        },
+        "period_end": {
+          "type": "string",
+          "format": "date"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "required": [
+        "organization",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "organization": {
+          "type": "string"
+        },
+        "organization_uid": {
+          "type": "string",
+          "pattern": "^org/[a-z0-9-]+$"
+        },
+        "share_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "role": {
+          "enum": [
+            "owner",
+            "operator",
+            "jv_partner",
+            "royalty_holder"
+          ]
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date"
+        },
+        "valid_to": {
+          "type": "string",
+          "format": "date"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        }
+      }
+    }
+  }
+}

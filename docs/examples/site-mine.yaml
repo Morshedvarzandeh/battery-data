@@ -1,0 +1,98 @@
+# FICTIONAL example of a site contribution: a hard-rock lithium mine.
+# Nothing here exists. See docs/examples/README.md.
+schema_version: "1"
+site:
+  uid: site/example-lithium/example-hill
+  kind: mine
+  name: Example Hill
+  operator: Example Lithium Ltd
+  country: AU
+  region: Western Australia
+  locality: Example Shire
+  latitude: -33.0
+  longitude: 116.0
+  status: operating
+  status_as_of: 2025-06-30
+  commodities: [lithium]
+  products: [spodumene concentrate]
+  deposit_type: spodumene
+  opened_year: 2019
+  aliases: [Example Hill Lithium Project]
+source:
+  uid: src/example-lithium-annual-report-2025
+  kind: regulatory_filing
+  title: Example Lithium Ltd annual report 2025 (fictional)
+  url: https://example.org/example-lithium/annual-report-2025.pdf
+  document_date: "2025-08-20"
+  license: proprietary
+  redistributable: false
+  note: FICTIONAL example for the format; never loaded.
+locator:
+  page: 12
+  section: Operations review
+  quote: "Example Hill, our 100% operated hard-rock mine in Western Australia, produced ..."
+resources:
+  - commodity: lithium
+    category: measured_indicated
+    reporting_code: JORC 2012
+    tonnage: 120
+    tonnage_unit: Mt
+    grade: 1.4
+    grade_unit: "% Li2O"
+    cutoff_grade: 0.5
+    cutoff_unit: "% Li2O"
+    contained_metal: 4.1
+    contained_unit: Mt LCE
+    as_of: 2025-06-30
+    locator:
+      page: 44
+      section: Mineral resources
+      quote: "Measured and Indicated 120 Mt at 1.4% Li2O (0.5% Li2O cut-off), 4.1 Mt LCE"
+  - commodity: lithium
+    category: inferred
+    reporting_code: JORC 2012
+    tonnage: 30
+    tonnage_unit: Mt
+    grade: 1.1
+    grade_unit: "% Li2O"
+    unstated: [cutoff_grade]
+    as_of: 2025-06-30
+    locator:
+      page: 44
+      section: Mineral resources
+      quote: "Inferred 30 Mt at 1.1% Li2O"
+metrics:
+  - metric: production
+    subject: spodumene concentrate
+    status: actual
+    value: 410000
+    unit: t
+    period_start: 2024-07-01
+    period_end: 2025-06-30
+    locator:
+      page: 12
+      quote: "410 kt of spodumene concentrate (SC6) in FY25"
+  - metric: capacity
+    subject: spodumene concentrate
+    status: nameplate
+    value: 500000
+    unit: t/yr
+    period_start: 2023-01-01
+    locator:
+      page: 13
+      quote: "nameplate capacity of 500 ktpa following the plant expansion"
+ownership:
+  - organization: Example Lithium Ltd
+    share_pct: 51
+    role: owner
+    valid_from: 2021-03-01
+    locator:
+      page: 12
+      quote: "Example Hill is held 51:49 by Example Lithium and Example Partner Co"
+  - organization: Example Partner Co
+    share_pct: 49
+    role: jv_partner
+    valid_from: 2021-03-01
+    locator:
+      page: 12
+      quote: "Example Hill is held 51:49 by Example Lithium and Example Partner Co"

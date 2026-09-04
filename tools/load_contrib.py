@@ -716,7 +716,7 @@ def promote_file(cur, document: dict, org_id: int, source_id: int, staged: list,
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("path", nargs="?", default=os.path.join(ROOT, "contrib"))
+    parser.add_argument("path", nargs="?", default=os.path.join(ROOT, "contrib", "cells"))
     parser.add_argument("--dsn", default=os.environ.get("BATTERY_DSN", "dbname=batterydb"))
     parser.add_argument("--stage-only", action="store_true",
                         help="validate into bd_stage and stop before promotion")
@@ -729,8 +729,22 @@ def main() -> int:
 
     files = ([args.path] if args.path.endswith((".yaml", ".yml"))
              else sorted(glob.glob(os.path.join(args.path, "**", "*.y*ml"), recursive=True)))
+    # sites, companies, market series and patents are other layers; they
+    # load through tools/load_layers.py and are skipped here
+    kept = []
+    for f in files:
+        try:
+            doc = yaml.safe_load(open(f, encoding="utf-8"))
+        except Exception:                                  # noqa: BLE001
+            kept.append(f)
+            continue
+        if isinstance(doc, dict) and "product" in doc:
+            kept.append(f)
+        else:
+            print(f"  --    {os.path.relpath(f, ROOT)}  (not a product contribution; skipped)")
+    files = kept
     if not files:
-        print(f"no contribution files under {args.path}")
+        print(f"no product contribution files under {args.path}")
         return 0
 
     connection = psycopg2.connect(args.dsn)

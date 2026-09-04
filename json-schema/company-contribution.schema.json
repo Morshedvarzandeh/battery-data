@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/company-contribution.schema.json",
+  "title": "battery-data company contribution",
+  "description": "One organisation in the battery supply chain: identity, where its headquarters are, the roles it plays (each role belongs to a stage of the chain), its identifiers, and its dated relations to other companies. Files live under contrib/companies/<slug>.yaml. Product, site and market files create organisations by name; this file is where a company gets its profile and its sources.",
+  "type": "object",
+  "required": ["schema_version", "organization", "source", "locator"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1"},
+    "organization": {
+      "type": "object",
+      "required": ["uid", "name", "country", "roles"],
+      "additionalProperties": false,
+      "properties": {
+        "uid": {"type": "string", "pattern": "^org/[a-z0-9-]+$", "description": "org/<slug>, the same slug product uids use for the maker (cell/<slug>/...)."},
+        "name": {"type": "string", "minLength": 2},
+        "legal_name": {"type": "string"},
+        "aliases": {"type": "array", "items": {"type": "string"}, "description": "Trade names, abbreviations and brands the sources use."},
+        "former_names": {"type": "array", "items": {"type": "string"}},
+        "country": {"type": "string", "pattern": "^[A-Z]{2}$", "description": "Country of incorporation or headquarters, ISO 3166-1 alpha-2."},
+        "hq_region": {"type": "string"},
+        "hq_locality": {"type": "string"},
+        "founded_year": {"type": "integer", "minimum": 1600, "maximum": 2100},
+        "website": {"type": "string", "format": "uri"},
+        "roles": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"enum": ["miner", "refiner", "precursor_producer", "cathode_producer", "anode_producer", "electrolyte_producer", "separator_producer", "foil_can_producer", "manufacturer", "pack_assembler", "integrator", "component_manufacturer", "distributor", "oem", "fleet_operator", "lab", "certification_body", "research_institute", "second_life", "recycler", "site_operator", "owner", "supplier", "buyer", "publisher", "sdo", "investor", "government"]},
+          "description": "bd.organization_role codes. Each belongs to a stage of bd.supply_chain_stage, or to none for publishers, standards bodies, investors and governments."
+        },
+        "ror_id": {"type": "string"},
+        "lei": {"type": "string", "pattern": "^[A-Z0-9]{20}$"},
+        "ticker": {"type": "string"},
+        "exchange": {"type": "string"},
+        "parent_uid": {"type": "string", "pattern": "^org/[a-z0-9-]+$", "description": "The undated shortcut; the dated record is a subsidiary_of relation."},
+        "description": {"type": "string"}
+      }
+    },
+    "source": {"$ref": "#/$defs/source"},
+    "locator": {"$ref": "#/$defs/locator", "description": "Where the source establishes the company: name, country, roles."},
+    "relations": {"type": "array", "items": {"$ref": "#/$defs/relation"}}
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["uid", "kind", "url"],
+      "properties": {
+        "uid": {"type": "string", "pattern": "^src/[a-z0-9._-]+$"},
+        "kind": {"enum": ["manufacturer_web", "regulatory_filing", "journal_article", "dataset", "standard", "third_party_test", "distributor_listing", "datasheet", "preprint", "user_submission"]},
+        "title": {"type": "string"},
+        "url": {"type": "string", "format": "uri"},
+        "doi": {"type": "string"},
+        "revision": {"type": "string"},
+        "document_date": {"type": "string"},
+        "license": {"type": "string"},
+        "redistributable": {"type": "boolean"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "note": {"type": "string"}
+      }
+    },
+    "locator": {
+      "type": "object",
+      "required": ["quote"],
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "section": {"type": "string"},
+        "quote": {"type": "string", "minLength": 8}
+      }
+    },
+    "relation": {
+      "type": "object",
+      "required": ["relation", "locator"],
+      "additionalProperties": false,
+      "properties": {
+        "relation": {"enum": ["parent_of", "subsidiary_of", "joint_venture_of", "brand_of", "formerly", "renamed_to", "acquired", "merged_into", "spun_off_from", "minority_stake_in", "licensee_of"], "description": "Read as '<this organisation> <relation> <organization>': 'subsidiary_of Parent Holdings'."},
+        "organization": {"type": "string", "description": "The other party as the source names it; created if absent."},
+        "organization_uid": {"type": "string", "pattern": "^org/[a-z0-9-]+$", "description": "Pin to an existing organisation uid instead of a name."},
+        "share_pct": {"type": "number", "minimum": 0, "maximum": 100},
+        "valid_from": {"type": "string", "format": "date"},
+        "valid_to": {"type": "string", "format": "date"},
+        "notes": {"type": "string"},
+        "locator": {"$ref": "#/$defs/locator"}
+      },
+      "anyOf": [{"required": ["organization"]}, {"required": ["organization_uid"]}]
+    }
+  }
+}

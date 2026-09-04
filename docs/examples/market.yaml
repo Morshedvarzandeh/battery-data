@@ -1,0 +1,104 @@
+# FICTIONAL example of a market contribution. The source is a public-domain
+# statistical bulletin whose numbers may be republished; the licensed
+# assessments a reader would join are listed under providers and NOT copied.
+schema_version: "1"
+source:
+  uid: src/example-survey-mineral-bulletin-2025
+  kind: dataset
+  title: Example Geological Survey, battery minerals bulletin 2025 (fictional)
+  url: https://example.org/survey/battery-minerals-2025
+  document_date: "2025-02-01"
+  license: public domain
+  data_redistributable: true
+  note: FICTIONAL example for the format; never loaded.
+providers:
+  - name: Example Price Assessments
+    url: https://example.org/epa
+    what: Daily lithium carbonate and hydroxide assessments, CIF Asia
+    terms: Subscription; the assessments may not be redistributed and are not reproduced here.
+commodity_prices:
+  - commodity: lithium carbonate
+    traded_form: lithium_carbonate
+    grade: battery grade, 99.5%
+    basis: annual_average
+    market: Example region, CIF
+    currency: USD
+    value: 12400
+    per_unit: t
+    period_start: 2024-01-01
+    period_end: 2024-12-31
+    provider: Example Geological Survey
+    locator:
+      page: 7
+      section: Table 3
+      quote: "Lithium carbonate, battery grade, annual average price: 12,400 USD/t (2024)"
+price_indices:
+  - segment: pack
+    chemistry_family: lithium_ion
+    chemistry: LFP
+    sector: stationary
+    region: Example region
+    currency: USD
+    value: 96
+    per_unit: kWh
+    basis: annual_average
+    period_start: 2024-01-01
+    period_end: 2024-12-31
+    provider: Example Geological Survey
+    locator:
+      page: 9
+      quote: "average LFP stationary pack price of 96 USD/kWh in 2024"
+market_volumes:
+  - metric: production
+    country: AU
+    sector: mining
+    value: 86000
+    unit: t Li content
+    period_start: 2024-01-01
+    period_end: 2024-12-31
+    locator:
+      page: 5
+      section: Table 1
+      quote: "Mine production, lithium content: 86,000 t (2024)"
+trade_flows:
+  - reporter_country: AU
+    partner_country: CN
+    hs_code: "253090"
+    commodity: spodumene concentrate
+    direction: export
+    period_start: 2024-01-01
+    period_end: 2024-12-31
+    value_usd: 4100000000
+    quantity: 3200000
+    quantity_unit: t
+    locator:
+      page: 11
+      section: Table 5
+      quote: "Exports of spodumene concentrate (HS 2530.90) to China: 3.2 Mt, USD 4.1 billion"
+supply_agreements:
+  - uid: agreement/example-lithium-example-cells-2025
+    supplier: Example Lithium Ltd
+    buyer: Example Cells Co
+    kind: offtake
+    subject: spodumene concentrate
+    site_uid: site/example-lithium/example-hill
+    volume: 150000
+    volume_unit: t
+    volume_period: per year
+    valid_from: 2025-01-01
+    valid_to: 2029-12-31
+    announced_on: 2024-10-03
+    locator:
+      page: 14
+      quote: "a five-year offtake of 150 ktpa of spodumene concentrate from Example Hill to Example Cells Co"
+distributions:
+  - distributor: Example Distribution Inc
+    manufacturer: Example Cells Co
+    status: authorized
+    regions: [North America]
+    product_families: [21700 cells, LFP prismatic]
+    url: https://example.org/example-distribution/example-cells
+    valid_from: 2025-01-01
+    locator:
+      page: 15
+      quote: "Example Distribution Inc became the authorised North American distributor for Example Cells Co"

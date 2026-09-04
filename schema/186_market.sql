@@ -66,6 +66,7 @@ CREATE TABLE price_index (
   id               bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   segment          text NOT NULL,                   -- 'cell', 'module', 'pack', 'system'
   chemistry_family chemistry_family,
+  chemistry        text,                            -- the designation the source uses: 'LFP', 'NMC', 'NCA'
   sector           text,                            -- 'EV', 'ESS', 'consumer', 'all'
   region           text NOT NULL,
   currency         char(3) NOT NULL,
@@ -93,6 +94,7 @@ CREATE TABLE market_volume (
   country          text,                            -- ISO 3166-1 alpha-2
   sector           text,                            -- 'EV', 'ESS', 'consumer', 'two_wheeler', 'all'
   chemistry_family chemistry_family,
+  chemistry        text,                            -- the designation the source uses: 'LFP', 'NMC', 'NCA'
   value            numeric(18,4) NOT NULL CHECK (value >= 0),
   unit             text NOT NULL,                   -- 'GWh', 'MWh', 'units', 't'
   share_pct        numeric(6,3) CHECK (share_pct IS NULL OR share_pct BETWEEN 0 AND 100),

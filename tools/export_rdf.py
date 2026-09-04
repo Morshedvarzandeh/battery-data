@@ -414,7 +414,7 @@ def main() -> int:
     ap.add_argument("--jsonld", action="store_true")
     a = ap.parse_args()
     iris = load(IRIS)
-    files = sorted(glob.glob(os.path.join(ROOT, "contrib", "**", "*.y*ml"), recursive=True))
+    files = sorted(glob.glob(os.path.join(ROOT, "contrib", "cells", "**", "*.y*ml"), recursive=True))
     products = []
     for f in files:
         with open(f, encoding="utf-8") as fh:

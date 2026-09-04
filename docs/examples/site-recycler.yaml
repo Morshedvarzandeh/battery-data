@@ -1,0 +1,39 @@
+# FICTIONAL example of a site contribution: a recycling plant.
+schema_version: "1"
+site:
+  uid: site/example-recycling/example-works
+  kind: recycling_plant
+  name: Example Works
+  operator: Example Recycling SA
+  country: FR
+  region: Hauts-de-France
+  status: commissioning
+  status_as_of: 2025-09-01
+  commodities: [lithium, nickel, cobalt]
+  products: [black mass, nickel sulphate, cobalt sulphate, lithium carbonate]
+source:
+  uid: src/example-recycling-press-2025-09
+  kind: manufacturer_web
+  title: Example Recycling SA press release, September 2025 (fictional)
+  url: https://example.org/example-recycling/press/2025-09-works
+  document_date: "2025-09-01"
+  note: FICTIONAL example for the format; never loaded.
+locator:
+  quote: "Example Works, our hydrometallurgical plant in Hauts-de-France, enters commissioning"
+metrics:
+  - metric: capacity
+    subject: end-of-life batteries and production scrap
+    status: nameplate
+    value: 20000
+    unit: t/yr
+    period_start: 2026-01-01
+    locator:
+      quote: "20,000 tonnes per year of end-of-life batteries and production scrap"
+  - metric: recovery_rate
+    subject: lithium
+    status: announced
+    value: 90
+    unit: "%"
+    period_start: 2026-01-01
+    locator:
+      quote: "targeting a lithium recovery rate above 90%"

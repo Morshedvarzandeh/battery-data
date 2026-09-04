@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/patent-contribution.schema.json",
+  "title": "battery-data patent contribution",
+  "description": "One reviewed patent family: its DOCDB identity, its publications with their dates and legal status, their categories under the versioned taxonomy, and the products, materials and organisations the family is linked to. This is the accepted end of the pipeline in docs/08-patents.md: the raw CORDIS rows stay in staging, a family enters bd.patent_family only through a file like this. Files live under contrib/patents/<docdb-family-id>.yaml.",
+  "type": "object",
+  "required": ["schema_version", "family", "source", "locator", "publications"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1"},
+    "family": {
+      "type": "object",
+      "required": ["uid", "docdb_family_id", "title", "primary_category"],
+      "additionalProperties": false,
+      "properties": {
+        "uid": {"type": "string", "pattern": "^patent/[0-9]+$", "description": "patent/<DOCDB family id>."},
+        "docdb_family_id": {"type": "string", "pattern": "^[0-9]+$"},
+        "title": {"type": "string", "minLength": 4},
+        "abstract": {"type": "string"},
+        "earliest_priority_date": {"type": "string", "format": "date"},
+        "primary_category": {"$ref": "#/$defs/category_code"},
+        "taxonomy_version": {"type": "string", "default": "battery-patent-taxonomy-1.0.0"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["uid", "kind", "url"],
+      "properties": {
+        "uid": {"type": "string", "pattern": "^src/[a-z0-9._-]+$"},
+        "kind": {"enum": ["patent", "dataset", "regulatory_filing", "journal_article", "user_submission"], "description": "The office or search source the identity was verified against: Espacenet, EPO OPS, PATENTSCOPE, USPTO."},
+        "title": {"type": "string"},
+        "url": {"type": "string", "format": "uri"},
+        "document_date": {"type": "string"},
+        "license": {"type": "string"},
+        "redistributable": {"type": "boolean"},
+        "note": {"type": "string"}
+      }
+    },
+    "locator": {"$ref": "#/$defs/locator", "description": "Where the source establishes the family identity: the family page, the INPADOC list."},
+    "publications": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/publication"}},
+    "links": {"type": "array", "items": {"$ref": "#/$defs/link"}}
+  },
+  "$defs": {
+    "category_code": {"enum": ["electrical_power", "mechanical_structures", "software_control", "electronics_hardware", "electrochemistry_materials", "manufacturing_process", "thermal_safety", "charging_infrastructure", "recycling_second_life"]},
+    "locator": {
+      "type": "object",
+      "required": ["quote"],
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "section": {"type": "string"},
+        "quote": {"type": "string", "minLength": 8}
+      }
+    },
+    "publication": {
+      "type": "object",
+      "required": ["publication_number", "jurisdiction", "title", "publication_url", "locator"],
+      "additionalProperties": false,
+      "properties": {
+        "publication_number": {"type": "string", "pattern": "^[A-Z]{2}[A-Z0-9]{6,}$", "description": "As the office prints it: EP3000000B1, US2020000000A1, WO2015062985A1, CN110000000A."},
+        "application_number": {"type": "string"},
+        "jurisdiction": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "kind_code": {"type": "string", "pattern": "^[A-Z][0-9]?$"},
+        "title": {"type": "string", "minLength": 4},
+        "abstract": {"type": "string"},
+        "priority_date": {"type": "string", "format": "date"},
+        "filing_date": {"type": "string", "format": "date"},
+        "publication_date": {"type": "string", "format": "date"},
+        "grant_date": {"type": "string", "format": "date"},
+        "applicants": {"type": "array", "items": {"type": "string"}},
+        "assignees": {"type": "array", "items": {"type": "string"}},
+        "inventors": {"type": "array", "items": {"type": "string"}},
+        "publication_url": {"type": "string", "format": "uri"},
+        "legal_status": {"type": "string"},
+        "legal_status_jurisdiction": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "legal_status_as_of": {"type": "string", "format": "date"},
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["code"],
+            "additionalProperties": false,
+            "properties": {
+              "code": {"$ref": "#/$defs/category_code"},
+              "primary": {"type": "boolean"},
+              "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+              "basis": {"type": "string", "description": "What the category rests on: CPC codes with their version, the abstract, the claims."}
+            }
+          }
+        },
+        "locator": {"$ref": "#/$defs/locator"}
+      }
+    },
+    "link": {
+      "type": "object",
+      "required": ["relation", "locator"],
+      "additionalProperties": false,
+      "properties": {
+        "relation": {"enum": ["assigned_to", "licensed_to", "covers_product", "covers_material", "cites_product", "uses_material"]},
+        "organization": {"type": "string"},
+        "organization_uid": {"type": "string", "pattern": "^org/[a-z0-9-]+$"},
+        "product_uid": {"type": "string", "pattern": "^(cell|primary_cell|module|pack|system|component)/[a-z0-9-]+/[a-z0-9._-]+$"},
+        "material_uid": {"type": "string", "pattern": "^mat/[a-z0-9._-]+$"},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "locator": {"$ref": "#/$defs/locator"}
+      },
+      "oneOf": [
+        {"required": ["organization"]},
+        {"required": ["organization_uid"]},
+        {"required": ["product_uid"]},
+        {"required": ["material_uid"]}
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+# FICTIONAL example of a site contribution: a battery test centre.
+# A laboratory is a site like a factory: an operator, a country, a status,
+# the services it offers as its products, and its channels as a metric.
+schema_version: "1"
+site:
+  uid: site/example-testing/example-lab
+  kind: test_laboratory
+  name: Example Battery Test Centre
+  operator: Example Testing GmbH
+  country: DE
+  region: Bavaria
+  locality: Example am See
+  status: operating
+  status_as_of: 2025-01-01
+  products: [UN 38.3, IEC 62660-2 abuse, IEC 62619, cycle life to IEC 62660-1, EIS]
+  opened_year: 2016
+source:
+  uid: src/example-testing-lab-page-2025
+  kind: manufacturer_web
+  title: Example Testing GmbH, battery laboratory (fictional)
+  url: https://example.org/example-testing/battery-lab
+  document_date: "2025-01-15"
+  note: FICTIONAL example for the format; never loaded.
+locator:
+  quote: "Our accredited battery laboratory in Example am See tests cells, modules and packs to UN 38.3, IEC 62660 and IEC 62619"
+metrics:
+  - metric: test_channels
+    subject: cell cycling channels
+    value: 1200
+    unit: channels
+    period_start: 2025-01-01
+    locator:
+      quote: "1,200 cell cycling channels up to 600 A"
+  - metric: test_chambers
+    subject: walk-in climate chambers
+    value: 8
+    unit: chambers
+    period_start: 2025-01-01
+    locator:
+      quote: "eight walk-in climate chambers from -40 to +90 degC"
