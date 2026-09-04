@@ -50,22 +50,27 @@ jobs:
       - name: Load patent review corpus into staging
         run: |
           python tools/load_patents.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
+          python tools/load_epo_patents.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
           psql -v ON_ERROR_STOP=1 -d batterydb -c "
             DO \$\$
-            DECLARE source_rows int; publication_candidates int; accepted_rows int;
+            DECLARE source_rows int; publication_candidates int; company_candidates int;
+                    company_links int; accepted_rows int;
             BEGIN
               SELECT count(*) INTO source_rows FROM bd_stage.patent_observation;
               SELECT count(*) INTO publication_candidates FROM bd_stage.patent_publication_candidate;
+              SELECT count(*) INTO company_candidates FROM bd_stage.patent_company_candidate;
+              SELECT count(*) INTO company_links FROM bd_stage.patent_publication_company_link;
               SELECT count(*) INTO accepted_rows FROM bd.patent_publication;
-              IF source_rows <> 1155 OR publication_candidates <> 255 THEN
-                RAISE EXCEPTION 'patent staging reconciliation failed: % source / % candidates',
-                  source_rows, publication_candidates;
+              IF source_rows <> 1155 OR publication_candidates <> 1056
+                 OR company_candidates <> 383 OR company_links <> 856 THEN
+                RAISE EXCEPTION 'patent staging reconciliation failed: % source / % publications / % companies / % links',
+                  source_rows, publication_candidates, company_candidates, company_links;
               END IF;
               IF accepted_rows <> 0 THEN
                 RAISE EXCEPTION 'unreviewed patent import crossed into accepted tables';
               END IF;
-              RAISE NOTICE 'ok: % source rows / % publication candidates staged',
-                source_rows, publication_candidates;
+              RAISE NOTICE 'ok: % source rows / % publication / % company / % applicant-link candidates staged',
+                source_rows, publication_candidates, company_candidates, company_links;
             END\$\$;"
 
       - name: Run killer queries
@@ -123,7 +128,15 @@ jobs:
           python tools/validate_review.py
           python tools/check_duplicates.py
           python tools/validate_patents.py
+          python tools/validate_epo_patents.py
           python tools/check_patent_duplicates.py --fail-on exact
+          python tools/import_epo_linked_patents.py \
+            --input patents/imports/epo-linked-data-2026-09-04/source \
+            --output patents/imports/epo-linked-data-2026-09-04
+          git diff --exit-code -- patents/imports/epo-linked-data-2026-09-04 || {
+            echo "::error::EPO patent/company batch is stale; run the deterministic importer"
+            exit 1
+          }
           python tools/build_review_batch.py
           python tools/render_review_issues.py
           git diff --exit-code -- review/ || {
@@ -174,4 +187,3 @@ jobs:
           x' python .github/scripts/issue_form.py && {
             echo "FAIL: accepted a file:// datasheet URL"; exit 1; }
           echo "ok: non-http datasheet URL refused"
-

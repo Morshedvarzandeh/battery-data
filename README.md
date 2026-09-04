@@ -4,6 +4,11 @@ An open, provenance-first database of battery specifications, performance data,
 and test conditions — collected from datasheets, scientific literature, and raw
 cycler files.
 
+The separate patent review layer currently holds 1,056 deduplicated publication
+candidates (255 CORDIS-linked and 801 EPO Linked Open EP Data candidates), plus
+383 company/research-organisation profiles. None enters the accepted library
+without DOCDB-family resolution and human approval.
+
 **Design premise:** roughly 40% of what a battery datasheet calls a
 "specification" is not an attribute of the product. It is a measurement result
 under conditions the datasheet may or may not disclose. Every existing open
@@ -305,4 +310,3 @@ the terms this repository ships under.
 
 The relicence from MIT applies going forward. Earlier commits were published
 under MIT and those rights do not expire.
-

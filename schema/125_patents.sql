@@ -31,6 +31,42 @@ INSERT INTO patent_category (code, label, requested_domain, definition, taxonomy
   ('charging_infrastructure', 'Charging infrastructure', NULL, 'Charging equipment, grid interfaces and vehicle, marine or stationary charging.', 'battery-patent-taxonomy-1.0.0'),
   ('recycling_second_life', 'Recycling & second life', NULL, 'Recovery, disassembly, sorting, repurposing and second-life use.', 'battery-patent-taxonomy-1.0.0');
 
+CREATE TABLE organization_category (
+  code                 text PRIMARY KEY,
+  label                text NOT NULL,
+  definition           text NOT NULL,
+  taxonomy_version     text NOT NULL
+);
+
+INSERT INTO organization_category (code, label, definition, taxonomy_version) VALUES
+  ('cell_battery_manufacturer', 'Cell & battery manufacturer', 'Manufactures electrochemical cells, batteries or battery modules.', 'battery-patent-company-taxonomy-1.0.0'),
+  ('materials_supplier', 'Materials & chemicals', 'Supplies active materials, electrolytes, separators, binders, additives or battery-grade chemicals.', 'battery-patent-company-taxonomy-1.0.0'),
+  ('automotive_oem', 'Automotive OEM', 'Manufactures vehicles and applies battery technology in vehicle platforms.', 'battery-patent-company-taxonomy-1.0.0'),
+  ('electronics_power_systems', 'Electronics & power systems', 'Supplies electronic control, sensing, power-conversion or industrial electrical systems.', 'battery-patent-company-taxonomy-1.0.0'),
+  ('energy_storage_integrator', 'Energy-storage integrator', 'Integrates cells into stationary, mobility or industrial storage systems.', 'battery-patent-company-taxonomy-1.0.0'),
+  ('charging_grid', 'Charging & grid', 'Provides charging, grid-interface, power-network or energy services.', 'battery-patent-company-taxonomy-1.0.0'),
+  ('recycling_circularity', 'Recycling & circularity', 'Provides battery collection, dismantling, recycling, recovery or second-life services.', 'battery-patent-company-taxonomy-1.0.0'),
+  ('research_academic', 'Research & academic', 'University, public research organisation, laboratory or technology institute.', 'battery-patent-company-taxonomy-1.0.0'),
+  ('other_industrial', 'Other industrial', 'Corporate applicant not yet assigned to a more specific battery value-chain category.', 'battery-patent-company-taxonomy-1.0.0'),
+  ('unresolved', 'Unresolved entity', 'Applicant requiring entity-curator resolution before a value-chain role is asserted.', 'battery-patent-company-taxonomy-1.0.0');
+
+CREATE TABLE organization_category_assignment (
+  organization_id       bigint NOT NULL REFERENCES organization(id) ON DELETE CASCADE,
+  category_code         text NOT NULL REFERENCES organization_category(code),
+  is_primary            boolean NOT NULL DEFAULT false,
+  confidence            numeric(4,3) CHECK (confidence BETWEEN 0 AND 1),
+  basis                 jsonb NOT NULL DEFAULT '{}',
+  taxonomy_version      text NOT NULL,
+  provenance_id         bigint REFERENCES provenance(id),
+  review                review_state NOT NULL DEFAULT 'pending_review',
+  PRIMARY KEY (organization_id, category_code),
+  CONSTRAINT accepted_company_category_is_grounded CHECK (
+    review <> 'accepted' OR provenance_id IS NOT NULL
+  )
+);
+CREATE UNIQUE INDEX organization_one_primary_category
+  ON organization_category_assignment (organization_id) WHERE is_primary;
+
 CREATE TABLE patent_family (
   id                     bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   uid                    text NOT NULL UNIQUE,
@@ -107,6 +143,24 @@ CREATE TABLE patent_classification (
 );
 CREATE UNIQUE INDEX patent_one_primary_category
   ON patent_classification (publication_id) WHERE is_primary;
+
+CREATE TABLE patent_organization_link (
+  publication_id         bigint NOT NULL REFERENCES patent_publication(id) ON DELETE CASCADE,
+  organization_id        bigint NOT NULL REFERENCES organization(id),
+  relation               text NOT NULL CHECK (relation IN ('applicant','assignee','owner_observed','licensee')),
+  raw_name               text,
+  observed_as_of         date,
+  provenance_id          bigint REFERENCES provenance(id),
+  review                 review_state NOT NULL DEFAULT 'pending_review',
+  PRIMARY KEY (publication_id, organization_id, relation),
+  CONSTRAINT accepted_patent_organization_link_is_grounded CHECK (
+    review <> 'accepted' OR provenance_id IS NOT NULL
+  )
+);
+CREATE INDEX ON patent_organization_link (organization_id, relation);
+
+COMMENT ON TABLE patent_organization_link IS
+  'Evidence-bearing applicant/assignee/owner links. Applicant never implies current ownership.';
 
 CREATE TABLE patent_project_link (
   publication_id         bigint NOT NULL REFERENCES patent_publication(id) ON DELETE CASCADE,

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://battery-data.example/schema/patent-company.schema.json",
+  "title": "Patent applicant organisation review candidate",
+  "type": "object",
+  "required": [
+    "schema_version", "record_type", "company_uid", "canonical_name", "country",
+    "organization_type", "aliases", "value_chain", "patent_portfolio", "identifiers",
+    "corporate_profile", "provenance", "review_state"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "patent_company_candidate"},
+    "company_uid": {"type": "string", "pattern": "^(org|company-candidate)/[a-z0-9][a-z0-9/-]*$"},
+    "canonical_name": {"type": "string", "minLength": 1},
+    "legal_name": {"type": ["string", "null"]},
+    "country": {"type": ["string", "null"], "pattern": "^[A-Z]{2}$"},
+    "organization_type": {"enum": ["company", "research_institution", "government", "unknown_organization"]},
+    "aliases": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "value_chain": {
+      "type": "object",
+      "required": ["categories", "primary_category", "classification_method", "review_state"],
+      "properties": {
+        "categories": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "primary_category": {"type": "string"},
+        "classification_method": {"enum": ["curated_registry", "name_heuristic", "unresolved"]},
+        "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "basis": {"type": "array", "items": {"type": "string"}},
+        "review_state": {"const": "provisional"}
+      }
+    },
+    "patent_portfolio": {"type": "object"},
+    "identifiers": {"type": "object"},
+    "corporate_profile": {"type": "object"},
+    "provenance": {"type": "object"},
+    "review_flags": {"type": "array", "items": {"type": "string"}},
+    "review_state": {"const": "pending_review"}
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "version": "battery-patent-company-taxonomy-1.0.0",
+  "classification_mode": "multi_label",
+  "categories": {
+    "cell_battery_manufacturer": {
+      "label": "Cell & battery manufacturer",
+      "definition": "Companies that manufacture electrochemical cells, batteries or battery modules."
+    },
+    "materials_supplier": {
+      "label": "Materials & chemicals",
+      "definition": "Suppliers of active materials, electrolytes, separators, binders, conductive additives or battery-grade chemicals."
+    },
+    "automotive_oem": {
+      "label": "Automotive OEM",
+      "definition": "Vehicle manufacturers and automotive groups applying battery technology."
+    },
+    "electronics_power_systems": {
+      "label": "Electronics & power systems",
+      "definition": "Electronics, controls, power-conversion, sensing and industrial electrical-system companies."
+    },
+    "energy_storage_integrator": {
+      "label": "Energy-storage integrator",
+      "definition": "Companies integrating cells into stationary, mobility or industrial energy-storage systems."
+    },
+    "charging_grid": {
+      "label": "Charging & grid",
+      "definition": "Charging, grid-interface, power-network and energy-service companies."
+    },
+    "recycling_circularity": {
+      "label": "Recycling & circularity",
+      "definition": "Battery collection, dismantling, recycling, recovery and second-life companies."
+    },
+    "research_academic": {
+      "label": "Research & academic",
+      "definition": "Universities, public research organisations, laboratories and technology institutes."
+    },
+    "other_industrial": {
+      "label": "Other industrial",
+      "definition": "Corporate applicants not yet assigned to a more specific battery value-chain category."
+    },
+    "unresolved": {
+      "label": "Unresolved entity",
+      "definition": "Applicant names that require entity-curator resolution before a value-chain role can be asserted."
+    }
+  }
+}

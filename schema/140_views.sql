@@ -347,3 +347,65 @@ COMMENT ON VIEW v_contradiction IS
   'Same quantity, same statistic, same conditions, different sources, '
   'values more than 2% apart. Surfacing these is the point: a database '
   'that hides disagreement is less useful than one that names it.';
+
+-- ---------------------------------------------------------------------
+-- PATENT COMPANY LANDSCAPE. Accepted data only. Applicant is deliberately
+-- separate from assignee/current owner because those relations are temporal.
+-- ---------------------------------------------------------------------
+CREATE VIEW v_patent_company AS
+SELECT org.uid AS company_uid,
+       org.name,
+       org.legal_name,
+       org.country,
+       org.website,
+       org.ror_id,
+       org.gleif_lei,
+       array_remove(array_agg(DISTINCT oca.category_code)
+         FILTER (WHERE oca.review='accepted'), NULL) AS value_chain_categories,
+       count(DISTINCT pp.id) FILTER (
+         WHERE pol.review='accepted' AND pp.review='accepted') AS publication_count,
+       min(pp.publication_date) FILTER (
+         WHERE pol.review='accepted' AND pp.review='accepted') AS earliest_publication_date,
+       max(pp.publication_date) FILTER (
+         WHERE pol.review='accepted' AND pp.review='accepted') AS latest_publication_date,
+       array_remove(array_agg(DISTINCT pc.category_code)
+         FILTER (WHERE pc.review='accepted' AND pp.review='accepted'), NULL) AS technical_categories
+  FROM organization org
+  JOIN patent_organization_link pol ON pol.organization_id=org.id
+  JOIN patent_publication pp ON pp.id=pol.publication_id
+  LEFT JOIN organization_category_assignment oca ON oca.organization_id=org.id
+  LEFT JOIN patent_classification pc ON pc.publication_id=pp.id
+ GROUP BY org.id, org.uid, org.name, org.legal_name, org.country,
+          org.website, org.ror_id, org.gleif_lei;
+
+CREATE VIEW v_patent_company_publication AS
+SELECT org.uid AS company_uid,
+       pp.uid AS publication_uid,
+       pp.publication_number,
+       pp.title,
+       pp.abstract,
+       pp.jurisdiction,
+       pp.kind_code,
+       pp.priority_date,
+       pp.filing_date,
+       pp.publication_date,
+       pp.grant_date,
+       pol.relation,
+       pol.observed_as_of,
+       pf.uid AS family_uid,
+       pf.docdb_family_id,
+       pf.primary_category,
+       pp.publication_url,
+       pp.legal_status,
+       pp.legal_status_jurisdiction,
+       pp.legal_status_as_of
+  FROM patent_organization_link pol
+  JOIN organization org ON org.id=pol.organization_id
+  JOIN patent_publication pp ON pp.id=pol.publication_id
+  LEFT JOIN patent_family pf ON pf.id=pp.family_id
+ WHERE pol.review='accepted' AND pp.review='accepted';
+
+COMMENT ON VIEW v_patent_company IS
+  'Accepted company portfolio summary. Empty until entity and patent records pass human review.';
+COMMENT ON VIEW v_patent_company_publication IS
+  'Accepted evidence-bearing company-to-publication links; relation distinguishes applicant, assignee and observed owner.';

@@ -225,6 +225,13 @@ GROUP BY p.uid, p.model_number, o.name, p.brand, pc.designation,
 ORDER BY o.name, p.model_number
 """
 
+PATENT_COMPANY_SELECT = """
+SELECT company_uid, name, legal_name, country, website, ror_id, gleif_lei,
+       value_chain_categories, publication_count,
+       earliest_publication_date, latest_publication_date, technical_categories
+  FROM bd.v_patent_company
+"""
+
 
 class Handler(BaseHTTPRequestHandler):
     db: Db = None                                  # injected in serve()
@@ -275,6 +282,11 @@ class Handler(BaseHTTPRequestHandler):
                 return self._cell_detail(urllib.parse.unquote(m.group(1)), q)
             if path == "/v1/packs":
                 return self._packs(q, self.path)
+            if path == "/v1/patent-companies":
+                return self._patent_companies(q, self.path)
+            m = re.fullmatch(r"/v1/patent-companies/(.+)", path)
+            if m:
+                return self._patent_company_detail(urllib.parse.unquote(m.group(1)))
             if path == "/v1/crosswalk":
                 return self._crosswalk()
             return self._error(404, "Not found",
@@ -293,9 +305,9 @@ class Handler(BaseHTTPRequestHandler):
                          "data": {
             "type": "info", "id": "/",
             "api_version": API_VERSION,
-            "entry_types_by_format": {"json": ["cells"]},
-            "available_endpoints": ["info", "links", "cells", "crosswalk",
-                                    "versions"],
+            "entry_types_by_format": {"json": ["cells", "packs", "patent-companies"]},
+            "available_endpoints": ["info", "links", "cells", "packs",
+                                    "patent-companies", "crosswalk", "versions"],
             "formats": ["json"],
             "license": "CC-BY-4.0 for curated data; source documents are not "
                        "redistributed",
@@ -409,6 +421,48 @@ class Handler(BaseHTTPRequestHandler):
                            returned=len(rows), more=more)
         payload["links"] = {"base_url": "/v1"}
         self._send(200, payload)
+
+    def _patent_companies(self, q: dict, request_url: str):
+        limit = min(int((q.get("page_limit") or [50])[0]), 500)
+        offset = int((q.get("page_offset") or [0])[0])
+        category = (q.get("category") or [""])[0]
+        country = (q.get("country") or [""])[0].upper()
+        clauses, params = [], []
+        if category:
+            clauses.append("%s = ANY(value_chain_categories)")
+            params.append(category)
+        if country:
+            clauses.append("country = %s")
+            params.append(country)
+        sql = PATENT_COMPANY_SELECT
+        if clauses:
+            sql += " WHERE " + " AND ".join(clauses)
+        sql += " ORDER BY publication_count DESC, name LIMIT %s OFFSET %s"
+        rows = self.db.query(sql, params + [limit + 1, offset])
+        more = len(rows) > limit
+        rows = rows[:limit]
+        payload = envelope(rows, request_url=request_url, returned=len(rows), more=more,
+                           extra_meta={"review_boundary": "accepted records only"})
+        if more:
+            payload["links"] = {"next": f"/v1/patent-companies?page_limit={limit}&page_offset={offset + limit}"}
+        self._send(200, payload)
+
+    def _patent_company_detail(self, uid: str):
+        rows = self.db.query(PATENT_COMPANY_SELECT + " WHERE company_uid = %s", [uid])
+        if not rows:
+            return self._error(404, "Not found", f"No accepted patent company with id {uid!r}")
+        publications = self.db.query(
+            "SELECT * FROM bd.v_patent_company_publication WHERE company_uid = %s "
+            "ORDER BY publication_date DESC NULLS LAST, publication_number",
+            [uid],
+        )
+        self._send(200, envelope(
+            [{"type": "patent-companies", "id": uid, "attributes": rows[0],
+              "relationships": {"publications": {"data": publications}}}],
+            request_url=self.path, returned=1, more=False,
+            extra_meta={"review_boundary": "accepted records only",
+                        "ownership_note": "Applicant, assignee and observed owner are distinct relations."},
+        ))
 
     def _cell_detail(self, uid: str, q: dict):
         sql, params = to_psycopg(f"{CELL_SELECT} WHERE product_uid = $1", [uid])

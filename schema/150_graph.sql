@@ -99,7 +99,13 @@ SELECT 'PatentPublication', 'patpub:'||pp.id, pp.uid, pp.title,
                           'jurisdiction',pp.jurisdiction,
                           'legal_status',pp.legal_status,
                           'legal_status_as_of',pp.legal_status_as_of)
-  FROM bd.patent_publication pp WHERE pp.review='accepted';
+  FROM bd.patent_publication pp WHERE pp.review='accepted'
+UNION ALL
+SELECT 'OrganizationCategory', 'orgcat:'||oc.code, 'org-category/'||oc.code,
+       oc.label,
+       jsonb_build_object('definition',oc.definition,
+                          'taxonomy_version',oc.taxonomy_version)
+  FROM bd.organization_category oc;
 
 CREATE UNIQUE INDEX ON bd_graph.node (node_key);
 CREATE INDEX ON bd_graph.node (label);
@@ -117,6 +123,13 @@ UNION ALL
 -- corporate ownership (Sanyo -> Panasonic)
 SELECT 'SUBSIDIARY_OF', 'org:'||o.id, 'org:'||o.parent_id, '{}'::jsonb
   FROM bd.organization o WHERE o.parent_id IS NOT NULL
+UNION ALL
+SELECT 'IN_COMPANY_CATEGORY', 'org:'||oca.organization_id,
+       'orgcat:'||oca.category_code,
+       jsonb_build_object('primary',oca.is_primary,'confidence',oca.confidence,
+                          'taxonomy_version',oca.taxonomy_version)
+  FROM bd.organization_category_assignment oca
+ WHERE oca.review='accepted'
 UNION ALL
 -- product -> its revisions
 SELECT 'HAS_REVISION', 'prod:'||pr.product_id, 'rev:'||pr.id,
@@ -214,6 +227,14 @@ SELECT 'PUBLISHED_AS', 'patpub:'||pp.id, 'src:'||pp.source_id,
        jsonb_build_object('publication_number',pp.publication_number)
   FROM bd.patent_publication pp
  WHERE pp.source_id IS NOT NULL AND pp.review='accepted'
+UNION ALL
+SELECT 'PATENT_'||upper(pol.relation), 'org:'||pol.organization_id,
+       'patpub:'||pol.publication_id,
+       jsonb_build_object('observed_as_of',pol.observed_as_of,
+                          'raw_name',pol.raw_name)
+  FROM bd.patent_organization_link pol
+  JOIN bd.patent_publication pp ON pp.id=pol.publication_id
+ WHERE pol.review='accepted' AND pp.review='accepted'
 UNION ALL
 -- reviewed links keep the relationship label as evidence-bearing metadata
 SELECT 'PATENT_RELATES_TO', 'patfam:'||pel.family_id,
@@ -313,4 +334,3 @@ BEGIN
   RETURN format('AGE present. %s nodes / %s edges staged for graph "%s". '
                 'Run tools/load_age.py to populate.', n_nodes, n_edges, graph_name);
 END$$;
-

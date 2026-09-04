@@ -1,0 +1,253 @@
+{
+  "acceptance_boundary": {
+    "applicant_is_not_current_owner": true,
+    "company_candidates_are_accepted_organizations": false,
+    "legal_status_is_not_freedom_to_operate_advice": true,
+    "publication_candidates_are_accepted_patents": false,
+    "requires_docdb_family_resolution": true,
+    "requires_human_review": true
+  },
+  "classification": {
+    "company_entity_type_counts": {
+      "company": 325,
+      "research_institution": 29,
+      "unknown_organization": 29
+    },
+    "company_taxonomy_version": "battery-patent-company-taxonomy-1.0.0",
+    "company_value_chain_category_counts": {
+      "automotive_oem": 24,
+      "cell_battery_manufacturer": 31,
+      "charging_grid": 1,
+      "electronics_power_systems": 30,
+      "energy_storage_integrator": 11,
+      "materials_supplier": 25,
+      "other_industrial": 228,
+      "recycling_circularity": 2,
+      "research_academic": 29,
+      "unresolved": 26
+    },
+    "labels_are_provisional": true,
+    "publication_primary_category_counts": {
+      "electrical_power": 96,
+      "electrochemistry_materials": 350,
+      "electronics_hardware": 71,
+      "mechanical_structures": 96,
+      "software_control": 100,
+      "thermal_safety": 88
+    },
+    "publication_requested_category_counts": {
+      "electrical": 139,
+      "hardware": 223,
+      "mechanical": 125,
+      "software": 113
+    },
+    "technical_taxonomy_version": "battery-patent-taxonomy-1.0.0"
+  },
+  "counts": {
+    "company_candidates": 383,
+    "cross_import_duplicates_excluded": 0,
+    "natural_person_applicant_mentions": 14,
+    "new_publication_candidates": 801,
+    "publication_company_links": 856,
+    "raw_publication_observations": 850,
+    "registry_resolved_company_mentions": 410,
+    "repeated_query_rows_collapsed": 49,
+    "unique_publications_before_existing_filter": 801
+  },
+  "created_at": "2026-09-04",
+  "files": {
+    "companies/part-0001.jsonl": {
+      "records": 100,
+      "sha256": "21f8b689994b833f23ac9481d0bb20192df2573641103dfcd05b88d7f701ef79"
+    },
+    "companies/part-0002.jsonl": {
+      "records": 100,
+      "sha256": "05c9a9eee09b95718ff318c9986638fddc3006bfcf6726a50e1a9fa709af1f2a"
+    },
+    "companies/part-0003.jsonl": {
+      "records": 100,
+      "sha256": "de4ec4047506e8429d72ae95e5ba9661a32b40007da93df58d4c41aabfee1b82"
+    },
+    "companies/part-0004.jsonl": {
+      "records": 83,
+      "sha256": "9fec9a73be8733fef1409115cfb2581ed69709d4c348c02d945497d910cd537c"
+    },
+    "company-index.json": {
+      "records": 1,
+      "sha256": "cb18b91f051b6bd0dcb4bff69815f9ce5f92a25306cbd29981225ab9572b0a44"
+    },
+    "duplicate-report.json": {
+      "records": 1,
+      "sha256": "c3ab9f8fd4a85536dbd4c2178506ebb2178cbea4ab65c14e346f4a809ad045e8"
+    },
+    "publication-candidates/part-0001.jsonl": {
+      "records": 100,
+      "sha256": "9d339a4a9017df76c7e2adbb0995b66b94859f51c1c73ba29face48ff8663f81"
+    },
+    "publication-candidates/part-0002.jsonl": {
+      "records": 100,
+      "sha256": "8b5fdcc38dffaa5dd940ba010cc431fe7b6c2fa8cb255681a08c3c43fe1809bb"
+    },
+    "publication-candidates/part-0003.jsonl": {
+      "records": 100,
+      "sha256": "79d01daa7f92c9a44c9e01706301e1b2946c7138f0ff8231b02af8d7e9bc3701"
+    },
+    "publication-candidates/part-0004.jsonl": {
+      "records": 100,
+      "sha256": "85de117d65baf93115d873a8406bc85061c6ac48b8d47c5640c044e8ec9e29d0"
+    },
+    "publication-candidates/part-0005.jsonl": {
+      "records": 100,
+      "sha256": "c8e41dfc659a49461889fad26b854172e087ca49aac561c53b07a99e6d75d931"
+    },
+    "publication-candidates/part-0006.jsonl": {
+      "records": 100,
+      "sha256": "140c6f1e6d68aa4a02bd49bbcaaa1833978ca6cd23718a62d21f224c81b9b9e7"
+    },
+    "publication-candidates/part-0007.jsonl": {
+      "records": 100,
+      "sha256": "99b16fcdb060cc862c4796b2cbd739050018ca8e1a1ce0d7cec301c70b868f65"
+    },
+    "publication-candidates/part-0008.jsonl": {
+      "records": 100,
+      "sha256": "4fafb99eb19f07c145964600e1f1a5362dd6cf9fa9b0181b12b2e8f0671ff211"
+    },
+    "publication-candidates/part-0009.jsonl": {
+      "records": 1,
+      "sha256": "9994aaef62dc165a06ea7fe0d72bd8eaa258ff9473cbb9cf5bc63a86a370b131"
+    },
+    "publication-company-links/part-0001.jsonl": {
+      "records": 150,
+      "sha256": "eceef97f9eb6c91f6526fad0cbcc21461dda392028e26fb8820766bd388810ec"
+    },
+    "publication-company-links/part-0002.jsonl": {
+      "records": 150,
+      "sha256": "e5ae4cd769b01c3ff05254c5c15b289417c6f59f9a8444b8e19c23bff608e565"
+    },
+    "publication-company-links/part-0003.jsonl": {
+      "records": 150,
+      "sha256": "0e9d8d0eea7886e72af1e921828a32415a8ab2713448b1001a6ecb36136ad71f"
+    },
+    "publication-company-links/part-0004.jsonl": {
+      "records": 150,
+      "sha256": "95fe9392b788ce620ca1f2ed491c33f53f24a0101e50d783899e4b6aef380808"
+    },
+    "publication-company-links/part-0005.jsonl": {
+      "records": 150,
+      "sha256": "06f0a8b5adc1a9a5caa67c988dd07b8b331d65643d971e668dfe6e28724de9de"
+    },
+    "publication-company-links/part-0006.jsonl": {
+      "records": 106,
+      "sha256": "87a5501bdd11db56f8a14a0708ed92e093d4fddea4ead09f73cd18cb342ca30c"
+    },
+    "source/g01r31-367.json": {
+      "purpose": "battery diagnostics, SOC/SOH estimation and computer-implemented monitoring",
+      "records": 100,
+      "seed_categories": [
+        "software_control",
+        "electronics_hardware"
+      ],
+      "seed_ipc": "G01R31-367",
+      "sha256": "47055a71ec2ff70a9c729bc40ed4ae6f8bd5f11d796d6baa4c760b219f3b1920"
+    },
+    "source/h01m10-0525.json": {
+      "purpose": "rechargeable lithium-ion cells and materials",
+      "records": 350,
+      "seed_categories": [
+        "electrochemistry_materials"
+      ],
+      "seed_ipc": "H01M10-0525",
+      "sha256": "6f6781b145fac728a0c068292745ef359f7012e0cc7ef141de2c1d52e92bcbe5"
+    },
+    "source/h01m10-44.json": {
+      "purpose": "battery charge/discharge control and electrical management",
+      "records": 100,
+      "seed_categories": [
+        "electrical_power"
+      ],
+      "seed_ipc": "H01M10-44",
+      "sha256": "d4e2d35316e77af0260afe909602ad429878a96ee0fb3b9c435000364f9278b2"
+    },
+    "source/h01m10-48.json": {
+      "purpose": "battery monitoring, sensing and test hardware",
+      "records": 100,
+      "seed_categories": [
+        "electronics_hardware"
+      ],
+      "seed_ipc": "H01M10-48",
+      "sha256": "6c6326874b2ec8fac748e82e38cb2facba481913de0fe806daf63a32cc17bc02"
+    },
+    "source/h01m10-613.json": {
+      "purpose": "battery thermal management",
+      "records": 100,
+      "seed_categories": [
+        "thermal_safety"
+      ],
+      "seed_ipc": "H01M10-613",
+      "sha256": "7aebf5c34dc1edd120fd188c3b6900d5edad8b657fcfe9157637c69c9ab5ce03"
+    },
+    "source/h01m50-20.json": {
+      "purpose": "battery modules, packs, housings and structural arrangements",
+      "records": 100,
+      "seed_categories": [
+        "mechanical_structures"
+      ],
+      "seed_ipc": "H01M50-20",
+      "sha256": "835e8c701e4749e199db0b4cea55b408a8c1546efa857d2bd266440b1a9b719c"
+    }
+  },
+  "import_id": "epo-linked-data-battery-patents-2026-09-04",
+  "schema_version": "1.1.0",
+  "source": {
+    "endpoint": "https://data.epo.org/linked-data/query",
+    "landing_url": "https://data.epo.org/linked-data/",
+    "license": "CC-BY-4.0",
+    "publisher": "European Patent Office",
+    "query_scope": {
+      "g01r31-367.json": {
+        "purpose": "battery diagnostics, SOC/SOH estimation and computer-implemented monitoring",
+        "seed_categories": [
+          "software_control",
+          "electronics_hardware"
+        ],
+        "seed_ipc": "G01R31-367"
+      },
+      "h01m10-0525.json": {
+        "purpose": "rechargeable lithium-ion cells and materials",
+        "seed_categories": [
+          "electrochemistry_materials"
+        ],
+        "seed_ipc": "H01M10-0525"
+      },
+      "h01m10-44.json": {
+        "purpose": "battery charge/discharge control and electrical management",
+        "seed_categories": [
+          "electrical_power"
+        ],
+        "seed_ipc": "H01M10-44"
+      },
+      "h01m10-48.json": {
+        "purpose": "battery monitoring, sensing and test hardware",
+        "seed_categories": [
+          "electronics_hardware"
+        ],
+        "seed_ipc": "H01M10-48"
+      },
+      "h01m10-613.json": {
+        "purpose": "battery thermal management",
+        "seed_categories": [
+          "thermal_safety"
+        ],
+        "seed_ipc": "H01M10-613"
+      },
+      "h01m50-20.json": {
+        "purpose": "battery modules, packs, housings and structural arrangements",
+        "seed_categories": [
+          "mechanical_structures"
+        ],
+        "seed_ipc": "H01M50-20"
+      }
+    },
+    "snapshot_date": "2026-09-04"
+  }
+}

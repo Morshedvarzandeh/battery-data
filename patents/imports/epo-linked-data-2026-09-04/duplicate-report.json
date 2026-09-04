@@ -1,0 +1,669 @@
+{
+  "company_name_country_conflicts": [
+    {
+      "countries": [
+        "CN",
+        "HK"
+      ],
+      "normalized_name": "amperex technology limited"
+    }
+  ],
+  "cross_import_publication_duplicates_excluded": [],
+  "family_duplicate_status": "provisional_hints_computed;_docdb_resolution_required",
+  "normalized_title_collision_groups": [
+    {
+      "normalized_title": "a method for estimating a battery state",
+      "publication_numbers": [
+        "EP3983815A1",
+        "EP3983816A1"
+      ]
+    },
+    {
+      "normalized_title": "battery",
+      "publication_numbers": [
+        "EP2779280A2",
+        "EP4386907A1",
+        "EP4535496A1"
+      ]
+    },
+    {
+      "normalized_title": "battery cell battery and electric device",
+      "publication_numbers": [
+        "EP4407740A1",
+        "EP4618217A1",
+        "EP4672482A1",
+        "EP4756945A1"
+      ]
+    },
+    {
+      "normalized_title": "battery cell battery and electrical apparatus",
+      "publication_numbers": [
+        "EP4510371A1",
+        "EP4641807A1"
+      ]
+    },
+    {
+      "normalized_title": "battery diagnosis apparatus and battery diagnosis method",
+      "publication_numbers": [
+        "EP4667954A1",
+        "EP4692816A1"
+      ]
+    },
+    {
+      "normalized_title": "battery diagnosis device and method",
+      "publication_numbers": [
+        "EP3690461A1",
+        "EP4768960A1",
+        "EP4768973A1",
+        "EP4782852A1"
+      ]
+    },
+    {
+      "normalized_title": "battery management apparatus and operation method therefor",
+      "publication_numbers": [
+        "EP4692824A1",
+        "EP4760308A1"
+      ]
+    },
+    {
+      "normalized_title": "battery management device and method",
+      "publication_numbers": [
+        "EP4148950A2",
+        "EP4155748A1",
+        "EP4502632A1"
+      ]
+    },
+    {
+      "normalized_title": "battery module",
+      "publication_numbers": [
+        "EP3739661A1",
+        "EP3776690A1",
+        "EP3952012A1",
+        "EP3958377A1",
+        "EP3982464A1",
+        "EP4131601A1",
+        "EP4131602A1"
+      ]
+    },
+    {
+      "normalized_title": "battery module and battery pack comprising same",
+      "publication_numbers": [
+        "EP3958379A1",
+        "EP4553989A1"
+      ]
+    },
+    {
+      "normalized_title": "battery module and battery pack including same",
+      "publication_numbers": [
+        "EP3934015A1",
+        "EP4040582A1",
+        "EP4181275A1",
+        "EP4181290A1",
+        "EP4181292A1"
+      ]
+    },
+    {
+      "normalized_title": "battery pack",
+      "publication_numbers": [
+        "EP2424006A1",
+        "EP3327889A1",
+        "EP3591740A1",
+        "EP3855553A1",
+        "EP3859871A2",
+        "EP4485647A1",
+        "EP4773348A1"
+      ]
+    },
+    {
+      "normalized_title": "battery pack and device including same",
+      "publication_numbers": [
+        "EP4020672A1",
+        "EP4071884A1"
+      ]
+    },
+    {
+      "normalized_title": "battery pack and electrical device",
+      "publication_numbers": [
+        "EP3671891A1",
+        "EP4589729A1"
+      ]
+    },
+    {
+      "normalized_title": "battery pack and vehicle comprising same",
+      "publication_numbers": [
+        "EP4199214A1",
+        "EP4369507A1"
+      ]
+    },
+    {
+      "normalized_title": "battery pack and vehicle including same",
+      "publication_numbers": [
+        "EP4376160A1",
+        "EP4475280A1",
+        "EP4769746A1"
+      ]
+    },
+    {
+      "normalized_title": "battery system",
+      "publication_numbers": [
+        "EP2485293A1",
+        "EP4074534A1"
+      ]
+    },
+    {
+      "normalized_title": "construction machine",
+      "publication_numbers": [
+        "EP3813220A1",
+        "EP4279661A1"
+      ]
+    },
+    {
+      "normalized_title": "device and method for diagnosing battery",
+      "publication_numbers": [
+        "EP4040174A1",
+        "EP4137829A1"
+      ]
+    },
+    {
+      "normalized_title": "electric storage device",
+      "publication_numbers": [
+        "EP2040320A1",
+        "EP2523237A1"
+      ]
+    },
+    {
+      "normalized_title": "electroactive materials for metal ion batteries",
+      "publication_numbers": [
+        "EP3183765A1",
+        "EP3837729A1",
+        "EP3878033A1"
+      ]
+    },
+    {
+      "normalized_title": "electrochemical device",
+      "publication_numbers": [
+        "EP0109727A2",
+        "EP3977547A1",
+        "EP4131539A1"
+      ]
+    },
+    {
+      "normalized_title": "electrolytic solution electrochemical device lithium ion secondary battery and module",
+      "publication_numbers": [
+        "EP2840641A1",
+        "EP4060782A1"
+      ]
+    },
+    {
+      "normalized_title": "energy storage device",
+      "publication_numbers": [
+        "EP3596773A1",
+        "EP4593178A1"
+      ]
+    },
+    {
+      "normalized_title": "lithium ion battery",
+      "publication_numbers": [
+        "EP2405522A1",
+        "EP2751865A1",
+        "EP2907177A2",
+        "EP4367732A1",
+        "EP4783289A1"
+      ]
+    },
+    {
+      "normalized_title": "lithium ion secondary battery",
+      "publication_numbers": [
+        "EP1970979A1",
+        "EP3113255A1",
+        "EP3206245A1"
+      ]
+    },
+    {
+      "normalized_title": "lithium secondary battery",
+      "publication_numbers": [
+        "EP1717885A1",
+        "EP1796185A1",
+        "EP4354528A1",
+        "EP4589676A1",
+        "EP4589683A1",
+        "EP4618215A1",
+        "EP4645498A1"
+      ]
+    },
+    {
+      "normalized_title": "method for estimating parameter of equivalent circuit model for battery and battery management system",
+      "publication_numbers": [
+        "EP3671242A1",
+        "EP3674726A1"
+      ]
+    },
+    {
+      "normalized_title": "nonaqueous electrolyte secondary battery",
+      "publication_numbers": [
+        "EP0844680A1",
+        "EP1289044A1",
+        "EP1496562A1",
+        "EP2249417A2",
+        "EP2672553A1",
+        "EP3859840A1",
+        "EP4030524A1",
+        "EP4787453A1"
+      ]
+    },
+    {
+      "normalized_title": "nonaqueous secondary battery",
+      "publication_numbers": [
+        "EP0744782A1",
+        "EP0814522A2",
+        "EP0836238A1"
+      ]
+    },
+    {
+      "normalized_title": "power source device and vehicle and power storage device each equipped with same",
+      "publication_numbers": [
+        "EP4131563A1",
+        "EP4131564A1"
+      ]
+    },
+    {
+      "normalized_title": "power supply device electric vehicle using same and power storage device",
+      "publication_numbers": [
+        "EP4043258A1",
+        "EP4102626A1"
+      ]
+    },
+    {
+      "normalized_title": "secondary battery",
+      "publication_numbers": [
+        "EP2273601A1",
+        "EP2822064A1",
+        "EP4213282A1"
+      ]
+    }
+  ],
+  "provisional_family_hint_groups": [],
+  "raw_publication_observations": 850,
+  "repeated_query_hit_groups": [
+    {
+      "publication_number": "EP0757422A2",
+      "seed_ipcs": [
+        "G01R31-367",
+        "H01M10-44"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP0795206A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP1408574A2",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2212941A2",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2408044A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2418724A2",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2685596A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2816705A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2827468A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2831608A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2869366A1",
+      "seed_ipcs": [
+        "H01M10-0525",
+        "H01M10-44"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2869392A2",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2870671A2",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP2956984A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-613"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP3255721A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP3285328A1",
+      "seed_ipcs": [
+        "H01M10-48",
+        "H01M10-613"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP3389132A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP3540844A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-613"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP3671242A1",
+      "seed_ipcs": [
+        "G01R31-367",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP3761439A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP3951999A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP3952011A1",
+      "seed_ipcs": [
+        "H01M10-613",
+        "H01M50-20"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP3975311A1",
+      "seed_ipcs": [
+        "H01M10-48",
+        "H01M10-613"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4005008A1",
+      "seed_ipcs": [
+        "H01M10-613",
+        "H01M50-20"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4030546A1",
+      "seed_ipcs": [
+        "H01M10-48",
+        "H01M50-20"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4040174A1",
+      "seed_ipcs": [
+        "G01R31-367",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4042511A1",
+      "seed_ipcs": [
+        "H01M10-48",
+        "H01M50-20"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4099482A1",
+      "seed_ipcs": [
+        "H01M10-613",
+        "H01M50-20"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4120429A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4128413A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4131567A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M50-20"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4279661A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4404329A1",
+      "seed_ipcs": [
+        "G01R31-367",
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 3
+    },
+    {
+      "publication_number": "EP4407762A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M50-20"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4443616A1",
+      "seed_ipcs": [
+        "H01M10-48",
+        "H01M50-20"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4450986A1",
+      "seed_ipcs": [
+        "G01R31-367",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4503254A1",
+      "seed_ipcs": [
+        "G01R31-367",
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 3
+    },
+    {
+      "publication_number": "EP4503255A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4561851A1",
+      "seed_ipcs": [
+        "H01M10-48",
+        "H01M10-613"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4616468A1",
+      "seed_ipcs": [
+        "H01M10-48",
+        "H01M10-613"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4652642A1",
+      "seed_ipcs": [
+        "H01M10-613",
+        "H01M50-20"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4653889A1",
+      "seed_ipcs": [
+        "G01R31-367",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4693590A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4761042A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4764529A1",
+      "seed_ipcs": [
+        "G01R31-367",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4776380A1",
+      "seed_ipcs": [
+        "H01M10-44",
+        "H01M10-48"
+      ],
+      "source_record_count": 2
+    },
+    {
+      "publication_number": "EP4787538A2",
+      "seed_ipcs": [
+        "H01M10-48",
+        "H01M10-613"
+      ],
+      "source_record_count": 2
+    }
+  ],
+  "same_application_publication_groups": [],
+  "unique_publications_before_existing_filter": 801
+}

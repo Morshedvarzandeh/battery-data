@@ -1,0 +1,302 @@
+{
+  "version": "battery-patent-company-registry-1.0.0",
+  "purpose": "Conservative alias resolution and public profile seeds. Corporate relationships are not inferred.",
+  "companies": [
+    {
+      "uid": "org/catl",
+      "canonical_name": "Contemporary Amperex Technology Co., Limited",
+      "legal_name": "Contemporary Amperex Technology Co., Limited",
+      "country": "CN",
+      "aliases": ["CATL", "Contemporary Amperex Technology Co Ltd", "CONTEMPORARY AMPEREX TECHNOLOGY CO., LIMITED"],
+      "website": "https://www.catl.com/en/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "energy_storage_integrator"]
+    },
+    {
+      "uid": "org/samsung-sdi",
+      "canonical_name": "Samsung SDI Co., Ltd.",
+      "legal_name": "Samsung SDI Co., Ltd.",
+      "country": "KR",
+      "aliases": ["SAMSUNG SDI CO., LTD.", "Samsung SDI Co Ltd"],
+      "website": "https://www.samsungsdi.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "electronics_power_systems"]
+    },
+    {
+      "uid": "org/lg-energy-solution",
+      "canonical_name": "LG Energy Solution, Ltd.",
+      "legal_name": "LG Energy Solution, Ltd.",
+      "country": "KR",
+      "aliases": ["LG Energy Solution Ltd", "LG ENERGY SOLUTION, LTD."],
+      "website": "https://www.lgensol.com/en/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "energy_storage_integrator"]
+    },
+    {
+      "uid": "org/lg-chem",
+      "canonical_name": "LG Chem, Ltd.",
+      "legal_name": "LG Chem, Ltd.",
+      "country": "KR",
+      "aliases": ["LG Chem Ltd", "LG CHEM, LTD."],
+      "website": "https://www.lgchem.com/main/index",
+      "organization_type": "company",
+      "value_chain_categories": ["materials_supplier", "cell_battery_manufacturer"]
+    },
+    {
+      "uid": "org/sk-on",
+      "canonical_name": "SK On Co., Ltd.",
+      "legal_name": "SK On Co., Ltd.",
+      "country": "KR",
+      "aliases": ["SK ON CO., LTD.", "SK On Co Ltd"],
+      "website": "https://www.sk-on.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer"]
+    },
+    {
+      "uid": "org/sk-innovation",
+      "canonical_name": "SK Innovation Co., Ltd.",
+      "legal_name": "SK Innovation Co., Ltd.",
+      "country": "KR",
+      "aliases": ["SK innovation Co., Ltd.", "SK INNOVATION CO., LTD."],
+      "website": "https://www.skinnovation.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["materials_supplier", "cell_battery_manufacturer"]
+    },
+    {
+      "uid": "org/byd",
+      "canonical_name": "BYD Company Limited",
+      "legal_name": "BYD Company Limited",
+      "country": "CN",
+      "aliases": ["BYD COMPANY LIMITED", "BYD Co., Ltd."],
+      "website": "https://www.bydglobal.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "automotive_oem", "energy_storage_integrator"]
+    },
+    {
+      "uid": "org/eve-power",
+      "canonical_name": "EVE Power Co., Ltd.",
+      "legal_name": "EVE Power Co., Ltd.",
+      "country": "CN",
+      "aliases": ["Eve Power Co., Ltd.", "EVE POWER CO., LTD."],
+      "website": "https://www.evebattery.com/en",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer"]
+    },
+    {
+      "uid": "org/svolt-energy",
+      "canonical_name": "SVOLT Energy Technology Co., Ltd.",
+      "legal_name": "SVOLT Energy Technology Co., Ltd.",
+      "country": "CN",
+      "aliases": ["SVOLT ENERGY TECHNOLOGY CO., LTD", "Svolt Energy Technology Co Ltd"],
+      "website": "https://www.svolt.cn/en/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "energy_storage_integrator"]
+    },
+    {
+      "uid": "org/toshiba",
+      "canonical_name": "Toshiba Corporation",
+      "legal_name": "Toshiba Corporation",
+      "country": "JP",
+      "aliases": ["Kabushiki Kaisha Toshiba", "KABUSHIKI KAISHA TOSHIBA", "TOSHIBA CORPORATION"],
+      "website": "https://www.global.toshiba/ww/top.html",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "electronics_power_systems"]
+    },
+    {
+      "uid": "org/gs-yuasa-international",
+      "canonical_name": "GS Yuasa International Ltd.",
+      "legal_name": "GS Yuasa International Ltd.",
+      "country": "JP",
+      "aliases": ["GS YUASA INTERNATIONAL LTD.", "GS Yuasa International Ltd"],
+      "website": "https://www.gs-yuasa.com/en/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "energy_storage_integrator"]
+    },
+    {
+      "uid": "org/saft",
+      "canonical_name": "Saft",
+      "legal_name": null,
+      "country": "FR",
+      "aliases": ["SAFT", "Saft Groupe S.A."],
+      "website": "https://www.saft.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "energy_storage_integrator"]
+    },
+    {
+      "uid": "org/varta-microbattery",
+      "canonical_name": "VARTA Microbattery GmbH",
+      "legal_name": "VARTA Microbattery GmbH",
+      "country": "DE",
+      "aliases": ["Varta Microbattery GmbH", "VARTA MICROBATTERY GMBH"],
+      "website": "https://www.varta-ag.com/en/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer"]
+    },
+    {
+      "uid": "org/umicore",
+      "canonical_name": "Umicore",
+      "legal_name": "Umicore NV/SA",
+      "country": "BE",
+      "aliases": ["UMICORE"],
+      "website": "https://www.umicore.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["materials_supplier", "recycling_circularity"]
+    },
+    {
+      "uid": "org/basf",
+      "canonical_name": "BASF SE",
+      "legal_name": "BASF SE",
+      "country": "DE",
+      "aliases": ["BASF AKTIENGESELLSCHAFT", "BASF Aktiengesellschaft"],
+      "website": "https://www.basf.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["materials_supplier"]
+    },
+    {
+      "uid": "org/nexeon",
+      "canonical_name": "Nexeon Limited",
+      "legal_name": "Nexeon Limited",
+      "country": "GB",
+      "aliases": ["NEXEON LIMITED"],
+      "website": "https://www.nexeon.co.uk/",
+      "organization_type": "company",
+      "value_chain_categories": ["materials_supplier"]
+    },
+    {
+      "uid": "org/robert-bosch",
+      "canonical_name": "Robert Bosch GmbH",
+      "legal_name": "Robert Bosch GmbH",
+      "country": "DE",
+      "aliases": ["ROBERT BOSCH GMBH"],
+      "website": "https://www.bosch.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["electronics_power_systems", "automotive_oem"]
+    },
+    {
+      "uid": "org/tesla",
+      "canonical_name": "Tesla, Inc.",
+      "legal_name": "Tesla, Inc.",
+      "country": "US",
+      "aliases": ["TESLA, INC.", "Tesla Motors, Inc."],
+      "website": "https://www.tesla.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["automotive_oem", "cell_battery_manufacturer", "energy_storage_integrator"]
+    },
+    {
+      "uid": "org/toyota-motor",
+      "canonical_name": "Toyota Motor Corporation",
+      "legal_name": "Toyota Motor Corporation",
+      "country": "JP",
+      "aliases": ["TOYOTA JIDOSHA KABUSHIKI KAISHA", "TOYOTA MOTOR CORPORATION"],
+      "website": "https://global.toyota/en/",
+      "organization_type": "company",
+      "value_chain_categories": ["automotive_oem"]
+    },
+    {
+      "uid": "org/nissan-motor",
+      "canonical_name": "Nissan Motor Co., Ltd.",
+      "legal_name": "Nissan Motor Co., Ltd.",
+      "country": "JP",
+      "aliases": ["NISSAN MOTOR CO., LTD.", "Nissan Motor Co., Ltd"],
+      "website": "https://www.nissan-global.com/EN/",
+      "organization_type": "company",
+      "value_chain_categories": ["automotive_oem"]
+    },
+    {
+      "uid": "org/huawei-technologies",
+      "canonical_name": "Huawei Technologies Co., Ltd.",
+      "legal_name": "Huawei Technologies Co., Ltd.",
+      "country": "CN",
+      "aliases": ["HUAWEI TECHNOLOGIES CO., LTD."],
+      "website": "https://www.huawei.com/en/",
+      "organization_type": "company",
+      "value_chain_categories": ["electronics_power_systems", "energy_storage_integrator"]
+    },
+    {
+      "uid": "org/amperex-technology-limited",
+      "canonical_name": "Amperex Technology Limited",
+      "legal_name": "Amperex Technology Limited",
+      "country": "CN",
+      "aliases": ["NingDe Amperex Technology Limited", "Ningde Amperex Technology Limited", "Ningde Amperex Technology Ltd.", "ATL"],
+      "website": "https://www.atlbattery.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer"]
+    },
+    {
+      "uid": "org/cea",
+      "canonical_name": "Commissariat à l'Énergie Atomique et aux Énergies Alternatives",
+      "legal_name": "Commissariat à l'Énergie Atomique et aux Énergies Alternatives",
+      "country": "FR",
+      "aliases": ["Commissariat à l'Energie Atomique", "Commissariat à l'Energie Atomique et aux Energies Alternatives"],
+      "website": "https://www.cea.fr/english",
+      "organization_type": "research_institution",
+      "value_chain_categories": ["research_academic"]
+    },
+    {
+      "uid": "org/sanyo-electric",
+      "canonical_name": "Sanyo Electric Co., Ltd.",
+      "legal_name": "Sanyo Electric Co., Ltd.",
+      "country": "JP",
+      "aliases": ["SANYO ELECTRIC Co., Ltd.", "SANYO ELECTRIC CO., LTD."],
+      "website": null,
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "electronics_power_systems"]
+    },
+    {
+      "uid": "org/matsushita-electric-industrial",
+      "canonical_name": "Matsushita Electric Industrial Co., Ltd.",
+      "legal_name": "Matsushita Electric Industrial Co., Ltd.",
+      "country": "JP",
+      "aliases": ["MATSUSHITA ELECTRIC INDUSTRIAL CO., LTD."],
+      "website": null,
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "electronics_power_systems"]
+    },
+    {
+      "uid": "org/sony-corporation",
+      "canonical_name": "Sony Corporation",
+      "legal_name": "Sony Corporation",
+      "country": "JP",
+      "aliases": ["SONY CORPORATION"],
+      "website": "https://www.sony.com/en/",
+      "organization_type": "company",
+      "value_chain_categories": ["cell_battery_manufacturer", "electronics_power_systems"]
+    },
+    {
+      "uid": "org/mitsubishi-chemical",
+      "canonical_name": "Mitsubishi Chemical Corporation",
+      "legal_name": "Mitsubishi Chemical Corporation",
+      "country": "JP",
+      "aliases": ["MITSUBISHI CHEMICAL CORPORATION"],
+      "website": "https://www.mcgc.com/english/",
+      "organization_type": "company",
+      "value_chain_categories": ["materials_supplier"]
+    },
+    {
+      "uid": "org/renault",
+      "canonical_name": "Renault S.A.S.",
+      "legal_name": "Renault S.A.S.",
+      "country": "FR",
+      "aliases": ["RENAULT S.A.S."],
+      "website": "https://www.renaultgroup.com/en/",
+      "organization_type": "company",
+      "value_chain_categories": ["automotive_oem"]
+    },
+    {
+      "uid": "org/volvo-truck",
+      "canonical_name": "Volvo Truck Corporation",
+      "legal_name": "Volvo Truck Corporation",
+      "country": "SE",
+      "aliases": ["VOLVO TRUCK CORPORATION"],
+      "website": "https://www.volvotrucks.com/",
+      "organization_type": "company",
+      "value_chain_categories": ["automotive_oem"]
+    }
+  ],
+  "review_state": "pending_entity_review",
+  "notes": [
+    "Aliases merge only when the registry explicitly identifies the same entity or punctuation/case normalisation is exact.",
+    "Subsidiaries, former companies and corporate groups remain distinct unless an entity curator approves a relationship.",
+    "Websites and legal names are profile seeds, not proof of current ownership or patent title."
+  ]
+}
