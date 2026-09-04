@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Method — how a value is stored — battery-data</title>
+<meta name="description" content="Why a capacity is kept with its rate, temperature and cut-off; how a gap in a datasheet is recorded rather than filled; and why a derived number says it is derived.">
+<link rel="canonical" href="https://morshedvarzandeh.github.io/battery-data/method.html">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="battery-data">
+<meta property="og:title" content="Method — how a value is stored — battery-data">
+<meta property="og:description" content="Why a capacity is kept with its rate, temperature and cut-off; how a gap in a datasheet is recorded rather than filled; and why a derived number says it is derived.">
+<meta property="og:url" content="https://morshedvarzandeh.github.io/battery-data/method.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Method — how a value is stored — battery-data">
+<meta name="twitter:description" content="Why a capacity is kept with its rate, temperature and cut-off; how a gap in a datasheet is recorded rather than filled; and why a derived number says it is derived.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='6' width='14' height='22' rx='2.5' fill='none' stroke='%231d1d1f' stroke-width='2.4'/%3E%3Crect x='13' y='3' width='6' height='3' rx='1' fill='%231d1d1f'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<script>document.documentElement.className="js"</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="inner">
+    <a class="home" href="index.html">battery&#8209;data</a>
+    <div class="links"><a href="products.html">Products</a><a href="cells.html">Cell library</a><a href="makers.html">Makers</a><a href="method.html" aria-current="page">Method</a><a href="bench.html">Bench</a><a href="https://github.com/Morshedvarzandeh/battery-data" rel="noopener">GitHub</a></div>
+    <div class="spacer"></div>
+    <button id="searchbtn" aria-label="Search products" title="Search (press /)">Search</button>
+  </div>
+</header>
+
+<div class="searchwrap" id="searchwrap" role="dialog" aria-modal="true" aria-label="Search products">
+  <div class="searchbox">
+    <input id="searchinput" type="search" placeholder="Search products" autocomplete="off" spellcheck="false">
+    <div class="results" id="results"></div>
+    <p class="legal" style="margin-top:14px">Esc to close &middot; &uarr;&darr; to move &middot; Return to open</p>
+  </div>
+</div>
+
+<main id="main">
+  <section class="hero center">
+    <div class="wrap">
+      <p class="eyebrow rev">Method</p>
+      <h1 class="display rev">A number is not<br>a specification.</h1>
+      <p class="lead rev" style="margin-top:20px">Roughly half of what a battery datasheet calls a specification is not
+        a property of the product. It is a measurement result, under conditions the document may or may not disclose.
+        This library stores the conditions.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="grid g2" style="gap:clamp(28px,5vw,64px)">
+        <div class="rev">
+          <h2 class="sub">One value, four dependencies</h2>
+          <p class="lead" style="margin-top:14px;font-size:17px">A capacity depends on the rate it was drawn at, the
+            temperature it was drawn at, the voltage it was drawn down to, and whether the figure is the standard,
+            rated or minimum one. Store it in a column called <span class="mono">capacity_mah</span> and all four are
+            gone. Here they are stored beside it, and the database refuses the value if they are missing and
+            unmarked.</p>
+        </div>
+        <div class="rev">
+          <h2 class="sub">Silence is recorded, not filled</h2>
+          <p class="lead" style="margin-top:14px;font-size:17px">When a document gives a number without its conditions,
+            the gap is written down as a gap. 300 values in this library carry at least one
+            <span class="badge flag">not stated</span> marker. That marker is the honest answer to
+            &ldquo;at what rate?&rdquo; and it is what makes the rest of the numbers trustworthy.</p>
+        </div>
+        <div class="rev">
+          <h2 class="sub">Every value keeps its sentence</h2>
+          <p class="lead" style="margin-top:14px;font-size:17px">Each value carries the sentence it was read from, the
+            page it sat on and a link to the document. You can check any figure on this site against its source without
+            leaving the row it appears in. Datasheet PDFs themselves are never redistributed here.</p>
+        </div>
+        <div class="rev">
+          <h2 class="sub">Derived is labelled derived</h2>
+          <p class="lead" style="margin-top:14px;font-size:17px">Specific energy is often absent from a datasheet.
+            Where capacity, voltage and mass are all stated, it is computed &mdash; and said to be computed. Nothing is
+            ever calculated from a value the source did not state.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="title rev">What sits underneath.</h2>
+      <div class="grid g3" style="margin-top:32px">
+        <div class="card plain rev"><h3 class="sub">The schema</h3>
+          <p class="small" style="margin-top:12px">A Postgres schema whose constraints enforce the rule: an internal
+            resistance with no method and no conditions is rejected at insert time, not flagged in review.</p>
+          <p style="margin-top:16px"><a class="arrow" href="https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/02-conventions.md" rel="noopener">The 27 conventions</a></p></div>
+        <div class="card plain rev"><h3 class="sub">The crosswalk</h3>
+          <p class="small" style="margin-top:12px">Datasheet spec, measured test data, fitted model parameters and
+            regulatory passport fields are four vocabularies. This is the mapping between them.</p>
+          <p style="margin-top:16px"><a class="arrow" href="https://github.com/Morshedvarzandeh/battery-data/blob/main/crosswalk/CROSSWALK.md" rel="noopener">BDF · BattINFO · BPX · Passport</a></p></div>
+        <div class="card plain rev"><h3 class="sub">The bench</h3>
+          <p class="small" style="margin-top:12px">The same library, in the working tool: compare products side by side,
+            plot them, print a sourced report, see what is still missing.</p>
+          <p style="margin-top:16px"><a class="arrow" href="bench.html">Open the bench</a></p></div>
+      </div>
+    </div>
+  </section></main>
+
+<footer>
+  <div class="wrap wide">
+    <div class="cols">
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="products.html">All products</a></li>
+          <li><a href="cells.html">The cell library</a></li>
+          <li><a href="makers.html">Manufacturers</a></li>
+          <li><a href="bench.html">Comparison bench</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Understand</h4>
+        <ul>
+          <li><a href="method.html">How a value is stored</a></li>
+          <li><a href="https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/02-conventions.md" rel="noopener">Conventions</a></li>
+          <li><a href="https://github.com/Morshedvarzandeh/battery-data/blob/main/crosswalk/CROSSWALK.md" rel="noopener">Standards crosswalk</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contribute</h4>
+        <ul>
+          <li><a href="https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/06-submitting-a-datasheet.md" rel="noopener">Submit a datasheet</a></li>
+          <li><a href="https://github.com/Morshedvarzandeh/battery-data/tree/main/contrib" rel="noopener">Contribution files</a></li>
+          <li><a href="https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/07-candidate-review.md" rel="noopener">Review queue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Build on it</h4>
+        <ul>
+          <li><a href="https://github.com/Morshedvarzandeh/battery-data/tree/main/api" rel="noopener">Read API</a></li>
+          <li><a href="https://github.com/Morshedvarzandeh/battery-data/tree/main/schema" rel="noopener">Database schema</a></li>
+          <li><a href="https://github.com/Morshedvarzandeh/battery-data/tree/main/tools" rel="noopener">Ingestion tools</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine">
+      <p class="legal">Specifications are quoted from manufacturers&rsquo; own published documents and remain the
+        property of their publishers. No datasheet is redistributed here: each value is stored with the sentence it
+        was read from, a link to the document and the date it was retrieved.</p>
+      <p class="legal">Where a document did not state the rate, the temperature or the cut&#8209;off a value was
+        measured at, this site says so rather than filling the gap. Nothing on these pages is a manufacturer&rsquo;s
+        endorsement, and nothing here is a substitute for the current datasheet.</p>
+      <p class="legal">battery&#8209;data &middot; open source, CC&nbsp;BY&#8209;SA&nbsp;4.0 for the data &middot;
+        <a href="https://github.com/Morshedvarzandeh/battery-data" rel="noopener">github.com/Morshedvarzandeh/battery&#8209;data</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>

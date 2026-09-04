@@ -283,27 +283,41 @@ undo the point of the schema.
 open web/index.html          # or: python -m http.server -d web 8000
 ```
 
-Two pages, no build step, no dependencies, no network calls. Both carry their
-data inline, so they work from a file path as well as from a server.
+Seventy-seven pages, no build step at read time, no dependencies, no network
+calls. Every page is rendered from `contrib/` by `tools/build_site.py`, so its
+specifications are in the HTML before a script runs: readable with JavaScript
+off, and indexable by a crawler that does not run it.
 
-* **`web/index.html`** — the front of the house. An isometric drawing of the
-  library where every solid stands at the size its maker published; the product
-  family; the cell library with filters; one page per product listing every
-  value with the conditions it was measured under and the sentence it was read
-  from; and *Take it for a run*, a discharge model you can drag two dials on.
-* **`web/bench.html`** — the working tool, unchanged: compare, chart, export,
-  print a sourced report.
+| Path | What it is |
+|---|---|
+| `web/index.html` | The front page: the isometric drawing of the library, the product family, the numbers |
+| `web/products.html` | The family — Design, Core, Data, War Room, and the three being built |
+| `web/cells.html` | The library: 64 products, filtered without rebuilding a single card |
+| `web/p/<product>.html` | One page per product. Every value with its conditions, its source sentence and the *Take it for a run* model |
+| `web/m/<maker>.html` | One page per manufacturer |
+| `web/method.html` | Why a value is kept with its conditions |
+| `web/bench.html` | The comparison bench: filter, chart, print a sourced report |
+| `web/site.css`, `app.js`, `data.js` | Shared and cached across every page |
+| `web/sitemap.xml`, `robots.txt` | Generated from the same page list |
 
-Regenerating them:
+A page carries only what it shows. The home page is 21 kB and the library index
+it shares with the rest of the site is 20 kB; the 600 measured values live on
+the 64 product pages, one page each, instead of in a blob every visitor
+downloads. `tools/build_site.py` refuses to write if any page links somewhere
+that does not exist.
+
+Regenerating:
 
 ```bash
-python tools/build_web_data.py     # product data into both pages, from contrib/
+python tools/build_site.py         # the 77 pages, the sitemap and robots.txt
+python tools/build_web_data.py     # the bench's inline copy of the library
 tools/build_wasm.sh                # the Rust model into web/sim.js (needs Rust)
 ```
 
-CI regenerates both and fails on any difference, so neither page can drift from
-the library. `web/sim.js` is committed, so Rust is only needed to change the
-model itself.
+CI runs all three and fails on any difference, so nothing on the site can drift
+from the library. `web/sim.js` is committed, so Rust is only needed to change
+the model itself. Set `BD_SITE_URL` to the domain the site is served from and
+every canonical link, sitemap entry and social card follows.
 
 ---
 

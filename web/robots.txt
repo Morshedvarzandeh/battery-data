@@ -1,0 +1,4 @@
+# battery-data
+User-agent: *
+Allow: /
+Sitemap: https://morshedvarzandeh.github.io/battery-data/sitemap.xml

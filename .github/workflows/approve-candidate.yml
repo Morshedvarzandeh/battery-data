@@ -53,6 +53,7 @@ jobs:
           python tools/check_duplicates.py
           python tools/render_review_issues.py
           python tools/build_web_data.py
+          python tools/build_site.py
 
       - name: Commit the accepted record
         env:
@@ -61,7 +62,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add contrib/ review/ web/index.html web/bench.html
+          git add contrib/ review/ web/
           git commit -m "Accept ${TITLE#\[candidate\] } (#${ISSUE})"
           git pull --rebase origin "${{ github.event.repository.default_branch }}"
           git push origin "HEAD:${{ github.event.repository.default_branch }}"

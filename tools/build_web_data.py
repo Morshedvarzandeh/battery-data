@@ -32,19 +32,15 @@ The hand-curated files are presentation and intent. They are still checked:
 a heading may not name a quantity that does not exist, and may not silently
 drop one that does. That check is what would have caught the invented registry.
 
-TWO PAGES, ONE SOURCE
----------------------
-web/index.html  the public site      -> SITE   (one product at a time, in prose)
-web/bench.html  the comparison tool  -> REGISTRY, TAXONOMY, CONTRIB
+THE BENCH, AND THE SITE
+-----------------------
+This writes the comparison bench, web/bench.html, which carries the whole
+library inline because it compares everything at once. The public site is
+rendered separately by tools/build_site.py, one page per product, from the
+same contributions -- so neither can show a product the other does not have.
 
-Both are generated from the same contributions, so neither can show a product
-the other does not have. The site's copy is the smaller one: it drops the
-curves and the pulse grid it never draws, and stores each source sentence once
-per product instead of once per value read out of it -- a single sentence
-usually carries five.
-
-    python tools/build_web_data.py          # rewrite both pages
-    python tools/build_web_data.py --check  # fail if either is stale (CI)
+    python tools/build_web_data.py          # rewrite the bench
+    python tools/build_web_data.py --check  # fail if it is stale (CI)
 """
 from __future__ import annotations
 import argparse, glob, json, math, os, re, sys
@@ -55,15 +51,13 @@ except ImportError:
     sys.exit("pip install pyyaml")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE_PAGE = os.path.join(ROOT, "web", "index.html")
 BENCH_PAGE = os.path.join(ROOT, "web", "bench.html")
 DATA = os.path.join(ROOT, "web", "data")
 REGISTRY = os.path.join(ROOT, "json-schema", "quantity-registry.json")
 VOCAB = os.path.join(ROOT, "schema", "010_vocabulary.sql")
 
 # Which blobs each page carries. A page is rewritten only between its markers.
-PAGES = {SITE_PAGE: ("SITE",),
-         BENCH_PAGE: ("REGISTRY", "TAXONOMY", "CONTRIB")}
+PAGES = {BENCH_PAGE: ("REGISTRY", "TAXONOMY", "CONTRIB")}
 
 # Marker pairs in the pages. Everything between them is machine-owned; edit the
 # contribution or the file in web/data/, never the region.
@@ -299,60 +293,6 @@ def seed(products: list[dict]) -> list[dict]:
     return sorted(rows, key=lambda r: (-r["ah"], r["cell"]))
 
 
-def site(products: list[dict], groups: dict) -> dict:
-    """The public site's copy: every product, none of the bench's machinery.
-
-    The site shows one product at a time and says where each number came from,
-    so it needs the value, the conditions attached to it, the conditions the
-    document never stated, and the sentence it was read out of. It does not
-    need the curves or the pulse grid, which only the bench draws.
-
-    Quotes are stored once per product and referenced by index. One sentence on
-    a datasheet routinely carries five values -- capacity, voltage, dimensions,
-    weight, cycle life -- and repeating it per value tripled the page.
-    """
-    out, quoted = [], 0
-    for p in products:
-        quotes, seen, obs = [], {}, []
-        for o in p["obs"]:
-            q = o["quote"]
-            if q not in seen:
-                seen[q] = len(quotes)
-                quotes.append(q)
-            row = {"q": o["q"], "v": o["v"], "u": o["u"], "qi": seen[q]}
-            for key in ("stat", "cond", "unstated", "pg"):
-                if o.get(key):                  # empty dict, [] and None all mean absent
-                    row[key] = o[key]
-            obs.append(row)
-        quoted += len(obs)
-        chem = p["chem"]
-        out.append({
-            "uid": p["uid"], "kind": p["kind"], "name": p["cell"],
-            "manu": p["manu"], "model": p["model"],
-            "fmt": p["fmt"], "shape": p["shape"], "dims": p["dims"],
-            "chem": {k: chem.get(k) for k in
-                     ("designation", "cathode", "anode", "electrolyte", "separator")},
-            "m": p["m"], "src": p["source"], "obs": obs, "quotes": quotes,
-            "file": p["file"], "curves": len(p["curves"]),
-        })
-
-    kinds = {}
-    for p in out:
-        kinds[p["kind"]] = kinds.get(p["kind"], 0) + 1
-    return {
-        "PRODUCTS": out,
-        # The same headings the bench groups its datasheet slots under, so a
-        # quantity cannot sit under one name here and another there.
-        "GROUPS": groups,
-        # The counts the front page prints. Derived here so the headline number
-        # and the grid below it can never disagree.
-        "TOTALS": {"products": len(out), "makers": len({p["manu"] for p in out}),
-                   "observations": quoted, "kinds": kinds,
-                   "quotes": sum(len(p["quotes"]) for p in out),
-                   "datasheets": sum(1 for p in out if p["src"].get("kind") == "datasheet")},
-    }
-
-
 def coverage(segments: list[dict], products: list[dict]) -> list[dict]:
     """Mark each target sourced or missing by looking, not by being told.
 
@@ -392,7 +332,6 @@ def build() -> dict:
         "REGISTRY": {"REG": registry,
                      "GROUPS": {k: v for k, v in groups.items() if k not in axis_only}},
         "TAXONOMY": {"FAM": tf["FAM"], "LANDS": tf["LANDS"]},
-        "SITE": site(products, {k: v for k, v in groups.items() if k not in axis_only}),
         "CONTRIB": {"PRODUCTS": products,
                     "COVERAGE": coverage(load(os.path.join(DATA, "coverage.json")), products),
                     "FAMILY_CLAIMS": load(os.path.join(DATA, "family-claims.json"))},

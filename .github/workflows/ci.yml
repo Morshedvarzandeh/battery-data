@@ -120,15 +120,18 @@ jobs:
             echo "::error::review batch is stale. Run the deterministic builders"
             exit 1
           }
-      - name: The pages are generated, not maintained
-        # Both web pages carry a copy of the contribution data. If they can
-        # drift, a merged submission lands in contrib/ and never appears in the
-        # UI -- which makes a working submission flow look broken. This
-        # regenerates and fails on any difference, so the copies cannot rot.
+      - name: The site is generated, not maintained
+        # The website is 77 pages rendered from contrib/, and the bench carries
+        # the same library inline. If either can drift, a merged submission
+        # lands in contrib/ and never appears on the site -- which makes a
+        # working submission flow look broken. This regenerates everything and
+        # fails on any difference, so no copy can rot. build_site.py also
+        # refuses to write if any page links somewhere that does not exist.
         run: |
           python tools/build_web_data.py
-          git diff --exit-code -- web/index.html web/bench.html || {
-            echo "::error::the web pages are stale. Run: python tools/build_web_data.py"
+          python tools/build_site.py
+          git diff --exit-code -- web/ || {
+            echo "::error::the site is stale. Run: python tools/build_site.py && python tools/build_web_data.py"
             exit 1
           }
       - name: Extraction schema builds from the contribution schema
