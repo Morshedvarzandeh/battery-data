@@ -20,7 +20,9 @@ from filter_grammar import FilterError, parse_filter  # noqa: E402
 def schema_views() -> set[str]:
     views = set()
     for f in glob.glob(os.path.join(ROOT, "schema", "*.sql")):
-        views |= set(re.findall(r"CREATE (?:OR REPLACE )?VIEW (\w+)", open(f, encoding="utf-8").read()))
+        text = open(f, encoding="utf-8").read()
+        views |= {v.rsplit(".", 1)[-1] for v in
+                  re.findall(r"CREATE (?:OR REPLACE )?VIEW ([\w.]+)", text)}
     return views
 
 
@@ -29,7 +31,7 @@ class RegistryIsConsistent(unittest.TestCase):
         views = schema_views()
         for name, res in R.RESOURCES.items():
             if res.view:
-                self.assertIn(res.view, views, f"{name} -> bd.{res.view}")
+                self.assertIn(res.view, views, f"{name} -> {res.schema}.{res.view}")
             for rel, (view, _, _) in res.related.items():
                 self.assertIn(view, views, f"{name}.{rel} -> bd.{view}")
 
@@ -38,12 +40,26 @@ class RegistryIsConsistent(unittest.TestCase):
         self.assertEqual(sorted(placed), sorted(R.RESOURCES))
         self.assertEqual(len(placed), len(set(placed)))
 
+    def test_only_the_queue_is_unaccepted(self):
+        """One resource serves rows that are not facts; it must say so, live in
+        its own layer, and read from staging rather than bd.*."""
+        unaccepted = [n for n, r in R.RESOURCES.items() if not r.accepted]
+        self.assertEqual(unaccepted, ["layer_candidates"])
+        res = R.RESOURCES["layer_candidates"]
+        self.assertEqual(res.schema, "bd_stage")
+        self.assertEqual(R.layer_of("layer_candidates"), "queue")
+        self.assertIn("not facts", res.description.lower())
+        for r in R.RESOURCES.values():
+            if r.accepted and r.view:
+                self.assertEqual(r.schema, "bd", r.view)
+
     def test_layers_read_in_supply_chain_order(self):
         codes = [l["code"] for l in R.LAYERS]
         self.assertEqual(codes[0], "map")
         self.assertLess(codes.index("chemistry"), codes.index("products"))
         self.assertLess(codes.index("companies"), codes.index("supply_chain"))
         self.assertLess(codes.index("supply_chain"), codes.index("market"))
+        self.assertGreater(codes.index("queue"), codes.index("market"))
 
     def test_graph_rels_match_projection(self):
         text = open(os.path.join(ROOT, "schema", "190_graph.sql"), encoding="utf-8").read()

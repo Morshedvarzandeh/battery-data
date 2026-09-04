@@ -47,6 +47,13 @@ and a hint.
 | Standards | `standards`, `certifications` |
 | Applications | `applications` |
 | Sources and vocabulary | `sources`, `quantities`, `units`, `crosswalk` |
+| The queue (not accepted data) | `layer_candidates` |
+
+Every resource but one serves accepted data. `layer_candidates` serves the
+candidate queue described in [`docs/14-candidates.md`](14-candidates.md):
+recalled names awaiting verification. It reads from `bd_stage`, not `bd`, its
+responses carry `"accepted": false` and a warning, and `/v1/info` marks it so
+a client can refuse to treat it as fact.
 
 Every row that has a source carries `source_uid`, `source_url`, `page` and
 `quote`. A detail response adds the related rows a reader wants next: a cell
@@ -141,7 +148,9 @@ curl -G $B/v1/graph/reachable --data-urlencode 'start=cell/samsung-sdi/inr21700-
    columns, `source_uid`, `source_url`, `page`, `quote`, where the row has a
    source).
 2. Register it in `api/resources.py`: the view, the id column, a description,
-   a default sort, related rows, examples. Put its name in a layer.
+   a default sort, related rows, examples. Put its name in a layer. A view
+   outside `bd` needs `schema=`, and one whose rows are not facts needs
+   `accepted=False` so the envelope warns.
 3. Nothing else. The field map, the endpoints, `/v1/info`, `POST /v1/query`
    and the OpenAPI document follow from the registry; `tests/test_api_registry.py`
    checks that the view exists and the resource sits in exactly one layer.

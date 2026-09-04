@@ -1,0 +1,1517 @@
+# MINES, REFINERIES, RECYCLERS AND TEST LABORATORIES, and the companies that
+# run them: candidates, not records.
+#
+# The two ends of the chain around the cell: where the lithium, nickel,
+# cobalt, graphite and manganese come from, and where the battery goes when
+# it is finished. Test laboratories and research facilities are here too,
+# because they are the sites that measured what the datasheets claim.
+#
+# Every entry is a name recalled without a document: no source, no page, no
+# quote, no tonnage and no capacity. A resource estimate or an output figure
+# is exactly what this database refuses without its reporting code, its
+# cut-off grade and its page, so none is even attempted here - the numbers
+# come from the annual report the verifier's locator will point at.
+#
+# Ownership is the other thing to check: Greenbushes, Wodgina, Mount Marion
+# and Cauchari-Olaroz are joint ventures, and the operator named below is a
+# guess at which partner a source will credit.
+schema_version: '1'
+candidate_set: upstream-and-recycling
+recalled_by: Claude, from training data, in a session with no network access to company or industry sources (every
+  manufacturer, distributor and publisher domain is blocked by the environment's egress policy)
+recalled_on: '2026-09-04'
+caveat: 'Every entry here is a NAME RECALLED FROM TRAINING, not a fact read from a document. No entry carries a source,
+  a page or a quote, and none may enter bd.* as it stands. tools/verify_layer_candidates.py fetches the page named
+  in verify_at, finds the name on it and writes a contribution whose locator quotes that page; only then, and only
+  after review, does a name become a record. Statuses, localities and listings are the fields most likely to be stale:
+  plants are announced, paused, renamed and cancelled faster than any recall keeps up.'
+companies:
+- uid: org/albemarle
+  name: Albemarle Corporation
+  country: US
+  hq_region: North Carolina
+  hq_locality: Charlotte
+  website: https://www.albemarle.com
+  roles:
+  - miner
+  - refiner
+  makes:
+  - spodumene concentrate
+  - lithium carbonate and hydroxide
+  verify_at: https://www.albemarle.com
+  ticker: ALB
+  exchange: NYSE
+  confidence: high
+- uid: org/sqm
+  name: SQM
+  legal_name: Sociedad Química y Minera de Chile S.A.
+  country: CL
+  hq_locality: Santiago
+  website: https://www.sqm.com
+  roles:
+  - miner
+  - refiner
+  makes:
+  - lithium carbonate and hydroxide
+  - iodine
+  - potash
+  verify_at: https://www.sqm.com
+  ticker: SQM
+  exchange: NYSE
+  confidence: high
+- uid: org/ganfeng-lithium
+  name: Ganfeng Lithium
+  legal_name: Jiangxi Ganfeng Lithium Group Co., Ltd.
+  country: CN
+  hq_region: Jiangxi
+  hq_locality: Xinyu
+  website: https://www.ganfenglithium.com
+  roles:
+  - miner
+  - refiner
+  - manufacturer
+  - recycler
+  makes:
+  - lithium chemicals
+  - lithium metal
+  - cells
+  verify_at: https://www.ganfenglithium.com
+  ticker: '002460'
+  exchange: SZSE
+  confidence: high
+- uid: org/tianqi-lithium
+  name: Tianqi Lithium
+  country: CN
+  hq_region: Sichuan
+  hq_locality: Chengdu
+  website: https://www.tianqilithium.com
+  roles:
+  - miner
+  - refiner
+  makes:
+  - spodumene concentrate
+  - lithium hydroxide and carbonate
+  verify_at: https://www.tianqilithium.com
+  ticker: '002466'
+  exchange: SZSE
+  confidence: high
+- uid: org/pilbara-minerals
+  name: Pilbara Minerals
+  country: AU
+  hq_region: Western Australia
+  hq_locality: Perth
+  website: https://www.pilbaraminerals.com.au
+  roles: &id001
+  - miner
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.pilbaraminerals.com.au
+  ticker: PLS
+  exchange: ASX
+  confidence: high
+- uid: org/mineral-resources
+  name: Mineral Resources
+  country: AU
+  hq_region: Western Australia
+  hq_locality: Perth
+  website: https://www.mineralresources.com.au
+  roles:
+  - miner
+  makes:
+  - spodumene concentrate
+  - iron ore
+  - mining services
+  verify_at: https://www.mineralresources.com.au
+  ticker: MIN
+  exchange: ASX
+  confidence: high
+- uid: org/igo
+  name: IGO Limited
+  country: AU
+  hq_region: Western Australia
+  hq_locality: Perth
+  website: https://www.igo.com.au
+  roles: *id001
+  makes:
+  - spodumene concentrate
+  - nickel
+  verify_at: https://www.igo.com.au
+  ticker: IGO
+  exchange: ASX
+  confidence: medium
+- uid: org/liontown-resources
+  name: Liontown Resources
+  country: AU
+  hq_region: Western Australia
+  hq_locality: Perth
+  website: https://www.ltresources.com.au
+  roles: *id001
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.ltresources.com.au
+  ticker: LTR
+  exchange: ASX
+  confidence: medium
+- uid: org/lithium-americas
+  name: Lithium Americas
+  country: CA
+  hq_region: British Columbia
+  hq_locality: Vancouver
+  website: https://www.lithiumamericas.com
+  roles: *id001
+  makes:
+  - lithium from clay
+  verify_at: https://www.lithiumamericas.com
+  ticker: LAC
+  exchange: NYSE
+  confidence: high
+- uid: org/sigma-lithium
+  name: Sigma Lithium
+  country: CA
+  hq_region: British Columbia
+  hq_locality: Vancouver
+  website: https://www.sigmalithiumresources.com
+  roles: *id001
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.sigmalithiumresources.com
+  ticker: SGML
+  exchange: NASDAQ
+  confidence: medium
+- uid: org/nemaska-lithium
+  name: Nemaska Lithium
+  country: CA
+  hq_region: Quebec
+  hq_locality: Quebec City
+  website: https://www.nemaskalithium.com
+  roles:
+  - miner
+  - refiner
+  makes:
+  - spodumene concentrate
+  - lithium hydroxide
+  verify_at: https://www.nemaskalithium.com
+  confidence: medium
+- uid: org/vulcan-energy
+  name: Vulcan Energy Resources
+  country: AU
+  hq_region: Baden-Württemberg
+  hq_locality: Karlsruhe
+  website: https://v-er.eu
+  roles:
+  - refiner
+  makes:
+  - geothermal lithium hydroxide
+  verify_at: https://v-er.eu
+  ticker: VUL
+  exchange: ASX
+  confidence: medium
+- uid: org/rio-tinto
+  name: Rio Tinto
+  country: GB
+  hq_region: England
+  hq_locality: London
+  website: https://www.riotinto.com
+  roles:
+  - miner
+  - refiner
+  makes:
+  - lithium
+  - aluminium
+  - copper
+  - iron ore
+  verify_at: https://www.riotinto.com
+  ticker: RIO
+  exchange: LSE
+  note: Acquired Arcadium Lithium in 2025; the lithium assets now sit here.
+  confidence: high
+- uid: org/glencore
+  name: Glencore
+  country: CH
+  hq_region: Zug
+  hq_locality: Baar
+  website: https://www.glencore.com
+  roles:
+  - miner
+  - refiner
+  - recycler
+  makes:
+  - cobalt
+  - nickel
+  - copper
+  - recycled metals
+  verify_at: https://www.glencore.com
+  ticker: GLEN
+  exchange: LSE
+  confidence: high
+- uid: org/cmoc
+  name: CMOC Group
+  former_names:
+  - China Molybdenum
+  country: CN
+  hq_region: Henan
+  hq_locality: Luoyang
+  website: https://www.cmoc.com
+  roles: *id001
+  makes:
+  - cobalt
+  - copper
+  - molybdenum
+  - niobium
+  verify_at: https://www.cmoc.com
+  ticker: '603993'
+  exchange: SSE
+  confidence: high
+- uid: org/vale
+  name: Vale
+  country: BR
+  hq_locality: Rio de Janeiro
+  website: https://www.vale.com
+  roles: *id001
+  makes:
+  - nickel
+  - copper
+  - iron ore
+  verify_at: https://www.vale.com
+  ticker: VALE
+  exchange: NYSE
+  confidence: high
+- uid: org/nornickel
+  name: Nornickel
+  legal_name: MMC Norilsk Nickel
+  country: RU
+  hq_locality: Moscow
+  website: https://www.nornickel.com
+  roles:
+  - miner
+  - refiner
+  makes:
+  - nickel
+  - palladium
+  - copper
+  - cobalt
+  verify_at: https://www.nornickel.com
+  confidence: medium
+- uid: org/eramet
+  name: Eramet
+  country: FR
+  hq_region: Île-de-France
+  hq_locality: Paris
+  website: https://www.eramet.com
+  roles:
+  - miner
+  - refiner
+  makes:
+  - nickel
+  - manganese
+  - lithium
+  verify_at: https://www.eramet.com
+  ticker: ERA
+  exchange: Euronext
+  confidence: high
+- uid: org/terrafame
+  name: Terrafame
+  country: FI
+  hq_region: Kainuu
+  hq_locality: Sotkamo
+  website: https://www.terrafame.com
+  roles:
+  - miner
+  - refiner
+  makes:
+  - nickel and cobalt sulphate
+  verify_at: https://www.terrafame.com
+  confidence: medium
+- uid: org/nickel-industries
+  name: Nickel Industries
+  country: AU
+  hq_region: New South Wales
+  hq_locality: Sydney
+  website: https://www.nickelindustries.com
+  roles:
+  - miner
+  - refiner
+  makes:
+  - nickel matte
+  - nickel pig iron
+  verify_at: https://www.nickelindustries.com
+  ticker: NIC
+  exchange: ASX
+  confidence: medium
+- uid: org/tsingshan
+  name: Tsingshan Holding Group
+  country: CN
+  hq_region: Zhejiang
+  hq_locality: Wenzhou
+  website: https://www.tssgroup.com.cn
+  roles:
+  - miner
+  - refiner
+  makes:
+  - nickel
+  - stainless steel
+  verify_at: https://www.tssgroup.com.cn
+  note: Large, privately held and thinly documented in English; the web page needs checking first.
+  confidence: low
+- uid: org/south32
+  name: South32
+  country: AU
+  hq_region: Western Australia
+  hq_locality: Perth
+  website: https://www.south32.net
+  roles: *id001
+  makes:
+  - manganese
+  - aluminium
+  - zinc
+  verify_at: https://www.south32.net
+  ticker: S32
+  exchange: ASX
+  confidence: medium
+- uid: org/assmang
+  name: Assmang
+  country: ZA
+  hq_region: Gauteng
+  hq_locality: Johannesburg
+  website: https://www.assore.com
+  roles: *id001
+  makes:
+  - manganese ore
+  verify_at: https://www.assore.com
+  confidence: low
+- uid: org/li-cycle
+  name: Li-Cycle
+  country: CA
+  hq_region: Ontario
+  hq_locality: Toronto
+  website: https://li-cycle.com
+  roles: &id002
+  - recycler
+  makes:
+  - black mass
+  - recovered metals
+  verify_at: https://li-cycle.com
+  note: Went through insolvency proceedings in 2025; the corporate status is the first thing to read.
+  confidence: low
+- uid: org/redwood-materials
+  name: Redwood Materials
+  country: US
+  hq_region: Nevada
+  hq_locality: Carson City
+  website: https://www.redwoodmaterials.com
+  roles:
+  - recycler
+  - cathode_producer
+  - foil_can_producer
+  makes:
+  - black mass
+  - cathode active material
+  - copper foil
+  verify_at: https://www.redwoodmaterials.com
+  confidence: high
+- uid: org/ascend-elements
+  name: Ascend Elements
+  country: US
+  hq_region: Massachusetts
+  hq_locality: Westborough
+  website: https://ascendelements.com
+  roles:
+  - recycler
+  - cathode_producer
+  makes:
+  - black mass
+  - precursor and cathode from recycled feed
+  verify_at: https://ascendelements.com
+  confidence: medium
+- uid: org/cirba-solutions
+  name: Cirba Solutions
+  country: US
+  hq_region: North Carolina
+  hq_locality: Charlotte
+  website: https://www.cirbasolutions.com
+  roles: *id002
+  makes:
+  - battery collection
+  - black mass
+  - recovered metals
+  verify_at: https://www.cirbasolutions.com
+  confidence: medium
+- uid: org/ecobat
+  name: Ecobat
+  country: US
+  hq_region: Texas
+  hq_locality: Dallas
+  website: https://www.ecobat.com
+  roles: *id002
+  makes:
+  - lead recycling
+  - lithium battery recycling
+  verify_at: https://www.ecobat.com
+  confidence: medium
+- uid: org/hydrovolt
+  name: Hydrovolt
+  country: 'NO'
+  hq_region: Østfold
+  hq_locality: Fredrikstad
+  website: https://www.hydrovolt.com
+  roles: *id002
+  makes:
+  - black mass
+  verify_at: https://www.hydrovolt.com
+  note: Hydro and Northvolt joint venture; Northvolt's insolvency may have changed it.
+  confidence: medium
+- uid: org/fortum-battery-recycling
+  name: Fortum Battery Recycling
+  country: FI
+  hq_region: Uusimaa
+  hq_locality: Espoo
+  website: https://www.fortum.com
+  roles: *id002
+  makes:
+  - black mass
+  - recovered lithium, nickel and cobalt
+  verify_at: https://www.fortum.com
+  confidence: medium
+- uid: org/duesenfeld
+  name: Duesenfeld
+  country: DE
+  hq_region: Lower Saxony
+  hq_locality: Wendeburg
+  website: https://www.duesenfeld.com
+  roles: *id002
+  makes:
+  - mechanical battery recycling
+  - black mass
+  verify_at: https://www.duesenfeld.com
+  confidence: medium
+- uid: org/accurec
+  name: Accurec Recycling
+  country: DE
+  hq_region: North Rhine-Westphalia
+  hq_locality: Krefeld
+  website: https://accurec.de
+  roles: *id002
+  makes:
+  - battery recycling
+  verify_at: https://accurec.de
+  confidence: medium
+- uid: org/cylib
+  name: cylib
+  country: DE
+  hq_region: North Rhine-Westphalia
+  hq_locality: Aachen
+  website: https://cylib.de
+  roles: *id002
+  makes:
+  - black mass
+  - recovered lithium and graphite
+  verify_at: https://cylib.de
+  confidence: medium
+- uid: org/tozero
+  name: tozero
+  country: DE
+  hq_region: Bavaria
+  hq_locality: Munich
+  website: https://tozero.de
+  roles: *id002
+  makes:
+  - recovered lithium and graphite
+  verify_at: https://tozero.de
+  confidence: low
+- uid: org/altilium
+  name: Altilium
+  country: GB
+  hq_region: England
+  hq_locality: Plymouth
+  website: https://altiliumgroup.com
+  roles: *id002
+  makes:
+  - black mass
+  - recycled cathode active material
+  verify_at: https://altiliumgroup.com
+  confidence: low
+- uid: org/sungeel-hitech
+  name: SungEel HiTech
+  country: KR
+  hq_region: North Jeolla
+  hq_locality: Gunsan
+  website: https://www.sungeelht.com
+  roles: *id002
+  makes:
+  - black mass
+  - recovered metals
+  verify_at: https://www.sungeelht.com
+  confidence: medium
+- uid: org/stena-recycling
+  name: Stena Recycling
+  country: SE
+  hq_region: Västra Götaland
+  hq_locality: Gothenburg
+  website: https://www.stenarecycling.com
+  roles: *id002
+  makes:
+  - battery recycling
+  verify_at: https://www.stenarecycling.com
+  confidence: medium
+- uid: org/connected-energy
+  name: Connected Energy
+  country: GB
+  hq_region: England
+  hq_locality: Newcastle upon Tyne
+  website: https://connected-energy.co.uk
+  roles:
+  - second_life
+  - integrator
+  makes:
+  - second-life storage systems
+  verify_at: https://connected-energy.co.uk
+  confidence: low
+- uid: org/b2u-storage
+  name: B2U Storage Solutions
+  country: US
+  hq_region: California
+  hq_locality: Santa Clarita
+  website: https://b2uco.com
+  roles:
+  - second_life
+  - integrator
+  makes:
+  - second-life storage
+  verify_at: https://b2uco.com
+  confidence: low
+- uid: org/moment-energy
+  name: Moment Energy
+  country: CA
+  hq_region: British Columbia
+  hq_locality: Coquitlam
+  website: https://www.momentenergy.com
+  roles:
+  - second_life
+  - integrator
+  makes:
+  - second-life storage
+  verify_at: https://www.momentenergy.com
+  confidence: low
+- uid: org/tuv-sud
+  name: TÜV SÜD
+  country: DE
+  hq_region: Bavaria
+  hq_locality: Munich
+  website: https://www.tuvsud.com
+  roles:
+  - lab
+  - certification_body
+  makes:
+  - battery testing
+  - UN 38.3
+  - IEC 62660 and 62619 certification
+  verify_at: https://www.tuvsud.com
+  confidence: high
+- uid: org/tuv-rheinland
+  name: TÜV Rheinland
+  country: DE
+  hq_region: North Rhine-Westphalia
+  hq_locality: Cologne
+  website: https://www.tuv.com
+  roles:
+  - lab
+  - certification_body
+  makes:
+  - battery testing and certification
+  verify_at: https://www.tuv.com
+  confidence: high
+- uid: org/ul-solutions
+  name: UL Solutions
+  country: US
+  hq_region: Illinois
+  hq_locality: Northbrook
+  website: https://www.ul.com
+  roles:
+  - lab
+  - certification_body
+  makes:
+  - UL 1642, UL 2054 and UL 9540A testing
+  verify_at: https://www.ul.com
+  ticker: ULS
+  exchange: NYSE
+  confidence: high
+- uid: org/intertek
+  name: Intertek
+  country: GB
+  hq_region: England
+  hq_locality: London
+  website: https://www.intertek.com
+  roles:
+  - lab
+  - certification_body
+  makes:
+  - battery testing
+  verify_at: https://www.intertek.com
+  ticker: ITRK
+  exchange: LSE
+  confidence: high
+- uid: org/sgs
+  name: SGS
+  country: CH
+  hq_locality: Geneva
+  website: https://www.sgs.com
+  roles:
+  - lab
+  - certification_body
+  makes:
+  - battery testing
+  verify_at: https://www.sgs.com
+  confidence: medium
+- uid: org/dekra
+  name: DEKRA
+  country: DE
+  hq_region: Baden-Württemberg
+  hq_locality: Stuttgart
+  website: https://www.dekra.com
+  roles:
+  - lab
+  - certification_body
+  makes:
+  - battery and vehicle testing
+  verify_at: https://www.dekra.com
+  confidence: medium
+- uid: org/csa-group
+  name: CSA Group
+  country: CA
+  hq_region: Ontario
+  hq_locality: Toronto
+  website: https://www.csagroup.org
+  roles:
+  - lab
+  - certification_body
+  makes:
+  - battery certification
+  verify_at: https://www.csagroup.org
+  confidence: medium
+- uid: org/bam
+  name: BAM
+  legal_name: Bundesanstalt für Materialforschung und -prüfung
+  country: DE
+  hq_region: Berlin
+  hq_locality: Berlin
+  website: https://www.bam.de
+  roles:
+  - lab
+  - research_institute
+  makes:
+  - battery safety and abuse testing
+  - transport testing
+  verify_at: https://www.bam.de
+  confidence: medium
+- uid: org/nrel
+  name: NREL
+  legal_name: National Renewable Energy Laboratory
+  country: US
+  hq_region: Colorado
+  hq_locality: Golden
+  website: https://www.nrel.gov
+  roles:
+  - research_institute
+  - lab
+  makes:
+  - battery ageing, thermal and safety research
+  verify_at: https://www.nrel.gov
+  confidence: high
+- uid: org/sandia
+  name: Sandia National Laboratories
+  country: US
+  hq_region: New Mexico
+  hq_locality: Albuquerque
+  website: https://www.sandia.gov
+  roles:
+  - research_institute
+  - lab
+  makes:
+  - battery abuse testing
+  - grid storage research
+  verify_at: https://www.sandia.gov
+  confidence: high
+- uid: org/idaho-national-laboratory
+  name: Idaho National Laboratory
+  country: US
+  hq_region: Idaho
+  hq_locality: Idaho Falls
+  website: https://inl.gov
+  roles:
+  - research_institute
+  - lab
+  makes:
+  - battery test centre
+  - fast-charge research
+  verify_at: https://inl.gov
+  confidence: high
+- uid: org/argonne
+  name: Argonne National Laboratory
+  country: US
+  hq_region: Illinois
+  hq_locality: Lemont
+  website: https://www.anl.gov
+  roles:
+  - research_institute
+  - lab
+  makes:
+  - cell prototyping (CAMP facility)
+  - materials research
+  verify_at: https://www.anl.gov
+  confidence: high
+- uid: org/fraunhofer-ise
+  name: Fraunhofer ISE
+  country: DE
+  hq_region: Baden-Württemberg
+  hq_locality: Freiburg
+  website: https://www.ise.fraunhofer.de
+  roles:
+  - research_institute
+  - lab
+  makes:
+  - battery and solar research
+  verify_at: https://www.ise.fraunhofer.de
+  confidence: high
+- uid: org/zsw
+  name: ZSW
+  legal_name: Zentrum für Sonnenenergie- und Wasserstoff-Forschung
+  country: DE
+  hq_region: Baden-Württemberg
+  hq_locality: Ulm
+  website: https://www.zsw-bw.de
+  roles:
+  - research_institute
+  - lab
+  makes:
+  - cell production research
+  - battery testing
+  verify_at: https://www.zsw-bw.de
+  confidence: medium
+- uid: org/wmg-warwick
+  name: WMG, University of Warwick
+  country: GB
+  hq_region: England
+  hq_locality: Coventry
+  website: https://warwick.ac.uk/fac/sci/wmg
+  roles:
+  - research_institute
+  - lab
+  makes:
+  - cell characterisation
+  - battery scale-up
+  verify_at: https://warwick.ac.uk/fac/sci/wmg
+  confidence: medium
+- uid: org/catarc
+  name: CATARC
+  legal_name: China Automotive Technology and Research Center
+  country: CN
+  hq_region: Tianjin
+  hq_locality: Tianjin
+  website: https://www.catarc.ac.cn
+  roles:
+  - lab
+  - certification_body
+  - research_institute
+  makes:
+  - GB standard battery testing
+  verify_at: https://www.catarc.ac.cn
+  confidence: low
+- uid: org/pec
+  name: PEC
+  country: BE
+  hq_region: Flemish Brabant
+  hq_locality: Leuven
+  website: https://www.peccorp.com
+  roles:
+  - lab
+  - component_manufacturer
+  makes:
+  - battery test equipment
+  - test services
+  verify_at: https://www.peccorp.com
+  confidence: low
+sites:
+- uid: site/igo/greenbushes
+  kind: mine
+  name: Greenbushes lithium mine
+  operator_uid: org/igo
+  partners:
+  - org/albemarle
+  - org/tianqi-lithium
+  country: AU
+  region: Western Australia
+  locality: Greenbushes
+  status: operating
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.igo.com.au
+  note: Held through Talison Lithium, a joint venture; the operator uid here is a guess at which partner the source
+    will name.
+  confidence: medium
+- uid: site/pilbara-minerals/pilgangoora
+  kind: mine
+  name: Pilgangoora lithium operation
+  operator_uid: org/pilbara-minerals
+  country: AU
+  region: Western Australia
+  locality: Port Hedland
+  status: operating
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.pilbaraminerals.com.au
+  confidence: medium
+- uid: site/mineral-resources/wodgina
+  kind: mine
+  name: Wodgina lithium mine
+  operator_uid: org/mineral-resources
+  partners:
+  - org/albemarle
+  country: AU
+  region: Western Australia
+  locality: Pilbara
+  status: operating
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.mineralresources.com.au
+  confidence: medium
+- uid: site/mineral-resources/mount-marion
+  kind: mine
+  name: Mount Marion lithium mine
+  operator_uid: org/mineral-resources
+  partners:
+  - org/ganfeng-lithium
+  country: AU
+  region: Western Australia
+  locality: Kalgoorlie
+  status: operating
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.mineralresources.com.au
+  confidence: medium
+- uid: site/liontown-resources/kathleen-valley
+  kind: mine
+  name: Kathleen Valley lithium mine
+  operator_uid: org/liontown-resources
+  country: AU
+  region: Western Australia
+  locality: Leinster
+  status: operating
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.ltresources.com.au
+  confidence: medium
+- uid: site/sqm/salar-de-atacama
+  kind: brine_operation
+  name: Salar de Atacama brine operation
+  operator_uid: org/sqm
+  country: CL
+  region: Antofagasta
+  locality: Antofagasta
+  status: operating
+  makes:
+  - lithium brine
+  verify_at: https://www.sqm.com
+  confidence: medium
+- uid: site/albemarle/salar-de-atacama
+  kind: brine_operation
+  name: Albemarle Salar de Atacama brine operation
+  operator_uid: org/albemarle
+  country: CL
+  region: Antofagasta
+  locality: Antofagasta
+  status: operating
+  makes:
+  - lithium brine
+  verify_at: https://www.albemarle.com
+  confidence: medium
+- uid: site/albemarle/silver-peak
+  kind: brine_operation
+  name: Silver Peak lithium operation
+  operator_uid: org/albemarle
+  country: US
+  region: Nevada
+  locality: Silver Peak
+  status: operating
+  makes:
+  - lithium carbonate
+  verify_at: https://www.albemarle.com
+  confidence: medium
+- uid: site/lithium-americas/thacker-pass
+  kind: mine
+  name: Thacker Pass lithium project
+  operator_uid: org/lithium-americas
+  country: US
+  region: Nevada
+  locality: Humboldt County
+  status: construction
+  makes:
+  - lithium carbonate
+  verify_at: https://www.lithiumamericas.com
+  confidence: medium
+- uid: site/sigma-lithium/grota-do-cirilo
+  kind: mine
+  name: Grota do Cirilo lithium operation
+  operator_uid: org/sigma-lithium
+  country: BR
+  region: Minas Gerais
+  locality: Araçuaí
+  status: operating
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.sigmalithiumresources.com
+  confidence: medium
+- uid: site/ganfeng-lithium/goulamina
+  kind: mine
+  name: Goulamina lithium mine
+  operator_uid: org/ganfeng-lithium
+  country: ML
+  region: Sikasso
+  locality: Bougouni
+  status: operating
+  makes:
+  - spodumene concentrate
+  verify_at: https://www.ganfenglithium.com
+  confidence: low
+- uid: site/ganfeng-lithium/cauchari-olaroz
+  kind: brine_operation
+  name: Cauchari-Olaroz brine operation
+  operator_uid: org/ganfeng-lithium
+  partners:
+  - org/lithium-americas
+  country: AR
+  region: Jujuy
+  locality: Jujuy
+  status: operating
+  makes:
+  - lithium carbonate
+  verify_at: https://www.ganfenglithium.com
+  confidence: low
+- uid: site/rio-tinto/fenix
+  kind: brine_operation
+  name: Fénix lithium operation, Salar del Hombre Muerto
+  operator_uid: org/rio-tinto
+  country: AR
+  region: Catamarca
+  locality: Catamarca
+  status: operating
+  makes:
+  - lithium carbonate
+  verify_at: https://www.riotinto.com
+  note: Came to Rio Tinto with Arcadium.
+  confidence: low
+- uid: site/cmoc/tenke-fungurume
+  kind: mine
+  name: Tenke Fungurume mine
+  operator_uid: org/cmoc
+  country: CD
+  region: Lualaba
+  locality: Fungurume
+  status: operating
+  makes:
+  - copper
+  - cobalt hydroxide
+  verify_at: https://www.cmoc.com
+  confidence: medium
+- uid: site/cmoc/kisanfu
+  kind: mine
+  name: Kisanfu mine
+  operator_uid: org/cmoc
+  country: CD
+  region: Lualaba
+  locality: Kolwezi
+  status: operating
+  makes:
+  - copper
+  - cobalt
+  verify_at: https://www.cmoc.com
+  confidence: low
+- uid: site/glencore/kamoto
+  kind: mine
+  name: Kamoto Copper Company
+  operator_uid: org/glencore
+  country: CD
+  region: Lualaba
+  locality: Kolwezi
+  status: operating
+  makes:
+  - copper
+  - cobalt
+  verify_at: https://www.glencore.com
+  confidence: medium
+- uid: site/glencore/mutanda
+  kind: mine
+  name: Mutanda mine
+  operator_uid: org/glencore
+  country: CD
+  region: Lualaba
+  locality: Kolwezi
+  status: operating
+  makes:
+  - copper
+  - cobalt
+  verify_at: https://www.glencore.com
+  confidence: low
+- uid: site/glencore/nikkelverk
+  kind: refinery
+  name: Glencore Nikkelverk
+  operator_uid: org/glencore
+  country: 'NO'
+  region: Agder
+  locality: Kristiansand
+  status: operating
+  makes:
+  - nickel
+  - cobalt
+  - copper
+  verify_at: https://www.glencore.com
+  confidence: low
+- uid: site/vale/sorowako
+  kind: mine
+  name: Sorowako nickel operation
+  operator_uid: org/vale
+  country: ID
+  region: South Sulawesi
+  locality: Sorowako
+  status: operating
+  makes:
+  - nickel matte
+  verify_at: https://www.vale.com
+  confidence: low
+- uid: site/vale/goro
+  kind: mine
+  name: Goro nickel operation
+  operator_uid: org/vale
+  country: NC
+  locality: Yaté
+  status: operating
+  makes:
+  - nickel
+  verify_at: https://www.vale.com
+  note: Operated as Prony Resources since 2021; the operator here is probably wrong.
+  confidence: low
+- uid: site/eramet/weda-bay
+  kind: mine
+  name: Weda Bay nickel operation
+  operator_uid: org/eramet
+  country: ID
+  region: North Maluku
+  locality: Halmahera
+  status: operating
+  makes:
+  - nickel ore
+  - ferronickel
+  verify_at: https://www.eramet.com
+  confidence: low
+- uid: site/terrafame/sotkamo
+  kind: mine
+  name: Terrafame Sotkamo operation
+  operator_uid: org/terrafame
+  country: FI
+  region: Kainuu
+  locality: Sotkamo
+  status: operating
+  makes:
+  - nickel and cobalt sulphate
+  verify_at: https://www.terrafame.com
+  confidence: medium
+- uid: site/nornickel/talnakh
+  kind: mine
+  name: Talnakh concentrator, Norilsk
+  operator_uid: org/nornickel
+  country: RU
+  region: Krasnoyarsk Krai
+  locality: Norilsk
+  status: operating
+  makes:
+  - nickel
+  - copper
+  verify_at: https://www.nornickel.com
+  confidence: low
+- uid: site/south32/gemco
+  kind: mine
+  name: Groote Eylandt manganese operation (GEMCO)
+  operator_uid: org/south32
+  country: AU
+  region: Northern Territory
+  locality: Groote Eylandt
+  status: operating
+  makes:
+  - manganese ore
+  verify_at: https://www.south32.net
+  confidence: low
+- uid: site/albemarle/kemerton
+  kind: refinery
+  name: Kemerton lithium hydroxide plant
+  operator_uid: org/albemarle
+  country: AU
+  region: Western Australia
+  locality: Kemerton
+  status: idle
+  makes:
+  - lithium hydroxide
+  verify_at: https://www.albemarle.com
+  note: Trains were placed on care and maintenance in 2024; the status needs the page.
+  confidence: medium
+- uid: site/albemarle/meishan
+  kind: refinery
+  name: Albemarle Meishan plant
+  operator_uid: org/albemarle
+  country: CN
+  region: Sichuan
+  locality: Meishan
+  status: operating
+  makes:
+  - lithium hydroxide
+  verify_at: https://www.albemarle.com
+  confidence: low
+- uid: site/tianqi-lithium/kwinana
+  kind: refinery
+  name: Kwinana lithium hydroxide plant
+  operator_uid: org/tianqi-lithium
+  partners:
+  - org/igo
+  country: AU
+  region: Western Australia
+  locality: Kwinana
+  status: operating
+  makes:
+  - lithium hydroxide
+  verify_at: https://www.tianqilithium.com
+  confidence: low
+- uid: site/tianqi-lithium/shehong
+  kind: refinery
+  name: Shehong lithium plant
+  operator_uid: org/tianqi-lithium
+  country: CN
+  region: Sichuan
+  locality: Shehong
+  status: operating
+  makes:
+  - lithium carbonate and hydroxide
+  verify_at: https://www.tianqilithium.com
+  confidence: low
+- uid: site/ganfeng-lithium/xinyu
+  kind: refinery
+  name: Ganfeng Xinyu plant
+  operator_uid: org/ganfeng-lithium
+  country: CN
+  region: Jiangxi
+  locality: Xinyu
+  status: operating
+  makes:
+  - lithium hydroxide
+  - lithium metal
+  verify_at: https://www.ganfenglithium.com
+  confidence: medium
+- uid: site/sqm/salar-del-carmen
+  kind: refinery
+  name: Salar del Carmen lithium plant
+  operator_uid: org/sqm
+  country: CL
+  region: Antofagasta
+  locality: Antofagasta
+  status: operating
+  makes:
+  - lithium carbonate and hydroxide
+  verify_at: https://www.sqm.com
+  confidence: medium
+- uid: site/nemaska-lithium/becancour
+  kind: refinery
+  name: Nemaska Bécancour hydroxide plant
+  operator_uid: org/nemaska-lithium
+  country: CA
+  region: Quebec
+  locality: Bécancour
+  status: construction
+  makes:
+  - lithium hydroxide
+  verify_at: https://www.nemaskalithium.com
+  confidence: low
+- uid: site/vulcan-energy/landau
+  kind: chemical_plant
+  name: Vulcan Landau lithium plant
+  operator_uid: org/vulcan-energy
+  country: DE
+  region: Rhineland-Palatinate
+  locality: Landau in der Pfalz
+  status: commissioning
+  makes:
+  - lithium hydroxide
+  verify_at: https://v-er.eu
+  confidence: low
+- uid: site/redwood-materials/mccarran
+  kind: recycling_plant
+  name: Redwood McCarran campus
+  operator_uid: org/redwood-materials
+  country: US
+  region: Nevada
+  locality: McCarran
+  status: operating
+  makes:
+  - black mass
+  - cathode active material
+  - copper foil
+  verify_at: https://www.redwoodmaterials.com
+  confidence: medium
+- uid: site/redwood-materials/ridgeville
+  kind: recycling_plant
+  name: Redwood South Carolina campus
+  operator_uid: org/redwood-materials
+  country: US
+  region: South Carolina
+  locality: Ridgeville
+  status: construction
+  makes:
+  - cathode active material
+  verify_at: https://www.redwoodmaterials.com
+  confidence: low
+- uid: site/ascend-elements/hopkinsville
+  kind: recycling_plant
+  name: Ascend Elements Apex 1
+  operator_uid: org/ascend-elements
+  country: US
+  region: Kentucky
+  locality: Hopkinsville
+  status: construction
+  makes:
+  - precursor and cathode from recycled feed
+  verify_at: https://ascendelements.com
+  confidence: low
+- uid: site/li-cycle/rochester
+  kind: recycling_plant
+  name: Li-Cycle Rochester Hub
+  operator_uid: org/li-cycle
+  country: US
+  region: New York
+  locality: Rochester
+  status: idle
+  makes:
+  - recovered lithium, nickel and cobalt
+  verify_at: https://li-cycle.com
+  note: Construction was paused and the company entered insolvency; read the page.
+  confidence: low
+- uid: site/cirba-solutions/columbia
+  kind: recycling_plant
+  name: Cirba Solutions Columbia plant
+  operator_uid: org/cirba-solutions
+  country: US
+  region: South Carolina
+  locality: Columbia
+  status: operating
+  makes:
+  - black mass
+  verify_at: https://www.cirbasolutions.com
+  confidence: low
+- uid: site/hydrovolt/fredrikstad
+  kind: recycling_plant
+  name: Hydrovolt Fredrikstad plant
+  operator_uid: org/hydrovolt
+  country: 'NO'
+  region: Østfold
+  locality: Fredrikstad
+  status: operating
+  makes:
+  - black mass
+  verify_at: https://www.hydrovolt.com
+  confidence: medium
+- uid: site/fortum-battery-recycling/harjavalta
+  kind: recycling_plant
+  name: Fortum Harjavalta hydrometallurgical plant
+  operator_uid: org/fortum-battery-recycling
+  country: FI
+  region: Satakunta
+  locality: Harjavalta
+  status: operating
+  makes:
+  - recovered lithium, nickel and cobalt
+  verify_at: https://www.fortum.com
+  confidence: low
+- uid: site/duesenfeld/wendeburg
+  kind: recycling_plant
+  name: Duesenfeld Wendeburg plant
+  operator_uid: org/duesenfeld
+  country: DE
+  region: Lower Saxony
+  locality: Wendeburg
+  status: operating
+  makes:
+  - black mass
+  verify_at: https://www.duesenfeld.com
+  confidence: low
+- uid: site/accurec/krefeld
+  kind: recycling_plant
+  name: Accurec Krefeld plant
+  operator_uid: org/accurec
+  country: DE
+  region: North Rhine-Westphalia
+  locality: Krefeld
+  status: operating
+  makes:
+  - recovered metals
+  verify_at: https://accurec.de
+  confidence: low
+- uid: site/cylib/dormagen
+  kind: recycling_plant
+  name: cylib Dormagen plant
+  operator_uid: org/cylib
+  country: DE
+  region: North Rhine-Westphalia
+  locality: Dormagen
+  status: construction
+  makes:
+  - black mass
+  - recovered lithium
+  verify_at: https://cylib.de
+  confidence: low
+- uid: site/sungeel-hitech/gunsan
+  kind: recycling_plant
+  name: SungEel HiTech Gunsan plant
+  operator_uid: org/sungeel-hitech
+  country: KR
+  region: North Jeolla
+  locality: Gunsan
+  status: operating
+  makes:
+  - black mass
+  verify_at: https://www.sungeelht.com
+  confidence: low
+- uid: site/stena-recycling/halmstad
+  kind: recycling_plant
+  name: Stena Recycling Halmstad battery plant
+  operator_uid: org/stena-recycling
+  country: SE
+  region: Halland
+  locality: Halmstad
+  status: operating
+  makes:
+  - black mass
+  verify_at: https://www.stenarecycling.com
+  confidence: low
+- uid: site/ecobat/darlaston
+  kind: recycling_plant
+  name: Ecobat Darlaston lead plant
+  operator_uid: org/ecobat
+  country: GB
+  region: England
+  locality: Darlaston
+  status: operating
+  makes:
+  - recycled lead
+  verify_at: https://www.ecobat.com
+  confidence: low
+- uid: site/tuv-sud/garching
+  kind: test_laboratory
+  name: TÜV SÜD Battery Testing Centre, Garching
+  operator_uid: org/tuv-sud
+  country: DE
+  region: Bavaria
+  locality: Garching
+  status: operating
+  makes:
+  - UN 38.3
+  - IEC 62660
+  - abuse testing
+  verify_at: https://www.tuvsud.com
+  confidence: low
+- uid: site/ul-solutions/northbrook
+  kind: test_laboratory
+  name: UL Solutions Northbrook laboratories
+  operator_uid: org/ul-solutions
+  country: US
+  region: Illinois
+  locality: Northbrook
+  status: operating
+  makes:
+  - UL 1642
+  - UL 2054
+  - UL 9540A
+  verify_at: https://www.ul.com
+  confidence: low
+- uid: site/bam/berlin
+  kind: test_laboratory
+  name: BAM Test Site Technical Safety
+  operator_uid: org/bam
+  country: DE
+  region: Berlin
+  locality: Berlin
+  status: operating
+  makes:
+  - battery abuse and transport testing
+  verify_at: https://www.bam.de
+  confidence: low
+- uid: site/nrel/golden
+  kind: research_facility
+  name: NREL Energy Systems Integration Facility
+  operator_uid: org/nrel
+  country: US
+  region: Colorado
+  locality: Golden
+  status: operating
+  makes:
+  - battery ageing and thermal characterisation
+  verify_at: https://www.nrel.gov
+  confidence: low
+- uid: site/sandia/albuquerque
+  kind: test_laboratory
+  name: Sandia Battery Abuse Testing Laboratory
+  operator_uid: org/sandia
+  country: US
+  region: New Mexico
+  locality: Albuquerque
+  status: operating
+  makes:
+  - abuse testing
+  verify_at: https://www.sandia.gov
+  confidence: low
+- uid: site/idaho-national-laboratory/idaho-falls
+  kind: test_laboratory
+  name: INL Energy Storage Technology Laboratory
+  operator_uid: org/idaho-national-laboratory
+  country: US
+  region: Idaho
+  locality: Idaho Falls
+  status: operating
+  makes:
+  - cell and pack testing
+  - fast-charge research
+  verify_at: https://inl.gov
+  confidence: low
+- uid: site/argonne/lemont
+  kind: research_facility
+  name: Argonne Cell Analysis, Modeling and Prototyping facility
+  operator_uid: org/argonne
+  country: US
+  region: Illinois
+  locality: Lemont
+  status: operating
+  makes:
+  - cell prototyping
+  - electrode coating
+  verify_at: https://www.anl.gov
+  confidence: low
+- uid: site/zsw/ulm
+  kind: research_facility
+  name: ZSW eLaB, Ulm
+  operator_uid: org/zsw
+  country: DE
+  region: Baden-Württemberg
+  locality: Ulm
+  status: operating
+  makes:
+  - cell production research
+  - cell testing
+  verify_at: https://www.zsw-bw.de
+  confidence: low
+- uid: site/wmg-warwick/coventry
+  kind: research_facility
+  name: WMG Energy Innovation Centre
+  operator_uid: org/wmg-warwick
+  country: GB
+  region: England
+  locality: Coventry
+  status: operating
+  makes:
+  - cell characterisation
+  - pack testing
+  verify_at: https://warwick.ac.uk/fac/sci/wmg
+  confidence: low

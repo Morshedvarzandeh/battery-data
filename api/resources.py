@@ -65,6 +65,13 @@ LAYERS = [
     {"code": "applications", "label": "Applications",
      "description": "The vehicles, installations and devices batteries are fielded in.",
      "resources": ["applications"]},
+    {"code": "queue", "label": "The queue",
+     "description": "Names of companies and sites recalled without a document and waiting to be "
+                    "verified against one. These are NOT facts and are not part of the library: "
+                    "they carry no source, no page and no quote, and the database refuses one that "
+                    "does. They are here so the work still to be done is as queryable as the work "
+                    "already finished.",
+     "resources": ["layer_candidates"]},
     {"code": "provenance", "label": "Sources and vocabulary",
      "description": "The documents every row traces to, the quantity registry with its EMMO and QUDT "
                     "bindings, units, and the crosswalk to BDF, BPX and the Battery Passport.",
@@ -74,7 +81,7 @@ LAYERS = [
 
 @dataclass
 class Resource:
-    view: str | None                 # bd.<view>; None for a resource served from Python
+    view: str | None                 # <schema>.<view>; None for a resource served from Python
     id: str                          # the column that identifies a row
     description: str
     sort: str = ""                   # default ORDER BY, over view columns
@@ -82,6 +89,8 @@ class Resource:
     related: dict = field(default_factory=dict)   # name -> (view, view_column, row_key)
     examples: list = field(default_factory=list)
     note: str = ""
+    schema: str = "bd"               # 'bd_stage' for a queue, which is not accepted data
+    accepted: bool = True            # False marks a resource whose rows are not facts yet
 
 
 RESOURCES: dict[str, Resource] = {
@@ -234,6 +243,18 @@ RESOURCES: dict[str, Resource] = {
                            "QUDT, BDF, BPX and Battery Passport bindings.", sort="code",
                            examples=['required_conditions HAS "temperature_c"']),
     "units": Resource("v_unit", "symbol", "Units with their SI conversion and QUDT IRI.", sort="symbol"),
+    "layer_candidates": Resource(
+        "v_layer_candidate", "uid",
+        "Companies and sites recalled without a document, each with the page to verify it against. "
+        "Not facts: no row here has a source, and none enters the library until "
+        "tools/verify_layer_candidates.py finds the name on that page and quotes it.",
+        sort="candidate_set, entity, uid", schema="bd_stage", accepted=False,
+        examples=['entity = "site" AND kind = "cell_factory" AND country = "CN"',
+                  'stages HAS "active_material" AND confidence = "high"',
+                  'in_library = "false" AND candidate_set = "gigafactories"'],
+        note="Every row is a work order, not a record. `confidence` is how sure the recall is, "
+             "`status_recalled` is the plant status as recalled and is the field most likely to be "
+             "stale, and `in_library` says whether the uid already names something the library holds."),
     "crosswalk": Resource("v_crosswalk", "quantity", "Mapping of every quantity to BDF, EMMO/BattINFO, BPX and "
                           "the EU Battery Passport.", sort="vocabulary, quantity"),
 }

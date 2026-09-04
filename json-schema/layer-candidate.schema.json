@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/layer-candidate.schema.json",
+  "title": "battery-data layer candidate set",
+  "description": "Names of companies and sites recalled WITHOUT a document: cell, cathode and anode makers, gigafactories. A candidate is a work order, not a fact: it carries no source, no page and no quote, and the validator refuses any that does. tools/verify_layer_candidates.py turns a candidate into a contribution by fetching the page it names, finding the name there and quoting it. Until then a candidate lives in review/layers and in bd_stage, never in bd.*.",
+  "type": "object",
+  "required": ["schema_version", "candidate_set", "recalled_by", "recalled_on", "caveat"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1"},
+    "candidate_set": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "recalled_by": {"type": "string", "minLength": 8},
+    "recalled_on": {"type": "string", "format": "date"},
+    "caveat": {"type": "string", "minLength": 40},
+    "companies": {"type": "array", "items": {"$ref": "#/$defs/company"}},
+    "sites": {"type": "array", "items": {"$ref": "#/$defs/site"}}
+  },
+  "$defs": {
+    "confidence": {"enum": ["high", "medium", "low"], "description": "How sure the recall is: high for a company or plant that is widely reported and stable; medium where a detail (city, status, listing) may be off; low where the existence itself needs checking."},
+    "company": {
+      "type": "object",
+      "required": ["uid", "name", "country", "roles", "verify_at", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "uid": {"type": "string", "pattern": "^org/[a-z0-9-]+$"},
+        "name": {"type": "string", "minLength": 2},
+        "legal_name": {"type": "string"},
+        "aliases": {"type": "array", "items": {"type": "string"}},
+        "former_names": {"type": "array", "items": {"type": "string"}},
+        "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "hq_region": {"type": "string"},
+        "hq_locality": {"type": "string"},
+        "roles": {"type": "array", "minItems": 1, "uniqueItems": true,
+                  "items": {"enum": ["miner", "refiner", "precursor_producer", "cathode_producer", "anode_producer", "electrolyte_producer", "separator_producer", "foil_can_producer", "manufacturer", "pack_assembler", "integrator", "component_manufacturer", "distributor", "oem", "fleet_operator", "lab", "certification_body", "research_institute", "second_life", "recycler", "site_operator", "owner", "supplier", "buyer", "publisher", "sdo", "investor", "government"]}},
+        "makes": {"type": "array", "items": {"type": "string"}, "description": "What it makes, in words: cells, packs, LFP cathode, synthetic graphite anode."},
+        "chemistries": {"type": "array", "items": {"type": "string"}},
+        "website": {"type": "string", "format": "uri"},
+        "verify_at": {"type": "string", "pattern": "^https://", "description": "The page the verifier fetches to find the name; the company's own site, an annual report, an exchange filing."},
+        "ticker": {"type": "string"},
+        "exchange": {"type": "string"},
+        "founded_year": {"type": "integer", "minimum": 1600, "maximum": 2100},
+        "parent_uid": {"type": "string", "pattern": "^org/[a-z0-9-]+$"},
+        "note": {"type": "string"},
+        "confidence": {"$ref": "#/$defs/confidence"}
+      }
+    },
+    "site": {
+      "type": "object",
+      "required": ["uid", "kind", "name", "operator_uid", "country", "verify_at", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "uid": {"type": "string", "pattern": "^site/[a-z0-9-]+/[a-z0-9._-]+$"},
+        "kind": {"enum": ["mine", "brine_operation", "refinery", "chemical_plant", "precursor_plant", "cathode_plant", "anode_plant", "electrolyte_plant", "separator_plant", "cell_factory", "module_pack_factory", "component_factory", "distribution_centre", "port", "test_laboratory", "research_facility", "second_life_facility", "collection_point", "recycling_plant", "other"]},
+        "name": {"type": "string", "minLength": 2},
+        "operator_uid": {"type": "string", "pattern": "^org/[a-z0-9-]+$"},
+        "partners": {"type": "array", "items": {"type": "string", "pattern": "^org/[a-z0-9-]+$"}, "description": "Joint-venture partners, as company uids."},
+        "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "region": {"type": "string"},
+        "locality": {"type": "string"},
+        "status": {"enum": ["exploration", "development", "construction", "commissioning", "operating", "care_and_maintenance", "idle", "closed", "announced", "cancelled", "unknown"], "description": "As recalled; plants are announced, paused and cancelled faster than any memory keeps up, so the verifier re-reads it."},
+        "makes": {"type": "array", "items": {"type": "string"}},
+        "verify_at": {"type": "string", "pattern": "^https://"},
+        "note": {"type": "string"},
+        "confidence": {"$ref": "#/$defs/confidence"}
+      }
+    }
+  }
+}

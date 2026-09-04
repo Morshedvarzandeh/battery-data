@@ -73,6 +73,42 @@ jobs:
                 source_rows, publication_candidates;
             END\$\$;"
 
+      - name: Stage the candidate queue
+        # Recalled names of cell, cathode and anode makers and their factories.
+        # They are NOT facts: the staging table's CHECK refuses a payload that
+        # carries a quote, a page, a locator or a source, and this proves it
+        # still does before any of them are loaded.
+        run: |
+          python tools/load_layer_candidates.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
+          psql -v ON_ERROR_STOP=1 -d batterydb -c "
+            DO \$\$
+            DECLARE n int; leaked int;
+            BEGIN
+              SELECT count(*) INTO n FROM bd_stage.layer_candidate;
+              IF n < 400 THEN
+                RAISE EXCEPTION 'candidate queue staged only % rows', n;
+              END IF;
+              SELECT count(*) INTO leaked FROM bd.site s
+                JOIN bd_stage.layer_candidate c ON c.uid = s.uid
+               WHERE c.state = 'queued';
+              IF leaked > 0 THEN
+                RAISE EXCEPTION '% unverified candidate(s) reached bd.site', leaked;
+              END IF;
+              RAISE NOTICE 'ok: % candidates staged, none in the accepted tables', n;
+            END\$\$;"
+          # a candidate that carries provenance must be refused by the database
+          if psql -q -d batterydb -c "
+            INSERT INTO bd_stage.layer_candidate
+              (job_id, candidate_set, entity, uid, name, verify_at, confidence, recalled_on, payload)
+            SELECT id, 'ci', 'company', 'org/ci-probe', 'Probe', 'https://example.org', 'low',
+                   now()::date, '{\"quote\":\"invented\"}'::jsonb
+              FROM bd_stage.ingest_job LIMIT 1;" 2>/dev/null
+          then
+            echo "FAIL: staging accepted a candidate carrying a quote"
+            exit 1
+          fi
+          echo "ok: a candidate carrying provenance is refused"
+
       - name: Load the other layers
         # Sites, companies, market series and patents go through their own
         # validator and loader. contrib/ holds none yet; the fictional
@@ -138,7 +174,11 @@ jobs:
               with urllib.request.urlopen(B + path) as r:
                   return json.load(r)
           info = get("/v1/info")["data"]
-          assert len(info["layers"]) == 11, info["layers"]
+          assert len(info["layers"]) == 12, info["layers"]
+          # the queue must never be served as if it were the library
+          q = get("/v1/layer_candidates?page_limit=1")
+          assert q["meta"]["accepted"] is False and q["meta"]["warnings"], q["meta"]
+          assert get("/v1/info/layer_candidates")["data"]["accepted"] is False
           for name, res in RESOURCES.items():
               d = get(f"/v1/{name}?page_limit=1")
               assert "data" in d, (name, d)
@@ -183,6 +223,9 @@ jobs:
           # Sites, companies, market series and patents: their own validator,
           # and the fictional examples that document the formats.
           python tools/validate_layers.py --examples
+          # Recalled names: structure, uid references, and the rule that a
+          # candidate may never look sourced.
+          python tools/validate_layer_candidates.py --stats
           # A pending candidate has to clear the contribution schema too, not
           # just the lighter review rules. Approval promotes the file as-is, so
           # anything the schema rejects turns a checked box into a failed run,

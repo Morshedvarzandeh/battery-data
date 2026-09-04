@@ -87,13 +87,19 @@ order a battery is made and used, and the order `GET /v1/info` lists them in.
 | **Standards and certifications** | standards referenced, certifications held, transport classification | the `certifications` and `transport` blocks of a product file | `/v1/standards`, `/v1/certifications` |
 | **Applications** | the vehicles, installations and devices batteries are fielded in | the `applications` block of a product file | `/v1/applications` |
 | **Sources and vocabulary** | every document cited; the quantity registry with EMMO and QUDT bindings; the crosswalk | created by the loaders | `/v1/sources`, `/v1/quantities`, `/v1/units`, `/v1/crosswalk` |
+| **The queue** (not the library) | 500 recalled names of cell, cathode and anode makers, gigafactories, mines, recyclers and test laboratories, each with the page to verify it against. No source, no quote, refused by a database constraint if it had one | `review/layers/` | `/v1/layer_candidates` |
 
 Sites and companies sit on one ordered vocabulary of fourteen supply-chain
 stages, from mining to collection and recycling, so "who is upstream of this
-cell" is a query. Nothing in `contrib/sites`, `contrib/companies`,
-`contrib/market` or `contrib/patents` exists yet: the formats, validators,
-loaders, views, graph, RDF and API are in place, and the Coverage tab of the
-page is the work order.
+cell" is a query.
+
+Nothing in `contrib/sites`, `contrib/companies`, `contrib/market` or
+`contrib/patents` exists yet, because no document has been read for them. What
+does exist is the work order: 255 companies and 252 sites named in
+`review/layers/`, each with the page to verify it against, staged where a
+database constraint refuses any row that carries a quote. `tools/verify_layer_candidates.py`
+turns one into a contribution by reading that page and quoting it. See
+[`docs/14-candidates.md`](docs/14-candidates.md).
 
 ---
 
@@ -242,6 +248,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/11-ontology.md`](docs/11-ontology.md) | Ontology and knowledge-graph alignment: EMMO, QUDT, SOSA, PROV-O, schema.org, the RDF export and the graph projection |
 | [`docs/12-market-and-supply-chain.md`](docs/12-market-and-supply-chain.md) | Sites from mine to recycler, test laboratories, resources and reserves, capacity and output, ownership, supply agreements, distribution, prices, volumes, trade, and the licence rule |
 | [`docs/13-api.md`](docs/13-api.md) | One API for every layer: the registry, the filter grammar, `POST /v1/query`, the graph endpoint, OpenAPI |
+| [`docs/14-candidates.md`](docs/14-candidates.md) | The candidate queue: recalled names of makers and factories, the three gates that stop one looking sourced, and the verification that turns a name into a record |
 | [`docs/examples/`](docs/examples/README.md) | A fictional example file for each non-product layer |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
@@ -277,6 +284,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | `crosswalk/` | Generated BDF ↔ EMMO ↔ BPX ↔ Battery Passport mapping |
 | `tools/validate_contrib.py` | CI gate: refuses a product contribution whose values lack their conditions |
 | `tools/validate_layers.py` / `tools/load_layers.py` | The other layers: sites, companies, market series and patents, validated and loaded with the same locator-per-claim rule; a price from a licensed source is refused |
+| `review/layers/` + `tools/verify_layer_candidates.py` | 507 recalled names of cell, cathode and anode makers, gigafactories, mines, recyclers and laboratories, and the tool that turns one into a sourced contribution by reading the page it names |
 | `tools/check_duplicates.py` | Cross-library identity gate for exact UIDs, normalized model aliases, and specification conflicts |
 | `patents/` | Raw patent/IP observations, publication candidates, taxonomy, reconciliation and duplicate reports |
 | `tools/validate_patents.py` | Patent import gate: identity evidence, review boundary, categories and source-row reconciliation |

@@ -1,0 +1,1532 @@
+# CATHODE, ANODE, PRECURSOR, ELECTROLYTE, SEPARATOR AND FOIL makers, and
+# their plants: candidates, not records.
+#
+# The stage of the chain that decides a cell's chemistry, and the one a
+# datasheet never names. Every entry is a name recalled without a document:
+# no source, no page, no quote. tools/verify_layer_candidates.py fetches each
+# verify_at page, finds the name and writes a contribution that quotes it.
+#
+# Plant STATUS is the field most likely to be stale here - cathode and anode
+# plants have been announced, paused, resited and cancelled repeatedly - so
+# every status below is a prompt to read the page, not a claim.
+schema_version: '1'
+candidate_set: active-material-makers
+recalled_by: Claude, from training data, in a session with no network access to company or industry sources (every
+  manufacturer, distributor and publisher domain is blocked by the environment's egress policy)
+recalled_on: '2026-09-04'
+caveat: 'Every entry here is a NAME RECALLED FROM TRAINING, not a fact read from a document. No entry carries a source,
+  a page or a quote, and none may enter bd.* as it stands. tools/verify_layer_candidates.py fetches the page named
+  in verify_at, finds the name on it and writes a contribution whose locator quotes that page; only then, and only
+  after review, does a name become a record. Statuses, localities and listings are the fields most likely to be stale:
+  plants are announced, paused, renamed and cancelled faster than any recall keeps up.'
+companies:
+- uid: org/ecopro-bm
+  name: EcoPro BM
+  country: KR
+  hq_region: North Chungcheong
+  hq_locality: Cheongju
+  website: https://www.ecoprobm.co.kr
+  roles: &id001
+  - cathode_producer
+  makes:
+  - NCA and NCM cathode active material
+  verify_at: https://www.ecoprobm.co.kr
+  ticker: '247540'
+  exchange: KOSDAQ
+  confidence: high
+- uid: org/posco-future-m
+  name: POSCO Future M
+  former_names:
+  - POSCO Chemical
+  - POSCO ChemTech
+  country: KR
+  hq_region: North Gyeongsang
+  hq_locality: Pohang
+  website: https://www.poscofuturem.com
+  roles:
+  - cathode_producer
+  - anode_producer
+  makes:
+  - NCM and NCA cathode
+  - natural and synthetic graphite anode
+  verify_at: https://www.poscofuturem.com
+  ticker: '003670'
+  exchange: KRX
+  confidence: high
+- uid: org/lg-chem
+  name: LG Chem
+  country: KR
+  hq_locality: Seoul
+  website: https://www.lgchem.com
+  roles:
+  - cathode_producer
+  - separator_producer
+  makes:
+  - NCM and NCMA cathode active material
+  verify_at: https://www.lgchem.com
+  ticker: 051910
+  exchange: KRX
+  note: The chemicals parent of LG Energy Solution; it kept the cathode business at the 2020 split.
+  confidence: high
+- uid: org/l-and-f
+  name: L&F
+  country: KR
+  hq_locality: Daegu
+  website: https://www.lnfco.com
+  roles: *id001
+  makes:
+  - high-nickel NCM and NCA cathode
+  verify_at: https://www.lnfco.com
+  ticker: 066970
+  exchange: KOSDAQ
+  confidence: medium
+- uid: org/cosmo-amt
+  name: Cosmo AM&T
+  country: KR
+  hq_region: North Chungcheong
+  hq_locality: Chungju
+  website: https://www.cosmoamt.com
+  roles: *id001
+  makes:
+  - NCM cathode active material
+  verify_at: https://www.cosmoamt.com
+  confidence: medium
+- uid: org/umicore
+  name: Umicore
+  country: BE
+  hq_locality: Brussels
+  website: https://www.umicore.com
+  roles:
+  - cathode_producer
+  - precursor_producer
+  - refiner
+  - recycler
+  makes:
+  - NMC cathode
+  - precursor
+  - cobalt and nickel refining
+  - battery recycling
+  verify_at: https://www.umicore.com
+  ticker: UMI
+  exchange: Euronext
+  confidence: high
+- uid: org/basf
+  name: BASF
+  country: DE
+  hq_region: Rhineland-Palatinate
+  hq_locality: Ludwigshafen
+  website: https://www.basf.com
+  roles:
+  - cathode_producer
+  - precursor_producer
+  - recycler
+  makes:
+  - NCM cathode active material
+  - precursor
+  - black-mass refining
+  verify_at: https://www.basf.com
+  ticker: BAS
+  exchange: XETRA
+  confidence: high
+- uid: org/nichia
+  name: Nichia Corporation
+  country: JP
+  hq_region: Tokushima
+  hq_locality: Anan
+  website: https://www.nichia.co.jp
+  roles: *id001
+  makes:
+  - NCA and LCO cathode active material
+  verify_at: https://www.nichia.co.jp
+  confidence: medium
+- uid: org/sumitomo-metal-mining
+  name: Sumitomo Metal Mining
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.smm.co.jp
+  roles:
+  - cathode_producer
+  - refiner
+  - miner
+  makes:
+  - NCA cathode
+  - nickel and cobalt refining
+  verify_at: https://www.smm.co.jp
+  ticker: '5713'
+  exchange: TSE
+  confidence: high
+- uid: org/tanaka-chemical
+  name: Tanaka Chemical
+  country: JP
+  hq_region: Fukui
+  hq_locality: Fukui
+  website: https://www.tanaka-chem.co.jp
+  roles:
+  - precursor_producer
+  - cathode_producer
+  makes:
+  - cathode precursor
+  verify_at: https://www.tanaka-chem.co.jp
+  confidence: medium
+- uid: org/toda-kogyo
+  name: Toda Kogyo
+  country: JP
+  hq_region: Hiroshima
+  hq_locality: Hiroshima
+  website: https://www.todakogyo.co.jp
+  roles: *id001
+  makes:
+  - cathode active material
+  - iron oxides
+  verify_at: https://www.todakogyo.co.jp
+  confidence: medium
+- uid: org/mitsubishi-chemical-group
+  name: Mitsubishi Chemical Group
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.mcgc.com
+  roles:
+  - anode_producer
+  - electrolyte_producer
+  makes:
+  - graphite anode
+  - electrolyte
+  verify_at: https://www.mcgc.com
+  ticker: '4188'
+  exchange: TSE
+  confidence: medium
+- uid: org/ronbay
+  name: Ronbay Technology
+  country: CN
+  hq_region: Zhejiang
+  hq_locality: Ningbo
+  website: https://www.ronbaymat.com
+  roles: *id001
+  makes:
+  - high-nickel NCM cathode
+  verify_at: https://www.ronbaymat.com
+  ticker: '688005'
+  exchange: SSE
+  confidence: high
+- uid: org/easpring
+  name: Beijing Easpring Material Technology
+  country: CN
+  hq_locality: Beijing
+  website: https://www.easpring.com
+  roles: *id001
+  makes:
+  - NCM cathode
+  - LCO cathode
+  verify_at: https://www.easpring.com
+  ticker: '300073'
+  exchange: SZSE
+  confidence: high
+- uid: org/xtc-new-energy
+  name: Xiamen Tungsten New Energy
+  country: CN
+  hq_region: Fujian
+  hq_locality: Xiamen
+  website: https://www.xtc-newenergy.com.cn
+  roles: *id001
+  makes:
+  - NCM and LCO cathode
+  verify_at: https://www.xtc-newenergy.com.cn
+  ticker: '688778'
+  exchange: SSE
+  confidence: medium
+- uid: org/hunan-yuneng
+  name: Hunan Yuneng New Energy Battery Material
+  country: CN
+  hq_region: Hunan
+  hq_locality: Xiangtan
+  website: https://www.hnyneng.com
+  roles: *id001
+  makes:
+  - lithium iron phosphate cathode
+  chemistries:
+  - lithium_ion
+  verify_at: https://www.hnyneng.com
+  ticker: '301358'
+  exchange: SZSE
+  confidence: high
+- uid: org/dynanonic
+  name: Shenzhen Dynanonic
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.dynanonic.com
+  roles: *id001
+  makes:
+  - LFP and LMFP cathode
+  verify_at: https://www.dynanonic.com
+  ticker: '300769'
+  exchange: SZSE
+  confidence: high
+- uid: org/shenzhen-btr
+  name: BTR New Material Group
+  aliases:
+  - BTR
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.btrchina.com
+  roles:
+  - anode_producer
+  - cathode_producer
+  makes:
+  - natural and synthetic graphite anode
+  - silicon anode
+  - cathode
+  verify_at: https://www.btrchina.com
+  ticker: '835185'
+  exchange: BSE
+  confidence: high
+- uid: org/cngr
+  name: CNGR Advanced Material
+  country: CN
+  hq_region: Hunan
+  hq_locality: Changsha
+  website: https://www.cngrgf.com
+  roles:
+  - precursor_producer
+  - refiner
+  makes:
+  - nickel and cobalt precursor (pCAM)
+  verify_at: https://www.cngrgf.com
+  ticker: '300919'
+  exchange: SZSE
+  confidence: high
+- uid: org/gem-co
+  name: GEM Co.
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.gem.com.cn
+  roles:
+  - precursor_producer
+  - recycler
+  - refiner
+  makes:
+  - precursor
+  - battery recycling
+  - cobalt and nickel
+  verify_at: https://www.gem.com.cn
+  ticker: '002340'
+  exchange: SZSE
+  confidence: high
+- uid: org/huayou-cobalt
+  name: Zhejiang Huayou Cobalt
+  country: CN
+  hq_region: Zhejiang
+  hq_locality: Tongxiang
+  website: https://www.huayou.com
+  roles:
+  - refiner
+  - precursor_producer
+  - cathode_producer
+  - miner
+  makes:
+  - cobalt and nickel refining
+  - precursor
+  - cathode
+  verify_at: https://www.huayou.com
+  ticker: '603799'
+  exchange: SSE
+  confidence: high
+- uid: org/brunp
+  name: Brunp Recycling
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Foshan
+  website: https://www.brunp.com.cn
+  roles:
+  - recycler
+  - precursor_producer
+  makes:
+  - battery recycling
+  - precursor
+  verify_at: https://www.brunp.com.cn
+  parent_uid: org/catl
+  confidence: medium
+- uid: org/shanshan
+  name: Shanghai Shanshan Technology
+  country: CN
+  hq_locality: Shanghai
+  website: https://www.shanshantech.com
+  roles: &id002
+  - anode_producer
+  makes:
+  - graphite anode material
+  verify_at: https://www.shanshantech.com
+  ticker: '600884'
+  exchange: SSE
+  confidence: medium
+- uid: org/putailai
+  name: Putailai New Energy Technology
+  country: CN
+  hq_locality: Shanghai
+  website: https://www.putailai.com
+  roles:
+  - anode_producer
+  - separator_producer
+  makes:
+  - graphite anode
+  - coated separator
+  - electrode equipment
+  verify_at: https://www.putailai.com
+  ticker: '603659'
+  exchange: SSE
+  confidence: medium
+- uid: org/shinzoom
+  name: Hunan Shinzoom Technology
+  country: CN
+  hq_region: Hunan
+  hq_locality: Changsha
+  website: https://www.shinzoom.com
+  roles: *id002
+  makes:
+  - graphite anode material
+  verify_at: https://www.shinzoom.com
+  confidence: low
+- uid: org/kaijin-new-energy
+  name: Shanghai Kaijin New Energy
+  country: CN
+  hq_locality: Shanghai
+  website: https://www.kjxny.com
+  roles: *id002
+  makes:
+  - graphite anode material
+  verify_at: https://www.kjxny.com
+  confidence: low
+- uid: org/resonac
+  name: Resonac Holdings
+  former_names:
+  - Showa Denko
+  - Showa Denko Materials
+  - Hitachi Chemical
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.resonac.com
+  roles:
+  - anode_producer
+  - electrolyte_producer
+  makes:
+  - anode material
+  - battery chemicals
+  verify_at: https://www.resonac.com
+  ticker: '4004'
+  exchange: TSE
+  confidence: medium
+- uid: org/nippon-carbon
+  name: Nippon Carbon
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.carbon.co.jp
+  roles: *id002
+  makes:
+  - graphite anode material
+  verify_at: https://www.carbon.co.jp
+  ticker: '5302'
+  exchange: TSE
+  confidence: medium
+- uid: org/jfe-chemical
+  name: JFE Chemical
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.jfe-chem.com
+  roles: *id002
+  makes:
+  - graphite anode material
+  - coal chemicals
+  verify_at: https://www.jfe-chem.com
+  confidence: low
+- uid: org/tokai-carbon
+  name: Tokai Carbon
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.tokaicarbon.co.jp
+  roles: *id002
+  makes:
+  - carbon and graphite materials
+  verify_at: https://www.tokaicarbon.co.jp
+  ticker: '5301'
+  exchange: TSE
+  confidence: medium
+- uid: org/novonix
+  name: NOVONIX
+  country: AU
+  hq_region: Queensland
+  hq_locality: Brisbane
+  website: https://www.novonixgroup.com
+  roles:
+  - anode_producer
+  - lab
+  makes:
+  - synthetic graphite anode
+  - battery cell testing equipment
+  verify_at: https://www.novonixgroup.com
+  ticker: NVX
+  exchange: ASX
+  confidence: high
+- uid: org/syrah-resources
+  name: Syrah Resources
+  country: AU
+  hq_region: Victoria
+  hq_locality: Melbourne
+  website: https://www.syrahresources.com.au
+  roles:
+  - miner
+  - anode_producer
+  makes:
+  - natural graphite concentrate
+  - active anode material
+  verify_at: https://www.syrahresources.com.au
+  ticker: SYR
+  exchange: ASX
+  confidence: high
+- uid: org/talga
+  name: Talga Group
+  country: AU
+  hq_region: Western Australia
+  hq_locality: Perth
+  website: https://www.talgagroup.com
+  roles:
+  - miner
+  - anode_producer
+  makes:
+  - natural graphite anode
+  verify_at: https://www.talgagroup.com
+  ticker: TLG
+  exchange: ASX
+  confidence: medium
+- uid: org/nouveau-monde-graphite
+  name: Nouveau Monde Graphite
+  country: CA
+  hq_region: Quebec
+  hq_locality: Saint-Michel-des-Saints
+  website: https://nmg.com
+  roles:
+  - miner
+  - anode_producer
+  makes:
+  - natural graphite anode
+  verify_at: https://nmg.com
+  ticker: NMG
+  exchange: NYSE
+  confidence: medium
+- uid: org/northern-graphite
+  name: Northern Graphite
+  country: CA
+  hq_region: Ontario
+  hq_locality: Ottawa
+  website: https://www.northerngraphite.com
+  roles:
+  - miner
+  - anode_producer
+  makes:
+  - natural graphite
+  verify_at: https://www.northerngraphite.com
+  confidence: medium
+- uid: org/vianode
+  name: Vianode
+  country: 'NO'
+  hq_locality: Oslo
+  website: https://www.vianode.com
+  roles: *id002
+  makes:
+  - synthetic graphite anode
+  verify_at: https://www.vianode.com
+  note: Elkem, Hydro and Altor joint venture.
+  confidence: medium
+- uid: org/sila-nanotechnologies
+  name: Sila Nanotechnologies
+  aliases:
+  - Sila
+  country: US
+  hq_region: California
+  hq_locality: Alameda
+  website: https://www.silanano.com
+  roles: *id002
+  makes:
+  - silicon anode material (Titan Silicon)
+  verify_at: https://www.silanano.com
+  confidence: medium
+- uid: org/group14
+  name: Group14 Technologies
+  country: US
+  hq_region: Washington
+  hq_locality: Woodinville
+  website: https://group14.technology
+  roles: *id002
+  makes:
+  - silicon-carbon anode material (SCC55)
+  verify_at: https://group14.technology
+  confidence: medium
+- uid: org/nexeon
+  name: Nexeon
+  country: GB
+  hq_region: England
+  hq_locality: Abingdon
+  website: https://www.nexeon.co.uk
+  roles: *id002
+  makes:
+  - silicon anode material
+  verify_at: https://www.nexeon.co.uk
+  confidence: medium
+- uid: org/e-magy
+  name: E-magy
+  country: NL
+  hq_region: North Holland
+  hq_locality: Zaandam
+  website: https://e-magy.com
+  roles: *id002
+  makes:
+  - nano-porous silicon anode material
+  verify_at: https://e-magy.com
+  confidence: low
+- uid: org/epsilon-advanced-materials
+  name: Epsilon Advanced Materials
+  country: IN
+  hq_region: Karnataka
+  hq_locality: Bengaluru
+  website: https://epsilonmaterials.com
+  roles: *id002
+  makes:
+  - synthetic graphite anode
+  verify_at: https://epsilonmaterials.com
+  confidence: medium
+- uid: org/tinci-materials
+  name: Guangzhou Tinci Materials Technology
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Guangzhou
+  website: https://www.tinci.com
+  roles: &id003
+  - electrolyte_producer
+  makes:
+  - electrolyte
+  - lithium hexafluorophosphate
+  - additives
+  verify_at: https://www.tinci.com
+  ticker: 002709
+  exchange: SZSE
+  confidence: high
+- uid: org/capchem
+  name: Shenzhen Capchem Technology
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.capchem.com
+  roles: *id003
+  makes:
+  - electrolyte
+  - additives
+  verify_at: https://www.capchem.com
+  ticker: '300037'
+  exchange: SZSE
+  confidence: high
+- uid: org/do-fluoride
+  name: Do-Fluoride New Materials
+  country: CN
+  hq_region: Henan
+  hq_locality: Jiaozuo
+  website: https://www.dfd.com.cn
+  roles: *id003
+  makes:
+  - lithium hexafluorophosphate (LiPF6)
+  - electrolyte
+  verify_at: https://www.dfd.com.cn
+  ticker: '002407'
+  exchange: SZSE
+  confidence: medium
+- uid: org/shida-shenghua
+  name: Shandong Shida Shenghua Chemical
+  country: CN
+  hq_region: Shandong
+  hq_locality: Dongying
+  website: https://www.sdssh.com
+  roles: *id003
+  makes:
+  - electrolyte
+  - carbonate solvents
+  verify_at: https://www.sdssh.com
+  confidence: low
+- uid: org/ube-corporation
+  name: UBE Corporation
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.ube.com
+  roles:
+  - electrolyte_producer
+  - separator_producer
+  makes:
+  - electrolyte
+  - separator
+  verify_at: https://www.ube.com
+  ticker: '4208'
+  exchange: TSE
+  confidence: medium
+- uid: org/central-glass
+  name: Central Glass
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.cgco.co.jp
+  roles: *id003
+  makes:
+  - electrolyte and additives
+  verify_at: https://www.cgco.co.jp
+  ticker: '4044'
+  exchange: TSE
+  confidence: low
+- uid: org/enchem
+  name: Enchem
+  country: KR
+  hq_region: North Chungcheong
+  hq_locality: Jecheon
+  website: https://www.enchem.co.kr
+  roles: *id003
+  makes:
+  - electrolyte
+  verify_at: https://www.enchem.co.kr
+  ticker: '348370'
+  exchange: KOSDAQ
+  confidence: medium
+- uid: org/soulbrain
+  name: Soulbrain
+  country: KR
+  hq_region: Gyeonggi
+  hq_locality: Seongnam
+  website: https://www.soulbrain.co.kr
+  roles: *id003
+  makes:
+  - electrolyte
+  - semiconductor chemicals
+  verify_at: https://www.soulbrain.co.kr
+  confidence: low
+- uid: org/asahi-kasei
+  name: Asahi Kasei
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.asahi-kasei.com
+  roles: &id004
+  - separator_producer
+  makes:
+  - Hipore and Celgard separators
+  verify_at: https://www.asahi-kasei.com
+  ticker: '3407'
+  exchange: TSE
+  confidence: high
+- uid: org/toray-industries
+  name: Toray Industries
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.toray.com
+  roles: *id004
+  makes:
+  - polyolefin battery separator
+  verify_at: https://www.toray.com
+  ticker: '3402'
+  exchange: TSE
+  confidence: high
+- uid: org/sk-ie-technology
+  name: SK IE Technology
+  country: KR
+  hq_locality: Seoul
+  website: https://www.sk-iet.com
+  roles: *id004
+  makes:
+  - wet-process separator
+  verify_at: https://www.sk-iet.com
+  ticker: '361610'
+  exchange: KRX
+  confidence: medium
+- uid: org/w-scope
+  name: W-SCOPE
+  country: KR
+  hq_locality: Seoul
+  website: https://www.w-scope.co.kr
+  roles: *id004
+  makes:
+  - wet-process separator
+  verify_at: https://www.w-scope.co.kr
+  confidence: medium
+- uid: org/semcorp
+  name: Yunnan Energy New Material
+  aliases:
+  - SEMCORP
+  - Enjie
+  country: CN
+  hq_region: Yunnan
+  hq_locality: Yuxi
+  website: https://www.semcorp.cn
+  roles: *id004
+  makes:
+  - wet-process and coated separator
+  verify_at: https://www.semcorp.cn
+  ticker: 002812
+  exchange: SZSE
+  confidence: high
+- uid: org/senior-technology
+  name: Shenzhen Senior Technology Material
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.sztkjt.com
+  roles: *id004
+  makes:
+  - dry and wet-process separator
+  verify_at: https://www.sztkjt.com
+  ticker: '300568'
+  exchange: SZSE
+  confidence: medium
+- uid: org/entek
+  name: ENTEK International
+  country: US
+  hq_region: Oregon
+  hq_locality: Lebanon
+  website: https://www.entek.com
+  roles: *id004
+  makes:
+  - lead-acid and lithium separators
+  verify_at: https://www.entek.com
+  confidence: high
+- uid: org/lotte-energy-materials
+  name: Lotte Energy Materials
+  former_names:
+  - Iljin Materials
+  country: KR
+  hq_region: North Jeolla
+  hq_locality: Iksan
+  website: https://www.lotteenergymaterials.com
+  roles: &id005
+  - foil_can_producer
+  makes:
+  - battery-grade copper foil
+  verify_at: https://www.lotteenergymaterials.com
+  confidence: medium
+- uid: org/solus-advanced-materials
+  name: SOLUS Advanced Materials
+  country: KR
+  hq_region: North Jeolla
+  hq_locality: Iksan
+  website: https://www.solusadvancedmaterials.com
+  roles: *id005
+  makes:
+  - copper foil
+  verify_at: https://www.solusadvancedmaterials.com
+  confidence: medium
+- uid: org/furukawa-electric
+  name: Furukawa Electric
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.furukawa.co.jp
+  roles: *id005
+  makes:
+  - copper foil
+  verify_at: https://www.furukawa.co.jp
+  ticker: '5801'
+  exchange: TSE
+  confidence: medium
+- uid: org/nuode-new-materials
+  name: Nuode New Materials
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.nuode.net
+  roles: *id005
+  makes:
+  - battery copper foil
+  verify_at: https://www.nuode.net
+  ticker: '600110'
+  exchange: SSE
+  confidence: low
+- uid: org/toyo-aluminium
+  name: Toyo Aluminium
+  country: JP
+  hq_region: Osaka
+  hq_locality: Osaka
+  website: https://www.toyal.co.jp
+  roles: *id005
+  makes:
+  - aluminium cathode foil
+  verify_at: https://www.toyal.co.jp
+  confidence: low
+sites:
+- uid: site/ecopro-bm/pohang
+  kind: cathode_plant
+  name: EcoPro BM Pohang campus
+  operator_uid: org/ecopro-bm
+  country: KR
+  region: North Gyeongsang
+  locality: Pohang
+  status: operating
+  makes:
+  - NCA and NCM cathode
+  verify_at: https://www.ecoprobm.co.kr
+  confidence: medium
+- uid: site/ecopro-bm/cheongju
+  kind: cathode_plant
+  name: EcoPro BM Cheongju plant
+  operator_uid: org/ecopro-bm
+  country: KR
+  region: North Chungcheong
+  locality: Cheongju
+  status: operating
+  makes:
+  - NCA cathode
+  verify_at: https://www.ecoprobm.co.kr
+  confidence: medium
+- uid: site/ecopro-bm/debrecen
+  kind: cathode_plant
+  name: EcoPro BM Hungary
+  operator_uid: org/ecopro-bm
+  country: HU
+  region: Hajdú-Bihar
+  locality: Debrecen
+  status: construction
+  makes:
+  - NCM cathode
+  verify_at: https://www.ecoprobm.co.kr
+  confidence: low
+- uid: site/posco-future-m/gwangyang
+  kind: cathode_plant
+  name: POSCO Future M Gwangyang cathode plant
+  operator_uid: org/posco-future-m
+  country: KR
+  region: South Jeolla
+  locality: Gwangyang
+  status: operating
+  makes:
+  - NCM and NCA cathode
+  verify_at: https://www.poscofuturem.com
+  confidence: medium
+- uid: site/posco-future-m/pohang-anode
+  kind: anode_plant
+  name: POSCO Future M Pohang anode plant
+  operator_uid: org/posco-future-m
+  country: KR
+  region: North Gyeongsang
+  locality: Pohang
+  status: operating
+  makes:
+  - synthetic graphite anode
+  verify_at: https://www.poscofuturem.com
+  confidence: medium
+- uid: site/posco-future-m/sejong
+  kind: anode_plant
+  name: POSCO Future M Sejong anode plant
+  operator_uid: org/posco-future-m
+  country: KR
+  locality: Sejong
+  status: operating
+  makes:
+  - natural graphite anode
+  verify_at: https://www.poscofuturem.com
+  confidence: low
+- uid: site/lg-chem/cheongju
+  kind: cathode_plant
+  name: LG Chem Cheongju cathode plant
+  operator_uid: org/lg-chem
+  country: KR
+  region: North Chungcheong
+  locality: Cheongju
+  status: operating
+  makes:
+  - NCM cathode
+  verify_at: https://www.lgchem.com
+  confidence: medium
+- uid: site/lg-chem/gumi
+  kind: cathode_plant
+  name: LG Chem Gumi cathode plant
+  operator_uid: org/lg-chem
+  country: KR
+  region: North Gyeongsang
+  locality: Gumi
+  status: operating
+  makes:
+  - high-nickel cathode
+  verify_at: https://www.lgchem.com
+  confidence: low
+- uid: site/lg-chem/clarksville
+  kind: cathode_plant
+  name: LG Chem Tennessee cathode plant
+  operator_uid: org/lg-chem
+  country: US
+  region: Tennessee
+  locality: Clarksville
+  status: construction
+  makes:
+  - NCMA cathode
+  verify_at: https://www.lgchem.com
+  confidence: medium
+- uid: site/umicore/cheonan
+  kind: cathode_plant
+  name: Umicore Cheonan cathode plant
+  operator_uid: org/umicore
+  country: KR
+  region: South Chungcheong
+  locality: Cheonan
+  status: operating
+  makes:
+  - NMC cathode
+  verify_at: https://www.umicore.com
+  confidence: medium
+- uid: site/umicore/nysa
+  kind: cathode_plant
+  name: Umicore Nysa cathode plant
+  operator_uid: org/umicore
+  country: PL
+  region: Opole
+  locality: Nysa
+  status: commissioning
+  makes:
+  - NMC cathode
+  verify_at: https://www.umicore.com
+  confidence: medium
+- uid: site/umicore/kokkola
+  kind: refinery
+  name: Umicore Kokkola cobalt refinery
+  operator_uid: org/umicore
+  country: FI
+  region: Central Ostrobothnia
+  locality: Kokkola
+  status: operating
+  makes:
+  - cobalt chemicals
+  verify_at: https://www.umicore.com
+  confidence: medium
+- uid: site/umicore/hoboken
+  kind: recycling_plant
+  name: Umicore Hoboken precious metals refinery
+  operator_uid: org/umicore
+  country: BE
+  region: Antwerp
+  locality: Hoboken
+  status: operating
+  makes:
+  - recovered metals from batteries and scrap
+  verify_at: https://www.umicore.com
+  confidence: medium
+- uid: site/umicore/loyalist
+  kind: cathode_plant
+  name: Umicore Ontario cathode plant
+  operator_uid: org/umicore
+  country: CA
+  region: Ontario
+  locality: Loyalist
+  status: announced
+  makes:
+  - cathode and precursor
+  verify_at: https://www.umicore.com
+  note: Reported paused; the status is the first thing to read.
+  confidence: low
+- uid: site/basf/schwarzheide
+  kind: cathode_plant
+  name: BASF Schwarzheide cathode and black-mass plant
+  operator_uid: org/basf
+  country: DE
+  region: Brandenburg
+  locality: Schwarzheide
+  status: operating
+  makes:
+  - NCM cathode
+  - black mass
+  verify_at: https://www.basf.com
+  confidence: medium
+- uid: site/basf/harjavalta
+  kind: precursor_plant
+  name: BASF Harjavalta precursor plant
+  operator_uid: org/basf
+  country: FI
+  region: Satakunta
+  locality: Harjavalta
+  status: operating
+  makes:
+  - cathode precursor
+  verify_at: https://www.basf.com
+  confidence: medium
+- uid: site/basf/becancour
+  kind: cathode_plant
+  name: BASF Bécancour cathode plant
+  operator_uid: org/basf
+  country: CA
+  region: Quebec
+  locality: Bécancour
+  status: announced
+  makes:
+  - cathode active material
+  verify_at: https://www.basf.com
+  note: Reported paused.
+  confidence: low
+- uid: site/ronbay/xianning
+  kind: cathode_plant
+  name: Ronbay Xianning cathode plant
+  operator_uid: org/ronbay
+  country: CN
+  region: Hubei
+  locality: Xianning
+  status: operating
+  makes:
+  - high-nickel NCM cathode
+  verify_at: https://www.ronbaymat.com
+  confidence: medium
+- uid: site/ronbay/chungju
+  kind: cathode_plant
+  name: Ronbay JS Cathode Chungju plant
+  operator_uid: org/ronbay
+  country: KR
+  region: North Chungcheong
+  locality: Chungju
+  status: operating
+  makes:
+  - NCM cathode
+  verify_at: https://www.ronbaymat.com
+  confidence: low
+- uid: site/easpring/changzhou
+  kind: cathode_plant
+  name: Easpring Changzhou cathode plant
+  operator_uid: org/easpring
+  country: CN
+  region: Jiangsu
+  locality: Changzhou
+  status: operating
+  makes:
+  - NCM cathode
+  verify_at: https://www.easpring.com
+  confidence: medium
+- uid: site/xtc-new-energy/xiamen
+  kind: cathode_plant
+  name: Xiamen Tungsten New Energy Haicang plant
+  operator_uid: org/xtc-new-energy
+  country: CN
+  region: Fujian
+  locality: Xiamen
+  status: operating
+  makes:
+  - NCM and LCO cathode
+  verify_at: https://www.xtc-newenergy.com.cn
+  confidence: low
+- uid: site/hunan-yuneng/xiangtan
+  kind: cathode_plant
+  name: Hunan Yuneng Xiangtan LFP plant
+  operator_uid: org/hunan-yuneng
+  country: CN
+  region: Hunan
+  locality: Xiangtan
+  status: operating
+  makes:
+  - lithium iron phosphate cathode
+  verify_at: https://www.hnyneng.com
+  confidence: medium
+- uid: site/dynanonic/qujing
+  kind: cathode_plant
+  name: Dynanonic Qujing LFP plant
+  operator_uid: org/dynanonic
+  country: CN
+  region: Yunnan
+  locality: Qujing
+  status: operating
+  makes:
+  - LFP and LMFP cathode
+  verify_at: https://www.dynanonic.com
+  confidence: medium
+- uid: site/huayou-cobalt/quzhou
+  kind: chemical_plant
+  name: Huayou Quzhou refinery and precursor plant
+  operator_uid: org/huayou-cobalt
+  country: CN
+  region: Zhejiang
+  locality: Quzhou
+  status: operating
+  makes:
+  - nickel and cobalt sulphate
+  - precursor
+  verify_at: https://www.huayou.com
+  confidence: medium
+- uid: site/huayou-cobalt/tongxiang
+  kind: cathode_plant
+  name: Huayou Tongxiang cathode plant
+  operator_uid: org/huayou-cobalt
+  country: CN
+  region: Zhejiang
+  locality: Tongxiang
+  status: operating
+  makes:
+  - NCM cathode
+  verify_at: https://www.huayou.com
+  confidence: medium
+- uid: site/cngr/qinzhou
+  kind: precursor_plant
+  name: CNGR Qinzhou precursor base
+  operator_uid: org/cngr
+  country: CN
+  region: Guangxi
+  locality: Qinzhou
+  status: operating
+  makes:
+  - nickel and cobalt precursor
+  verify_at: https://www.cngrgf.com
+  confidence: medium
+- uid: site/cngr/morowali
+  kind: chemical_plant
+  name: CNGR Morowali nickel plant
+  operator_uid: org/cngr
+  country: ID
+  region: Central Sulawesi
+  locality: Morowali
+  status: operating
+  makes:
+  - nickel matte and sulphate
+  verify_at: https://www.cngrgf.com
+  confidence: low
+- uid: site/gem-co/jingmen
+  kind: recycling_plant
+  name: GEM Jingmen recycling and precursor base
+  operator_uid: org/gem-co
+  country: CN
+  region: Hubei
+  locality: Jingmen
+  status: operating
+  makes:
+  - black mass
+  - precursor
+  verify_at: https://www.gem.com.cn
+  confidence: medium
+- uid: site/brunp/foshan
+  kind: recycling_plant
+  name: Brunp Foshan recycling plant
+  operator_uid: org/brunp
+  country: CN
+  region: Guangdong
+  locality: Foshan
+  status: operating
+  makes:
+  - recovered cathode metals
+  verify_at: https://www.brunp.com.cn
+  confidence: low
+- uid: site/shenzhen-btr/hulunbuir
+  kind: anode_plant
+  name: BTR Inner Mongolia anode base
+  operator_uid: org/shenzhen-btr
+  country: CN
+  region: Inner Mongolia
+  locality: Hulunbuir
+  status: operating
+  makes:
+  - synthetic graphite anode
+  verify_at: https://www.btrchina.com
+  confidence: medium
+- uid: site/shenzhen-btr/morowali
+  kind: anode_plant
+  name: BTR Indonesia anode plant
+  operator_uid: org/shenzhen-btr
+  country: ID
+  region: Central Sulawesi
+  locality: Morowali
+  status: operating
+  makes:
+  - anode material
+  verify_at: https://www.btrchina.com
+  confidence: low
+- uid: site/shanshan/baotou
+  kind: anode_plant
+  name: Shanshan Baotou anode base
+  operator_uid: org/shanshan
+  country: CN
+  region: Inner Mongolia
+  locality: Baotou
+  status: operating
+  makes:
+  - graphite anode
+  verify_at: https://www.shanshantech.com
+  confidence: low
+- uid: site/putailai/liyang
+  kind: anode_plant
+  name: Putailai Liyang anode plant
+  operator_uid: org/putailai
+  country: CN
+  region: Jiangsu
+  locality: Liyang
+  status: operating
+  makes:
+  - graphite anode
+  verify_at: https://www.putailai.com
+  confidence: low
+- uid: site/novonix/chattanooga
+  kind: anode_plant
+  name: NOVONIX Riverside, Chattanooga
+  operator_uid: org/novonix
+  country: US
+  region: Tennessee
+  locality: Chattanooga
+  status: commissioning
+  makes:
+  - synthetic graphite anode
+  verify_at: https://www.novonixgroup.com
+  confidence: medium
+- uid: site/vianode/heroya
+  kind: anode_plant
+  name: Vianode Herøya plant
+  operator_uid: org/vianode
+  country: 'NO'
+  region: Telemark
+  locality: Herøya
+  status: operating
+  makes:
+  - synthetic graphite anode
+  verify_at: https://www.vianode.com
+  confidence: medium
+- uid: site/syrah-resources/vidalia
+  kind: anode_plant
+  name: Syrah Vidalia active anode material plant
+  operator_uid: org/syrah-resources
+  country: US
+  region: Louisiana
+  locality: Vidalia
+  status: commissioning
+  makes:
+  - active anode material
+  verify_at: https://www.syrahresources.com.au
+  confidence: medium
+- uid: site/syrah-resources/balama
+  kind: mine
+  name: Balama graphite operation
+  operator_uid: org/syrah-resources
+  country: MZ
+  region: Cabo Delgado
+  locality: Balama
+  status: care_and_maintenance
+  makes:
+  - natural graphite concentrate
+  verify_at: https://www.syrahresources.com.au
+  note: Operations have been repeatedly suspended; check the status.
+  confidence: medium
+- uid: site/talga/lulea
+  kind: anode_plant
+  name: Talga Vittangi anode refinery, Luleå
+  operator_uid: org/talga
+  country: SE
+  region: Norrbotten
+  locality: Luleå
+  status: construction
+  makes:
+  - natural graphite anode
+  verify_at: https://www.talgagroup.com
+  confidence: low
+- uid: site/nouveau-monde-graphite/becancour
+  kind: anode_plant
+  name: NMG Bécancour anode plant
+  operator_uid: org/nouveau-monde-graphite
+  country: CA
+  region: Quebec
+  locality: Bécancour
+  status: construction
+  makes:
+  - coated spherical graphite
+  verify_at: https://nmg.com
+  confidence: low
+- uid: site/sila-nanotechnologies/moses-lake
+  kind: anode_plant
+  name: Sila Moses Lake plant
+  operator_uid: org/sila-nanotechnologies
+  country: US
+  region: Washington
+  locality: Moses Lake
+  status: commissioning
+  makes:
+  - silicon anode material
+  verify_at: https://www.silanano.com
+  confidence: medium
+- uid: site/group14/moses-lake
+  kind: anode_plant
+  name: Group14 Moses Lake plant (BAM-2)
+  operator_uid: org/group14
+  country: US
+  region: Washington
+  locality: Moses Lake
+  status: commissioning
+  makes:
+  - silicon-carbon anode material
+  verify_at: https://group14.technology
+  confidence: medium
+- uid: site/epsilon-advanced-materials/vizag
+  kind: anode_plant
+  name: Epsilon Advanced Materials Vizag plant
+  operator_uid: org/epsilon-advanced-materials
+  country: IN
+  region: Andhra Pradesh
+  locality: Visakhapatnam
+  status: construction
+  makes:
+  - synthetic graphite anode
+  verify_at: https://epsilonmaterials.com
+  confidence: low
+- uid: site/tinci-materials/jiujiang
+  kind: electrolyte_plant
+  name: Tinci Jiujiang electrolyte plant
+  operator_uid: org/tinci-materials
+  country: CN
+  region: Jiangxi
+  locality: Jiujiang
+  status: operating
+  makes:
+  - electrolyte
+  - LiPF6
+  verify_at: https://www.tinci.com
+  confidence: low
+- uid: site/capchem/huizhou
+  kind: electrolyte_plant
+  name: Capchem Huizhou electrolyte plant
+  operator_uid: org/capchem
+  country: CN
+  region: Guangdong
+  locality: Huizhou
+  status: operating
+  makes:
+  - electrolyte
+  verify_at: https://www.capchem.com
+  confidence: low
+- uid: site/do-fluoride/jiaozuo
+  kind: chemical_plant
+  name: Do-Fluoride Jiaozuo LiPF6 plant
+  operator_uid: org/do-fluoride
+  country: CN
+  region: Henan
+  locality: Jiaozuo
+  status: operating
+  makes:
+  - lithium hexafluorophosphate
+  verify_at: https://www.dfd.com.cn
+  confidence: low
+- uid: site/enchem/jecheon
+  kind: electrolyte_plant
+  name: Enchem Jecheon electrolyte plant
+  operator_uid: org/enchem
+  country: KR
+  region: North Chungcheong
+  locality: Jecheon
+  status: operating
+  makes:
+  - electrolyte
+  verify_at: https://www.enchem.co.kr
+  confidence: low
+- uid: site/asahi-kasei/moriyama
+  kind: separator_plant
+  name: Asahi Kasei Hipore Moriyama plant
+  operator_uid: org/asahi-kasei
+  country: JP
+  region: Shiga
+  locality: Moriyama
+  status: operating
+  makes:
+  - wet-process separator
+  verify_at: https://www.asahi-kasei.com
+  confidence: low
+- uid: site/asahi-kasei/port-huron
+  kind: separator_plant
+  name: Celgard Port Huron plant
+  operator_uid: org/asahi-kasei
+  country: US
+  region: Michigan
+  locality: Port Huron
+  status: operating
+  makes:
+  - dry-process separator
+  verify_at: https://www.asahi-kasei.com
+  confidence: low
+- uid: site/toray-industries/nasushiobara
+  kind: separator_plant
+  name: Toray Nasushiobara separator plant
+  operator_uid: org/toray-industries
+  country: JP
+  region: Tochigi
+  locality: Nasushiobara
+  status: operating
+  makes:
+  - battery separator
+  verify_at: https://www.toray.com
+  confidence: low
+- uid: site/sk-ie-technology/jeungpyeong
+  kind: separator_plant
+  name: SK IE Technology Jeungpyeong plant
+  operator_uid: org/sk-ie-technology
+  country: KR
+  region: North Chungcheong
+  locality: Jeungpyeong
+  status: operating
+  makes:
+  - wet-process separator
+  verify_at: https://www.sk-iet.com
+  confidence: low
+- uid: site/semcorp/yuxi
+  kind: separator_plant
+  name: SEMCORP Yuxi separator base
+  operator_uid: org/semcorp
+  country: CN
+  region: Yunnan
+  locality: Yuxi
+  status: operating
+  makes:
+  - wet-process separator
+  verify_at: https://www.semcorp.cn
+  confidence: medium
+- uid: site/semcorp/debrecen
+  kind: separator_plant
+  name: SEMCORP Hungary separator plant
+  operator_uid: org/semcorp
+  country: HU
+  region: Hajdú-Bihar
+  locality: Debrecen
+  status: construction
+  makes:
+  - separator
+  verify_at: https://www.semcorp.cn
+  confidence: low
+- uid: site/entek/lebanon
+  kind: separator_plant
+  name: ENTEK Lebanon plant
+  operator_uid: org/entek
+  country: US
+  region: Oregon
+  locality: Lebanon
+  status: operating
+  makes:
+  - lead-acid and lithium separators
+  verify_at: https://www.entek.com
+  confidence: medium
+- uid: site/entek/terre-haute
+  kind: separator_plant
+  name: ENTEK Terre Haute lithium separator plant
+  operator_uid: org/entek
+  country: US
+  region: Indiana
+  locality: Terre Haute
+  status: construction
+  makes:
+  - wet-process separator
+  verify_at: https://www.entek.com
+  confidence: medium
+- uid: site/lotte-energy-materials/iksan
+  kind: component_factory
+  name: Lotte Energy Materials Iksan copper foil plant
+  operator_uid: org/lotte-energy-materials
+  country: KR
+  region: North Jeolla
+  locality: Iksan
+  status: operating
+  makes:
+  - battery-grade copper foil
+  verify_at: https://www.lotteenergymaterials.com
+  confidence: low
+- uid: site/solus-advanced-materials/iksan
+  kind: component_factory
+  name: SOLUS Iksan copper foil plant
+  operator_uid: org/solus-advanced-materials
+  country: KR
+  region: North Jeolla
+  locality: Iksan
+  status: operating
+  makes:
+  - copper foil
+  verify_at: https://www.solusadvancedmaterials.com
+  confidence: low

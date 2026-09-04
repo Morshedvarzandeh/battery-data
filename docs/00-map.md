@@ -25,6 +25,7 @@ order the API lists them in (`GET /v1/info`).
 | **Patents** | reviewed DOCDB families, their publications, categories under the versioned taxonomy, links to companies, products and materials | `bd.patent_family`, `patent_publication`, `patent_classification`, `patent_entity_link`; raw rows in `bd_stage` | `contrib/patents/<docdb-family-id>.yaml` ([format](../json-schema/patent-contribution.schema.json)) after the review in [`docs/08-patents.md`](08-patents.md) | `/v1/patent_families`, `/v1/patents`, `/v1/patent_categories` |
 | **Standards and certifications** | standards referenced (never redistributed), certifications products hold, transport classification | `bd.standard`, `certification`, `transport_classification` | the `certifications` and `transport` blocks of a product file | `/v1/standards`, `/v1/certifications` |
 | **Applications** | the vehicles, installations and devices batteries are fielded in | `bd.application`, `product_application` | the `applications` block of a product file | `/v1/applications` |
+| **The queue** | names of companies and sites recalled without a document, each with the page to verify it against. Not facts, and not in the library: they carry no source and the database refuses one that does | `bd_stage.layer_candidate` | `review/layers/*.yaml` ([format](../json-schema/layer-candidate.schema.json), see [`docs/14-candidates.md`](14-candidates.md)) | `/v1/layer_candidates` |
 | **Sources and vocabulary** | every document cited, the quantity registry with its EMMO and QUDT bindings, units, the crosswalk to BDF, BPX and the Battery Passport | `bd.source`, `source_location`, `provenance`, `quantity`, `unit`, `quantity_mapping` | created by every loader; bindings by `tools/sync_vocabularies.py` | `/v1/sources`, `/v1/quantities`, `/v1/units`, `/v1/crosswalk` |
 
 Test data (cycler files, EIS, abuse tests) sits under products as
@@ -85,6 +86,7 @@ database constraints:
 | Companies | a relation to the company itself; a pinned uid that does not exist; a joint venture or stake without its share |
 | Market | any price, index or volume from a source whose data may not be redistributed; unordered periods; a supply agreement between one party and itself |
 | Patents | an accepted family without a DOCDB id and a source; a legal status without its jurisdiction and date; a publication whose number does not match its jurisdiction |
+| The queue | a candidate that carries a quote, a page, a locator, a source, a capacity or a tonnage: a recalled name may not be made to look sourced |
 
 ## Where to read next
 
@@ -93,4 +95,5 @@ database constraints:
 - [`docs/10-components-and-chemistries.md`](10-components-and-chemistries.md): components and every chemistry.
 - [`docs/08-patents.md`](08-patents.md): the patent pipeline and its review boundary.
 - [`docs/11-ontology.md`](11-ontology.md): how every layer is expressed in RDF and in the graph projection.
+- [`docs/14-candidates.md`](14-candidates.md): the candidate queue, and the gate between a recalled name and a record.
 - [`docs/examples/`](examples/README.md): a fictional example file for each layer.

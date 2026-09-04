@@ -512,6 +512,44 @@ def layer_uids() -> set:
     return uids
 
 
+# Words a plant's name carries and a coverage target's does not, or the other
+# way round. "CATL Ningde base" and "CATL Ningde" are the same place.
+NAME_NOISE = re.compile(
+    r"\b(base|plant|plants|factory|gigafactory|works|campus|centre|center|facility|facilities|"
+    r"operation|operations|mine|refinery|laboratory|laboratories|lab|labs|company|corporation|"
+    r"group|holdings|limited|ltd|inc|co|gmbh|ag|sa|se|as|ab|oy|nv|bv|plc|llc|technologies|"
+    r"technology|materials|material|energy|batteries|battery|new|the|and|of)\b")
+
+
+def normalise(name: str) -> str:
+    n = re.sub(r"[^a-z0-9 ]+", " ", name.lower())
+    n = NAME_NOISE.sub(" ", n)
+    return " ".join(n.split())
+
+
+def candidate_index() -> tuple[set, set]:
+    """Uids and names in the candidate queue under review/layers.
+
+    A queued target is not sourced: nobody has read a document for it. It is
+    the state between 'never named' and 'in the library', and the page shows
+    it as its own colour so the two are never confused.
+    """
+    uids, names = set(), set()
+    for f in glob.glob(os.path.join(ROOT, "review", "layers", "*.y*ml")):
+        try:
+            doc = yaml.safe_load(open(f, encoding="utf-8"))
+        except Exception:                                  # noqa: BLE001
+            continue
+        for c in (doc.get("companies") or []) + (doc.get("sites") or []):
+            uids.add(c["uid"])
+            for n in [c["name"], c.get("legal_name")] + list(c.get("aliases") or []):
+                if n:
+                    names.add(n.strip().lower())
+                    if normalise(n):
+                        names.add(normalise(n))
+    return uids, names
+
+
 def coverage(segments: list[dict], products: list[dict]) -> list[dict]:
     """Mark each target sourced or missing by looking, not by being told.
 
@@ -520,10 +558,19 @@ def coverage(segments: list[dict], products: list[dict]) -> list[dict]:
     'provisional' on the strength of numbers that had no document at all.
     """
     known = {p["uid"] for p in products} | layer_uids()
+    queued_uids, queued_names = candidate_index()
+
+    def status(c):
+        if c.get("uid") in known:
+            return "sourced"
+        if (c.get("uid") in queued_uids or c["name"].strip().lower() in queued_names
+                or (normalise(c["name"]) and normalise(c["name"]) in queued_names)):
+            return "queued"
+        return "missing"
+
     out = []
     for seg in segments:
-        cells = [{**c, "status": "sourced" if c.get("uid") in known else "missing"}
-                 for c in seg["cells"]]
+        cells = [{**c, "status": status(c)} for c in seg["cells"]]
         out.append({**seg, "cells": cells})
     return out
 

@@ -142,10 +142,11 @@ class Db:
             return {}
         cols = self.query(
             "SELECT column_name, data_type FROM information_schema.columns "
-            "WHERE table_schema = 'bd' AND table_name = %s ORDER BY ordinal_position", [res.view])
+            "WHERE table_schema = %s AND table_name = %s ORDER BY ordinal_position",
+            [res.schema, res.view])
         if not cols:
-            raise RuntimeError(f"view bd.{res.view} for resource {resource!r} does not exist; "
-                               f"rebuild the database with tools/build_db.sh")
+            raise RuntimeError(f"view {res.schema}.{res.view} for resource {resource!r} does not "
+                               f"exist; rebuild the database with tools/build_db.sh")
         aliases = {"cells": FIELDS, "components": COMPONENT_FIELDS}.get(resource, {})
         self._fields[resource] = field_map(cols, aliases)
         return self._fields[resource]
@@ -271,7 +272,8 @@ def build_query(db: Db, resource: str, *, filter_expr: str = "", sort: str = "",
         if key not in fm:
             raise FilterError(f"cannot sort by unknown field {key!r}; see /v1/info/{resource}")
         order = f"{fm[key]['col']} {'DESC' if desc else 'ASC'} NULLS LAST"
-    sql = (f"SELECT {', '.join(chr(34) + c + chr(34) for c in selected)} FROM bd.{res.view} WHERE {where} "
+    sql = (f"SELECT {', '.join(chr(34) + c + chr(34) for c in selected)} "
+           f"FROM {res.schema}.{res.view} WHERE {where} "
            f"ORDER BY {order} LIMIT {int(limit) + 1} OFFSET {int(offset)}")
     sql, params = to_psycopg(sql, params)
     return sql, params, selected
@@ -288,8 +290,15 @@ def run_query(db: Db, resource: str, request_url: str, *, filter_expr: str = "",
     more = len(rows) > limit
     rows = rows[:limit]
     data = [{"type": resource, "id": str(r.get(res.id)), "attributes": r} for r in rows]
-    payload = envelope(data, request_url=request_url, returned=len(data), more=more,
-                       extra_meta={"layer": layer_of(resource), **({"note": res.note} if res.note else {})})
+    meta = {"layer": layer_of(resource)}
+    if res.note:
+        meta["note"] = res.note
+    if not res.accepted:
+        meta["accepted"] = False
+        meta["warnings"] = [{"type": "warning", "detail":
+                             "These rows are candidates awaiting verification, not facts. They carry "
+                             "no source and are not part of the library."}]
+    payload = envelope(data, request_url=request_url, returned=len(data), more=more, extra_meta=meta)
     payload["links"] = {"base_url": "/v1"}
     if more:
         q = {"page_limit": limit, "page_offset": offset + limit}
@@ -307,8 +316,8 @@ def detail(db: Db, resource: str, ident: str, request_url: str) -> dict | None:
     res = RESOURCES[resource]
     fm = db.fields(resource)
     columns = [f for f, spec in fm.items() if spec.get("column")]
-    rows = db.query(f"SELECT {', '.join(chr(34) + c + chr(34) for c in columns)} FROM bd.{res.view} "
-                    f"WHERE {fm[res.id]['col']} = %s",
+    rows = db.query(f"SELECT {', '.join(chr(34) + c + chr(34) for c in columns)} "
+                    f"FROM {res.schema}.{res.view} WHERE {fm[res.id]['col']} = %s",
                     [ident if fm[res.id]["type"] != "number" else _number(ident)])
     if not rows:
         return None
@@ -319,7 +328,7 @@ def detail(db: Db, resource: str, ident: str, request_url: str) -> dict | None:
         if key is None:
             relationships[name] = {"data": []}
             continue
-        rel_rows = db.query(f'SELECT * FROM bd.{view} WHERE "{view_col}" = %s LIMIT 1000', [key])
+        rel_rows = db.query(f'SELECT * FROM bd.{view} WHERE "{view_col}" = %s LIMIT 1000', [key])  # related views are always accepted data
         relationships[name] = {"data": rel_rows}
     entry = {"type": resource, "id": str(row.get(res.id)), "attributes": row}
     if relationships:
@@ -427,6 +436,7 @@ class Handler(BaseHTTPRequestHandler):
         for layer in LAYERS:
             layers.append({**layer, "resources": [
                 {"name": r, "endpoint": f"/v1/{r}", "description": RESOURCES[r].description,
+                 "accepted": RESOURCES[r].accepted,
                  "filterable": RESOURCES[r].view is not None} for r in layer["resources"]]})
         self._send(200, {"meta": {"api_version": API_VERSION, "provider": PROVIDER},
                          "data": {
@@ -454,6 +464,7 @@ class Handler(BaseHTTPRequestHandler):
                          "data": {
             "type": "info", "id": resource, "layer": layer_of(resource),
             "description": res.description, "note": res.note or None,
+            "accepted": res.accepted, "source_view": f"{res.schema}.{res.view}" if res.view else None,
             "endpoint": f"/v1/{resource}", "id_field": res.id,
             "properties": props, "formats": ["json"],
             "output_fields_by_format": {"json": [f for f, s in fm.items() if s.get("column")]},

@@ -1,0 +1,38 @@
+# Fixture candidate set for tests/test_layer_candidates.py. Fictional except
+# for one real company whose page is a fixture, so the verifier can be tested
+# without a network.
+schema_version: "1"
+candidate_set: fixture-set
+recalled_by: A test fixture, standing in for a recall with no document behind it
+recalled_on: 2026-09-04
+caveat: >-
+  Fixture data for the test suite. Like every candidate set it carries no source, no page and no
+  quote, and nothing here may enter the accepted tables without verification against a document.
+companies:
+  - uid: org/morrow-batteries
+    name: Morrow Batteries
+    country: "NO"
+    hq_locality: Arendal
+    roles: [manufacturer]
+    makes: [LFP prismatic cells]
+    website: https://www.morrowbatteries.com
+    verify_at: https://www.morrowbatteries.com
+    confidence: medium
+  - uid: org/no-such-name
+    name: A Company Whose Name Is Not On Its Page
+    country: SE
+    roles: [manufacturer]
+    verify_at: https://example.org/no-such-name
+    confidence: low
+sites:
+  - uid: site/morrow-batteries/arendal
+    kind: cell_factory
+    name: Morrow Arendal gigafactory
+    operator_uid: org/morrow-batteries
+    country: "NO"
+    region: Agder
+    locality: Arendal
+    status: operating
+    makes: [LFP prismatic cells]
+    verify_at: https://www.morrowbatteries.com/factory
+    confidence: low

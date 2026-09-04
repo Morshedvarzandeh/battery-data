@@ -1,0 +1,1826 @@
+# Cell, primary-battery and storage-battery MAKERS: candidates, not records.
+#
+# Every company below is a name recalled without a document. It carries no
+# source, no page and no quote, and tools/validate_layer_candidates.py refuses
+# one that does. Run tools/verify_layer_candidates.py to fetch each verify_at
+# page, find the name on it and write a company contribution whose locator
+# quotes that page; review the result before it is promoted into contrib/.
+#
+# What is most likely to be wrong here: headquarters localities, tickers, and
+# the corporate status of the companies that have restructured, been acquired
+# or wound down since the recall. Those are flagged in `note` where known.
+schema_version: '1'
+candidate_set: cell-makers
+recalled_by: Claude, from training data, in a session with no network access to company or industry sources (every
+  manufacturer, distributor and publisher domain is blocked by the environment's egress policy)
+recalled_on: '2026-09-04'
+caveat: 'Every entry here is a NAME RECALLED FROM TRAINING, not a fact read from a document. No entry carries a source,
+  a page or a quote, and none may enter bd.* as it stands. tools/verify_layer_candidates.py fetches the page named
+  in verify_at, finds the name on it and writes a contribution whose locator quotes that page; only then, and only
+  after review, does a name become a record. Statuses, localities and listings are the fields most likely to be stale:
+  plants are announced, paused, renamed and cancelled faster than any recall keeps up.'
+companies:
+- uid: org/catl
+  name: CATL
+  legal_name: Contemporary Amperex Technology Co., Limited
+  aliases:
+  - CATL
+  - Ningde Times
+  - Contemporary Amperex
+  country: CN
+  hq_region: Fujian
+  hq_locality: Ningde
+  founded_year: 2011
+  website: https://www.catl.com
+  roles: &id002
+  - manufacturer
+  - pack_assembler
+  - integrator
+  makes:
+  - cells
+  - modules
+  - packs
+  - storage systems
+  chemistries:
+  - lithium_ion
+  - sodium_ion
+  verify_at: https://www.catl.com
+  ticker: '300750'
+  exchange: SZSE
+  confidence: high
+- uid: org/findreams-battery
+  name: FinDreams Battery
+  aliases:
+  - BYD FinDreams
+  - FinDreams
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.byd.com
+  roles: &id001
+  - manufacturer
+  - pack_assembler
+  makes:
+  - Blade LFP cells
+  - packs
+  chemistries:
+  - lithium_ion
+  verify_at: https://www.byd.com
+  parent_uid: org/byd
+  note: BYD's cell arm; org/byd in the library is the vehicle maker. The relation is a candidate too.
+  confidence: high
+- uid: org/calb
+  name: CALB
+  legal_name: China Aviation Lithium Battery Co., Ltd.
+  aliases:
+  - CALB
+  - AVIC Lithium
+  country: CN
+  hq_region: Jiangsu
+  hq_locality: Changzhou
+  website: https://www.calb-tech.com
+  roles: *id001
+  makes:
+  - cells
+  - packs
+  chemistries:
+  - lithium_ion
+  verify_at: https://www.calb-tech.com
+  ticker: '3931'
+  exchange: HKEX
+  confidence: high
+- uid: org/eve-energy
+  name: EVE Energy
+  legal_name: EVE Energy Co., Ltd.
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Huizhou
+  founded_year: 2001
+  website: https://www.evebattery.com
+  roles: *id001
+  makes:
+  - cylindrical cells
+  - prismatic LFP cells
+  - primary lithium cells
+  chemistries:
+  - lithium_ion
+  - lithium_primary
+  - sodium_ion
+  verify_at: https://www.evebattery.com
+  ticker: '300014'
+  exchange: SZSE
+  note: The library also holds org/eve for the same company; the duplicate is a known identity collision to merge.
+  confidence: high
+- uid: org/gotion
+  name: Gotion High-Tech
+  aliases:
+  - Guoxuan High-Tech
+  - Gotion
+  country: CN
+  hq_region: Anhui
+  hq_locality: Hefei
+  website: https://www.gotion.com.cn
+  roles: *id001
+  makes:
+  - LFP cells
+  - packs
+  - storage systems
+  chemistries:
+  - lithium_ion
+  - sodium_ion
+  verify_at: https://www.gotion.com.cn
+  ticker: '002074'
+  exchange: SZSE
+  confidence: high
+- uid: org/sunwoda
+  name: Sunwoda
+  legal_name: Sunwoda Electronic Co., Ltd.
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.sunwoda.com
+  roles: *id001
+  makes:
+  - consumer cells
+  - EV cells
+  - packs
+  verify_at: https://www.sunwoda.com
+  ticker: '300207'
+  exchange: SZSE
+  confidence: high
+- uid: org/svolt
+  name: SVOLT Energy Technology
+  aliases:
+  - Honeycomb Energy
+  - SVOLT
+  country: CN
+  hq_region: Jiangsu
+  hq_locality: Changzhou
+  website: https://www.svolt.cn
+  roles: *id001
+  makes:
+  - short-blade cells
+  - cobalt-free cells
+  - packs
+  verify_at: https://www.svolt.cn
+  note: Spun out of Great Wall Motor.
+  confidence: high
+- uid: org/rept
+  name: REPT BATTERO
+  legal_name: REPT BATTERO Energy Co., Ltd.
+  aliases:
+  - Ruipu Lanjun
+  - REPT
+  country: CN
+  hq_region: Zhejiang
+  hq_locality: Wenzhou
+  website: https://www.reptbattero.com
+  roles: *id001
+  makes:
+  - prismatic LFP cells
+  - storage systems
+  verify_at: https://www.reptbattero.com
+  ticker: '0666'
+  exchange: HKEX
+  confidence: high
+- uid: org/hithium
+  name: HiTHIUM
+  legal_name: Xiamen Hithium Energy Storage Technology Co., Ltd.
+  country: CN
+  hq_region: Fujian
+  hq_locality: Xiamen
+  website: https://www.hithium.com
+  roles: *id002
+  makes:
+  - ESS prismatic cells
+  - containers
+  chemistries:
+  - lithium_ion
+  - sodium_ion
+  verify_at: https://www.hithium.com
+  confidence: high
+- uid: org/great-power
+  name: Guangzhou Great Power
+  legal_name: Guangzhou Great Power Energy & Technology Co., Ltd.
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Guangzhou
+  website: https://www.greatpower.net
+  roles: *id001
+  makes:
+  - ESS cells
+  - consumer cells
+  verify_at: https://www.greatpower.net
+  ticker: '300438'
+  exchange: SZSE
+  confidence: high
+- uid: org/lishen
+  name: Tianjin Lishen Battery
+  aliases:
+  - Lishen
+  country: CN
+  hq_region: Tianjin
+  hq_locality: Tianjin
+  website: https://www.lishen.com.cn
+  roles: *id001
+  makes:
+  - cylindrical cells
+  - prismatic cells
+  - packs
+  verify_at: https://www.lishen.com.cn
+  confidence: high
+- uid: org/bak
+  name: BAK Battery
+  legal_name: Shenzhen BAK Power Battery Co., Ltd.
+  aliases:
+  - BAK
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.bak.com.cn
+  roles: &id003
+  - manufacturer
+  makes:
+  - 18650 and 21700 cylindrical cells
+  verify_at: https://www.bak.com.cn
+  confidence: high
+- uid: org/farasis
+  name: Farasis Energy
+  country: CN
+  hq_region: Jiangxi
+  hq_locality: Ganzhou
+  website: https://www.farasis.com.cn
+  roles: *id001
+  makes:
+  - pouch cells
+  - packs
+  chemistries:
+  - lithium_ion
+  - sodium_ion
+  verify_at: https://www.farasis.com.cn
+  ticker: '688567'
+  exchange: SSE
+  confidence: high
+- uid: org/cosmx
+  name: CosMX Battery
+  legal_name: Zhuhai CosMX Battery Co., Ltd.
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Zhuhai
+  website: https://www.cosmx.com
+  roles: *id003
+  makes:
+  - polymer consumer cells
+  verify_at: https://www.cosmx.com
+  confidence: high
+- uid: org/atl
+  name: Amperex Technology Limited
+  aliases:
+  - ATL
+  country: HK
+  hq_locality: Hong Kong
+  website: https://www.atlbattery.com
+  roles: *id003
+  makes:
+  - consumer polymer cells
+  verify_at: https://www.atlbattery.com
+  parent_uid: org/tdk
+  note: Consumer-cell maker; TDK subsidiary and the company CATL was spun out of.
+  confidence: high
+- uid: org/ampace
+  name: Ampace
+  country: CN
+  hq_region: Fujian
+  hq_locality: Xiamen
+  website: https://www.ampace.com
+  roles: *id001
+  makes:
+  - cylindrical cells
+  - ESS cells
+  verify_at: https://www.ampace.com
+  note: ATL and CATL joint venture.
+  confidence: medium
+- uid: org/cbak
+  name: CBAK Energy Technology
+  country: CN
+  hq_region: Liaoning
+  hq_locality: Dalian
+  website: https://www.cbak.com.cn
+  roles: *id003
+  makes:
+  - cylindrical cells
+  verify_at: https://www.cbak.com.cn
+  ticker: CBAT
+  exchange: NASDAQ
+  confidence: medium
+- uid: org/highstar
+  name: Highstar Battery
+  country: CN
+  hq_region: Jiangsu
+  hq_locality: Nantong
+  website: https://www.highstar-battery.com
+  roles: *id003
+  makes:
+  - sodium-ion cells
+  - lithium cells
+  chemistries:
+  - sodium_ion
+  - lithium_ion
+  verify_at: https://www.highstar-battery.com
+  confidence: medium
+- uid: org/hina-battery
+  name: HiNa Battery Technology
+  country: CN
+  hq_region: Jiangsu
+  hq_locality: Liyang
+  website: https://www.hinabattery.com
+  roles: *id003
+  makes:
+  - sodium-ion cells
+  chemistries:
+  - sodium_ion
+  verify_at: https://www.hinabattery.com
+  note: Spun out of the Institute of Physics, Chinese Academy of Sciences.
+  confidence: medium
+- uid: org/narada
+  name: Narada Power Source
+  country: CN
+  hq_region: Zhejiang
+  hq_locality: Hangzhou
+  website: https://www.naradapower.com
+  roles: *id002
+  makes:
+  - lead-acid batteries
+  - lithium ESS
+  chemistries:
+  - lead_acid
+  - lithium_ion
+  verify_at: https://www.naradapower.com
+  ticker: '300068'
+  exchange: SZSE
+  confidence: high
+- uid: org/tianneng
+  name: Tianneng Power International
+  country: CN
+  hq_region: Zhejiang
+  hq_locality: Changxing
+  website: https://www.tianneng.com
+  roles: *id003
+  makes:
+  - lead-acid motive batteries
+  - lithium cells
+  chemistries:
+  - lead_acid
+  - lithium_ion
+  verify_at: https://www.tianneng.com
+  ticker: 0819
+  exchange: HKEX
+  confidence: high
+- uid: org/chilwee
+  name: Chilwee Group
+  aliases:
+  - Chaowei Power
+  country: CN
+  hq_region: Zhejiang
+  hq_locality: Changxing
+  website: https://www.chilwee.com
+  roles: *id003
+  makes:
+  - lead-acid motive batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.chilwee.com
+  confidence: medium
+- uid: org/camel-group
+  name: Camel Group
+  country: CN
+  hq_region: Hubei
+  hq_locality: Xiangyang
+  website: https://www.chinacamel.com
+  roles: *id003
+  makes:
+  - automotive lead-acid batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.chinacamel.com
+  ticker: '601311'
+  exchange: SSE
+  confidence: medium
+- uid: org/sacred-sun
+  name: Sacred Sun
+  legal_name: Shandong Sacred Sun Power Sources Co., Ltd.
+  country: CN
+  hq_region: Shandong
+  hq_locality: Qufu
+  website: https://www.sacredsun.com
+  roles: *id003
+  makes:
+  - stationary lead-acid batteries
+  - lithium ESS
+  chemistries:
+  - lead_acid
+  - lithium_ion
+  verify_at: https://www.sacredsun.com
+  confidence: medium
+- uid: org/dmegc
+  name: DMEGC
+  legal_name: Hengdian Group DMEGC Magnetics Co., Ltd.
+  country: CN
+  hq_region: Zhejiang
+  hq_locality: Dongyang
+  website: https://www.dmegc.com.cn
+  roles: *id003
+  makes:
+  - LFP cells
+  - cylindrical cells
+  verify_at: https://www.dmegc.com.cn
+  ticker: '002056'
+  exchange: SZSE
+  confidence: medium
+- uid: org/zenergy
+  name: Zenergy Battery
+  legal_name: Jiangsu Zenergy Battery Technologies Co., Ltd.
+  country: CN
+  hq_region: Jiangsu
+  hq_locality: Changshu
+  website: https://www.zenergybattery.com
+  roles: *id003
+  makes:
+  - prismatic cells
+  verify_at: https://www.zenergybattery.com
+  confidence: medium
+- uid: org/grepow
+  name: Grepow
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.grepow.com
+  roles: *id001
+  makes:
+  - shaped and high-rate cells
+  - packs
+  verify_at: https://www.grepow.com
+  confidence: medium
+- uid: org/winston-battery
+  name: Winston Battery
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.winston-battery.com
+  roles: *id003
+  makes:
+  - large-format LFP and LYP cells
+  verify_at: https://www.winston-battery.com
+  note: Long-standing large-format maker; current activity uncertain.
+  confidence: low
+- uid: org/pylontech
+  name: Pylon Technologies
+  aliases:
+  - Pylontech
+  country: CN
+  hq_region: Shanghai
+  hq_locality: Shanghai
+  website: https://www.pylontech.com.cn
+  roles: *id002
+  makes:
+  - home and C&I storage systems
+  verify_at: https://www.pylontech.com.cn
+  ticker: '688063'
+  exchange: SSE
+  confidence: high
+- uid: org/eemb
+  name: EEMB
+  country: CN
+  hq_region: Guangdong
+  hq_locality: Shenzhen
+  website: https://www.eemb.com
+  roles: *id003
+  makes:
+  - primary lithium cells
+  - coin cells
+  - polymer cells
+  chemistries:
+  - lithium_primary
+  - lithium_ion
+  verify_at: https://www.eemb.com
+  confidence: medium
+- uid: org/cnte
+  name: CNTE
+  country: CN
+  website: https://www.cn-te.com
+  roles: *id002
+  makes:
+  - ESS cells and systems
+  verify_at: https://www.cn-te.com
+  note: In the library from a contributed datasheet; the web page and full legal name need checking.
+  confidence: low
+- uid: org/wanxiang-a123
+  name: Wanxiang A123 Systems
+  country: CN
+  hq_region: Zhejiang
+  hq_locality: Hangzhou
+  website: https://www.a123systems.com
+  roles: *id001
+  makes:
+  - LFP cells
+  - starter batteries
+  verify_at: https://www.a123systems.com
+  note: A123 Systems under Wanxiang Group ownership since 2013.
+  confidence: medium
+- uid: org/lg-energy-solution
+  name: LG Energy Solution
+  aliases:
+  - LGES
+  - LG Energy Solution
+  former_names:
+  - LG Chem Energy Solution
+  country: KR
+  hq_locality: Seoul
+  founded_year: 2020
+  website: https://www.lgensol.com
+  roles: *id001
+  makes:
+  - pouch cells
+  - cylindrical cells
+  - packs
+  verify_at: https://www.lgensol.com
+  ticker: '373220'
+  exchange: KRX
+  note: Spun out of LG Chem in 2020; LG Chem remains the cathode-material maker.
+  confidence: high
+- uid: org/samsung-sdi
+  name: Samsung SDI
+  country: KR
+  hq_region: Gyeonggi
+  hq_locality: Yongin
+  website: https://www.samsungsdi.com
+  roles: *id001
+  makes:
+  - prismatic cells
+  - cylindrical cells
+  - packs
+  verify_at: https://www.samsungsdi.com
+  ticker: '006400'
+  exchange: KRX
+  confidence: high
+- uid: org/sk-on
+  name: SK On
+  former_names:
+  - SK Innovation battery business
+  country: KR
+  hq_locality: Seoul
+  founded_year: 2021
+  website: https://www.sk-on.com
+  roles: *id001
+  makes:
+  - pouch cells
+  - packs
+  verify_at: https://www.sk-on.com
+  confidence: high
+- uid: org/kokam
+  name: Kokam
+  country: KR
+  hq_region: Gyeonggi
+  hq_locality: Suwon
+  website: https://kokam.com
+  roles: *id001
+  makes:
+  - pouch cells
+  - ESS
+  verify_at: https://kokam.com
+  note: Acquired by SolarEdge in 2018; the corporate name in use needs checking.
+  confidence: medium
+- uid: org/enertech-international
+  name: EnerTech International
+  country: KR
+  hq_region: North Chungcheong
+  hq_locality: Chungju
+  website: https://www.enertechint.com
+  roles: *id003
+  makes:
+  - pouch cells
+  verify_at: https://www.enertechint.com
+  confidence: low
+- uid: org/panasonic
+  name: Panasonic Energy
+  legal_name: Panasonic Energy Co., Ltd.
+  former_names:
+  - Sanyo Electric
+  country: JP
+  hq_region: Osaka
+  hq_locality: Kadoma
+  website: https://www.panasonic.com/global/energy.html
+  roles: *id001
+  makes:
+  - cylindrical cells (18650, 2170, 4680)
+  - primary batteries
+  verify_at: https://www.panasonic.com/global/energy.html
+  note: Sanyo is a former name carried by many older cell datasheets.
+  confidence: high
+- uid: org/toshiba
+  name: Toshiba
+  country: JP
+  hq_region: Kanagawa
+  hq_locality: Kawasaki
+  website: https://www.global.toshiba
+  roles: *id001
+  makes:
+  - SCiB LTO cells
+  - modules
+  chemistries:
+  - lithium_ion
+  verify_at: https://www.global.toshiba
+  ticker: '6502'
+  exchange: TSE
+  confidence: high
+- uid: org/gs-yuasa
+  name: GS Yuasa
+  country: JP
+  hq_region: Kyoto
+  hq_locality: Kyoto
+  website: https://www.gs-yuasa.com
+  roles: *id001
+  makes:
+  - automotive lead-acid batteries
+  - lithium cells
+  chemistries:
+  - lead_acid
+  - lithium_ion
+  verify_at: https://www.gs-yuasa.com
+  ticker: '6674'
+  exchange: TSE
+  confidence: high
+- uid: org/murata
+  name: Murata Manufacturing
+  former_names:
+  - Sony Energy Devices
+  country: JP
+  hq_region: Kyoto
+  hq_locality: Nagaokakyo
+  website: https://www.murata.com
+  roles: *id003
+  makes:
+  - cylindrical cells
+  - coin cells
+  verify_at: https://www.murata.com
+  ticker: '6981'
+  exchange: TSE
+  note: Bought Sony's battery business in 2017; VTC-series cells are sold under both names.
+  confidence: high
+- uid: org/maxell
+  name: Maxell
+  country: JP
+  hq_region: Shiga
+  hq_locality: Otsu
+  website: https://www.maxell.co.jp
+  roles: *id003
+  makes:
+  - coin and cylindrical primary cells
+  - all-solid-state cells
+  chemistries:
+  - lithium_primary
+  - alkaline
+  - solid_state
+  verify_at: https://www.maxell.co.jp
+  ticker: '6810'
+  exchange: TSE
+  confidence: high
+- uid: org/fdk
+  name: FDK Corporation
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.fdk.com
+  roles: *id003
+  makes:
+  - alkaline and nickel-metal-hydride batteries
+  chemistries:
+  - alkaline
+  - nickel_metal_hydride
+  verify_at: https://www.fdk.com
+  ticker: '6955'
+  exchange: TSE
+  confidence: high
+- uid: org/prime-planet-energy
+  name: Prime Planet Energy & Solutions
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.p2es-hd.com
+  roles: *id001
+  makes:
+  - prismatic cells for EVs
+  verify_at: https://www.p2es-hd.com
+  note: Toyota and Panasonic joint venture, from 2020.
+  confidence: medium
+- uid: org/primearth-ev-energy
+  name: Primearth EV Energy
+  country: JP
+  hq_region: Shizuoka
+  hq_locality: Kosai
+  website: https://www.peve.jp
+  roles: *id001
+  makes:
+  - nickel-metal-hydride and lithium cells
+  chemistries:
+  - nickel_metal_hydride
+  - lithium_ion
+  verify_at: https://www.peve.jp
+  note: Toyota subsidiary; supplies hybrid batteries.
+  confidence: medium
+- uid: org/vehicle-energy-japan
+  name: Vehicle Energy Japan
+  former_names:
+  - Hitachi Vehicle Energy
+  country: JP
+  hq_region: Ibaraki
+  hq_locality: Hitachinaka
+  website: https://www.vehicle-energy.co.jp
+  roles: *id001
+  makes:
+  - hybrid and EV cells
+  verify_at: https://www.vehicle-energy.co.jp
+  confidence: medium
+- uid: org/eliiy-power
+  name: Eliiy Power
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.eliiypower.co.jp
+  roles: *id001
+  makes:
+  - LFP prismatic cells
+  - stationary storage
+  verify_at: https://www.eliiypower.co.jp
+  confidence: medium
+- uid: org/tdk
+  name: TDK Corporation
+  country: JP
+  hq_locality: Tokyo
+  website: https://www.tdk.com
+  roles:
+  - manufacturer
+  - component_manufacturer
+  makes:
+  - ceramic solid-state cells
+  - consumer cells through ATL
+  verify_at: https://www.tdk.com
+  ticker: '6762'
+  exchange: TSE
+  confidence: high
+- uid: org/kanadevia
+  name: Kanadevia
+  former_names:
+  - Hitachi Zosen
+  country: JP
+  hq_region: Osaka
+  hq_locality: Osaka
+  website: https://www.kanadevia.com
+  roles: *id003
+  makes:
+  - all-solid-state cells for space and industry
+  verify_at: https://www.kanadevia.com
+  confidence: medium
+- uid: org/ngk-insulators
+  name: NGK Insulators
+  country: JP
+  hq_region: Aichi
+  hq_locality: Nagoya
+  website: https://www.ngk-insulators.com
+  roles: *id002
+  makes:
+  - NAS sodium-sulfur storage batteries
+  chemistries:
+  - sodium_sulfur
+  verify_at: https://www.ngk-insulators.com
+  ticker: '5333'
+  exchange: TSE
+  confidence: high
+- uid: org/molicel
+  name: E-One Moli Energy
+  aliases:
+  - Molicel
+  country: TW
+  hq_locality: Taoyuan
+  website: https://www.molicel.com
+  roles: *id003
+  makes:
+  - high-power cylindrical cells
+  verify_at: https://www.molicel.com
+  note: Canadian origin; now Taiwanese-owned with plants in both.
+  confidence: high
+- uid: org/prologium
+  name: ProLogium Technology
+  country: TW
+  hq_locality: Taoyuan
+  website: https://www.prologium.com
+  roles: *id003
+  makes:
+  - ceramic oxide solid-state cells
+  chemistries:
+  - solid_state
+  verify_at: https://www.prologium.com
+  confidence: medium
+- uid: org/amita-technologies
+  name: Amita Technologies
+  country: TW
+  hq_locality: Taoyuan
+  website: https://www.amitatech.com
+  roles: *id001
+  makes:
+  - pouch cells
+  - packs
+  verify_at: https://www.amitatech.com
+  confidence: low
+- uid: org/simplo
+  name: Simplo Technology
+  country: TW
+  hq_locality: Taipei
+  website: https://www.simplo.com.tw
+  roles:
+  - pack_assembler
+  makes:
+  - notebook and EV packs
+  verify_at: https://www.simplo.com.tw
+  ticker: '6121'
+  exchange: TWSE
+  confidence: medium
+- uid: org/northvolt
+  name: Northvolt
+  country: SE
+  hq_locality: Stockholm
+  website: https://northvolt.com
+  roles: *id001
+  makes:
+  - prismatic and cylindrical cells
+  - systems
+  verify_at: https://northvolt.com
+  note: Filed for bankruptcy in Sweden in 2025 and assets were broken up; treat every Northvolt entry as historical
+    until the page says otherwise.
+  confidence: low
+- uid: org/acc
+  name: Automotive Cells Company
+  aliases:
+  - ACC
+  country: FR
+  hq_region: Nouvelle-Aquitaine
+  hq_locality: Bruges
+  website: https://www.acc-emotion.com
+  roles: *id003
+  makes:
+  - pouch cells for EVs
+  verify_at: https://www.acc-emotion.com
+  note: Stellantis, Mercedes-Benz and TotalEnergies/Saft joint venture.
+  confidence: high
+- uid: org/verkor
+  name: Verkor
+  country: FR
+  hq_region: Auvergne-Rhône-Alpes
+  hq_locality: Grenoble
+  website: https://verkor.com
+  roles: *id003
+  makes:
+  - low-carbon pouch cells
+  verify_at: https://verkor.com
+  confidence: high
+- uid: org/powerco
+  name: PowerCo SE
+  country: DE
+  hq_region: Lower Saxony
+  hq_locality: Salzgitter
+  founded_year: 2022
+  website: https://www.powerco.de
+  roles: *id003
+  makes:
+  - unified prismatic cells
+  verify_at: https://www.powerco.de
+  parent_uid: org/volkswagen
+  confidence: high
+- uid: org/morrow-batteries
+  name: Morrow Batteries
+  country: 'NO'
+  hq_region: Agder
+  hq_locality: Arendal
+  website: https://www.morrowbatteries.com
+  roles: *id003
+  makes:
+  - LFP prismatic cells
+  verify_at: https://www.morrowbatteries.com
+  confidence: medium
+- uid: org/t1-energy
+  name: T1 Energy
+  former_names:
+  - FREYR Battery
+  country: US
+  hq_region: Texas
+  hq_locality: Dallas
+  website: https://www.t1energy.com
+  roles: *id003
+  makes:
+  - cells and solar
+  verify_at: https://www.t1energy.com
+  note: FREYR renamed itself T1 Energy and moved away from the Mo i Rana cell plan; the battery programme's current
+    shape needs the page.
+  confidence: low
+- uid: org/inobat
+  name: InoBat
+  country: SK
+  hq_locality: Bratislava
+  website: https://inobat.eu
+  roles: *id003
+  makes:
+  - custom pouch cells
+  verify_at: https://inobat.eu
+  confidence: medium
+- uid: org/leclanche
+  name: Leclanché
+  country: CH
+  hq_region: Vaud
+  hq_locality: Yverdon-les-Bains
+  website: https://www.leclanche.com
+  roles: *id002
+  makes:
+  - pouch cells
+  - storage systems
+  verify_at: https://www.leclanche.com
+  confidence: medium
+- uid: org/saft
+  name: Saft
+  country: FR
+  hq_region: Île-de-France
+  hq_locality: Levallois-Perret
+  website: https://www.saftbatteries.com
+  roles: *id002
+  makes:
+  - primary lithium cells
+  - industrial lithium and nickel batteries
+  chemistries:
+  - lithium_primary
+  - lithium_ion
+  - nickel_cadmium
+  verify_at: https://www.saftbatteries.com
+  note: TotalEnergies subsidiary.
+  confidence: high
+- uid: org/varta
+  name: VARTA AG
+  country: DE
+  hq_region: Baden-Württemberg
+  hq_locality: Ellwangen
+  website: https://www.varta-ag.com
+  roles: *id003
+  makes:
+  - coin and small cylindrical cells
+  - microbatteries
+  verify_at: https://www.varta-ag.com
+  note: Restructured in 2024; the corporate shape has changed and needs checking.
+  confidence: medium
+- uid: org/customcells
+  name: Customcells
+  country: DE
+  hq_region: Schleswig-Holstein
+  hq_locality: Itzehoe
+  website: https://www.customcells.com
+  roles: *id003
+  makes:
+  - custom lithium cells
+  verify_at: https://www.customcells.com
+  confidence: medium
+- uid: org/blue-solutions
+  name: Blue Solutions
+  country: FR
+  hq_region: Brittany
+  hq_locality: Ergué-Gabéric
+  website: https://www.blue-solutions.com
+  roles: *id003
+  makes:
+  - lithium-metal-polymer cells
+  chemistries:
+  - lithium_metal
+  - solid_state
+  verify_at: https://www.blue-solutions.com
+  note: Bolloré Group subsidiary.
+  confidence: high
+- uid: org/cellforce-group
+  name: Cellforce Group
+  country: DE
+  hq_region: Baden-Württemberg
+  hq_locality: Reutlingen
+  website: https://www.cellforce-group.com
+  roles: *id003
+  makes:
+  - high-performance cells
+  verify_at: https://www.cellforce-group.com
+  note: Porsche subsidiary; the programme was scaled back in 2025.
+  confidence: medium
+- uid: org/skeleton-technologies
+  name: Skeleton Technologies
+  country: EE
+  hq_locality: Tallinn
+  website: https://www.skeletontech.com
+  roles: *id003
+  makes:
+  - supercapacitors
+  - curved-graphene cells
+  chemistries:
+  - supercapacitor
+  verify_at: https://www.skeletontech.com
+  confidence: medium
+- uid: org/nyobolt
+  name: Nyobolt
+  country: GB
+  hq_region: England
+  hq_locality: Cambridge
+  website: https://nyobolt.com
+  roles: *id003
+  makes:
+  - fast-charging niobium-anode cells
+  verify_at: https://nyobolt.com
+  confidence: medium
+- uid: org/ilika
+  name: Ilika
+  country: GB
+  hq_region: England
+  hq_locality: Romsey
+  website: https://www.ilika.com
+  roles: *id003
+  makes:
+  - solid-state cells (Stereax, Goliath)
+  chemistries:
+  - solid_state
+  verify_at: https://www.ilika.com
+  confidence: medium
+- uid: org/faradion
+  name: Faradion
+  country: GB
+  hq_region: England
+  hq_locality: Sheffield
+  website: https://faradion.co.uk
+  roles: *id003
+  makes:
+  - sodium-ion cells
+  chemistries:
+  - sodium_ion
+  verify_at: https://faradion.co.uk
+  note: Owned by Reliance Industries since 2022.
+  confidence: medium
+- uid: org/altris
+  name: Altris
+  country: SE
+  hq_locality: Uppsala
+  website: https://www.altris.se
+  roles:
+  - manufacturer
+  - cathode_producer
+  makes:
+  - sodium-ion cells and Prussian-white cathode
+  chemistries:
+  - sodium_ion
+  verify_at: https://www.altris.se
+  confidence: medium
+- uid: org/tiamat-energy
+  name: Tiamat Energy
+  country: FR
+  hq_region: Hauts-de-France
+  hq_locality: Amiens
+  website: https://www.tiamat-energy.com
+  roles: *id003
+  makes:
+  - sodium-ion cylindrical cells
+  chemistries:
+  - sodium_ion
+  verify_at: https://www.tiamat-energy.com
+  confidence: medium
+- uid: org/beyonder
+  name: Beyonder
+  country: 'NO'
+  hq_region: Rogaland
+  hq_locality: Stavanger
+  website: https://beyonder.no
+  roles: *id003
+  makes:
+  - lithium-ion capacitors
+  verify_at: https://beyonder.no
+  confidence: low
+- uid: org/exide-group
+  name: Exide Technologies
+  country: FR
+  hq_region: Île-de-France
+  hq_locality: Gennevilliers
+  website: https://www.exidegroup.com
+  roles: *id003
+  makes:
+  - automotive and industrial lead-acid batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.exidegroup.com
+  note: The European Exide, distinct from Exide Industries of India.
+  confidence: high
+- uid: org/hoppecke
+  name: HOPPECKE Batterien
+  country: DE
+  hq_region: North Rhine-Westphalia
+  hq_locality: Brilon
+  website: https://www.hoppecke.com
+  roles: *id003
+  makes:
+  - industrial lead-acid and nickel batteries
+  chemistries:
+  - lead_acid
+  - nickel_cadmium
+  verify_at: https://www.hoppecke.com
+  confidence: high
+- uid: org/banner-batterien
+  name: Banner Batterien
+  country: AT
+  hq_region: Upper Austria
+  hq_locality: Linz
+  website: https://www.bannerbatterien.com
+  roles: *id003
+  makes:
+  - automotive lead-acid and AGM batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.bannerbatterien.com
+  confidence: high
+- uid: org/fiamm
+  name: FIAMM Energy Technology
+  country: IT
+  hq_region: Veneto
+  hq_locality: Montecchio Maggiore
+  website: https://www.fiamm.com
+  roles: *id003
+  makes:
+  - automotive lead-acid and AGM batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.fiamm.com
+  confidence: medium
+- uid: org/midac
+  name: Midac Batteries
+  country: IT
+  hq_region: Veneto
+  hq_locality: Soave
+  website: https://www.midacbatteries.com
+  roles: *id003
+  makes:
+  - motive and stationary lead-acid batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.midacbatteries.com
+  confidence: medium
+- uid: org/monbat
+  name: Monbat
+  country: BG
+  hq_locality: Sofia
+  website: https://www.monbat.com
+  roles: *id003
+  makes:
+  - lead-acid batteries
+  - lithium systems
+  chemistries:
+  - lead_acid
+  - lithium_ion
+  verify_at: https://www.monbat.com
+  confidence: medium
+- uid: org/rombat
+  name: Rombat
+  country: RO
+  hq_locality: Bistrița
+  website: https://www.rombat.ro
+  roles: *id003
+  makes:
+  - automotive lead-acid batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.rombat.ro
+  confidence: medium
+- uid: org/sunlight-group
+  name: Sunlight Group
+  country: GR
+  hq_locality: Xanthi
+  website: https://www.the-sunlight-group.com
+  roles: *id002
+  makes:
+  - motive-power lead-acid and lithium batteries
+  chemistries:
+  - lead_acid
+  - lithium_ion
+  verify_at: https://www.the-sunlight-group.com
+  confidence: medium
+- uid: org/invinity
+  name: Invinity Energy Systems
+  country: GB
+  hq_region: Scotland
+  hq_locality: Bathgate
+  website: https://invinity.com
+  roles: *id002
+  makes:
+  - vanadium flow batteries
+  chemistries:
+  - flow_vanadium
+  verify_at: https://invinity.com
+  confidence: medium
+- uid: org/cellcube
+  name: CellCube
+  legal_name: Enerox GmbH
+  country: AT
+  hq_region: Lower Austria
+  hq_locality: Wiener Neustadt
+  website: https://www.cellcube.com
+  roles: *id002
+  makes:
+  - vanadium flow batteries
+  chemistries:
+  - flow_vanadium
+  verify_at: https://www.cellcube.com
+  confidence: medium
+- uid: org/fzsonick
+  name: FZSoNick
+  country: CH
+  hq_region: Ticino
+  hq_locality: Stabio
+  website: https://www.fzsonick.com
+  roles: *id003
+  makes:
+  - sodium-nickel-chloride batteries
+  chemistries:
+  - sodium_nickel_chloride
+  verify_at: https://www.fzsonick.com
+  confidence: medium
+- uid: org/tesla
+  name: Tesla
+  country: US
+  hq_region: Texas
+  hq_locality: Austin
+  website: https://www.tesla.com
+  roles: *id002
+  makes:
+  - 4680 cylindrical cells
+  - packs
+  - Megapack systems
+  verify_at: https://www.tesla.com
+  ticker: TSLA
+  exchange: NASDAQ
+  confidence: high
+- uid: org/ultium-cells
+  name: Ultium Cells
+  country: US
+  hq_region: Ohio
+  hq_locality: Warren
+  website: https://www.ultiumcells.com
+  roles: *id003
+  makes:
+  - pouch cells for GM vehicles
+  verify_at: https://www.ultiumcells.com
+  note: General Motors and LG Energy Solution joint venture; the Lansing plant was sold to LGES in 2024.
+  confidence: medium
+- uid: org/blueoval-sk
+  name: BlueOval SK
+  country: US
+  hq_region: Kentucky
+  hq_locality: Glendale
+  website: https://www.blueovalsk.com
+  roles: *id003
+  makes:
+  - pouch cells for Ford vehicles
+  verify_at: https://www.blueovalsk.com
+  note: Ford and SK On joint venture.
+  confidence: medium
+- uid: org/starplus-energy
+  name: StarPlus Energy
+  country: US
+  hq_region: Indiana
+  hq_locality: Kokomo
+  website: https://www.stellantis.com
+  roles: *id003
+  makes:
+  - cells for Stellantis vehicles
+  verify_at: https://www.stellantis.com
+  note: Stellantis and Samsung SDI joint venture; it may not have a site of its own to verify against.
+  confidence: medium
+- uid: org/microvast
+  name: Microvast Holdings
+  country: US
+  hq_region: Texas
+  hq_locality: Stafford
+  website: https://www.microvast.com
+  roles: *id001
+  makes:
+  - fast-charging pouch cells
+  - packs
+  verify_at: https://www.microvast.com
+  ticker: MVST
+  exchange: NASDAQ
+  note: Manufacturing is largely in Huzhou, China.
+  confidence: high
+- uid: org/our-next-energy
+  name: Our Next Energy
+  aliases:
+  - ONE
+  country: US
+  hq_region: Michigan
+  hq_locality: Novi
+  website: https://one.ai
+  roles: *id001
+  makes:
+  - LFP cells
+  - Gemini packs
+  verify_at: https://one.ai
+  confidence: low
+- uid: org/lyten
+  name: Lyten
+  country: US
+  hq_region: California
+  hq_locality: San Jose
+  website: https://lyten.com
+  roles: *id003
+  makes:
+  - lithium-sulfur cells
+  verify_at: https://lyten.com
+  note: Acquired Northvolt assets in 2025; the scope of that needs the page.
+  confidence: medium
+- uid: org/ses-ai
+  name: SES AI
+  country: US
+  hq_region: Massachusetts
+  hq_locality: Boston
+  website: https://ses.ai
+  roles: *id003
+  makes:
+  - lithium-metal cells
+  chemistries:
+  - lithium_metal
+  verify_at: https://ses.ai
+  ticker: SES
+  exchange: NYSE
+  confidence: medium
+- uid: org/solid-power
+  name: Solid Power
+  country: US
+  hq_region: Colorado
+  hq_locality: Thornton
+  website: https://www.solidpowerbattery.com
+  roles: *id003
+  makes:
+  - sulfide solid-state cells and electrolyte
+  chemistries:
+  - solid_state
+  verify_at: https://www.solidpowerbattery.com
+  ticker: SLDP
+  exchange: NASDAQ
+  confidence: high
+- uid: org/quantumscape
+  name: QuantumScape
+  country: US
+  hq_region: California
+  hq_locality: San Jose
+  website: https://www.quantumscape.com
+  roles: *id003
+  makes:
+  - anode-free solid-state cells
+  chemistries:
+  - solid_state
+  verify_at: https://www.quantumscape.com
+  ticker: QS
+  exchange: NYSE
+  confidence: high
+- uid: org/factorial-energy
+  name: Factorial Energy
+  country: US
+  hq_region: Massachusetts
+  hq_locality: Woburn
+  website: https://factorialenergy.com
+  roles: *id003
+  makes:
+  - quasi-solid-state and lithium-metal cells
+  chemistries:
+  - solid_state
+  - lithium_metal
+  verify_at: https://factorialenergy.com
+  confidence: medium
+- uid: org/amprius
+  name: Amprius Technologies
+  country: US
+  hq_region: California
+  hq_locality: Fremont
+  website: https://amprius.com
+  roles: *id003
+  makes:
+  - silicon-anode high-energy cells
+  verify_at: https://amprius.com
+  ticker: AMPX
+  exchange: NYSE
+  confidence: high
+- uid: org/enovix
+  name: Enovix
+  country: US
+  hq_region: California
+  hq_locality: Fremont
+  website: https://www.enovix.com
+  roles: *id003
+  makes:
+  - silicon-anode 3D cells
+  verify_at: https://www.enovix.com
+  ticker: ENVX
+  exchange: NASDAQ
+  confidence: high
+- uid: org/24m
+  name: 24M Technologies
+  country: US
+  hq_region: Massachusetts
+  hq_locality: Cambridge
+  website: https://24-m.com
+  roles: *id003
+  makes:
+  - semi-solid electrode cells
+  - licensed manufacturing
+  verify_at: https://24-m.com
+  confidence: medium
+- uid: org/natron-energy
+  name: Natron Energy
+  country: US
+  hq_region: California
+  hq_locality: Santa Clara
+  website: https://natron.energy
+  roles: *id003
+  makes:
+  - Prussian-blue sodium-ion cells
+  chemistries:
+  - sodium_ion
+  verify_at: https://natron.energy
+  note: Reported to have wound down in 2025; the status is the first thing to check.
+  confidence: low
+- uid: org/peak-energy
+  name: Peak Energy
+  country: US
+  hq_region: Colorado
+  hq_locality: Denver
+  website: https://www.peakenergy.com
+  roles: *id002
+  makes:
+  - sodium-ion cells and storage systems
+  chemistries:
+  - sodium_ion
+  verify_at: https://www.peakenergy.com
+  confidence: medium
+- uid: org/form-energy
+  name: Form Energy
+  country: US
+  hq_region: Massachusetts
+  hq_locality: Somerville
+  website: https://formenergy.com
+  roles: *id002
+  makes:
+  - iron-air multi-day storage batteries
+  verify_at: https://formenergy.com
+  confidence: medium
+- uid: org/ess-tech
+  name: ESS Tech
+  country: US
+  hq_region: Oregon
+  hq_locality: Wilsonville
+  website: https://essinc.com
+  roles: *id002
+  makes:
+  - iron flow batteries
+  chemistries:
+  - flow_iron
+  verify_at: https://essinc.com
+  note: Ceased operations in 2025 by public reports; check first.
+  confidence: low
+- uid: org/eos-energy
+  name: Eos Energy Enterprises
+  country: US
+  hq_region: New Jersey
+  hq_locality: Edison
+  website: https://www.eose.com
+  roles: *id002
+  makes:
+  - zinc-halide storage batteries
+  verify_at: https://www.eose.com
+  ticker: EOSE
+  exchange: NASDAQ
+  confidence: medium
+- uid: org/energizer
+  name: Energizer Holdings
+  country: US
+  hq_region: Missouri
+  hq_locality: St. Louis
+  website: https://www.energizerholdings.com
+  roles: *id003
+  makes:
+  - alkaline, lithium primary and coin cells
+  chemistries:
+  - alkaline
+  - lithium_primary
+  - silver_oxide
+  verify_at: https://www.energizerholdings.com
+  ticker: ENR
+  exchange: NYSE
+  confidence: high
+- uid: org/duracell
+  name: Duracell
+  country: US
+  hq_region: Connecticut
+  hq_locality: Bethel
+  website: https://www.duracell.com
+  roles: *id003
+  makes:
+  - alkaline and lithium primary batteries
+  chemistries:
+  - alkaline
+  - lithium_primary
+  verify_at: https://www.duracell.com
+  note: Berkshire Hathaway subsidiary.
+  confidence: high
+- uid: org/eaglepicher
+  name: EaglePicher Technologies
+  country: US
+  hq_region: Missouri
+  hq_locality: Joplin
+  website: https://www.eaglepicher.com
+  roles: *id003
+  makes:
+  - defence and aerospace batteries
+  verify_at: https://www.eaglepicher.com
+  confidence: medium
+- uid: org/ultralife
+  name: Ultralife Corporation
+  country: US
+  hq_region: New York
+  hq_locality: Newark
+  website: https://www.ultralifecorporation.com
+  roles: *id001
+  makes:
+  - lithium primary cells
+  - military packs
+  chemistries:
+  - lithium_primary
+  verify_at: https://www.ultralifecorporation.com
+  ticker: ULBI
+  exchange: NASDAQ
+  confidence: high
+- uid: org/clarios
+  name: Clarios
+  former_names:
+  - Johnson Controls Power Solutions
+  country: US
+  hq_region: Wisconsin
+  hq_locality: Milwaukee
+  website: https://www.clarios.com
+  roles: *id003
+  makes:
+  - automotive lead-acid and AGM batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.clarios.com
+  confidence: high
+- uid: org/east-penn
+  name: East Penn Manufacturing
+  aliases:
+  - Deka
+  country: US
+  hq_region: Pennsylvania
+  hq_locality: Lyon Station
+  website: https://www.eastpennmanufacturing.com
+  roles: *id003
+  makes:
+  - lead-acid batteries (Deka)
+  chemistries:
+  - lead_acid
+  verify_at: https://www.eastpennmanufacturing.com
+  confidence: high
+- uid: org/enersys
+  name: EnerSys
+  country: US
+  hq_region: Pennsylvania
+  hq_locality: Reading
+  website: https://www.enersys.com
+  roles: *id002
+  makes:
+  - industrial lead-acid and lithium batteries
+  chemistries:
+  - lead_acid
+  - lithium_ion
+  verify_at: https://www.enersys.com
+  ticker: ENS
+  exchange: NYSE
+  confidence: high
+- uid: org/crown-battery
+  name: Crown Battery
+  country: US
+  hq_region: Ohio
+  hq_locality: Fremont
+  website: https://www.crownbattery.com
+  roles: *id003
+  makes:
+  - motive and stationary lead-acid batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.crownbattery.com
+  confidence: medium
+- uid: org/trojan-battery
+  name: Trojan Battery Company
+  country: US
+  hq_region: California
+  hq_locality: Santa Fe Springs
+  website: https://www.trojanbattery.com
+  roles: *id003
+  makes:
+  - deep-cycle lead-acid batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.trojanbattery.com
+  confidence: high
+- uid: org/us-battery
+  name: U.S. Battery Manufacturing
+  country: US
+  hq_region: California
+  hq_locality: Corona
+  website: https://www.usbattery.com
+  roles: *id003
+  makes:
+  - deep-cycle lead-acid batteries
+  chemistries:
+  - lead_acid
+  verify_at: https://www.usbattery.com
+  confidence: medium
+- uid: org/kore-power
+  name: KORE Power
+  country: US
+  hq_region: Idaho
+  hq_locality: Coeur d'Alene
+  website: https://korepower.com
+  roles: *id002
+  makes:
+  - cells and storage systems
+  verify_at: https://korepower.com
+  note: The Arizona plant was cancelled in 2024.
+  confidence: low
+- uid: org/american-battery-factory
+  name: American Battery Factory
+  country: US
+  hq_region: Arizona
+  hq_locality: Tucson
+  website: https://americanbatteryfactory.com
+  roles: *id003
+  makes:
+  - LFP prismatic cells
+  verify_at: https://americanbatteryfactory.com
+  confidence: low
+- uid: org/ionblox
+  name: Ionblox
+  country: US
+  hq_region: California
+  hq_locality: Fremont
+  website: https://ionblox.com
+  roles: *id003
+  makes:
+  - silicon-anode fast-charge cells
+  verify_at: https://ionblox.com
+  confidence: low
+- uid: org/exide-industries
+  name: Exide Industries
+  country: IN
+  hq_region: West Bengal
+  hq_locality: Kolkata
+  website: https://www.exideindustries.com
+  roles: *id003
+  makes:
+  - lead-acid batteries
+  - lithium cells
+  chemistries:
+  - lead_acid
+  - lithium_ion
+  verify_at: https://www.exideindustries.com
+  ticker: EXIDEIND
+  exchange: NSE
+  note: Distinct from the European Exide Technologies.
+  confidence: high
+- uid: org/amara-raja
+  name: Amara Raja Energy & Mobility
+  former_names:
+  - Amara Raja Batteries
+  country: IN
+  hq_region: Andhra Pradesh
+  hq_locality: Tirupati
+  website: https://www.amararaja.com
+  roles: *id003
+  makes:
+  - lead-acid batteries
+  - lithium cells
+  chemistries:
+  - lead_acid
+  - lithium_ion
+  verify_at: https://www.amararaja.com
+  confidence: high
+- uid: org/agratas
+  name: Agratas
+  country: IN
+  hq_region: Maharashtra
+  hq_locality: Mumbai
+  website: https://www.agratas.com
+  roles: *id003
+  makes:
+  - cells for Tata group vehicles and storage
+  verify_at: https://www.agratas.com
+  note: Tata Sons battery business, with plants planned in India and the United Kingdom.
+  confidence: medium
+- uid: org/reliance-new-energy
+  name: Reliance New Energy
+  country: IN
+  hq_region: Maharashtra
+  hq_locality: Mumbai
+  website: https://www.ril.com
+  roles: *id003
+  makes:
+  - cells and storage
+  verify_at: https://www.ril.com
+  note: Reliance Industries subsidiary; owns Faradion.
+  confidence: low
+- uid: org/ola-electric
+  name: Ola Electric
+  country: IN
+  hq_region: Karnataka
+  hq_locality: Bengaluru
+  website: https://www.olaelectric.com
+  roles: *id001
+  makes:
+  - 4680 cylindrical cells
+  - packs
+  verify_at: https://www.olaelectric.com
+  confidence: medium
+- uid: org/godi-india
+  name: GODI India
+  country: IN
+  hq_region: Telangana
+  hq_locality: Hyderabad
+  website: https://www.godienergy.com
+  roles: *id003
+  makes:
+  - cells and supercapacitors
+  verify_at: https://www.godienergy.com
+  confidence: low
+- uid: org/vines
+  name: VinES Energy Solutions
+  country: VN
+  hq_locality: Ha Tinh
+  website: https://vinesenergy.com
+  roles: *id001
+  makes:
+  - LFP cells
+  - packs
+  verify_at: https://vinesenergy.com
+  note: Vingroup subsidiary; the programme has been restructured.
+  confidence: low
+- uid: org/cap-xx
+  name: CAP-XX
+  country: AU
+  hq_region: New South Wales
+  hq_locality: Sydney
+  website: https://www.cap-xx.com
+  roles: *id003
+  makes:
+  - thin supercapacitors
+  chemistries:
+  - supercapacitor
+  verify_at: https://www.cap-xx.com
+  confidence: medium
+- uid: org/vinatech
+  name: VINATech
+  country: KR
+  hq_region: North Jeolla
+  hq_locality: Jeonju
+  website: https://www.vina.co.kr
+  roles: *id003
+  makes:
+  - supercapacitors
+  chemistries:
+  - supercapacitor
+  verify_at: https://www.vina.co.kr
+  confidence: medium
+- uid: org/sumitomo-electric
+  name: Sumitomo Electric Industries
+  country: JP
+  hq_region: Osaka
+  hq_locality: Osaka
+  website: https://sumitomoelectric.com
+  roles: *id002
+  makes:
+  - vanadium redox flow batteries
+  chemistries:
+  - flow_vanadium
+  verify_at: https://sumitomoelectric.com
+  ticker: '5802'
+  exchange: TSE
+  confidence: high
+- uid: org/rongke-power
+  name: Rongke Power
+  country: CN
+  hq_region: Liaoning
+  hq_locality: Dalian
+  website: https://www.rongkepower.com
+  roles: *id002
+  makes:
+  - vanadium flow batteries
+  chemistries:
+  - flow_vanadium
+  verify_at: https://www.rongkepower.com
+  confidence: medium

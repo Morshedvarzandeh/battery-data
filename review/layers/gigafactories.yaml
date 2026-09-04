@@ -1,0 +1,1914 @@
+# CELL FACTORIES: candidates, not records.
+#
+# Every plant below is a name and a place recalled without a document. It
+# carries no source, no page and no quote, and none may enter bd.site as it
+# stands. tools/verify_layer_candidates.py fetches the operator page named in
+# verify_at, finds the plant or the operator's name on it and writes a site
+# contribution whose locator quotes that page.
+#
+# STATUS IS THE FIELD MOST LIKELY TO BE WRONG. Cell plants are announced,
+# delayed, paused, resited, sold and cancelled faster than any recall keeps
+# up: Northvolt went bankrupt, ACC paused two plants, FREYR became T1 Energy
+# and left Norway, Natron wound down, Cellforce was scaled back. Every status
+# here is a prompt to read the page, never a claim - and capacity is absent
+# on purpose, because a GWh figure without its nameplate-or-actual status and
+# its source is exactly what this database refuses.
+schema_version: '1'
+candidate_set: gigafactories
+recalled_by: Claude, from training data, in a session with no network access to company or industry sources (every
+  manufacturer, distributor and publisher domain is blocked by the environment's egress policy)
+recalled_on: '2026-09-04'
+caveat: 'Every entry here is a NAME RECALLED FROM TRAINING, not a fact read from a document. No entry carries a source,
+  a page or a quote, and none may enter bd.* as it stands. tools/verify_layer_candidates.py fetches the page named
+  in verify_at, finds the name on it and writes a contribution whose locator quotes that page; only then, and only
+  after review, does a name become a record. Statuses, localities and listings are the fields most likely to be stale:
+  plants are announced, paused, renamed and cancelled faster than any recall keeps up.'
+companies:
+- uid: org/envision-aesc
+  name: Envision AESC
+  former_names:
+  - Automotive Energy Supply Corporation
+  - AESC
+  country: JP
+  hq_region: Kanagawa
+  hq_locality: Yokohama
+  website: https://www.envision-aesc.com
+  roles:
+  - manufacturer
+  - pack_assembler
+  makes:
+  - pouch cells
+  - packs
+  verify_at: https://www.envision-aesc.com
+  note: Nissan's former cell arm, majority-owned by Envision Group since 2019; plants in Japan, China, the United
+    Kingdom, France, Spain and the United States.
+  confidence: high
+- uid: org/volkswagen
+  name: Volkswagen Group
+  country: DE
+  hq_region: Lower Saxony
+  hq_locality: Wolfsburg
+  website: https://www.volkswagen-group.com
+  roles:
+  - oem
+  makes:
+  - vehicles
+  - cells through PowerCo
+  verify_at: https://www.volkswagen-group.com
+  ticker: VOW3
+  exchange: XETRA
+  confidence: high
+- uid: org/stellantis
+  name: Stellantis
+  country: NL
+  hq_region: North Holland
+  hq_locality: Hoofddorp
+  website: https://www.stellantis.com
+  roles:
+  - oem
+  makes:
+  - vehicles
+  verify_at: https://www.stellantis.com
+  ticker: STLA
+  exchange: NYSE
+  confidence: high
+- uid: org/toyota
+  name: Toyota Motor
+  country: JP
+  hq_region: Aichi
+  hq_locality: Toyota
+  website: https://global.toyota
+  roles:
+  - oem
+  - manufacturer
+  makes:
+  - vehicles
+  - cells through its own plants and Prime Planet
+  verify_at: https://global.toyota
+  ticker: '7203'
+  exchange: TSE
+  confidence: high
+- uid: org/nissan
+  name: Nissan Motor
+  country: JP
+  hq_region: Kanagawa
+  hq_locality: Yokohama
+  website: https://www.nissan-global.com
+  roles:
+  - oem
+  makes:
+  - vehicles
+  verify_at: https://www.nissan-global.com
+  ticker: '7201'
+  exchange: TSE
+  confidence: high
+- uid: org/renault
+  name: Renault Group
+  country: FR
+  hq_region: Île-de-France
+  hq_locality: Boulogne-Billancourt
+  website: https://www.renaultgroup.com
+  roles:
+  - oem
+  makes:
+  - vehicles
+  verify_at: https://www.renaultgroup.com
+  ticker: RNO
+  exchange: Euronext
+  confidence: high
+- uid: org/volvo-cars
+  name: Volvo Cars
+  country: SE
+  hq_region: Västra Götaland
+  hq_locality: Göteborg
+  website: https://www.volvocars.com
+  roles:
+  - oem
+  makes:
+  - vehicles
+  verify_at: https://www.volvocars.com
+  ticker: VOLCAR B
+  exchange: Nasdaq Stockholm
+  confidence: medium
+- uid: org/general-motors
+  name: General Motors
+  country: US
+  hq_region: Michigan
+  hq_locality: Detroit
+  website: https://www.gm.com
+  roles:
+  - oem
+  makes:
+  - vehicles
+  - cells through Ultium Cells
+  verify_at: https://www.gm.com
+  ticker: GM
+  exchange: NYSE
+  confidence: high
+- uid: org/ford
+  name: Ford Motor Company
+  country: US
+  hq_region: Michigan
+  hq_locality: Dearborn
+  website: https://www.ford.com
+  roles:
+  - oem
+  makes:
+  - vehicles
+  - cells through BlueOval SK
+  verify_at: https://www.ford.com
+  ticker: F
+  exchange: NYSE
+  confidence: high
+sites:
+- uid: site/catl/ningde
+  kind: cell_factory
+  name: CATL Ningde base
+  operator_uid: org/catl
+  country: CN
+  region: Fujian
+  locality: Ningde
+  status: operating
+  makes:
+  - prismatic LFP and NMC cells
+  verify_at: https://www.catl.com
+  confidence: high
+- uid: site/catl/liyang
+  kind: cell_factory
+  name: CATL Liyang base
+  operator_uid: org/catl
+  country: CN
+  region: Jiangsu
+  locality: Liyang
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.catl.com
+  confidence: medium
+- uid: site/catl/yibin
+  kind: cell_factory
+  name: CATL Yibin base
+  operator_uid: org/catl
+  country: CN
+  region: Sichuan
+  locality: Yibin
+  status: operating
+  makes:
+  - prismatic LFP cells
+  verify_at: https://www.catl.com
+  note: Reported as CATL's zero-carbon plant.
+  confidence: medium
+- uid: site/catl/zhaoqing
+  kind: cell_factory
+  name: CATL Zhaoqing base
+  operator_uid: org/catl
+  country: CN
+  region: Guangdong
+  locality: Zhaoqing
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.catl.com
+  confidence: medium
+- uid: site/catl/xiamen
+  kind: cell_factory
+  name: CATL Xiamen base
+  operator_uid: org/catl
+  country: CN
+  region: Fujian
+  locality: Xiamen
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.catl.com
+  confidence: low
+- uid: site/catl/jining
+  kind: cell_factory
+  name: CATL Jining base
+  operator_uid: org/catl
+  country: CN
+  region: Shandong
+  locality: Jining
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.catl.com
+  confidence: low
+- uid: site/catl/guiyang
+  kind: cell_factory
+  name: CATL Guiyang base
+  operator_uid: org/catl
+  country: CN
+  region: Guizhou
+  locality: Guiyang
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.catl.com
+  confidence: low
+- uid: site/catl/shanghai-lingang
+  kind: cell_factory
+  name: CATL Lingang base
+  operator_uid: org/catl
+  country: CN
+  region: Shanghai
+  locality: Shanghai
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.catl.com
+  confidence: low
+- uid: site/catl/luoyang
+  kind: cell_factory
+  name: CATL Luoyang base
+  operator_uid: org/catl
+  country: CN
+  region: Henan
+  locality: Luoyang
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.catl.com
+  confidence: low
+- uid: site/catl/xining
+  kind: cell_factory
+  name: CATL Qinghai base
+  operator_uid: org/catl
+  country: CN
+  region: Qinghai
+  locality: Xining
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.catl.com
+  confidence: low
+- uid: site/catl/arnstadt
+  kind: cell_factory
+  name: CATL Thuringia plant (CATT)
+  operator_uid: org/catl
+  country: DE
+  region: Thuringia
+  locality: Arnstadt
+  status: operating
+  makes:
+  - cells for European carmakers
+  verify_at: https://www.catl.com
+  note: CATL's first plant outside China; near Erfurt.
+  confidence: medium
+- uid: site/catl/debrecen
+  kind: cell_factory
+  name: CATL Debrecen plant
+  operator_uid: org/catl
+  country: HU
+  region: Hajdú-Bihar
+  locality: Debrecen
+  status: construction
+  makes:
+  - prismatic cells
+  verify_at: https://www.catl.com
+  confidence: medium
+- uid: site/catl/zaragoza
+  kind: cell_factory
+  name: CATL and Stellantis Zaragoza plant
+  operator_uid: org/catl
+  partners:
+  - org/stellantis
+  country: ES
+  region: Aragon
+  locality: Zaragoza
+  status: construction
+  makes:
+  - LFP cells
+  verify_at: https://www.catl.com
+  confidence: low
+- uid: site/findreams-battery/shenzhen
+  kind: cell_factory
+  name: FinDreams Shenzhen plant
+  operator_uid: org/findreams-battery
+  country: CN
+  region: Guangdong
+  locality: Shenzhen
+  status: operating
+  makes:
+  - Blade LFP cells
+  verify_at: https://www.byd.com
+  confidence: medium
+- uid: site/findreams-battery/chongqing
+  kind: cell_factory
+  name: FinDreams Chongqing plant
+  operator_uid: org/findreams-battery
+  country: CN
+  region: Chongqing
+  locality: Chongqing
+  status: operating
+  makes:
+  - Blade LFP cells
+  verify_at: https://www.byd.com
+  confidence: medium
+- uid: site/findreams-battery/xian
+  kind: cell_factory
+  name: FinDreams Xi'an plant
+  operator_uid: org/findreams-battery
+  country: CN
+  region: Shaanxi
+  locality: Xi'an
+  status: operating
+  makes:
+  - Blade LFP cells
+  verify_at: https://www.byd.com
+  confidence: low
+- uid: site/findreams-battery/changsha
+  kind: cell_factory
+  name: FinDreams Changsha plant
+  operator_uid: org/findreams-battery
+  country: CN
+  region: Hunan
+  locality: Changsha
+  status: operating
+  makes:
+  - Blade LFP cells
+  verify_at: https://www.byd.com
+  confidence: low
+- uid: site/findreams-battery/bengbu
+  kind: cell_factory
+  name: FinDreams Bengbu plant
+  operator_uid: org/findreams-battery
+  country: CN
+  region: Anhui
+  locality: Bengbu
+  status: operating
+  makes:
+  - Blade LFP cells
+  verify_at: https://www.byd.com
+  confidence: low
+- uid: site/findreams-battery/jinan
+  kind: cell_factory
+  name: FinDreams Jinan plant
+  operator_uid: org/findreams-battery
+  country: CN
+  region: Shandong
+  locality: Jinan
+  status: operating
+  makes:
+  - Blade LFP cells
+  verify_at: https://www.byd.com
+  confidence: low
+- uid: site/findreams-battery/zhengzhou
+  kind: cell_factory
+  name: FinDreams Zhengzhou plant
+  operator_uid: org/findreams-battery
+  country: CN
+  region: Henan
+  locality: Zhengzhou
+  status: operating
+  makes:
+  - Blade LFP cells
+  verify_at: https://www.byd.com
+  confidence: low
+- uid: site/lg-energy-solution/ochang
+  kind: cell_factory
+  name: LGES Ochang plant
+  operator_uid: org/lg-energy-solution
+  country: KR
+  region: North Chungcheong
+  locality: Cheongju
+  status: operating
+  makes:
+  - pouch and cylindrical cells
+  - 4680 cells
+  verify_at: https://www.lgensol.com
+  confidence: high
+- uid: site/lg-energy-solution/wroclaw
+  kind: cell_factory
+  name: LGES Wrocław plant
+  operator_uid: org/lg-energy-solution
+  country: PL
+  region: Lower Silesia
+  locality: Kobierzyce
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.lgensol.com
+  confidence: high
+- uid: site/lg-energy-solution/nanjing
+  kind: cell_factory
+  name: LGES Nanjing plant
+  operator_uid: org/lg-energy-solution
+  country: CN
+  region: Jiangsu
+  locality: Nanjing
+  status: operating
+  makes:
+  - cylindrical and pouch cells
+  verify_at: https://www.lgensol.com
+  confidence: medium
+- uid: site/lg-energy-solution/holland
+  kind: cell_factory
+  name: LGES Michigan plant
+  operator_uid: org/lg-energy-solution
+  country: US
+  region: Michigan
+  locality: Holland
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.lgensol.com
+  confidence: medium
+- uid: site/lg-energy-solution/queen-creek
+  kind: cell_factory
+  name: LGES Arizona plant
+  operator_uid: org/lg-energy-solution
+  country: US
+  region: Arizona
+  locality: Queen Creek
+  status: construction
+  makes:
+  - 46-series cylindrical cells
+  - LFP ESS cells
+  verify_at: https://www.lgensol.com
+  confidence: medium
+- uid: site/lg-energy-solution/lansing
+  kind: cell_factory
+  name: LGES Lansing plant
+  operator_uid: org/lg-energy-solution
+  country: US
+  region: Michigan
+  locality: Lansing
+  status: construction
+  makes:
+  - pouch cells
+  verify_at: https://www.lgensol.com
+  note: Built as an Ultium Cells plant and bought out by LGES in 2024.
+  confidence: medium
+- uid: site/samsung-sdi/cheonan
+  kind: cell_factory
+  name: Samsung SDI Cheonan plant
+  operator_uid: org/samsung-sdi
+  country: KR
+  region: South Chungcheong
+  locality: Cheonan
+  status: operating
+  makes:
+  - prismatic and cylindrical cells
+  verify_at: https://www.samsungsdi.com
+  confidence: medium
+- uid: site/samsung-sdi/ulsan
+  kind: cell_factory
+  name: Samsung SDI Ulsan plant
+  operator_uid: org/samsung-sdi
+  country: KR
+  region: Ulsan
+  locality: Ulsan
+  status: operating
+  makes:
+  - cylindrical cells
+  - ESS cells
+  verify_at: https://www.samsungsdi.com
+  confidence: medium
+- uid: site/samsung-sdi/god
+  kind: cell_factory
+  name: Samsung SDI Göd plant
+  operator_uid: org/samsung-sdi
+  country: HU
+  region: Pest
+  locality: Göd
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.samsungsdi.com
+  confidence: medium
+- uid: site/samsung-sdi/xian
+  kind: cell_factory
+  name: Samsung SDI Xi'an plant
+  operator_uid: org/samsung-sdi
+  country: CN
+  region: Shaanxi
+  locality: Xi'an
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.samsungsdi.com
+  confidence: low
+- uid: site/starplus-energy/kokomo
+  kind: cell_factory
+  name: StarPlus Energy Kokomo plants
+  operator_uid: org/starplus-energy
+  partners:
+  - org/samsung-sdi
+  - org/stellantis
+  country: US
+  region: Indiana
+  locality: Kokomo
+  status: commissioning
+  makes:
+  - cells for Stellantis vehicles
+  verify_at: https://www.stellantis.com
+  confidence: medium
+- uid: site/sk-on/seosan
+  kind: cell_factory
+  name: SK On Seosan plant
+  operator_uid: org/sk-on
+  country: KR
+  region: South Chungcheong
+  locality: Seosan
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.sk-on.com
+  confidence: medium
+- uid: site/sk-on/komarom
+  kind: cell_factory
+  name: SK On Komárom plants
+  operator_uid: org/sk-on
+  country: HU
+  region: Komárom-Esztergom
+  locality: Komárom
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.sk-on.com
+  confidence: medium
+- uid: site/sk-on/ivancsa
+  kind: cell_factory
+  name: SK On Iváncsa plant
+  operator_uid: org/sk-on
+  country: HU
+  region: Fejér
+  locality: Iváncsa
+  status: commissioning
+  makes:
+  - pouch cells
+  verify_at: https://www.sk-on.com
+  confidence: medium
+- uid: site/sk-on/yancheng
+  kind: cell_factory
+  name: SK On Yancheng plant
+  operator_uid: org/sk-on
+  country: CN
+  region: Jiangsu
+  locality: Yancheng
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.sk-on.com
+  confidence: low
+- uid: site/sk-on/commerce
+  kind: cell_factory
+  name: SK Battery America, Commerce
+  operator_uid: org/sk-on
+  country: US
+  region: Georgia
+  locality: Commerce
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.sk-on.com
+  confidence: medium
+- uid: site/panasonic/kasai
+  kind: cell_factory
+  name: Panasonic Energy Kasai plant
+  operator_uid: org/panasonic
+  country: JP
+  region: Hyogo
+  locality: Kasai
+  status: operating
+  makes:
+  - cylindrical cells
+  verify_at: https://www.panasonic.com/global/energy.html
+  confidence: medium
+- uid: site/panasonic/suminoe
+  kind: cell_factory
+  name: Panasonic Energy Suminoe plant
+  operator_uid: org/panasonic
+  country: JP
+  region: Osaka
+  locality: Osaka
+  status: operating
+  makes:
+  - cylindrical cells
+  verify_at: https://www.panasonic.com/global/energy.html
+  confidence: low
+- uid: site/panasonic/wakayama
+  kind: cell_factory
+  name: Panasonic Energy Wakayama plant
+  operator_uid: org/panasonic
+  country: JP
+  region: Wakayama
+  locality: Wakayama
+  status: operating
+  makes:
+  - 4680 cylindrical cells
+  verify_at: https://www.panasonic.com/global/energy.html
+  note: Reported as the 4680 pilot line.
+  confidence: medium
+- uid: site/panasonic/sparks
+  kind: cell_factory
+  name: Panasonic Energy North America, Gigafactory Nevada
+  operator_uid: org/panasonic
+  partners:
+  - org/tesla
+  country: US
+  region: Nevada
+  locality: Sparks
+  status: operating
+  makes:
+  - 2170 cylindrical cells
+  verify_at: https://www.panasonic.com/global/energy.html
+  note: Panasonic's cell operation inside Tesla's Nevada site; site/tesla/nevada is the same place seen from Tesla's
+    side.
+  confidence: medium
+- uid: site/panasonic/de-soto
+  kind: cell_factory
+  name: Panasonic Energy De Soto plant
+  operator_uid: org/panasonic
+  country: US
+  region: Kansas
+  locality: De Soto
+  status: commissioning
+  makes:
+  - 2170 cylindrical cells
+  verify_at: https://www.panasonic.com/global/energy.html
+  confidence: medium
+- uid: site/tesla/nevada
+  kind: cell_factory
+  name: Gigafactory Nevada
+  operator_uid: org/tesla
+  partners:
+  - org/panasonic
+  country: US
+  region: Nevada
+  locality: Sparks
+  status: operating
+  makes:
+  - 2170 cells with Panasonic
+  - packs
+  - Megapack
+  verify_at: https://www.tesla.com
+  confidence: medium
+- uid: site/tesla/austin
+  kind: cell_factory
+  name: Gigafactory Texas
+  operator_uid: org/tesla
+  country: US
+  region: Texas
+  locality: Austin
+  status: operating
+  makes:
+  - 4680 cylindrical cells
+  - packs
+  verify_at: https://www.tesla.com
+  confidence: medium
+- uid: site/tesla/fremont
+  kind: cell_factory
+  name: Tesla Fremont pilot cell line
+  operator_uid: org/tesla
+  country: US
+  region: California
+  locality: Fremont
+  status: operating
+  makes:
+  - 4680 pilot cells
+  verify_at: https://www.tesla.com
+  confidence: low
+- uid: site/tesla/lathrop
+  kind: module_pack_factory
+  name: Tesla Megafactory Lathrop
+  operator_uid: org/tesla
+  country: US
+  region: California
+  locality: Lathrop
+  status: operating
+  makes:
+  - Megapack systems
+  verify_at: https://www.tesla.com
+  confidence: medium
+- uid: site/tesla/shanghai-megafactory
+  kind: module_pack_factory
+  name: Tesla Megafactory Shanghai
+  operator_uid: org/tesla
+  country: CN
+  region: Shanghai
+  locality: Shanghai
+  status: operating
+  makes:
+  - Megapack systems
+  verify_at: https://www.tesla.com
+  confidence: medium
+- uid: site/ultium-cells/warren
+  kind: cell_factory
+  name: Ultium Cells Warren plant
+  operator_uid: org/ultium-cells
+  partners:
+  - org/lg-energy-solution
+  country: US
+  region: Ohio
+  locality: Warren
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.ultiumcells.com
+  confidence: medium
+- uid: site/ultium-cells/spring-hill
+  kind: cell_factory
+  name: Ultium Cells Spring Hill plant
+  operator_uid: org/ultium-cells
+  partners:
+  - org/lg-energy-solution
+  country: US
+  region: Tennessee
+  locality: Spring Hill
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.ultiumcells.com
+  confidence: medium
+- uid: site/blueoval-sk/glendale
+  kind: cell_factory
+  name: BlueOval SK Kentucky 1
+  operator_uid: org/blueoval-sk
+  partners:
+  - org/sk-on
+  country: US
+  region: Kentucky
+  locality: Glendale
+  status: commissioning
+  makes:
+  - pouch cells
+  verify_at: https://www.blueovalsk.com
+  confidence: medium
+- uid: site/blueoval-sk/stanton
+  kind: cell_factory
+  name: BlueOval SK Tennessee, BlueOval City
+  operator_uid: org/blueoval-sk
+  partners:
+  - org/sk-on
+  country: US
+  region: Tennessee
+  locality: Stanton
+  status: construction
+  makes:
+  - pouch cells
+  verify_at: https://www.blueovalsk.com
+  confidence: medium
+- uid: site/toyota/liberty
+  kind: cell_factory
+  name: Toyota Battery Manufacturing North Carolina
+  operator_uid: org/toyota
+  country: US
+  region: North Carolina
+  locality: Liberty
+  status: operating
+  makes:
+  - cells for hybrids and EVs
+  verify_at: https://www.toyota.com
+  confidence: medium
+- uid: site/prime-planet-energy/himeji
+  kind: cell_factory
+  name: Prime Planet Energy Himeji plant
+  operator_uid: org/prime-planet-energy
+  partners:
+  - org/toyota
+  - org/panasonic
+  country: JP
+  region: Hyogo
+  locality: Himeji
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.p2es-hd.com
+  confidence: low
+- uid: site/envision-aesc/sunderland
+  kind: cell_factory
+  name: Envision AESC Sunderland plants
+  operator_uid: org/envision-aesc
+  partners:
+  - org/nissan
+  country: GB
+  region: England
+  locality: Sunderland
+  status: operating
+  makes:
+  - pouch cells for Nissan
+  verify_at: https://www.envision-aesc.com
+  confidence: medium
+- uid: site/envision-aesc/douai
+  kind: cell_factory
+  name: Envision AESC Douai plant
+  operator_uid: org/envision-aesc
+  partners:
+  - org/renault
+  country: FR
+  region: Hauts-de-France
+  locality: Douai
+  status: operating
+  makes:
+  - pouch cells for Renault
+  verify_at: https://www.envision-aesc.com
+  confidence: medium
+- uid: site/envision-aesc/smyrna
+  kind: cell_factory
+  name: Envision AESC Smyrna plant
+  operator_uid: org/envision-aesc
+  country: US
+  region: Tennessee
+  locality: Smyrna
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.envision-aesc.com
+  confidence: medium
+- uid: site/envision-aesc/florence
+  kind: cell_factory
+  name: Envision AESC South Carolina plant
+  operator_uid: org/envision-aesc
+  country: US
+  region: South Carolina
+  locality: Florence
+  status: construction
+  makes:
+  - pouch cells
+  verify_at: https://www.envision-aesc.com
+  confidence: low
+- uid: site/envision-aesc/navalmoral
+  kind: cell_factory
+  name: Envision AESC Extremadura plant
+  operator_uid: org/envision-aesc
+  country: ES
+  region: Extremadura
+  locality: Navalmoral de la Mata
+  status: construction
+  makes:
+  - LFP cells
+  verify_at: https://www.envision-aesc.com
+  confidence: low
+- uid: site/envision-aesc/wuxi
+  kind: cell_factory
+  name: Envision AESC Wuxi plant
+  operator_uid: org/envision-aesc
+  country: CN
+  region: Jiangsu
+  locality: Wuxi
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.envision-aesc.com
+  confidence: low
+- uid: site/eve-energy/jingmen
+  kind: cell_factory
+  name: EVE Energy Jingmen base
+  operator_uid: org/eve-energy
+  country: CN
+  region: Hubei
+  locality: Jingmen
+  status: operating
+  makes:
+  - large cylindrical and prismatic LFP cells
+  verify_at: https://www.evebattery.com
+  confidence: medium
+- uid: site/eve-energy/huizhou
+  kind: cell_factory
+  name: EVE Energy Huizhou base
+  operator_uid: org/eve-energy
+  country: CN
+  region: Guangdong
+  locality: Huizhou
+  status: operating
+  makes:
+  - consumer and primary cells
+  verify_at: https://www.evebattery.com
+  confidence: medium
+- uid: site/eve-energy/debrecen
+  kind: cell_factory
+  name: EVE Energy Hungary plant
+  operator_uid: org/eve-energy
+  country: HU
+  region: Hajdú-Bihar
+  locality: Debrecen
+  status: construction
+  makes:
+  - large cylindrical cells
+  verify_at: https://www.evebattery.com
+  confidence: low
+- uid: site/eve-energy/mississippi
+  kind: cell_factory
+  name: Amplify Cell Technologies plant
+  operator_uid: org/eve-energy
+  country: US
+  region: Mississippi
+  locality: Marshall County
+  status: construction
+  makes:
+  - LFP cells
+  verify_at: https://www.evebattery.com
+  note: Joint venture with Daimler Truck, PACCAR and Accelera; the operator's own identity needs checking before this
+    becomes a record.
+  confidence: low
+- uid: site/gotion/hefei
+  kind: cell_factory
+  name: Gotion Hefei base
+  operator_uid: org/gotion
+  country: CN
+  region: Anhui
+  locality: Hefei
+  status: operating
+  makes:
+  - LFP cells
+  - packs
+  verify_at: https://www.gotion.com.cn
+  confidence: medium
+- uid: site/gotion/liuzhou
+  kind: cell_factory
+  name: Gotion Liuzhou plant
+  operator_uid: org/gotion
+  country: CN
+  region: Guangxi
+  locality: Liuzhou
+  status: operating
+  makes:
+  - LFP cells
+  verify_at: https://www.gotion.com.cn
+  confidence: low
+- uid: site/gotion/gottingen
+  kind: cell_factory
+  name: Gotion Göttingen plant
+  operator_uid: org/gotion
+  country: DE
+  region: Lower Saxony
+  locality: Göttingen
+  status: operating
+  makes:
+  - cells and packs
+  verify_at: https://www.gotion.com.cn
+  confidence: low
+- uid: site/gotion/manteno
+  kind: cell_factory
+  name: Gotion Illinois plant
+  operator_uid: org/gotion
+  country: US
+  region: Illinois
+  locality: Manteno
+  status: construction
+  makes:
+  - LFP cells
+  - packs
+  verify_at: https://www.gotion.com.cn
+  confidence: low
+- uid: site/calb/changzhou
+  kind: cell_factory
+  name: CALB Changzhou base
+  operator_uid: org/calb
+  country: CN
+  region: Jiangsu
+  locality: Changzhou
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.calb-tech.com
+  confidence: medium
+- uid: site/calb/xiamen
+  kind: cell_factory
+  name: CALB Xiamen base
+  operator_uid: org/calb
+  country: CN
+  region: Fujian
+  locality: Xiamen
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.calb-tech.com
+  confidence: low
+- uid: site/calb/hefei
+  kind: cell_factory
+  name: CALB Hefei base
+  operator_uid: org/calb
+  country: CN
+  region: Anhui
+  locality: Hefei
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.calb-tech.com
+  confidence: low
+- uid: site/calb/wuhan
+  kind: cell_factory
+  name: CALB Wuhan base
+  operator_uid: org/calb
+  country: CN
+  region: Hubei
+  locality: Wuhan
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.calb-tech.com
+  confidence: low
+- uid: site/calb/sines
+  kind: cell_factory
+  name: CALB Sines plant
+  operator_uid: org/calb
+  country: PT
+  region: Setúbal
+  locality: Sines
+  status: announced
+  makes:
+  - cells
+  verify_at: https://www.calb-tech.com
+  confidence: low
+- uid: site/svolt/changshu
+  kind: cell_factory
+  name: SVOLT Changshu plant
+  operator_uid: org/svolt
+  country: CN
+  region: Jiangsu
+  locality: Changshu
+  status: operating
+  makes:
+  - short-blade cells
+  verify_at: https://www.svolt.cn
+  confidence: low
+- uid: site/svolt/jintan
+  kind: cell_factory
+  name: SVOLT Jintan base
+  operator_uid: org/svolt
+  country: CN
+  region: Jiangsu
+  locality: Changzhou
+  status: operating
+  makes:
+  - short-blade and cobalt-free cells
+  verify_at: https://www.svolt.cn
+  confidence: medium
+- uid: site/svolt/suining
+  kind: cell_factory
+  name: SVOLT Suining plant
+  operator_uid: org/svolt
+  country: CN
+  region: Sichuan
+  locality: Suining
+  status: operating
+  makes:
+  - cells
+  verify_at: https://www.svolt.cn
+  confidence: low
+- uid: site/rept/wenzhou
+  kind: cell_factory
+  name: REPT BATTERO Wenzhou base
+  operator_uid: org/rept
+  country: CN
+  region: Zhejiang
+  locality: Wenzhou
+  status: operating
+  makes:
+  - prismatic LFP cells
+  verify_at: https://www.reptbattero.com
+  confidence: medium
+- uid: site/rept/jiaxing
+  kind: cell_factory
+  name: REPT BATTERO Jiaxing base
+  operator_uid: org/rept
+  country: CN
+  region: Zhejiang
+  locality: Jiaxing
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.reptbattero.com
+  confidence: low
+- uid: site/rept/foshan
+  kind: cell_factory
+  name: REPT BATTERO Foshan base
+  operator_uid: org/rept
+  country: CN
+  region: Guangdong
+  locality: Foshan
+  status: operating
+  makes:
+  - prismatic cells
+  verify_at: https://www.reptbattero.com
+  confidence: low
+- uid: site/hithium/xiamen
+  kind: cell_factory
+  name: HiTHIUM Xiamen base
+  operator_uid: org/hithium
+  country: CN
+  region: Fujian
+  locality: Xiamen
+  status: operating
+  makes:
+  - ESS prismatic cells
+  verify_at: https://www.hithium.com
+  confidence: medium
+- uid: site/hithium/chongqing
+  kind: cell_factory
+  name: HiTHIUM Chongqing base
+  operator_uid: org/hithium
+  country: CN
+  region: Chongqing
+  locality: Chongqing
+  status: operating
+  makes:
+  - ESS prismatic cells
+  verify_at: https://www.hithium.com
+  confidence: low
+- uid: site/hithium/mesquite
+  kind: module_pack_factory
+  name: HiTHIUM Texas plant
+  operator_uid: org/hithium
+  country: US
+  region: Texas
+  locality: Mesquite
+  status: operating
+  makes:
+  - ESS modules and containers
+  verify_at: https://www.hithium.com
+  confidence: low
+- uid: site/sunwoda/nanchang
+  kind: cell_factory
+  name: Sunwoda Nanchang base
+  operator_uid: org/sunwoda
+  country: CN
+  region: Jiangxi
+  locality: Nanchang
+  status: operating
+  makes:
+  - EV cells
+  verify_at: https://www.sunwoda.com
+  confidence: low
+- uid: site/sunwoda/zaozhuang
+  kind: cell_factory
+  name: Sunwoda Zaozhuang base
+  operator_uid: org/sunwoda
+  country: CN
+  region: Shandong
+  locality: Zaozhuang
+  status: operating
+  makes:
+  - cells
+  verify_at: https://www.sunwoda.com
+  confidence: low
+- uid: site/farasis/ganzhou
+  kind: cell_factory
+  name: Farasis Ganzhou base
+  operator_uid: org/farasis
+  country: CN
+  region: Jiangxi
+  locality: Ganzhou
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.farasis.com.cn
+  confidence: medium
+- uid: site/farasis/zhenjiang
+  kind: cell_factory
+  name: Farasis Zhenjiang base
+  operator_uid: org/farasis
+  country: CN
+  region: Jiangsu
+  locality: Zhenjiang
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.farasis.com.cn
+  confidence: low
+- uid: site/great-power/guangzhou
+  kind: cell_factory
+  name: Great Power Guangzhou base
+  operator_uid: org/great-power
+  country: CN
+  region: Guangdong
+  locality: Guangzhou
+  status: operating
+  makes:
+  - ESS and consumer cells
+  verify_at: https://www.greatpower.net
+  confidence: medium
+- uid: site/lishen/tianjin
+  kind: cell_factory
+  name: Lishen Tianjin base
+  operator_uid: org/lishen
+  country: CN
+  region: Tianjin
+  locality: Tianjin
+  status: operating
+  makes:
+  - cylindrical and prismatic cells
+  verify_at: https://www.lishen.com.cn
+  confidence: medium
+- uid: site/bak/zhengzhou
+  kind: cell_factory
+  name: BAK Zhengzhou base
+  operator_uid: org/bak
+  country: CN
+  region: Henan
+  locality: Zhengzhou
+  status: operating
+  makes:
+  - cylindrical cells
+  verify_at: https://www.bak.com.cn
+  confidence: low
+- uid: site/bak/shenzhen
+  kind: cell_factory
+  name: BAK Shenzhen base
+  operator_uid: org/bak
+  country: CN
+  region: Guangdong
+  locality: Shenzhen
+  status: operating
+  makes:
+  - cylindrical cells
+  verify_at: https://www.bak.com.cn
+  confidence: low
+- uid: site/atl/ningde
+  kind: cell_factory
+  name: ATL Ningde base
+  operator_uid: org/atl
+  country: CN
+  region: Fujian
+  locality: Ningde
+  status: operating
+  makes:
+  - consumer polymer cells
+  verify_at: https://www.atlbattery.com
+  confidence: low
+- uid: site/ampace/xiamen
+  kind: cell_factory
+  name: Ampace Xiamen base
+  operator_uid: org/ampace
+  country: CN
+  region: Fujian
+  locality: Xiamen
+  status: operating
+  makes:
+  - cylindrical and ESS cells
+  verify_at: https://www.ampace.com
+  confidence: low
+- uid: site/cosmx/zhuhai
+  kind: cell_factory
+  name: CosMX Zhuhai base
+  operator_uid: org/cosmx
+  country: CN
+  region: Guangdong
+  locality: Zhuhai
+  status: operating
+  makes:
+  - polymer consumer cells
+  verify_at: https://www.cosmx.com
+  confidence: low
+- uid: site/hina-battery/fuyang
+  kind: cell_factory
+  name: HiNa Battery Fuyang plant
+  operator_uid: org/hina-battery
+  country: CN
+  region: Anhui
+  locality: Fuyang
+  status: operating
+  makes:
+  - sodium-ion cells
+  verify_at: https://www.hinabattery.com
+  confidence: low
+- uid: site/microvast/huzhou
+  kind: cell_factory
+  name: Microvast Huzhou base
+  operator_uid: org/microvast
+  country: CN
+  region: Zhejiang
+  locality: Huzhou
+  status: operating
+  makes:
+  - fast-charging pouch cells
+  verify_at: https://www.microvast.com
+  confidence: medium
+- uid: site/microvast/clarksville
+  kind: cell_factory
+  name: Microvast Clarksville plant
+  operator_uid: org/microvast
+  country: US
+  region: Tennessee
+  locality: Clarksville
+  status: construction
+  makes:
+  - cells
+  verify_at: https://www.microvast.com
+  confidence: low
+- uid: site/dmegc/hengdian
+  kind: cell_factory
+  name: DMEGC Hengdian battery base
+  operator_uid: org/dmegc
+  country: CN
+  region: Zhejiang
+  locality: Dongyang
+  status: operating
+  makes:
+  - LFP and cylindrical cells
+  verify_at: https://www.dmegc.com.cn
+  confidence: low
+- uid: site/cbak/dalian
+  kind: cell_factory
+  name: CBAK Dalian plant
+  operator_uid: org/cbak
+  country: CN
+  region: Liaoning
+  locality: Dalian
+  status: operating
+  makes:
+  - cylindrical cells
+  verify_at: https://www.cbak.com.cn
+  confidence: low
+- uid: site/highstar/nantong
+  kind: cell_factory
+  name: Highstar Nantong plant
+  operator_uid: org/highstar
+  country: CN
+  region: Jiangsu
+  locality: Nantong
+  status: operating
+  makes:
+  - sodium-ion and lithium cells
+  verify_at: https://www.highstar-battery.com
+  confidence: low
+- uid: site/toshiba/kashiwazaki
+  kind: cell_factory
+  name: Toshiba Kashiwazaki SCiB plant
+  operator_uid: org/toshiba
+  country: JP
+  region: Niigata
+  locality: Kashiwazaki
+  status: operating
+  makes:
+  - LTO SCiB cells
+  verify_at: https://www.global.toshiba
+  confidence: medium
+- uid: site/gs-yuasa/kyoto
+  kind: cell_factory
+  name: GS Yuasa Kyoto plant
+  operator_uid: org/gs-yuasa
+  country: JP
+  region: Kyoto
+  locality: Kyoto
+  status: operating
+  makes:
+  - lithium and lead-acid batteries
+  verify_at: https://www.gs-yuasa.com
+  confidence: low
+- uid: site/murata/koriyama
+  kind: cell_factory
+  name: Murata Koriyama battery plant
+  operator_uid: org/murata
+  country: JP
+  region: Fukushima
+  locality: Koriyama
+  status: operating
+  makes:
+  - cylindrical cells
+  verify_at: https://www.murata.com
+  confidence: low
+- uid: site/molicel/taoyuan
+  kind: cell_factory
+  name: Molicel Taoyuan plants
+  operator_uid: org/molicel
+  country: TW
+  locality: Taoyuan
+  status: operating
+  makes:
+  - high-power cylindrical cells
+  verify_at: https://www.molicel.com
+  confidence: medium
+- uid: site/prologium/taoyuan
+  kind: cell_factory
+  name: ProLogium Taoyuan gigafactory
+  operator_uid: org/prologium
+  country: TW
+  locality: Taoyuan
+  status: operating
+  makes:
+  - ceramic solid-state cells
+  verify_at: https://www.prologium.com
+  confidence: low
+- uid: site/prologium/dunkirk
+  kind: cell_factory
+  name: ProLogium Dunkirk gigafactory
+  operator_uid: org/prologium
+  country: FR
+  region: Hauts-de-France
+  locality: Dunkerque
+  status: announced
+  makes:
+  - solid-state cells
+  verify_at: https://www.prologium.com
+  confidence: low
+- uid: site/northvolt/skelleftea
+  kind: cell_factory
+  name: Northvolt Ett
+  operator_uid: org/northvolt
+  country: SE
+  region: Västerbotten
+  locality: Skellefteå
+  status: idle
+  makes:
+  - prismatic cells
+  verify_at: https://northvolt.com
+  note: Northvolt entered bankruptcy in 2025; ownership and operation of Ett have changed. Read the page before recording
+    any status.
+  confidence: low
+- uid: site/northvolt/goteborg
+  kind: cell_factory
+  name: Novo Energy Gothenburg
+  operator_uid: org/northvolt
+  partners:
+  - org/volvo-cars
+  country: SE
+  region: Västra Götaland
+  locality: Göteborg
+  status: cancelled
+  makes:
+  - cells for Volvo Cars
+  verify_at: https://northvolt.com
+  confidence: low
+- uid: site/northvolt/heide
+  kind: cell_factory
+  name: Northvolt Drei, Heide
+  operator_uid: org/northvolt
+  country: DE
+  region: Schleswig-Holstein
+  locality: Heide
+  status: cancelled
+  makes:
+  - cells
+  verify_at: https://northvolt.com
+  confidence: low
+- uid: site/acc/billy-berclau
+  kind: cell_factory
+  name: ACC Billy-Berclau Douvrin gigafactory
+  operator_uid: org/acc
+  country: FR
+  region: Hauts-de-France
+  locality: Billy-Berclau
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.acc-emotion.com
+  confidence: medium
+- uid: site/acc/kaiserslautern
+  kind: cell_factory
+  name: ACC Kaiserslautern gigafactory
+  operator_uid: org/acc
+  country: DE
+  region: Rhineland-Palatinate
+  locality: Kaiserslautern
+  status: announced
+  makes:
+  - pouch cells
+  verify_at: https://www.acc-emotion.com
+  note: Reported paused in 2024.
+  confidence: low
+- uid: site/acc/termoli
+  kind: cell_factory
+  name: ACC Termoli gigafactory
+  operator_uid: org/acc
+  country: IT
+  region: Molise
+  locality: Termoli
+  status: announced
+  makes:
+  - pouch cells
+  verify_at: https://www.acc-emotion.com
+  note: Reported paused in 2024.
+  confidence: low
+- uid: site/verkor/dunkirk
+  kind: cell_factory
+  name: Verkor Dunkirk gigafactory
+  operator_uid: org/verkor
+  country: FR
+  region: Hauts-de-France
+  locality: Dunkerque
+  status: commissioning
+  makes:
+  - low-carbon pouch cells
+  verify_at: https://verkor.com
+  confidence: medium
+- uid: site/powerco/salzgitter
+  kind: cell_factory
+  name: PowerCo Salzgitter cell factory
+  operator_uid: org/powerco
+  country: DE
+  region: Lower Saxony
+  locality: Salzgitter
+  status: commissioning
+  makes:
+  - unified prismatic cells
+  verify_at: https://www.powerco.de
+  confidence: medium
+- uid: site/powerco/valencia
+  kind: cell_factory
+  name: PowerCo Sagunto cell factory
+  operator_uid: org/powerco
+  country: ES
+  region: Valencia
+  locality: Sagunto
+  status: construction
+  makes:
+  - unified prismatic cells
+  verify_at: https://www.powerco.de
+  confidence: medium
+- uid: site/powerco/st-thomas
+  kind: cell_factory
+  name: PowerCo St. Thomas cell factory
+  operator_uid: org/powerco
+  country: CA
+  region: Ontario
+  locality: St. Thomas
+  status: construction
+  makes:
+  - unified prismatic cells
+  verify_at: https://www.powerco.de
+  confidence: medium
+- uid: site/morrow-batteries/arendal
+  kind: cell_factory
+  name: Morrow Arendal gigafactory
+  operator_uid: org/morrow-batteries
+  country: 'NO'
+  region: Agder
+  locality: Arendal
+  status: operating
+  makes:
+  - LFP prismatic cells
+  verify_at: https://www.morrowbatteries.com
+  confidence: low
+- uid: site/inobat/voderady
+  kind: cell_factory
+  name: InoBat Voderady plant
+  operator_uid: org/inobat
+  country: SK
+  region: Trnava
+  locality: Voderady
+  status: operating
+  makes:
+  - custom pouch cells
+  verify_at: https://inobat.eu
+  confidence: low
+- uid: site/customcells/itzehoe
+  kind: cell_factory
+  name: Customcells Itzehoe plant
+  operator_uid: org/customcells
+  country: DE
+  region: Schleswig-Holstein
+  locality: Itzehoe
+  status: operating
+  makes:
+  - custom cells
+  verify_at: https://www.customcells.com
+  confidence: low
+- uid: site/leclanche/willstatt
+  kind: cell_factory
+  name: Leclanché Willstätt plant
+  operator_uid: org/leclanche
+  country: DE
+  region: Baden-Württemberg
+  locality: Willstätt
+  status: operating
+  makes:
+  - pouch cells
+  verify_at: https://www.leclanche.com
+  confidence: low
+- uid: site/saft/nersac
+  kind: cell_factory
+  name: Saft Nersac plant
+  operator_uid: org/saft
+  country: FR
+  region: Nouvelle-Aquitaine
+  locality: Nersac
+  status: operating
+  makes:
+  - primary lithium cells
+  verify_at: https://www.saftbatteries.com
+  confidence: low
+- uid: site/varta/ellwangen
+  kind: cell_factory
+  name: VARTA Ellwangen plant
+  operator_uid: org/varta
+  country: DE
+  region: Baden-Württemberg
+  locality: Ellwangen
+  status: operating
+  makes:
+  - coin and small cylindrical cells
+  verify_at: https://www.varta-ag.com
+  confidence: low
+- uid: site/blue-solutions/ergue-gaberic
+  kind: cell_factory
+  name: Blue Solutions Ergué-Gabéric plant
+  operator_uid: org/blue-solutions
+  country: FR
+  region: Brittany
+  locality: Ergué-Gabéric
+  status: operating
+  makes:
+  - lithium-metal-polymer cells
+  verify_at: https://www.blue-solutions.com
+  confidence: low
+- uid: site/cellforce-group/reutlingen
+  kind: cell_factory
+  name: Cellforce Reutlingen plant
+  operator_uid: org/cellforce-group
+  country: DE
+  region: Baden-Württemberg
+  locality: Reutlingen
+  status: idle
+  makes:
+  - high-performance cells
+  verify_at: https://www.cellforce-group.com
+  note: The programme was scaled back in 2025.
+  confidence: low
+- uid: site/t1-energy/mo-i-rana
+  kind: cell_factory
+  name: Mo i Rana cell plant
+  operator_uid: org/t1-energy
+  country: 'NO'
+  region: Nordland
+  locality: Mo i Rana
+  status: cancelled
+  makes:
+  - 24M semi-solid cells
+  verify_at: https://www.t1energy.com
+  note: FREYR's Norwegian plan; the company renamed to T1 Energy and redirected to the United States.
+  confidence: low
+- uid: site/skeleton-technologies/grossrohrsdorf
+  kind: component_factory
+  name: Skeleton Großröhrsdorf plant
+  operator_uid: org/skeleton-technologies
+  country: DE
+  region: Saxony
+  locality: Großröhrsdorf
+  status: operating
+  makes:
+  - supercapacitor cells
+  verify_at: https://www.skeletontech.com
+  confidence: low
+- uid: site/our-next-energy/van-buren
+  kind: cell_factory
+  name: ONE Circle, Van Buren Township
+  operator_uid: org/our-next-energy
+  country: US
+  region: Michigan
+  locality: Van Buren Township
+  status: idle
+  makes:
+  - LFP cells
+  verify_at: https://one.ai
+  confidence: low
+- uid: site/amprius/colorado-springs
+  kind: cell_factory
+  name: Amprius Colorado plant
+  operator_uid: org/amprius
+  country: US
+  region: Colorado
+  locality: Colorado Springs
+  status: announced
+  makes:
+  - silicon-anode cells
+  verify_at: https://amprius.com
+  confidence: low
+- uid: site/enovix/penang
+  kind: cell_factory
+  name: Enovix Fab2, Penang
+  operator_uid: org/enovix
+  country: MY
+  locality: Penang
+  status: operating
+  makes:
+  - silicon-anode cells
+  verify_at: https://www.enovix.com
+  confidence: low
+- uid: site/eos-energy/turtle-creek
+  kind: cell_factory
+  name: Eos Turtle Creek plant
+  operator_uid: org/eos-energy
+  country: US
+  region: Pennsylvania
+  locality: Turtle Creek
+  status: operating
+  makes:
+  - zinc-halide batteries
+  verify_at: https://www.eose.com
+  confidence: low
+- uid: site/form-energy/weirton
+  kind: cell_factory
+  name: Form Factory 1, Weirton
+  operator_uid: org/form-energy
+  country: US
+  region: West Virginia
+  locality: Weirton
+  status: commissioning
+  makes:
+  - iron-air batteries
+  verify_at: https://formenergy.com
+  confidence: low
+- uid: site/american-battery-factory/tucson
+  kind: cell_factory
+  name: American Battery Factory Tucson plant
+  operator_uid: org/american-battery-factory
+  country: US
+  region: Arizona
+  locality: Tucson
+  status: announced
+  makes:
+  - LFP prismatic cells
+  verify_at: https://americanbatteryfactory.com
+  confidence: low
+- uid: site/lyten/reno
+  kind: cell_factory
+  name: Lyten Reno plant
+  operator_uid: org/lyten
+  country: US
+  region: Nevada
+  locality: Reno
+  status: operating
+  makes:
+  - lithium-sulfur cells
+  verify_at: https://lyten.com
+  confidence: low
+- uid: site/natron-energy/holland
+  kind: cell_factory
+  name: Natron Holland plant
+  operator_uid: org/natron-energy
+  country: US
+  region: Michigan
+  locality: Holland
+  status: idle
+  makes:
+  - sodium-ion cells
+  verify_at: https://natron.energy
+  note: Natron was reported to have wound down in 2025.
+  confidence: low
+- uid: site/clarios/holland-oh
+  kind: cell_factory
+  name: Clarios Holland plant
+  operator_uid: org/clarios
+  country: US
+  region: Ohio
+  locality: Holland
+  status: operating
+  makes:
+  - AGM and flooded lead-acid batteries
+  verify_at: https://www.clarios.com
+  confidence: low
+- uid: site/east-penn/lyon-station
+  kind: cell_factory
+  name: East Penn Lyon Station campus
+  operator_uid: org/east-penn
+  country: US
+  region: Pennsylvania
+  locality: Lyon Station
+  status: operating
+  makes:
+  - lead-acid batteries
+  verify_at: https://www.eastpennmanufacturing.com
+  confidence: medium
+- uid: site/enersys/richmond
+  kind: cell_factory
+  name: EnerSys Richmond plant
+  operator_uid: org/enersys
+  country: US
+  region: Kentucky
+  locality: Richmond
+  status: operating
+  makes:
+  - industrial lead-acid batteries
+  verify_at: https://www.enersys.com
+  confidence: low
+- uid: site/ngk-insulators/komaki
+  kind: cell_factory
+  name: NGK Komaki NAS battery plant
+  operator_uid: org/ngk-insulators
+  country: JP
+  region: Aichi
+  locality: Komaki
+  status: operating
+  makes:
+  - sodium-sulfur batteries
+  verify_at: https://www.ngk-insulators.com
+  confidence: low
+- uid: site/agratas/sanand
+  kind: cell_factory
+  name: Agratas Sanand cell plant
+  operator_uid: org/agratas
+  country: IN
+  region: Gujarat
+  locality: Sanand
+  status: construction
+  makes:
+  - cells
+  verify_at: https://www.agratas.com
+  confidence: low
+- uid: site/agratas/somerset
+  kind: cell_factory
+  name: Agratas Somerset gigafactory
+  operator_uid: org/agratas
+  country: GB
+  region: England
+  locality: Bridgwater
+  status: construction
+  makes:
+  - cells
+  verify_at: https://www.agratas.com
+  confidence: low
+- uid: site/reliance-new-energy/jamnagar
+  kind: cell_factory
+  name: Reliance Dhirubhai Ambani giga complex
+  operator_uid: org/reliance-new-energy
+  country: IN
+  region: Gujarat
+  locality: Jamnagar
+  status: construction
+  makes:
+  - cells
+  verify_at: https://www.ril.com
+  confidence: low
+- uid: site/exide-industries/bengaluru
+  kind: cell_factory
+  name: Exide Energy Solutions Bengaluru plant
+  operator_uid: org/exide-industries
+  country: IN
+  region: Karnataka
+  locality: Bengaluru
+  status: commissioning
+  makes:
+  - LFP cells
+  verify_at: https://www.exideindustries.com
+  confidence: low
+- uid: site/amara-raja/divitipalli
+  kind: cell_factory
+  name: Amara Raja Giga Corridor, Divitipalli
+  operator_uid: org/amara-raja
+  country: IN
+  region: Telangana
+  locality: Divitipalli
+  status: construction
+  makes:
+  - LFP cells
+  verify_at: https://www.amararaja.com
+  confidence: low
+- uid: site/ola-electric/krishnagiri
+  kind: cell_factory
+  name: Ola Gigafactory, Krishnagiri
+  operator_uid: org/ola-electric
+  country: IN
+  region: Tamil Nadu
+  locality: Krishnagiri
+  status: commissioning
+  makes:
+  - 4680 cylindrical cells
+  verify_at: https://www.olaelectric.com
+  confidence: low
+- uid: site/vines/ha-tinh
+  kind: cell_factory
+  name: VinES Vung Ang plant
+  operator_uid: org/vines
+  country: VN
+  region: Ha Tinh
+  locality: Ky Anh
+  status: operating
+  makes:
+  - LFP cells
+  - packs
+  verify_at: https://vinesenergy.com
+  confidence: low
