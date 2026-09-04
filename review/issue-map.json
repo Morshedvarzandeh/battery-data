@@ -1770,5 +1770,129 @@
   "cell/eemb/lp451124": {
     "issue_number": 458,
     "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/458"
+  },
+  "primary_cell/energizer/br1225": {
+    "issue_number": 461,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/461"
+  },
+  "primary_cell/energizer/cr1025": {
+    "issue_number": 462,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/462"
+  },
+  "primary_cell/energizer/cr1216": {
+    "issue_number": 463,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/463"
+  },
+  "primary_cell/energizer/cr1220": {
+    "issue_number": 464,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/464"
+  },
+  "primary_cell/energizer/cr1616": {
+    "issue_number": 465,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/465"
+  },
+  "primary_cell/energizer/cr1620": {
+    "issue_number": 466,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/466"
+  },
+  "primary_cell/energizer/cr1632": {
+    "issue_number": 467,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/467"
+  },
+  "primary_cell/energizer/cr2016": {
+    "issue_number": 468,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/468"
+  },
+  "primary_cell/energizer/cr2012": {
+    "issue_number": 469,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/469"
+  },
+  "primary_cell/energizer/cr2025": {
+    "issue_number": 470,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/470"
+  },
+  "primary_cell/energizer/cr2032": {
+    "issue_number": 471,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/471"
+  },
+  "primary_cell/energizer/cr2430": {
+    "issue_number": 472,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/472"
+  },
+  "primary_cell/energizer/cr2450": {
+    "issue_number": 473,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/473"
+  },
+  "primary_cell/energizer/ac10e": {
+    "issue_number": 474,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/474"
+  },
+  "primary_cell/energizer/ac13e": {
+    "issue_number": 475,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/475"
+  },
+  "primary_cell/energizer/ac312e": {
+    "issue_number": 476,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/476"
+  },
+  "primary_cell/energizer/1cr2": {
+    "issue_number": 477,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/477"
+  },
+  "primary_cell/energizer/ac675e": {
+    "issue_number": 478,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/478"
+  },
+  "primary_cell/energizer/123": {
+    "issue_number": 479,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/479"
+  },
+  "primary_cell/energizer/2l76": {
+    "issue_number": 480,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/480"
+  },
+  "primary_cell/energizer/l92": {
+    "issue_number": 481,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/481"
+  },
+  "primary_cell/energizer/l91": {
+    "issue_number": 482,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/482"
+  },
+  "pack/energizer/l522": {
+    "issue_number": 483,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/483"
+  },
+  "cell/energizer/nh12-700": {
+    "issue_number": 484,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/484"
+  },
+  "cell/energizer/nh12-500": {
+    "issue_number": 485,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/485"
+  },
+  "cell/energizer/nh15-2300": {
+    "issue_number": 486,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/486"
+  },
+  "pack/energizer/nh22-175": {
+    "issue_number": 487,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/487"
+  },
+  "cell/energizer/nh15-2000": {
+    "issue_number": 488,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/488"
+  },
+  "cell/energizer/nh35-2500": {
+    "issue_number": 489,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/489"
+  },
+  "cell/energizer/nh12-800": {
+    "issue_number": 490,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/490"
+  },
+  "cell/energizer/nh50-2500": {
+    "issue_number": 491,
+    "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/491"
   }
 }

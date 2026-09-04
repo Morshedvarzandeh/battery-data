@@ -5845,7 +5845,9 @@
       "source_url": "https://data.energizer.com/pdfs/BR1225GL0626.pdf",
       "source_title": "Energizer BR1225 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 461,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/461"
     },
     {
       "uid": "primary_cell/energizer/cr1025",
@@ -5856,7 +5858,9 @@
       "source_url": "https://data.energizer.com/pdfs/1025GL0626.pdf",
       "source_title": "Energizer CR1025 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 462,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/462"
     },
     {
       "uid": "primary_cell/energizer/cr1216",
@@ -5867,7 +5871,9 @@
       "source_url": "https://data.energizer.com/pdfs/1216GL0626.pdf",
       "source_title": "Energizer CR1216 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 463,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/463"
     },
     {
       "uid": "primary_cell/energizer/cr1220",
@@ -5878,7 +5884,9 @@
       "source_url": "https://data.energizer.com/pdfs/1220GL0626.pdf",
       "source_title": "Energizer CR1220 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 464,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/464"
     },
     {
       "uid": "primary_cell/energizer/cr1616",
@@ -5889,7 +5897,9 @@
       "source_url": "https://data.energizer.com/pdfs/1616GL0626.pdf",
       "source_title": "Energizer CR1616 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 465,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/465"
     },
     {
       "uid": "primary_cell/energizer/cr1620",
@@ -5900,7 +5910,9 @@
       "source_url": "https://data.energizer.com/pdfs/1620GL0726.pdf",
       "source_title": "Energizer CR1620 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 466,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/466"
     },
     {
       "uid": "primary_cell/energizer/cr1632",
@@ -5911,7 +5923,9 @@
       "source_url": "https://data.energizer.com/pdfs/1632GL0726.pdf",
       "source_title": "Energizer CR1632 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 467,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/467"
     },
     {
       "uid": "primary_cell/energizer/cr2012",
@@ -5922,7 +5936,9 @@
       "source_url": "https://data.energizer.com/pdfs/2012GL0726.pdf",
       "source_title": "Energizer CR2012 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 469,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/469"
     },
     {
       "uid": "primary_cell/energizer/cr2016",
@@ -5933,7 +5949,9 @@
       "source_url": "https://data.energizer.com/pdfs/2016GL0626.pdf",
       "source_title": "Energizer CR2016 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 468,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/468"
     },
     {
       "uid": "primary_cell/energizer/cr2025",
@@ -5944,7 +5962,9 @@
       "source_url": "https://data.energizer.com/pdfs/2025GL0626.pdf",
       "source_title": "Energizer CR2025 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 470,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/470"
     },
     {
       "uid": "primary_cell/energizer/cr2032",
@@ -5955,7 +5975,9 @@
       "source_url": "https://data.energizer.com/pdfs/2032GL0626.pdf",
       "source_title": "Energizer CR2032 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 471,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/471"
     },
     {
       "uid": "primary_cell/energizer/cr2430",
@@ -5966,7 +5988,9 @@
       "source_url": "https://data.energizer.com/pdfs/2430GL0726.pdf",
       "source_title": "Energizer CR2430 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 472,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/472"
     },
     {
       "uid": "primary_cell/energizer/cr2450",
@@ -5977,7 +6001,9 @@
       "source_url": "https://data.energizer.com/pdfs/2450GL0626.pdf",
       "source_title": "Energizer CR2450 product datasheet",
       "observation_count": 7,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 473,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/473"
     },
     {
       "uid": "primary_cell/energizer/ac10e",
@@ -5988,7 +6014,9 @@
       "source_url": "https://data.energizer.com/pdfs/ENR_AC10E-1.pdf",
       "source_title": "Energizer AC10E product datasheet",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 474,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/474"
     },
     {
       "uid": "primary_cell/energizer/ac13e",
@@ -5999,7 +6027,9 @@
       "source_url": "https://data.energizer.com/pdfs/ENR_AC13E-1.pdf",
       "source_title": "Energizer AC13E product datasheet",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 475,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/475"
     },
     {
       "uid": "primary_cell/energizer/ac312e",
@@ -6010,7 +6040,9 @@
       "source_url": "https://data.energizer.com/pdfs/ENR_AC312E-1.pdf",
       "source_title": "Energizer AC312E product datasheet",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 476,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/476"
     },
     {
       "uid": "primary_cell/energizer/ac675e",
@@ -6021,7 +6053,9 @@
       "source_url": "https://data.energizer.com/pdfs/ENR_AC675E-1.pdf",
       "source_title": "Energizer AC675E product datasheet",
       "observation_count": 5,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 478,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/478"
     },
     {
       "uid": "primary_cell/energizer/123",
@@ -6032,7 +6066,9 @@
       "source_url": "https://data.energizer.com/pdfs/123.pdf",
       "source_title": "Energizer 123 product datasheet",
       "observation_count": 13,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 479,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/479"
     },
     {
       "uid": "primary_cell/energizer/1cr2",
@@ -6043,7 +6079,9 @@
       "source_url": "https://data.energizer.com/pdfs/1cr2gl0121.pdf",
       "source_title": "Energizer 1CR2 product datasheet",
       "observation_count": 13,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 477,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/477"
     },
     {
       "uid": "primary_cell/energizer/2l76",
@@ -6054,7 +6092,9 @@
       "source_url": "https://data.energizer.com/pdfs/2l76.pdf",
       "source_title": "Energizer 2L76 product datasheet",
       "observation_count": 13,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 480,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/480"
     },
     {
       "uid": "primary_cell/energizer/l91",
@@ -6065,7 +6105,9 @@
       "source_url": "https://data.energizer.com/pdfs/L91GL0726.pdf",
       "source_title": "Energizer L91 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 482,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/482"
     },
     {
       "uid": "primary_cell/energizer/l92",
@@ -6076,7 +6118,9 @@
       "source_url": "https://data.energizer.com/pdfs/L92GL0725.pdf",
       "source_title": "Energizer L92 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 481,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/481"
     },
     {
       "uid": "pack/energizer/l522",
@@ -6087,7 +6131,9 @@
       "source_url": "https://data.energizer.com/pdfs/l522-1119.pdf",
       "source_title": "Energizer L522 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 483,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/483"
     },
     {
       "uid": "cell/energizer/nh12-500",
@@ -6098,7 +6144,9 @@
       "source_url": "https://data.energizer.com/pdfs/nh12_500gl0221.pdf",
       "source_title": "Energizer NH12-500 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 485,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/485"
     },
     {
       "uid": "cell/energizer/nh12-700",
@@ -6109,7 +6157,9 @@
       "source_url": "https://data.energizer.com/pdfs/nh12-700.pdf",
       "source_title": "Energizer NH12-700 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 484,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/484"
     },
     {
       "uid": "cell/energizer/nh12-800",
@@ -6120,7 +6170,9 @@
       "source_url": "https://data.energizer.com/pdfs/nh12-800.pdf",
       "source_title": "Energizer NH12-800 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 490,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/490"
     },
     {
       "uid": "cell/energizer/nh15-2000",
@@ -6131,7 +6183,9 @@
       "source_url": "https://data.energizer.com/pdfs/nh15-2000gl1220.pdf",
       "source_title": "Energizer NH15-2000 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 488,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/488"
     },
     {
       "uid": "cell/energizer/nh15-2300",
@@ -6142,7 +6196,9 @@
       "source_url": "https://data.energizer.com/pdfs/nh15-2300gl1220.pdf",
       "source_title": "Energizer NH15-2300 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 486,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/486"
     },
     {
       "uid": "pack/energizer/nh22-175",
@@ -6153,7 +6209,9 @@
       "source_url": "https://data.energizer.com/pdfs/nh22-175.pdf",
       "source_title": "Energizer NH22-175 product datasheet",
       "observation_count": 13,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 487,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/487"
     },
     {
       "uid": "cell/energizer/nh35-2500",
@@ -6164,7 +6222,9 @@
       "source_url": "https://data.energizer.com/pdfs/nh35-2500.pdf",
       "source_title": "Energizer NH35-2500 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 489,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/489"
     },
     {
       "uid": "cell/energizer/nh50-2500",
@@ -6175,7 +6235,9 @@
       "source_url": "https://data.energizer.com/pdfs/NH50-2500.pdf",
       "source_title": "Energizer NH50-2500 product datasheet",
       "observation_count": 12,
-      "state": "pending_review"
+      "state": "pending_review",
+      "issue_number": 491,
+      "issue_url": "https://github.com/Morshedvarzandeh/battery-data/issues/491"
     }
   ]
 }
