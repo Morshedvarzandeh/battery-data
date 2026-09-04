@@ -1,0 +1,125 @@
+name: patent-miner
+
+on:
+  schedule:
+    - cron: '30 5 * * 1'
+  workflow_dispatch:
+    inputs:
+      from:
+        description: 'First publication date (YYYY-MM-DD)'
+        required: true
+      to:
+        description: 'Last publication date (YYYY-MM-DD)'
+        required: true
+      execute_bigquery:
+        description: 'I approve the BigQuery query and configured usage cap'
+        required: true
+        type: boolean
+        default: false
+      max_bytes_billed:
+        description: 'Hard BigQuery bytes-billed ceiling'
+        required: true
+        default: '10737418240'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      from: ${{ steps.window.outputs.from }}
+      to: ${{ steps.window.outputs.to }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - id: window
+        env:
+          INPUT_FROM: ${{ inputs.from }}
+          INPUT_TO: ${{ inputs.to }}
+        run: |
+          if [ -n "$INPUT_FROM" ] && [ -n "$INPUT_TO" ]; then
+            echo "from=$INPUT_FROM" >> "$GITHUB_OUTPUT"
+            echo "to=$INPUT_TO" >> "$GITHUB_OUTPUT"
+          else
+            echo "from=$(date -u -d '8 days ago' +%F)" >> "$GITHUB_OUTPUT"
+            echo "to=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Generate bounded discovery plan
+        run: |
+          cargo run --release --manifest-path agents/patent-miner/Cargo.toml -- \
+            plan --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --source google-patents \
+            --from '${{ steps.window.outputs.from }}' \
+            --to '${{ steps.window.outputs.to }}' \
+            --output battery-patents.sql
+      - uses: actions/upload-artifact@v4
+        with:
+          name: patent-discovery-plan-${{ steps.window.outputs.from }}-${{ steps.window.outputs.to }}
+          path: battery-patents.sql
+          retention-days: 90
+
+  execute:
+    if: github.event_name == 'workflow_dispatch' && inputs.execute_bigquery == true
+    needs: plan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_PATENT_MINER_SERVICE_ACCOUNT }}
+      - uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PATENT_MINER_PROJECT_ID }}
+      - name: Regenerate exact plan
+        run: |
+          cargo run --release --manifest-path agents/patent-miner/Cargo.toml -- \
+            plan --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --source google-patents \
+            --from '${{ needs.plan.outputs.from }}' \
+            --to '${{ needs.plan.outputs.to }}' \
+            --output battery-patents.sql
+      - name: Dry-run under hard cost ceiling
+        run: |
+          bq query --location=US --use_legacy_sql=false --dry_run \
+            --maximum_bytes_billed='${{ inputs.max_bytes_billed }}' \
+            < battery-patents.sql
+      - name: Execute explicitly approved query
+        run: |
+          bq query --location=US --use_legacy_sql=false --format=json \
+            --maximum_bytes_billed='${{ inputs.max_bytes_billed }}' \
+            < battery-patents.sql > google-result.json
+          jq -c '.[]' google-result.json > google-result.ndjson
+      - name: Normalize, classify and validate
+        run: |
+          retrieved_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          cargo run --release --manifest-path agents/patent-miner/Cargo.toml -- \
+            ingest-google --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --input google-result.ndjson --output patent-candidates.ndjson \
+            --rejects patent-rejects.ndjson --retrieved-at "$retrieved_at"
+          cargo run --release --manifest-path agents/patent-miner/Cargo.toml -- \
+            validate --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --input patent-candidates.ndjson
+          cargo run --release --manifest-path agents/patent-miner/Cargo.toml -- \
+            manifest --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --input patent-candidates.ndjson --output patent-release.json \
+            --release-version '${{ needs.plan.outputs.from }}_${{ needs.plan.outputs.to }}_google-v1' \
+            --source-provider google_patents_public_data \
+            --source-retrieved-at "$retrieved_at" \
+            --source-terms-url 'https://console.cloud.google.com/marketplace/product/google_patents_public_datasets/google-patents-public-data'
+          cargo run --release --manifest-path agents/patent-miner/Cargo.toml -- \
+            stage-sql --taxonomy taxonomy/battery-patent-taxonomy.v1.json \
+            --input patent-candidates.ndjson --output stage-patents.sql
+      - uses: actions/upload-artifact@v4
+        with:
+          name: patent-candidates-${{ needs.plan.outputs.from }}-${{ needs.plan.outputs.to }}
+          path: |
+            battery-patents.sql
+            patent-candidates.ndjson
+            patent-rejects.ndjson
+            patent-release.json
+            stage-patents.sql
+          retention-days: 90
