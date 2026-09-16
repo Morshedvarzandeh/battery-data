@@ -4,6 +4,13 @@ An open, provenance-first database of battery specifications, performance data,
 and test conditions — collected from datasheets, scientific literature, and raw
 cycler files.
 
+**Library snapshot, 2026-09-16: 2,170 accepted battery product records; 106
+pending review.** The latest review accepted 297 existing candidates and 1,791
+distinct models from manufacturer catalogs. Most additions are historical
+lithium-polymer models (2013/2019); current availability and undisclosed test
+conditions are not implied. See the [review report](docs/09-catalog-review-2026-09.md)
+for sources, exclusions, and a decision for every pending record reviewed.
+
 The separate patent review layer currently holds 1,056 deduplicated publication
 candidates (255 CORDIS-linked and 801 EPO Linked Open EP Data candidates), plus
 383 company/research-organisation profiles. None enters the accepted library

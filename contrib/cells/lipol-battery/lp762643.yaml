@@ -1,0 +1,83 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/lipol-battery/lp762643",
+    "kind": "cell",
+    "manufacturer": "LiPol Battery Co., Ltd.",
+    "model_number": "LP762643",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/lipol-battery-new-models-2013",
+    "kind": "manufacturer_web",
+    "title": "LiPo batteries new models 2013",
+    "url": "https://www.lipolbattery.com/lipo%20batteries.html",
+    "revision": "Page heading: new models 2013; revision date unstated",
+    "note": "Historical manufacturer listing; present availability is unverified. Only row-specific specifications are extracted. General marketing claims about cycle life, charge voltage, and self-discharge are not assigned to individual models. Capacity test conditions are absent. Retrieved 2026-09-15. Row quotes normalize whitespace.",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "e7e37014e958387d4eac4abda5e3d218aaa00fde4e27889ac9de40379bcac640"
+  },
+  "chemistry": {
+    "designation": "Lithium polymer",
+    "locator": {
+      "quote": "LiPo batteries new models 2013",
+      "section": "Catalog title / product-family heading"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 890,
+      "unit": "mAh",
+      "locator": {
+        "section": "Specification table 1, data row 97",
+        "quote": "LP762643 890 3.7 43 26 7.6"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "voltage",
+      "value": 3.7,
+      "unit": "V",
+      "locator": {
+        "section": "Specification table 1, data row 97",
+        "quote": "LP762643 890 3.7 43 26 7.6"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 43,
+      "unit": "mm",
+      "locator": {
+        "section": "Specification table 1, data row 97",
+        "quote": "LP762643 890 3.7 43 26 7.6"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 26,
+      "unit": "mm",
+      "locator": {
+        "section": "Specification table 1, data row 97",
+        "quote": "LP762643 890 3.7 43 26 7.6"
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 7.6,
+      "unit": "mm",
+      "locator": {
+        "section": "Specification table 1, data row 97",
+        "quote": "LP762643 890 3.7 43 26 7.6"
+      }
+    }
+  ]
+}

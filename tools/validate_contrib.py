@@ -42,12 +42,17 @@ def load_registry(dsn: str | None) -> dict[str, list[str]]:
     sys.exit(f"no registry at {REGISTRY}; run tools/dump_quantities.py or pass --dsn")
 
 
-def check(path: str, schema: dict, registry: dict) -> list[str]:
+def check(path: str, schema: dict, registry: dict, *, validator=None) -> list[str]:
     errs: list[str] = []
-    doc = yaml.safe_load(open(path))
+    with open(path) as stream:
+        raw = stream.read()
+    try:
+        doc = json.loads(raw)
+    except json.JSONDecodeError:
+        doc = yaml.safe_load(raw)
 
     try:
-        jsonschema.validate(doc, schema)
+        (validator or jsonschema.Draft202012Validator(schema)).validate(doc)
     except jsonschema.ValidationError as e:
         loc = "/".join(str(p) for p in e.absolute_path)
         return [f"{path}: structural: {loc}: {e.message}"]
@@ -128,6 +133,7 @@ def main() -> int:
 
     schema = json.load(open(SCHEMA))
     jsonschema.Draft202012Validator.check_schema(schema)
+    validator = jsonschema.Draft202012Validator(schema)
     registry = load_registry(a.dsn)
 
     files = ([a.path] if a.path.endswith((".yaml", ".yml"))
@@ -138,7 +144,7 @@ def main() -> int:
 
     all_errs = []
     for f in files:
-        e = check(f, schema, registry)
+        e = check(f, schema, registry, validator=validator)
         rel = os.path.relpath(f, ROOT)
         print(f"  {'FAIL' if e else 'ok  '}  {rel}")
         all_errs += e

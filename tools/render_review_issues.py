@@ -42,9 +42,16 @@ def main():
         rows = []
         for observation in doc["observations"]:
             quote = observation["locator"]["quote"].replace("|", "\\|")
+            bound = "≥ " if observation.get("is_lower_bound") else "≤ " if observation.get("is_upper_bound") else ""
+            statistic = observation.get("statistic")
+            label = f" ({statistic})" if statistic else ""
+            locator = observation["locator"]
+            place = f"page {locator['page']}; " if locator.get("page") else ""
+            if locator.get("section"):
+                place += locator["section"].replace("|", "\\|") + "; "
             rows.append(
-                f"| `{observation['quantity']}` | {observation['value']} {observation['unit']} | "
-                f"{conditions_text(observation.get('conditions'))} | {quote} |"
+                f"| `{observation['quantity']}` | {bound}{observation['value']} {observation['unit']}{label} | "
+                f"{conditions_text(observation.get('conditions'))} | {place}{quote} |"
             )
         body = "\n".join([
             f"## {product['manufacturer']} {product['model_number']}",

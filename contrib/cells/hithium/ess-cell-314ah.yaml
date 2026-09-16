@@ -1,0 +1,98 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/hithium/ess-cell-314ah",
+    "kind": "cell",
+    "manufacturer": "HiTHIUM",
+    "model_number": "ESS Cell 314Ah",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/hithium-cell-lineup-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "HiTHIUM Battery Cells for Advanced Energy Storage Solutions",
+    "url": "https://www.hithium.com/products/cell.html",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "098c71d8344ef0bb40d32764f5d58e50577307025209352d9d0dd798d28018a1",
+    "note": "Manufacturer source rechecked 2026-09-15; accepted after owner-delegated review 2026-09-16. See review/audits/2026-09-16-catalog-review.json. The former 2026-08-06 field was an acquisition date; the page states no publication date."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 314,
+      "unit": "Ah",
+      "locator": {
+        "quote": "ESS Cell 314Ah: 314 Ah; LFP; ≥ 13,000 cycles; ≥ 173.2 Wh/kg; ≥ 382.6 Wh/L"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 13000,
+      "unit": "cycles",
+      "locator": {
+        "quote": "ESS Cell 314Ah: 314 Ah; LFP; ≥ 13,000 cycles; ≥ 173.2 Wh/kg; ≥ 382.6 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 173.2,
+      "unit": "Wh/kg",
+      "locator": {
+        "quote": "ESS Cell 314Ah: 314 Ah; LFP; ≥ 13,000 cycles; ≥ 173.2 Wh/kg; ≥ 382.6 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "energy_density",
+      "value": 382.6,
+      "unit": "Wh/L",
+      "locator": {
+        "quote": "ESS Cell 314Ah: 314 Ah; LFP; ≥ 13,000 cycles; ≥ 173.2 Wh/kg; ≥ 382.6 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "locator": {
+      "quote": "ESS Cell 314Ah: LFP"
+    }
+  }
+}

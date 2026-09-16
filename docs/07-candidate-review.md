@@ -25,6 +25,16 @@ The issue editor is treated as a security boundary: only
 as data, restricted to `review/candidates/`, resolved before use, and never
 interpolated from untrusted issue text into a shell command.
 
+### Explicitly delegated batch review
+
+The owner may also explicitly authorize an agent to review and accept correct,
+nonduplicated records. This does not mark issue approval boxes as checked.
+The 2026-09-16 review records that authorization, source hashes, per-record
+decisions, corrections, and accepted-file hashes in
+[`review/audits/2026-09-16-catalog-review.json`](../review/audits/2026-09-16-catalog-review.json).
+Its accepted index entries carry `review_audit`; unresolved records remain
+pending. Normal issue-based approvals retain the owner-only check above.
+
 A refusal is quoted back onto the issue. Checking the box and getting a red
 cross with only a link to a run log tells the owner nothing about which of the
 refusals they hit, and the two that read alike are worth telling apart: a path

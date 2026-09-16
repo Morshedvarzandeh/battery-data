@@ -14,7 +14,9 @@ CANDIDATES = ROOT / "review" / "candidates" / "energizer"
 class EnergizerDatasheetBatchTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.paths = sorted(CANDIDATES.glob("*.yaml"))
+        # Promotion changes the location, not membership of this source batch.
+        cls.paths = sorted(CANDIDATES.glob("*.yaml")) + sorted(
+            (ROOT / "contrib/cells/energizer").glob("*.yaml"))
         cls.documents = [json.loads(path.read_text()) for path in cls.paths]
 
     def test_batch_has_31_distinct_products(self) -> None:
@@ -36,4 +38,3 @@ class EnergizerDatasheetBatchTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
