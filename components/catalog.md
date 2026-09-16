@@ -51,6 +51,6 @@ The record link contains every value, unit, condition and page/section locator. 
 
 ---
 
-Maintained by **Lemonergy** · [Battery library](../catalog/README.md) · [API access for accepted records](../docs/10-hosted-api.md)
+Maintained by **Lemonergy** · [Battery library](../catalog/README.md) · [API access for accepted records](https://lemonergy.com/#measure)
 
 The public library is free. Manufacturer datasheets remain attributed to their original publishers.

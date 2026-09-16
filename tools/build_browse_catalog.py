@@ -24,7 +24,7 @@ def build():
     total=sum(kinds.values())
     head=['# Battery datasheets and specifications — Lemonergy','',
           f'Browse **{total:,} accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.','',
-          '[About Lemonergy](../README.md#lemonergy) · [Component datasheets](../components/catalog.md) · [Patent research](../docs/08-patents.md)','',
+          '[Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Patent research](../docs/08-patents.md)','',
           '## Find a model','',
           'Choose a manufacturer below, then use your browser’s **Find** command to search the model number. The linked YAML records are readable text; no database setup is needed.','',
           '| Manufacturer | Accepted products | Browse |','|---|---:|---|']
@@ -33,7 +33,7 @@ def build():
         head.append(f'| {name} | {len(rows):,} | [Models and source documents](manufacturers/{maker}.md) |')
         page=[f'# {name} battery datasheets and specifications','',
               f'{len(rows):,} accepted product records in the **Lemonergy Battery Data** library.','',
-              '[All manufacturers](../README.md) · [About Lemonergy](../../README.md#lemonergy)','',
+              '[All manufacturers](../README.md) · [Lemonergy](https://lemonergy.com/)','',
               'The record contains the values, original units, qualifiers, test conditions and page/section evidence. Source documents may be historical; inclusion does not establish current availability or suitability for a design.','',
               '| Model | Product type | Record | Original source |','|---|---|---|---|']
         for doc,path in sorted(rows,key=lambda row:row[0]['product']['model_number'].casefold()):
@@ -41,14 +41,14 @@ def build():
             label=p['model_number'].replace('|','\\|')
             source=f"[Source]({s['url']})" if s.get('url') else 'URL not supplied'
             page.append(f"| {label} | {p['kind'].replace('_',' ')} | [Specifications](../../{path.relative_to(ROOT).as_posix()}) | {source} |")
-        page += ['', '---', '', 'Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.']
+        page += ['', '---', '', 'Maintained by **Lemonergy** · [Use this data in your tools](https://lemonergy.com/#measure) · The public library is free.']
         output[Path('catalog/manufacturers')/f'{maker}.md']='\n'.join(page)+'\n'
     head+=['','## Coverage and review','',
            ' | Product type | Count |','|---|---:|']
     head += [f"| {kind.replace('_',' ')} | {n:,} |" for kind,n in sorted(kinds.items())]
     head+=['','Pending candidates are listed separately in the [review queue](../review/index.json). Components and patent publications are excluded from these battery counts.','',
            'Most additions in the September 2026 expansion are historical lithium-polymer catalogs. Read the [review report](../docs/09-catalog-review-2026-09.md) for evidence limits and held records.','',
-           'Maintained by **Lemonergy** · [Paid API for engineering workflows](../docs/10-hosted-api.md) · Free data on GitHub.','',
+           'Maintained by **Lemonergy** · [Paid API for engineering workflows](https://lemonergy.com/#measure) · Free data on GitHub.','',
            'Generated from accepted contributions with `python tools/build_browse_catalog.py`.']
     output[Path('catalog/README.md')]='\n'.join(head)+'\n'
     return output

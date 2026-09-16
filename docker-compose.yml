@@ -1,10 +1,6 @@
 # battery-data : docker compose up
 #
 #   database  localhost:5432   (user postgres, password postgres, db batterydb)
-#   API       http://localhost:8080/v1/cells
-#
-# Try:
-#   curl -G localhost:8080/v1/cells --data-urlencode 'filter=capacity_ah >= 4.5'
 services:
   db:
     build: .
@@ -18,16 +14,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 20
-
-  api:
-    build: .
-    depends_on:
-      db: { condition: service_healthy }
-    environment:
-      PGPASSWORD: postgres
-    ports: ["8080:8080"]
-    entrypoint: ["python3", "/repo/api/server.py", "--port", "8080",
-                 "--dsn", "host=db port=5432 user=postgres password=postgres dbname=batterydb"]
 
 volumes:
   pgdata:

@@ -142,7 +142,7 @@ svg text{font-family:var(--sans)}
 <header>
   <div class="hwrap">
     <div class="brand"><b>Lemonergy</b><span>Battery Data · engineering library</span></div>
-    <a class="btn" href="https://github.com/Morshedvarzandeh/battery-data">Free GitHub library</a> · <a href="https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/10-hosted-api.md">API for engineering tools</a>
+    <a class="btn" href="https://github.com/Morshedvarzandeh/battery-data">Free GitHub library</a> · <a href="https://lemonergy.com/#measure">API for engineering tools</a>
     <div class="chip"><i class="dot" id="srcdot"></i><span id="srclabel">loading</span></div>
   </div>
   <nav role="tablist">
@@ -696,18 +696,9 @@ function save(name,text,mime){
   setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 }
 
-/* ---------- live data attempt ---------- */
-async function loadData(){
-  try{
-    const ctl=new AbortController();setTimeout(()=>ctl.abort(),1200);
-    const r=await fetch("http://localhost:8080/v1/cells?page_limit=200",{signal:ctl.signal});
-    if(!r.ok)throw 0;
-    const j=await r.json();
-    if(j&&j.data&&j.data.length){
-      $("#srclabel").textContent=`live · ${j.data.length} cells`;
-      $("#srcdot").className="dot live";
-    }
-  }catch(e){ $("#srclabel").textContent=`${PRODUCTS.length} products · from contrib/`; }
+/* ---------- public library snapshot ---------- */
+function loadData(){
+  $("#srclabel").textContent=`${PRODUCTS.length} products · from contrib/`;
 }
 
 /* ---------- wiring ---------- */
@@ -860,7 +851,7 @@ function sheetMD(){
     }));
     L.push("");
   });
-  L.push("---", "", "Maintained by Lemonergy · [Free battery library](https://github.com/Morshedvarzandeh/battery-data) · [API for engineering tools](https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/10-hosted-api.md)");
+  L.push("---", "", "Maintained by Lemonergy · [Free battery library](https://github.com/Morshedvarzandeh/battery-data) · [API for engineering tools](https://lemonergy.com/#measure)");
   return L.join("\n");
 }
 
