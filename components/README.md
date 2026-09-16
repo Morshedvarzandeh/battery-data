@@ -43,7 +43,8 @@ handle components. Approval places their files under `contrib/components/`.
 `components/catalog.md` displays both accepted and pending components with their
 state. Refresh it after any promotion; CI checks it for drift.
 
-In PostgreSQL, component identity is in `bd.product.component_type`; source,
+In PostgreSQL, component identity is in `bd.product.component_type` (nullable
+for existing unclassified BOM items such as BMS units); source,
 revision, observation, conditions and provenance reuse the existing tables.
 Twelve added quantity codes cover electrical switching/protection and power
 conversion. `kA` retains its native unit and converts to amperes in `value_si`.
