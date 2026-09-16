@@ -1,0 +1,90 @@
+[
+  {
+    "uid": "src/te-ev200-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "TE KILOVAC EV200 catalog section 5-1773450-5_sec7_EV200A",
+    "url": "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=5-1773450-5_sec7_EV200A&DocType=Catalog+Section&PartCntxt=1618002-7",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Original two-page PDF retrieved and hashed; facts only. No printed revision/date found. Linked from https://www.te.com/en/product-1618002-7.html; printed page 35 is PDF page 1. Exact part identity EV200AAANA / 1618002-7 verified on that product page. This supersedes the earlier 2013 catalog research lead.",
+    "sha256": "79d4e7166505712cbf747d100ea34b16f42d148e84fcbf3bc6d7b78f2c8b46b7"
+  },
+  {
+    "uid": "src/sensata-p195-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC P195 Minitactor",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-p195-series-minitactor-contactors-datasheet.pdf?cb=fc4fdd27",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "27-Jan-2026",
+    "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. Precharge category supported by manufacturer whitepaper https://www.sensata.com/sites/default/files/a/sensata-how-to-design-precharge-circuits-evs-whitepaper.pdf, page 13 (WP-00012, 2020); electrical ratings come from this datasheet, not that older application paper."
+  },
+  {
+    "uid": "src/sensata-gv210-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC GV210 series contactors",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-GV210-series-contactors-datasheet.pdf",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "02/27/20",
+    "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. Precharge category supported by manufacturer whitepaper https://www.sensata.com/sites/default/files/a/sensata-how-to-design-precharge-circuits-evs-whitepaper.pdf, page 13 (WP-00012, 2020); electrical ratings come from this datasheet, not that older application paper."
+  },
+  {
+    "uid": "src/sensata-gv200-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC GV200 normally open contactors",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv200-series-open-contactors-datasheet.pdf?cb=222d1bd0",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "Rev 9 16/feb/22",
+    "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. Part identity verified at https://www.sensata.com/products/contactors-and-industrial-fuses/gv200-series-normally-open-contactors-gv200cc-1 . Coil C is 24 V; termination C is 122 cm flying leads; no auxiliary-contact letter."
+  },
+  {
+    "uid": "src/littelfuse-25ev1k-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Littelfuse 25EV1K fuse datasheet",
+    "url": "https://www.littelfuse.com/assetdocs/littelfuse_datasheet_25ev1k_r2.3.pdf?assetguid=79325469-0625-4995-b2c5-40619d9c2892",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "08/06/2026 (printed revision; date order not assumed)",
+    "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. The 125 A footnote changes its voltage rating to 900 VDC. Fuse nameplate current is not the temperature-derated allowable load current (see pages 3–4)."
+  },
+  {
+    "uid": "src/victron-inverter-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Victron Inverter VE.Direct 250VA–1600VA",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Inverter-VE.Direct-250VA-1600VA-EN.pdf",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "916707267a946a21660d77ad29faf145f4b0879ef37b427b12f84191b3e41902",
+    "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded. Records identify the stated electrical configuration; regional plug/outlet option is unspecified and no exact SKU is invented."
+  },
+  {
+    "uid": "src/victron-dcdc-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Victron Orion-Tr low-power non-isolated DC/DC converters",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Orion-Tr-DC-DC-converters-low-power,-non-isolated-EN.pdf",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "0bbbe885efe98a3ebc0a801b6303123703791dd5f5dec177085410262040a87b",
+    "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded."
+  },
+  {
+    "uid": "src/victron-charger-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Victron Blue Smart IP22 Charger 230 VAC",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "ab251455ac8b2f49d77d135fd3b867cb7fe790980a062d8e352369eeb035e94c",
+    "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded. Records identify the stated electrical configuration; regional plug/outlet option is unspecified and no exact SKU is invented."
+  }
+]

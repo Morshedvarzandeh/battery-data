@@ -1,0 +1,82 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/sensata-gigavac/p195bda",
+    "kind": "component",
+    "component_type": "precharge_contactor",
+    "manufacturer": "Sensata GIGAVAC",
+    "model_number": "P195BDA"
+  },
+  "source": {
+    "uid": "src/sensata-p195-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC P195 Minitactor",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-p195-series-minitactor-contactors-datasheet.pdf?cb=fc4fdd27",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "27-Jan-2026",
+    "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. Precharge category supported by manufacturer whitepaper https://www.sensata.com/sites/default/files/a/sensata-how-to-design-precharge-circuits-evs-whitepaper.pdf, page 13 (WP-00012, 2020); electrical ratings come from this datasheet, not that older application paper."
+  },
+  "observations": [
+    {
+      "quantity": "contact_voltage_rating",
+      "value": 1500,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Contact voltage",
+        "quote": "Operating Max Vdc 1500"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "scope": "operating voltage; not the make/break switching limit"
+        }
+      }
+    },
+    {
+      "quantity": "continuous_carry_current",
+      "value": 80,
+      "unit": "A",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Continuous current carry",
+        "quote": "Max (6 AWG) A 80"
+      },
+      "conditions": {
+        "conductor_description": "6 AWG",
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / B; ordering example page 3",
+        "quote": "Nominal Voltage 12 Vdc"
+      },
+      "conditions": {
+        "temperature_c": 25
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 135,
+      "unit": "g",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Specifications",
+        "quote": "Weight grams 135"
+      }
+    }
+  ]
+}

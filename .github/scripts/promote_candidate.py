@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Promote exactly one owner-approved issue candidate into contrib/cells/."""
+"""Promote exactly one owner-approved issue candidate into contrib/."""
 from __future__ import annotations
 
 import argparse
@@ -20,7 +20,8 @@ def main() -> int:
     parser.add_argument("--issue", type=int, required=True)
     args = parser.parse_args()
     body = os.environ.get("ISSUE_BODY", "")
-    if APPROVAL.lower() not in body.lower():
+    product_approval = APPROVAL.replace("this battery", "this product")
+    if not any(label.lower() in body.lower() for label in (APPROVAL, product_approval)):
         raise SystemExit("approval checkbox is not checked")
     match = MARKER.search(body)
     if not match:
@@ -47,7 +48,8 @@ def main() -> int:
         raise SystemExit("unsupported product kind")
     if not re.fullmatch(r"[a-z0-9-]+", maker) or not re.fullmatch(r"[a-z0-9._-]+", model):
         raise SystemExit("unsafe product uid")
-    destination = ROOT / "contrib/cells" / maker / f"{model}.yaml"
+    target = "contrib/components" if kind == "component" else "contrib/cells"
+    destination = ROOT / target / maker / f"{model}.yaml"
     if destination.exists():
         raise SystemExit(f"accepted file already exists: {destination.relative_to(ROOT)}")
     destination.parent.mkdir(parents=True, exist_ok=True)

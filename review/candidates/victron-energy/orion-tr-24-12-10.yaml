@@ -1,0 +1,100 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/victron-energy/orion-tr-24-12-10",
+    "kind": "component",
+    "component_type": "dc_dc_converter",
+    "manufacturer": "Victron Energy",
+    "model_number": "Orion-Tr 24/12-10"
+  },
+  "source": {
+    "uid": "src/victron-dcdc-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Victron Orion-Tr low-power non-isolated DC/DC converters",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Orion-Tr-DC-DC-converters-low-power,-non-isolated-EN.pdf",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "0bbbe885efe98a3ebc0a801b6303123703791dd5f5dec177085410262040a87b",
+    "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded."
+  },
+  "observations": [
+    {
+      "quantity": "input_voltage_min",
+      "value": 18,
+      "unit": "V",
+      "statistic": "minimum",
+      "locator": {
+        "page": 1,
+        "section": "Input voltage range / Orion-Tr 24/12-10",
+        "quote": "Input voltage range 18-35V"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "input_voltage_max",
+      "value": 35,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Input voltage range / Orion-Tr 24/12-10",
+        "quote": "Input voltage range 18-35V"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "rated_output_voltage",
+      "value": 12.5,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Output voltage / Orion-Tr 24/12-10",
+        "quote": "Output voltage 12.5V"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "galvanically_isolated": false
+        }
+      }
+    },
+    {
+      "quantity": "rated_output_current",
+      "value": 10,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Continuous output current / Orion-Tr 24/12-10",
+        "quote": "Continuous output current 10A"
+      },
+      "conditions": {
+        "boundary": "dc_bus",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "derate_above_c": 40,
+          "derate_pct_per_c": 3
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 0.2,
+      "unit": "kg",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Weight kg / Orion-Tr 24/12-10",
+        "quote": "Weight 0,2"
+      }
+    }
+  ]
+}

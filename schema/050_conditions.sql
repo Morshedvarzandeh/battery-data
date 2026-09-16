@@ -56,6 +56,11 @@ CREATE TABLE condition_set (
   cv_cutoff_current_a      double precision,        -- CC-CV taper termination
   cv_cutoff_current_c      double precision,
 
+  -- ---- electrical component rating conditions ---------------------
+  electrical_system        text CHECK (electrical_system IN ('AC','DC')),
+  test_voltage_v           double precision CHECK (test_voltage_v > 0),
+  conductor_description    text,  -- retain AWG/mm2 and conductor count verbatim
+
   -- ---- state ------------------------------------------------------
   soc_pct                  double precision CHECK (soc_pct BETWEEN -5 AND 105),
   soc_method               soc_method NOT NULL DEFAULT 'unspecified',

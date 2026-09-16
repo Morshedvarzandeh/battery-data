@@ -5,7 +5,7 @@ and test conditions — collected from datasheets, scientific literature, and ra
 cycler files.
 
 **Library snapshot, 2026-09-16: 2,170 accepted battery product records; 106
-pending review.** The latest review accepted 297 existing candidates and 1,791
+battery records pending review.** The latest review accepted 297 existing candidates and 1,791
 distinct models from manufacturer catalogs. Most additions are historical
 lithium-polymer models (2013/2019); current availability and undisclosed test
 conditions are not implied. See the [review report](docs/09-catalog-review-2026-09.md)
@@ -15,6 +15,13 @@ The separate patent review layer currently holds 1,056 deduplicated publication
 candidates (255 CORDIS-linked and 801 EPO Linked Open EP Data candidates), plus
 383 company/research-organisation profiles. None enters the accepted library
 without DOCDB-family resolution and human approval.
+
+The [electrical component library](components/README.md) now has 13 pending models
+with 62 sourced observations across contactors, fuses, precharge contactors,
+inverters, DC/DC converters and chargers. [Browse the datasheets](components/catalog.md).
+A [weekly research agent](agents/weekly-research/AGENT.md) covers patents and all six
+categories every Monday at 09:00 Europe/Brussels. Components and patents are
+counted separately from batteries.
 
 **Design premise:** roughly 40% of what a battery datasheet calls a
 "specification" is not an attribute of the product. It is a measurement result

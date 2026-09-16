@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-16",
+  "next_deep_research": [
+    "contactor",
+    "fuse",
+    "precharge_contactor",
+    "inverter",
+    "dc_dc_converter",
+    "charger",
+    "patents"
+  ],
+  "categories": [
+    {
+      "category": "contactor",
+      "last_checked": "2026-09-16",
+      "source_uids": [
+        "src/sensata-gv200-inspected-2026-09-16",
+        "src/te-ev200-inspected-2026-09-16"
+      ],
+      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
+      "remaining": "Confirm remaining conditions and original-byte hashes where unavailable."
+    },
+    {
+      "category": "fuse",
+      "last_checked": "2026-09-16",
+      "source_uids": [
+        "src/littelfuse-25ev1k-inspected-2026-09-16"
+      ],
+      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
+      "remaining": "Confirm remaining conditions and original-byte hashes where unavailable."
+    },
+    {
+      "category": "precharge_contactor",
+      "last_checked": "2026-09-16",
+      "source_uids": [
+        "src/sensata-gv210-inspected-2026-09-16",
+        "src/sensata-p195-inspected-2026-09-16"
+      ],
+      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
+      "remaining": "Confirm remaining conditions and original-byte hashes where unavailable."
+    },
+    {
+      "category": "inverter",
+      "last_checked": "2026-09-16",
+      "source_uids": [
+        "src/victron-inverter-inspected-2026-09-16"
+      ],
+      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
+      "remaining": "Confirm missing conditions and obtain original-byte hashes where unavailable; resolve regional SKU options for converters."
+    },
+    {
+      "category": "dc_dc_converter",
+      "last_checked": "2026-09-16",
+      "source_uids": [
+        "src/victron-dcdc-inspected-2026-09-16"
+      ],
+      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
+      "remaining": "Confirm remaining conditions and original-byte hashes where unavailable."
+    },
+    {
+      "category": "charger",
+      "last_checked": "2026-09-16",
+      "source_uids": [
+        "src/victron-charger-inspected-2026-09-16"
+      ],
+      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
+      "remaining": "Confirm missing conditions and obtain original-byte hashes where unavailable; resolve regional SKU options for converters."
+    }
+  ],
+  "patents": {
+    "last_new_publication_search": null,
+    "status": "Existing 1056-publication review corpus retained; setup did not add publications. Inspect PR #460 before selecting the active search implementation.",
+    "next_action": "Run a date-bounded publication search for the previous 14 days on the first scheduled run; record coverage limits and deduplicate against existing imports."
+  }
+}
