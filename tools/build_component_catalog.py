@@ -46,6 +46,7 @@ def render(root=ROOT):
                 continue
             lines.append(f"| [{p['manufacturer']} {p['model_number']}](../{path}) | {state} | {len(doc['observations'])} | [Datasheet]({s['url']}) |")
         lines.append('')
+    lines += ['---', '', 'Maintained by **Lemonergy** · [Battery library](../catalog/README.md) · [API access for accepted records](../docs/10-hosted-api.md)', '', 'The public library is free. Manufacturer datasheets remain attributed to their original publishers.', '']
     return '\n'.join(lines)
 
 

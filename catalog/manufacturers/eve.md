@@ -23,3 +23,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | M41 | cell | [Specifications](../../contrib/cells/eve/m41.yaml) | [Source](https://www.evemall.eu/power-battery/prismatic-ncm-cell/m41) |
 | M42 | cell | [Specifications](../../contrib/cells/eve/m42.yaml) | [Source](https://www.evemall.eu/power-battery/prismatic-ncm-cell/m42) |
 | MB31 | cell | [Specifications](../../contrib/cells/eve/mb31.yaml) | [Source](https://www.evemall.eu/power-battery/eu-warehouse/mb31) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

@@ -142,7 +142,7 @@ svg text{font-family:var(--sans)}
 <header>
   <div class="hwrap">
     <div class="brand"><b>Lemonergy</b><span>Battery Data · engineering library</span></div>
-    <a class="btn" href="https://github.com/Morshedvarzandeh/battery-data">Free GitHub library</a>
+    <a class="btn" href="https://github.com/Morshedvarzandeh/battery-data">Free GitHub library</a> · <a href="https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/10-hosted-api.md">API for engineering tools</a>
     <div class="chip"><i class="dot" id="srcdot"></i><span id="srclabel">loading</span></div>
   </div>
   <nav role="tablist">
@@ -671,6 +671,7 @@ function drawReport(){
 function repMarkdown(){
   const d=repRows().slice().sort((a,b)=>b.whkg-a.whkg);
   const L=["# Cell comparison","",
+    "Prepared with the Lemonergy Battery Data library · [Free source library](https://github.com/Morshedvarzandeh/battery-data)", "",
     `${d.length} cells · generated ${new Date().toISOString().slice(0,10)}`,
     "","> Every figure below traces to a source document, page and quote.",
     "> Values marked (derived) were computed from other stated values, not read off.","",
@@ -859,6 +860,7 @@ function sheetMD(){
     }));
     L.push("");
   });
+  L.push("---", "", "Maintained by Lemonergy · [Free battery library](https://github.com/Morshedvarzandeh/battery-data) · [API for engineering tools](https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/10-hosted-api.md)");
   return L.join("\n");
 }
 

@@ -65,3 +65,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | SR920W | primary cell | [Specifications](../../contrib/cells/maxell/sr920w.yaml) | [Source](https://biz.maxell.com/en/primary_batteries/sr_coin.html) |
 | SR936SW | primary cell | [Specifications](../../contrib/cells/maxell/sr936sw.yaml) | [Source](https://biz.maxell.com/en/primary_batteries/sr_coin.html) |
 | SR936W | primary cell | [Specifications](../../contrib/cells/maxell/sr936w.yaml) | [Source](https://biz.maxell.com/en/primary_batteries/sr_coin.html) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

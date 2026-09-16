@@ -11,3 +11,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | ESS Cell 314Ah | cell | [Specifications](../../contrib/cells/hithium/ess-cell-314ah.yaml) | [Source](https://www.hithium.com/products/cell.html) |
 | ∞Cell 1175Ah | cell | [Specifications](../../contrib/cells/hithium/infinity-cell-1175ah.yaml) | [Source](https://www.hithium.com/products/cell.html) |
 | ∞Cell 1300Ah | cell | [Specifications](../../contrib/cells/hithium/infinity-cell-1300ah.yaml) | [Source](https://www.hithium.com/products/cell.html) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

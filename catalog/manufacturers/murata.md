@@ -19,3 +19,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | US18650VTC6 | cell | [Specifications](../../contrib/cells/murata/us18650vtc6.yaml) | [Source](https://www.murata.com/products/batteries/cylindrical/products-search) |
 | US21700VTC6A | cell | [Specifications](../../contrib/cells/murata/us21700vtc6a.yaml) | [Source](https://www.murata.com/products/batteries/cylindrical/products-search) |
 | US26650FTC1A | cell | [Specifications](../../contrib/cells/murata/us26650ftc1a.yaml) | [Source](https://www.murata.com/products/batteries/cylindrical/products-search) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

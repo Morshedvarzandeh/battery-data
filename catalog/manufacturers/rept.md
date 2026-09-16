@@ -39,3 +39,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | 65Ah | cell | [Specifications](../../contrib/cells/rept/65ah.yaml) | [Source](https://www.reptbattero.com/65ah-battery-cell/) |
 | 72Ah ESS | cell | [Specifications](../../contrib/cells/rept/72ah.yaml) | [Source](https://www.reptbattero.com/72ah-battery-cell/) |
 | 79Ah | cell | [Specifications](../../contrib/cells/rept/79ah.yaml) | [Source](https://www.reptbattero.com/79ah-battery-cell/) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

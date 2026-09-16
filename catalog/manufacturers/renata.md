@@ -149,3 +149,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | ICP641620PA-01 | pack | [Specifications](../../contrib/cells/renata/icp641620pa-01.yaml) | [Source](https://www.renata.com/en-us/products/lithium-polymer-batteries/) |
 | ICP651321PA-01 | pack | [Specifications](../../contrib/cells/renata/icp651321pa-01.yaml) | [Source](https://www.renata.com/en-us/products/lithium-polymer-batteries/) |
 | ICP682828HPMT | pack | [Specifications](../../contrib/cells/renata/icp682828hpmt.yaml) | [Source](https://www.renata.com/en-us/products/lithium-polymer-batteries/) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

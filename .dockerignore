@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+**/.env
+**/.env.*
+!api/.env.example
+**/*.key
+**/private/**
+**/__pycache__
+**/.venv
+api/catalog.json

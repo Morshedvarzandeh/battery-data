@@ -68,3 +68,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | LP902030 | cell | [Specifications](../../contrib/cells/eemb/lp902030.yaml) | [Source](https://www.eemb.com/products-55) |
 | LP902977 | cell | [Specifications](../../contrib/cells/eemb/lp902977.yaml) | [Source](https://www.eemb.com/products-55) |
 | LP9051109 | cell | [Specifications](../../contrib/cells/eemb/lp9051109.yaml) | [Source](https://www.eemb.com/products-55) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.
