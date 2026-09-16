@@ -1,8 +1,17 @@
-# battery-data
+# Lemonergy Battery Data
 
-An open, provenance-first database of battery specifications, performance data,
-and test conditions — collected from datasheets, scientific literature, and raw
-cycler files.
+## Battery specifications and datasheet references for engineers
+
+A free, open engineering library from **Lemonergy**. Find battery cells, packs,
+electrical components and patent research, with links back to the source behind
+each specification.
+
+**[Browse batteries by manufacturer and model](catalog/README.md)** ·
+**[Browse component datasheets](components/catalog.md)** ·
+**[Explore patent research](docs/08-patents.md)**
+
+No account or database setup is needed to browse the GitHub library. Choose a
+manufacturer, find a model, and open its specification record and source document.
 
 **Library snapshot, 2026-09-16: 2,170 accepted battery product records; 106
 battery records pending review.** The latest review accepted 297 existing candidates and 1,791
@@ -23,11 +32,32 @@ A [weekly research agent](agents/weekly-research/AGENT.md) covers patents and al
 categories every Monday at 09:00 Europe/Brussels. Components and patents are
 counted separately from batteries.
 
-**Design premise:** roughly 40% of what a battery datasheet calls a
-"specification" is not an attribute of the product. It is a measurement result
-under conditions the datasheet may or may not disclose. Every existing open
-battery dataset stores those as plain columns, which silently destroys the
-conditions and makes rows non-comparable. This project stores the conditions.
+## Start with your engineering question
+
+| I am looking for… | Start here |
+|---|---|
+| A battery model and its datasheet | [Manufacturer and model index](catalog/README.md) |
+| Voltage, capacity, dimensions or current limits | Open a model's specification record; each observation includes its units and conditions |
+| Contactors, fuses, precharge contactors, inverters, DC/DC converters or chargers | [Component catalog](components/catalog.md), with review status |
+| Battery-related patents and companies | [Patent research guide](docs/08-patents.md) |
+| How a specification was checked | [September review report](docs/09-catalog-review-2026-09.md) |
+| A missing model or a correction | [Submit a source](docs/06-submitting-a-datasheet.md) |
+
+## Lemonergy
+
+Lemonergy shares this library to make battery information easier for engineers
+to find, inspect and reuse. The public data library is free. A hosted paid API is
+planned for teams that want to connect this information to their own tools.
+
+The repository currently includes a self-hosted read API. Paid hosted access,
+subscription plans and service guarantees have not launched.
+
+---
+
+**Why conditions matter:** a capacity or current rating describes a result under
+particular conditions. Keep temperature, rate, cutoff voltage and the source's
+qualifiers alongside the value so an engineer can judge whether two numbers are
+comparable.
 
 ```sql
 -- The same cell. The same page of the same datasheet. Both numbers are true.
@@ -47,43 +77,19 @@ other, without telling anyone.
 
 ---
 
-## Why this exists
+## What you can inspect
 
-There is a real gap, and it is narrower and more specific than "a comprehensive
-battery database". As of mid-2026:
+- **The exact product and source.** Manufacturer, model, document URL and revision
+  are recorded separately from measurement values.
+- **The evidence for a value.** Observations include original units and page or
+  section locators. Bounds and typical, rated or maximum values stay distinct.
+- **Missing conditions.** An unstated test temperature or cutoff is visible instead
+  of being filled with an assumed value.
+- **Review status.** Accepted records, unresolved candidates and patent research
+  are clearly separated. Manufacturer documents remain with their publishers.
 
-- **Time-series cycling data is solved.** The LF Energy Battery Data Alliance
-  published the [Battery Data Format (BDF)](https://github.com/battery-data-alliance/battery-data-format)
-  in December 2025 — a credible, well-backed, cross-vendor standard with a
-  resolvable ontology IRI per column. Re-inventing it would be wasted work.
-  **This project adopts BDF verbatim** for raw records.
-
-- **The materials layer is solved.** Materials Project, OQMD, AFLOW and NOMAD
-  are well funded and OPTIMADE-federated. This project *federates* to them by
-  ID rather than re-hosting crystal structures.
-
-- **Cell specifications are not solved.** Every serious cell-spec database is a
-  static Excel file or a paywalled subscription app. None has an API. None has
-  stable per-cell identifiers. None tracks provenance to a datasheet PDF and
-  revision. None versions a spec when the manufacturer revises it.
-
-- **Nobody links the layers.** Datasheet spec → measured test data → fitted
-  model parameters → regulatory passport fields are four disjoint vocabularies
-  (BDF, BattINFO, BPX, BatteryPassDataModel) with **no published crosswalk**.
-
-- **Test protocol is nowhere a first-class entity.** There is no identifier
-  anywhere in the field for "IEC 62660-1:2018 §7.2 capacity test at 23 °C, 1 It"
-  that you can foreign-key to.
-
-- **BDF has no metadata sibling — yet.** The Battery Data Alliance explicitly
-  named a parallel metadata format as their immediate next deliverable. That is
-  precisely this layer, and there is a path to contributing rather than competing.
-
-The honest counterweight: **raw cycling data is not scarce** (BatteryArchive,
-Zenodo and `awesome-battery-data` already index 7,500+ cells), and willingness
-to pay for cell-spec data alone is demonstrably low — the most complete open
-product sells for $15. The defensible value is in **linkage, freshness,
-provenance, and API guarantees**, not in the rows.
+The library also includes tools for cycling data, engineering queries and
+standards mappings. Technical setup and the database structure are below.
 
 ---
 

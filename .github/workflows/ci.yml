@@ -145,6 +145,7 @@ jobs:
           python tools/build_review_batch.py
           python tools/render_review_issues.py
           python tools/build_component_catalog.py --check
+          python tools/build_browse_catalog.py --check
           git diff --exit-code -- review/ || {
             echo "::error::review batch is stale. Run the deterministic builders"
             exit 1
