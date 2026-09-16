@@ -41,12 +41,14 @@ def build():
             label=p['model_number'].replace('|','\\|')
             source=f"[Source]({s['url']})" if s.get('url') else 'URL not supplied'
             page.append(f"| {label} | {p['kind'].replace('_',' ')} | [Specifications](../../{path.relative_to(ROOT).as_posix()}) | {source} |")
+        page += ['', '---', '', 'Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.']
         output[Path('catalog/manufacturers')/f'{maker}.md']='\n'.join(page)+'\n'
     head+=['','## Coverage and review','',
            ' | Product type | Count |','|---|---:|']
     head += [f"| {kind.replace('_',' ')} | {n:,} |" for kind,n in sorted(kinds.items())]
     head+=['','Pending candidates are listed separately in the [review queue](../review/index.json). Components and patent publications are excluded from these battery counts.','',
            'Most additions in the September 2026 expansion are historical lithium-polymer catalogs. Read the [review report](../docs/09-catalog-review-2026-09.md) for evidence limits and held records.','',
+           'Maintained by **Lemonergy** · [Paid API for engineering workflows](../docs/10-hosted-api.md) · Free data on GitHub.','',
            'Generated from accepted contributions with `python tools/build_browse_catalog.py`.']
     output[Path('catalog/README.md')]='\n'.join(head)+'\n'
     return output

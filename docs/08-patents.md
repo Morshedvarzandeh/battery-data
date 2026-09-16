@@ -91,3 +91,9 @@ The accepted read API exposes `/v1/patent-companies`, filterable by `category`
 and `country`, plus `/v1/patent-companies/{uid}` for the linked publication
 portfolio. Pending candidates remain in the protected review layer and do not
 appear in these endpoints.
+
+---
+
+Maintained by **Lemonergy** as part of the [free engineering library](../README.md).
+Explore [battery specifications](../catalog/README.md) or [API access for accepted product data](../docs/10-hosted-api.md).
+Patent candidates remain research material and are not included in the paid product API.

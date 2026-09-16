@@ -456,3 +456,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | LP954060 | cell | [Specifications](../../contrib/cells/lipol-battery/lp954060.yaml) | [Source](https://www.lipolbattery.com/lipo%20batteries.html) |
 | LP954365 | cell | [Specifications](../../contrib/cells/lipol-battery/lp954365.yaml) | [Source](https://www.lipolbattery.com/lipo%20batteries.html) |
 | LP972542 | cell | [Specifications](../../contrib/cells/lipol-battery/lp972542.yaml) | [Source](https://www.lipolbattery.com/lipo%20batteries.html) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

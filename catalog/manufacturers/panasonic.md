@@ -40,3 +40,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | CR2477 | primary cell | [Specifications](../../contrib/cells/panasonic/cr2477.yaml) | [Source](https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf) |
 | CR3032 | primary cell | [Specifications](../../contrib/cells/panasonic/cr3032.yaml) | [Source](https://energy.panasonic.com/dam/master/pdf/en/material/lithium/Introduction_of_coin_type_primary_lithium_batteries_EN.pdf) |
 | NCR-18650GA | cell | [Specifications](../../contrib/cells/panasonic/ncr-18650ga.yaml) | [Source](https://industry.panasonic.eu/model/130926) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

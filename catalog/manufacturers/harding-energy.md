@@ -1351,3 +1351,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | 982535 | cell | [Specifications](../../contrib/cells/harding-energy/982535.yaml) | [Source](https://www.hardingenergy.com/wp-content/uploads/2019/03/HEI-Lithium-Polymer-Cell-Selection-Guide-2019.pdf) |
 | 983448m3 | cell | [Specifications](../../contrib/cells/harding-energy/983448m3.yaml) | [Source](https://www.hardingenergy.com/wp-content/uploads/2019/03/HEI-Lithium-Polymer-Cell-Selection-Guide-2019.pdf) |
 | 984050D | cell | [Specifications](../../contrib/cells/harding-energy/984050d.yaml) | [Source](https://www.hardingenergy.com/wp-content/uploads/2019/03/HEI-Lithium-Polymer-Cell-Selection-Guide-2019.pdf) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

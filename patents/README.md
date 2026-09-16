@@ -110,3 +110,9 @@ python tools/import_epo_linked_patents.py \
 Official enrichment sources are EPO Open Patent Services and DOCDB families,
 WIPO PATENTSCOPE, and the USPTO Open Data Portal. Credentials are never stored
 in the repository.
+
+---
+
+Maintained by **Lemonergy** as part of the [free engineering library](../README.md).
+Explore [battery specifications](../catalog/README.md) or [API access for accepted product data](../docs/10-hosted-api.md).
+Patent candidates remain research material and are not included in the paid product API.

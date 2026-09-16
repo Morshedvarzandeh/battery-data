@@ -17,3 +17,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | SCiB 23Ah | cell | [Specifications](../../contrib/cells/toshiba/scib-23ah.yaml) | [Source](http://www.scib.jp/en/index.htm) |
 | Type3-20 module | module | [Specifications](../../contrib/cells/toshiba/type3-20-module.yaml) | [Source](http://www.scib.jp/en/index.htm) |
 | Type3-23 module | module | [Specifications](../../contrib/cells/toshiba/type3-23-module.yaml) | [Source](http://www.scib.jp/en/index.htm) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

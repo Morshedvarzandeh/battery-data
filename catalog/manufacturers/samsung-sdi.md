@@ -9,3 +9,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | Model | Product type | Record | Original source |
 |---|---|---|---|
 | INR21700-50E | cell | [Specifications](../../contrib/cells/samsung-sdi/inr21700-50e.yaml) | [Source](https://batteryservice.bg/wp-content/uploads/2018/12/INR21700-50E.pdf) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

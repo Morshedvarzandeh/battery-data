@@ -40,4 +40,6 @@ Pending candidates are listed separately in the [review queue](../review/index.j
 
 Most additions in the September 2026 expansion are historical lithium-polymer catalogs. Read the [review report](../docs/09-catalog-review-2026-09.md) for evidence limits and held records.
 
+Maintained by **Lemonergy** · [Paid API for engineering workflows](../docs/10-hosted-api.md) · Free data on GitHub.
+
 Generated from accepted contributions with `python tools/build_browse_catalog.py`.

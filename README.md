@@ -41,16 +41,20 @@ counted separately from batteries.
 | Contactors, fuses, precharge contactors, inverters, DC/DC converters or chargers | [Component catalog](components/catalog.md), with review status |
 | Battery-related patents and companies | [Patent research guide](docs/08-patents.md) |
 | How a specification was checked | [September review report](docs/09-catalog-review-2026-09.md) |
+| Data integration in your engineering tools | [Paid API guide](docs/10-hosted-api.md); the GitHub data stays free |
 | A missing model or a correction | [Submit a source](docs/06-submitting-a-datasheet.md) |
 
 ## Lemonergy
 
 Lemonergy shares this library to make battery information easier for engineers
-to find, inspect and reuse. The public data library is free. A hosted paid API is
-planned for teams that want to connect this information to their own tools.
+to find, inspect and reuse. The public data library is free. The [Lemonergy API](docs/10-hosted-api.md)
+is built for teams connecting these records to engineering tools: structured
+search, full source evidence, versioned releases and customer usage allowances.
 
-The repository currently includes a self-hosted read API. Paid hosted access,
-subscription plans and service guarantees have not launched.
+The paid-service implementation now includes API keys, payment expiry, revocation
+and usage limits. Initial customers can be activated after an agreed payment.
+Public hosting, prices and automatic checkout have not been configured.
+[API integration guide](docs/10-hosted-api.md) · [Operator setup](api/README.md)
 
 ---
 

@@ -25,3 +25,7 @@ The record contains the values, original units, qualifiers, test conditions and 
 | CR2032 | primary cell | [Specifications](../../contrib/cells/energizer/cr2032.yaml) | [Source](https://data.energizer.com/pdfs/2032GL0626.pdf) |
 | CR2430 | primary cell | [Specifications](../../contrib/cells/energizer/cr2430.yaml) | [Source](https://data.energizer.com/pdfs/2430GL0726.pdf) |
 | CR2450 | primary cell | [Specifications](../../contrib/cells/energizer/cr2450.yaml) | [Source](https://data.energizer.com/pdfs/2450GL0626.pdf) |
+
+---
+
+Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.

@@ -194,3 +194,25 @@ jobs:
           x' python .github/scripts/issue_form.py && {
             echo "FAIL: accepted a file:// datasheet URL"; exit 1; }
           echo "ok: non-http datasheet URL refused"
+
+  hosted-api:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_PASSWORD: postgres, POSTGRES_DB: lemonergy_service_test }
+        options: >-
+          --health-cmd pg_isready --health-interval 10s
+          --health-timeout 5s --health-retries 5
+        ports: ['5432:5432']
+    env:
+      LEMONERGY_TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/lemonergy_service_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -r api/requirements-test.txt
+      - name: Paid access, private runtime privileges and concurrent quotas
+        run: python tests/ci_hosted_api.py
+      - name: Build production image with the accepted catalog
+        run: docker build -f api/Dockerfile --build-arg SOURCE_REVISION="$GITHUB_SHA" -t lemonergy-api-test .

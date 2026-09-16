@@ -48,3 +48,9 @@ The record link contains every value, unit, condition and page/section locator. 
 |---|---|---:|---|
 | [Victron Energy Blue Smart IP22 12/15 (1 output, 230 VAC)](../review/candidates/victron-energy/blue-smart-ip22-12-15-1-230v.yaml) | pending review | 6 | [Datasheet](https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf) |
 | [Victron Energy Blue Smart IP22 24/16 (1 output, 230 VAC)](../review/candidates/victron-energy/blue-smart-ip22-24-16-1-230v.yaml) | pending review | 6 | [Datasheet](https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf) |
+
+---
+
+Maintained by **Lemonergy** · [Battery library](../catalog/README.md) · [API access for accepted records](../docs/10-hosted-api.md)
+
+The public library is free. Manufacturer datasheets remain attributed to their original publishers.
