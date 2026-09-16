@@ -101,6 +101,8 @@ def register(document):
         "observation_count": len(document["observations"]),
         "state": "pending_review",
     }
+    if product.get("component_type"):
+        record["component_type"] = product["component_type"]
     previous = PREVIOUS_BY_UID.get(product["uid"], {})
     if previous.get("state") == "accepted":
         record.update({

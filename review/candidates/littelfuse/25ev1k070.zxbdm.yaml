@@ -1,0 +1,83 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/littelfuse/25ev1k070.zxbdm",
+    "kind": "component",
+    "component_type": "fuse",
+    "manufacturer": "Littelfuse",
+    "model_number": "25EV1K070.ZXBDM"
+  },
+  "source": {
+    "uid": "src/littelfuse-25ev1k-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Littelfuse 25EV1K fuse datasheet",
+    "url": "https://www.littelfuse.com/assetdocs/littelfuse_datasheet_25ev1k_r2.3.pdf?assetguid=79325469-0625-4995-b2c5-40619d9c2892",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "08/06/2026 (printed revision; date order not assumed)",
+    "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. The 125 A footnote changes its voltage rating to 900 VDC. Fuse nameplate current is not the temperature-derated allowable load current (see pages 3–4)."
+  },
+  "observations": [
+    {
+      "quantity": "fuse_current_rating",
+      "value": 70,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Ratings / 25EV1K070.ZXBDM row; footnote 1 applies to 125 A",
+        "quote": "25EV1K070.ZXBDM 70 10"
+      },
+      "conditions": {
+        "conductor_description": "Test cable 10 mm²",
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "fuse_voltage_rating",
+      "value": 1000,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Voltage rating / 70 A variant",
+        "quote": "1000 V dc"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "interrupting_current",
+      "value": 30,
+      "unit": "kA",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Interrupting rating / 70 A variant",
+        "quote": "30 kA @ 1000 V dc"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 1000,
+        "unstated": [
+          "circuit_time_constant"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 100,
+      "unit": "g",
+      "statistic": "typical",
+      "locator": {
+        "page": 1,
+        "section": "Weight per fuse",
+        "quote": "Weight 100 g"
+      }
+    }
+  ]
+}

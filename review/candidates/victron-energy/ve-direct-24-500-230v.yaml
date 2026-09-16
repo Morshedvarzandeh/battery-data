@@ -1,0 +1,114 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/victron-energy/ve-direct-24-500-230v",
+    "kind": "component",
+    "component_type": "inverter",
+    "manufacturer": "Victron Energy",
+    "model_number": "Inverter VE.Direct 24/500 (230 V)"
+  },
+  "source": {
+    "uid": "src/victron-inverter-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Victron Inverter VE.Direct 250VA–1600VA",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Inverter-VE.Direct-250VA-1600VA-EN.pdf",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "916707267a946a21660d77ad29faf145f4b0879ef37b427b12f84191b3e41902",
+    "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded. Records identify the stated electrical configuration; regional plug/outlet option is unspecified and no exact SKU is invented."
+  },
+  "observations": [
+    {
+      "quantity": "input_voltage_min",
+      "value": 18.4,
+      "unit": "V",
+      "statistic": "minimum",
+      "locator": {
+        "page": 2,
+        "section": "Input voltage range / 24/500 DC-input variant",
+        "quote": "9,2 - 17 / 18,4 - 34,0 / 36,8 - 62,0V"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "input_voltage_max",
+      "value": 34,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Input voltage range / 24/500 DC-input variant",
+        "quote": "9,2 - 17 / 18,4 - 34,0 / 36,8 - 62,0V"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "rated_power",
+      "value": 400,
+      "unit": "W",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Continuous power at 25°C / 40°C / 24/500",
+        "quote": "400 / 350W"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "boundary": "ac_terminal"
+      }
+    },
+    {
+      "quantity": "rated_power",
+      "value": 350,
+      "unit": "W",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Continuous power at 25°C / 40°C / 24/500",
+        "quote": "400 / 350W"
+      },
+      "conditions": {
+        "temperature_c": 40,
+        "boundary": "ac_terminal"
+      }
+    },
+    {
+      "quantity": "rated_output_voltage",
+      "value": 230,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Output AC voltage / selected 230 V configuration",
+        "quote": "230VAC or 120VAC +/- 3%"
+      },
+      "conditions": {
+        "electrical_system": "AC",
+        "extra": {
+          "tolerance_pct": 3,
+          "frequency_options_hz": [
+            50,
+            60
+          ],
+          "adjustable": true
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 3.9,
+      "unit": "kg",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Weight / 24/500 power-class column",
+        "quote": "Weight 3,9kg"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1284 @@
+{
+  "schema_version": 1,
+  "batch": "2026-09-16-electrical-components",
+  "origin": "Official manufacturer datasheet research; pending independent acceptance review",
+  "candidate_count": 13,
+  "candidates": [
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/te-connectivity/ev200aaana",
+          "kind": "component",
+          "component_type": "contactor",
+          "manufacturer": "TE Connectivity",
+          "model_number": "EV200AAANA",
+          "aliases": [
+            "1618002-7"
+          ]
+        },
+        "source": {
+          "uid": "src/te-ev200-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "TE KILOVAC EV200 catalog section 5-1773450-5_sec7_EV200A",
+          "url": "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=5-1773450-5_sec7_EV200A&DocType=Catalog+Section&PartCntxt=1618002-7",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Original two-page PDF retrieved and hashed; facts only. No printed revision/date found. Linked from https://www.te.com/en/product-1618002-7.html; printed page 35 is PDF page 1. Exact part identity EV200AAANA / 1618002-7 verified on that product page. This supersedes the earlier 2013 catalog research lead.",
+          "sha256": "79d4e7166505712cbf747d100ea34b16f42d148e84fcbf3bc6d7b78f2c8b46b7"
+        },
+        "observations": [
+          {
+            "quantity": "contact_voltage_rating",
+            "value": 900,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Performance data / rated operating voltage",
+              "quote": "12 - 900 VDC"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "continuous_carry_current",
+            "value": 500,
+            "unit": "A",
+            "statistic": "typical",
+            "locator": {
+              "page": 1,
+              "section": "Performance data / continuous carry current",
+              "quote": "500 A @ 85°C, 400 mcm"
+            },
+            "conditions": {
+              "temperature_c": 85,
+              "conductor_description": "400 mcm",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "coil_voltage_min",
+            "value": 9,
+            "unit": "V",
+            "statistic": "minimum",
+            "locator": {
+              "page": 1,
+              "section": "Coil operating voltage / A coil",
+              "quote": "Voltage (Will Operate) 9-36VDC"
+            }
+          },
+          {
+            "quantity": "coil_voltage_max",
+            "value": 36,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "page": 1,
+              "section": "Coil operating voltage / A coil",
+              "quote": "Voltage (Max.) 9-36VDC"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/sensata-gigavac/gv200cc-1",
+          "kind": "component",
+          "component_type": "contactor",
+          "manufacturer": "Sensata GIGAVAC",
+          "model_number": "GV200CC-1"
+        },
+        "source": {
+          "uid": "src/sensata-gv200-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Sensata GIGAVAC GV200 normally open contactors",
+          "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv200-series-open-contactors-datasheet.pdf?cb=222d1bd0",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "revision": "Rev 9 16/feb/22",
+          "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. Part identity verified at https://www.sensata.com/products/contactors-and-industrial-fuses/gv200-series-normally-open-contactors-gv200cc-1 . Coil C is 24 V; termination C is 122 cm flying leads; no auxiliary-contact letter."
+        },
+        "observations": [
+          {
+            "quantity": "contact_voltage_rating",
+            "value": 800,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Series voltage range",
+              "quote": "12-800 Vdc"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "coil_nominal_voltage",
+            "value": 24,
+            "unit": "V",
+            "statistic": "nominal",
+            "locator": {
+              "page": 2,
+              "section": "Coil ratings at 25°C / C column; part-number key page 4",
+              "quote": "Nominal Voltage 24 VDC"
+            },
+            "conditions": {
+              "temperature_c": 25
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 0.38,
+            "unit": "kg",
+            "statistic": "typical",
+            "locator": {
+              "page": 2,
+              "section": "Weight / kg (lb)",
+              "quote": "0.38 (0.84)"
+            },
+            "conditions": {
+              "extra": {
+                "excludes": "nuts and washers"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/sensata-gigavac/p195bda",
+          "kind": "component",
+          "component_type": "precharge_contactor",
+          "manufacturer": "Sensata GIGAVAC",
+          "model_number": "P195BDA"
+        },
+        "source": {
+          "uid": "src/sensata-p195-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Sensata GIGAVAC P195 Minitactor",
+          "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-p195-series-minitactor-contactors-datasheet.pdf?cb=fc4fdd27",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "revision": "27-Jan-2026",
+          "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. Precharge category supported by manufacturer whitepaper https://www.sensata.com/sites/default/files/a/sensata-how-to-design-precharge-circuits-evs-whitepaper.pdf, page 13 (WP-00012, 2020); electrical ratings come from this datasheet, not that older application paper."
+        },
+        "observations": [
+          {
+            "quantity": "contact_voltage_rating",
+            "value": 1500,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "page": 1,
+              "section": "Contact voltage",
+              "quote": "Operating Max Vdc 1500"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "extra": {
+                "scope": "operating voltage; not the make/break switching limit"
+              }
+            }
+          },
+          {
+            "quantity": "continuous_carry_current",
+            "value": 80,
+            "unit": "A",
+            "statistic": "maximum",
+            "locator": {
+              "page": 1,
+              "section": "Continuous current carry",
+              "quote": "Max (6 AWG) A 80"
+            },
+            "conditions": {
+              "conductor_description": "6 AWG",
+              "unstated": [
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "coil_nominal_voltage",
+            "value": 12,
+            "unit": "V",
+            "statistic": "nominal",
+            "locator": {
+              "page": 2,
+              "section": "Coil ratings at 25°C / B; ordering example page 3",
+              "quote": "Nominal Voltage 12 Vdc"
+            },
+            "conditions": {
+              "temperature_c": 25
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 135,
+            "unit": "g",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Specifications",
+              "quote": "Weight grams 135"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/sensata-gigavac/gv211bax",
+          "kind": "component",
+          "component_type": "precharge_contactor",
+          "manufacturer": "Sensata GIGAVAC",
+          "model_number": "GV211BAX"
+        },
+        "source": {
+          "uid": "src/sensata-gv210-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Sensata GIGAVAC GV210 series contactors",
+          "url": "https://www.sensata.com/sites/default/files/a/sensata-GV210-series-contactors-datasheet.pdf",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "revision": "02/27/20",
+          "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. Precharge category supported by manufacturer whitepaper https://www.sensata.com/sites/default/files/a/sensata-how-to-design-precharge-circuits-evs-whitepaper.pdf, page 13 (WP-00012, 2020); electrical ratings come from this datasheet, not that older application paper."
+        },
+        "observations": [
+          {
+            "quantity": "contact_voltage_rating",
+            "value": 900,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "page": 1,
+              "section": "Main contacts maximum voltage",
+              "quote": "Voltage Rating 900VDC"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "continuous_carry_current",
+            "value": 100,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Continuous main contact current / note 1 page 3",
+              "quote": "8 AWG)1 100A"
+            },
+            "conditions": {
+              "conductor_description": "8.4 mm² / 8 AWG",
+              "unstated": [
+                "temperature_c"
+              ],
+              "extra": {
+                "power_terminal_temperature_max_c": 150
+              }
+            }
+          },
+          {
+            "quantity": "continuous_carry_current",
+            "value": 150,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Continuous main contact current / note 1 page 3",
+              "quote": "4 AWG)1 150A"
+            },
+            "conditions": {
+              "conductor_description": "21 mm² / 4 AWG",
+              "unstated": [
+                "temperature_c"
+              ],
+              "extra": {
+                "power_terminal_temperature_max_c": 150
+              }
+            }
+          },
+          {
+            "quantity": "coil_nominal_voltage",
+            "value": 12,
+            "unit": "V",
+            "statistic": "nominal",
+            "locator": {
+              "page": 2,
+              "section": "Coil ratings at 25°C / B; GV211BAX ordering example page 3",
+              "quote": "Nominal Voltage 12Vdc"
+            },
+            "conditions": {
+              "temperature_c": 25
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 190,
+            "unit": "g",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Weight",
+              "quote": "6.7 oz (190g)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/littelfuse/25ev1k070.zxbdm",
+          "kind": "component",
+          "component_type": "fuse",
+          "manufacturer": "Littelfuse",
+          "model_number": "25EV1K070.ZXBDM"
+        },
+        "source": {
+          "uid": "src/littelfuse-25ev1k-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Littelfuse 25EV1K fuse datasheet",
+          "url": "https://www.littelfuse.com/assetdocs/littelfuse_datasheet_25ev1k_r2.3.pdf?assetguid=79325469-0625-4995-b2c5-40619d9c2892",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "revision": "08/06/2026 (printed revision; date order not assumed)",
+          "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. The 125 A footnote changes its voltage rating to 900 VDC. Fuse nameplate current is not the temperature-derated allowable load current (see pages 3–4)."
+        },
+        "observations": [
+          {
+            "quantity": "fuse_current_rating",
+            "value": 70,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Ratings / 25EV1K070.ZXBDM row; footnote 1 applies to 125 A",
+              "quote": "25EV1K070.ZXBDM 70 10"
+            },
+            "conditions": {
+              "conductor_description": "Test cable 10 mm²",
+              "unstated": [
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "fuse_voltage_rating",
+            "value": 1000,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Voltage rating / 70 A variant",
+              "quote": "1000 V dc"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "interrupting_current",
+            "value": 30,
+            "unit": "kA",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Interrupting rating / 70 A variant",
+              "quote": "30 kA @ 1000 V dc"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "test_voltage_v": 1000,
+              "unstated": [
+                "circuit_time_constant"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 100,
+            "unit": "g",
+            "statistic": "typical",
+            "locator": {
+              "page": 1,
+              "section": "Weight per fuse",
+              "quote": "Weight 100 g"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/littelfuse/25ev1k100.zxbdm",
+          "kind": "component",
+          "component_type": "fuse",
+          "manufacturer": "Littelfuse",
+          "model_number": "25EV1K100.ZXBDM"
+        },
+        "source": {
+          "uid": "src/littelfuse-25ev1k-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Littelfuse 25EV1K fuse datasheet",
+          "url": "https://www.littelfuse.com/assetdocs/littelfuse_datasheet_25ev1k_r2.3.pdf?assetguid=79325469-0625-4995-b2c5-40619d9c2892",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "revision": "08/06/2026 (printed revision; date order not assumed)",
+          "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. The 125 A footnote changes its voltage rating to 900 VDC. Fuse nameplate current is not the temperature-derated allowable load current (see pages 3–4)."
+        },
+        "observations": [
+          {
+            "quantity": "fuse_current_rating",
+            "value": 100,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Ratings / 25EV1K100.ZXBDM row; footnote 1 applies to 125 A",
+              "quote": "25EV1K100.ZXBDM 100 20"
+            },
+            "conditions": {
+              "conductor_description": "Test cable 20 mm²",
+              "unstated": [
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "fuse_voltage_rating",
+            "value": 1000,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Voltage rating / 100 A variant",
+              "quote": "1000 V dc"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "interrupting_current",
+            "value": 30,
+            "unit": "kA",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Interrupting rating / 100 A variant",
+              "quote": "30 kA @ 1000 V dc"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "test_voltage_v": 1000,
+              "unstated": [
+                "circuit_time_constant"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 100,
+            "unit": "g",
+            "statistic": "typical",
+            "locator": {
+              "page": 1,
+              "section": "Weight per fuse",
+              "quote": "Weight 100 g"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/littelfuse/25ev1k125.zxbdm",
+          "kind": "component",
+          "component_type": "fuse",
+          "manufacturer": "Littelfuse",
+          "model_number": "25EV1K125.ZXBDM"
+        },
+        "source": {
+          "uid": "src/littelfuse-25ev1k-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Littelfuse 25EV1K fuse datasheet",
+          "url": "https://www.littelfuse.com/assetdocs/littelfuse_datasheet_25ev1k_r2.3.pdf?assetguid=79325469-0625-4995-b2c5-40619d9c2892",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "revision": "08/06/2026 (printed revision; date order not assumed)",
+          "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. The 125 A footnote changes its voltage rating to 900 VDC. Fuse nameplate current is not the temperature-derated allowable load current (see pages 3–4)."
+        },
+        "observations": [
+          {
+            "quantity": "fuse_current_rating",
+            "value": 125,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Ratings / 25EV1K125.ZXBDM row; footnote 1 applies to 125 A",
+              "quote": "25EV1K125.ZXBDM 125 20"
+            },
+            "conditions": {
+              "conductor_description": "Test cable 20 mm²",
+              "unstated": [
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "fuse_voltage_rating",
+            "value": 900,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Voltage rating / 125 A variant",
+              "quote": "900 V dc"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "interrupting_current",
+            "value": 30,
+            "unit": "kA",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Interrupting rating / 125 A variant",
+              "quote": "30 kA @ 900 V dc"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "test_voltage_v": 900,
+              "unstated": [
+                "circuit_time_constant"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 100,
+            "unit": "g",
+            "statistic": "typical",
+            "locator": {
+              "page": 1,
+              "section": "Weight per fuse",
+              "quote": "Weight 100 g"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/victron-energy/ve-direct-12-250-230v",
+          "kind": "component",
+          "component_type": "inverter",
+          "manufacturer": "Victron Energy",
+          "model_number": "Inverter VE.Direct 12/250 (230 V)"
+        },
+        "source": {
+          "uid": "src/victron-inverter-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Victron Inverter VE.Direct 250VA–1600VA",
+          "url": "https://www.victronenergy.com/upload/documents/Datasheet-Inverter-VE.Direct-250VA-1600VA-EN.pdf",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "sha256": "916707267a946a21660d77ad29faf145f4b0879ef37b427b12f84191b3e41902",
+          "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded. Records identify the stated electrical configuration; regional plug/outlet option is unspecified and no exact SKU is invented."
+        },
+        "observations": [
+          {
+            "quantity": "input_voltage_min",
+            "value": 9.2,
+            "unit": "V",
+            "statistic": "minimum",
+            "locator": {
+              "page": 2,
+              "section": "Input voltage range / 12/250 DC-input variant",
+              "quote": "9,2 - 17 / 18,4 - 34,0 / 36,8 - 62,0V"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "input_voltage_max",
+            "value": 17,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "page": 2,
+              "section": "Input voltage range / 12/250 DC-input variant",
+              "quote": "9,2 - 17 / 18,4 - 34,0 / 36,8 - 62,0V"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "rated_power",
+            "value": 200,
+            "unit": "W",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Continuous power at 25°C / 40°C / 12/250",
+              "quote": "200 / 175W"
+            },
+            "conditions": {
+              "temperature_c": 25,
+              "boundary": "ac_terminal"
+            }
+          },
+          {
+            "quantity": "rated_power",
+            "value": 175,
+            "unit": "W",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Continuous power at 25°C / 40°C / 12/250",
+              "quote": "200 / 175W"
+            },
+            "conditions": {
+              "temperature_c": 40,
+              "boundary": "ac_terminal"
+            }
+          },
+          {
+            "quantity": "rated_output_voltage",
+            "value": 230,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Output AC voltage / selected 230 V configuration",
+              "quote": "230VAC or 120VAC +/- 3%"
+            },
+            "conditions": {
+              "electrical_system": "AC",
+              "extra": {
+                "tolerance_pct": 3,
+                "frequency_options_hz": [
+                  50,
+                  60
+                ],
+                "adjustable": true
+              }
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 2.4,
+            "unit": "kg",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Weight / 12/250 power-class column",
+              "quote": "Weight 2,4kg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/victron-energy/ve-direct-24-500-230v",
+          "kind": "component",
+          "component_type": "inverter",
+          "manufacturer": "Victron Energy",
+          "model_number": "Inverter VE.Direct 24/500 (230 V)"
+        },
+        "source": {
+          "uid": "src/victron-inverter-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Victron Inverter VE.Direct 250VA–1600VA",
+          "url": "https://www.victronenergy.com/upload/documents/Datasheet-Inverter-VE.Direct-250VA-1600VA-EN.pdf",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "sha256": "916707267a946a21660d77ad29faf145f4b0879ef37b427b12f84191b3e41902",
+          "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded. Records identify the stated electrical configuration; regional plug/outlet option is unspecified and no exact SKU is invented."
+        },
+        "observations": [
+          {
+            "quantity": "input_voltage_min",
+            "value": 18.4,
+            "unit": "V",
+            "statistic": "minimum",
+            "locator": {
+              "page": 2,
+              "section": "Input voltage range / 24/500 DC-input variant",
+              "quote": "9,2 - 17 / 18,4 - 34,0 / 36,8 - 62,0V"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "input_voltage_max",
+            "value": 34,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "page": 2,
+              "section": "Input voltage range / 24/500 DC-input variant",
+              "quote": "9,2 - 17 / 18,4 - 34,0 / 36,8 - 62,0V"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "rated_power",
+            "value": 400,
+            "unit": "W",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Continuous power at 25°C / 40°C / 24/500",
+              "quote": "400 / 350W"
+            },
+            "conditions": {
+              "temperature_c": 25,
+              "boundary": "ac_terminal"
+            }
+          },
+          {
+            "quantity": "rated_power",
+            "value": 350,
+            "unit": "W",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Continuous power at 25°C / 40°C / 24/500",
+              "quote": "400 / 350W"
+            },
+            "conditions": {
+              "temperature_c": 40,
+              "boundary": "ac_terminal"
+            }
+          },
+          {
+            "quantity": "rated_output_voltage",
+            "value": 230,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Output AC voltage / selected 230 V configuration",
+              "quote": "230VAC or 120VAC +/- 3%"
+            },
+            "conditions": {
+              "electrical_system": "AC",
+              "extra": {
+                "tolerance_pct": 3,
+                "frequency_options_hz": [
+                  50,
+                  60
+                ],
+                "adjustable": true
+              }
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 3.9,
+            "unit": "kg",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Weight / 24/500 power-class column",
+              "quote": "Weight 3,9kg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/victron-energy/orion-tr-24-12-5",
+          "kind": "component",
+          "component_type": "dc_dc_converter",
+          "manufacturer": "Victron Energy",
+          "model_number": "Orion-Tr 24/12-5"
+        },
+        "source": {
+          "uid": "src/victron-dcdc-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Victron Orion-Tr low-power non-isolated DC/DC converters",
+          "url": "https://www.victronenergy.com/upload/documents/Datasheet-Orion-Tr-DC-DC-converters-low-power,-non-isolated-EN.pdf",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "sha256": "0bbbe885efe98a3ebc0a801b6303123703791dd5f5dec177085410262040a87b",
+          "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded."
+        },
+        "observations": [
+          {
+            "quantity": "input_voltage_min",
+            "value": 18,
+            "unit": "V",
+            "statistic": "minimum",
+            "locator": {
+              "page": 1,
+              "section": "Input voltage range / Orion-Tr 24/12-5",
+              "quote": "Input voltage range 18-35V"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "input_voltage_max",
+            "value": 35,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "page": 1,
+              "section": "Input voltage range / Orion-Tr 24/12-5",
+              "quote": "Input voltage range 18-35V"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "rated_output_voltage",
+            "value": 12.7,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Output voltage / Orion-Tr 24/12-5",
+              "quote": "Output voltage 12.7V"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "extra": {
+                "galvanically_isolated": false
+              }
+            }
+          },
+          {
+            "quantity": "rated_output_current",
+            "value": 5,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Continuous output current / Orion-Tr 24/12-5",
+              "quote": "Continuous output current 5A"
+            },
+            "conditions": {
+              "boundary": "dc_bus",
+              "unstated": [
+                "temperature_c"
+              ],
+              "extra": {
+                "derate_above_c": 40,
+                "derate_pct_per_c": 3
+              }
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 0.09,
+            "unit": "kg",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Weight kg / Orion-Tr 24/12-5",
+              "quote": "Weight 0,09"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/victron-energy/orion-tr-24-12-10",
+          "kind": "component",
+          "component_type": "dc_dc_converter",
+          "manufacturer": "Victron Energy",
+          "model_number": "Orion-Tr 24/12-10"
+        },
+        "source": {
+          "uid": "src/victron-dcdc-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Victron Orion-Tr low-power non-isolated DC/DC converters",
+          "url": "https://www.victronenergy.com/upload/documents/Datasheet-Orion-Tr-DC-DC-converters-low-power,-non-isolated-EN.pdf",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "sha256": "0bbbe885efe98a3ebc0a801b6303123703791dd5f5dec177085410262040a87b",
+          "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded."
+        },
+        "observations": [
+          {
+            "quantity": "input_voltage_min",
+            "value": 18,
+            "unit": "V",
+            "statistic": "minimum",
+            "locator": {
+              "page": 1,
+              "section": "Input voltage range / Orion-Tr 24/12-10",
+              "quote": "Input voltage range 18-35V"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "input_voltage_max",
+            "value": 35,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "page": 1,
+              "section": "Input voltage range / Orion-Tr 24/12-10",
+              "quote": "Input voltage range 18-35V"
+            },
+            "conditions": {
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "rated_output_voltage",
+            "value": 12.5,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Output voltage / Orion-Tr 24/12-10",
+              "quote": "Output voltage 12.5V"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "extra": {
+                "galvanically_isolated": false
+              }
+            }
+          },
+          {
+            "quantity": "rated_output_current",
+            "value": 10,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Continuous output current / Orion-Tr 24/12-10",
+              "quote": "Continuous output current 10A"
+            },
+            "conditions": {
+              "boundary": "dc_bus",
+              "unstated": [
+                "temperature_c"
+              ],
+              "extra": {
+                "derate_above_c": 40,
+                "derate_pct_per_c": 3
+              }
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 0.2,
+            "unit": "kg",
+            "statistic": "rated",
+            "locator": {
+              "page": 1,
+              "section": "Weight kg / Orion-Tr 24/12-10",
+              "quote": "Weight 0,2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/victron-energy/blue-smart-ip22-12-15-1-230v",
+          "kind": "component",
+          "component_type": "charger",
+          "manufacturer": "Victron Energy",
+          "model_number": "Blue Smart IP22 12/15 (1 output, 230 VAC)"
+        },
+        "source": {
+          "uid": "src/victron-charger-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Victron Blue Smart IP22 Charger 230 VAC",
+          "url": "https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "sha256": "ab251455ac8b2f49d77d135fd3b867cb7fe790980a062d8e352369eeb035e94c",
+          "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded. Records identify the stated electrical configuration; regional plug/outlet option is unspecified and no exact SKU is invented."
+        },
+        "observations": [
+          {
+            "quantity": "input_voltage_min",
+            "value": 180,
+            "unit": "V",
+            "statistic": "minimum",
+            "locator": {
+              "page": 2,
+              "section": "Input voltage range",
+              "quote": "180 – 265 VAC"
+            },
+            "conditions": {
+              "electrical_system": "AC"
+            }
+          },
+          {
+            "quantity": "input_voltage_max",
+            "value": 265,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "page": 2,
+              "section": "Input voltage range",
+              "quote": "180 – 265 VAC"
+            },
+            "conditions": {
+              "electrical_system": "AC"
+            }
+          },
+          {
+            "quantity": "rated_output_current",
+            "value": 15,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Normal charge current / 12 V 15 A single-output configuration",
+              "quote": "15 / 20 / 30 A"
+            },
+            "conditions": {
+              "boundary": "dc_bus",
+              "unstated": [
+                "temperature_c"
+              ],
+              "extra": {
+                "mode": "normal",
+                "full_rated_output_up_to_c": 40
+              }
+            }
+          },
+          {
+            "quantity": "rated_output_current",
+            "value": 7.5,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "NIGHT or LOW current / 12 V 15 A configuration",
+              "quote": "7,5 / 10 / 15 A"
+            },
+            "conditions": {
+              "boundary": "dc_bus",
+              "unstated": [
+                "temperature_c"
+              ],
+              "extra": {
+                "mode": "night or low"
+              }
+            }
+          },
+          {
+            "quantity": "rated_output_voltage",
+            "value": 14.4,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Absorption voltage / 12 V",
+              "quote": "Normal: 14,4 V"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "extra": {
+                "mode": "normal",
+                "charge_stage": "absorption"
+              }
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 1.3,
+            "unit": "kg",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Weight",
+              "quote": "Weight 1,3 kg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/victron-energy/blue-smart-ip22-24-16-1-230v",
+          "kind": "component",
+          "component_type": "charger",
+          "manufacturer": "Victron Energy",
+          "model_number": "Blue Smart IP22 24/16 (1 output, 230 VAC)"
+        },
+        "source": {
+          "uid": "src/victron-charger-inspected-2026-09-16",
+          "kind": "datasheet",
+          "title": "Victron Blue Smart IP22 Charger 230 VAC",
+          "url": "https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf",
+          "retrieved_at": "2026-09-16",
+          "license": "proprietary",
+          "redistributable": false,
+          "sha256": "ab251455ac8b2f49d77d135fd3b867cb7fe790980a062d8e352369eeb035e94c",
+          "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded. Records identify the stated electrical configuration; regional plug/outlet option is unspecified and no exact SKU is invented."
+        },
+        "observations": [
+          {
+            "quantity": "input_voltage_min",
+            "value": 180,
+            "unit": "V",
+            "statistic": "minimum",
+            "locator": {
+              "page": 2,
+              "section": "Input voltage range",
+              "quote": "180 – 265 VAC"
+            },
+            "conditions": {
+              "electrical_system": "AC"
+            }
+          },
+          {
+            "quantity": "input_voltage_max",
+            "value": 265,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "page": 2,
+              "section": "Input voltage range",
+              "quote": "180 – 265 VAC"
+            },
+            "conditions": {
+              "electrical_system": "AC"
+            }
+          },
+          {
+            "quantity": "rated_output_current",
+            "value": 16,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Normal charge current / 24 V 16 A single-output configuration",
+              "quote": "8/12/16 A"
+            },
+            "conditions": {
+              "boundary": "dc_bus",
+              "unstated": [
+                "temperature_c"
+              ],
+              "extra": {
+                "mode": "normal",
+                "full_rated_output_up_to_c": 40
+              }
+            }
+          },
+          {
+            "quantity": "rated_output_current",
+            "value": 8,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "NIGHT or LOW current / 24 V 16 A configuration",
+              "quote": "Continuous output current 4/6/8A"
+            },
+            "conditions": {
+              "boundary": "dc_bus",
+              "unstated": [
+                "temperature_c"
+              ],
+              "extra": {
+                "mode": "night or low"
+              }
+            }
+          },
+          {
+            "quantity": "rated_output_voltage",
+            "value": 28.8,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Absorption voltage / 24 V",
+              "quote": "Normal: 28,8 V"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "extra": {
+                "mode": "normal",
+                "charge_stage": "absorption"
+              }
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 1.3,
+            "unit": "kg",
+            "statistic": "rated",
+            "locator": {
+              "page": 2,
+              "section": "Weight",
+              "quote": "Weight 1,3 kg"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

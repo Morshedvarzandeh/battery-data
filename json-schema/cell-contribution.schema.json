@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/cell-contribution.schema.json",
-  "title": "battery-data cell contribution",
+  "title": "battery-data product contribution",
   "description": "A community-contributed product specification. Every observation must carry a locator, and any quantity with required conditions must supply them or declare them unstated.",
   "type": "object",
   "required": [
@@ -75,8 +75,45 @@
           "items": {
             "type": "string"
           }
+        },
+        "component_type": {
+          "enum": [
+            "contactor",
+            "fuse",
+            "precharge_contactor",
+            "inverter",
+            "dc_dc_converter",
+            "charger"
+          ],
+          "description": "Electrical component category. Components are excluded from the battery product target."
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "component"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "component_type"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "component_type"
+              ]
+            }
+          }
+        }
+      ]
     },
     "source": {
       "type": "object",
@@ -142,6 +179,11 @@
         "note": {
           "type": "string",
           "description": "Anything qualifying the whole document: licence, a preliminary-status disclaimer, the maker's own caveat about its numbers."
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the cited source was inspected or retrieved, distinct from its publication date."
         }
       }
     },
@@ -382,6 +424,20 @@
         },
         "verbatim": {
           "type": "string"
+        },
+        "electrical_system": {
+          "enum": [
+            "AC",
+            "DC"
+          ]
+        },
+        "test_voltage_v": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "conductor_description": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },

@@ -1,0 +1,80 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/te-connectivity/ev200aaana",
+    "kind": "component",
+    "component_type": "contactor",
+    "manufacturer": "TE Connectivity",
+    "model_number": "EV200AAANA",
+    "aliases": [
+      "1618002-7"
+    ]
+  },
+  "source": {
+    "uid": "src/te-ev200-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "TE KILOVAC EV200 catalog section 5-1773450-5_sec7_EV200A",
+    "url": "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=5-1773450-5_sec7_EV200A&DocType=Catalog+Section&PartCntxt=1618002-7",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Original two-page PDF retrieved and hashed; facts only. No printed revision/date found. Linked from https://www.te.com/en/product-1618002-7.html; printed page 35 is PDF page 1. Exact part identity EV200AAANA / 1618002-7 verified on that product page. This supersedes the earlier 2013 catalog research lead.",
+    "sha256": "79d4e7166505712cbf747d100ea34b16f42d148e84fcbf3bc6d7b78f2c8b46b7"
+  },
+  "observations": [
+    {
+      "quantity": "contact_voltage_rating",
+      "value": 900,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Performance data / rated operating voltage",
+        "quote": "12 - 900 VDC"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "continuous_carry_current",
+      "value": 500,
+      "unit": "A",
+      "statistic": "typical",
+      "locator": {
+        "page": 1,
+        "section": "Performance data / continuous carry current",
+        "quote": "500 A @ 85°C, 400 mcm"
+      },
+      "conditions": {
+        "temperature_c": 85,
+        "conductor_description": "400 mcm",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "coil_voltage_min",
+      "value": 9,
+      "unit": "V",
+      "statistic": "minimum",
+      "locator": {
+        "page": 1,
+        "section": "Coil operating voltage / A coil",
+        "quote": "Voltage (Will Operate) 9-36VDC"
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 36,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Coil operating voltage / A coil",
+        "quote": "Voltage (Max.) 9-36VDC"
+      }
+    }
+  ]
+}

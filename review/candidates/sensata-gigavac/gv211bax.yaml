@@ -1,0 +1,102 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/sensata-gigavac/gv211bax",
+    "kind": "component",
+    "component_type": "precharge_contactor",
+    "manufacturer": "Sensata GIGAVAC",
+    "model_number": "GV211BAX"
+  },
+  "source": {
+    "uid": "src/sensata-gv210-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC GV210 series contactors",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-GV210-series-contactors-datasheet.pdf",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "02/27/20",
+    "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. Precharge category supported by manufacturer whitepaper https://www.sensata.com/sites/default/files/a/sensata-how-to-design-precharge-circuits-evs-whitepaper.pdf, page 13 (WP-00012, 2020); electrical ratings come from this datasheet, not that older application paper."
+  },
+  "observations": [
+    {
+      "quantity": "contact_voltage_rating",
+      "value": 900,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Main contacts maximum voltage",
+        "quote": "Voltage Rating 900VDC"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "continuous_carry_current",
+      "value": 100,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Continuous main contact current / note 1 page 3",
+        "quote": "8 AWG)1 100A"
+      },
+      "conditions": {
+        "conductor_description": "8.4 mm² / 8 AWG",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "power_terminal_temperature_max_c": 150
+        }
+      }
+    },
+    {
+      "quantity": "continuous_carry_current",
+      "value": 150,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Continuous main contact current / note 1 page 3",
+        "quote": "4 AWG)1 150A"
+      },
+      "conditions": {
+        "conductor_description": "21 mm² / 4 AWG",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "power_terminal_temperature_max_c": 150
+        }
+      }
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / B; GV211BAX ordering example page 3",
+        "quote": "Nominal Voltage 12Vdc"
+      },
+      "conditions": {
+        "temperature_c": 25
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 190,
+      "unit": "g",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Weight",
+        "quote": "6.7 oz (190g)"
+      }
+    }
+  ]
+}

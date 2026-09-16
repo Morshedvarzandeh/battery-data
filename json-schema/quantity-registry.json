@@ -35,6 +35,16 @@
   "soc_pct",
   "temperature_c"
  ],
+ "coil_nominal_voltage": [],
+ "coil_voltage_max": [],
+ "coil_voltage_min": [],
+ "contact_voltage_rating": [
+  "electrical_system"
+ ],
+ "continuous_carry_current": [
+  "temperature_c",
+  "conductor_description"
+ ],
  "cooling_capacity": [
   "temperature_c"
  ],
@@ -98,6 +108,13 @@
  ],
  "force": [],
  "frequency": [],
+ "fuse_current_rating": [
+  "temperature_c",
+  "conductor_description"
+ ],
+ "fuse_voltage_rating": [
+  "electrical_system"
+ ],
  "heat_generation_rate": [
   "rate_value",
   "rate_unit",
@@ -107,6 +124,12 @@
  "height": [],
  "impedance_imag": [],
  "impedance_real": [],
+ "input_voltage_max": [
+  "electrical_system"
+ ],
+ "input_voltage_min": [
+  "electrical_system"
+ ],
  "intensity": [],
  "internal_resistance_ac": [
   "frequency_hz",
@@ -119,6 +142,10 @@
   "soc_pct",
   "temperature_c",
   "direction"
+ ],
+ "interrupting_current": [
+  "test_voltage_v",
+  "electrical_system"
  ],
  "irreversible_expansion": [
   "cycle_index",
@@ -176,6 +203,13 @@
  ],
  "power": [],
  "pressure": [],
+ "rated_output_current": [
+  "temperature_c",
+  "boundary"
+ ],
+ "rated_output_voltage": [
+  "electrical_system"
+ ],
  "rated_power": [
   "temperature_c",
   "boundary"

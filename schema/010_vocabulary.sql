@@ -21,7 +21,7 @@ CREATE TYPE product_kind AS ENUM (
   'pack',              -- modules + BMS, a fielded unit
   'system',            -- pack + PCS/inverter/thermal, e.g. BESS container
   'primary_cell',      -- non-rechargeable
-  'component'          -- electrode, separator, electrolyte as a product
+  'component'          -- contactor, fuse, inverter, converter, charger
 );
 
 CREATE TYPE form_factor AS ENUM (

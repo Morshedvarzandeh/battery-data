@@ -113,13 +113,13 @@ def ensure_source(cur, source: dict, org_id: int) -> int:
                                   document_date, published_year, is_final, license,
                                   redistributable, content_sha256, scope_note,
                                   region_scope, raw_metadata, retrieved_at)
-           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, now())
+           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, COALESCE(%s::timestamptz, now()))
            ON CONFLICT (uid) DO NOTHING""",
         (source["uid"], source["kind"], source.get("title"), org_id, source.get("url"),
          source.get("revision"), dated, year, source.get("is_final"),
          source.get("license"), bool(source.get("redistributable", False)),
          source.get("sha256"), source.get("note"), source.get("region_scope"),
-         psycopg2.extras.Json(extra)))
+         psycopg2.extras.Json(extra), source.get("retrieved_at")))
     return scalar(cur, "SELECT id FROM bd.source WHERE uid = %s", (source["uid"],))
 
 
@@ -127,13 +127,13 @@ def ensure_product(cur, product: dict, org_id: int) -> int:
     cur.execute(
         """INSERT INTO bd.product (uid, kind, manufacturer_id, model_number, form_factor,
                                    form_factor_code, iec_designation, ansi_neda,
-                                   is_rechargeable)
-           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                                   is_rechargeable, component_type)
+           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
            ON CONFLICT (uid) DO NOTHING""",
         (product["uid"], product["kind"], org_id, product["model_number"],
          product.get("form_factor"), product.get("form_factor_code"),
          product.get("iec_designation"), product.get("ansi_neda"),
-         product.get("is_rechargeable")))
+         product.get("is_rechargeable"), product.get("component_type")))
     product_id = scalar(cur, "SELECT id FROM bd.product WHERE uid = %s", (product["uid"],))
     for alias in product.get("aliases") or []:
         cur.execute(

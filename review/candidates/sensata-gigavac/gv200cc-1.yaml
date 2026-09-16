@@ -1,0 +1,67 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/sensata-gigavac/gv200cc-1",
+    "kind": "component",
+    "component_type": "contactor",
+    "manufacturer": "Sensata GIGAVAC",
+    "model_number": "GV200CC-1"
+  },
+  "source": {
+    "uid": "src/sensata-gv200-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC GV200 normally open contactors",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv200-series-open-contactors-datasheet.pdf?cb=222d1bd0",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "Rev 9 16/feb/22",
+    "note": "Official manufacturer PDF inspected via web text retrieval. Direct PDF byte retrieval was unavailable; no document hash is asserted. Facts only. Part identity verified at https://www.sensata.com/products/contactors-and-industrial-fuses/gv200-series-normally-open-contactors-gv200cc-1 . Coil C is 24 V; termination C is 122 cm flying leads; no auxiliary-contact letter."
+  },
+  "observations": [
+    {
+      "quantity": "contact_voltage_rating",
+      "value": 800,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Series voltage range",
+        "quote": "12-800 Vdc"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 24,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / C column; part-number key page 4",
+        "quote": "Nominal Voltage 24 VDC"
+      },
+      "conditions": {
+        "temperature_c": 25
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 0.38,
+      "unit": "kg",
+      "statistic": "typical",
+      "locator": {
+        "page": 2,
+        "section": "Weight / kg (lb)",
+        "quote": "0.38 (0.84)"
+      },
+      "conditions": {
+        "extra": {
+          "excludes": "nuts and washers"
+        }
+      }
+    }
+  ]
+}

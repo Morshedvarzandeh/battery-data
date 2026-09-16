@@ -29,6 +29,7 @@ CREATE TABLE product (
   kind             product_kind NOT NULL,
   manufacturer_id  bigint NOT NULL REFERENCES organization(id),
   model_number     text NOT NULL,
+  component_type   text CHECK (component_type IN ('contactor','fuse','precharge_contactor','inverter','dc_dc_converter','charger')),
   brand            text,
   product_family   text,
   form_factor      form_factor,
@@ -44,6 +45,8 @@ CREATE TABLE product (
   notes            text,
   created_at       timestamptz NOT NULL DEFAULT now(),
   updated_at       timestamptz NOT NULL DEFAULT now(),
+  -- Older BOM components (for example BMS units) may be unclassified.
+  CHECK (component_type IS NULL OR kind = 'component'),
   UNIQUE (manufacturer_id, model_number, kind)
 );
 CREATE INDEX ON product (kind, form_factor);

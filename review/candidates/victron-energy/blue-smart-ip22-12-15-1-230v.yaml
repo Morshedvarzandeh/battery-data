@@ -1,0 +1,121 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/victron-energy/blue-smart-ip22-12-15-1-230v",
+    "kind": "component",
+    "component_type": "charger",
+    "manufacturer": "Victron Energy",
+    "model_number": "Blue Smart IP22 12/15 (1 output, 230 VAC)"
+  },
+  "source": {
+    "uid": "src/victron-charger-inspected-2026-09-16",
+    "kind": "datasheet",
+    "title": "Victron Blue Smart IP22 Charger 230 VAC",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf",
+    "retrieved_at": "2026-09-16",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "ab251455ac8b2f49d77d135fd3b867cb7fe790980a062d8e352369eeb035e94c",
+    "note": "Original PDF bytes hashed; facts only. Revision/date absent from the document unless separately recorded. Records identify the stated electrical configuration; regional plug/outlet option is unspecified and no exact SKU is invented."
+  },
+  "observations": [
+    {
+      "quantity": "input_voltage_min",
+      "value": 180,
+      "unit": "V",
+      "statistic": "minimum",
+      "locator": {
+        "page": 2,
+        "section": "Input voltage range",
+        "quote": "180 – 265 VAC"
+      },
+      "conditions": {
+        "electrical_system": "AC"
+      }
+    },
+    {
+      "quantity": "input_voltage_max",
+      "value": 265,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Input voltage range",
+        "quote": "180 – 265 VAC"
+      },
+      "conditions": {
+        "electrical_system": "AC"
+      }
+    },
+    {
+      "quantity": "rated_output_current",
+      "value": 15,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Normal charge current / 12 V 15 A single-output configuration",
+        "quote": "15 / 20 / 30 A"
+      },
+      "conditions": {
+        "boundary": "dc_bus",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "mode": "normal",
+          "full_rated_output_up_to_c": 40
+        }
+      }
+    },
+    {
+      "quantity": "rated_output_current",
+      "value": 7.5,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "NIGHT or LOW current / 12 V 15 A configuration",
+        "quote": "7,5 / 10 / 15 A"
+      },
+      "conditions": {
+        "boundary": "dc_bus",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "mode": "night or low"
+        }
+      }
+    },
+    {
+      "quantity": "rated_output_voltage",
+      "value": 14.4,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Absorption voltage / 12 V",
+        "quote": "Normal: 14,4 V"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "mode": "normal",
+          "charge_stage": "absorption"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1.3,
+      "unit": "kg",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Weight",
+        "quote": "Weight 1,3 kg"
+      }
+    }
+  ]
+}

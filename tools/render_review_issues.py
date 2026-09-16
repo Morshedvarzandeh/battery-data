@@ -12,7 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def conditions_text(value):
     conditions = dict(value or {})
     unstated = conditions.pop("unstated", [])
-    parts = [f"{key}={val}" for key, val in conditions.items() if key != "extra"]
+    parts = [f"{key}={json.dumps(val, ensure_ascii=False) if isinstance(val, dict) else val}"
+             for key, val in conditions.items()]
     if unstated:
         parts.append("not stated: " + ", ".join(unstated))
     return "; ".join(parts) or "not required"
@@ -57,9 +58,11 @@ def main():
             f"## {product['manufacturer']} {product['model_number']}",
             "",
             f"**Product type:** `{product['kind']}`  ",
+            *([f"**Component category:** `{product['component_type']}`  "] if product.get("component_type") else []),
             f"**Candidate file:** `{item['candidate_file']}`  ",
             f"**Source:** [{source.get('title', source['uid'])}]({source.get('url', '')})  ",
             f"**Source revision/date:** {source.get('revision') or source.get('document_date') or 'not stated'}",
+            *([f"**Source notes:** {source['note']}"] if product["kind"] == "component" and source.get("note") else []),
             "",
             "| Quantity | Value | Conditions | Source locator excerpt |",
             "|---|---:|---|---|",
@@ -69,7 +72,7 @@ def main():
             "",
             "Check the box only after the values, units, conditions, and excerpts are correct.",
             "",
-            "- [ ] Approve this battery for the accepted library",
+            "- [ ] Approve this product for the accepted library" if product["kind"] == "component" else "- [ ] Approve this battery for the accepted library",
             "",
             "If something is wrong, leave the box empty and comment with the correction.",
             "The candidate remains outside the accepted customer catalog until approval.",

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "categories": {
+    "contactor": "Main contactor",
+    "fuse": "Fuse",
+    "precharge_contactor": "Precharge contactor",
+    "inverter": "Inverter",
+    "dc_dc_converter": "DC/DC converter",
+    "charger": "Charger"
+  }
+}

@@ -112,7 +112,6 @@ def product(doc: dict, path: str) -> dict:
     for o in doc.get("observations", []):
         cond = dict(o.get("conditions") or {})
         unstated = cond.pop("unstated", [])
-        cond.pop("verbatim", None), cond.pop("extra", None)
         loc = o["locator"]
         obs.append({"q": o["quantity"], "v": o["value"], "u": o["unit"],
                     "stat": o.get("statistic"), "cond": cond,
@@ -142,6 +141,7 @@ def product(doc: dict, path: str) -> dict:
 
     return {
         "uid": p["uid"], "kind": p["kind"],
+        **({"component_type": p["component_type"]} if p.get("component_type") else {}),
         "cell": f"{p['manufacturer']} {p['model_number']}",
         "manu": p["manufacturer"], "model": p["model_number"],
         "fmt": p.get("form_factor") or "", "shape": SHAPE.get(p.get("form_factor", ""), "pri"),
@@ -157,7 +157,8 @@ def product(doc: dict, path: str) -> dict:
         "source": {"title": src.get("title"), "ref": src.get("revision"),
                    "date": src.get("document_date"), "kind": src.get("kind"),
                    "url": src.get("url"), "sha256": src.get("sha256"),
-                   "note": src.get("note")},
+                   "note": src.get("note"),
+                   **({"retrieved_at": src["retrieved_at"]} if src.get("retrieved_at") else {})},
         "obs": obs, "curves": curves, "pulse": pulse_map(curves, by.get("capacity")),
         "m": metrics(obs, dims, SHAPE.get(p.get("form_factor", ""), "pri"), errs),
         "file": os.path.relpath(path, ROOT),
