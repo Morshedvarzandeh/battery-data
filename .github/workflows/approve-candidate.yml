@@ -55,6 +55,7 @@ jobs:
           python tools/render_review_issues.py
           python tools/build_web_data.py
           python tools/build_component_catalog.py
+          python tools/build_browse_catalog.py
 
       - name: Commit the accepted record
         env:
@@ -63,7 +64,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add contrib/ review/ components/catalog.md web/index.html
+          git add contrib/ review/ components/catalog.md catalog/ web/index.html
           git commit -m "Accept ${TITLE#\[candidate\] } (#${ISSUE})"
           git pull --rebase origin "${{ github.event.repository.default_branch }}"
           git push origin "HEAD:${{ github.event.repository.default_branch }}"
