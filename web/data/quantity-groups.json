@@ -33,8 +33,7 @@
    "state_of_charge",
    "temperature",
    "time",
-   "two_theta",
-   "voltage"
+   "two_theta"
   ],
   "Density": [
    "specific_energy",
@@ -53,7 +52,8 @@
    "absolute_min_voltage",
    "shipping_voltage",
    "energy",
-   "usable_energy"
+   "usable_energy",
+   "voltage"
   ],
   "Impedance": [
    "internal_resistance_ac",

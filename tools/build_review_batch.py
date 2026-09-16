@@ -16,6 +16,7 @@ from pathlib import Path
 
 import expansion_aug_2026
 import expansion_sep_2026
+import expansion_catalogs_2026
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "review" / "candidates"
@@ -108,6 +109,8 @@ def register(document):
             "issue_number": previous.get("issue_number"),
             "issue_url": previous.get("issue_url"),
         })
+        if previous.get("review_audit"):
+            record["review_audit"] = previous["review_audit"]
         return record
 
     issue = ISSUE_BY_UID.get(product["uid"], {})
@@ -514,11 +517,12 @@ def main():
         builder(records)
     expansion_aug_2026.build(records, register, observation)
     expansion_sep_2026.build(records, register, observation)
+    expansion_catalogs_2026.build(records, register)
     index = {
         "schema_version": 1,
-        "batch": "2026-09-04-official-datasheet-expansion",
+        "batch": "2026-09-15-manufacturer-catalog-expansion",
         "status": "pending_review",
-        "approval_rule": "Repository owner checks the approval box on the matching GitHub issue.",
+        "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
         "candidate_count": sum(item["state"] == "pending_review" for item in records),
         "total_record_count": len(records),
         "candidates": records,

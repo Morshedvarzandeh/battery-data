@@ -1,0 +1,122 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/hithium/infinity-cell-1175ah",
+    "kind": "cell",
+    "manufacturer": "HiTHIUM",
+    "model_number": "∞Cell 1175Ah",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/hithium-cell-lineup-2026-08-06",
+    "kind": "manufacturer_web",
+    "title": "HiTHIUM Battery Cells for Advanced Energy Storage Solutions",
+    "url": "https://www.hithium.com/products/cell.html",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "098c71d8344ef0bb40d32764f5d58e50577307025209352d9d0dd798d28018a1",
+    "note": "Manufacturer source rechecked 2026-09-15; accepted after owner-delegated review 2026-09-16. See review/audits/2026-09-16-catalog-review.json. The former 2026-08-06 field was an acquisition date; the page states no publication date."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 1175,
+      "unit": "Ah",
+      "locator": {
+        "quote": "∞Cell 1175Ah: 1175 Ah; LFP; ≥ 11,000 cycles; ≥ 180 Wh/kg; ≥ 400 Wh/L"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 11000,
+      "unit": "cycles",
+      "locator": {
+        "quote": "∞Cell 1175Ah: 1175 Ah; LFP; ≥ 11,000 cycles; ≥ 180 Wh/kg; ≥ 400 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 180,
+      "unit": "Wh/kg",
+      "locator": {
+        "quote": "∞Cell 1175Ah: 1175 Ah; LFP; ≥ 11,000 cycles; ≥ 180 Wh/kg; ≥ 400 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "energy_density",
+      "value": 400,
+      "unit": "Wh/L",
+      "locator": {
+        "quote": "∞Cell 1175Ah: 1175 Ah; LFP; ≥ 11,000 cycles; ≥ 180 Wh/kg; ≥ 400 Wh/L"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      },
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "length",
+      "value": 580.22,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (L × W × H): 580.22 × 75.22 × 216.31 mm"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 75.22,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (L × W × H): 580.22 × 75.22 × 216.31 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 216.31,
+      "unit": "mm",
+      "locator": {
+        "quote": "Dimensions (L × W × H): 580.22 × 75.22 × 216.31 mm"
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "locator": {
+      "quote": "∞Cell 1175Ah: LFP"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/harding-energy/102033h",
+    "kind": "cell",
+    "manufacturer": "Harding Energy",
+    "model_number": "102033H",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/harding-energy-lithium-polymer-selection-2019",
+    "kind": "datasheet",
+    "title": "2019 Lithium Polymer Cell Selection Guide",
+    "url": "https://www.hardingenergy.com/wp-content/uploads/2019/03/HEI-Lithium-Polymer-Cell-Selection-Guide-2019.pdf",
+    "revision": "2019",
+    "note": "Historical manufacturer catalog; present availability is unverified. Dimensions cover bare cells, excluding protection boards and assemblies, and the manufacturer asks customers to verify dimensions. The printed voltage is stored as voltage with any printed lower bound, not as an operating cutoff. Capacity test conditions are absent. Retrieved 2026-09-15. Row quotes normalize whitespace.",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "1680b454e9470c4bafb780eb99b22b78798e142ae92b39b986dc2a402a43b500"
+  },
+  "chemistry": {
+    "designation": "Lithium polymer",
+    "locator": {
+      "quote": "2019 Lithium Polymer Cell Selection Guide",
+      "section": "Catalog title / product-family heading"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 610,
+      "unit": "mAh",
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "locator": {
+        "page": 12,
+        "section": "Selection table, row 453",
+        "quote": "453 102033H ≥610 ≥3.7 ≤10.2 ≤20.5 ≤33.5 11.1"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "voltage",
+      "value": 3.7,
+      "unit": "V",
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "locator": {
+        "page": 12,
+        "section": "Selection table, row 453",
+        "quote": "453 102033H ≥610 ≥3.7 ≤10.2 ≤20.5 ≤33.5 11.1"
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 10.2,
+      "unit": "mm",
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "locator": {
+        "page": 12,
+        "section": "Selection table, row 453",
+        "quote": "453 102033H ≥610 ≥3.7 ≤10.2 ≤20.5 ≤33.5 11.1"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 20.5,
+      "unit": "mm",
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "locator": {
+        "page": 12,
+        "section": "Selection table, row 453",
+        "quote": "453 102033H ≥610 ≥3.7 ≤10.2 ≤20.5 ≤33.5 11.1"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 33.5,
+      "unit": "mm",
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "locator": {
+        "page": 12,
+        "section": "Selection table, row 453",
+        "quote": "453 102033H ≥610 ≥3.7 ≤10.2 ≤20.5 ≤33.5 11.1"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 11.1,
+      "unit": "g",
+      "locator": {
+        "page": 12,
+        "section": "Selection table, row 453",
+        "quote": "453 102033H ≥610 ≥3.7 ≤10.2 ≤20.5 ≤33.5 11.1"
+      }
+    }
+  ]
+}

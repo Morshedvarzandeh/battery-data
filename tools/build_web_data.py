@@ -116,7 +116,10 @@ def product(doc: dict, path: str) -> dict:
         loc = o["locator"]
         obs.append({"q": o["quantity"], "v": o["value"], "u": o["unit"],
                     "stat": o.get("statistic"), "cond": cond,
+                    "lower_bound": o.get("is_lower_bound", False),
+                    "upper_bound": o.get("is_upper_bound", False),
                     "unstated": unstated, "pg": loc.get("page"),
+                    "section": loc.get("section"),
                     "quote": loc["quote"], "src": src.get("kind")})
 
     dims = None
@@ -223,6 +226,10 @@ def metrics(obs: list[dict], dims: list | None, shape: str,
     """
     v, u = {}, {}
     for o in obs:                       # first statement of a quantity wins
+        # A bound is not a point estimate. Keep it in the sourced details,
+        # but do not silently turn it into exact comparison/derived metrics.
+        if o.get("lower_bound") or o.get("upper_bound"):
+            continue
         v.setdefault(o["q"], o["v"]), u.setdefault(o["q"], o["u"])
 
     g = scaled(v, u, "mass", errs)
@@ -230,7 +237,9 @@ def metrics(obs: list[dict], dims: list | None, shape: str,
     wh = ah * volt if ah is not None and volt is not None else None
 
     litres = None
-    if dims:
+    bounded_dimensions = any(o.get("lower_bound") or o.get("upper_bound") for o in obs
+                             if o["q"] in {"length", "width", "thickness", "height", "diameter"})
+    if dims and not bounded_dimensions:
         d = [x * TO_MM.get(u.get(k, "mm"), 1.0) for x, k in
              zip(dims, ("length", "width", "thickness"))]  # dims already mm
         litres = (math.pi * (d[0] / 2) ** 2 * d[1] / 1e6 if shape == "cyl" and len(d) == 2
