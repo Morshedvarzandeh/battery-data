@@ -12,4 +12,3 @@ data/parquet/
 !.env.example
 **/private/
 *.key
-api/catalog.json

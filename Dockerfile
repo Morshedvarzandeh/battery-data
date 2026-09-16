@@ -22,4 +22,4 @@ RUN set -eux; \
     cp /repo/seed/001_reference_cells.sql /docker-entrypoint-initdb.d/900_seed.sql; \
     printf 'SELECT bd_graph.refresh();\n' > /docker-entrypoint-initdb.d/950_graph.sql
 
-EXPOSE 5432 8080
+EXPOSE 5432

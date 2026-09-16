@@ -41,20 +41,21 @@ counted separately from batteries.
 | Contactors, fuses, precharge contactors, inverters, DC/DC converters or chargers | [Component catalog](components/catalog.md), with review status |
 | Battery-related patents and companies | [Patent research guide](docs/08-patents.md) |
 | How a specification was checked | [September review report](docs/09-catalog-review-2026-09.md) |
-| Data integration in your engineering tools | [Paid API guide](docs/10-hosted-api.md); the GitHub data stays free |
+| Data integration in your engineering tools | [Lemonergy Data & API](https://lemonergy.com/#measure); the GitHub data stays free |
 | A missing model or a correction | [Submit a source](docs/06-submitting-a-datasheet.md) |
 
 ## Lemonergy
 
 Lemonergy shares this library to make battery information easier for engineers
-to find, inspect and reuse. The public data library is free. The [Lemonergy API](docs/10-hosted-api.md)
-is built for teams connecting these records to engineering tools: structured
-search, full source evidence, versioned releases and customer usage allowances.
+to find, inspect and reuse. The data stays free on GitHub.
 
-The paid-service implementation now includes API keys, payment expiry, revocation
-and usage limits. Initial customers can be activated after an agreed payment.
-Public hosting, prices and automatic checkout have not been configured.
-[API integration guide](docs/10-hosted-api.md) · [Operator setup](api/README.md)
+**[Explore Lemonergy’s data island](https://lemonergy.com/#measure)** for the
+paid API and data-analysis offering. API access, customer accounts and billing
+belong on Lemonergy. This public repository contains the free data library and
+its research, validation and database tools; it does not distribute an API server.
+
+The paid service is being prepared. This library does not offer free hosted API
+access or customer registration.
 
 ---
 
@@ -153,13 +154,12 @@ the EU battery passport legally requires instance-level identity anyway.
 ```
 
 That creates the database, loads the schema and the example cells, runs every
-test, and reports what worked. Safe to run twice. `./setup.sh --api` also starts
-the read API.
+test, and reports what worked. Safe to run twice.
 
 No Postgres installed and would rather keep it that way:
 
 ```bash
-docker compose up      # database + API, nothing installed on your machine
+docker compose up      # database, nothing installed on your machine
 ```
 
 New to the repo? **[`START-HERE.md`](START-HERE.md)** is the one-page version.
@@ -294,21 +294,15 @@ capacity accumulates while current is positive, cross-checked against the
 instrument's own step-type labels. Where it cannot be determined, the run is
 flagged rather than silently defaulted.
 
-### API
+### Data integration
 
-```bash
-python api/server.py --port 8080
-curl -G localhost:8080/v1/cells \
-     --data-urlencode 'filter=capacity_ah >= 4.5 AND form_factor_code = "21700"'
-```
-
-Cell detail responses carry the observations they were derived from, each with
-its conditions and a page-level citation. An API that dropped provenance would
-undo the point of the schema.
+The free records can be downloaded and queried locally. For the paid API and
+integration service, visit [Lemonergy’s data island](https://lemonergy.com/#measure).
+API hosting, customer keys and billing are separate from this public library.
 
 ## Status
 
-Schema, query layer, graph projection, staging/review, cycler adapters, read API,
+Schema, query layer, graph projection, staging/review, cycler adapters,
 literature-miner and the standards crosswalk are complete and tested. Seeded with
 four reference cells chosen because each breaks a naive schema differently.
 
@@ -317,7 +311,7 @@ and propose the metadata layer upstream to the Battery Data Alliance.
 
 ## Licence
 
-Code **AGPL-3.0-or-later** — see [LICENSE](LICENSE). Schema, loaders and API
+Code **AGPL-3.0-or-later** — see [LICENSE](LICENSE). Schema and loaders
 are copyleft: run a modified version as a service and the modifications are
 owed back to whoever uses it. Querying the database, loading your own data and
 running it inside a business trigger nothing.

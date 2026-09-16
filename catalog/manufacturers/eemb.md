@@ -2,7 +2,7 @@
 
 60 accepted product records in the **Lemonergy Battery Data** library.
 
-[All manufacturers](../README.md) · [About Lemonergy](../../README.md#lemonergy)
+[All manufacturers](../README.md) · [Lemonergy](https://lemonergy.com/)
 
 The record contains the values, original units, qualifiers, test conditions and page/section evidence. Source documents may be historical; inclusion does not establish current availability or suitability for a design.
 
@@ -71,4 +71,4 @@ The record contains the values, original units, qualifiers, test conditions and 
 
 ---
 
-Maintained by **Lemonergy** · [Use this data in your tools](../../docs/10-hosted-api.md) · The public library is free.
+Maintained by **Lemonergy** · [Use this data in your tools](https://lemonergy.com/#measure) · The public library is free.

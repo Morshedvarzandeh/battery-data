@@ -32,14 +32,14 @@ If you would rather not install Postgres at all:
 docker compose up
 ```
 
-Same result, nothing installed on your machine, and the API comes up on
-<http://localhost:8080/v1/cells>.
+This starts the local research database. Paid API access belongs on
+[Lemonergy’s data island](https://lemonergy.com/#measure).
 
 ## Step 3 — Push it
 
 ```bash
 git add -A
-git commit -m "Schema, cycler adapters, read API, standards crosswalk"
+git commit -m "Schema, cycler adapters, standards crosswalk"
 git push
 ```
 
@@ -69,7 +69,6 @@ Everything else is reference material. Read it when you need it.
 | `seed/` | adding reference cells by hand |
 | `contrib/` | adding cells as versioned YAML (CI checks them) |
 | `tools/` | ingesting cycler files, validating, exporting |
-| `api/` | serving the data over HTTP |
 | `agents/` | mining papers and datasets |
 | `docs/` | understanding why something is the way it is |
 | `crosswalk/` | **generated** — do not edit, run `tools/export_crosswalk.py` |

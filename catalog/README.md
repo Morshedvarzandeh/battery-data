@@ -2,7 +2,7 @@
 
 Browse **2,170 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
 
-[About Lemonergy](../README.md#lemonergy) · [Component datasheets](../components/catalog.md) · [Patent research](../docs/08-patents.md)
+[Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Patent research](../docs/08-patents.md)
 
 ## Find a model
 
@@ -40,6 +40,6 @@ Pending candidates are listed separately in the [review queue](../review/index.j
 
 Most additions in the September 2026 expansion are historical lithium-polymer catalogs. Read the [review report](../docs/09-catalog-review-2026-09.md) for evidence limits and held records.
 
-Maintained by **Lemonergy** · [Paid API for engineering workflows](../docs/10-hosted-api.md) · Free data on GitHub.
+Maintained by **Lemonergy** · [Paid API for engineering workflows](https://lemonergy.com/#measure) · Free data on GitHub.
 
 Generated from accepted contributions with `python tools/build_browse_catalog.py`.

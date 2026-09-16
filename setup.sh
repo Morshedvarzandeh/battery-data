@@ -3,7 +3,6 @@
 # battery-data : one-command setup
 #
 #   ./setup.sh              create the database, load everything, test it
-#   ./setup.sh --api        ... and then start the read API
 #   ./setup.sh --reset      drop and rebuild from scratch
 #
 # Safe to run twice. Touches nothing outside the database it creates.
@@ -12,13 +11,11 @@ set -uo pipefail
 
 DB="${BATTERY_DB:-batterydb}"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-START_API=0
 RESET=0
 FAILED=0
 
 for arg in "$@"; do
   case "$arg" in
-    --api)   START_API=1 ;;
     --reset) RESET=1 ;;
     -h|--help)
       sed -n '2,10p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
@@ -149,12 +146,6 @@ if [ -n "$PY" ]; then
     warn "cycler adapters need: pip install pandas numpy"
   fi
 
-  if $PY "$ROOT/api/filter_grammar.py" >/tmp/bd_filter.log 2>&1; then
-    ok "API filter grammar: parsing, type checking and injection safety"
-  else
-    bad "filter grammar failed - see /tmp/bd_filter.log"
-  fi
-
   if have_py_mod yaml && have_py_mod jsonschema; then
     $PY "$ROOT/tools/dump_quantities.py" "$DB" >/dev/null 2>&1
     if $PY "$ROOT/tools/validate_contrib.py" "$ROOT/contrib" >/tmp/bd_contrib.log 2>&1; then
@@ -191,15 +182,5 @@ cat <<EOS
     crosswalk/CROSSWALK.md     publishable on its own
 
 EOS
-
-if [ "$START_API" = "1" ]; then
-  bold "Starting the API on http://127.0.0.1:8080/v1"
-  echo  "  try: curl -G localhost:8080/v1/cells --data-urlencode 'filter=capacity_ah >= 4.5'"
-  echo
-  exec $PY "$ROOT/api/server.py" --port 8080 --dsn "dbname=$DB"
-else
-  echo "  Start the API with:  ./setup.sh --api"
-  echo
-fi
 
 exit $FAILED
