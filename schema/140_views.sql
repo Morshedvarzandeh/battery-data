@@ -111,6 +111,14 @@ SELECT o.id                        AS observation_id,
 -- capacity at or below 0.2C (the "standard" figure) and separately the
 -- capacity nearest 1C (the "rated" figure), because those are different
 -- questions and vendors answer them with different numbers.
+--
+-- A third column, capacity_unrated_ah, carries the figure a source gives
+-- with NO rate stated at all (rate_unit = 'unspecified', typically with
+-- rate_value listed in condition_set.unstated). Selection guides and
+-- product pages publish most cells this way. It is deliberately a
+-- separate column rather than a fallback folded into the rated ones: an
+-- unrated number is not a low-rate number, and a filter that compares
+-- the two is comparing a datasheet headline with a test condition.
 -- ---------------------------------------------------------------------
 CREATE VIEW v_cell_selection AS
 WITH cells AS (
@@ -138,6 +146,24 @@ cap_1c AS (    -- capacity nearest 1C: the "rated" figure
     JOIN condition_set c ON c.id=o.condition_set_id
    WHERE c.rate_unit='C'
    ORDER BY o.product_revision_id, abs(c.rate_value - 1.0) ASC
+),
+cap_unrated AS (  -- capacity with no rate stated: the bare datasheet figure
+  SELECT DISTINCT ON (o.product_revision_id)
+         o.product_revision_id, o.value_si/3600.0 AS capacity_ah,
+         o.statistic, c.temperature_c
+    FROM observation o
+    JOIN quantity q ON q.id=o.quantity_id AND q.code='capacity'
+    JOIN condition_set c ON c.id=o.condition_set_id
+   WHERE c.rate_unit='unspecified' AND o.value_si IS NOT NULL
+   -- Prefer the representative figure (typical/standard) over the
+   -- guaranteed floor (minimum) over anything else the source labelled
+   -- it; among equals, the highest value.
+   ORDER BY o.product_revision_id,
+            CASE o.statistic WHEN 'typical'  THEN 0
+                             WHEN 'standard' THEN 0
+                             WHEN 'minimum'  THEN 1
+                             ELSE 2 END,
+            o.value_si DESC
 ),
 disch AS (     -- max continuous discharge current, room temperature band
   SELECT DISTINCT ON (o.product_revision_id)
@@ -181,6 +207,9 @@ SELECT p.uid                     AS product_uid,
        cl.statistic              AS capacity_low_rate_statistic,
        c1.capacity_ah            AS capacity_1c_ah,
        c1.rate_value             AS capacity_1c_actual_rate,
+       -- no rate stated by the source; never compare with the two above
+       cu.capacity_ah            AS capacity_unrated_ah,
+       cu.statistic              AS capacity_unrated_statistic,
        d.max_cont_discharge_a,
        -- derived, and flagged as such by name
        CASE WHEN m.mass_kg > 0 AND cl.capacity_ah IS NOT NULL
@@ -196,6 +225,7 @@ SELECT p.uid                     AS product_uid,
   JOIN organization org ON org.id = p.manufacturer_id
   LEFT JOIN cap_low cl ON cl.product_revision_id = cr.product_revision_id
   LEFT JOIN cap_1c  c1 ON c1.product_revision_id = cr.product_revision_id
+  LEFT JOIN cap_unrated cu ON cu.product_revision_id = cr.product_revision_id
   LEFT JOIN disch   d  ON d.product_revision_id  = cr.product_revision_id
   LEFT JOIN mass    m  ON m.product_revision_id  = cr.product_revision_id
   LEFT JOIN tmin    t  ON t.product_revision_id  = cr.product_revision_id
@@ -210,7 +240,11 @@ COMMENT ON VIEW v_cell_selection IS
   'Engineering selection surface. Deliberately exposes both the low-rate '
   'and the ~1C capacity rather than collapsing them: on the Samsung '
   'INR21700-50E those are 4900 mAh and 4753 mAh and picking one silently '
-  'is how comparison tables become wrong.';
+  'is how comparison tables become wrong. capacity_unrated_ah (with '
+  'capacity_unrated_statistic) is the datasheet figure published with no '
+  'rate stated at all; it is kept apart from the rated columns and must '
+  'not be compared against them, because a headline number and a number '
+  'measured at a stated rate are not the same quantity.';
 
 -- ---------------------------------------------------------------------
 -- Resistance, exploded by method. Never presented as a single number.

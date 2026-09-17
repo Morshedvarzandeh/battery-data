@@ -125,3 +125,47 @@ SELECT v.model_number, v.quantity, v.value_native, v.unit_native,
   JOIN bd.condition_set c ON c.id=o.condition_set_id
  WHERE v.model_number='LF280K'
    AND (c.extra ? 'eol_criterion_pct' OR c.extra ? 'definition');
+
+\echo
+\echo '### Q12 A capacity with NO stated rate is not a low-rate capacity.'
+\echo '###     Selection guides publish most cells that way. The figure is'
+\echo '###     surfaced in its own column and never promoted into the rated'
+\echo '###     ones: REPT 295Ah gets capacity_unrated_ah and nothing else,'
+\echo '###     Samsung 50E gets the rated columns and no unrated one.'
+SELECT product_uid,
+       round(capacity_low_rate_ah::numeric,3) AS cap_low_ah,
+       capacity_low_rate_statistic            AS low_stat,
+       round(capacity_1c_ah::numeric,3)       AS cap_1c_ah,
+       round(capacity_unrated_ah::numeric,3)  AS cap_unrated_ah,
+       capacity_unrated_statistic             AS unrated_stat
+  FROM bd.v_cell_selection
+ WHERE product_uid IN ('cell/rept/295ah', 'cell/samsung-sdi/inr21700-50e')
+ ORDER BY product_uid;
+
+-- Coverage: how many cells answer each question at all. The gap between
+-- the first two columns is the reason the third exists.
+SELECT count(capacity_low_rate_ah) AS n_low_rate,
+       count(capacity_1c_ah)       AS n_1c,
+       count(capacity_unrated_ah)  AS n_unrated,
+       count(*)                    AS n_cells
+  FROM bd.v_cell_selection;
+
+-- Regression guard. Runs only when the contributed cell is loaded, so the
+-- file still passes against the seed alone.
+DO $$
+DECLARE r bd.v_cell_selection%ROWTYPE;
+BEGIN
+  SELECT * INTO r FROM bd.v_cell_selection WHERE product_uid = 'cell/rept/295ah';
+  IF NOT FOUND THEN
+    RAISE NOTICE 'Q12: cell/rept/295ah not loaded (run tools/load_contrib.py); guard skipped';
+    RETURN;
+  END IF;
+  IF r.capacity_low_rate_ah IS NOT NULL OR r.capacity_1c_ah IS NOT NULL THEN
+    RAISE EXCEPTION 'Q12: cell/rept/295ah states no rate, yet a rated capacity column is populated (low=%, 1c=%)',
+      r.capacity_low_rate_ah, r.capacity_1c_ah;
+  END IF;
+  IF r.capacity_unrated_ah IS DISTINCT FROM 295.0 THEN
+    RAISE EXCEPTION 'Q12: cell/rept/295ah capacity_unrated_ah is % (expected 295)', r.capacity_unrated_ah;
+  END IF;
+  RAISE NOTICE 'Q12 ok: unrated capacity surfaced separately, rated columns stay null';
+END$$;
