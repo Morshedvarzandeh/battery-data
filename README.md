@@ -41,6 +41,7 @@ counted separately from batteries.
 | Contactors, fuses, precharge contactors, inverters, DC/DC converters or chargers | [Component catalog](components/catalog.md), with review status |
 | Battery-related patents and companies | [Patent research guide](docs/08-patents.md) |
 | How a specification was checked | [September review report](docs/09-catalog-review-2026-09.md) |
+| Whether the library states the quantity you need | [What the library does not state yet](docs/10-acquisition-list.md), or run `python tools/coverage_report.py` |
 | Data integration in your engineering tools | [Lemonergy Data & API](https://lemonergy.com/#measure); the GitHub data stays free |
 | A missing model or a correction | [Submit a source](docs/06-submitting-a-datasheet.md) |
 
@@ -235,6 +236,8 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
 | [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary |
+| [`docs/09-catalog-review-2026-09.md`](docs/09-catalog-review-2026-09.md) | How the accepted library was reviewed, model by model |
+| [`docs/10-acquisition-list.md`](docs/10-acquisition-list.md) | **What the library does not state yet**, the analysis each gap blocks, and the makers who are absent |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---
