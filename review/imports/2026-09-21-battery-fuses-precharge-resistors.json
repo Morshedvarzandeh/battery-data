@@ -1,0 +1,2823 @@
+{
+  "schema_version": 1,
+  "batch": "2026-09-21-battery-fuses-precharge-resistors",
+  "retrieved_at": "2026-09-21",
+  "method": "Public manufacturer sources only. Seven original PDFs and two identity HTML pages hashed. Structured facts only; source bodies are not redistributed. Mersen table rows parsed from pinned PDFs; Vishay listed part numbers decoded from documented ordering legends; Sensata one explicit example transcribed with all interruption conditions. All remain pending.",
+  "sources": {
+    "mersen-abat15c": {
+      "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT15C-1500VDC-max-EN.pdf",
+      "final_url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT15C-1500VDC-max-EN.pdf",
+      "sha256": "e461e676f78588e8119c5a2f44b6dcbcf67045a5c703eedc13ceb8b3d47ea9d1",
+      "bytes": 1095364,
+      "retrieved_at": "2026-09-21",
+      "uid": "src/mersen-abat15c-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "Mersen ABAT15C 1500VDC max",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Battery protection, aBat partial-range fuses. Use the page 2 part table at L/R=3 ms rather than the inconsistent page 1 overview heading L/R≤4 ms. Terminal variants are separate physical parts; item numbers are aliases. Minimum breaking capacity is separate from maximum.",
+      "revision": "DS-ABAT15C-09-0326_EN"
+    },
+    "mersen-abat13c": {
+      "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT13C-1250VDC-max-Mersen-EN.pdf",
+      "final_url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT13C-1250VDC-max-Mersen-EN.pdf",
+      "sha256": "3c300c2a261c476f5bc9dd400cb3af78d6f2dab281055749774572f02969bf87",
+      "bytes": 796517,
+      "retrieved_at": "2026-09-21",
+      "uid": "src/mersen-abat13c-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "Mersen ABAT13C 1250VDC MCS protection",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Battery/MCS protection, aBat partial-range fuses. Part-level current, voltage and minimum breaking capacity from page 2; family maximum interruption and mass from page 1. No certification or live availability inference.",
+      "revision": "DS-ABAT13C-01-0326_EN"
+    },
+    "mersen-abat13d": {
+      "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT13D-1250VDC-max-Mersen-EN.pdf",
+      "final_url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT13D-1250VDC-max-Mersen-EN.pdf",
+      "sha256": "988275270abd1e2e6048d8458d0c9dfbfed334329b873d2b5172cd84cd59271f",
+      "bytes": 773200,
+      "retrieved_at": "2026-09-21",
+      "uid": "src/mersen-abat13d-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "Mersen ABAT13D 1250VDC MCS protection",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Battery/MCS protection, aBat partial-range fuses. Part-level current, voltage and minimum breaking capacity from page 2; family maximum interruption and mass from page 1. No certification or live availability inference.",
+      "revision": "DS-ABAT13D-01-0326_EN"
+    },
+    "mersen-abat13g": {
+      "url": "https://us.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT13G-1250VDC-max-Mersen-EN.pdf",
+      "final_url": "https://us.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT13G-1250VDC-max-Mersen-EN.pdf",
+      "sha256": "7f042c594ac1de82b484d18923184436051913fa3e8abd1d7e827f25528d222e",
+      "bytes": 905925,
+      "retrieved_at": "2026-09-21",
+      "uid": "src/mersen-abat13g-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "Mersen ABAT13G 1250VDC MCS protection",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Battery/MCS protection, aBat partial-range fuses. Part-level current, voltage and minimum breaking capacity from page 2; family maximum interruption and mass from page 1. No certification or live availability inference.",
+      "revision": "DS-ABAT13G-01-0326_EN"
+    },
+    "mersen-nhgbat": {
+      "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-NH-fuse-links-gBAT-1000V-1500V-DC-EN.pdf",
+      "final_url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-NH-fuse-links-gBAT-1000V-1500V-DC-EN.pdf",
+      "sha256": "770298c300419f0d8a52f75b2b32b27ba0c2387697200f223e251cec6dd923ca",
+      "bytes": 3194561,
+      "retrieved_at": "2026-09-21",
+      "uid": "src/mersen-nhgbat-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+      "revision": "DS-NHGBATF-14-0426_EN"
+    },
+    "vishay-hrha": {
+      "url": "https://www.vishay.com/docs/32594/hrha.pdf",
+      "final_url": "https://www.vishay.com/docs/32594/hrha.pdf",
+      "sha256": "d1e2029888485d902f3ae2d2a292d859f821518514c3443d89693138b6bb60e8",
+      "bytes": 99947,
+      "retrieved_at": "2026-09-21",
+      "uid": "src/vishay-hrha-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "Vishay HRHA charging resistor for EV",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "EV precharge/discharge application stated on page 1. Manufacturer-listed identities from https://www.vishay.com/en/product/32594/tab/quality/; identity-page hash and row retained per resistance/tolerance observation and in the import manifest. Resistance and tolerance decoded using page 3, not measurements. Only standard F/C-or-N/J-or-K/B codes imported; TP/custom entries held. Ratings depend on 6 mm mounting material, 30°C ambient and cooling wait. Historical datasheet, current commercial availability unverified.",
+      "revision": "14-Dec-2021"
+    },
+    "vishay-lto150h": {
+      "url": "https://www.vishay.com/docs/50084/lto150h.pdf",
+      "final_url": "https://www.vishay.com/docs/50084/lto150h.pdf",
+      "sha256": "6e4d27802081559527b5e94ec8ef5e48bb5f542b994adcc9ea4e06abadce3de7",
+      "bytes": 150743,
+      "retrieved_at": "2026-09-21",
+      "uid": "src/vishay-lto150h-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "Vishay LTO150H clip-mount thick-film power resistor",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Manufacturer-listed identities from https://www.vishay.com/en/product/50084/tab/quality/; identity-page hash and row retained per resistance/tolerance observation and in the import manifest. Standard G/J/K, T, E3 ordering codes decoded using page 7; unsupported F and TB7 variants held. Precharge/BMS/EV application documented by Vishay on 2025-04-09 at https://ir.vishay.com/news-releases/news-release-details/vishay-intertechnology-aec-q200-qualified-thick-film-power . The headline up to 75 J/0.1 s is not imported as an unconditional rating. The 500 V element ceiling is not the 3000 VRMS dielectric test; AC/DC is unstated.",
+      "revision": "23-Jul-2026"
+    },
+    "vishay-hrha-quality": {
+      "url": "https://www.vishay.com/en/product/32594/tab/quality/",
+      "final_url": "https://www.vishay.com/en/product/32594/tab/quality/",
+      "sha256": "6beb0e075326c6a530508d9e5d655910c7273f7e5898f0c8c362bd623a7f0ab9",
+      "bytes": 776564,
+      "retrieved_at": "2026-09-21",
+      "uid": "src/vishay-hrha-quality-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "Vishay HRHA quality / listed part numbers",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Identity evidence only: all 30 MAT_NO entries in the page-provided qualityTabResults data, beyond the first 25 visible rows. No products synthesized from resistance ranges."
+    },
+    "vishay-lto150h-quality": {
+      "url": "https://www.vishay.com/en/product/50084/tab/quality/",
+      "final_url": "https://www.vishay.com/en/product/50084/tab/quality/",
+      "sha256": "123677abe5489d1c9d80a3e5e4bef8399031471c162db1395a9c660eaa196d57",
+      "bytes": 772372,
+      "retrieved_at": "2026-09-21",
+      "uid": "src/vishay-lto150h-quality-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "Vishay LTO150H quality / listed part numbers",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Identity evidence only: all 27 MAT_NO entries in the page-provided qualityTabResults data, beyond the first 25 visible rows. No products synthesized from resistance ranges."
+    },
+    "sensata-gfp400": {
+      "uid": "src/sensata-gfp400-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "Sensata GIGAVAC GFP400 GigaFuse",
+      "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gfp400-gigafuse-datasheet.pdf",
+      "revision": "rev.02/06/25",
+      "retrieved_at": "2026-09-21",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Manufacturer PDF retrieved as web-extracted text; direct original-byte retrieval returned HTTP 403, so no SHA-256 is claimed. Web screenshot retrieval returned no viewable image; visual verification remains pending. Exact ordering example GFPA415B only; active 1500 A production option confirmed on page 3. The revision date is kept literal. DC context is explicit on page 1. Footnote 3 specifies 15.5 kA at 650 V / 12 µH and up to 12 kA at 850 V / 4 µH; do not infer 10 kA at 1000 V. No ordering-option cross-product, pyro-initiator resistance, or universal clear-time claim is imported."
+    }
+  },
+  "rows": [
+    {
+      "source_key": "mersen-abat13c",
+      "page": 2,
+      "model": "ABAT13C1000-AIA",
+      "item_number": "M1216044",
+      "cells": [
+        "ABAT13C1000-AIA",
+        "M1216044",
+        "1250",
+        "1000",
+        "360",
+        "707",
+        "114",
+        "220",
+        "9,0"
+      ],
+      "current_a": 1000,
+      "voltage_v": 1250,
+      "min_breaking_ka": 9,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13c",
+      "page": 2,
+      "model": "ABAT13C1250-AIA",
+      "item_number": "N1216045",
+      "cells": [
+        "ABAT13C1250-AIA",
+        "N1216045",
+        "1250",
+        "1250",
+        "632",
+        "1861",
+        "124",
+        "240",
+        "12,5"
+      ],
+      "current_a": 1250,
+      "voltage_v": 1250,
+      "min_breaking_ka": 12.5,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13c",
+      "page": 2,
+      "model": "ABAT13C500-AIA",
+      "item_number": "A1216033",
+      "cells": [
+        "ABAT13C500-AIA",
+        "A1216033",
+        "1250",
+        "500",
+        "36",
+        "89",
+        "90",
+        "175",
+        "4,5"
+      ],
+      "current_a": 500,
+      "voltage_v": 1250,
+      "min_breaking_ka": 4.5,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13c",
+      "page": 2,
+      "model": "ABAT13C550-AIA",
+      "item_number": "C1216035",
+      "cells": [
+        "ABAT13C550-AIA",
+        "C1216035",
+        "1250",
+        "550",
+        "50",
+        "117",
+        "93",
+        "180",
+        "4,95"
+      ],
+      "current_a": 550,
+      "voltage_v": 1250,
+      "min_breaking_ka": 4.95,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13c",
+      "page": 2,
+      "model": "ABAT13C630-AIA",
+      "item_number": "D1216036",
+      "cells": [
+        "ABAT13C630-AIA",
+        "D1216036",
+        "1250",
+        "630",
+        "84",
+        "195",
+        "95",
+        "184",
+        "5,67"
+      ],
+      "current_a": 630,
+      "voltage_v": 1250,
+      "min_breaking_ka": 5.67,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13c",
+      "page": 2,
+      "model": "ABAT13C700-AIA",
+      "item_number": "G1216039",
+      "cells": [
+        "ABAT13C700-AIA",
+        "G1216039",
+        "1250",
+        "700",
+        "109",
+        "263",
+        "101",
+        "196",
+        "6,3"
+      ],
+      "current_a": 700,
+      "voltage_v": 1250,
+      "min_breaking_ka": 6.3,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13c",
+      "page": 2,
+      "model": "ABAT13C800-AIA",
+      "item_number": "J1216041",
+      "cells": [
+        "ABAT13C800-AIA",
+        "J1216041",
+        "1250",
+        "800",
+        "157",
+        "376",
+        "108",
+        "210",
+        "7,2"
+      ],
+      "current_a": 800,
+      "voltage_v": 1250,
+      "min_breaking_ka": 7.2,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13c",
+      "page": 2,
+      "model": "ABAT13C900-AIA",
+      "item_number": "L1216043",
+      "cells": [
+        "ABAT13C900-AIA",
+        "L1216043",
+        "1250",
+        "900",
+        "230",
+        "543",
+        "109",
+        "211",
+        "8,1"
+      ],
+      "current_a": 900,
+      "voltage_v": 1250,
+      "min_breaking_ka": 8.1,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13d",
+      "page": 2,
+      "model": "ABAT13D1250-BIA",
+      "item_number": "P1216046",
+      "cells": [
+        "ABAT13D1250-BIA",
+        "P1216046",
+        "1250",
+        "1250",
+        "531",
+        "1624",
+        "137",
+        "265",
+        "12,5"
+      ],
+      "current_a": 1250,
+      "voltage_v": 1250,
+      "min_breaking_ka": 12.5,
+      "max_breaking_ka": 250,
+      "mass_kg": 3.4,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13d",
+      "page": 2,
+      "model": "ABAT13D1400-BIA",
+      "item_number": "Q1216047",
+      "cells": [
+        "ABAT13D1400-BIA",
+        "Q1216047",
+        "1250",
+        "1400",
+        "741",
+        "2248",
+        "150",
+        "291",
+        "16,8"
+      ],
+      "current_a": 1400,
+      "voltage_v": 1250,
+      "min_breaking_ka": 16.8,
+      "max_breaking_ka": 250,
+      "mass_kg": 3.4,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13d",
+      "page": 2,
+      "model": "ABAT13D1600-BIA",
+      "item_number": "S1216049",
+      "cells": [
+        "ABAT13D1600-BIA",
+        "S1216049",
+        "1250",
+        "1600",
+        "987",
+        "2810",
+        "168",
+        "325",
+        "19,2"
+      ],
+      "current_a": 1600,
+      "voltage_v": 1250,
+      "min_breaking_ka": 19.2,
+      "max_breaking_ka": 250,
+      "mass_kg": 3.4,
+      "terminal": "flush ends"
+    },
+    {
+      "source_key": "mersen-abat13g",
+      "page": 2,
+      "model": "ABAT13G1800-DIA",
+      "item_number": "V1216051",
+      "cells": [
+        "ABAT13G1800-DIA",
+        "V1216051",
+        "1250",
+        "1800",
+        "987",
+        "4171",
+        "214",
+        "415",
+        "18"
+      ],
+      "current_a": 1800,
+      "voltage_v": 1250,
+      "min_breaking_ka": 18,
+      "max_breaking_ka": 250,
+      "mass_kg": 7.79,
+      "terminal": "plates"
+    },
+    {
+      "source_key": "mersen-abat13g",
+      "page": 2,
+      "model": "ABAT13G2500-DIA",
+      "item_number": "W1216052",
+      "cells": [
+        "ABAT13G2500-DIA",
+        "W1216052",
+        "1250",
+        "2500",
+        "2752",
+        "7335",
+        "263",
+        "510",
+        "30"
+      ],
+      "current_a": 2500,
+      "voltage_v": 1250,
+      "min_breaking_ka": 30,
+      "max_breaking_ka": 250,
+      "mass_kg": 7.79,
+      "terminal": "plates"
+    },
+    {
+      "source_key": "mersen-abat13g",
+      "page": 2,
+      "model": "ABAT13G3200-DIA",
+      "item_number": "Y1216054",
+      "cells": [
+        "ABAT13G3200-DIA",
+        "Y1216054",
+        "1250",
+        "3200",
+        "3950",
+        "11600",
+        "351",
+        "680",
+        "38,4"
+      ],
+      "current_a": 3200,
+      "voltage_v": 1250,
+      "min_breaking_ka": 38.4,
+      "max_breaking_ka": 250,
+      "mass_kg": 7.79,
+      "terminal": "plates"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C1000-AIB",
+      "item_number": "H1200492",
+      "cells": [
+        "ABAT15C1000-AIB",
+        "H1200492",
+        "1500",
+        "1000",
+        "360",
+        "1515",
+        "91",
+        "175",
+        "12",
+        "250",
+        "1,85"
+      ],
+      "current_a": 1000,
+      "voltage_v": 1500,
+      "min_breaking_ka": 12,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "TTF flush ends"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C1000-LIA",
+      "item_number": "P1215724",
+      "cells": [
+        "ABAT15C1000-LIA",
+        "P1215724",
+        "1500",
+        "1000",
+        "466",
+        "1657",
+        "117",
+        "225",
+        "15",
+        "200",
+        "1,7"
+      ],
+      "current_a": 1000,
+      "voltage_v": 1500,
+      "min_breaking_ka": 15,
+      "max_breaking_ka": 200,
+      "mass_kg": 1.7,
+      "terminal": "LI blades"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C1100-LIA",
+      "item_number": "W1213223",
+      "cells": [
+        "ABAT15C1100-LIA",
+        "W1213223",
+        "1500",
+        "1100",
+        "632",
+        "2300",
+        "125",
+        "240",
+        "16.5",
+        "200",
+        "1,7"
+      ],
+      "current_a": 1100,
+      "voltage_v": 1500,
+      "min_breaking_ka": 16.5,
+      "max_breaking_ka": 200,
+      "mass_kg": 1.7,
+      "terminal": "LI blades"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C1250-AIA",
+      "item_number": "J1200493",
+      "cells": [
+        "ABAT15C1250-AIA",
+        "J1200493",
+        "1500",
+        "1250",
+        "632",
+        "2620",
+        "125",
+        "240",
+        "15",
+        "250",
+        "1,85"
+      ],
+      "current_a": 1250,
+      "voltage_v": 1500,
+      "min_breaking_ka": 15,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "TTF flush ends"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C500-AIA",
+      "item_number": "B1200486",
+      "cells": [
+        "ABAT15C500-AIA",
+        "B1200486",
+        "1500",
+        "500",
+        "36",
+        "125",
+        "90",
+        "175",
+        "6",
+        "250",
+        "1,85"
+      ],
+      "current_a": 500,
+      "voltage_v": 1500,
+      "min_breaking_ka": 6,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "TTF flush ends"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C500-LIA",
+      "item_number": "E1215715",
+      "cells": [
+        "ABAT15C500-LIA",
+        "E1215715",
+        "1500",
+        "500",
+        "50",
+        "178",
+        "78",
+        "150",
+        "7.5",
+        "200",
+        "1,7"
+      ],
+      "current_a": 500,
+      "voltage_v": 1500,
+      "min_breaking_ka": 7.5,
+      "max_breaking_ka": 200,
+      "mass_kg": 1.7,
+      "terminal": "LI blades"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C550-AIA",
+      "item_number": "C1200487",
+      "cells": [
+        "ABAT15C550-AIA",
+        "C1200487",
+        "1500",
+        "550",
+        "50",
+        "165",
+        "92",
+        "180",
+        "6.6",
+        "250",
+        "1,85"
+      ],
+      "current_a": 550,
+      "voltage_v": 1500,
+      "min_breaking_ka": 6.6,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "TTF flush ends"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C550-LIA",
+      "item_number": "G1215717",
+      "cells": [
+        "ABAT15C550-LIA",
+        "G1215717",
+        "1500",
+        "550",
+        "70",
+        "249",
+        "82",
+        "158",
+        "8.25",
+        "200",
+        "1,7"
+      ],
+      "current_a": 550,
+      "voltage_v": 1500,
+      "min_breaking_ka": 8.25,
+      "max_breaking_ka": 200,
+      "mass_kg": 1.7,
+      "terminal": "LI blades"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C630-AIA",
+      "item_number": "D1200488",
+      "cells": [
+        "ABAT15C630-AIA",
+        "D1200488",
+        "1500",
+        "630",
+        "84",
+        "275",
+        "94",
+        "184",
+        "7.56",
+        "250",
+        "1,85"
+      ],
+      "current_a": 630,
+      "voltage_v": 1500,
+      "min_breaking_ka": 7.56,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "TTF flush ends"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C630-LIA",
+      "item_number": "H1215718",
+      "cells": [
+        "ABAT15C630-LIA",
+        "H1215718",
+        "1500",
+        "630",
+        "109",
+        "389",
+        "88",
+        "170",
+        "9.45",
+        "200",
+        "1,7"
+      ],
+      "current_a": 630,
+      "voltage_v": 1500,
+      "min_breaking_ka": 9.45,
+      "max_breaking_ka": 200,
+      "mass_kg": 1.7,
+      "terminal": "LI blades"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C700-AIA",
+      "item_number": "E1200489",
+      "cells": [
+        "ABAT15C700-AIA",
+        "E1200489",
+        "1500",
+        "700",
+        "109",
+        "370",
+        "100",
+        "196",
+        "8.4",
+        "250",
+        "1,85"
+      ],
+      "current_a": 700,
+      "voltage_v": 1500,
+      "min_breaking_ka": 8.4,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "TTF flush ends"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C700-LIA",
+      "item_number": "M1215722",
+      "cells": [
+        "ABAT15C700-LIA",
+        "M1215722",
+        "1500",
+        "700",
+        "157",
+        "561",
+        "94",
+        "180",
+        "10.5",
+        "200",
+        "1,7"
+      ],
+      "current_a": 700,
+      "voltage_v": 1500,
+      "min_breaking_ka": 10.5,
+      "max_breaking_ka": 200,
+      "mass_kg": 1.7,
+      "terminal": "LI blades"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C800-AIA",
+      "item_number": "F1200490",
+      "cells": [
+        "ABAT15C800-AIA",
+        "F1200490",
+        "1500",
+        "800",
+        "157",
+        "530",
+        "108",
+        "210",
+        "9.6",
+        "250",
+        "1,85"
+      ],
+      "current_a": 800,
+      "voltage_v": 1500,
+      "min_breaking_ka": 9.6,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "TTF flush ends"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C800-LIA",
+      "item_number": "N1215723",
+      "cells": [
+        "ABAT15C800-LIA",
+        "N1215723",
+        "1500",
+        "800",
+        "230",
+        "819",
+        "101",
+        "195",
+        "12",
+        "200",
+        "1,7"
+      ],
+      "current_a": 800,
+      "voltage_v": 1500,
+      "min_breaking_ka": 12,
+      "max_breaking_ka": 200,
+      "mass_kg": 1.7,
+      "terminal": "LI blades"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C900-AIA",
+      "item_number": "G1200491",
+      "cells": [
+        "ABAT15C900-AIA",
+        "G1200491",
+        "1500",
+        "900",
+        "230",
+        "765",
+        "110",
+        "211",
+        "10.8",
+        "250",
+        "1,85"
+      ],
+      "current_a": 900,
+      "voltage_v": 1500,
+      "min_breaking_ka": 10.8,
+      "max_breaking_ka": 250,
+      "mass_kg": 1.85,
+      "terminal": "TTF flush ends"
+    },
+    {
+      "source_key": "mersen-abat15c",
+      "page": 2,
+      "model": "ABAT15C900-LIA",
+      "item_number": "P1209629",
+      "cells": [
+        "ABAT15C900-LIA",
+        "P1209629",
+        "1500",
+        "900",
+        "336",
+        "1195",
+        "109",
+        "210",
+        "13.5",
+        "200",
+        "1,7"
+      ],
+      "current_a": 900,
+      "voltage_v": 1500,
+      "min_breaking_ka": 13.5,
+      "max_breaking_ka": 200,
+      "mass_kg": 1.7,
+      "terminal": "LI blades"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT100",
+      "item_number": "X1068623",
+      "cells": [
+        "10NH1GBAT100",
+        "X1068623",
+        "1",
+        "100",
+        "4.6",
+        "17",
+        "7.2",
+        "13.25",
+        "3",
+        "0.3"
+      ],
+      "current_a": 100,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.3,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT100B",
+      "item_number": "N1068615",
+      "cells": [
+        "10NH1GBAT100B",
+        "N1068615",
+        "1",
+        "100",
+        "4.6",
+        "17",
+        "7.2",
+        "13.25",
+        "3",
+        "0.4"
+      ],
+      "current_a": 100,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.4,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT125",
+      "item_number": "Y1068624",
+      "cells": [
+        "10NH1GBAT125",
+        "Y1068624",
+        "1",
+        "125",
+        "10.37",
+        "18",
+        "7.4",
+        "29.75",
+        "3",
+        "0.3"
+      ],
+      "current_a": 125,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.3,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT125B",
+      "item_number": "P1068616",
+      "cells": [
+        "10NH1GBAT125B",
+        "P1068616",
+        "1",
+        "125",
+        "10.37",
+        "18",
+        "7.4",
+        "29.75",
+        "3",
+        "0.4"
+      ],
+      "current_a": 125,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.4,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT160",
+      "item_number": "Z1068625",
+      "cells": [
+        "10NH1GBAT160",
+        "Z1068625",
+        "1",
+        "160",
+        "20",
+        "23",
+        "9.6",
+        "57.4",
+        "3",
+        "0.3"
+      ],
+      "current_a": 160,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.3,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT160B",
+      "item_number": "Q1068617",
+      "cells": [
+        "10NH1GBAT160B",
+        "Q1068617",
+        "1",
+        "160",
+        "20",
+        "23",
+        "9.6",
+        "57.4",
+        "3",
+        "0.4"
+      ],
+      "current_a": 160,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.4,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT50",
+      "item_number": "T1068620",
+      "cells": [
+        "10NH1GBAT50",
+        "T1068620",
+        "1",
+        "50",
+        "0.65",
+        "11",
+        "4.6",
+        "2.4",
+        "3",
+        "0.3"
+      ],
+      "current_a": 50,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.3,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT50B",
+      "item_number": "K1068612",
+      "cells": [
+        "10NH1GBAT50B",
+        "K1068612",
+        "1",
+        "50",
+        "0.65",
+        "11",
+        "4.6",
+        "2.4",
+        "3",
+        "0.4"
+      ],
+      "current_a": 50,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.4,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT63",
+      "item_number": "V1068621",
+      "cells": [
+        "10NH1GBAT63",
+        "V1068621",
+        "1",
+        "63",
+        "1.46",
+        "13",
+        "5.4",
+        "5.35",
+        "3",
+        "0.3"
+      ],
+      "current_a": 63,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.3,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT63B",
+      "item_number": "L1068613",
+      "cells": [
+        "10NH1GBAT63B",
+        "L1068613",
+        "1",
+        "63",
+        "1.46",
+        "13",
+        "5.4",
+        "5.35",
+        "3",
+        "0.4"
+      ],
+      "current_a": 63,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.4,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT80",
+      "item_number": "W1068622",
+      "cells": [
+        "10NH1GBAT80",
+        "W1068622",
+        "1",
+        "80",
+        "2.6",
+        "15",
+        "6.1",
+        "9.5",
+        "3",
+        "0.3"
+      ],
+      "current_a": 80,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.3,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH1GBAT80B",
+      "item_number": "M1068614",
+      "cells": [
+        "10NH1GBAT80B",
+        "M1068614",
+        "1",
+        "80",
+        "2.6",
+        "15",
+        "6.1",
+        "9.5",
+        "3",
+        "0.4"
+      ],
+      "current_a": 80,
+      "size": "1",
+      "voltage_v": 1000,
+      "mass_kg": 0.4,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH2GBAT200",
+      "item_number": "A1068626",
+      "cells": [
+        "10NH2GBAT200",
+        "A1068626",
+        "2",
+        "200",
+        "36.45",
+        "27",
+        "11.3",
+        "130.4",
+        "3",
+        "0.6"
+      ],
+      "current_a": 200,
+      "size": "2",
+      "voltage_v": 1000,
+      "mass_kg": 0.6,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH2GBAT200B",
+      "item_number": "R1068618",
+      "cells": [
+        "10NH2GBAT200B",
+        "R1068618",
+        "2",
+        "200",
+        "36.45",
+        "27",
+        "11.3",
+        "130.4",
+        "3",
+        "0.63"
+      ],
+      "current_a": 200,
+      "size": "2",
+      "voltage_v": 1000,
+      "mass_kg": 0.63,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH2GBAT250",
+      "item_number": "B1068627",
+      "cells": [
+        "10NH2GBAT250",
+        "B1068627",
+        "2",
+        "250",
+        "64.8",
+        "31",
+        "12.9",
+        "231.7",
+        "3",
+        "0.6"
+      ],
+      "current_a": 250,
+      "size": "2",
+      "voltage_v": 1000,
+      "mass_kg": 0.6,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 2,
+      "model": "10NH2GBAT250B",
+      "item_number": "S1068619",
+      "cells": [
+        "10NH2GBAT250B",
+        "S1068619",
+        "2",
+        "250",
+        "64.8",
+        "31",
+        "12.9",
+        "231.7",
+        "3",
+        "0.63"
+      ],
+      "current_a": 250,
+      "size": "2",
+      "voltage_v": 1000,
+      "mass_kg": 0.63,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH1XLGBAT100",
+      "item_number": "G1068632",
+      "cells": [
+        "15NH1XLGBAT100",
+        "G1068632",
+        "1XL",
+        "100",
+        "10.37",
+        "26",
+        "10.5",
+        "32.35",
+        "1",
+        "0.7"
+      ],
+      "current_a": 100,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.7,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH1XLGBAT100B",
+      "item_number": "M1068637",
+      "cells": [
+        "15NH1XLGBAT100B",
+        "M1068637",
+        "1XL",
+        "100",
+        "10.37",
+        "26",
+        "10.5",
+        "32.35",
+        "1",
+        "0.69"
+      ],
+      "current_a": 100,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.69,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH1XLGBAT125",
+      "item_number": "H1068633",
+      "cells": [
+        "15NH1XLGBAT125",
+        "H1068633",
+        "1XL",
+        "125",
+        "18.43",
+        "30",
+        "12.2",
+        "61.15",
+        "1",
+        "0.7"
+      ],
+      "current_a": 125,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.7,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH1XLGBAT125B",
+      "item_number": "N1068638",
+      "cells": [
+        "15NH1XLGBAT125B",
+        "N1068638",
+        "1XL",
+        "125",
+        "18.43",
+        "30",
+        "12.2",
+        "61.15",
+        "1",
+        "0.69"
+      ],
+      "current_a": 125,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.69,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH1XLGBAT50",
+      "item_number": "C1068628",
+      "cells": [
+        "15NH1XLGBAT50",
+        "C1068628",
+        "1XL",
+        "50",
+        "0.97",
+        "21",
+        "8.6",
+        "3.05",
+        "1",
+        "0.7"
+      ],
+      "current_a": 50,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.7,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH1XLGBAT50B",
+      "item_number": "J1068634",
+      "cells": [
+        "15NH1XLGBAT50B",
+        "J1068634",
+        "1XL",
+        "50",
+        "0.97",
+        "21",
+        "8.6",
+        "3.05",
+        "1",
+        "0.69"
+      ],
+      "current_a": 50,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.69,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH1XLGBAT63",
+      "item_number": "D1068629",
+      "cells": [
+        "15NH1XLGBAT63",
+        "D1068629",
+        "1XL",
+        "63",
+        "2.05",
+        "25",
+        "10.2",
+        "6.75",
+        "1",
+        "0.7"
+      ],
+      "current_a": 63,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.7,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH1XLGBAT63B",
+      "item_number": "K1068635",
+      "cells": [
+        "15NH1XLGBAT63B",
+        "K1068635",
+        "1XL",
+        "63",
+        "2.05",
+        "25",
+        "10.2",
+        "6.75",
+        "1",
+        "0.69"
+      ],
+      "current_a": 63,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.69,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH1XLGBAT80",
+      "item_number": "E1068630",
+      "cells": [
+        "15NH1XLGBAT80",
+        "E1068630",
+        "1XL",
+        "80",
+        "4.6",
+        "25.5",
+        "10.3",
+        "15",
+        "1",
+        "0.7"
+      ],
+      "current_a": 80,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.7,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH1XLGBAT80B",
+      "item_number": "L1068636",
+      "cells": [
+        "15NH1XLGBAT80B",
+        "L1068636",
+        "1XL",
+        "80",
+        "4.6",
+        "25.5",
+        "10.3",
+        "15",
+        "1",
+        "0.69"
+      ],
+      "current_a": 80,
+      "size": "1XL",
+      "voltage_v": 1500,
+      "mass_kg": 0.69,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH2XLGBAT125",
+      "item_number": "P1068639",
+      "cells": [
+        "15NH2XLGBAT125",
+        "P1068639",
+        "2XL",
+        "125",
+        "14.11",
+        "33.7",
+        "13.6",
+        "38.2",
+        "1",
+        "1.05"
+      ],
+      "current_a": 125,
+      "size": "2XL",
+      "voltage_v": 1500,
+      "mass_kg": 1.05,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH2XLGBAT125B",
+      "item_number": "V1068644",
+      "cells": [
+        "15NH2XLGBAT125B",
+        "V1068644",
+        "2XL",
+        "125",
+        "14.11",
+        "33.7",
+        "13.6",
+        "38.2",
+        "1",
+        "1.02"
+      ],
+      "current_a": 125,
+      "size": "2XL",
+      "voltage_v": 1500,
+      "mass_kg": 1.02,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH2XLGBAT160",
+      "item_number": "Q1068640",
+      "cells": [
+        "15NH2XLGBAT160",
+        "Q1068640",
+        "2XL",
+        "160",
+        "28.8",
+        "38",
+        "15.4",
+        "84.6",
+        "1",
+        "1.05"
+      ],
+      "current_a": 160,
+      "size": "2XL",
+      "voltage_v": 1500,
+      "mass_kg": 1.05,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH2XLGBAT160B",
+      "item_number": "W1068645",
+      "cells": [
+        "15NH2XLGBAT160B",
+        "W1068645",
+        "2XL",
+        "160",
+        "28.8",
+        "38",
+        "15.4",
+        "84.6",
+        "1",
+        "1.02"
+      ],
+      "current_a": 160,
+      "size": "2XL",
+      "voltage_v": 1500,
+      "mass_kg": 1.02,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH2XLGBAT200",
+      "item_number": "S1068642",
+      "cells": [
+        "15NH2XLGBAT200",
+        "S1068642",
+        "2XL",
+        "200",
+        "54.45",
+        "48",
+        "19.4",
+        "129.2",
+        "1",
+        "1.05"
+      ],
+      "current_a": 200,
+      "size": "2XL",
+      "voltage_v": 1500,
+      "mass_kg": 1.05,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH2XLGBAT200B",
+      "item_number": "X1068646",
+      "cells": [
+        "15NH2XLGBAT200B",
+        "X1068646",
+        "2XL",
+        "200",
+        "54.45",
+        "48",
+        "19.4",
+        "129.2",
+        "1",
+        "1.02"
+      ],
+      "current_a": 200,
+      "size": "2XL",
+      "voltage_v": 1500,
+      "mass_kg": 1.02,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH2XLGBAT250",
+      "item_number": "T1068643",
+      "cells": [
+        "15NH2XLGBAT250",
+        "T1068643",
+        "2XL",
+        "250",
+        "115.2",
+        "51.7",
+        "20.9",
+        "222.2",
+        "1",
+        "1.05"
+      ],
+      "current_a": 250,
+      "size": "2XL",
+      "voltage_v": 1500,
+      "mass_kg": 1.05,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH2XLGBAT250B",
+      "item_number": "Y1068647",
+      "cells": [
+        "15NH2XLGBAT250B",
+        "Y1068647",
+        "2XL",
+        "250",
+        "115.2",
+        "51.7",
+        "20.9",
+        "222.2",
+        "1",
+        "1.02"
+      ],
+      "current_a": 250,
+      "size": "2XL",
+      "voltage_v": 1500,
+      "mass_kg": 1.02,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH3LGBAT160",
+      "item_number": "Z1068648",
+      "cells": [
+        "15NH3LGBAT160",
+        "Z1068648",
+        "3L",
+        "160",
+        "28.8",
+        "36",
+        "15",
+        "72",
+        "1",
+        "1.69"
+      ],
+      "current_a": 160,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.69,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH3LGBAT160B",
+      "item_number": "F1068654",
+      "cells": [
+        "15NH3LGBAT160B",
+        "F1068654",
+        "3L",
+        "160",
+        "28.8",
+        "36",
+        "15",
+        "72",
+        "1",
+        "1.66"
+      ],
+      "current_a": 160,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.66,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH3LGBAT200",
+      "item_number": "A1068649",
+      "cells": [
+        "15NH3LGBAT200",
+        "A1068649",
+        "3L",
+        "200",
+        "56.45",
+        "44",
+        "18",
+        "141.1",
+        "1",
+        "1.69"
+      ],
+      "current_a": 200,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.69,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH3LGBAT200B",
+      "item_number": "G1068655",
+      "cells": [
+        "15NH3LGBAT200B",
+        "G1068655",
+        "3L",
+        "200",
+        "56.45",
+        "44",
+        "18",
+        "141.1",
+        "1",
+        "1.66"
+      ],
+      "current_a": 200,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.66,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH3LGBAT250",
+      "item_number": "B1068650",
+      "cells": [
+        "15NH3LGBAT250",
+        "B1068650",
+        "3L",
+        "250",
+        "101.25",
+        "50",
+        "20",
+        "253.1",
+        "1",
+        "1.69"
+      ],
+      "current_a": 250,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.69,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH3LGBAT250B",
+      "item_number": "H1068656",
+      "cells": [
+        "15NH3LGBAT250B",
+        "H1068656",
+        "3L",
+        "250",
+        "101.25",
+        "50",
+        "20",
+        "253.1",
+        "1",
+        "1.66"
+      ],
+      "current_a": 250,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.66,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH3LGBAT315",
+      "item_number": "C1068651",
+      "cells": [
+        "15NH3LGBAT315",
+        "C1068651",
+        "3L",
+        "315",
+        "240.8",
+        "57",
+        "23",
+        "512",
+        "1",
+        "1.69"
+      ],
+      "current_a": 315,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.69,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH3LGBAT315B",
+      "item_number": "J1068657",
+      "cells": [
+        "15NH3LGBAT315B",
+        "J1068657",
+        "3L",
+        "315",
+        "240.8",
+        "57",
+        "23",
+        "512",
+        "1",
+        "1.66"
+      ],
+      "current_a": 315,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.66,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH3LGBAT350",
+      "item_number": "D1068652",
+      "cells": [
+        "15NH3LGBAT350",
+        "D1068652",
+        "3L",
+        "350",
+        "259.2",
+        "63",
+        "25",
+        "648",
+        "1",
+        "1.69"
+      ],
+      "current_a": 350,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.69,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH3LGBAT350B",
+      "item_number": "K1068658",
+      "cells": [
+        "15NH3LGBAT350B",
+        "K1068658",
+        "3L",
+        "350",
+        "259.2",
+        "63",
+        "25",
+        "648",
+        "1",
+        "1.66"
+      ],
+      "current_a": 350,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.66,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH3LGBAT400",
+      "item_number": "E1068653",
+      "cells": [
+        "15NH3LGBAT400",
+        "E1068653",
+        "3L",
+        "400",
+        "361.25",
+        "71",
+        "28",
+        "903.1",
+        "1",
+        "1.69"
+      ],
+      "current_a": 400,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.69,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH3LGBAT400B",
+      "item_number": "L1068659",
+      "cells": [
+        "15NH3LGBAT400B",
+        "L1068659",
+        "3L",
+        "400",
+        "361.25",
+        "71",
+        "28",
+        "903.1",
+        "1",
+        "1.66"
+      ],
+      "current_a": 400,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.66,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH3LGBAT450",
+      "item_number": "Y1204048",
+      "cells": [
+        "15NH3LGBAT450",
+        "Y1204048",
+        "3L",
+        "450",
+        "609",
+        "68.7",
+        "27.8",
+        "1904",
+        "1",
+        "1.98"
+      ],
+      "current_a": 450,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.98,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH3LGBAT450B",
+      "item_number": "A1204050",
+      "cells": [
+        "15NH3LGBAT450B",
+        "A1204050",
+        "3L",
+        "450",
+        "609",
+        "68.7",
+        "27.8",
+        "1904",
+        "1",
+        "1.98"
+      ],
+      "current_a": 450,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.98,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 3,
+      "model": "15NH3LGBAT500",
+      "item_number": "Z1204049",
+      "cells": [
+        "15NH3LGBAT500",
+        "Z1204049",
+        "3L",
+        "500",
+        "778",
+        "74.5",
+        "30.2",
+        "2433",
+        "1",
+        "1.98"
+      ],
+      "current_a": 500,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.98,
+      "terminal": "plain blade"
+    },
+    {
+      "source_key": "mersen-nhgbat",
+      "page": 4,
+      "model": "15NH3LGBAT500B",
+      "item_number": "B1204051",
+      "cells": [
+        "15NH3LGBAT500B",
+        "B1204051",
+        "3L",
+        "500",
+        "778",
+        "74.5",
+        "30.2",
+        "2433",
+        "1",
+        "1.98"
+      ],
+      "current_a": 500,
+      "size": "3L",
+      "voltage_v": 1500,
+      "mass_kg": 1.98,
+      "terminal": "direct mounting"
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 30,
+      "model": "HRHAFC1000KB",
+      "resistance_ohm": 100,
+      "tolerance_pct": 10,
+      "resistance_code": "1000",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 29,
+      "model": "HRHAFC10R0KB",
+      "resistance_ohm": 10,
+      "tolerance_pct": 10,
+      "resistance_code": "10R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 28,
+      "model": "HRHAFC20R0KB",
+      "resistance_ohm": 20,
+      "tolerance_pct": 10,
+      "resistance_code": "20R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 27,
+      "model": "HRHAFC22R0JB",
+      "resistance_ohm": 22,
+      "tolerance_pct": 5,
+      "resistance_code": "22R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 26,
+      "model": "HRHAFC22R0KB",
+      "resistance_ohm": 22,
+      "tolerance_pct": 10,
+      "resistance_code": "22R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 25,
+      "model": "HRHAFC30R0KB",
+      "resistance_ohm": 30,
+      "tolerance_pct": 10,
+      "resistance_code": "30R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 24,
+      "model": "HRHAFC40R0KB",
+      "resistance_ohm": 40,
+      "tolerance_pct": 10,
+      "resistance_code": "40R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 23,
+      "model": "HRHAFC47R0KB",
+      "resistance_ohm": 47,
+      "tolerance_pct": 10,
+      "resistance_code": "47R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 22,
+      "model": "HRHAFC60R0KB",
+      "resistance_ohm": 60,
+      "tolerance_pct": 10,
+      "resistance_code": "60R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 21,
+      "model": "HRHAFC65R0KB",
+      "resistance_ohm": 65,
+      "tolerance_pct": 10,
+      "resistance_code": "65R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 20,
+      "model": "HRHAFC8R00KB",
+      "resistance_ohm": 8,
+      "tolerance_pct": 10,
+      "resistance_code": "8R00",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 19,
+      "model": "HRHAFN1000KB",
+      "resistance_ohm": 100,
+      "tolerance_pct": 10,
+      "resistance_code": "1000",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 18,
+      "model": "HRHAFN10R0KB",
+      "resistance_ohm": 10,
+      "tolerance_pct": 10,
+      "resistance_code": "10R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 17,
+      "model": "HRHAFN1200JB",
+      "resistance_ohm": 120,
+      "tolerance_pct": 5,
+      "resistance_code": "1200",
+      "tolerance_code": "J",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 16,
+      "model": "HRHAFN15R0JB",
+      "resistance_ohm": 15,
+      "tolerance_pct": 5,
+      "resistance_code": "15R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 15,
+      "model": "HRHAFN16R0JB",
+      "resistance_ohm": 16,
+      "tolerance_pct": 5,
+      "resistance_code": "16R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 14,
+      "model": "HRHAFN1R20KB",
+      "resistance_ohm": 1.2,
+      "tolerance_pct": 10,
+      "resistance_code": "1R20",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 13,
+      "model": "HRHAFN2000KB",
+      "resistance_ohm": 200,
+      "tolerance_pct": 10,
+      "resistance_code": "2000",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 12,
+      "model": "HRHAFN22R0JB",
+      "resistance_ohm": 22,
+      "tolerance_pct": 5,
+      "resistance_code": "22R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 11,
+      "model": "HRHAFN22R0KB",
+      "resistance_ohm": 22,
+      "tolerance_pct": 10,
+      "resistance_code": "22R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 10,
+      "model": "HRHAFN3000KB",
+      "resistance_ohm": 300,
+      "tolerance_pct": 10,
+      "resistance_code": "3000",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 9,
+      "model": "HRHAFN30R0KB",
+      "resistance_ohm": 30,
+      "tolerance_pct": 10,
+      "resistance_code": "30R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 8,
+      "model": "HRHAFN40R0KB",
+      "resistance_ohm": 40,
+      "tolerance_pct": 10,
+      "resistance_code": "40R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 7,
+      "model": "HRHAFN47R0JB",
+      "resistance_ohm": 47,
+      "tolerance_pct": 5,
+      "resistance_code": "47R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 6,
+      "model": "HRHAFN51R0JB",
+      "resistance_ohm": 51,
+      "tolerance_pct": 5,
+      "resistance_code": "51R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 5,
+      "model": "HRHAFN56R0JB",
+      "resistance_ohm": 56,
+      "tolerance_pct": 5,
+      "resistance_code": "56R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 4,
+      "model": "HRHAFN6R80KB",
+      "resistance_ohm": 6.8,
+      "tolerance_pct": 10,
+      "resistance_code": "6R80",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 3,
+      "model": "HRHAFN80R0KB",
+      "resistance_ohm": 80,
+      "tolerance_pct": 10,
+      "resistance_code": "80R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "termination": "faston",
+        "coating": "not coated"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 27,
+      "model": "LTO150H10000JTE3",
+      "resistance_ohm": 1000,
+      "tolerance_pct": 5,
+      "resistance_code": "10000",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 26,
+      "model": "LTO150H100R0JTE3",
+      "resistance_ohm": 100,
+      "tolerance_pct": 5,
+      "resistance_code": "100R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 25,
+      "model": "LTO150H10R00JTE3",
+      "resistance_ohm": 10,
+      "tolerance_pct": 5,
+      "resistance_code": "10R00",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 24,
+      "model": "LTO150H150R0JTE3",
+      "resistance_ohm": 150,
+      "tolerance_pct": 5,
+      "resistance_code": "150R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 23,
+      "model": "LTO150H15R00GTE3",
+      "resistance_ohm": 15,
+      "tolerance_pct": 2,
+      "resistance_code": "15R00",
+      "tolerance_code": "G",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 22,
+      "model": "LTO150H1R000JTE3",
+      "resistance_ohm": 1,
+      "tolerance_pct": 5,
+      "resistance_code": "1R000",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 21,
+      "model": "LTO150H20000JTE3",
+      "resistance_ohm": 2000,
+      "tolerance_pct": 5,
+      "resistance_code": "20000",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 20,
+      "model": "LTO150H22000JTE3",
+      "resistance_ohm": 2200,
+      "tolerance_pct": 5,
+      "resistance_code": "22000",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 19,
+      "model": "LTO150H220R0JTE3",
+      "resistance_ohm": 220,
+      "tolerance_pct": 5,
+      "resistance_code": "220R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 18,
+      "model": "LTO150H22R00JTE3",
+      "resistance_ohm": 22,
+      "tolerance_pct": 5,
+      "resistance_code": "22R00",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 17,
+      "model": "LTO150H2R200JTE3",
+      "resistance_ohm": 2.2,
+      "tolerance_pct": 5,
+      "resistance_code": "2R200",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 16,
+      "model": "LTO150H300R0JTE3",
+      "resistance_ohm": 300,
+      "tolerance_pct": 5,
+      "resistance_code": "300R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 15,
+      "model": "LTO150H330R0JTE3",
+      "resistance_ohm": 330,
+      "tolerance_pct": 5,
+      "resistance_code": "330R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 14,
+      "model": "LTO150H3R000JTE3",
+      "resistance_ohm": 3,
+      "tolerance_pct": 5,
+      "resistance_code": "3R000",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 12,
+      "model": "LTO150H470R0JTE3",
+      "resistance_ohm": 470,
+      "tolerance_pct": 5,
+      "resistance_code": "470R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 11,
+      "model": "LTO150H47R00JTE3",
+      "resistance_ohm": 47,
+      "tolerance_pct": 5,
+      "resistance_code": "47R00",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 10,
+      "model": "LTO150H4R700JTE3",
+      "resistance_ohm": 4.7,
+      "tolerance_pct": 5,
+      "resistance_code": "4R700",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 9,
+      "model": "LTO150H560R0JTE3",
+      "resistance_ohm": 560,
+      "tolerance_pct": 5,
+      "resistance_code": "560R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 7,
+      "model": "LTO150H68R00JTE3",
+      "resistance_ohm": 68,
+      "tolerance_pct": 5,
+      "resistance_code": "68R00",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 5,
+      "model": "LTO150H75R00JTE3",
+      "resistance_ohm": 75,
+      "tolerance_pct": 5,
+      "resistance_code": "75R00",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 4,
+      "model": "LTO150H7R500GTE3",
+      "resistance_ohm": 7.5,
+      "tolerance_pct": 2,
+      "resistance_code": "7R500",
+      "tolerance_code": "G",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 3,
+      "model": "LTO150H810R0KTE3",
+      "resistance_ohm": 810,
+      "tolerance_pct": 10,
+      "resistance_code": "810R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 2,
+      "model": "LTO150H820R0KTE3",
+      "resistance_ohm": 820,
+      "tolerance_pct": 10,
+      "resistance_code": "820R0",
+      "tolerance_code": "K",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 1,
+      "model": "LTO150H910R0JTE3",
+      "resistance_ohm": 910,
+      "tolerance_pct": 5,
+      "resistance_code": "910R0",
+      "tolerance_code": "J",
+      "configuration": {
+        "package": "TO-247",
+        "packaging": "tube",
+        "termination_finish": "pure tin"
+      }
+    }
+  ],
+  "held": [
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 2,
+      "model": "HRHATP10R0JB",
+      "reason": "Termination/coating or custom suffix outside documented HRHA standard code"
+    },
+    {
+      "source_key": "vishay-hrha",
+      "identity_source_key": "vishay-hrha-quality",
+      "identity_row": 1,
+      "model": "HRHATP10R0JB991",
+      "reason": "Termination/coating or custom suffix outside documented HRHA standard code"
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 13,
+      "model": "LTO150H470R0JTB7",
+      "reason": "Tolerance or suffix outside documented LTO150H standard G/J/K, T, E3 code"
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 8,
+      "model": "LTO150H5R000GTB7",
+      "reason": "Tolerance or suffix outside documented LTO150H standard G/J/K, T, E3 code"
+    },
+    {
+      "source_key": "vishay-lto150h",
+      "identity_source_key": "vishay-lto150h-quality",
+      "identity_row": 6,
+      "model": "LTO150H6R190FTE3",
+      "reason": "Tolerance or suffix outside documented LTO150H standard G/J/K, T, E3 code"
+    }
+  ],
+  "research_limits": [
+    {
+      "manufacturer": "Sensata",
+      "lead": "https://www.sensata.com/sites/default/files/a/sensata-high-voltage-fuses-catalog-2020.pdf",
+      "status": "Direct HTTP 403; no catalog entries imported."
+    },
+    {
+      "manufacturer": "Sensata",
+      "lead": "https://www.sensata.com/products/high-voltage-fuse-hvf",
+      "status": "Feature summary lacks exact orderable identifiers for individual configurations; no synthetic SKUs imported."
+    },
+    {
+      "manufacturer": "Eaton",
+      "lead": "https://www.eaton.com/content/dam/eaton/products/electrical-circuit-protection/bussmann-iec-high-speed-semi-conductors-fuses/bussmann-iec-square-body-fuses/marketing-assets/eaton-bussmann-series-dc-fuses-catalog-ca135009en-us.pdf",
+      "status": "Web-readable DC catalog; direct download timeout/connection reset. ESS battery fuse tables left for a later batch."
+    }
+  ]
+}

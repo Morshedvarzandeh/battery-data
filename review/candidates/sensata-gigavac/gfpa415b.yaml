@@ -1,0 +1,129 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/sensata-gigavac/gfpa415b",
+    "kind": "component",
+    "component_type": "fuse",
+    "manufacturer": "Sensata GIGAVAC",
+    "model_number": "GFPA415B"
+  },
+  "source": {
+    "uid": "src/sensata-gfp400-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC GFP400 GigaFuse",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gfp400-gigafuse-datasheet.pdf",
+    "revision": "rev.02/06/25",
+    "retrieved_at": "2026-09-21",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Manufacturer PDF retrieved as web-extracted text; direct original-byte retrieval returned HTTP 403, so no SHA-256 is claimed. Web screenshot retrieval returned no viewable image; visual verification remains pending. Exact ordering example GFPA415B only; active 1500 A production option confirmed on page 3. The revision date is kept literal. DC context is explicit on page 1. Footnote 3 specifies 15.5 kA at 650 V / 12 µH and up to 12 kA at 850 V / 4 µH; do not infer 10 kA at 1000 V. No ordering-option cross-product, pyro-initiator resistance, or universal clear-time claim is imported."
+  },
+  "observations": [
+    {
+      "quantity": "fuse_current_rating",
+      "value": 400,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Highlights; page 3 note 2",
+        "quote": "400 A; 4/0 busbars"
+      },
+      "conditions": {
+        "conductor_description": "4/0 busbars",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "qualification": "Application- and busbar-dependent; see note 2"
+        }
+      }
+    },
+    {
+      "quantity": "fuse_voltage_rating",
+      "value": 1000,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Technical specifications / rated voltage",
+        "quote": "Rated voltage: 1000 V"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "qualification": "At 1000 V above 3 kA, consult Sensata; note 3"
+        }
+      }
+    },
+    {
+      "quantity": "fuse_trip_current",
+      "value": 1500,
+      "unit": "A",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Ordering example GFPA415B and trip tolerance",
+        "quote": "GFPA415B; 1500 A; +100/-400 A"
+      },
+      "tol_plus": 100,
+      "tol_minus": 400,
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 790,
+      "unit": "g",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Technical specifications / active variant mass",
+        "quote": "Active mass: 790 g"
+      }
+    },
+    {
+      "quantity": "interrupting_current",
+      "value": 15.5,
+      "unit": "kA",
+      "statistic": "rated",
+      "locator": {
+        "page": 3,
+        "section": "General notes / note 3",
+        "quote": "650 V; 15.5 kA; 12 µH"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 650,
+        "extra": {
+          "system_inductance_uh": 12,
+          "voltage_qualification": "Validated at 650 V",
+          "qualification": "Performance depends on environment and system isolation; see note 3"
+        }
+      }
+    },
+    {
+      "quantity": "interrupting_current",
+      "value": 12,
+      "unit": "kA",
+      "statistic": "rated",
+      "locator": {
+        "page": 3,
+        "section": "General notes / note 3",
+        "quote": "850 V; 12 kA; 4 µH"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 850,
+        "extra": {
+          "system_inductance_uh": 4,
+          "voltage_qualification": "Validated up to 850 V",
+          "qualification": "Performance depends on environment and system isolation; see note 3"
+        }
+      }
+    }
+  ]
+}
