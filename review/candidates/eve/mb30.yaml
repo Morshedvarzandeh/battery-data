@@ -1,0 +1,98 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/eve/mb30",
+    "kind": "cell",
+    "manufacturer": "EVE Energy",
+    "model_number": "MB30",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/eve-selection-inspected-2026-09-21",
+    "kind": "manufacturer_web",
+    "title": "EVE MB31 vs. MB30 vs. 280K-V3 in Commercial ESS",
+    "url": "https://www.evemall.eu/selection-guide/eve-mb31-vs-mb30-vs-280k-v3-commercial-ess",
+    "retrieved_at": "2026-09-21",
+    "sha256": "2715f1b2af17adaf88dc26fe61b252d61053173fc1c2011a442a0713ea48460c",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Manufacturer selection guide. Only MB30 is added. MB31 is already accepted; LF280K exists in the SQL reference set and its V3 revision is not counted as an additional identity. MB30 life-test conditions are not specified. Bare IR is not assigned an AC or DC method. Approximate derived energy in the article is omitted.",
+    "document_date": "2025-05-28"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 306,
+      "unit": "Ah",
+      "locator": {
+        "section": "MB30 / Specifications / nominal capacity",
+        "quote": "MB30: nominal capacity 306Ah"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 5600,
+      "unit": "g",
+      "locator": {
+        "section": "MB30 / Weight",
+        "quote": "MB30: 5600g ± 300g"
+      },
+      "tol_plus": 300,
+      "tol_minus": 300
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 10000,
+      "unit": "cycles",
+      "locator": {
+        "section": "MB30 / Our LFP Battery Solution",
+        "quote": "With a nominal capacity of 306Ah and a cycle life of 10,000 cycles, the MB30"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "extra": {
+          "end_of_life_criterion": "not stated"
+        },
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 174,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "MB30 / Comparison introduction",
+        "quote": "MB30 (174Wh/kg)"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "locator": {
+      "section": "Product title / chemistry",
+      "quote": "EVE MB31, EVE MB30, and EVE 280K-V3; all LiFePO4 batteries; same core chemistry"
+    }
+  }
+}

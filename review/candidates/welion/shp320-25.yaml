@@ -1,0 +1,237 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/welion/shp320-25",
+    "kind": "cell",
+    "manufacturer": "WeLion",
+    "model_number": "SHP320-25",
+    "is_rechargeable": true,
+    "form_factor": "pouch",
+    "aliases": [
+      "PL10474172-25Ah"
+    ]
+  },
+  "source": {
+    "uid": "src/welion-shp320-25-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "WeLion SHP320-25 Semi-Solid-State datasheet",
+    "url": "https://welion-energy.com/media/07/1a/f0/1730132707/SHP320-25%20datasheet.pdf?ts=1744633210",
+    "retrieved_at": "2026-09-21",
+    "sha256": "65e91683e6dc2fd0d417efc7dda99ae5706caadd9903d150c611257972dbda94",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP320-25/30000106; SHA-256 a99f19c80357c673f64affe464d2ac0fff8e5dcf28c4bdc7f9e96b28e16f2b90; manufacturer part PL10474172-25Ah.",
+    "revision": "002",
+    "document_date": "2025-04-09"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 25.0,
+      "unit": "Ah",
+      "locator": {
+        "section": "SHP320-25 / Capacity / Voltages",
+        "quote": "Typical 25.0 Ah",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "energy",
+      "value": 91.25,
+      "unit": "Wh",
+      "locator": {
+        "section": "SHP320-25 / Capacity / Voltages",
+        "quote": "Typical 91.25 Wh",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.65,
+      "unit": "V",
+      "locator": {
+        "section": "SHP320-25 / Capacity / Voltages",
+        "quote": "Voltages Nominal 3.65 V",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 305.0,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "SHP320-25 / Energy Density",
+        "quote": "Gravimetric 305.0 Wh/kg",
+        "page": 1
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 689.0,
+      "unit": "Wh/L",
+      "locator": {
+        "section": "SHP320-25 / Energy Density",
+        "quote": "Volumetric 689.0 Wh/L",
+        "page": 1
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 10.4,
+      "unit": "mm",
+      "locator": {
+        "section": "SHP320-25 / Dimensions",
+        "quote": "A Thickness 10.4 ± 0.3 mm",
+        "page": 1
+      },
+      "tol_plus": 0.3,
+      "tol_minus": 0.3
+    },
+    {
+      "quantity": "width",
+      "value": 74.0,
+      "unit": "mm",
+      "locator": {
+        "section": "SHP320-25 / Dimensions",
+        "quote": "B Width 74.0 ± 1.0 mm",
+        "page": 1
+      },
+      "tol_plus": 1.0,
+      "tol_minus": 1.0
+    },
+    {
+      "quantity": "length",
+      "value": 172.0,
+      "unit": "mm",
+      "locator": {
+        "section": "SHP320-25 / Dimensions",
+        "quote": "C Length 172.0 ± 2.0 mm",
+        "page": 1
+      },
+      "tol_plus": 2.0,
+      "tol_minus": 2.0
+    },
+    {
+      "quantity": "mass",
+      "value": 299.0,
+      "unit": "g",
+      "locator": {
+        "section": "SHP320-25 / Dimensions",
+        "quote": "Weight 299.0 ± 10.0 g",
+        "page": 1
+      },
+      "tol_plus": 10.0,
+      "tol_minus": 10.0
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "locator": {
+        "section": "SHP320-25 / Temperatures",
+        "quote": "Charge 0 to 45 °C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 45,
+      "unit": "°C",
+      "locator": {
+        "section": "SHP320-25 / Temperatures",
+        "quote": "Charge 0 to 45 °C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "locator": {
+        "section": "SHP320-25 / Temperatures",
+        "quote": "Discharge -20 to 55 °C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 55,
+      "unit": "°C",
+      "locator": {
+        "section": "SHP320-25 / Temperatures",
+        "quote": "Discharge -20 to 55 °C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "NMC+",
+    "cathode_text": "NMC+",
+    "electrolyte_text": "Semi-Solid-State",
+    "locator": {
+      "section": "SHP320-25 / header",
+      "quote": "SHP320-25 — NMC+; Semi-Solid-State",
+      "page": 1
+    }
+  }
+}

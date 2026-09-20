@@ -1,0 +1,177 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/lg-energy-solution/jp3",
+    "kind": "cell",
+    "manufacturer": "LG Energy Solution",
+    "model_number": "JP3",
+    "is_rechargeable": true,
+    "form_factor": "pouch"
+  },
+  "source": {
+    "uid": "src/lg-cells-2024-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+    "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+    "retrieved_at": "2026-09-21",
+    "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 62.4,
+      "unit": "Ah",
+      "locator": {
+        "section": "JP3 column / Capacity (Min, 25°C, 0.3C)",
+        "quote": "JP3: 62.4 Ah; Min, 25°C, 0.5C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_c": 25,
+        "rate_value": 0.5,
+        "rate_unit": "C",
+        "unstated": [
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.68,
+      "unit": "V",
+      "locator": {
+        "section": "JP3 column / Nominal Voltage",
+        "quote": "JP3: Nominal Voltage 3.68 Vdc",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "energy",
+      "value": 229.6,
+      "unit": "Wh",
+      "locator": {
+        "section": "JP3 column / Energy",
+        "quote": "JP3: Energy 229.6 Wh (Min.)",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 184,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "JP3 column / Energy Density (Min)",
+        "quote": "JP3: 184 Wh/kg (Min header)",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 389,
+      "unit": "Wh/L",
+      "locator": {
+        "section": "JP3 column / Energy Density (Min)",
+        "quote": "JP3: 389 Wh/L (Min header)",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1245,
+      "unit": "g",
+      "locator": {
+        "section": "JP3 column / Weight",
+        "quote": "JP3: Weight Max. 1245 g",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "length",
+      "value": 353.5,
+      "unit": "mm",
+      "locator": {
+        "section": "JP3 column / Dimension",
+        "quote": "L*W*T (mm): 353.5*101.7*16.4 (Max.)",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "dimension_basis": "L*W*T (mm): 353.5*101.7*16.4 (Max.)"
+        }
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 101.7,
+      "unit": "mm",
+      "locator": {
+        "section": "JP3 column / Dimension",
+        "quote": "L*W*T (mm): 353.5*101.7*16.4 (Max.)",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "dimension_basis": "L*W*T (mm): 353.5*101.7*16.4 (Max.)"
+        }
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 16.4,
+      "unit": "mm",
+      "locator": {
+        "section": "JP3 column / Dimension",
+        "quote": "L*W*T (mm): 353.5*101.7*16.4 (Max.)",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "dimension_basis": "L*W*T (mm): 353.5*101.7*16.4 (Max.)"
+        }
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "NCM",
+    "cathode_text": "NCM",
+    "anode_text": "Graphite",
+    "locator": {
+      "section": "JP3 column / Chemistry",
+      "quote": "JP3: NCM/Graphite",
+      "page": 1
+    }
+  }
+}

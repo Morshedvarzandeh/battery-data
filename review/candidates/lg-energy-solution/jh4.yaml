@@ -1,0 +1,118 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/lg-energy-solution/jh4",
+    "kind": "cell",
+    "manufacturer": "LG Energy Solution",
+    "model_number": "JH4",
+    "is_rechargeable": true,
+    "form_factor": "pouch"
+  },
+  "source": {
+    "uid": "src/lg-cells-2024-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+    "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+    "retrieved_at": "2026-09-21",
+    "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 70.6,
+      "unit": "Ah",
+      "locator": {
+        "section": "JH4 column / Capacity (Min, 25°C, 0.3C)",
+        "quote": "JH4: 70.6 Ah; Min, 25°C, 0.3C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_c": 25,
+        "rate_value": 0.3,
+        "rate_unit": "C",
+        "unstated": [
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "energy",
+      "value": 266,
+      "unit": "Wh",
+      "locator": {
+        "section": "JH4 column / Energy",
+        "quote": "JH4: Energy 266 Wh (nom)",
+        "page": 1
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 213.7,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "JH4 column / Energy Density (Min)",
+        "quote": "JH4: 213.7 Wh/kg (nom)",
+        "page": 1
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 467.8,
+      "unit": "Wh/L",
+      "locator": {
+        "section": "JH4 column / Energy Density (Min)",
+        "quote": "JH4: 467.8 Wh/L (nom)",
+        "page": 1
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1245,
+      "unit": "g",
+      "locator": {
+        "section": "JH4 column / Weight",
+        "quote": "JH4: Weight Max. 1245 g",
+        "page": 1
+      },
+      "statistic": "maximum"
+    }
+  ],
+  "chemistry": {
+    "designation": "NCM",
+    "cathode_text": "NCM",
+    "anode_text": "Graphite",
+    "locator": {
+      "section": "JH4 column / Chemistry",
+      "quote": "JH4: NCM/Graphite",
+      "page": 1
+    }
+  }
+}

@@ -130,6 +130,7 @@
           "enum": [
             "datasheet",
             "manufacturer_web",
+            "regulatory_filing",
             "standard",
             "journal_article",
             "preprint",

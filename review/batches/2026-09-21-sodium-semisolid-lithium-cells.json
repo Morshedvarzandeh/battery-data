@@ -1,0 +1,5461 @@
+{
+  "schema_version": 1,
+  "batch": "2026-09-21-sodium-semisolid-lithium-cells",
+  "origin": "Visually inspected manufacturer specifications and public primary evidence; see review/imports/2026-09-21-sodium-semisolid-lithium-cells.md",
+  "candidate_count": 33,
+  "candidates": [
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/calb/684ah-ess-cell",
+          "kind": "cell",
+          "manufacturer": "CALB",
+          "model_number": "684Ah ESS cell",
+          "is_rechargeable": true
+        },
+        "source": {
+          "uid": "src/calb-home-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "CALB current product showcase — 684Ah energy-storage cell",
+          "url": "https://www.calb-tech.com/",
+          "retrieved_at": "2026-09-21",
+          "sha256": "a866c1f962518266bc9b1dd97ac3ca61b95ece4d04895312aee0ed5a615cf716",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Manufacturer product showcase as retrieved, no printed revision/date. Capacity-based public designation; orderable part code, exact chemistry, cell voltage, dimensions and test protocol are not given. The 6.8MWh+ figure describes a 20-foot container and is excluded from the cell. The 314Ah Gen2 showcase is held separately because its relationship to L173F314 is unresolved. 684Ah is a different published capacity from the launch article’s 661Ah; they are not silently equated."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 684,
+            "unit": "Ah",
+            "locator": {
+              "section": "Solutions and products / 684Ah储能电芯",
+              "quote": "684Ah储能电芯 — 全新一代 大容量叠片电芯"
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 440,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "Solutions and products / 684Ah储能电芯",
+              "quote": "≥440Wh/L 能量密度"
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/calb/l173f314",
+          "kind": "cell",
+          "manufacturer": "CALB",
+          "model_number": "L173F314",
+          "is_rechargeable": true,
+          "form_factor": "prismatic_hardcase"
+        },
+        "source": {
+          "uid": "src/calb-filings-inspected-2026-09-21",
+          "kind": "regulatory_filing",
+          "title": "Prairie Song Reliability Project — Data Request Response 2 Part 6; BESS HMA Rev B",
+          "url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=103666&tn=266609",
+          "retrieved_at": "2026-09-21",
+          "sha256": "9cb8964df3b6e18af87670a62cb7dfa0dfa58d06bf3e689b4d3f1259b9798219",
+          "license": "unspecified; public regulatory filing",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Public California Energy Commission filing, TN 266609. The cell is described on PDF page 114, printed HMA page 12, section 2.2. The HMA is watermarked DRAFT. The nominal cell rating is 3.2 V / 314 Ah; 332.8 V refers to the 104S module and is excluded. Publisher: project applicant / public regulatory docket; this is not a CALB datasheet or an independent capacity test. No equivalence to CALB 314Ah Gen2 or L173F314A is assumed.",
+          "revision": "HMA Rev B (DRAFT)",
+          "is_final": false
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 314,
+            "unit": "Ah",
+            "locator": {
+              "section": "HMA printed page 12 / 2.2 PT2 Cells, Modules, Racks/Clusters",
+              "quote": "CALB L173F314 cells; nominally rated 3.2 volts (V) and 314 ampere hours (Ah)",
+              "page": 114
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.2,
+            "unit": "V",
+            "locator": {
+              "section": "HMA printed page 12 / 2.2 PT2 Cells, Modules, Racks/Clusters",
+              "quote": "CALB L173F314 cells; nominally rated 3.2 volts (V) and 314 ampere hours (Ah)",
+              "page": 114
+            },
+            "statistic": "nominal"
+          }
+        ],
+        "chemistry": {
+          "designation": "LFP",
+          "cathode_text": "Lithium iron phosphate (LFP)",
+          "locator": {
+            "section": "HMA printed page 12 / 2.2 PT2 Cells, Modules, Racks/Clusters",
+            "quote": "lithium iron phosphate (LFP) battery cells; CALB L173F314",
+            "page": 114
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/calb/zhijiu-392ah-long-cycle-ess-cell",
+          "kind": "cell",
+          "manufacturer": "CALB",
+          "model_number": "ZHIJIU 392Ah long-cycle ESS cell",
+          "is_rechargeable": true
+        },
+        "source": {
+          "uid": "src/calb-esie-2026-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "CALB ZHIJIU long-cycle energy-storage cell launch at ESIE 2026",
+          "url": "https://www.calb-tech.com/newsDetails/25.html",
+          "retrieved_at": "2026-09-21",
+          "sha256": "30b49fe8c34d29b497dfb466b71c729014d17d3f50220ace0bff21071492e345",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Manufacturer launch announcement, dated 2026-04-02 for the 2026-04-01 event. Public capacity-based designations, not unpublished orderable part codes. 392Ah, 588Ah and 661Ah are the three named versions. Exact cathode chemistry, form factor, voltage, dimensions and test protocols are not supplied and are not inferred. Life values are claims with unspecified conditions, not comparable verified test results. Do not combine with older life claims or treat system energy as cell energy.",
+          "document_date": "2026-04-02"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 392,
+            "unit": "Ah",
+            "locator": {
+              "section": "全系列长循环电芯 / 2026-04-01 launch",
+              "quote": "至久系列长循环储能电芯 — 392Ah; published versions: 392Ah、588Ah、661Ah"
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 15000,
+            "unit": "cycles",
+            "locator": {
+              "section": "全系列长循环电芯 / 2026-04-01 launch",
+              "quote": "15000次循环寿命"
+            },
+            "conditions": {
+              "extra": {
+                "claim_scope": "manufacturer launch announcement",
+                "end_of_life_criterion": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "dod_pct",
+                "rate_value",
+                "rate_unit"
+              ]
+            }
+          },
+          {
+            "quantity": "calendar_life",
+            "value": 25,
+            "unit": "year",
+            "locator": {
+              "section": "全系列长循环电芯 / 2026-04-01 launch",
+              "quote": "产品核心参数达到15000次循环寿命、25年日历寿命"
+            },
+            "conditions": {
+              "extra": {
+                "end_of_life_criterion": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "soc_pct"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/calb/zhijiu-588ah-long-cycle-ess-cell",
+          "kind": "cell",
+          "manufacturer": "CALB",
+          "model_number": "ZHIJIU 588Ah long-cycle ESS cell",
+          "is_rechargeable": true
+        },
+        "source": {
+          "uid": "src/calb-esie-2026-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "CALB ZHIJIU long-cycle energy-storage cell launch at ESIE 2026",
+          "url": "https://www.calb-tech.com/newsDetails/25.html",
+          "retrieved_at": "2026-09-21",
+          "sha256": "30b49fe8c34d29b497dfb466b71c729014d17d3f50220ace0bff21071492e345",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Manufacturer launch announcement, dated 2026-04-02 for the 2026-04-01 event. Public capacity-based designations, not unpublished orderable part codes. 392Ah, 588Ah and 661Ah are the three named versions. Exact cathode chemistry, form factor, voltage, dimensions and test protocols are not supplied and are not inferred. Life values are claims with unspecified conditions, not comparable verified test results. Do not combine with older life claims or treat system energy as cell energy.",
+          "document_date": "2026-04-02"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 588,
+            "unit": "Ah",
+            "locator": {
+              "section": "全系列长循环电芯 / 2026-04-01 launch",
+              "quote": "至久系列长循环储能电芯 — 588Ah; published versions: 392Ah、588Ah、661Ah"
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 15000,
+            "unit": "cycles",
+            "locator": {
+              "section": "全系列长循环电芯 / 2026-04-01 launch",
+              "quote": "15000次循环寿命"
+            },
+            "conditions": {
+              "extra": {
+                "claim_scope": "manufacturer launch announcement",
+                "end_of_life_criterion": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "dod_pct",
+                "rate_value",
+                "rate_unit"
+              ]
+            }
+          },
+          {
+            "quantity": "calendar_life",
+            "value": 25,
+            "unit": "year",
+            "locator": {
+              "section": "全系列长循环电芯 / 2026-04-01 launch",
+              "quote": "产品核心参数达到15000次循环寿命、25年日历寿命"
+            },
+            "conditions": {
+              "extra": {
+                "end_of_life_criterion": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "soc_pct"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/calb/zhijiu-661ah-long-cycle-ess-cell",
+          "kind": "cell",
+          "manufacturer": "CALB",
+          "model_number": "ZHIJIU 661Ah long-cycle ESS cell",
+          "is_rechargeable": true
+        },
+        "source": {
+          "uid": "src/calb-esie-2026-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "CALB ZHIJIU long-cycle energy-storage cell launch at ESIE 2026",
+          "url": "https://www.calb-tech.com/newsDetails/25.html",
+          "retrieved_at": "2026-09-21",
+          "sha256": "30b49fe8c34d29b497dfb466b71c729014d17d3f50220ace0bff21071492e345",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Manufacturer launch announcement, dated 2026-04-02 for the 2026-04-01 event. Public capacity-based designations, not unpublished orderable part codes. 392Ah, 588Ah and 661Ah are the three named versions. Exact cathode chemistry, form factor, voltage, dimensions and test protocols are not supplied and are not inferred. Life values are claims with unspecified conditions, not comparable verified test results. Do not combine with older life claims or treat system energy as cell energy.",
+          "document_date": "2026-04-02"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 661,
+            "unit": "Ah",
+            "locator": {
+              "section": "全系列长循环电芯 / 2026-04-01 launch",
+              "quote": "至久系列长循环储能电芯 — 661Ah; published versions: 392Ah、588Ah、661Ah"
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 15000,
+            "unit": "cycles",
+            "locator": {
+              "section": "全系列长循环电芯 / 2026-04-01 launch",
+              "quote": "15000次循环寿命"
+            },
+            "conditions": {
+              "extra": {
+                "claim_scope": "manufacturer launch announcement",
+                "end_of_life_criterion": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "dod_pct",
+                "rate_value",
+                "rate_unit"
+              ]
+            }
+          },
+          {
+            "quantity": "calendar_life",
+            "value": 25,
+            "unit": "year",
+            "locator": {
+              "section": "全系列长循环电芯 / 2026-04-01 launch",
+              "quote": "产品核心参数达到15000次循环寿命、25年日历寿命"
+            },
+            "conditions": {
+              "extra": {
+                "end_of_life_criterion": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "soc_pct"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/catl/314ah-lfp-ess-cell",
+          "kind": "cell",
+          "manufacturer": "CATL",
+          "model_number": "314Ah LFP ESS cell",
+          "is_rechargeable": true,
+          "form_factor": "prismatic_hardcase"
+        },
+        "source": {
+          "uid": "src/catl-ess-2026-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "CATL energy storage solutions and products — LFP cell parameters",
+          "url": "https://www.catl.com/uploads/1/file/public/202604/20260409212143_f2npbuioci.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "4a968fd7036f97a48ee91654a8e3e90ea3295e62d40c5f3c842971156044d867",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. PDF page 9 contains printed pages 15–16. Public capacity-based product designations; orderable part codes are not supplied. The PDF metadata title contains 20241030 but creation/modification metadata is March/April 2026; no printed revision or document date is asserted. Specific cell rows override the general >8000-cycle headline. The 280Ah cell already has a pending record and is excluded. P denotes constant power, not C-rate. Capacity-test conditions are not explicitly linked to the separate charge/discharge rate row."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 314,
+            "unit": "Ah",
+            "locator": {
+              "section": "314Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+              "quote": "额定容量[Ah] 314",
+              "page": 9
+            },
+            "statistic": "rated",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 5.58,
+            "unit": "kg",
+            "locator": {
+              "section": "314Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+              "quote": "电芯重量[kg] 5.58",
+              "page": 9
+            }
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 7000,
+            "unit": "cycles",
+            "locator": {
+              "section": "314Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+              "quote": "循环寿命[次] [25°C, 0.5P/0.5P, 70%SOH] ≥7000",
+              "page": 9
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.5,
+              "rate_unit": "P",
+              "direction": "symmetric",
+              "extra": {
+                "end_of_life_soh_pct": 70,
+                "soh_definition": "not stated"
+              },
+              "unstated": [
+                "dod_pct"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "LFP",
+          "cathode_text": "LFP",
+          "locator": {
+            "section": "314Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+            "quote": "314Ah LFP",
+            "page": 9
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/catl/587ah-lfp-ess-cell",
+          "kind": "cell",
+          "manufacturer": "CATL",
+          "model_number": "587Ah LFP ESS cell",
+          "is_rechargeable": true,
+          "form_factor": "prismatic_hardcase"
+        },
+        "source": {
+          "uid": "src/catl-ess-2026-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "CATL energy storage solutions and products — LFP cell parameters",
+          "url": "https://www.catl.com/uploads/1/file/public/202604/20260409212143_f2npbuioci.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "4a968fd7036f97a48ee91654a8e3e90ea3295e62d40c5f3c842971156044d867",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. PDF page 9 contains printed pages 15–16. Public capacity-based product designations; orderable part codes are not supplied. The PDF metadata title contains 20241030 but creation/modification metadata is March/April 2026; no printed revision or document date is asserted. Specific cell rows override the general >8000-cycle headline. The 280Ah cell already has a pending record and is excluded. P denotes constant power, not C-rate. Capacity-test conditions are not explicitly linked to the separate charge/discharge rate row."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 587,
+            "unit": "Ah",
+            "locator": {
+              "section": "587Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+              "quote": "额定容量[Ah] 587",
+              "page": 9
+            },
+            "statistic": "rated",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 9.83,
+            "unit": "kg",
+            "locator": {
+              "section": "587Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+              "quote": "电芯重量[kg] 9.83",
+              "page": 9
+            }
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 8000,
+            "unit": "cycles",
+            "locator": {
+              "section": "587Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+              "quote": "循环寿命[次] [25°C, 0.5P/0.5P, 70%SOH] ≥8000",
+              "page": 9
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.5,
+              "rate_unit": "P",
+              "direction": "symmetric",
+              "extra": {
+                "end_of_life_soh_pct": 70,
+                "soh_definition": "not stated"
+              },
+              "unstated": [
+                "dod_pct"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "LFP",
+          "cathode_text": "LFP",
+          "locator": {
+            "section": "587Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+            "quote": "587Ah LFP",
+            "page": 9
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/eve/lf206",
+          "kind": "cell",
+          "manufacturer": "EVE Energy",
+          "model_number": "LF206",
+          "is_rechargeable": true,
+          "form_factor": "prismatic_hardcase"
+        },
+        "source": {
+          "uid": "src/eve-lf206-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "EVE Energy LF206 product specifications",
+          "url": "https://www.evemall.eu/power-battery/prismatic-lfp-cell/lf206",
+          "retrieved_at": "2026-09-21",
+          "sha256": "b88b3bc108b27beb0f42418903de6d21413ea9a930dd5664bbd22efbcb5bdd43",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Current manufacturer product specification table; no printed document revision. Generic category capacity ranges are not expanded into products. Life text explicitly states 25°C, 1C charge / 0.5C discharge, 80% SOH. Dimension axis order is not named; dimensions are held. Initial IR lacks an AC/DC method and is held. Standard rates are not silently borrowed as capacity-test conditions."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 206,
+            "unit": "Ah",
+            "locator": {
+              "section": "LF206 / Specifications / nominal capacity",
+              "quote": "LF206: nominal capacity 206Ah"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.22,
+            "unit": "V",
+            "locator": {
+              "section": "LF206 / Specifications / nominal voltage",
+              "quote": "LF206: nominal voltage 3.22V"
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "mass",
+            "value": 3500,
+            "unit": "g",
+            "locator": {
+              "section": "LF206 / Specifications / weight",
+              "quote": "LF206: 3500g ± 105g"
+            },
+            "tol_plus": 105,
+            "tol_minus": 105
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 4000,
+            "unit": "cycles",
+            "locator": {
+              "section": "LF206 / Product Introduction",
+              "quote": "Up to 4000 Cycles; 80%SOH; (25℃ 1C/0.5C)"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "extra": {
+                "charge_rate_value": 1,
+                "charge_rate_unit": "C",
+                "end_of_life_soh_pct": 80,
+                "soh_definition": "not stated"
+              },
+              "temperature_c": 25,
+              "rate_value": 0.5,
+              "rate_unit": "C",
+              "direction": "discharge",
+              "unstated": [
+                "dod_pct"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -10,
+            "unit": "°C",
+            "locator": {
+              "section": "LF206 / Specifications",
+              "quote": "Charge temperature -10 to 65 °C"
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 65,
+            "unit": "°C",
+            "locator": {
+              "section": "LF206 / Specifications",
+              "quote": "Charge temperature -10 to 65 °C"
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -35,
+            "unit": "°C",
+            "locator": {
+              "section": "LF206 / Specifications",
+              "quote": "Discharge temperature -35 to 65 °C"
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 65,
+            "unit": "°C",
+            "locator": {
+              "section": "LF206 / Specifications",
+              "quote": "Discharge temperature -35 to 65 °C"
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "LFP",
+          "cathode_text": "Lithium iron phosphate",
+          "locator": {
+            "section": "Product title / chemistry",
+            "quote": "LF206 Prismatic LFP / Lithium Iron Phosphate Battery"
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/eve/lf235l",
+          "kind": "cell",
+          "manufacturer": "EVE Energy",
+          "model_number": "LF235L",
+          "is_rechargeable": true,
+          "form_factor": "prismatic_hardcase"
+        },
+        "source": {
+          "uid": "src/eve-lf235l-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "EVE Energy LF235L product specifications",
+          "url": "https://www.evemall.eu/power-battery/prismatic-lfp-cell/lf235l",
+          "retrieved_at": "2026-09-21",
+          "sha256": "12bbc65bc8debff6691d2e107fd632dfd2c9c768ab38eb429721872a8422a1fc",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Current manufacturer product specification table; no printed document revision. Generic category capacity ranges are not expanded into products. The separate life graphic is labelled LF356L despite the LF235L page title; its SOH and test conditions are held. The model-specific table states 4000 cycles but no life-test protocol. Dimension precision follows the model-specific table (173.936 mm) rather than the rounded headline (173.93 mm). Initial IR lacks an AC/DC method and is held. Standard rates are not silently borrowed as capacity-test conditions."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 235,
+            "unit": "Ah",
+            "locator": {
+              "section": "LF235L / Specifications / nominal capacity",
+              "quote": "LF235L: nominal capacity 235Ah"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.2,
+            "unit": "V",
+            "locator": {
+              "section": "LF235L / Specifications / nominal voltage",
+              "quote": "LF235L: nominal voltage 3.2V"
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "mass",
+            "value": 4140,
+            "unit": "g",
+            "locator": {
+              "section": "LF235L / Specifications / weight",
+              "quote": "LF235L: 4140g ± 124g"
+            },
+            "tol_plus": 124,
+            "tol_minus": 124
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 4000,
+            "unit": "cycles",
+            "locator": {
+              "section": "LF235L / Specifications / nominal cycles",
+              "quote": "Model Number LF235L; Nominal Cycles(times) 4000"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "extra": {
+                "end_of_life_criterion": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "dod_pct",
+                "rate_value",
+                "rate_unit"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -10,
+            "unit": "°C",
+            "locator": {
+              "section": "LF235L / Specifications",
+              "quote": "Charge temperature -10 to 65 °C"
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 65,
+            "unit": "°C",
+            "locator": {
+              "section": "LF235L / Specifications",
+              "quote": "Charge temperature -10 to 65 °C"
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -35,
+            "unit": "°C",
+            "locator": {
+              "section": "LF235L / Specifications",
+              "quote": "Discharge temperature -35 to 65 °C"
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 65,
+            "unit": "°C",
+            "locator": {
+              "section": "LF235L / Specifications",
+              "quote": "Discharge temperature -35 to 65 °C"
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "height",
+            "value": 207.2,
+            "unit": "mm",
+            "locator": {
+              "section": "LF235L / Specifications / dimensions",
+              "quote": "Height × Length × Thickness(mm) 207.2*173.936*53.85"
+            }
+          },
+          {
+            "quantity": "length",
+            "value": 173.936,
+            "unit": "mm",
+            "locator": {
+              "section": "LF235L / Specifications / dimensions",
+              "quote": "Height × Length × Thickness(mm) 207.2*173.936*53.85"
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 53.85,
+            "unit": "mm",
+            "locator": {
+              "section": "LF235L / Specifications / dimensions",
+              "quote": "Height × Length × Thickness(mm) 207.2*173.936*53.85"
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "LFP",
+          "cathode_text": "Lithium iron phosphate",
+          "locator": {
+            "section": "Product title / chemistry",
+            "quote": "LF235L Prismatic LFP / Lithium Iron Phosphate Battery"
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/eve/mb30",
+          "kind": "cell",
+          "manufacturer": "EVE Energy",
+          "model_number": "MB30",
+          "is_rechargeable": true
+        },
+        "source": {
+          "uid": "src/eve-selection-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "EVE MB31 vs. MB30 vs. 280K-V3 in Commercial ESS",
+          "url": "https://www.evemall.eu/selection-guide/eve-mb31-vs-mb30-vs-280k-v3-commercial-ess",
+          "retrieved_at": "2026-09-21",
+          "sha256": "2715f1b2af17adaf88dc26fe61b252d61053173fc1c2011a442a0713ea48460c",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Manufacturer selection guide. Only MB30 is added. MB31 is already accepted; LF280K exists in the SQL reference set and its V3 revision is not counted as an additional identity. MB30 life-test conditions are not specified. Bare IR is not assigned an AC or DC method. Approximate derived energy in the article is omitted.",
+          "document_date": "2025-05-28"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 306,
+            "unit": "Ah",
+            "locator": {
+              "section": "MB30 / Specifications / nominal capacity",
+              "quote": "MB30: nominal capacity 306Ah"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 5600,
+            "unit": "g",
+            "locator": {
+              "section": "MB30 / Weight",
+              "quote": "MB30: 5600g ± 300g"
+            },
+            "tol_plus": 300,
+            "tol_minus": 300
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 10000,
+            "unit": "cycles",
+            "locator": {
+              "section": "MB30 / Our LFP Battery Solution",
+              "quote": "With a nominal capacity of 306Ah and a cycle life of 10,000 cycles, the MB30"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "extra": {
+                "end_of_life_criterion": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "dod_pct",
+                "rate_value",
+                "rate_unit"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 174,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "MB30 / Comparison introduction",
+              "quote": "MB30 (174Wh/kg)"
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "LFP",
+          "cathode_text": "Lithium iron phosphate",
+          "locator": {
+            "section": "Product title / chemistry",
+            "quote": "EVE MB31, EVE MB30, and EVE 280K-V3; all LiFePO4 batteries; same core chemistry"
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/hina-battery/he240",
+          "kind": "cell",
+          "manufacturer": "HiNa Battery",
+          "model_number": "HE240",
+          "is_rechargeable": true,
+          "form_factor": "prismatic_hardcase",
+          "aliases": [
+            "NaCP72173204-HE240"
+          ]
+        },
+        "source": {
+          "uid": "src/hina-1761960297460023-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "HiNa HE240 sodium-ion cell specification slide",
+          "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960297460023.png",
+          "retrieved_at": "2026-09-21",
+          "sha256": "aea689e389dcdbd4e1c192a7561977dd60bc338971a675b5ac3f066b8563aad7",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. ",
+          "document_date": "2025-11-01"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 240,
+            "unit": "Ah",
+            "locator": {
+              "section": "HE240 specification image",
+              "quote": "标称容量 240Ah"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3,
+            "unit": "V",
+            "locator": {
+              "section": "HE240 specification image",
+              "quote": "标称电压 3.0V"
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 150,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "HE240 specification image",
+              "quote": "能量密度 >150Wh/kg"
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "extra": {
+                "source_comparator": ">"
+              },
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 8000,
+            "unit": "cycles",
+            "locator": {
+              "section": "HE240 specification image",
+              "quote": "循环寿命 >8000次@0.5P"
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "rate_value": 0.5,
+              "rate_unit": "P",
+              "extra": {
+                "source_comparator": ">",
+                "end_of_life_criterion": "not stated",
+                "rate_direction": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "dod_pct"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -40,
+            "unit": "°C",
+            "locator": {
+              "section": "HE240 specification image",
+              "quote": "工作温度 -40°C~60°C"
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "temperature_reference",
+                "direction"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 60,
+            "unit": "°C",
+            "locator": {
+              "section": "HE240 specification image",
+              "quote": "工作温度 -40°C~60°C"
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "unstated": [
+                "temperature_reference",
+                "direction"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "Sodium-ion",
+          "locator": {
+            "section": "Na-labelled cell / model identity",
+            "quote": "HE240 — NaCP72173204-HE240 — Na"
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/hina-battery/mp10",
+          "kind": "cell",
+          "manufacturer": "HiNa Battery",
+          "model_number": "MP10",
+          "is_rechargeable": true,
+          "form_factor": "cylindrical",
+          "aliases": [
+            "NaCR32140-MP10"
+          ]
+        },
+        "source": {
+          "uid": "src/hina-1761960446647304-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "HiNa MP10 sodium-ion cell specification slide",
+          "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960446647304.png",
+          "retrieved_at": "2026-09-21",
+          "sha256": "967b6d4380588e0e65e57d42f1d76be2cd0f4d1b860e9f41db9d69af7bf99e3a",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. MP10 is shown with manufacturing partner Keyuan; the 100000 five-second pulse count is not full-cycle life and is excluded.",
+          "document_date": "2025-11-01"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 10,
+            "unit": "Ah",
+            "locator": {
+              "section": "MP10 specification image",
+              "quote": "标称容量 10Ah"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3,
+            "unit": "V",
+            "locator": {
+              "section": "MP10 specification image",
+              "quote": "标称电压 3.0V"
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 110,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "MP10 specification image",
+              "quote": "能量密度 >110Wh/kg"
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "extra": {
+                "source_comparator": ">"
+              },
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 10000,
+            "unit": "cycles",
+            "locator": {
+              "section": "MP10 specification image",
+              "quote": "循环寿命 >10,000次@5C（连续）"
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "rate_value": 5,
+              "rate_unit": "C",
+              "extra": {
+                "source_comparator": ">",
+                "end_of_life_criterion": "not stated",
+                "rate_direction": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "dod_pct"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -40,
+            "unit": "°C",
+            "locator": {
+              "section": "MP10 specification image",
+              "quote": "工作温度 -40°C~60°C"
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "temperature_reference",
+                "direction"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 60,
+            "unit": "°C",
+            "locator": {
+              "section": "MP10 specification image",
+              "quote": "工作温度 -40°C~60°C"
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "unstated": [
+                "temperature_reference",
+                "direction"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "Sodium-ion",
+          "locator": {
+            "section": "Na-labelled cell / model identity",
+            "quote": "MP10 — NaCR32140-MP10 — Na"
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/hina-battery/mp200",
+          "kind": "cell",
+          "manufacturer": "HiNa Battery",
+          "model_number": "MP200",
+          "is_rechargeable": true,
+          "form_factor": "prismatic_hardcase",
+          "aliases": [
+            "NaCP54173204-MP200"
+          ]
+        },
+        "source": {
+          "uid": "src/hina-1761960356537762-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "HiNa MP200 sodium-ion cell specification slide",
+          "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960356537762.png",
+          "retrieved_at": "2026-09-21",
+          "sha256": "c047ff9e72749bb849ae740855d1953ef19511e288c66b35f31f3b77954bd007",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. MP200 is shown with manufacturing partner Kan Battery.",
+          "document_date": "2025-11-01"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 200,
+            "unit": "Ah",
+            "locator": {
+              "section": "MP200 specification image",
+              "quote": "标称容量 200Ah"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3,
+            "unit": "V",
+            "locator": {
+              "section": "MP200 specification image",
+              "quote": "标称电压 3.0V"
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 165,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "MP200 specification image",
+              "quote": "能量密度 >165Wh/kg"
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "extra": {
+                "source_comparator": ">"
+              },
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 10000,
+            "unit": "cycles",
+            "locator": {
+              "section": "MP200 specification image",
+              "quote": "循环寿命 >10,000次@2C"
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "rate_value": 2,
+              "rate_unit": "C",
+              "extra": {
+                "source_comparator": ">",
+                "end_of_life_criterion": "not stated",
+                "rate_direction": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "dod_pct"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -40,
+            "unit": "°C",
+            "locator": {
+              "section": "MP200 specification image",
+              "quote": "工作温度 -40°C~60°C"
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "temperature_reference",
+                "direction"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 60,
+            "unit": "°C",
+            "locator": {
+              "section": "MP200 specification image",
+              "quote": "工作温度 -40°C~60°C"
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "unstated": [
+                "temperature_reference",
+                "direction"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "Sodium-ion",
+          "locator": {
+            "section": "Na-labelled cell / model identity",
+            "quote": "MP200 — NaCP54173204-MP200 — Na"
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/hina-battery/ne170",
+          "kind": "cell",
+          "manufacturer": "HiNa Battery",
+          "model_number": "NE170",
+          "is_rechargeable": true,
+          "form_factor": "prismatic_hardcase",
+          "aliases": [
+            "NaPP72173204-NE170"
+          ]
+        },
+        "source": {
+          "uid": "src/hina-1761960340685001-inspected-2026-09-21",
+          "kind": "manufacturer_web",
+          "title": "HiNa NE170 sodium-ion cell specification slide",
+          "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960340685001.png",
+          "retrieved_at": "2026-09-21",
+          "sha256": "9eabacf60c7670f7e44d23f3eeb94565f0221e05e4a7cb62c48c1127be76d0cc",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. ",
+          "document_date": "2025-11-01"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 170,
+            "unit": "Ah",
+            "locator": {
+              "section": "NE170 specification image",
+              "quote": "标称容量 170Ah"
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 2.9,
+            "unit": "V",
+            "locator": {
+              "section": "NE170 specification image",
+              "quote": "标称电压 2.9V"
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 100,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "NE170 specification image",
+              "quote": "能量密度 >100Wh/kg"
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "extra": {
+                "source_comparator": ">"
+              },
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "cycle_life",
+            "value": 10000,
+            "unit": "cycles",
+            "locator": {
+              "section": "NE170 specification image",
+              "quote": "循环寿命 >10000次@1P"
+            },
+            "is_lower_bound": true,
+            "statistic": "minimum",
+            "conditions": {
+              "rate_value": 1,
+              "rate_unit": "P",
+              "extra": {
+                "source_comparator": ">",
+                "end_of_life_criterion": "not stated",
+                "rate_direction": "not stated"
+              },
+              "unstated": [
+                "temperature_c",
+                "dod_pct"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -40,
+            "unit": "°C",
+            "locator": {
+              "section": "NE170 specification image",
+              "quote": "工作温度 -40°C~60°C"
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "temperature_reference",
+                "direction"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 60,
+            "unit": "°C",
+            "locator": {
+              "section": "NE170 specification image",
+              "quote": "工作温度 -40°C~60°C"
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "unstated": [
+                "temperature_reference",
+                "direction"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "Sodium-ion",
+          "locator": {
+            "section": "Na-labelled cell / model identity",
+            "quote": "NE170 — NaPP72173204-NE170 — Na"
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/lg-energy-solution/e101a",
+          "kind": "cell",
+          "manufacturer": "LG Energy Solution",
+          "model_number": "E101A",
+          "is_rechargeable": true,
+          "form_factor": "pouch"
+        },
+        "source": {
+          "uid": "src/lg-cells-2024-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+          "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 101.8,
+            "unit": "Ah",
+            "locator": {
+              "section": "E101A column / Capacity (Min, 25°C, 0.3C)",
+              "quote": "E101A: 101.8 Ah; Min, 25°C, 0.3C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.3,
+              "rate_unit": "C",
+              "unstated": [
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.67,
+            "unit": "V",
+            "locator": {
+              "section": "E101A column / Nominal Voltage",
+              "quote": "E101A: Nominal Voltage 3.67 Vdc",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "energy",
+            "value": 374,
+            "unit": "Wh",
+            "locator": {
+              "section": "E101A column / Energy",
+              "quote": "E101A: Energy 374 Wh",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 287,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "E101A column / Energy Density (Min)",
+              "quote": "E101A: 287 Wh/kg (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 637,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "E101A column / Energy Density (Min)",
+              "quote": "E101A: 637 Wh/L (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 1303,
+            "unit": "g",
+            "locator": {
+              "section": "E101A column / Weight",
+              "quote": "E101A: Weight 1303 g",
+              "page": 1
+            }
+          },
+          {
+            "quantity": "length",
+            "value": 580,
+            "unit": "mm",
+            "locator": {
+              "section": "E101A column / Dimension",
+              "quote": "L*W*T (mm): 580*112.4*9",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 580*112.4*9"
+              }
+            }
+          },
+          {
+            "quantity": "width",
+            "value": 112.4,
+            "unit": "mm",
+            "locator": {
+              "section": "E101A column / Dimension",
+              "quote": "L*W*T (mm): 580*112.4*9",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 580*112.4*9"
+              }
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 9,
+            "unit": "mm",
+            "locator": {
+              "section": "E101A column / Dimension",
+              "quote": "L*W*T (mm): 580*112.4*9",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 580*112.4*9"
+              }
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NCMA",
+          "cathode_text": "NCMA",
+          "anode_text": "Graphite",
+          "locator": {
+            "section": "E101A column / Chemistry",
+            "quote": "E101A: NCMA/Graphite",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/lg-energy-solution/e72b",
+          "kind": "cell",
+          "manufacturer": "LG Energy Solution",
+          "model_number": "E72B",
+          "is_rechargeable": true,
+          "form_factor": "pouch"
+        },
+        "source": {
+          "uid": "src/lg-cells-2024-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+          "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 72.2,
+            "unit": "Ah",
+            "locator": {
+              "section": "E72B column / Capacity (Min, 25°C, 0.3C)",
+              "quote": "E72B: 72.2 Ah; Min, 25°C, 0.3C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.3,
+              "rate_unit": "C",
+              "unstated": [
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.67,
+            "unit": "V",
+            "locator": {
+              "section": "E72B column / Nominal Voltage",
+              "quote": "E72B: Nominal Voltage 3.67 Vdc",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "energy",
+            "value": 264,
+            "unit": "Wh",
+            "locator": {
+              "section": "E72B column / Energy",
+              "quote": "E72B: Energy 264 Wh",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 287,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "E72B column / Energy Density (Min)",
+              "quote": "E72B: 287 Wh/kg (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 625,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "E72B column / Energy Density (Min)",
+              "quote": "E72B: 625 Wh/L (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 906,
+            "unit": "g",
+            "locator": {
+              "section": "E72B column / Weight",
+              "quote": "E72B: Weight 906 g",
+              "page": 1
+            }
+          },
+          {
+            "quantity": "length",
+            "value": 354,
+            "unit": "mm",
+            "locator": {
+              "section": "E72B column / Dimension",
+              "quote": "L*W*T (mm): 354*101.65*11.44",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 354*101.65*11.44"
+              }
+            }
+          },
+          {
+            "quantity": "width",
+            "value": 101.65,
+            "unit": "mm",
+            "locator": {
+              "section": "E72B column / Dimension",
+              "quote": "L*W*T (mm): 354*101.65*11.44",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 354*101.65*11.44"
+              }
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 11.44,
+            "unit": "mm",
+            "locator": {
+              "section": "E72B column / Dimension",
+              "quote": "L*W*T (mm): 354*101.65*11.44",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 354*101.65*11.44"
+              }
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NCMA",
+          "cathode_text": "NCMA",
+          "anode_text": "Graphite+SiO",
+          "locator": {
+            "section": "E72B column / Chemistry",
+            "quote": "E72B: NCMA/Graphite+SiO",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/lg-energy-solution/e79",
+          "kind": "cell",
+          "manufacturer": "LG Energy Solution",
+          "model_number": "E79",
+          "is_rechargeable": true,
+          "form_factor": "pouch"
+        },
+        "source": {
+          "uid": "src/lg-cells-2024-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+          "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 78,
+            "unit": "Ah",
+            "locator": {
+              "section": "E79 column / Capacity (Min, 25°C, 0.3C)",
+              "quote": "E79: 78 Ah; Min, 25°C, 0.3C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.3,
+              "rate_unit": "C",
+              "unstated": [
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.69,
+            "unit": "V",
+            "locator": {
+              "section": "E79 column / Nominal Voltage",
+              "quote": "E79: Nominal Voltage 3.69 Vdc",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "energy",
+            "value": 287,
+            "unit": "Wh",
+            "locator": {
+              "section": "E79 column / Energy",
+              "quote": "E79: Energy 287 Wh",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 267,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "E79 column / Energy Density (Min)",
+              "quote": "E79: 267 Wh/kg (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 591,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "E79 column / Energy Density (Min)",
+              "quote": "E79: 591 Wh/L (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 1075,
+            "unit": "g",
+            "locator": {
+              "section": "E79 column / Weight",
+              "quote": "E79: Weight 1075 g",
+              "page": 1
+            }
+          },
+          {
+            "quantity": "length",
+            "value": 548,
+            "unit": "mm",
+            "locator": {
+              "section": "E79 column / Dimension",
+              "quote": "L*W*T (mm): 548*100.1*8.55",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 548*100.1*8.55"
+              }
+            }
+          },
+          {
+            "quantity": "width",
+            "value": 100.1,
+            "unit": "mm",
+            "locator": {
+              "section": "E79 column / Dimension",
+              "quote": "L*W*T (mm): 548*100.1*8.55",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 548*100.1*8.55"
+              }
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 8.55,
+            "unit": "mm",
+            "locator": {
+              "section": "E79 column / Dimension",
+              "quote": "L*W*T (mm): 548*100.1*8.55",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 548*100.1*8.55"
+              }
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NCMA",
+          "cathode_text": "NCMA",
+          "anode_text": "Graphite",
+          "locator": {
+            "section": "E79 column / Chemistry",
+            "quote": "E79: NCMA/Graphite",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/lg-energy-solution/jf1",
+          "kind": "cell",
+          "manufacturer": "LG Energy Solution",
+          "model_number": "JF1",
+          "is_rechargeable": true,
+          "form_factor": "pouch"
+        },
+        "source": {
+          "uid": "src/lg-cells-2024-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+          "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 56.6,
+            "unit": "Ah",
+            "locator": {
+              "section": "JF1 column / Capacity (Min, 25°C, 0.3C)",
+              "quote": "JF1: 56.6 Ah; Min, 25°C, 0.3C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.3,
+              "rate_unit": "C",
+              "unstated": [
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.22,
+            "unit": "V",
+            "locator": {
+              "section": "JF1 column / Nominal Voltage",
+              "quote": "JF1: Nominal Voltage 3.22 Vdc",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "energy",
+            "value": 182.25,
+            "unit": "Wh",
+            "locator": {
+              "section": "JF1 column / Energy",
+              "quote": "JF1: Energy 182.25 Wh",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 165.68,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "JF1 column / Energy Density (Min)",
+              "quote": "JF1: 165.68 Wh/kg (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 320.4,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "JF1 column / Energy Density (Min)",
+              "quote": "JF1: 320.4 Wh/L (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 1100,
+            "unit": "g",
+            "locator": {
+              "section": "JF1 column / Weight",
+              "quote": "JF1: Weight Max. 1100 g",
+              "page": 1
+            },
+            "statistic": "maximum"
+          },
+          {
+            "quantity": "length",
+            "value": 352.5,
+            "unit": "mm",
+            "locator": {
+              "section": "JF1 column / Dimension",
+              "quote": "L*W*T (mm): 352.5*100.2*16.1",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 352.5*100.2*16.1"
+              }
+            }
+          },
+          {
+            "quantity": "width",
+            "value": 100.2,
+            "unit": "mm",
+            "locator": {
+              "section": "JF1 column / Dimension",
+              "quote": "L*W*T (mm): 352.5*100.2*16.1",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 352.5*100.2*16.1"
+              }
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 16.1,
+            "unit": "mm",
+            "locator": {
+              "section": "JF1 column / Dimension",
+              "quote": "L*W*T (mm): 352.5*100.2*16.1",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 352.5*100.2*16.1"
+              }
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "LFP",
+          "cathode_text": "LFP",
+          "anode_text": "Graphite",
+          "locator": {
+            "section": "JF1 column / Chemistry",
+            "quote": "JF1: LFP/Graphite",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/lg-energy-solution/jf2",
+          "kind": "cell",
+          "manufacturer": "LG Energy Solution",
+          "model_number": "JF2",
+          "is_rechargeable": true,
+          "form_factor": "pouch"
+        },
+        "source": {
+          "uid": "src/lg-cells-2024-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+          "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 159.2,
+            "unit": "Ah",
+            "locator": {
+              "section": "JF2 column / Capacity (Min, 25°C, 0.3C)",
+              "quote": "JF2: 159.2 Ah; Min, 25°C, 0.3C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.3,
+              "rate_unit": "C",
+              "unstated": [
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 509.4,
+            "unit": "Wh",
+            "locator": {
+              "section": "JF2 column / Energy",
+              "quote": "JF2: Energy 509.4 Wh",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 182.4,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "JF2 column / Energy Density (Min)",
+              "quote": "JF2: 182.4 Wh/kg (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 388.4,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "JF2 column / Energy Density (Min)",
+              "quote": "JF2: 388.4 Wh/L (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 2800,
+            "unit": "g",
+            "locator": {
+              "section": "JF2 column / Weight",
+              "quote": "JF2: Weight Max. 2800 g",
+              "page": 1
+            },
+            "statistic": "maximum"
+          },
+          {
+            "quantity": "length",
+            "value": 601.0,
+            "unit": "mm",
+            "locator": {
+              "section": "JF2 column / Dimension",
+              "quote": "L*W*T (mm): 601.0*125.0*18.0 Max; at shipping state, without lead tab",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 601.0*125.0*18.0 Max; at shipping state, without lead tab"
+              }
+            }
+          },
+          {
+            "quantity": "width",
+            "value": 125.0,
+            "unit": "mm",
+            "locator": {
+              "section": "JF2 column / Dimension",
+              "quote": "L*W*T (mm): 601.0*125.0*18.0 Max; at shipping state, without lead tab",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 601.0*125.0*18.0 Max; at shipping state, without lead tab"
+              }
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 18.0,
+            "unit": "mm",
+            "locator": {
+              "section": "JF2 column / Dimension",
+              "quote": "L*W*T (mm): 601.0*125.0*18.0 Max; at shipping state, without lead tab",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 601.0*125.0*18.0 Max; at shipping state, without lead tab"
+              }
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "LFP",
+          "cathode_text": "LFP",
+          "anode_text": "Graphite",
+          "locator": {
+            "section": "JF2 column / Chemistry",
+            "quote": "JF2: LFP/Graphite",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/lg-energy-solution/jh4",
+          "kind": "cell",
+          "manufacturer": "LG Energy Solution",
+          "model_number": "JH4",
+          "is_rechargeable": true,
+          "form_factor": "pouch"
+        },
+        "source": {
+          "uid": "src/lg-cells-2024-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+          "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 70.6,
+            "unit": "Ah",
+            "locator": {
+              "section": "JH4 column / Capacity (Min, 25°C, 0.3C)",
+              "quote": "JH4: 70.6 Ah; Min, 25°C, 0.3C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.3,
+              "rate_unit": "C",
+              "unstated": [
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 266,
+            "unit": "Wh",
+            "locator": {
+              "section": "JH4 column / Energy",
+              "quote": "JH4: Energy 266 Wh (nom)",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 213.7,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "JH4 column / Energy Density (Min)",
+              "quote": "JH4: 213.7 Wh/kg (nom)",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 467.8,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "JH4 column / Energy Density (Min)",
+              "quote": "JH4: 467.8 Wh/L (nom)",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 1245,
+            "unit": "g",
+            "locator": {
+              "section": "JH4 column / Weight",
+              "quote": "JH4: Weight Max. 1245 g",
+              "page": 1
+            },
+            "statistic": "maximum"
+          }
+        ],
+        "chemistry": {
+          "designation": "NCM",
+          "cathode_text": "NCM",
+          "anode_text": "Graphite",
+          "locator": {
+            "section": "JH4 column / Chemistry",
+            "quote": "JH4: NCM/Graphite",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/lg-energy-solution/jp3",
+          "kind": "cell",
+          "manufacturer": "LG Energy Solution",
+          "model_number": "JP3",
+          "is_rechargeable": true,
+          "form_factor": "pouch"
+        },
+        "source": {
+          "uid": "src/lg-cells-2024-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+          "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 62.4,
+            "unit": "Ah",
+            "locator": {
+              "section": "JP3 column / Capacity (Min, 25°C, 0.3C)",
+              "quote": "JP3: 62.4 Ah; Min, 25°C, 0.5C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.5,
+              "rate_unit": "C",
+              "unstated": [
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.68,
+            "unit": "V",
+            "locator": {
+              "section": "JP3 column / Nominal Voltage",
+              "quote": "JP3: Nominal Voltage 3.68 Vdc",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "energy",
+            "value": 229.6,
+            "unit": "Wh",
+            "locator": {
+              "section": "JP3 column / Energy",
+              "quote": "JP3: Energy 229.6 Wh (Min.)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 184,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "JP3 column / Energy Density (Min)",
+              "quote": "JP3: 184 Wh/kg (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 389,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "JP3 column / Energy Density (Min)",
+              "quote": "JP3: 389 Wh/L (Min header)",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 1245,
+            "unit": "g",
+            "locator": {
+              "section": "JP3 column / Weight",
+              "quote": "JP3: Weight Max. 1245 g",
+              "page": 1
+            },
+            "statistic": "maximum"
+          },
+          {
+            "quantity": "length",
+            "value": 353.5,
+            "unit": "mm",
+            "locator": {
+              "section": "JP3 column / Dimension",
+              "quote": "L*W*T (mm): 353.5*101.7*16.4 (Max.)",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 353.5*101.7*16.4 (Max.)"
+              }
+            }
+          },
+          {
+            "quantity": "width",
+            "value": 101.7,
+            "unit": "mm",
+            "locator": {
+              "section": "JP3 column / Dimension",
+              "quote": "L*W*T (mm): 353.5*101.7*16.4 (Max.)",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 353.5*101.7*16.4 (Max.)"
+              }
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 16.4,
+            "unit": "mm",
+            "locator": {
+              "section": "JP3 column / Dimension",
+              "quote": "L*W*T (mm): 353.5*101.7*16.4 (Max.)",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "L*W*T (mm): 353.5*101.7*16.4 (Max.)"
+              }
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NCM",
+          "cathode_text": "NCM",
+          "anode_text": "Graphite",
+          "locator": {
+            "section": "JP3 column / Chemistry",
+            "quote": "JP3: NCM/Graphite",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/lg-energy-solution/m50l",
+          "kind": "cell",
+          "manufacturer": "LG Energy Solution",
+          "model_number": "M50L",
+          "is_rechargeable": true,
+          "form_factor": "cylindrical"
+        },
+        "source": {
+          "uid": "src/lg-cells-2024-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+          "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 4.93,
+            "unit": "Ah",
+            "locator": {
+              "section": "M50L column / Capacity (Min, 25°C, 0.3C)",
+              "quote": "M50L: 4.93 Ah; nom, 0.2C; reference value; table header 25°C",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.2,
+              "rate_unit": "C",
+              "extra": {
+                "reference_value_only": true
+              },
+              "unstated": [
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.69,
+            "unit": "V",
+            "locator": {
+              "section": "M50L column / Nominal Voltage",
+              "quote": "M50L: Nominal Voltage 3.69 Vdc",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "energy",
+            "value": 18.2,
+            "unit": "Wh",
+            "locator": {
+              "section": "M50L column / Energy",
+              "quote": "M50L: Energy 18.2 Wh (nom)",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 270,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "M50L column / Energy Density (Min)",
+              "quote": "M50L: 270 Wh/kg (nom)",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 746,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "M50L column / Energy Density (Min)",
+              "quote": "M50L: 746 Wh/L (nom)",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 67.2,
+            "unit": "g",
+            "locator": {
+              "section": "M50L column / Weight",
+              "quote": "M50L: Weight 67.2 g",
+              "page": 1
+            }
+          },
+          {
+            "quantity": "diameter",
+            "value": 21.15,
+            "unit": "mm",
+            "locator": {
+              "section": "M50L column / Dimension",
+              "quote": "Diameter: 21.15mm (max); Height: 70.2mm (max) (Max.)",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "Diameter: 21.15mm (max); Height: 70.2mm (max) (Max.)"
+              }
+            }
+          },
+          {
+            "quantity": "height",
+            "value": 70.2,
+            "unit": "mm",
+            "locator": {
+              "section": "M50L column / Dimension",
+              "quote": "Diameter: 21.15mm (max); Height: 70.2mm (max) (Max.)",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "Diameter: 21.15mm (max); Height: 70.2mm (max) (Max.)"
+              }
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NCMA",
+          "cathode_text": "NCMA",
+          "anode_text": "Graphite",
+          "locator": {
+            "section": "M50L column / Chemistry",
+            "quote": "M50L: NCMA/Graphite",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/lg-energy-solution/m52v",
+          "kind": "cell",
+          "manufacturer": "LG Energy Solution",
+          "model_number": "M52V",
+          "is_rechargeable": true,
+          "form_factor": "cylindrical"
+        },
+        "source": {
+          "uid": "src/lg-cells-2024-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+          "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+          "retrieved_at": "2026-09-21",
+          "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 5.07,
+            "unit": "Ah",
+            "locator": {
+              "section": "M52V column / Capacity (Min, 25°C, 0.3C)",
+              "quote": "M52V: 5.07 Ah; nom, 0.2C; reference value; table header 25°C",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "temperature_c": 25,
+              "rate_value": 0.2,
+              "rate_unit": "C",
+              "extra": {
+                "reference_value_only": true
+              },
+              "unstated": [
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.69,
+            "unit": "V",
+            "locator": {
+              "section": "M52V column / Nominal Voltage",
+              "quote": "M52V: Nominal Voltage 3.69 Vdc",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "energy",
+            "value": 18.73,
+            "unit": "Wh",
+            "locator": {
+              "section": "M52V column / Energy",
+              "quote": "M52V: Energy 18.73 Wh (nom)",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 278,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "M52V column / Energy Density (Min)",
+              "quote": "M52V: 278 Wh/kg (nom)",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 763,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "M52V column / Energy Density (Min)",
+              "quote": "M52V: 763 Wh/L (nom)",
+              "page": 1
+            },
+            "statistic": "nominal",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "mass",
+            "value": 67.4,
+            "unit": "g",
+            "locator": {
+              "section": "M52V column / Weight",
+              "quote": "M52V: Weight 67.4 g",
+              "page": 1
+            }
+          },
+          {
+            "quantity": "diameter",
+            "value": 21.15,
+            "unit": "mm",
+            "locator": {
+              "section": "M52V column / Dimension",
+              "quote": "Diameter: 21.15mm (max); Height: 70.6mm (max) (Max.)",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "Diameter: 21.15mm (max); Height: 70.6mm (max) (Max.)"
+              }
+            }
+          },
+          {
+            "quantity": "height",
+            "value": 70.6,
+            "unit": "mm",
+            "locator": {
+              "section": "M52V column / Dimension",
+              "quote": "Diameter: 21.15mm (max); Height: 70.6mm (max) (Max.)",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "extra": {
+                "dimension_basis": "Diameter: 21.15mm (max); Height: 70.6mm (max) (Max.)"
+              }
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NCMA",
+          "cathode_text": "NCMA",
+          "anode_text": "Graphite",
+          "locator": {
+            "section": "M52V column / Chemistry",
+            "quote": "M52V: NCMA/Graphite",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp270-16",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP270-16",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL7874172-16Ah"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp270-16-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP270-16 Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/fb/ef/b0/1730133629/SHP270-16%20datasheet.pdf?ts=1744633054",
+          "retrieved_at": "2026-09-21",
+          "sha256": "4eda175bf55d6b3eef3716ad11483bd9d2f79f5fe7d44a0bd9998a9faeaaba0a",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP270-16/30000109; SHA-256 8db09795fc22ecebec24ea6623c62eb4574d097d0ed827b7ddc48289070c5cb4; manufacturer part PL7874172-16Ah.",
+          "revision": "002",
+          "document_date": "2025-04-09"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 16.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP270-16 / Capacity / Voltages",
+              "quote": "Typical 16.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 59.2,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP270-16 / Capacity / Voltages",
+              "quote": "Typical 59.2 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.7,
+            "unit": "V",
+            "locator": {
+              "section": "SHP270-16 / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.7 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 261.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP270-16 / Energy Density",
+              "quote": "Gravimetric 261.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 604.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP270-16 / Energy Density",
+              "quote": "Volumetric 604.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 7.7,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-16 / Dimensions",
+              "quote": "A Thickness 7.7 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 74.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-16 / Dimensions",
+              "quote": "B Width 74.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 172.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-16 / Dimensions",
+              "quote": "C Length 172.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 226.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP270-16 / Dimensions",
+              "quote": "Weight 226.0 ± 4.0 g",
+              "page": 1
+            },
+            "tol_plus": 4.0,
+            "tol_minus": 4.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-16 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 45,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-16 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-16 / Temperatures",
+              "quote": "Discharge -20 to 60 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 60,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-16 / Temperatures",
+              "quote": "Discharge -20 to 60 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP270-16 / header",
+            "quote": "SHP270-16 — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp270-22",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP270-22",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL8574172-22Ah"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp270-22-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP270-22 Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/11/5d/0c/1730133512/SHP270-22%20datasheet.pdf?ts=1744633076",
+          "retrieved_at": "2026-09-21",
+          "sha256": "9261b6b95e5d04ac4eca4e216de2285bb70e7f8657ec4bf2e1db3ffc15b6a772",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP270-22/30000110; SHA-256 3e7526311a9630d17695b6e1b34f625c29f4ef56e5543589631b5e80e3836ee4; manufacturer part PL8574172-22Ah.",
+          "revision": "002",
+          "document_date": "2025-04-09"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 22.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP270-22 / Capacity / Voltages",
+              "quote": "Typical 22.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 81.4,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP270-22 / Capacity / Voltages",
+              "quote": "Typical 81.4 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.7,
+            "unit": "V",
+            "locator": {
+              "section": "SHP270-22 / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.7 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 273.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP270-22 / Energy Density",
+              "quote": "Gravimetric 273.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 620.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP270-22 / Energy Density",
+              "quote": "Volumetric 620.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 10.3,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-22 / Dimensions",
+              "quote": "A Thickness 10.3 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 74.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-22 / Dimensions",
+              "quote": "B Width 74.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 172.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-22 / Dimensions",
+              "quote": "C Length 172.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 298.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP270-22 / Dimensions",
+              "quote": "Weight 298.0 ± 12.0 g",
+              "page": 1
+            },
+            "tol_plus": 12.0,
+            "tol_minus": 12.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-22 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 45,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-22 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-22 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-22 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP270-22 / header",
+            "quote": "SHP270-22 — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp270-27",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP270-27",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL9887187-27Ah"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp270-27-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP270-27 Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/fd/9f/6d/1730133270/SHP270-27%20datasheet.pdf?ts=1744633120",
+          "retrieved_at": "2026-09-21",
+          "sha256": "df39f687564d2ddd7abf5fcb6b094a14a5f9ce74f224bf41de3b5878c193684b",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP270-27/30000111; SHA-256 60406612bd353de29253693aae13eadb460cdd03a56ae4ee30691a2e69d13660; manufacturer part PL9887187-27Ah.",
+          "revision": "002",
+          "document_date": "2025-04-09"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 27.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP270-27 / Capacity / Voltages",
+              "quote": "Typical 27.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 99.9,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP270-27 / Capacity / Voltages",
+              "quote": "Typical 99.9 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.7,
+            "unit": "V",
+            "locator": {
+              "section": "SHP270-27 / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.7 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 275.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP270-27 / Energy Density",
+              "quote": "Gravimetric 275.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 633.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP270-27 / Energy Density",
+              "quote": "Volumetric 633.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 9.7,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-27 / Dimensions",
+              "quote": "A Thickness 9.7 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 87.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-27 / Dimensions",
+              "quote": "B Width 87.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 187.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-27 / Dimensions",
+              "quote": "C Length 187.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 363.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP270-27 / Dimensions",
+              "quote": "Weight 363.0 ± 5.0 g",
+              "page": 1
+            },
+            "tol_plus": 5.0,
+            "tol_minus": 5.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-27 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 45,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-27 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-27 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-27 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP270-27 / header",
+            "quote": "SHP270-27 — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp270-30",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP270-30",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL10887187-30Ah"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp270-30-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP270-30 Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/18/4d/f1/1730133143/SHP270-30%20datasheet.pdf?ts=1744633138",
+          "retrieved_at": "2026-09-21",
+          "sha256": "8fbfb4be7dda1fa45b0ea3e8179df05ead0320eb3ebb9edf82e5fb3329f6d12f",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP270-30/30000112; SHA-256 d18bf9a26081bab96e8b7aae5e4a5cdcb356aaabd5c0b5f092b7894d4fc5631b; manufacturer part PL10887187-30Ah.",
+          "revision": "002",
+          "document_date": "2025-04-09"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 30.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP270-30 / Capacity / Voltages",
+              "quote": "Typical 30.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 111.0,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP270-30 / Capacity / Voltages",
+              "quote": "Typical 111.0 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.7,
+            "unit": "V",
+            "locator": {
+              "section": "SHP270-30 / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.7 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 275.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP270-30 / Energy Density",
+              "quote": "Gravimetric 275.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 632.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP270-30 / Energy Density",
+              "quote": "Volumetric 632.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 10.8,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-30 / Dimensions",
+              "quote": "A Thickness 10.8 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 87.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-30 / Dimensions",
+              "quote": "B Width 87.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 187.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP270-30 / Dimensions",
+              "quote": "C Length 187.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 404.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP270-30 / Dimensions",
+              "quote": "Weight 404.0 ± 5.0 g",
+              "page": 1
+            },
+            "tol_plus": 5.0,
+            "tol_minus": 5.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-30 / Temperatures",
+              "quote": "Charge 0 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-30 / Temperatures",
+              "quote": "Charge 0 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-30 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP270-30 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP270-30 / header",
+            "quote": "SHP270-30 — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp320-20",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP320-20",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL8574172-20Ah"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp320-20-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP320-20 Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/8f/ba/05/1730132824/SHP320-20%20datasheet.pdf?ts=1744633185",
+          "retrieved_at": "2026-09-21",
+          "sha256": "e89a1301e16f780f74288d3ac29d13287b241450450b43ead2824d5dd3aed6a0",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP320-20/30000105; SHA-256 da19141c82e35f34992865176e18c1c4767fbf1ad87b7eff7128cd87610446e8; manufacturer part PL8574172-20Ah.",
+          "revision": "002",
+          "document_date": "2025-04-09"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 20.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP320-20 / Capacity / Voltages",
+              "quote": "Typical 20.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 73.0,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP320-20 / Capacity / Voltages",
+              "quote": "Typical 73.0 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.65,
+            "unit": "V",
+            "locator": {
+              "section": "SHP320-20 / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.65 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 300.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP320-20 / Energy Density",
+              "quote": "Gravimetric 300.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 674.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP320-20 / Energy Density",
+              "quote": "Volumetric 674.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 8.5,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-20 / Dimensions",
+              "quote": "A Thickness 8.5 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 74.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-20 / Dimensions",
+              "quote": "B Width 74.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 172.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-20 / Dimensions",
+              "quote": "C Length 172.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 243.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP320-20 / Dimensions",
+              "quote": "Weight 243.0 ± 12.0 g",
+              "page": 1
+            },
+            "tol_plus": 12.0,
+            "tol_minus": 12.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-20 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 45,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-20 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-20 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-20 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP320-20 / header",
+            "quote": "SHP320-20 — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp320-25",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP320-25",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL10474172-25Ah"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp320-25-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP320-25 Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/07/1a/f0/1730132707/SHP320-25%20datasheet.pdf?ts=1744633210",
+          "retrieved_at": "2026-09-21",
+          "sha256": "65e91683e6dc2fd0d417efc7dda99ae5706caadd9903d150c611257972dbda94",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP320-25/30000106; SHA-256 a99f19c80357c673f64affe464d2ac0fff8e5dcf28c4bdc7f9e96b28e16f2b90; manufacturer part PL10474172-25Ah.",
+          "revision": "002",
+          "document_date": "2025-04-09"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 25.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP320-25 / Capacity / Voltages",
+              "quote": "Typical 25.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 91.25,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP320-25 / Capacity / Voltages",
+              "quote": "Typical 91.25 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.65,
+            "unit": "V",
+            "locator": {
+              "section": "SHP320-25 / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.65 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 305.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP320-25 / Energy Density",
+              "quote": "Gravimetric 305.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 689.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP320-25 / Energy Density",
+              "quote": "Volumetric 689.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 10.4,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-25 / Dimensions",
+              "quote": "A Thickness 10.4 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 74.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-25 / Dimensions",
+              "quote": "B Width 74.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 172.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-25 / Dimensions",
+              "quote": "C Length 172.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 299.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP320-25 / Dimensions",
+              "quote": "Weight 299.0 ± 10.0 g",
+              "page": 1
+            },
+            "tol_plus": 10.0,
+            "tol_minus": 10.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-25 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 45,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-25 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-25 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-25 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP320-25 / header",
+            "quote": "SHP320-25 — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp320-32",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP320-32",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL10387187-32Ah"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp320-32-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP320-32 Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/9b/92/ca/1730132597/SHP320-32%20datasheet.pdf?ts=1744633235",
+          "retrieved_at": "2026-09-21",
+          "sha256": "c26ae193a724507998416f86fa00bfc4453ffe712f74b199fc4e404a5cc1592a",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP320-32/30000107; SHA-256 5834f3c8e24a8eee832704d2abf7f90d39d1936cd174ee66a772fbcd6ef3e2bd; manufacturer part PL10387187-32Ah.",
+          "revision": "002",
+          "document_date": "2025-04-09"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 32.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP320-32 / Capacity / Voltages",
+              "quote": "Typical 32.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 116.8,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP320-32 / Capacity / Voltages",
+              "quote": "Typical 116.8 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.65,
+            "unit": "V",
+            "locator": {
+              "section": "SHP320-32 / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.65 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 305.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP320-32 / Energy Density",
+              "quote": "Gravimetric 305.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 690.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP320-32 / Energy Density",
+              "quote": "Volumetric 690.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 10.3,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-32 / Dimensions",
+              "quote": "A Thickness 10.3 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 87.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-32 / Dimensions",
+              "quote": "B Width 87.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 187.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-32 / Dimensions",
+              "quote": "C Length 187.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 382.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP320-32 / Dimensions",
+              "quote": "Weight 382.0 ± 12.0 g",
+              "page": 1
+            },
+            "tol_plus": 12.0,
+            "tol_minus": 12.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-32 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 45,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-32 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-32 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-32 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP320-32 / header",
+            "quote": "SHP320-32 — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp320-35",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP320-35",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL1187187-35Ah"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp320-35-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP320-35 Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/1e/02/33/1730132463/SHP320-35%20datasheet.pdf?ts=1744633262",
+          "retrieved_at": "2026-09-21",
+          "sha256": "0aa37c8abf84dd712762dab7a9fb965474fc048d9286186dc1023192a0da2d6b",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP320-35/30000108; SHA-256 68bb103fd3288d9c194dcc252ea38da328e520136c01e5d72b0146904b8a124c; manufacturer part PL1187187-35Ah.",
+          "revision": "002",
+          "document_date": "2025-04-09"
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 35.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP320-35 / Capacity / Voltages",
+              "quote": "Typical 35.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 127.75,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP320-35 / Capacity / Voltages",
+              "quote": "Typical 127.75 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.65,
+            "unit": "V",
+            "locator": {
+              "section": "SHP320-35 / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.65 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 311.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP320-35 / Energy Density",
+              "quote": "Gravimetric 311.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 713.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP320-35 / Energy Density",
+              "quote": "Volumetric 713.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 11.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-35 / Dimensions",
+              "quote": "A Thickness 11.0 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 87.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-35 / Dimensions",
+              "quote": "B Width 87.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 187.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP320-35 / Dimensions",
+              "quote": "C Length 187.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 410.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP320-35 / Dimensions",
+              "quote": "Weight 410.0 ± 15.0 g",
+              "page": 1
+            },
+            "tol_plus": 15.0,
+            "tol_minus": 15.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-35 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 45,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-35 / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-35 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP320-35 / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP320-35 / header",
+            "quote": "SHP320-35 — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp350-30-trial",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP350-30-TRIAL",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL10674172-30Ah",
+            "SHP350-30"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp350-30-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP350-30-TRIAL Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/3a/98/71/1782371864/SHP350-30-TRIAL_datasheet1.pdf?ts=1782371864",
+          "retrieved_at": "2026-09-21",
+          "sha256": "137a23cf44ad80c79021c885672ebed1a3af2ec061fa823fe85158c6bd1da1d9",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP350-30/30000170; SHA-256 9e4a0468e0cddd635b092587a3fd884925233a42de4910cbf32b3ea3084042e3; manufacturer part PL10674172-30Ah. TRIAL source; preliminary. The unsuffixed shop name is an alias, not a second cell.",
+          "revision": "002SB",
+          "document_date": "2026-06-23",
+          "is_final": false
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 30.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Capacity / Voltages",
+              "quote": "Typical 30.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 108.0,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Capacity / Voltages",
+              "quote": "Typical 108.0 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.6,
+            "unit": "V",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.6 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 346.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Energy Density",
+              "quote": "Gravimetric 346.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 800.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Energy Density",
+              "quote": "Volumetric 800.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 10.6,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Dimensions",
+              "quote": "A Thickness 10.6 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 74.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Dimensions",
+              "quote": "B Width 74.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 172.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Dimensions",
+              "quote": "C Length 172.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 312.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Dimensions",
+              "quote": "Weight 312.0 ± 10.0 g",
+              "page": 1
+            },
+            "tol_plus": 10.0,
+            "tol_minus": 10.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 45,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP350-30-TRIAL / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP350-30-TRIAL / header",
+            "quote": "SHP350-30-TRIAL — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "cell/welion/shp350-40-trial",
+          "kind": "cell",
+          "manufacturer": "WeLion",
+          "model_number": "SHP350-40-TRIAL",
+          "is_rechargeable": true,
+          "form_factor": "pouch",
+          "aliases": [
+            "PL1187187-40Ah",
+            "SHP350-40"
+          ]
+        },
+        "source": {
+          "uid": "src/welion-shp350-40-inspected-2026-09-21",
+          "kind": "datasheet",
+          "title": "WeLion SHP350-40-TRIAL Semi-Solid-State datasheet",
+          "url": "https://welion-energy.com/media/4c/a6/07/1782223390/SHP350-40-TRIAL_datasheet%202.pdf?ts=1782223390",
+          "retrieved_at": "2026-09-21",
+          "sha256": "ae6cf3324fd441c603e900f607d844a16200fea6015a3b26213daf637afaccff",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP350-40/30000171; SHA-256 53c06f2562d4de4daf863c7c0acb0b1952c58122d2c52d2c70fc4f9d159134f9; manufacturer part PL1187187-40Ah. TRIAL source; preliminary. The unsuffixed shop name is an alias, not a second cell.",
+          "revision": "001SB",
+          "document_date": "2025-05-09",
+          "is_final": false
+        },
+        "observations": [
+          {
+            "quantity": "capacity",
+            "value": 40.0,
+            "unit": "Ah",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Capacity / Voltages",
+              "quote": "Typical 40.0 Ah",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c",
+                "voltage_lower_v"
+              ]
+            }
+          },
+          {
+            "quantity": "energy",
+            "value": 142.0,
+            "unit": "Wh",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Capacity / Voltages",
+              "quote": "Typical 142.0 Wh",
+              "page": 1
+            },
+            "statistic": "typical",
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "nominal_voltage",
+            "value": 3.55,
+            "unit": "V",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Capacity / Voltages",
+              "quote": "Voltages Nominal 3.55 V",
+              "page": 1
+            },
+            "statistic": "nominal"
+          },
+          {
+            "quantity": "specific_energy",
+            "value": 357.0,
+            "unit": "Wh/kg",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Energy Density",
+              "quote": "Gravimetric 357.0 Wh/kg",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "energy_density",
+            "value": 794.0,
+            "unit": "Wh/L",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Energy Density",
+              "quote": "Volumetric 794.0 Wh/L",
+              "page": 1
+            },
+            "conditions": {
+              "unstated": [
+                "rate_value",
+                "rate_unit",
+                "temperature_c"
+              ]
+            }
+          },
+          {
+            "quantity": "thickness",
+            "value": 11.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Dimensions",
+              "quote": "A Thickness 11.0 ± 0.3 mm",
+              "page": 1
+            },
+            "tol_plus": 0.3,
+            "tol_minus": 0.3
+          },
+          {
+            "quantity": "width",
+            "value": 87.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Dimensions",
+              "quote": "B Width 87.0 ± 1.0 mm",
+              "page": 1
+            },
+            "tol_plus": 1.0,
+            "tol_minus": 1.0
+          },
+          {
+            "quantity": "length",
+            "value": 187.0,
+            "unit": "mm",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Dimensions",
+              "quote": "C Length 187.0 ± 2.0 mm",
+              "page": 1
+            },
+            "tol_plus": 2.0,
+            "tol_minus": 2.0
+          },
+          {
+            "quantity": "mass",
+            "value": 398.0,
+            "unit": "g",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Dimensions",
+              "quote": "Weight 398.0 ± 10.0 g",
+              "page": 1
+            },
+            "tol_plus": 10.0,
+            "tol_minus": 10.0
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": 0,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 45,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Temperatures",
+              "quote": "Charge 0 to 45 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "charge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_min",
+            "value": -20,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "minimum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          },
+          {
+            "quantity": "operating_temperature_max",
+            "value": 55,
+            "unit": "°C",
+            "locator": {
+              "section": "SHP350-40-TRIAL / Temperatures",
+              "quote": "Discharge -20 to 55 °C",
+              "page": 1
+            },
+            "statistic": "maximum",
+            "conditions": {
+              "direction": "discharge",
+              "unstated": [
+                "temperature_reference"
+              ]
+            }
+          }
+        ],
+        "chemistry": {
+          "designation": "NMC+",
+          "cathode_text": "NMC+",
+          "electrolyte_text": "Semi-Solid-State",
+          "locator": {
+            "section": "SHP350-40-TRIAL / header",
+            "quote": "SHP350-40-TRIAL — NMC+; Semi-Solid-State",
+            "page": 1
+          }
+        }
+      }
+    }
+  ]
+}

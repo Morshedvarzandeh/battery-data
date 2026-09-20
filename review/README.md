@@ -17,6 +17,12 @@ The [21 September LiPol batch](../docs/14-lipol-expansion-2026-09-21.md) adds
 batch review through its files and pull request; generating payloads does not
 automatically open individual issues or accept records.
 
+The [sodium-ion, semi-solid and lithium cell batch](imports/2026-09-21-sodium-semisolid-lithium-cells.md)
+adds 33 further cell candidates from HiNa, WeLion, LG, EVE, CATL and CALB.
+Its manifest records source hashes, omitted ambiguous fields and existing
+identities excluded from the new count. Trial and announcement evidence stays
+explicitly qualified.
+
 When the repository owner checks **Approve this battery for the accepted
 library**, `.github/workflows/approve-candidate.yml` validates the candidate,
 moves it into `contrib/cells/`, rebuilds the public catalog, commits the change,

@@ -1,0 +1,160 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/eve/lf206",
+    "kind": "cell",
+    "manufacturer": "EVE Energy",
+    "model_number": "LF206",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/eve-lf206-inspected-2026-09-21",
+    "kind": "manufacturer_web",
+    "title": "EVE Energy LF206 product specifications",
+    "url": "https://www.evemall.eu/power-battery/prismatic-lfp-cell/lf206",
+    "retrieved_at": "2026-09-21",
+    "sha256": "b88b3bc108b27beb0f42418903de6d21413ea9a930dd5664bbd22efbcb5bdd43",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Current manufacturer product specification table; no printed document revision. Generic category capacity ranges are not expanded into products. Life text explicitly states 25°C, 1C charge / 0.5C discharge, 80% SOH. Dimension axis order is not named; dimensions are held. Initial IR lacks an AC/DC method and is held. Standard rates are not silently borrowed as capacity-test conditions."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 206,
+      "unit": "Ah",
+      "locator": {
+        "section": "LF206 / Specifications / nominal capacity",
+        "quote": "LF206: nominal capacity 206Ah"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.22,
+      "unit": "V",
+      "locator": {
+        "section": "LF206 / Specifications / nominal voltage",
+        "quote": "LF206: nominal voltage 3.22V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "mass",
+      "value": 3500,
+      "unit": "g",
+      "locator": {
+        "section": "LF206 / Specifications / weight",
+        "quote": "LF206: 3500g ± 105g"
+      },
+      "tol_plus": 105,
+      "tol_minus": 105
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 4000,
+      "unit": "cycles",
+      "locator": {
+        "section": "LF206 / Product Introduction",
+        "quote": "Up to 4000 Cycles; 80%SOH; (25℃ 1C/0.5C)"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "extra": {
+          "charge_rate_value": 1,
+          "charge_rate_unit": "C",
+          "end_of_life_soh_pct": 80,
+          "soh_definition": "not stated"
+        },
+        "temperature_c": 25,
+        "rate_value": 0.5,
+        "rate_unit": "C",
+        "direction": "discharge",
+        "unstated": [
+          "dod_pct"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -10,
+      "unit": "°C",
+      "locator": {
+        "section": "LF206 / Specifications",
+        "quote": "Charge temperature -10 to 65 °C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "locator": {
+        "section": "LF206 / Specifications",
+        "quote": "Charge temperature -10 to 65 °C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -35,
+      "unit": "°C",
+      "locator": {
+        "section": "LF206 / Specifications",
+        "quote": "Discharge temperature -35 to 65 °C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "locator": {
+        "section": "LF206 / Specifications",
+        "quote": "Discharge temperature -35 to 65 °C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "locator": {
+      "section": "Product title / chemistry",
+      "quote": "LF206 Prismatic LFP / Lithium Iron Phosphate Battery"
+    }
+  }
+}

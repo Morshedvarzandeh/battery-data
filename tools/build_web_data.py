@@ -153,7 +153,8 @@ def product(doc: dict, path: str) -> dict:
                  # a chemistry claim carries its evidence like any other
                  "anode_quote": cloc.get("quote") if chem.get("anode_text") else None,
                  "cathode_quote": cloc.get("quote") if chem.get("cathode_text") else None,
-                 "anode_pg": cloc.get("page"), "cathode_pg": cloc.get("page")},
+                 "anode_pg": cloc.get("page"), "cathode_pg": cloc.get("page"),
+                 **({"electrolyte_locator": cloc} if chem.get("electrolyte_text") else {})},
         "source": {"title": src.get("title"), "ref": src.get("revision"),
                    "date": src.get("document_date"), "kind": src.get("kind"),
                    "url": src.get("url"), "sha256": src.get("sha256"),

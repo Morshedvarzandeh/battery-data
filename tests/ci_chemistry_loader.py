@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+"""Promote every new cell in disposable CI, verify chemistry, then roll back."""
+import json
+from pathlib import Path
+import sys
+from types import SimpleNamespace
+
+import psycopg2
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'tools'))
+import load_contrib as loader
+
+connection = psycopg2.connect(sys.argv[1])
+try:
+    with connection.cursor() as cur:
+        reviewer = loader.ensure_contributor(cur, 'user/ci-chemistry-review', 'CI transaction only')
+        args = SimpleNamespace(stage_only=False, extraction='manual_entry')
+        batch = json.loads((ROOT / 'review/batches/2026-09-21-sodium-semisolid-lithium-cells.json').read_text())
+        promoted = 0
+        for entry in batch['candidates']:
+            doc = entry['document']
+            _, maker, model = doc['product']['uid'].split('/')
+            result = loader.load_file(cur, str(ROOT / f'review/candidates/{maker}/{model}.yaml'), args, reviewer)
+            assert not result.get('invalid'), result
+            promoted += result.get('promoted', 0)
+        assert promoted == 270, promoted
+        cur.execute("""SELECT c.designation, c.cathode_text, c.electrolyte_text, l.page, l.section, l.quote, r.is_preliminary
+                         FROM bd.product_chemistry c JOIN bd.product_revision r ON r.id=c.product_revision_id
+                         JOIN bd.product p ON p.id=r.product_id JOIN bd.provenance pv ON pv.id=c.provenance_id
+                         JOIN bd.source_location l ON l.id=pv.source_location_id
+                        WHERE p.model_number='SHP350-30-TRIAL'""")
+        chemistry = cur.fetchone()
+        assert chemistry[:4] == ('NMC+', 'NMC+', 'Semi-Solid-State', 1), chemistry
+        assert 'header' in chemistry[4] and 'Semi-Solid-State' in chemistry[5] and chemistry[6]
+        cur.execute("SELECT value_native, rate_unit FROM bd.v_observation WHERE model_number='HE240' AND quantity='cycle_life'")
+        assert tuple(cur.fetchone()) == (8000, 'P')
+        cur.execute("SELECT value_native, rate_value, rate_unit, statistic FROM bd.v_observation WHERE model_number='M50L' AND quantity='capacity'")
+        assert tuple(cur.fetchone()) == (4.93, .2, 'C', 'nominal')
+        cur.execute("SELECT count(*) FROM bd.v_observation WHERE model_number IN ('JF2','JH4') AND quantity='nominal_voltage'")
+        assert cur.fetchone()[0] == 0
+        cur.execute("SELECT value_native FROM bd.v_observation WHERE model_number='L173F314' AND quantity='nominal_voltage'")
+        assert cur.fetchone()[0] == 3.2
+        # The legacy whole-source fallback and separator column use synthetic
+        # data in this rolled-back test only, never a real manufacturer's claim.
+        legacy = {'schema_version': '1', 'product': {'uid': 'cell/ci-chemistry/fixture', 'kind': 'cell',
+                  'manufacturer': 'CI chemistry fixture', 'model_number': 'CI chemistry fixture'},
+                  'source': {'uid': 'src/ci-chemistry-fixture', 'kind': 'datasheet',
+                             'title': 'Synthetic CI fixture, rolled back'},
+                  'chemistry': {'designation': 'test only', 'separator_text': 'synthetic separator',
+                                'electrolyte_text': 'synthetic electrolyte'}}
+        org = loader.ensure_organization(cur, 'ci-chemistry', 'CI chemistry fixture')
+        source = loader.ensure_source(cur, legacy['source'], org)
+        loader.promote_file(cur, legacy, org, source, [], 'CI fixture only', args, reviewer)
+        cur.execute("""SELECT c.separator_text, c.electrolyte_text, l.page FROM bd.product_chemistry c
+                         JOIN bd.provenance pv ON pv.id=c.provenance_id
+                         JOIN bd.source_location l ON l.id=pv.source_location_id
+                        WHERE c.designation='test only'""")
+        assert tuple(cur.fetchone()) == ('synthetic separator', 'synthetic electrolyte', None)
+        print(f'Validated 33 cells / {promoted} observations and chemistry provenance; rolling back test data')
+finally:
+    connection.rollback()
+    connection.close()
