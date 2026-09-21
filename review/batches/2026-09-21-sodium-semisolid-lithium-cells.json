@@ -637,7 +637,9 @@
               "rate_value": 0.5,
               "rate_unit": "C",
               "direction": "discharge",
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
+                "rate_reference_capacity_ah",
                 "dod_pct"
               ]
             }
@@ -1238,7 +1240,9 @@
                 "end_of_life_criterion": "not stated",
                 "rate_direction": "not stated"
               },
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
+                "rate_reference_capacity_ah",
                 "temperature_c",
                 "dod_pct"
               ]
@@ -1380,7 +1384,9 @@
                 "end_of_life_criterion": "not stated",
                 "rate_direction": "not stated"
               },
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
+                "rate_reference_capacity_ah",
                 "temperature_c",
                 "dod_pct"
               ]
@@ -1607,8 +1613,10 @@
               "temperature_c": 25,
               "rate_value": 0.3,
               "rate_unit": "C",
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
-                "voltage_lower_v"
+                "voltage_lower_v",
+                "rate_reference_capacity_ah"
               ]
             }
           },
@@ -1781,8 +1789,10 @@
               "temperature_c": 25,
               "rate_value": 0.3,
               "rate_unit": "C",
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
-                "voltage_lower_v"
+                "voltage_lower_v",
+                "rate_reference_capacity_ah"
               ]
             }
           },
@@ -1955,8 +1965,10 @@
               "temperature_c": 25,
               "rate_value": 0.3,
               "rate_unit": "C",
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
-                "voltage_lower_v"
+                "voltage_lower_v",
+                "rate_reference_capacity_ah"
               ]
             }
           },
@@ -2129,8 +2141,10 @@
               "temperature_c": 25,
               "rate_value": 0.3,
               "rate_unit": "C",
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
-                "voltage_lower_v"
+                "voltage_lower_v",
+                "rate_reference_capacity_ah"
               ]
             }
           },
@@ -2304,8 +2318,10 @@
               "temperature_c": 25,
               "rate_value": 0.3,
               "rate_unit": "C",
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
-                "voltage_lower_v"
+                "voltage_lower_v",
+                "rate_reference_capacity_ah"
               ]
             }
           },
@@ -2471,8 +2487,10 @@
               "temperature_c": 25,
               "rate_value": 0.3,
               "rate_unit": "C",
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
-                "voltage_lower_v"
+                "voltage_lower_v",
+                "rate_reference_capacity_ah"
               ]
             }
           },
@@ -2591,8 +2609,10 @@
               "temperature_c": 25,
               "rate_value": 0.5,
               "rate_unit": "C",
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
-                "voltage_lower_v"
+                "voltage_lower_v",
+                "rate_reference_capacity_ah"
               ]
             }
           },
@@ -2773,8 +2793,10 @@
               "extra": {
                 "reference_value_only": true
               },
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
-                "voltage_lower_v"
+                "voltage_lower_v",
+                "rate_reference_capacity_ah"
               ]
             }
           },
@@ -2938,8 +2960,10 @@
               "extra": {
                 "reference_value_only": true
               },
+              "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
               "unstated": [
-                "voltage_lower_v"
+                "voltage_lower_v",
+                "rate_reference_capacity_ah"
               ]
             }
           },

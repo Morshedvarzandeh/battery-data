@@ -37,6 +37,13 @@ try:
         assert tuple(cur.fetchone()) == (8000, 'P')
         cur.execute("SELECT value_native, rate_value, rate_unit, statistic FROM bd.v_observation WHERE model_number='M50L' AND quantity='capacity'")
         assert tuple(cur.fetchone()) == (4.93, .2, 'C', 'nominal')
+        cur.execute("""SELECT c.rate_reference_capacity_ah, c.rate_reference_source, c.unstated
+                         FROM bd.condition_set c JOIN bd.observation o ON o.condition_set_id=c.id
+                         JOIN bd.v_observation v ON v.observation_id=o.id
+                        WHERE v.model_number='M50L' AND v.quantity='capacity'""")
+        reference = cur.fetchone()
+        assert reference[0] is None and reference[1] == 'Manufacturer C-rate label; reference capacity not stated'
+        assert 'rate_reference_capacity_ah' in reference[2]
         cur.execute("SELECT count(*) FROM bd.v_observation WHERE model_number IN ('JF2','JH4') AND quantity='nominal_voltage'")
         assert cur.fetchone()[0] == 0
         cur.execute("SELECT value_native FROM bd.v_observation WHERE model_number='L173F314' AND quantity='nominal_voltage'")

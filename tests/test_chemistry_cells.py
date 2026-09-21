@@ -31,6 +31,11 @@ class ChemistryEvidenceTests(unittest.TestCase):
                 conditions = o.get('conditions', {})
                 for field in importer.REGISTRY[o['quantity']]:
                     self.assertTrue(field in conditions or field in conditions.get('unstated', []))
+                if conditions.get('rate_unit') == 'C':
+                    self.assertEqual(conditions['rate_reference_source'],
+                                     'Manufacturer C-rate label; reference capacity not stated')
+                    self.assertIn('rate_reference_capacity_ah', conditions['unstated'])
+                    self.assertNotIn('rate_reference_capacity_ah', conditions)
         self.assertEqual(len(DOCS), 33)
         self.assertEqual(sum(len(d['observations']) for d in DOCS.values()), 270)
         self.assertEqual(Counter(d['product']['manufacturer'] for d in DOCS.values()),

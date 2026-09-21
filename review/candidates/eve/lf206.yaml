@@ -79,7 +79,9 @@
         "rate_value": 0.5,
         "rate_unit": "C",
         "direction": "discharge",
+        "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
         "unstated": [
+          "rate_reference_capacity_ah",
           "dod_pct"
         ]
       }

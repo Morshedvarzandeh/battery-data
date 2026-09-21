@@ -18,6 +18,7 @@ After this batch: **2,170 accepted battery products and 1,395 pending battery pr
 ## Evidence and structure
 
 - Every numeric observation retains its source page or section, original units, rating label where supplied, qualifiers and an excerpt. Missing test conditions are explicitly declared `unstated`.
+- Quoted C-rates use a descriptive `rate_reference_source` stating that the manufacturer does not identify the reference capacity. `rate_reference_capacity_ah` remains explicitly unstated; these ratings cannot be converted to amperes. A minimum or nominal capacity is not silently substituted as the C-rate basis.
 - Manufacturer statements remain claims. Neither a launch announcement nor a regulatory citation is presented as an independent performance measurement.
 - `chemistry.designation` records sodium-ion or the stated cathode family. WeLion’s `NMC+` is separate from `chemistry.electrolyte_text = Semi-Solid-State`; no all-solid-state classification or unreported anode is invented.
 - The database importer now retains `electrolyte_text`, `separator_text` and the chemistry locator. Legacy chemistry without a locator still uses whole-source provenance. Web exports retain the electrolyte locator when present. Existing ingested files are not automatically backfilled by this change.

@@ -34,8 +34,10 @@
         "temperature_c": 25,
         "rate_value": 0.5,
         "rate_unit": "C",
+        "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
         "unstated": [
-          "voltage_lower_v"
+          "voltage_lower_v",
+          "rate_reference_capacity_ah"
         ]
       }
     },

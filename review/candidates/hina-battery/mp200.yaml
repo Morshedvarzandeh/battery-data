@@ -91,7 +91,9 @@
           "end_of_life_criterion": "not stated",
           "rate_direction": "not stated"
         },
+        "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
         "unstated": [
+          "rate_reference_capacity_ah",
           "temperature_c",
           "dod_pct"
         ]

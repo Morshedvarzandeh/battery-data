@@ -28,6 +28,14 @@ def slug(value):
 def observation(quantity, value, unit, locator, *, statistic=None, conditions=None, **extra):
     cond = deepcopy(conditions or {})
     absent = list(cond.pop('unstated', []))
+    if cond.get('rate_unit') == 'C' and not any(
+            key in cond for key in ('rate_reference_capacity_ah', 'rate_reference_source')):
+        # Preserve the manufacturer's C-rate label without treating a minimum,
+        # typical or nominal capacity elsewhere as its unstated reference.
+        # A descriptive reference is supported by bd.condition_set; no current
+        # conversion is possible without an explicitly stated numeric basis.
+        cond['rate_reference_source'] = 'Manufacturer C-rate label; reference capacity not stated'
+        absent.append('rate_reference_capacity_ah')
     absent += [k for k in REGISTRY[quantity] if k not in cond and k not in absent]
     if absent:
         cond['unstated'] = absent
