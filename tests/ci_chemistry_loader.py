@@ -53,7 +53,8 @@ try:
         legacy = {'schema_version': '1', 'product': {'uid': 'cell/ci-chemistry/fixture', 'kind': 'cell',
                   'manufacturer': 'CI chemistry fixture', 'model_number': 'CI chemistry fixture'},
                   'source': {'uid': 'src/ci-chemistry-fixture', 'kind': 'datasheet',
-                             'title': 'Synthetic CI fixture, rolled back'},
+                             'title': 'Synthetic CI fixture, rolled back',
+                             'url': 'https://example.invalid/ci-chemistry-fixture'},
                   'chemistry': {'designation': 'test only', 'separator_text': 'synthetic separator',
                                 'electrolyte_text': 'synthetic electrolyte'}}
         org = loader.ensure_organization(cur, 'ci-chemistry', 'CI chemistry fixture')
