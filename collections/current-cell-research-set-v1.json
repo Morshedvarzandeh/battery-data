@@ -1,0 +1,55 @@
+{
+  "format": "lemonergy/current-cell-research-set@1",
+  "version": "2026-09-21",
+  "review_status": "pending_review",
+  "decision_scope": "screening_only",
+  "description": "A bounded, source-linked set of current cell candidates for structured evidence review. Inclusion is not acceptance, availability confirmation or design qualification.",
+  "entries": [
+    {"uid":"cell/lg-energy-solution/e101a","candidate":"review/candidates/lg-energy-solution/e101a.yaml","segment":"high-energy-ev"},
+    {"uid":"cell/lg-energy-solution/e72b","candidate":"review/candidates/lg-energy-solution/e72b.yaml","segment":"high-energy-ev"},
+    {"uid":"cell/lg-energy-solution/e79","candidate":"review/candidates/lg-energy-solution/e79.yaml","segment":"high-energy-ev"},
+    {"uid":"cell/lg-energy-solution/jf1","candidate":"review/candidates/lg-energy-solution/jf1.yaml","segment":"high-energy-ev"},
+    {"uid":"cell/lg-energy-solution/jf2","candidate":"review/candidates/lg-energy-solution/jf2.yaml","segment":"high-energy-ev"},
+    {"uid":"cell/lg-energy-solution/jh4","candidate":"review/candidates/lg-energy-solution/jh4.yaml","segment":"high-energy-ev"},
+    {"uid":"cell/lg-energy-solution/jp3","candidate":"review/candidates/lg-energy-solution/jp3.yaml","segment":"high-energy-ev"},
+    {"uid":"cell/lg-energy-solution/m52v","candidate":"review/candidates/lg-energy-solution/m52v.yaml","segment":"high-power-cylindrical"},
+
+    {"uid":"cell/eve/18650-30p","candidate":"review/candidates/eve/18650-30p.yaml","segment":"high-power-cylindrical"},
+    {"uid":"cell/eve/21700-40p","candidate":"review/candidates/eve/21700-40p.yaml","segment":"high-power-cylindrical"},
+    {"uid":"cell/eve/a41-v3","candidate":"review/candidates/eve/a41-v3.yaml","segment":"high-power-cylindrical"},
+    {"uid":"cell/eve/c40","candidate":"review/candidates/eve/c40.yaml","segment":"high-power-cylindrical"},
+    {"uid":"cell/eve/lf100la","candidate":"review/candidates/eve/lf100la.yaml","segment":"lfp-ess"},
+    {"uid":"cell/eve/lf206","candidate":"review/candidates/eve/lf206.yaml","segment":"lfp-ess"},
+    {"uid":"cell/eve/lf230","candidate":"review/candidates/eve/lf230.yaml","segment":"lfp-ess"},
+    {"uid":"cell/eve/lf235l","candidate":"review/candidates/eve/lf235l.yaml","segment":"lfp-ess"},
+    {"uid":"cell/eve/lf304","candidate":"review/candidates/eve/lf304.yaml","segment":"lfp-ess"},
+    {"uid":"cell/eve/lf356l","candidate":"review/candidates/eve/lf356l.yaml","segment":"lfp-ess"},
+
+    {"uid":"cell/catl/119ah-fast-charge-cell","candidate":"review/candidates/catl/119ah-fast-charge-cell.yaml","segment":"high-energy-ev"},
+    {"uid":"cell/catl/228ah-high-energy-density-cell","candidate":"review/candidates/catl/228ah-high-energy-density-cell.yaml","segment":"high-energy-ev"},
+    {"uid":"cell/catl/280ah-lfp-bess-cell","candidate":"review/candidates/catl/280ah-lfp-bess-cell.yaml","segment":"lfp-ess"},
+    {"uid":"cell/catl/314ah-lfp-ess-cell","candidate":"review/candidates/catl/314ah-lfp-ess-cell.yaml","segment":"lfp-ess"},
+    {"uid":"cell/catl/587ah-lfp-ess-cell","candidate":"review/candidates/catl/587ah-lfp-ess-cell.yaml","segment":"lfp-ess"},
+
+    {"uid":"cell/calb/684ah-ess-cell","candidate":"review/candidates/calb/684ah-ess-cell.yaml","segment":"large-format-ess"},
+    {"uid":"cell/calb/zhijiu-392ah-long-cycle-ess-cell","candidate":"review/candidates/calb/zhijiu-392ah-long-cycle-ess-cell.yaml","segment":"large-format-ess"},
+    {"uid":"cell/calb/zhijiu-588ah-long-cycle-ess-cell","candidate":"review/candidates/calb/zhijiu-588ah-long-cycle-ess-cell.yaml","segment":"large-format-ess"},
+    {"uid":"cell/calb/zhijiu-661ah-long-cycle-ess-cell","candidate":"review/candidates/calb/zhijiu-661ah-long-cycle-ess-cell.yaml","segment":"large-format-ess"},
+
+    {"uid":"cell/hina-battery/he240","candidate":"review/candidates/hina-battery/he240.yaml","segment":"sodium-ion"},
+    {"uid":"cell/hina-battery/mp10","candidate":"review/candidates/hina-battery/mp10.yaml","segment":"sodium-ion"},
+    {"uid":"cell/hina-battery/mp200","candidate":"review/candidates/hina-battery/mp200.yaml","segment":"sodium-ion"},
+    {"uid":"cell/hina-battery/ne170","candidate":"review/candidates/hina-battery/ne170.yaml","segment":"sodium-ion"},
+
+    {"uid":"cell/hithium/ess-cell-280ah-1p","candidate":"review/candidates/hithium/ess-cell-280ah-1p.yaml","segment":"lfp-ess"},
+    {"uid":"cell/hithium/infinity-cell-587ah","candidate":"review/candidates/hithium/infinity-cell-587ah.yaml","segment":"lfp-ess"},
+    {"uid":"cell/hithium/infinity-cell-n162ah","candidate":"review/candidates/hithium/infinity-cell-n162ah.yaml","segment":"sodium-ion"},
+
+    {"uid":"cell/welion/shp270-16","candidate":"review/candidates/welion/shp270-16.yaml","segment":"semi-solid"},
+    {"uid":"cell/welion/shp270-30","candidate":"review/candidates/welion/shp270-30.yaml","segment":"semi-solid"},
+    {"uid":"cell/welion/shp320-20","candidate":"review/candidates/welion/shp320-20.yaml","segment":"semi-solid"},
+    {"uid":"cell/welion/shp320-25","candidate":"review/candidates/welion/shp320-25.yaml","segment":"semi-solid"},
+    {"uid":"cell/welion/shp320-32","candidate":"review/candidates/welion/shp320-32.yaml","segment":"semi-solid"},
+    {"uid":"cell/welion/shp320-35","candidate":"review/candidates/welion/shp320-35.yaml","segment":"semi-solid"}
+  ]
+}
