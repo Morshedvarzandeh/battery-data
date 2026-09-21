@@ -36,10 +36,10 @@ class ChemistryEvidenceTests(unittest.TestCase):
                                      'Manufacturer C-rate label; reference capacity not stated')
                     self.assertIn('rate_reference_capacity_ah', conditions['unstated'])
                     self.assertNotIn('rate_reference_capacity_ah', conditions)
-        self.assertEqual(len(DOCS), 33)
-        self.assertEqual(sum(len(d['observations']) for d in DOCS.values()), 270)
+        self.assertEqual(len(DOCS), 32)
+        self.assertEqual(sum(len(d['observations']) for d in DOCS.values()), 262)
         self.assertEqual(Counter(d['product']['manufacturer'] for d in DOCS.values()),
-                         {'WeLion': 10, 'LG Energy Solution': 9, 'HiNa Battery': 4,
+                         {'WeLion': 10, 'LG Energy Solution': 8, 'HiNa Battery': 4,
                           'CATL': 2, 'EVE Energy': 3, 'CALB': 5})
 
     def test_lg_minimum_nominal_and_rate_exceptions(self):
@@ -47,7 +47,7 @@ class ChemistryEvidenceTests(unittest.TestCase):
         self.assertEqual((standard['statistic'], standard['conditions']['rate_value']), ('minimum', .3))
         jp = obs('JP3', 'capacity')[0]
         self.assertEqual((jp['value'], jp['statistic'], jp['conditions']['rate_value']), (62.4, 'minimum', .5))
-        for model, capacity in [('M50L', 4.93), ('M52V', 5.07)]:
+        for model, capacity in [('M52V', 5.07)]:
             o = obs(model, 'capacity')[0]
             self.assertEqual((o['value'], o['statistic'], o['conditions']['rate_value']), (capacity, 'nominal', .2))
             self.assertTrue(o['conditions']['extra']['reference_value_only'])
@@ -125,10 +125,13 @@ class ChemistryEvidenceTests(unittest.TestCase):
 
     def test_existing_and_held_cells_are_not_counted_again(self):
         uids = {d['product']['uid'] for d in DOCS.values()}
-        self.assertEqual(len(uids), 33)
-        for name in ['MB31', 'LF280K', 'LF280K-V3', 'C46M-V1', 'C46M-V2', 'M50LT',
+        self.assertEqual(len(uids), 32)
+        for name in ['MB31', 'LF280K', 'LF280K-V3', 'C46M-V1', 'C46M-V2', 'M50L', 'M50LT',
                      'Naxtra passenger EV sodium-ion cell', 'SHP350-30', 'SHP350-40']:
             self.assertNotIn(name, DOCS)
+        held_lg = next(h for h in MANIFEST['held'] if h['model'] == 'M50L')
+        self.assertEqual(held_lg['existing_uid'], 'cell/lg-energy-solution/inr21700-m50lt')
+        self.assertEqual(held_lg['transcription']['capacity_ah'], 4.93)
         self.assertEqual(len(MANIFEST['sources']), 35)
         for source in MANIFEST['sources'].values():
             self.assertRegex(source['sha256'], r'^[a-f0-9]{64}$')

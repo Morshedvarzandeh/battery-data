@@ -1,24 +1,24 @@
 # Sodium-ion, semi-solid and lithium cell expansion — 21 September 2026
 
-**33 additional pending cell entries / 270 observations**, based on 35 hashed evidence files. No accepted records are changed or counted as new.
+**32 additional pending cell entries / 262 observations**, based on 35 hashed evidence files. No accepted records are changed or counted as new.
 
 | Manufacturer | Added cells | Scope |
 |---|---:|---|
 | HiNa Battery | 4 | Sodium-ion: MP10, HE240, NE170, MP200 |
 | WeLion | 10 | NMC+ semi-solid pouch cells; two explicitly marked TRIAL |
-| LG Energy Solution | 9 | NCMA, NCM and LFP cells from the public cell specification sheet |
+| LG Energy Solution | 8 | NCMA, NCM and LFP cells from the public cell specification sheet |
 | EVE Energy | 3 | LFP: LF206, LF235L and MB30 |
 | CATL | 2 | Public 314Ah and 587Ah LFP ESS cell designations |
 | CALB | 5 | L173F314; ZHIJIU 392Ah/588Ah/661Ah; 684Ah showcase |
 
-27 entries have named model codes; six CATL/CALB entries use the manufacturer’s published capacity-based cell designations. Those six do not establish orderable part numbers. CALB launch/showcase records are intentionally sparse; exact cathode chemistry is unreported for four entries.
+26 entries have named model codes; six CATL/CALB entries use the manufacturer’s published capacity-based cell designations. Those six do not establish orderable part numbers. CALB launch/showcase records are intentionally sparse; exact cathode chemistry is unreported for four entries.
 
-After this batch: **2,170 accepted battery products and 1,395 pending battery products**. The separate component queue remains **146 pending models**. This brings the combined pending queue to **1,541**; components never increase battery counts.
+After this batch: **2,170 accepted battery products and 1,394 pending battery products**. The separate component queue remains **146 pending models**. This brings the combined pending queue to **1,540**; components never increase battery counts.
 
 ## Evidence and structure
 
 - Every numeric observation retains its source page or section, original units, rating label where supplied, qualifiers and an excerpt. Missing test conditions are explicitly declared `unstated`.
-- Quoted C-rates use a descriptive `rate_reference_source` stating that the manufacturer does not identify the reference capacity. `rate_reference_capacity_ah` remains explicitly unstated; these ratings cannot be converted to amperes. A minimum or nominal capacity is not silently substituted as the C-rate basis.
+- Quoted C-rates retain a descriptive reference explaining that the numerical capacity basis is not stated. `rate_reference_capacity_ah` stays explicitly unstated; these C-rates are not converted to amperes.
 - Manufacturer statements remain claims. Neither a launch announcement nor a regulatory citation is presented as an independent performance measurement.
 - `chemistry.designation` records sodium-ion or the stated cathode family. WeLion’s `NMC+` is separate from `chemistry.electrolyte_text = Semi-Solid-State`; no all-solid-state classification or unreported anode is invented.
 - The database importer now retains `electrolyte_text`, `separator_text` and the chemistry locator. Legacy chemistry without a locator still uses whole-source provenance. Web exports retain the electrolyte locator when present. Existing ingested files are not automatically backfilled by this change.
@@ -38,7 +38,7 @@ After this batch: **2,170 accepted battery products and 1,395 pending battery pr
 
 ## Existing identities and held evidence
 
-Existing accepted and pending files were checked alongside the four SQL reference cells. EVE MB31 and LF280K, CATL’s two sodium-ion entries and 280Ah ESS entry, and HiTHIUM’s N162Ah are not counted again. A manufacturer revision is not automatically a new cell identity.
+Existing accepted and pending files were checked alongside the four SQL reference cells. LG M50L is held as a potential short designation of the seeded INR21700-M50LT: the nominal voltage/energy agree, but the public summary does not establish whether it is a separate physical part. Its full transcription remains in the manifest, outside the new-cell count. EVE MB31 and LF280K, CATL’s two sodium-ion entries and 280Ah ESS entry, and HiTHIUM’s N162Ah are not counted again. A manufacturer revision is not automatically a new cell identity.
 
 EVE C46M-V1/V2 are held because their LFP descriptions and 3.6 V nominal-voltage ratings require reconciliation. CALB’s generic 314Ah Gen2.0 showcase is held because its relationship to L173F314 is unresolved. All field-level omissions are listed in the manifest.
 
@@ -67,7 +67,6 @@ EVE C46M-V1/V2 are held because their LFP descriptions and 3.6 V nominal-voltage
 | LG Energy Solution | [JF2](../candidates/lg-energy-solution/jf2.yaml) | 8 | datasheet |
 | LG Energy Solution | [JH4](../candidates/lg-energy-solution/jh4.yaml) | 5 | datasheet |
 | LG Energy Solution | [JP3](../candidates/lg-energy-solution/jp3.yaml) | 9 | datasheet |
-| LG Energy Solution | [M50L](../candidates/lg-energy-solution/m50l.yaml) | 8 | datasheet |
 | LG Energy Solution | [M52V](../candidates/lg-energy-solution/m52v.yaml) | 8 | datasheet |
 | WeLion | [SHP270-16](../candidates/welion/shp270-16.yaml) | 13 | datasheet |
 | WeLion | [SHP270-22](../candidates/welion/shp270-22.yaml) | 13 | datasheet |
@@ -136,4 +135,4 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 node tests/test_web_observations.cjs
 ```
 
-CI additionally promotes all 33 cells and their 270 observations in a disposable PostgreSQL transaction, verifies chemistry/electrolyte provenance, mixed C/P rates, LG nominal/minimum distinctions and the CALB cell/module boundary, then rolls back all test records. Candidates remain pending throughout.
+CI additionally promotes all 32 cells and their 262 observations in a disposable PostgreSQL transaction, verifies chemistry/electrolyte provenance, mixed C/P rates, LG nominal/minimum distinctions and the CALB cell/module boundary, then rolls back all test records. Candidates remain pending throughout.

@@ -1148,38 +1148,6 @@
       "family": "lg",
       "manufacturer": "LG Energy Solution",
       "maker_slug": "lg-energy-solution",
-      "model": "M50L",
-      "source_key": "lg-cells-2024",
-      "page": 1,
-      "form_factor": "cylindrical",
-      "cathode": "NCMA",
-      "anode": "Graphite",
-      "capacity_ah": 4.93,
-      "capacity_rate_c": 0.2,
-      "capacity_statistic": "nominal",
-      "capacity_quote": "M50L: 4.93 Ah; nom, 0.2C; reference value; table header 25°C",
-      "capacity_reference_only": true,
-      "voltage_v": 3.69,
-      "energy_wh": 18.2,
-      "energy_statistic": "nominal",
-      "energy_quote": "M50L: Energy 18.2 Wh (nom)",
-      "specific_energy_wh_kg": 270,
-      "energy_density_wh_l": 746,
-      "density_statistic": "nominal",
-      "mass_g": 67.2,
-      "mass_statistic": null,
-      "mass_quote": "M50L: Weight 67.2 g",
-      "dimensions_mm": {
-        "diameter": 21.15,
-        "height": 70.2
-      },
-      "dimension_quote": "Diameter: 21.15mm (max); Height: 70.2mm (max) (Max.)",
-      "dimension_statistic": "maximum"
-    },
-    {
-      "family": "lg",
-      "manufacturer": "LG Energy Solution",
-      "maker_slug": "lg-energy-solution",
       "model": "M52V",
       "source_key": "lg-cells-2024",
       "page": 1,
@@ -1497,6 +1465,46 @@
         "maximum_continuous_current"
       ],
       "reason": "Maximal/minimal voltage labels and ultrafast C-rate labels do not identify absolute safety limits or continuous maximum current conditions."
+    },
+    {
+      "manufacturer": "LG Energy Solution",
+      "model": "M50L",
+      "source_key": "lg-cells-2024",
+      "reason": "Potential shortened identity of existing seed model INR21700-M50LT. Both sources describe 21700 cells with nominal 3.69 V / 18.2 Wh. The public summary does not resolve whether M50L is a separate part or shorthand. Hold outside the new-cell count; do not merge, alias or import reference capacity from the older M50LT specification without evidence.",
+      "existing_uid": "cell/lg-energy-solution/inr21700-m50lt",
+      "existing_file": "seed/001_reference_cells.sql",
+      "transcription": {
+        "family": "lg",
+        "manufacturer": "LG Energy Solution",
+        "maker_slug": "lg-energy-solution",
+        "model": "M50L",
+        "source_key": "lg-cells-2024",
+        "page": 1,
+        "form_factor": "cylindrical",
+        "cathode": "NCMA",
+        "anode": "Graphite",
+        "capacity_ah": 4.93,
+        "capacity_rate_c": 0.2,
+        "capacity_statistic": "nominal",
+        "capacity_quote": "M50L: 4.93 Ah; nom, 0.2C; reference value; table header 25°C",
+        "capacity_reference_only": true,
+        "voltage_v": 3.69,
+        "energy_wh": 18.2,
+        "energy_statistic": "nominal",
+        "energy_quote": "M50L: Energy 18.2 Wh (nom)",
+        "specific_energy_wh_kg": 270,
+        "energy_density_wh_l": 746,
+        "density_statistic": "nominal",
+        "mass_g": 67.2,
+        "mass_statistic": null,
+        "mass_quote": "M50L: Weight 67.2 g",
+        "dimensions_mm": {
+          "diameter": 21.15,
+          "height": 70.2
+        },
+        "dimension_quote": "Diameter: 21.15mm (max); Height: 70.2mm (max) (Max.)",
+        "dimension_statistic": "maximum"
+      }
     }
   ]
 }

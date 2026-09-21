@@ -24,7 +24,7 @@ try:
             result = loader.load_file(cur, str(ROOT / f'review/candidates/{maker}/{model}.yaml'), args, reviewer)
             assert not result.get('invalid'), result
             promoted += result.get('promoted', 0)
-        assert promoted == 270, promoted
+        assert promoted == 262, promoted
         cur.execute("""SELECT c.designation, c.cathode_text, c.electrolyte_text, l.page, l.section, l.quote, r.is_preliminary
                          FROM bd.product_chemistry c JOIN bd.product_revision r ON r.id=c.product_revision_id
                          JOIN bd.product p ON p.id=r.product_id JOIN bd.provenance pv ON pv.id=c.provenance_id
@@ -35,12 +35,12 @@ try:
         assert 'header' in chemistry[4] and 'Semi-Solid-State' in chemistry[5] and chemistry[6]
         cur.execute("SELECT value_native, rate_unit FROM bd.v_observation WHERE model_number='HE240' AND quantity='cycle_life'")
         assert tuple(cur.fetchone()) == (8000, 'P')
-        cur.execute("SELECT value_native, rate_value, rate_unit, statistic FROM bd.v_observation WHERE model_number='M50L' AND quantity='capacity'")
-        assert tuple(cur.fetchone()) == (4.93, .2, 'C', 'nominal')
+        cur.execute("SELECT value_native, rate_value, rate_unit, statistic FROM bd.v_observation WHERE model_number='M52V' AND quantity='capacity'")
+        assert tuple(cur.fetchone()) == (5.07, .2, 'C', 'nominal')
         cur.execute("""SELECT c.rate_reference_capacity_ah, c.rate_reference_source, c.unstated
                          FROM bd.condition_set c JOIN bd.observation o ON o.condition_set_id=c.id
                          JOIN bd.v_observation v ON v.observation_id=o.id
-                        WHERE v.model_number='M50L' AND v.quantity='capacity'""")
+                        WHERE v.model_number='M52V' AND v.quantity='capacity'""")
         reference = cur.fetchone()
         assert reference[0] is None and reference[1] == 'Manufacturer C-rate label; reference capacity not stated'
         assert 'rate_reference_capacity_ah' in reference[2]
@@ -65,7 +65,7 @@ try:
                          JOIN bd.source_location l ON l.id=pv.source_location_id
                         WHERE c.designation='test only'""")
         assert tuple(cur.fetchone()) == ('synthetic separator', 'synthetic electrolyte', None)
-        print(f'Validated 33 cells / {promoted} observations and chemistry provenance; rolling back test data')
+        print(f'Validated 32 cells / {promoted} observations and chemistry provenance; rolling back test data')
 finally:
     connection.rollback()
     connection.close()

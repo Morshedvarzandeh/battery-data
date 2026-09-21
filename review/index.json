@@ -3,8 +3,8 @@
   "batch": "2026-09-21-sodium-semisolid-lithium-cells",
   "status": "pending_review",
   "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
-  "candidate_count": 1541,
-  "total_record_count": 3700,
+  "candidate_count": 1540,
+  "total_record_count": 3699,
   "candidates": [
     {
       "uid": "system/byd/battery-box-premium-hvs-5.1",
@@ -19947,17 +19947,6 @@
       "source_url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
       "source_title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
       "observation_count": 9,
-      "state": "pending_review"
-    },
-    {
-      "uid": "cell/lg-energy-solution/m50l",
-      "manufacturer": "LG Energy Solution",
-      "model_number": "M50L",
-      "kind": "cell",
-      "candidate_file": "review/candidates/lg-energy-solution/m50l.yaml",
-      "source_url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
-      "source_title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
-      "observation_count": 8,
       "state": "pending_review"
     },
     {

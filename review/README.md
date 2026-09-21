@@ -18,7 +18,7 @@ batch review through its files and pull request; generating payloads does not
 automatically open individual issues or accept records.
 
 The [sodium-ion, semi-solid and lithium cell batch](imports/2026-09-21-sodium-semisolid-lithium-cells.md)
-adds 33 further cell candidates from HiNa, WeLion, LG, EVE, CATL and CALB.
+adds 32 further cell candidates from HiNa, WeLion, LG, EVE, CATL and CALB.
 Its manifest records source hashes, omitted ambiguous fields and existing
 identities excluded from the new count. Trial and announcement evidence stays
 explicitly qualified.
