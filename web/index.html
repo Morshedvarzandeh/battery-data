@@ -187,7 +187,8 @@ svg text{font-family:var(--sans)}
       <table id="tbl"><thead></thead><tbody></tbody></table>
     </div>
     <p class="lbl" style="margin-top:9px">Click a row to add it to the report ·
-      click a column heading to sort · best value in each column is highlighted</p>
+      click a column heading to sort · best value in each column is highlighted ·
+      ≥ and ≤ mark a bound the source printed instead of a value</p>
   </section>
 
   <!-- CELL SHEET -->
@@ -327,6 +328,22 @@ const PACKS    = PRODUCTS.filter(p => p.kind === "module" || p.kind === "pack");
 const CATL     = PRODUCTS.find(p => p.uid === "cell/catl/302ah-lifepo4") || null;
 const CATL_PULSE_N = CATL ? CATL.curves.reduce((n,c) => n + c.x.length, 0) : 0;
 
+/* A source that prints only a bound -- "≥ 300 mAh" -- still said something.
+   tools/build_web_data.py rightly refuses to derive Wh or Wh/kg from a bound,
+   so the point value stays empty, but an empty cell reads as "the source says
+   nothing", which is false for over a thousand catalog cells. The table shows
+   the bound instead, marked ≥ or ≤, and a bound never wins a column. */
+const BOUNDED={ah:["capacity",{Ah:1,mAh:0.001}],v:["nominal_voltage",{V:1,mV:0.001}],
+  g:["mass",{g:1,kg:1000,mg:0.001}]};
+function boundsOf(c){
+  const b={};
+  for(const [k,[q,scale]] of Object.entries(BOUNDED)){
+    const o=c.obs.find(o=>o.q===q&&(o.lower_bound||o.upper_bound)&&o.u in scale);
+    if(o)b[k]={v:o.v*scale[o.u],lower_bound:o.lower_bound,upper_bound:o.upper_bound};
+  }
+  return b;
+}
+
 /* One row per contribution. There is no second path: a product on this page
    came from contrib/ and passed validate_contrib.py, or it is not here.
    The arithmetic (Wh, Wh/kg, Wh/L, W/kg) is done in tools/build_web_data.py
@@ -340,7 +357,7 @@ const fromRecord = c => {
     ah:m.ah, v:m.v, g:m.mass_g, a:m.a, wh:m.wh, litres:m.litres,
     whkg:m.whkg, whl:m.whl, wkg:m.wkg, crate:m.crate,
     whkg_derived:m.whkg_derived, whl_derived:m.whl_derived,
-    provisional:false, rec:c,
+    provisional:false, rec:c, bound:boundsOf(c),
     year: c.source && c.source.date ? +String(c.source.date).slice(0,4) : null,
     docdate: c.source ? c.source.date : null};
 };
@@ -365,6 +382,21 @@ const COLS=[
 const HIGHER=["ah","wh","whkg","whl","wkg","crate"];
 let sortK="whkg", sortD=-1;
 
+/* What a column shows for a row: the point value, else the bound the source
+   printed (see BOUNDED), else a dash. */
+const hasNum=(r,k)=>typeof r[k]==="number"&&!isNaN(r[k]);
+const boundFor=(r,k)=>hasNum(r,k)?null:(r.bound&&r.bound[k])||null;
+const cellText=(r,k,dec)=>{const b=boundFor(r,k);return b?boundPrefix(b)+f(b.v,dec):f(r[k],dec);};
+const BOUND_TITLE="the source states a bound here, not a value; derived figures do not use it";
+const sortVal=(r,k)=>{const b=boundFor(r,k);return b?b.v:r[k];};
+/* Blanks sort last whichever way a column runs, so sorting ascending does not
+   bury the rows that carry a figure under the rows that do not. */
+const compareBy=(k,dir)=>(a,b)=>{
+  const x=sortVal(a,k),y=sortVal(b,k),mx=x==null||Number.isNaN(x),my=y==null||Number.isNaN(y);
+  if(mx||my)return mx-my;
+  return (typeof x==="number"?x-y:String(x).localeCompare(String(y)))*dir;
+};
+
 function visible(){
   const q=$("#q").value.toLowerCase().trim(), c=$("#chemf").value,
         ff=$("#fff").value, kd=$("#kindf").value, yr=$("#yearf").value;
@@ -373,10 +405,9 @@ function visible(){
     &&(yr===""||(yr==="0"?r.year==null:(r.year!=null&&r.year>=+yr))));
 }
 function drawTable(){
-  const rows=visible().sort((a,b)=>{const x=a[sortK],y=b[sortK];
-    return (typeof x==="number"?x-y:String(x).localeCompare(String(y)))*sortD;});
+  const rows=visible().sort(compareBy(sortK,sortD));
   const best={};
-  HIGHER.forEach(k=>{best[k]=Math.max(...rows.map(r=>r[k]).filter(n=>!isNaN(n)));});
+  HIGHER.forEach(k=>{best[k]=Math.max(...rows.filter(r=>hasNum(r,k)).map(r=>r[k]));});
 
   const th=$("#tbl thead");th.innerHTML="";
   const tr=el("tr",{});
@@ -409,6 +440,8 @@ function drawTable(){
       } else if(k==="year"){
         t.append(el("td",{class:"num",title:r.docdate?("document date "+r.docdate):"no source document"},
           r.year?String(r.year):"—"));
+      } else if(num&&boundFor(r,k)){
+        t.append(el("td",{class:cls.trim(),style:"color:var(--muted)",title:BOUND_TITLE},cellText(r,k,dec)));
       } else t.append(el("td",{class:cls.trim()},num?f(v,dec):String(v)));
     });
     t.append(el("td",{}, r.provisional!==false
@@ -621,26 +654,78 @@ function drawCharts(){
 }
 
 /* ---------- report ---------- */
-function repRows(){ const v=visible(); return SEL.size? v.filter(r=>SEL.has(r.cell)) : v; }
+/* A selection is explicit, so a filter changed afterwards does not drop it. */
+function repRows(){ return SEL.size? ROWS.filter(r=>SEL.has(r.cell)) : visible(); }
+const LEADS=[["whkg",1,"Wh/kg","highest specific energy"],
+             ["whl",0,"Wh/L","highest energy density"],
+             ["wkg",0,"W/kg","highest specific power"]];
+/* A leader is chosen among the rows that have the figure. A row without it is
+   not a candidate: naming it "highest" next to a dash reports nothing. */
+const leaderOf=(rows,k)=>rows.filter(r=>hasNum(r,k)).sort((a,b)=>b[k]-a[k])[0]||null;
+
+/* Every observation of a product, in sheet order, as the source printed it.
+   The comparison columns are a handful of derived figures; this is what a
+   reader still gets when the source gives none of them. */
+function recordedObs(r){
+  const order=Object.values(GROUPS).flat(), rank=q=>{const i=order.indexOf(q);return i<0?order.length:i;};
+  return r.rec?r.rec.obs.slice().sort((a,b)=>rank(a.q)-rank(b.q)):[];
+}
+const asStated=o=>boundPrefix(o)+String(+Number(o.v).toPrecision(10));
+const evidenceOf=o=>[o.stat,o.src,o.pg?`page ${o.pg}`:"",o.section].filter(Boolean).join(" · ");
+function recordedSpec(r){
+  const box=el("div",{style:"margin:16px 0 0"});
+  box.append(el("p",{style:"margin:0 0 2px;font-weight:600;color:var(--ink)"},r.cell));
+  const S=r.rec&&r.rec.source;
+  const meta=el("div",{class:"meta",style:"margin-bottom:8px"},`${r.manu} · ${r.chem} · ${r.fmt}`);
+  if(S){meta.append(" · source: ");
+    meta.append(S.url?el("a",{href:S.url,target:"_blank",rel:"noopener noreferrer",
+                              style:"color:var(--accent)"},S.title||S.url)
+                     :(S.title||"not stated"));
+    if(S.date)meta.append(` (${S.date})`);}
+  box.append(meta);
+  const obs=recordedObs(r);
+  if(!obs.length){box.append(el("p",{},"The source records no observations for this product."));return box;}
+  const w=el("div",{class:"tblwrap"}),t=el("table",{}),hh=el("thead",{}),hr=el("tr",{});
+  ["Quantity","Value","Unit","Recorded conditions","Evidence"].forEach((h,i)=>
+    hr.append(el("th",{class:i===1?"num":"",style:"cursor:default"},h)));
+  hh.append(hr);t.append(hh);
+  const tb=el("tbody",{});
+  obs.forEach(o=>{const tr=el("tr",{});
+    tr.append(el("td",{class:"code"},o.q));
+    tr.append(el("td",{class:"num"},asStated(o)));
+    tr.append(el("td",{},o.u||UNIT[o.q]||""));
+    tr.append(el("td",{style:"white-space:normal;min-width:200px;color:var(--muted)"},conditionDetails(o)));
+    tr.append(el("td",{style:"white-space:normal;min-width:160px;color:var(--muted)",
+      title:o.quote?`“${o.quote}”`:""},evidenceOf(o)));
+    tb.append(tr);});
+  t.append(tb);w.append(t);box.append(w);
+  return box;
+}
+
 function drawReport(){
-  const d=repRows().slice().sort((a,b)=>b.whkg-a.whkg);
+  const d=repRows().slice().sort(compareBy("whkg",-1));
   const host=$("#rep");host.innerHTML="";
   if(!d.length){host.append(el("div",{class:"empty"},"No cells selected."));return;}
   const now=new Date().toISOString().slice(0,10);
   host.append(el("h2",{},"Cell comparison"));
   host.append(el("div",{class:"meta"},
-    `${d.length} cell${d.length>1?"s":""} · generated ${now} · figures provisional, no source locators`));
+    `${d.length} cell${d.length>1?"s":""} · generated ${now} · every figure traces to a source document`));
 
-  const top=d[0], dense=d.slice().sort((a,b)=>b.whl-a.whl)[0],
-        power=d.slice().sort((a,b)=>b.wkg-a.wkg)[0];
+  const leads=LEADS.map(([k,dec,unit,label])=>({k,dec,unit,label,top:leaderOf(d,k),
+    n:d.filter(r=>hasNum(r,k)).length}));
   host.append(el("h4",{},"Leaders"));
-  const st=el("div",{class:"stat"});
-  [[f(top.whkg,1)+" Wh/kg",top.cell,"highest specific energy"],
-   [f(dense.whl,0)+" Wh/L",dense.cell,"highest energy density"],
-   [f(power.wkg,0)+" W/kg",power.cell,"highest specific power"]]
-   .forEach(([v,c,k])=>st.append(el("div",{},el("div",{class:"v"},v),
-     el("div",{style:"font-size:12px;color:var(--ink-2)"},c),el("div",{class:"k"},k))));
-  host.append(st);
+  if(leads.some(l=>l.top)){
+    const st=el("div",{class:"stat"});
+    leads.forEach(({k,dec,unit,label,top,n})=>st.append(el("div",{},
+      el("div",{class:"v"},top?`${f(top[k],dec)} ${unit}`:"—"),
+      el("div",{style:"font-size:12px;color:var(--ink-2)"},
+        top?top.cell:d.length>1?"none of these cells has it":"not available for this cell"),
+      el("div",{class:"k"},label+(top&&n<d.length?` · ${n} of ${d.length} have it`:"")))));
+    host.append(st);
+  } else host.append(el("p",{},(d.length>1?"None of these cells has":"This cell has no")
+    +" specific energy, energy density or specific power: "+(d.length>1?"their sources":"its source")
+    +" neither states one nor gives the capacity, nominal voltage, mass and size as values to derive"
+    +" one from."+(SEL.size?" What each source does state is listed under Recorded specifications.":"")));
 
   host.append(el("h4",{},"Full comparison"));
   const w=el("div",{class:"tblwrap"}),t=el("table",{}),hh=el("thead",{}),hr=el("tr",{});
@@ -648,10 +733,22 @@ function drawReport(){
   hh.append(hr);t.append(hh);
   const tb=el("tbody",{});
   d.forEach(r=>{const tr=el("tr",{});
-    COLS.forEach(([k,l,num,dec])=>tr.append(el("td",{class:num?"num":""},
-      num?f(r[k],dec):String(r[k]))));
+    COLS.forEach(([k,l,num,dec])=>tr.append(el("td",
+      num&&boundFor(r,k)?{class:"num",style:"color:var(--muted)",title:BOUND_TITLE}:{class:num?"num":""},
+      num?cellText(r,k,dec):String(r[k]))));
     tb.append(tr);});
   t.append(tb);w.append(t);host.append(w);
+  host.append(el("p",{class:"lbl",style:"text-transform:none;letter-spacing:0;font-weight:400;margin-top:7px"},
+    "≥ and ≤ mark a bound the source printed instead of a value; derived figures do not use it."));
+
+  host.append(el("h4",{},"Recorded specifications"));
+  if(SEL.size){
+    host.append(el("p",{},"Every value each source states for the selected cells, as printed — "
+      +"bounds included, and quantities the comparison has no column for — with the conditions "
+      +"it was stated under."));
+    d.forEach(r=>host.append(recordedSpec(r)));
+  } else host.append(el("p",{},"Select cells in Compare to list every value their sources state, "
+    +"with conditions, including the ones the columns above cannot show."));
 
   host.append(el("h4",{},"How these were derived"));
   host.append(el("p",{},"Energy is nominal voltage times rated capacity. Specific energy divides "
@@ -669,25 +766,39 @@ function drawReport(){
     +"on the Cell sheet and are the honest limit of what can be concluded here."));
 }
 function repMarkdown(){
-  const d=repRows().slice().sort((a,b)=>b.whkg-a.whkg);
+  const d=repRows().slice().sort(compareBy("whkg",-1));
   const L=["# Cell comparison","",
     "Prepared with the Lemonergy Battery Data library · [Free source library](https://github.com/Morshedvarzandeh/battery-data)", "",
     `${d.length} cells · generated ${new Date().toISOString().slice(0,10)}`,
     "","> Every figure below traces to a source document, page and quote.",
-    "> Values marked (derived) were computed from other stated values, not read off.","",
+    "> Values marked (derived) were computed from other stated values, not read off.",
+    "> ≥ and ≤ mark a bound the source printed instead of a value.","",
     "| "+COLS.map(c=>c[1]).join(" | ")+" |",
     "|"+COLS.map(c=>c[2]?"--:":"---").join("|")+"|"];
-  d.forEach(r=>L.push("| "+COLS.map(([k,l,num,dec])=>num?f(r[k],dec):r[k]).join(" | ")+" |"));
+  d.forEach(r=>L.push("| "+COLS.map(([k,l,num,dec])=>num?cellText(r,k,dec):r[k]).join(" | ")+" |"));
   L.push("","## Derivation","",
     "Energy = nominal voltage x rated capacity. Specific energy divides by mass;",
     "energy density by enclosed volume (pi r^2 h cylindrical, lxwxh prismatic).",
     "Specific power uses the continuous discharge rating at nominal voltage.");
+  if(SEL.size){
+    const cell=v=>String(v).replace(/\|/g,"\\|").replace(/\n/g," ");
+    L.push("","## Recorded specifications","");
+    d.forEach(r=>{const S=r.rec&&r.rec.source;
+      L.push(`### ${r.cell}`,"",`${r.manu} · ${r.chem} · ${r.fmt}`,"");
+      if(S)L.push(`Source: ${S.url?`[${S.title||S.url}](${S.url})`:(S.title||"not stated")}${S.date?` (${S.date})`:""}`,"");
+      const obs=recordedObs(r);
+      if(!obs.length){L.push("The source records no observations for this product.","");return;}
+      L.push("| Quantity | Value | Unit | Recorded conditions | Evidence |","|---|--:|---|---|---|");
+      obs.forEach(o=>L.push(`| \`${o.q}\` | ${cell(asStated(o))} | ${cell(o.u||UNIT[o.q]||"")} | `
+        +`${cell(conditionDetails(o))} | ${cell(evidenceOf(o))} |`));
+      L.push("");});
+  }
   return L.join("\n")+"\n";
 }
 function toCSV(rows){
   const head=COLS.map(c=>c[1]).join(",");
   const body=rows.map(r=>COLS.map(([k,l,num,dec])=>{
-    const v=num?f(r[k],dec):r[k];return `"${String(v).replace(/"/g,'""')}"`;}).join(",")).join("\n");
+    const v=num?cellText(r,k,dec):r[k];return `"${String(v).replace(/"/g,'""')}"`;}).join(",")).join("\n");
   return head+"\n"+body;
 }
 function save(name,text,mime){

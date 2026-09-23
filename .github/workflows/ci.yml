@@ -110,6 +110,8 @@ jobs:
         run: python tools/cyclers.py selftest
       - name: Specification display and Markdown preserve multiple ratings
         run: node tests/test_web_observations.cjs
+      - name: Report keeps a selected product the columns cannot describe
+        run: node tests/test_web_report.cjs
       - name: Python regression tests
         run: python -m unittest discover -s tests -p 'test_*.py'
 
