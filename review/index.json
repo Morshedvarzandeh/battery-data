@@ -3,8 +3,8 @@
   "batch": "2026-09-15-manufacturer-catalog-expansion",
   "status": "pending_review",
   "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
-  "candidate_count": 119,
-  "total_record_count": 2278,
+  "candidate_count": 122,
+  "total_record_count": 2281,
   "candidates": [
     {
       "uid": "system/byd/battery-box-premium-hvs-5.1",
@@ -4305,6 +4305,69 @@
       "observation_count": 6,
       "state": "pending_review",
       "component_type": "charger"
+    },
+    {
+      "uid": "component/sensata-gigavac/gx11",
+      "manufacturer": "Sensata GIGAVAC",
+      "model_number": "GX11",
+      "kind": "component",
+      "candidate_file": "review/candidates/sensata-gigavac/gx11.yaml",
+      "source_url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gx11-series-open-contactors-datasheet.pdf",
+      "source_title": "Sensata GIGAVAC GX11 normally open contactors",
+      "observation_count": 42,
+      "state": "pending_review",
+      "component_type": "contactor",
+      "identity_scope": "family",
+      "variant_selection": {
+        "status": "required",
+        "unspecified_options": [
+          "coil_designation",
+          "coil_termination",
+          "auxiliary_contact"
+        ]
+      }
+    },
+    {
+      "uid": "component/sensata-gigavac/gx12",
+      "manufacturer": "Sensata GIGAVAC",
+      "model_number": "GX12",
+      "kind": "component",
+      "candidate_file": "review/candidates/sensata-gigavac/gx12.yaml",
+      "source_url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gx12-series-open-contactors-datasheet.pdf",
+      "source_title": "Sensata GIGAVAC GX12 normally open contactors",
+      "observation_count": 42,
+      "state": "pending_review",
+      "component_type": "contactor",
+      "identity_scope": "family",
+      "variant_selection": {
+        "status": "required",
+        "unspecified_options": [
+          "coil_designation",
+          "coil_termination",
+          "auxiliary_contact"
+        ]
+      }
+    },
+    {
+      "uid": "component/sensata-gigavac/gx14",
+      "manufacturer": "Sensata GIGAVAC",
+      "model_number": "GX14",
+      "kind": "component",
+      "candidate_file": "review/candidates/sensata-gigavac/gx14.yaml",
+      "source_url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gx14-series-open-contactors-datasheet.pdf",
+      "source_title": "Sensata GIGAVAC GX14 normally open contactors",
+      "observation_count": 15,
+      "state": "pending_review",
+      "component_type": "contactor",
+      "identity_scope": "family",
+      "variant_selection": {
+        "status": "required",
+        "unspecified_options": [
+          "coil_designation",
+          "coil_termination",
+          "auxiliary_contact"
+        ]
+      }
     },
     {
       "uid": "primary_cell/maxell/sr44sw",

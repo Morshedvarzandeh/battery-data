@@ -91,7 +91,8 @@ SELECT o.id                        AS observation_id,
        o.access_tier,
        p.component_type,
        c.electrical_system, c.test_voltage_v, c.conductor_description,
-       c.extra AS condition_extra, c.unstated AS conditions_unstated
+       c.extra AS condition_extra, c.unstated AS conditions_unstated,
+       p.identity_scope, p.variant_selection
   FROM observation o
   JOIN quantity q          ON q.id = o.quantity_id
   JOIN provenance pv       ON pv.id = o.provenance_id

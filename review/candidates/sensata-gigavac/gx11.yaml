@@ -1,0 +1,951 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/sensata-gigavac/gx11",
+    "kind": "component",
+    "component_type": "contactor",
+    "manufacturer": "Sensata GIGAVAC",
+    "model_number": "GX11",
+    "identity_scope": "family",
+    "variant_selection": {
+      "status": "required",
+      "unspecified_options": [
+        "coil_designation",
+        "coil_termination",
+        "auxiliary_contact"
+      ]
+    }
+  },
+  "source": {
+    "uid": "src/sensata-gx11-inspected-2026-09-29",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC GX11 normally open contactors",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gx11-series-open-contactors-datasheet.pdf",
+    "revision": "Rev 6 10/23/15",
+    "retrieved_at": "2026-09-29",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Official five-page manufacturer PDF inspected through web PDF text retrieval. Direct byte retrieval returned HTTP 403; no PDF hash is asserted. Facts only; proprietary document body is not redistributed. This is a family record: coil designation, termination and auxiliary-contact option are not selected. Page 4 gives the part-number system. No automotive qualification or application-specific breaking suitability is asserted. Current-carry graph annotations are retained with their conductor and 85°C terminal-rise basis; they are not an unconditional current rating. Table and curve images could not be rendered for visual verification; this text extraction remains pending source review."
+  },
+  "observations": [
+    {
+      "quantity": "contact_voltage_rating",
+      "value": 800,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Family operating voltage range",
+        "quote": "12-800 Vdc"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "operating_voltage_min_v": 12,
+          "scope": "Operating range, not a rated make/break point."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "contact_resistance",
+      "value": 0.4,
+      "unit": "mohm",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Product specifications / contact resistance; note 2 page 4",
+        "quote": "Max mohms 0.4"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "measurement_current_min_exclusive_a": 100,
+          "measurement_condition_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 2"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "contact_resistance",
+      "value": 0.15,
+      "unit": "mohm",
+      "statistic": "typical",
+      "locator": {
+        "page": 2,
+        "section": "Product specifications / contact resistance; note 2 page 4",
+        "quote": "Typical mohms 0.15 to 0.3"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "measurement_current_min_exclusive_a": 100,
+          "measurement_condition_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 2"
+          },
+          "range_kind": "typical_interval",
+          "range_endpoint": "lower",
+          "interpretation": "Endpoint of the published typical interval; not a scalar typical value or a guaranteed population bound."
+        }
+      },
+      "value_min": 0.15,
+      "value_max": 0.3,
+      "is_lower_bound": true
+    },
+    {
+      "quantity": "contact_resistance",
+      "value": 0.3,
+      "unit": "mohm",
+      "statistic": "typical",
+      "locator": {
+        "page": 2,
+        "section": "Product specifications / contact resistance; note 2 page 4",
+        "quote": "Typical mohms 0.15 to 0.3"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "measurement_current_min_exclusive_a": 100,
+          "measurement_condition_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 2"
+          },
+          "range_kind": "typical_interval",
+          "range_endpoint": "upper",
+          "interpretation": "Endpoint of the published typical interval; not a scalar typical value or a guaranteed population bound."
+        }
+      },
+      "value_min": 0.15,
+      "value_max": 0.3,
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "continuous_carry_current",
+      "value": 325,
+      "unit": "A",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Current carry vs time / annotated conductor limit",
+        "quote": "325A max"
+      },
+      "conditions": {
+        "conductor_description": "2/0 AWG",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "terminal_temperature_rise_c": 85,
+          "scope": "Annotated current-carry chart limit; ambient temperature is not stated."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "continuous_carry_current",
+      "value": 225,
+      "unit": "A",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Current carry vs time / annotated conductor limit",
+        "quote": "225A max"
+      },
+      "conditions": {
+        "conductor_description": "2 AWG",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "terminal_temperature_rise_c": 85,
+          "scope": "Annotated current-carry chart limit; ambient temperature is not stated."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / nominal voltage / B column",
+        "quote": "Coil Voltage, Nominal 12 VDC"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "B"
+        }
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 16,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / maximum voltage / B column",
+        "quote": "Coil Voltage, Max 16 V"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "B"
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "operate_time",
+      "value": 20,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / operate time / B column; note 3 page 4",
+        "quote": "Operate Time, Max (ms) 20"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "coil_designation": "B",
+          "bounce_included": true,
+          "bounce_max_ms": 7,
+          "timing_note_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 3"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "release_time",
+      "value": 12,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / release time / B column",
+        "quote": "Release Time, Max (ms) 12"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "unstated": [
+          "test_voltage_v",
+          "load_current_a",
+          "arc_time_included"
+        ],
+        "extra": {
+          "coil_designation": "B",
+          "coil_suppression": "internal",
+          "scope": "Release-time limit; no HV breaking-current qualification inferred."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 24,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / nominal voltage / C column",
+        "quote": "Coil Voltage, Nominal 24 VDC"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "C"
+        }
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 32,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / maximum voltage / C column",
+        "quote": "Coil Voltage, Max 32 V"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "C"
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "operate_time",
+      "value": 20,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / operate time / C column; note 3 page 4",
+        "quote": "Operate Time, Max (ms) 20"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "coil_designation": "C",
+          "bounce_included": true,
+          "bounce_max_ms": 7,
+          "timing_note_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 3"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "release_time",
+      "value": 12,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / release time / C column",
+        "quote": "Release Time, Max (ms) 12"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "unstated": [
+          "test_voltage_v",
+          "load_current_a",
+          "arc_time_included"
+        ],
+        "extra": {
+          "coil_designation": "C",
+          "coil_suppression": "internal",
+          "scope": "Release-time limit; no HV breaking-current qualification inferred."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 48,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / nominal voltage / F column",
+        "quote": "Coil Voltage, Nominal 48 VDC"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "F"
+        }
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 64,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / maximum voltage / F column",
+        "quote": "Coil Voltage, Max 64 V"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "F"
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "operate_time",
+      "value": 30,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / operate time / F column; note 3 page 4",
+        "quote": "Operate Time, Max (ms) 30"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "coil_designation": "F",
+          "bounce_included": true,
+          "bounce_max_ms": 7,
+          "timing_note_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 3"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "release_time",
+      "value": 12,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / release time / F column",
+        "quote": "Release Time, Max (ms) 12"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "unstated": [
+          "test_voltage_v",
+          "load_current_a",
+          "arc_time_included"
+        ],
+        "extra": {
+          "coil_designation": "F",
+          "coil_suppression": "internal",
+          "scope": "Release-time limit; no HV breaking-current qualification inferred."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 72,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / nominal voltage / H column",
+        "quote": "Coil Voltage, Nominal 72 VDC"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "H"
+        }
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 96,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / maximum voltage / H column",
+        "quote": "Coil Voltage, Max 96 V"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "H"
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "operate_time",
+      "value": 30,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / operate time / H column; note 3 page 4",
+        "quote": "Operate Time, Max (ms) 30"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "coil_designation": "H",
+          "bounce_included": true,
+          "bounce_max_ms": 7,
+          "timing_note_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 3"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "release_time",
+      "value": 12,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / release time / H column",
+        "quote": "Release Time, Max (ms) 12"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "unstated": [
+          "test_voltage_v",
+          "load_current_a",
+          "arc_time_included"
+        ],
+        "extra": {
+          "coil_designation": "H",
+          "coil_suppression": "internal",
+          "scope": "Release-time limit; no HV breaking-current qualification inferred."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 120,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / nominal voltage / J column",
+        "quote": "Coil Voltage, Nominal 120 VDC"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "J"
+        }
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 140,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / maximum voltage / J column",
+        "quote": "Coil Voltage, Max 140 V"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "J"
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "operate_time",
+      "value": 20,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / operate time / J column; note 3 page 4",
+        "quote": "Operate Time, Max (ms) 20"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "coil_designation": "J",
+          "bounce_included": true,
+          "bounce_max_ms": 7,
+          "timing_note_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 3"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "release_time",
+      "value": 12,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / release time / J column",
+        "quote": "Release Time, Max (ms) 12"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "unstated": [
+          "test_voltage_v",
+          "load_current_a",
+          "arc_time_included"
+        ],
+        "extra": {
+          "coil_designation": "J",
+          "coil_suppression": "internal",
+          "scope": "Release-time limit; no HV breaking-current qualification inferred."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 120,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / nominal voltage / K column",
+        "quote": "Coil Voltage, Nominal 120 VAC"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "AC",
+        "extra": {
+          "coil_designation": "K"
+        }
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 140,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / maximum voltage / K column",
+        "quote": "Coil Voltage, Max 140 V"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "AC",
+        "extra": {
+          "coil_designation": "K"
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "operate_time",
+      "value": 30,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / operate time / K column; note 3 page 4",
+        "quote": "Operate Time, Max (ms) 30"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "coil_designation": "K",
+          "bounce_included": true,
+          "bounce_max_ms": 7,
+          "timing_note_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 3"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "release_time",
+      "value": 50,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / release time / K column",
+        "quote": "Release Time, Max (ms) 50"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "unstated": [
+          "test_voltage_v",
+          "load_current_a",
+          "arc_time_included"
+        ],
+        "extra": {
+          "coil_designation": "K",
+          "coil_suppression": "internal",
+          "scope": "Release-time limit; no HV breaking-current qualification inferred."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 240,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / nominal voltage / L column",
+        "quote": "Coil Voltage, Nominal 240 VAC"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "AC",
+        "extra": {
+          "coil_designation": "L"
+        }
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 280,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / maximum voltage / L column",
+        "quote": "Coil Voltage, Max 280 V"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "AC",
+        "extra": {
+          "coil_designation": "L"
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "operate_time",
+      "value": 30,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / operate time / L column; note 3 page 4",
+        "quote": "Operate Time, Max (ms) 30"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "coil_designation": "L",
+          "bounce_included": true,
+          "bounce_max_ms": 7,
+          "timing_note_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 3"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "release_time",
+      "value": 55,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / release time / L column",
+        "quote": "Release Time, Max (ms) 55"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "unstated": [
+          "test_voltage_v",
+          "load_current_a",
+          "arc_time_included"
+        ],
+        "extra": {
+          "coil_designation": "L",
+          "coil_suppression": "internal",
+          "scope": "Release-time limit; no HV breaking-current qualification inferred."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / nominal voltage / S column",
+        "quote": "Coil Voltage, Nominal 12 VDC"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "S"
+        }
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 16,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / maximum voltage / S column",
+        "quote": "Coil Voltage, Max 16 V"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "S"
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "operate_time",
+      "value": 20,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / operate time / S column; note 3 page 4",
+        "quote": "Operate Time, Max (ms) 20"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "coil_designation": "S",
+          "bounce_included": true,
+          "bounce_max_ms": 7,
+          "timing_note_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 3"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "release_time",
+      "value": 12,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / release time / S column",
+        "quote": "Release Time, Max (ms) 12"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "unstated": [
+          "test_voltage_v",
+          "load_current_a",
+          "arc_time_included"
+        ],
+        "extra": {
+          "coil_designation": "S",
+          "coil_suppression": "internal",
+          "scope": "Release-time limit; no HV breaking-current qualification inferred."
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 24,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / nominal voltage / T column",
+        "quote": "Coil Voltage, Nominal 24 VDC"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "T"
+        }
+      }
+    },
+    {
+      "quantity": "coil_voltage_max",
+      "value": 32,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / maximum voltage / T column",
+        "quote": "Coil Voltage, Max 32 V"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "electrical_system": "DC",
+        "extra": {
+          "coil_designation": "T"
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "operate_time",
+      "value": 20,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / operate time / T column; note 3 page 4",
+        "quote": "Operate Time, Max (ms) 20"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "coil_designation": "T",
+          "bounce_included": true,
+          "bounce_max_ms": 7,
+          "timing_note_locator": {
+            "page": 4,
+            "section": "Notes and definitions / note 3"
+          }
+        }
+      },
+      "is_upper_bound": true
+    },
+    {
+      "quantity": "release_time",
+      "value": 12,
+      "unit": "ms",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / release time / T column",
+        "quote": "Release Time, Max (ms) 12"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "unstated": [
+          "test_voltage_v",
+          "load_current_a",
+          "arc_time_included"
+        ],
+        "extra": {
+          "coil_designation": "T",
+          "coil_suppression": "internal",
+          "scope": "Release-time limit; no HV breaking-current qualification inferred."
+        }
+      },
+      "is_upper_bound": true
+    }
+  ]
+}

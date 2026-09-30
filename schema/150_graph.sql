@@ -42,7 +42,10 @@ UNION ALL
 SELECT 'Product', 'prod:'||p.id, p.uid, p.model_number,
        jsonb_build_object('kind',p.kind,'form_factor',p.form_factor,
                           'form_factor_code',p.form_factor_code,
-                          'lifecycle',p.lifecycle)
+                          'lifecycle',p.lifecycle,
+                          'component_type',p.component_type,
+                          'identity_scope',p.identity_scope,
+                          'variant_selection',p.variant_selection)
   FROM bd.product p
 UNION ALL
 SELECT 'ProductRevision', 'rev:'||pr.id, pr.uid, pr.revision_label,

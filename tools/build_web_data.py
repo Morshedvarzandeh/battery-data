@@ -117,6 +117,8 @@ def product(doc: dict, path: str) -> dict:
                     "stat": o.get("statistic"), "cond": cond,
                     "lower_bound": o.get("is_lower_bound", False),
                     "upper_bound": o.get("is_upper_bound", False),
+                    **({"value_min": o["value_min"]} if "value_min" in o else {}),
+                    **({"value_max": o["value_max"]} if "value_max" in o else {}),
                     "unstated": unstated, "pg": loc.get("page"),
                     "section": loc.get("section"),
                     "quote": loc["quote"], "src": src.get("kind")})
@@ -142,6 +144,8 @@ def product(doc: dict, path: str) -> dict:
     return {
         "uid": p["uid"], "kind": p["kind"],
         **({"component_type": p["component_type"]} if p.get("component_type") else {}),
+        **({"identity_scope": p["identity_scope"]} if p.get("identity_scope") else {}),
+        **({"variant_selection": p["variant_selection"]} if p.get("variant_selection") else {}),
         "cell": f"{p['manufacturer']} {p['model_number']}",
         "manu": p["manufacturer"], "model": p["model_number"],
         "fmt": p.get("form_factor") or "", "shape": SHAPE.get(p.get("form_factor", ""), "pri"),

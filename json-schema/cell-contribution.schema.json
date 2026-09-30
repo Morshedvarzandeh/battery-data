@@ -86,6 +86,36 @@
             "charger"
           ],
           "description": "Electrical component category. Components are excluded from the battery product target."
+        },
+        "identity_scope": {
+          "enum": [
+            "family",
+            "configuration",
+            "exact_part"
+          ],
+          "description": "Family and configuration identities must not be silently treated as exact orderable parts. Omitted means scope has not been recorded."
+        },
+        "variant_selection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "unspecified_options"
+          ],
+          "properties": {
+            "status": {
+              "const": "required"
+            },
+            "unspecified_options": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
         }
       },
       "allOf": [
@@ -111,6 +141,23 @@
                 "component_type"
               ]
             }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "identity_scope"
+            ],
+            "properties": {
+              "identity_scope": {
+                "const": "family"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "variant_selection"
+            ]
           }
         }
       ]

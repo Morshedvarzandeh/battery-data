@@ -38,6 +38,9 @@
  "coil_nominal_voltage": [],
  "coil_voltage_max": [],
  "coil_voltage_min": [],
+ "contact_resistance": [
+  "temperature_c"
+ ],
  "contact_voltage_rating": [
   "electrical_system"
  ],
@@ -186,6 +189,9 @@
   "direction",
   "rest_before_s"
  ],
+ "operate_time": [
+  "temperature_c"
+ ],
  "operating_temperature_max": [
   "temperature_reference",
   "direction"
@@ -219,6 +225,9 @@
  "recycled_content_lithium": [],
  "recycled_content_nickel": [],
  "relaxation_time": [],
+ "release_time": [
+  "temperature_c"
+ ],
  "resistance_growth": [
   "cycle_index",
   "temperature_c",

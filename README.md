@@ -25,9 +25,10 @@ candidates (255 CORDIS-linked and 801 EPO Linked Open EP Data candidates), plus
 383 company/research-organisation profiles. None enters the accepted library
 without DOCDB-family resolution and human approval.
 
-The [electrical component library](components/README.md) now has 13 pending models
-with 62 sourced observations across contactors, fuses, precharge contactors,
-inverters, DC/DC converters and chargers. [Browse the datasheets](components/catalog.md).
+The [electrical component library](components/README.md) now has 16 pending records
+with 161 sourced observations across contactors, fuses, precharge contactors,
+inverters, DC/DC converters and chargers, including the GX11, GX12 and GX14
+families with unresolved variants. [Browse the datasheets](components/catalog.md).
 A [weekly research agent](agents/weekly-research/AGENT.md) covers patents and all six
 categories every Monday at 09:00 Europe/Brussels. Components and patents are
 counted separately from batteries.

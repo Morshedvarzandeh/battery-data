@@ -30,6 +30,8 @@ CREATE TABLE product (
   manufacturer_id  bigint NOT NULL REFERENCES organization(id),
   model_number     text NOT NULL,
   component_type   text CHECK (component_type IN ('contactor','fuse','precharge_contactor','inverter','dc_dc_converter','charger')),
+  identity_scope   text CHECK (identity_scope IN ('family','configuration','exact_part')),
+  variant_selection jsonb,
   brand            text,
   product_family   text,
   form_factor      form_factor,
@@ -47,6 +49,8 @@ CREATE TABLE product (
   updated_at       timestamptz NOT NULL DEFAULT now(),
   -- Older BOM components (for example BMS units) may be unclassified.
   CHECK (component_type IS NULL OR kind = 'component'),
+  CHECK (identity_scope IS DISTINCT FROM 'family' OR
+         COALESCE(variant_selection->>'status' = 'required', false)),
   UNIQUE (manufacturer_id, model_number, kind)
 );
 CREATE INDEX ON product (kind, form_factor);

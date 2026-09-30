@@ -1,0 +1,35 @@
+[
+  {
+    "uid": "src/sensata-gx11-inspected-2026-09-29",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC GX11 normally open contactors",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gx11-series-open-contactors-datasheet.pdf",
+    "revision": "Rev 6 10/23/15",
+    "retrieved_at": "2026-09-29",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Official five-page manufacturer PDF inspected through web PDF text retrieval. Direct byte retrieval returned HTTP 403; no PDF hash is asserted. Facts only; proprietary document body is not redistributed. This is a family record: coil designation, termination and auxiliary-contact option are not selected. Page 4 gives the part-number system. No automotive qualification or application-specific breaking suitability is asserted. Current-carry graph annotations are retained with their conductor and 85°C terminal-rise basis; they are not an unconditional current rating. Table and curve images could not be rendered for visual verification; this text extraction remains pending source review."
+  },
+  {
+    "uid": "src/sensata-gx12-inspected-2026-09-29",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC GX12 normally open contactors",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gx12-series-open-contactors-datasheet.pdf",
+    "revision": "Rev 6 10/23/15",
+    "retrieved_at": "2026-09-29",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Official five-page manufacturer PDF inspected through web PDF text retrieval. Direct byte retrieval returned HTTP 403; no PDF hash is asserted. Facts only; proprietary document body is not redistributed. This is a family record: coil designation, termination and auxiliary-contact option are not selected. Page 4 gives the part-number system. No automotive qualification or application-specific breaking suitability is asserted. Current-carry graph annotations are retained with their conductor and 85°C terminal-rise basis; they are not an unconditional current rating. Table and curve images could not be rendered for visual verification; this text extraction remains pending source review."
+  },
+  {
+    "uid": "src/sensata-gx14-inspected-2026-09-29",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC GX14 normally open contactors",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-gx14-series-open-contactors-datasheet.pdf",
+    "revision": "Rev A 7/2/18",
+    "retrieved_at": "2026-09-29",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Official five-page manufacturer PDF inspected through web PDF text retrieval. Direct byte retrieval returned HTTP 403; no PDF hash is asserted. Facts only; proprietary document body is not redistributed. This is a family record: coil designation, termination and auxiliary-contact option are not selected. Page 4 gives the part-number system. No automotive qualification or application-specific breaking suitability is asserted. Current-carry graph annotations are retained with their conductor and 85°C terminal-rise basis; they are not an unconditional current rating. Table and curve images could not be rendered for visual verification; this text extraction remains pending source review."
+  }
+]

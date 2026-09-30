@@ -3,6 +3,12 @@
 [Browse models and datasheets](catalog.md). The initial batch contains **13 pending
 models / 62 observations** across all six requested categories:
 
+The [GX contactor batch](../docs/10-gx-contactor-families.md) additionally contains
+**GX11, GX12 and GX14: three pending families / 99 observations**. Family identity
+and unresolved coil/termination/auxiliary options remain explicit. These records
+include contact resistance, coil-dependent timing and conductor-dependent carry
+limits, without choosing an exact part or asserting automotive qualification.
+
 | Category | Initial models | Key observations |
 |---|---:|---|
 | Main contactors | 2 | Contact voltage, coil voltage, qualified carry current |

@@ -127,13 +127,16 @@ def ensure_product(cur, product: dict, org_id: int) -> int:
     cur.execute(
         """INSERT INTO bd.product (uid, kind, manufacturer_id, model_number, form_factor,
                                    form_factor_code, iec_designation, ansi_neda,
-                                   is_rechargeable, component_type)
-           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                                   is_rechargeable, component_type,
+                                   identity_scope, variant_selection)
+           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
            ON CONFLICT (uid) DO NOTHING""",
         (product["uid"], product["kind"], org_id, product["model_number"],
          product.get("form_factor"), product.get("form_factor_code"),
          product.get("iec_designation"), product.get("ansi_neda"),
-         product.get("is_rechargeable"), product.get("component_type")))
+         product.get("is_rechargeable"), product.get("component_type"),
+         product.get("identity_scope"),
+         psycopg2.extras.Json(product["variant_selection"]) if product.get("variant_selection") else None))
     product_id = scalar(cur, "SELECT id FROM bd.product WHERE uid = %s", (product["uid"],))
     for alias in product.get("aliases") or []:
         cur.execute(

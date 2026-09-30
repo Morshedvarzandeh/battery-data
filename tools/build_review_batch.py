@@ -103,6 +103,10 @@ def register(document):
     }
     if product.get("component_type"):
         record["component_type"] = product["component_type"]
+    if product.get("identity_scope"):
+        record["identity_scope"] = product["identity_scope"]
+    if product.get("variant_selection"):
+        record["variant_selection"] = product["variant_selection"]
     previous = PREVIOUS_BY_UID.get(product["uid"], {})
     if previous.get("state") == "accepted":
         record.update({

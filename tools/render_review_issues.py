@@ -59,6 +59,7 @@ def main():
             "",
             f"**Product type:** `{product['kind']}`  ",
             *([f"**Component category:** `{product['component_type']}`  "] if product.get("component_type") else []),
+            *([f"**Identity scope:** `{product['identity_scope']}`; variant selection: {json.dumps(product.get('variant_selection'), ensure_ascii=False)}"] if product.get('identity_scope') else []),
             f"**Candidate file:** `{item['candidate_file']}`  ",
             f"**Source:** [{source.get('title', source['uid'])}]({source.get('url', '')})  ",
             f"**Source revision/date:** {source.get('revision') or source.get('document_date') or 'not stated'}",

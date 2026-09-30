@@ -131,7 +131,10 @@
       "coil_nominal_voltage",
       "fuse_current_rating",
       "fuse_voltage_rating",
-      "interrupting_current"
+      "interrupting_current",
+      "contact_resistance",
+      "operate_time",
+      "release_time"
     ],
     "Power conversion": [
       "input_voltage_min",
