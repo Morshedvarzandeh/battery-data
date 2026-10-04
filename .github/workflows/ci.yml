@@ -131,6 +131,7 @@ jobs:
           # anything the schema rejects turns a checked box into a failed run,
           # and the owner finds that out from a red cross instead of from CI.
           python tools/validate_contrib.py review/candidates/
+          python tools/validate_contrib.py review/revisions/
           python tools/validate_review.py
           python tools/check_duplicates.py
           python tools/import_battery_components.py --check

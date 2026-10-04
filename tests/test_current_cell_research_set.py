@@ -55,6 +55,18 @@ class CurrentCellResearchSetTests(unittest.TestCase):
         self.assertNotIn('cell/calb/l173f314', uids)
         self.assertFalse(any(uid.endswith('-trial') for uid in uids))
 
+    def test_source_revisions_remain_linked_to_one_pending_product(self):
+        entry = next(e for e in self.entries if e['uid'] == 'cell/catl/587ah-lfp-ess-cell')
+        self.assertTrue((ROOT / entry['source_review']).is_file())
+        original = json.loads((ROOT / entry['candidate']).read_text())
+        revision = json.loads((ROOT / entry['revision_files'][0]).read_text())
+        self.assertEqual(original['product']['uid'], revision['product']['uid'])
+        self.assertNotEqual(original['source']['uid'], revision['source']['uid'])
+        self.assertEqual(revision['source']['kind'], 'user_submission')
+        mass = lambda doc: next(o['value'] for o in doc['observations'] if o['quantity'] == 'mass')
+        self.assertEqual((mass(original), mass(revision)), (9.83, 10.6))
+        self.assertIn('relationship', original['source']['note'])
+
 
 if __name__ == '__main__':
     unittest.main()

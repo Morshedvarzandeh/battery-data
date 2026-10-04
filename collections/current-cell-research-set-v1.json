@@ -29,7 +29,7 @@
     {"uid":"cell/catl/228ah-high-energy-density-cell","candidate":"review/candidates/catl/228ah-high-energy-density-cell.yaml","segment":"high-energy-ev"},
     {"uid":"cell/catl/280ah-lfp-bess-cell","candidate":"review/candidates/catl/280ah-lfp-bess-cell.yaml","segment":"lfp-ess"},
     {"uid":"cell/catl/314ah-lfp-ess-cell","candidate":"review/candidates/catl/314ah-lfp-ess-cell.yaml","segment":"lfp-ess"},
-    {"uid":"cell/catl/587ah-lfp-ess-cell","candidate":"review/candidates/catl/587ah-lfp-ess-cell.yaml","segment":"lfp-ess"},
+    {"uid":"cell/catl/587ah-lfp-ess-cell","candidate":"review/candidates/catl/587ah-lfp-ess-cell.yaml","segment":"lfp-ess","revision_files":["review/revisions/catl/587ah-lfp-ess-cell-mall-2026-09-23.yaml"],"source_review":"review/imports/2026-09-23-catl-587ah-review.md"},
 
     {"uid":"cell/calb/684ah-ess-cell","candidate":"review/candidates/calb/684ah-ess-cell.yaml","segment":"large-format-ess"},
     {"uid":"cell/calb/zhijiu-392ah-long-cycle-ess-cell","candidate":"review/candidates/calb/zhijiu-392ah-long-cycle-ess-cell.yaml","segment":"large-format-ess"},
