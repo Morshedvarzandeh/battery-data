@@ -77,7 +77,7 @@
           "retrieved_at": "2026-10-04",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Official exact-catalog-number product page. No page revision is printed. The linked family PDF could not be retrieved reliably during this run, so no document hash is asserted. The interruption test time constant and temperature basis are not stated on the product page."
+          "note": "Official exact-catalog-number product page. No page revision is printed. The linked family PDF could not be retrieved reliably during this run, so no document hash is asserted. The interruption test time constant and temperature basis are not stated on the product page. The 1000 V nameplate rating is not an explicitly stated interruption test voltage; that test voltage remains unstated."
         },
         "observations": [
           {
@@ -115,14 +115,15 @@
             "unit": "kA",
             "statistic": "rated",
             "locator": {
-              "section": "Product identity and Product specifications / Breaking capacity",
-              "quote": "EV Fuse 150A 1000VDC S30; Breaking capacity | 25 kA"
+              "section": "Product specifications / Breaking capacity",
+              "quote": "Breaking capacity | 25 kA"
             },
             "conditions": {
-              "test_voltage_v": 1000,
               "electrical_system": "DC",
               "unstated": [
-                "circuit_time_constant"
+                "test_voltage_v",
+                "circuit_time_constant",
+                "temperature_c"
               ]
             }
           },
@@ -158,7 +159,7 @@
           "license": "proprietary",
           "redistributable": false,
           "revision": "Rev:04-Feb-2026",
-          "note": "Official four-page manufacturer datasheet inspected through text retrieval. Direct byte retrieval returned an HTML access-response page, so no PDF hash is asserted. Page 3 gives P115BDA as the ordering example and decodes B as the 12 V coil. Sensata's official contactor selection guide identifies the P Series as suitable for precharge circuits; this application role is not duplicated as a second product identity."
+          "note": "Official four-page manufacturer datasheet inspected through text retrieval. Direct byte retrieval returned an HTML access-response page, so no PDF hash is asserted. Page 3 gives P115BDA as the ordering example and decodes B as the 12 V coil. Sensata's official contactor selection guide identifies the P Series as suitable for precharge circuits; this application role is not duplicated as a second product identity. The 1500 V observation is the operating contact-voltage maximum, not a 1500 V switching guarantee."
         },
         "observations": [
           {
@@ -172,7 +173,10 @@
               "quote": "Contact Voltage, Operating Max Vdc 1500"
             },
             "conditions": {
-              "electrical_system": "DC"
+              "electrical_system": "DC",
+              "extra": {
+                "rating_scope": "Maximum operating contact voltage; not a make/break switching rating. The separate feature statement specifies switching up to 1200 Vdc."
+              }
             }
           },
           {

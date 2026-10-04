@@ -1,0 +1,124 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/vishay/lto150h68r00jte3",
+    "kind": "component",
+    "component_type": "precharge_resistor",
+    "manufacturer": "Vishay",
+    "model_number": "LTO150H68R00JTE3"
+  },
+  "source": {
+    "url": "https://www.vishay.com/docs/50084/lto150h.pdf",
+    "sha256": "6e4d27802081559527b5e94ec8ef5e48bb5f542b994adcc9ea4e06abadce3de7",
+    "retrieved_at": "2026-09-21",
+    "uid": "src/vishay-lto150h-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "Vishay LTO150H clip-mount thick-film power resistor",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Manufacturer-listed identities from https://www.vishay.com/en/product/50084/tab/quality/; identity-page hash and row retained per resistance/tolerance observation and in the import manifest. Standard G/J/K, T, E3 ordering codes decoded using page 7; unsupported F and TB7 variants held. Precharge/BMS/EV application documented by Vishay on 2025-04-09 at https://ir.vishay.com/news-releases/news-release-details/vishay-intertechnology-aec-q200-qualified-thick-film-power . The headline up to 75 J/0.1 s is not imported as an unconditional rating. The 500 V element ceiling is not the 3000 VRMS dielectric test; AC/DC is unstated.",
+    "revision": "23-Jul-2026"
+  },
+  "observations": [
+    {
+      "quantity": "resistance_rating",
+      "value": 68,
+      "unit": "ohm",
+      "statistic": "nominal",
+      "locator": {
+        "page": 7,
+        "section": "Global part number information",
+        "quote": "Ordering-code transcription: LTO150H68R00JTE3; 68R00 = 68 ohm"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "identity_source_url": "https://www.vishay.com/en/product/50084/tab/quality/",
+          "identity_source_sha256": "123677abe5489d1c9d80a3e5e4bef8399031471c162db1395a9c660eaa196d57",
+          "identity_row": 7,
+          "value_basis": "Decoded from an actually listed part using the datasheet ordering legend",
+          "package": "TO-247",
+          "packaging": "tube",
+          "termination_finish": "pure tin"
+        }
+      }
+    },
+    {
+      "quantity": "resistance_tolerance",
+      "value": 5,
+      "unit": "%",
+      "statistic": "nominal",
+      "locator": {
+        "page": 7,
+        "section": "Global part number information / tolerance",
+        "quote": "LTO150H68R00JTE3; J = ±5 %"
+      },
+      "conditions": {
+        "extra": {
+          "identity_source_url": "https://www.vishay.com/en/product/50084/tab/quality/",
+          "identity_source_sha256": "123677abe5489d1c9d80a3e5e4bef8399031471c162db1395a9c660eaa196d57",
+          "identity_row": 7,
+          "value_basis": "Decoded from an actually listed part using the datasheet ordering legend",
+          "package": "TO-247",
+          "packaging": "tube",
+          "termination_finish": "pure tin"
+        }
+      }
+    },
+    {
+      "quantity": "resistor_power_rating",
+      "value": 150,
+      "unit": "W",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Technical specifications / dissipation",
+        "quote": "150 W at +45°C case; heatsink + clip"
+      },
+      "conditions": {
+        "temperature_c": 45,
+        "temperature_reference": "component_case",
+        "mounting_condition": "direct contact with heatsink, clip mounted"
+      }
+    },
+    {
+      "quantity": "resistor_power_rating",
+      "value": 4.5,
+      "unit": "W",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Technical specifications / dissipation",
+        "quote": "Free air: 4.5 W at +25°C"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "mounting_condition": "free air",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "resistor_voltage_limit",
+      "value": 500,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Standard electrical specifications / limiting element voltage UL",
+        "quote": "UL = 500 V"
+      },
+      "conditions": {
+        "unstated": [
+          "electrical_system"
+        ],
+        "extra": {
+          "basis": "Limiting element voltage; actual working voltage also constrained by power and resistance. AC/DC not specified in the table."
+        }
+      }
+    }
+  ]
+}

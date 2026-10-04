@@ -62,7 +62,7 @@ def main():
             f"**Candidate file:** `{item['candidate_file']}`  ",
             f"**Source:** [{source.get('title', source['uid'])}]({source.get('url', '')})  ",
             f"**Source revision/date:** {source.get('revision') or source.get('document_date') or 'not stated'}",
-            *([f"**Source notes:** {source['note']}"] if product["kind"] == "component" and source.get("note") else []),
+            *([f"**Source notes:** {source['note']}"] if source.get("note") else []),
             "",
             "| Quantity | Value | Conditions | Source locator excerpt |",
             "|---|---:|---|---|",

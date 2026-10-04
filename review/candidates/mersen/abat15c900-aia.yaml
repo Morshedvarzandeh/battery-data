@@ -1,0 +1,121 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/mersen/abat15c900-aia",
+    "kind": "component",
+    "component_type": "fuse",
+    "manufacturer": "Mersen",
+    "model_number": "ABAT15C900-AIA",
+    "aliases": [
+      "G1200491"
+    ]
+  },
+  "source": {
+    "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT15C-1500VDC-max-EN.pdf",
+    "sha256": "e461e676f78588e8119c5a2f44b6dcbcf67045a5c703eedc13ceb8b3d47ea9d1",
+    "retrieved_at": "2026-09-21",
+    "uid": "src/mersen-abat15c-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "Mersen ABAT15C 1500VDC max",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Battery protection, aBat partial-range fuses. Use the page 2 part table at L/R=3 ms rather than the inconsistent page 1 overview heading L/R≤4 ms. Terminal variants are separate physical parts; item numbers are aliases. Minimum breaking capacity is separate from maximum.",
+    "revision": "DS-ABAT15C-09-0326_EN"
+  },
+  "observations": [
+    {
+      "quantity": "fuse_current_rating",
+      "value": 900,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C900-AIA / G1200491",
+        "quote": "ABAT15C900-AIA: 900 A"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "conductor_description"
+        ],
+        "extra": {
+          "terminal_configuration": "TTF flush ends",
+          "item_number": "G1200491",
+          "characteristic": "aBat"
+        }
+      }
+    },
+    {
+      "quantity": "fuse_voltage_rating",
+      "value": 1500,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C900-AIA / G1200491",
+        "quote": "1500 V DC"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "terminal_configuration": "TTF flush ends",
+          "item_number": "G1200491",
+          "characteristic": "aBat"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1.85,
+      "unit": "kg",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C900-AIA / G1200491",
+        "quote": "Weight: 1.85 kg"
+      }
+    },
+    {
+      "quantity": "minimum_interrupting_current",
+      "value": 10.8,
+      "unit": "kA",
+      "statistic": "minimum",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C900-AIA / G1200491 / minimum breaking capacity",
+        "quote": "10.8 kA at 1500 V DC, L/R=3 ms"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 1500,
+        "extra": {
+          "terminal_configuration": "TTF flush ends",
+          "item_number": "G1200491",
+          "characteristic": "aBat",
+          "circuit_time_constant_ms": 3
+        }
+      }
+    },
+    {
+      "quantity": "interrupting_current",
+      "value": 250,
+      "unit": "kA",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C900-AIA / G1200491 / breaking capacity",
+        "quote": "250 kA at 1500 V DC, L/R=3 ms"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 1500,
+        "extra": {
+          "terminal_configuration": "TTF flush ends",
+          "item_number": "G1200491",
+          "characteristic": "aBat",
+          "circuit_time_constant_ms": 3
+        }
+      }
+    }
+  ]
+}

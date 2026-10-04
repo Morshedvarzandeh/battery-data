@@ -1,0 +1,140 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/hina-battery/ne170",
+    "kind": "cell",
+    "manufacturer": "HiNa Battery",
+    "model_number": "NE170",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase",
+    "aliases": [
+      "NaPP72173204-NE170"
+    ]
+  },
+  "source": {
+    "uid": "src/hina-1761960340685001-inspected-2026-09-21",
+    "kind": "manufacturer_web",
+    "title": "HiNa NE170 sodium-ion cell specification slide",
+    "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960340685001.png",
+    "retrieved_at": "2026-09-21",
+    "sha256": "9eabacf60c7670f7e44d23f3eeb94565f0221e05e4a7cb62c48c1127be76d0cc",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. ",
+    "document_date": "2025-11-01"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 170,
+      "unit": "Ah",
+      "locator": {
+        "section": "NE170 specification image",
+        "quote": "标称容量 170Ah"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 2.9,
+      "unit": "V",
+      "locator": {
+        "section": "NE170 specification image",
+        "quote": "标称电压 2.9V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 100,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "NE170 specification image",
+        "quote": "能量密度 >100Wh/kg"
+      },
+      "is_lower_bound": true,
+      "statistic": "minimum",
+      "conditions": {
+        "extra": {
+          "source_comparator": ">"
+        },
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 10000,
+      "unit": "cycles",
+      "locator": {
+        "section": "NE170 specification image",
+        "quote": "循环寿命 >10000次@1P"
+      },
+      "is_lower_bound": true,
+      "statistic": "minimum",
+      "conditions": {
+        "rate_value": 1,
+        "rate_unit": "P",
+        "extra": {
+          "source_comparator": ">",
+          "end_of_life_criterion": "not stated",
+          "rate_direction": "not stated"
+        },
+        "unstated": [
+          "temperature_c",
+          "dod_pct"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "section": "NE170 specification image",
+        "quote": "工作温度 -40°C~60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "section": "NE170 specification image",
+        "quote": "工作温度 -40°C~60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "Sodium-ion",
+    "locator": {
+      "section": "Na-labelled cell / model identity",
+      "quote": "NE170 — NaPP72173204-NE170 — Na"
+    }
+  }
+}

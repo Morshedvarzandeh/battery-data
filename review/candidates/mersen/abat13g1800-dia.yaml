@@ -1,0 +1,121 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/mersen/abat13g1800-dia",
+    "kind": "component",
+    "component_type": "fuse",
+    "manufacturer": "Mersen",
+    "model_number": "ABAT13G1800-DIA",
+    "aliases": [
+      "V1216051"
+    ]
+  },
+  "source": {
+    "url": "https://us.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT13G-1250VDC-max-Mersen-EN.pdf",
+    "sha256": "7f042c594ac1de82b484d18923184436051913fa3e8abd1d7e827f25528d222e",
+    "retrieved_at": "2026-09-21",
+    "uid": "src/mersen-abat13g-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "Mersen ABAT13G 1250VDC MCS protection",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Battery/MCS protection, aBat partial-range fuses. Part-level current, voltage and minimum breaking capacity from page 2; family maximum interruption and mass from page 1. No certification or live availability inference.",
+    "revision": "DS-ABAT13G-01-0326_EN"
+  },
+  "observations": [
+    {
+      "quantity": "fuse_current_rating",
+      "value": 1800,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT13G1800-DIA / V1216051",
+        "quote": "ABAT13G1800-DIA: 1800 A"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "conductor_description"
+        ],
+        "extra": {
+          "terminal_configuration": "plates",
+          "item_number": "V1216051",
+          "characteristic": "aBat"
+        }
+      }
+    },
+    {
+      "quantity": "fuse_voltage_rating",
+      "value": 1250,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT13G1800-DIA / V1216051",
+        "quote": "1250 V DC"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "terminal_configuration": "plates",
+          "item_number": "V1216051",
+          "characteristic": "aBat"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 7.79,
+      "unit": "kg",
+      "statistic": "nominal",
+      "locator": {
+        "page": 1,
+        "section": "Technical data overview / weight",
+        "quote": "Weight: 7.79 kg"
+      }
+    },
+    {
+      "quantity": "minimum_interrupting_current",
+      "value": 18,
+      "unit": "kA",
+      "statistic": "minimum",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT13G1800-DIA / V1216051 / minimum breaking capacity",
+        "quote": "18 kA at 1250 V DC, L/R=3 ms"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 1250,
+        "extra": {
+          "terminal_configuration": "plates",
+          "item_number": "V1216051",
+          "characteristic": "aBat",
+          "circuit_time_constant_ms": 3
+        }
+      }
+    },
+    {
+      "quantity": "interrupting_current",
+      "value": 250,
+      "unit": "kA",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Technical data overview / maximum breaking capacity",
+        "quote": "250 kA at 1250 V DC, L/R=3 ms"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 1250,
+        "extra": {
+          "terminal_configuration": "plates",
+          "item_number": "V1216051",
+          "characteristic": "aBat",
+          "circuit_time_constant_ms": 3
+        }
+      }
+    }
+  ]
+}

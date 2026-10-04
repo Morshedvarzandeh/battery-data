@@ -13,24 +13,35 @@ each specification.
 No account or database setup is needed to browse the GitHub library. Choose a
 manufacturer, find a model, and open its specification record and source document.
 
-**Library snapshot, 2026-09-16: 2,170 accepted battery product records; 106
-battery records pending review.** The latest review accepted 297 existing candidates and 1,791
+**Library snapshot, 2026-10-04: 2,170 accepted battery product records; 1,394
+battery records pending review.** The new [LiPol catalog research batch](docs/14-lipol-expansion-2026-09-21.md)
+adds 1,256 distinct candidates with source hashes, row evidence and explicit
+missing test conditions. They await review and are outside the accepted catalog.
+The September acceptance review accepted 297 existing candidates and 1,791
 distinct models from manufacturer catalogs. Most additions are historical
 lithium-polymer models (2013/2019); current availability and undisclosed test
 conditions are not implied. See the [review report](docs/09-catalog-review-2026-09.md)
 for sources, exclusions, and a decision for every pending record reviewed.
+
+For a focused view of recent technology, the
+[current cell research set](docs/15-current-cell-research-set.md) selects 40
+source-linked pending candidates across LG Energy Solution, EVE, CATL, CALB,
+HiNa, HiTHIUM and WeLion. It covers LFP, sodium-ion, semi-solid, high-energy EV
+and high-power cylindrical cells. The set is screening-only and does not enter
+the accepted catalog until each underlying candidate passes review.
 
 The separate patent review layer currently holds 1,056 deduplicated publication
 candidates (255 CORDIS-linked and 801 EPO Linked Open EP Data candidates), plus
 383 company/research-organisation profiles. None enters the accepted library
 without DOCDB-family resolution and human approval.
 
-The [electrical component library](components/README.md) now has 13 pending models
-with 62 sourced observations across contactors, fuses, precharge contactors,
-inverters, DC/DC converters and chargers. [Browse the datasheets](components/catalog.md).
-A [weekly research agent](agents/weekly-research/AGENT.md) covers patents and all six
+The [electrical component library](components/README.md) now has 152 pending models
+with 802 sourced observations across contactors, battery fuses, precharge contactors
+and resistors, inverters, DC/DC converters and chargers. [Browse the datasheets](components/catalog.md).
+A [weekly research agent](agents/weekly-research/AGENT.md) covers patents and all seven
 categories every Monday at 09:00 Europe/Brussels. Components and patents are
-counted separately from batteries.
+counted separately from batteries. See the [4 October review and source checks](agents/weekly-research/reports/2026-10-04.md)
+for the latest additions, corrections and unresolved source revisions.
 
 ## Start with your engineering question
 
@@ -235,6 +246,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
 | [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary |
+| [`docs/15-current-cell-research-set.md`](docs/15-current-cell-research-set.md) | Versioned 40-cell research set and its acceptance gate |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---

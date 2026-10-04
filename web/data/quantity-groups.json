@@ -131,13 +131,22 @@
       "coil_nominal_voltage",
       "fuse_current_rating",
       "fuse_voltage_rating",
-      "interrupting_current"
+      "interrupting_current",
+      "fuse_trip_current",
+      "minimum_interrupting_current"
     ],
     "Power conversion": [
       "input_voltage_min",
       "input_voltage_max",
       "rated_output_voltage",
       "rated_output_current"
+    ],
+    "Precharge resistors": [
+      "resistance_rating",
+      "resistance_tolerance",
+      "resistor_power_rating",
+      "resistor_pulse_energy",
+      "resistor_voltage_limit"
     ]
   }
 }

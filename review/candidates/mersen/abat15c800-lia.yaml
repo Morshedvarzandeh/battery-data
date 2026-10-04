@@ -1,0 +1,121 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/mersen/abat15c800-lia",
+    "kind": "component",
+    "component_type": "fuse",
+    "manufacturer": "Mersen",
+    "model_number": "ABAT15C800-LIA",
+    "aliases": [
+      "N1215723"
+    ]
+  },
+  "source": {
+    "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-ABAT15C-1500VDC-max-EN.pdf",
+    "sha256": "e461e676f78588e8119c5a2f44b6dcbcf67045a5c703eedc13ceb8b3d47ea9d1",
+    "retrieved_at": "2026-09-21",
+    "uid": "src/mersen-abat15c-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "Mersen ABAT15C 1500VDC max",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Battery protection, aBat partial-range fuses. Use the page 2 part table at L/R=3 ms rather than the inconsistent page 1 overview heading L/R≤4 ms. Terminal variants are separate physical parts; item numbers are aliases. Minimum breaking capacity is separate from maximum.",
+    "revision": "DS-ABAT15C-09-0326_EN"
+  },
+  "observations": [
+    {
+      "quantity": "fuse_current_rating",
+      "value": 800,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C800-LIA / N1215723",
+        "quote": "ABAT15C800-LIA: 800 A"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "conductor_description"
+        ],
+        "extra": {
+          "terminal_configuration": "LI blades",
+          "item_number": "N1215723",
+          "characteristic": "aBat"
+        }
+      }
+    },
+    {
+      "quantity": "fuse_voltage_rating",
+      "value": 1500,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C800-LIA / N1215723",
+        "quote": "1500 V DC"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "terminal_configuration": "LI blades",
+          "item_number": "N1215723",
+          "characteristic": "aBat"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1.7,
+      "unit": "kg",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C800-LIA / N1215723",
+        "quote": "Weight: 1.7 kg"
+      }
+    },
+    {
+      "quantity": "minimum_interrupting_current",
+      "value": 12,
+      "unit": "kA",
+      "statistic": "minimum",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C800-LIA / N1215723 / minimum breaking capacity",
+        "quote": "12 kA at 1500 V DC, L/R=3 ms"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 1500,
+        "extra": {
+          "terminal_configuration": "LI blades",
+          "item_number": "N1215723",
+          "characteristic": "aBat",
+          "circuit_time_constant_ms": 3
+        }
+      }
+    },
+    {
+      "quantity": "interrupting_current",
+      "value": 200,
+      "unit": "kA",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / ABAT15C800-LIA / N1215723 / breaking capacity",
+        "quote": "200 kA at 1500 V DC, L/R=3 ms"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 1500,
+        "extra": {
+          "terminal_configuration": "LI blades",
+          "item_number": "N1215723",
+          "characteristic": "aBat",
+          "circuit_time_constant_ms": 3
+        }
+      }
+    }
+  ]
+}

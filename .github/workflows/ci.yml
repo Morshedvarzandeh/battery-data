@@ -50,6 +50,9 @@ jobs:
       - name: Validate component loading in a rolled-back transaction
         run: python tests/ci_component_loader.py "dbname=batterydb host=localhost user=postgres password=postgres"
 
+      - name: Validate cell chemistry and source locators in a rolled-back transaction
+        run: python tests/ci_chemistry_loader.py "dbname=batterydb host=localhost user=postgres password=postgres"
+
       - name: Load patent review corpus into staging
         run: |
           python tools/load_patents.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
@@ -128,8 +131,11 @@ jobs:
           # anything the schema rejects turns a checked box into a failed run,
           # and the owner finds that out from a red cross instead of from CI.
           python tools/validate_contrib.py review/candidates/
+          python tools/validate_contrib.py review/revisions/
           python tools/validate_review.py
           python tools/check_duplicates.py
+          python tools/import_battery_components.py --check
+          python tools/import_chemistry_cells.py --check
           python tools/validate_patents.py
           python tools/validate_epo_patents.py
           python tools/check_patent_duplicates.py --fail-on exact

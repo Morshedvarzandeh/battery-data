@@ -38,7 +38,7 @@ from typing import Any, Iterable, Iterator, Mapping, Sequence
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_PATHS = (ROOT / "contrib/cells", ROOT / "review/candidates")
+DEFAULT_PATHS = (ROOT / "contrib/cells", ROOT / "contrib/components", ROOT / "review/candidates")
 
 # Only legal/corporate suffixes belong here.  Productive words such as
 # "Energy", "Battery", and "SDI" are intentionally retained.
@@ -78,9 +78,18 @@ SPEC_TOLERANCES: Mapping[str, float] = {
     "mass": 0.05,
     "diameter": 0.01,
     "height": 0.01,
+    "resistance_rating": 0.001,
+    "resistance_tolerance": 0.001,
+    "fuse_current_rating": 0.001,
+    "fuse_voltage_rating": 0.001,
 }
 
 UNIT_CONVERSIONS: Mapping[str, Mapping[str, tuple[float, str]]] = {
+    "resistance_rating": {"ohm": (1.0, "ohm"), "ω": (1.0, "ohm"),
+                          "kohm": (1000.0, "ohm"), "mohm": (0.001, "ohm")},
+    "resistance_tolerance": {"%": (0.01, "1"), "pct": (0.01, "1"), "1": (1.0, "1")},
+    "fuse_current_rating": {"a": (1.0, "A"), "ka": (1000.0, "A")},
+    "fuse_voltage_rating": {"v": (1.0, "V"), "kv": (1000.0, "V")},
     "capacity": {
         "ah": (1.0, "Ah"),
         "mah": (0.001, "Ah"),

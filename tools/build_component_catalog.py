@@ -44,7 +44,8 @@ def render(root=ROOT):
             p, s = doc['product'], doc['source']
             if p['component_type'] != category:
                 continue
-            lines.append(f"| [{p['manufacturer']} {p['model_number']}](../{path}) | {state} | {len(doc['observations'])} | [Datasheet]({s['url']}) |")
+            source_label = 'Datasheet' if s['kind'] == 'datasheet' else 'Manufacturer page'
+            lines.append(f"| [{p['manufacturer']} {p['model_number']}](../{path}) | {state} | {len(doc['observations'])} | [{source_label}]({s['url']}) |")
         lines.append('')
     lines += ['---', '', 'Maintained by **Lemonergy** · [Battery library](../catalog/README.md) · [API access for accepted records](https://lemonergy.com/#measure)', '', 'The public library is free. Manufacturer datasheets remain attributed to their original publishers.', '']
     return '\n'.join(lines)

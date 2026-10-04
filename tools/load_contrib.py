@@ -377,24 +377,34 @@ def promote_file(cur, document: dict, org_id: int, source_id: int, staged: list,
     note = f"accepted into contrib/ as {relative}"
     if document.get("chemistry"):
         chemistry = document["chemistry"]
-        # A contribution states chemistry for the document as a whole and gives
-        # it no locator of its own, so it is attributed to the whole source
-        # rather than to a page it never named.
+        locator = chemistry.get("locator")
+        # Chemistry has its own evidence. Legacy documents without a locator
+        # still point to the whole source, without inventing a page number.
+        if locator:
+            chemistry_location = scalar(cur,
+                """INSERT INTO bd.source_location (source_id, page, section, quote, bbox)
+                   VALUES (%s, %s, %s, %s, %s) RETURNING id""",
+                (source_id, locator.get("page"), locator.get("section"),
+                 locator.get("quote"), locator.get("bbox")))
+        else:
+            chemistry_location = scalar(cur, "SELECT bd.whole_source(%s)", (source_id,))
         chemistry_provenance = scalar(cur,
             """INSERT INTO bd.provenance (source_location_id, evidence, extraction, review,
                                           contributor_id, reviewed_by, reviewed_at,
                                           review_note)
-               VALUES (bd.whole_source(%s), %s, %s, 'accepted', %s, %s, now(), %s)
+               VALUES (%s, %s, %s, 'accepted', %s, %s, now(), %s)
                RETURNING id""",
-            (source_id, evidence, args.extraction, reviewer_id, reviewer_id, note))
+            (chemistry_location, evidence, args.extraction, reviewer_id, reviewer_id, note))
         cur.execute(
             """INSERT INTO bd.product_chemistry (product_revision_id, designation,
-                                                 cathode_text, anode_text, system_string,
+                                                 cathode_text, anode_text, electrolyte_text,
+                                                 separator_text, system_string,
                                                  provenance_id)
-               SELECT %s, %s, %s, %s, %s, %s WHERE NOT EXISTS (
+               SELECT %s, %s, %s, %s, %s, %s, %s, %s WHERE NOT EXISTS (
                  SELECT 1 FROM bd.product_chemistry WHERE product_revision_id = %s)""",
             (revision_id, chemistry.get("designation"), chemistry.get("cathode_text"),
-             chemistry.get("anode_text"), chemistry.get("system_string"),
+             chemistry.get("anode_text"), chemistry.get("electrolyte_text"),
+             chemistry.get("separator_text"), chemistry.get("system_string"),
              chemistry_provenance, revision_id))
     promoted = 0
     for candidate_id, observation, _, _ in staged:

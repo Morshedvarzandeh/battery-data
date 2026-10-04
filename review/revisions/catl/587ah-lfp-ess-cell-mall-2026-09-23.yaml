@@ -1,0 +1,172 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/catl/587ah-lfp-ess-cell",
+    "kind": "cell",
+    "manufacturer": "CATL",
+    "model_number": "587Ah LFP ESS cell",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/catl-587ah-mall-screenshot-jerry-wan-2026-09-23",
+    "kind": "user_submission",
+    "title": "CATL Mall 587Ah listing screenshot shared by Jerry Wan",
+    "url": "https://www.linkedin.com/posts/jerry-wan-069b41105_energystorage-catl-batterydesign-activity-7508442594948005888-pkOx",
+    "document_date": "2026-09-23",
+    "retrieved_at": "2026-09-23",
+    "sha256": "65a9258bcefe61813c2935bd8121d35849590cc9b80e2441c86e7503c04f8d2e",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Pending source-revision review; same provisional capacity-based product UID as the existing CATL 587Ah candidate, not a second counted product. Source is a CATL Mall screenshot reproduced in the user-submitted LinkedIn post, not an independently retrieved manufacturer datasheet. SHA-256 identifies the inspected screenshot bytes; document_date is the post date, not a manufacturer revision date. CATL Mall homepage was reachable, but the live product listing could not be verified. Mass differs from the earlier brochure record (9.83 kg); no orderable part number or manufacturer revision mapping is available. Keep the two source records separate. Screenshot states 0.5P/0.5P, not 0.5C. The listed 379 Wh/L differs from the 374.4326 Wh/L calculated from the listed energy and external dimensions; the volume basis is unstated. Do not infer empty internal space or sodium-ion compatibility. See review/imports/2026-09-23-catl-587ah-review.md. Image: https://media.licdn.com/dms/image/v2/D5622AQEPaRuHq7bRLg/feedshare-shrink_800/B56aDNYwKcI0Ac-/0/1790152213407?e=2147483647&v=beta&t=ghrSkd6Sk7sbuBUJRDvQ6_bEjlcYVYI6QAQstwG5cAw"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 587,
+      "unit": "Ah",
+      "locator": {
+        "section": "Attached CATL Mall screenshot: product specifications / parameter details",
+        "quote": "Nominal Capacity (Ah) 587Ah"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "section": "Attached CATL Mall screenshot: product specifications / parameter details",
+        "quote": "Nominal Voltage (V) 3.2V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "energy",
+      "value": 1.8784,
+      "unit": "kWh",
+      "locator": {
+        "section": "Attached CATL Mall screenshot: product specifications / parameter details",
+        "quote": "Single cell capacity: 1.8784kWh"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 10.6,
+      "unit": "kg",
+      "locator": {
+        "section": "Attached CATL Mall screenshot: product specifications / parameter details",
+        "quote": "Weight (Kg) 10.6 ± 0.3Kg"
+      },
+      "tol_plus": 0.3,
+      "tol_minus": 0.3
+    },
+    {
+      "quantity": "length",
+      "value": 73.05,
+      "unit": "mm",
+      "locator": {
+        "section": "Attached CATL Mall screenshot: product specifications / parameter details",
+        "quote": "Length * Width * Height (mm) 73.05*310*221.53mm"
+      },
+      "conditions": {
+        "extra": {
+          "dimension_order": "L*W*H",
+          "dimension_note": "Source axis labels preserved without reordering."
+        }
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 310,
+      "unit": "mm",
+      "locator": {
+        "section": "Attached CATL Mall screenshot: product specifications / parameter details",
+        "quote": "Length * Width * Height (mm) 73.05*310*221.53mm"
+      },
+      "conditions": {
+        "extra": {
+          "dimension_order": "L*W*H",
+          "dimension_note": "Source axis labels preserved without reordering."
+        }
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 221.53,
+      "unit": "mm",
+      "locator": {
+        "section": "Attached CATL Mall screenshot: product specifications / parameter details",
+        "quote": "Length * Width * Height (mm) 73.05*310*221.53mm"
+      },
+      "conditions": {
+        "extra": {
+          "dimension_order": "L*W*H",
+          "dimension_note": "Source axis labels preserved without reordering."
+        }
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 379,
+      "unit": "Wh/L",
+      "locator": {
+        "section": "Attached CATL Mall screenshot: product specifications / parameter details",
+        "quote": "Energy density 379Wh/L"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 8000,
+      "unit": "cycles",
+      "locator": {
+        "section": "Attached CATL Mall screenshot: product specifications / parameter details",
+        "quote": "8000 times @ 70% SOH, 25°C, 0.5P/0.5P"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "rate_value": 0.5,
+        "rate_unit": "P",
+        "direction": "symmetric",
+        "extra": {
+          "end_of_life_soh_pct": 70,
+          "soh_definition": "not stated",
+          "power_reference_energy": "not stated"
+        },
+        "unstated": [
+          "dod_pct"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "LFP",
+    "locator": {
+      "section": "LinkedIn post opening sentence",
+      "quote": "CATL’s new 587Ah LFP cell is out."
+    }
+  }
+}

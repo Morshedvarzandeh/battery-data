@@ -1,0 +1,101 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/mersen/15nh1xlgbat100",
+    "kind": "component",
+    "component_type": "fuse",
+    "manufacturer": "Mersen",
+    "model_number": "15NH1XLGBAT100",
+    "aliases": [
+      "G1068632"
+    ]
+  },
+  "source": {
+    "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-NH-fuse-links-gBAT-1000V-1500V-DC-EN.pdf",
+    "sha256": "770298c300419f0d8a52f75b2b32b27ba0c2387697200f223e251cec6dd923ca",
+    "retrieved_at": "2026-09-21",
+    "uid": "src/mersen-nhgbat-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
+    "revision": "DS-NHGBATF-14-0426_EN"
+  },
+  "observations": [
+    {
+      "quantity": "fuse_current_rating",
+      "value": 100,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 3,
+        "section": "Product range / 15NH1XLGBAT100 / G1068632",
+        "quote": "15NH1XLGBAT100: 100 A"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "conductor_description"
+        ],
+        "extra": {
+          "terminal_configuration": "plain blade",
+          "item_number": "G1068632",
+          "characteristic": "gBat"
+        }
+      }
+    },
+    {
+      "quantity": "fuse_voltage_rating",
+      "value": 1500,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 3,
+        "section": "Product range / 15NH1XLGBAT100 / G1068632",
+        "quote": "1500 V DC"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "terminal_configuration": "plain blade",
+          "item_number": "G1068632",
+          "characteristic": "gBat"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 0.7,
+      "unit": "kg",
+      "statistic": "nominal",
+      "locator": {
+        "page": 3,
+        "section": "Product range / 15NH1XLGBAT100 / G1068632",
+        "quote": "Weight: 0.7 kg"
+      }
+    },
+    {
+      "quantity": "interrupting_current",
+      "value": 50,
+      "unit": "kA",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Technical data overview / I.R. DC (UL) / size 1XL",
+        "quote": "1XL: 50 kA; L/R=1 ms"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 1500,
+        "extra": {
+          "terminal_configuration": "plain blade",
+          "item_number": "G1068632",
+          "characteristic": "gBat",
+          "rating_basis": "I.R. DC (UL)",
+          "circuit_time_constant_ms": 1
+        }
+      }
+    }
+  ]
+}

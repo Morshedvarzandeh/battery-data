@@ -15,7 +15,7 @@
     "retrieved_at": "2026-10-04",
     "license": "proprietary",
     "redistributable": false,
-    "note": "Official exact-catalog-number product page. No page revision is printed. The linked family PDF could not be retrieved reliably during this run, so no document hash is asserted. The interruption test time constant and temperature basis are not stated on the product page."
+    "note": "Official exact-catalog-number product page. No page revision is printed. The linked family PDF could not be retrieved reliably during this run, so no document hash is asserted. The interruption test time constant and temperature basis are not stated on the product page. The 1000 V nameplate rating is not an explicitly stated interruption test voltage; that test voltage remains unstated."
   },
   "observations": [
     {
@@ -53,14 +53,15 @@
       "unit": "kA",
       "statistic": "rated",
       "locator": {
-        "section": "Product identity and Product specifications / Breaking capacity",
-        "quote": "EV Fuse 150A 1000VDC S30; Breaking capacity | 25 kA"
+        "section": "Product specifications / Breaking capacity",
+        "quote": "Breaking capacity | 25 kA"
       },
       "conditions": {
-        "test_voltage_v": 1000,
         "electrical_system": "DC",
         "unstated": [
-          "circuit_time_constant"
+          "test_voltage_v",
+          "circuit_time_constant",
+          "temperature_c"
         ]
       }
     },

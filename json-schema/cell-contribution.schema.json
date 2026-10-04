@@ -81,6 +81,7 @@
             "contactor",
             "fuse",
             "precharge_contactor",
+            "precharge_resistor",
             "inverter",
             "dc_dc_converter",
             "charger"
@@ -129,6 +130,7 @@
           "enum": [
             "datasheet",
             "manufacturer_web",
+            "regulatory_filing",
             "standard",
             "journal_article",
             "preprint",
@@ -277,6 +279,7 @@
             "core",
             "coolant_inlet",
             "coolant_outlet",
+            "component_case",
             "unspecified"
           ]
         },
@@ -438,6 +441,19 @@
         "conductor_description": {
           "type": "string",
           "minLength": 1
+        },
+        "mounting_condition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pulse_waveform": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pulse_wait_s": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Recovery wait between pulses, not a start-to-start period."
         }
       }
     },

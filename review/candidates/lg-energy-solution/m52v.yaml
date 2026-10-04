@@ -1,0 +1,165 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/lg-energy-solution/m52v",
+    "kind": "cell",
+    "manufacturer": "LG Energy Solution",
+    "model_number": "M52V",
+    "is_rechargeable": true,
+    "form_factor": "cylindrical"
+  },
+  "source": {
+    "uid": "src/lg-cells-2024-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+    "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+    "retrieved_at": "2026-09-21",
+    "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 5.07,
+      "unit": "Ah",
+      "locator": {
+        "section": "M52V column / Capacity (Min, 25°C, 0.3C)",
+        "quote": "M52V: 5.07 Ah; nom, 0.2C; reference value; table header 25°C",
+        "page": 1
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "temperature_c": 25,
+        "rate_value": 0.2,
+        "rate_unit": "C",
+        "extra": {
+          "reference_value_only": true
+        },
+        "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
+        "unstated": [
+          "voltage_lower_v",
+          "rate_reference_capacity_ah"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.69,
+      "unit": "V",
+      "locator": {
+        "section": "M52V column / Nominal Voltage",
+        "quote": "M52V: Nominal Voltage 3.69 Vdc",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "energy",
+      "value": 18.73,
+      "unit": "Wh",
+      "locator": {
+        "section": "M52V column / Energy",
+        "quote": "M52V: Energy 18.73 Wh (nom)",
+        "page": 1
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 278,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "M52V column / Energy Density (Min)",
+        "quote": "M52V: 278 Wh/kg (nom)",
+        "page": 1
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 763,
+      "unit": "Wh/L",
+      "locator": {
+        "section": "M52V column / Energy Density (Min)",
+        "quote": "M52V: 763 Wh/L (nom)",
+        "page": 1
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 67.4,
+      "unit": "g",
+      "locator": {
+        "section": "M52V column / Weight",
+        "quote": "M52V: Weight 67.4 g",
+        "page": 1
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 21.15,
+      "unit": "mm",
+      "locator": {
+        "section": "M52V column / Dimension",
+        "quote": "Diameter: 21.15mm (max); Height: 70.6mm (max) (Max.)",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "dimension_basis": "Diameter: 21.15mm (max); Height: 70.6mm (max) (Max.)"
+        }
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 70.6,
+      "unit": "mm",
+      "locator": {
+        "section": "M52V column / Dimension",
+        "quote": "Diameter: 21.15mm (max); Height: 70.6mm (max) (Max.)",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "dimension_basis": "Diameter: 21.15mm (max); Height: 70.6mm (max) (Max.)"
+        }
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "NCMA",
+    "cathode_text": "NCMA",
+    "anode_text": "Graphite",
+    "locator": {
+      "section": "M52V column / Chemistry",
+      "quote": "M52V: NCMA/Graphite",
+      "page": 1
+    }
+  }
+}

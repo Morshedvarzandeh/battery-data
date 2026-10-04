@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/calb/l173f314",
+    "kind": "cell",
+    "manufacturer": "CALB",
+    "model_number": "L173F314",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/calb-filings-inspected-2026-09-21",
+    "kind": "regulatory_filing",
+    "title": "Prairie Song Reliability Project — Data Request Response 2 Part 6; BESS HMA Rev B",
+    "url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=103666&tn=266609",
+    "retrieved_at": "2026-09-21",
+    "sha256": "9cb8964df3b6e18af87670a62cb7dfa0dfa58d06bf3e689b4d3f1259b9798219",
+    "license": "unspecified; public regulatory filing",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Public California Energy Commission filing, TN 266609. The cell is described on PDF page 114, printed HMA page 12, section 2.2. The HMA is watermarked DRAFT. The nominal cell rating is 3.2 V / 314 Ah; 332.8 V refers to the 104S module and is excluded. Publisher: project applicant / public regulatory docket; this is not a CALB datasheet or an independent capacity test. No equivalence to CALB 314Ah Gen2 or L173F314A is assumed.",
+    "revision": "HMA Rev B (DRAFT)",
+    "is_final": false
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 314,
+      "unit": "Ah",
+      "locator": {
+        "section": "HMA printed page 12 / 2.2 PT2 Cells, Modules, Racks/Clusters",
+        "quote": "CALB L173F314 cells; nominally rated 3.2 volts (V) and 314 ampere hours (Ah)",
+        "page": 114
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "section": "HMA printed page 12 / 2.2 PT2 Cells, Modules, Racks/Clusters",
+        "quote": "CALB L173F314 cells; nominally rated 3.2 volts (V) and 314 ampere hours (Ah)",
+        "page": 114
+      },
+      "statistic": "nominal"
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate (LFP)",
+    "locator": {
+      "section": "HMA printed page 12 / 2.2 PT2 Cells, Modules, Racks/Clusters",
+      "quote": "lithium iron phosphate (LFP) battery cells; CALB L173F314",
+      "page": 114
+    }
+  }
+}

@@ -16,7 +16,7 @@
     "license": "proprietary",
     "redistributable": false,
     "revision": "Rev:04-Feb-2026",
-    "note": "Official four-page manufacturer datasheet inspected through text retrieval. Direct byte retrieval returned an HTML access-response page, so no PDF hash is asserted. Page 3 gives P115BDA as the ordering example and decodes B as the 12 V coil. Sensata's official contactor selection guide identifies the P Series as suitable for precharge circuits; this application role is not duplicated as a second product identity."
+    "note": "Official four-page manufacturer datasheet inspected through text retrieval. Direct byte retrieval returned an HTML access-response page, so no PDF hash is asserted. Page 3 gives P115BDA as the ordering example and decodes B as the 12 V coil. Sensata's official contactor selection guide identifies the P Series as suitable for precharge circuits; this application role is not duplicated as a second product identity. The 1500 V observation is the operating contact-voltage maximum, not a 1500 V switching guarantee."
   },
   "observations": [
     {
@@ -30,7 +30,10 @@
         "quote": "Contact Voltage, Operating Max Vdc 1500"
       },
       "conditions": {
-        "electrical_system": "DC"
+        "electrical_system": "DC",
+        "extra": {
+          "rating_scope": "Maximum operating contact voltage; not a make/break switching rating. The separate feature statement specifies switching up to 1200 Vdc."
+        }
       }
     },
     {

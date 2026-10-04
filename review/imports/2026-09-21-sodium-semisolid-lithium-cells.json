@@ -1,0 +1,1511 @@
+{
+  "schema_version": 1,
+  "batch": "2026-09-21-sodium-semisolid-lithium-cells",
+  "retrieved_at": "2026-09-21",
+  "extraction": "Manual table/image transcription with visual verification; WeLion PDF text cross-checked against every rendered page.",
+  "sources": {
+    "welion-shp270-16": {
+      "uid": "src/welion-shp270-16-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP270-16 Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/fb/ef/b0/1730133629/SHP270-16%20datasheet.pdf?ts=1744633054",
+      "retrieved_at": "2026-09-21",
+      "sha256": "4eda175bf55d6b3eef3716ad11483bd9d2f79f5fe7d44a0bd9998a9faeaaba0a",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP270-16/30000109; SHA-256 8db09795fc22ecebec24ea6623c62eb4574d097d0ed827b7ddc48289070c5cb4; manufacturer part PL7874172-16Ah.",
+      "file": "welion-shp270-16.pdf",
+      "bytes": 62421,
+      "revision": "002",
+      "document_date": "2025-04-09"
+    },
+    "welion-shp270-16-product": {
+      "uid": "src/welion-shp270-16-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP270-16 identity page",
+      "url": "https://welion-energy.com/SHP270-16/30000109",
+      "retrieved_at": "2026-09-21",
+      "sha256": "8db09795fc22ecebec24ea6623c62eb4574d097d0ed827b7ddc48289070c5cb4",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp270-16-product.html",
+      "bytes": 81035,
+      "role": "identity_only"
+    },
+    "welion-shp270-22": {
+      "uid": "src/welion-shp270-22-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP270-22 Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/11/5d/0c/1730133512/SHP270-22%20datasheet.pdf?ts=1744633076",
+      "retrieved_at": "2026-09-21",
+      "sha256": "9261b6b95e5d04ac4eca4e216de2285bb70e7f8657ec4bf2e1db3ffc15b6a772",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP270-22/30000110; SHA-256 3e7526311a9630d17695b6e1b34f625c29f4ef56e5543589631b5e80e3836ee4; manufacturer part PL8574172-22Ah.",
+      "file": "welion-shp270-22.pdf",
+      "bytes": 63838,
+      "revision": "002",
+      "document_date": "2025-04-09"
+    },
+    "welion-shp270-22-product": {
+      "uid": "src/welion-shp270-22-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP270-22 identity page",
+      "url": "https://welion-energy.com/SHP270-22/30000110",
+      "retrieved_at": "2026-09-21",
+      "sha256": "3e7526311a9630d17695b6e1b34f625c29f4ef56e5543589631b5e80e3836ee4",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp270-22-product.html",
+      "bytes": 81040,
+      "role": "identity_only"
+    },
+    "welion-shp270-27": {
+      "uid": "src/welion-shp270-27-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP270-27 Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/fd/9f/6d/1730133270/SHP270-27%20datasheet.pdf?ts=1744633120",
+      "retrieved_at": "2026-09-21",
+      "sha256": "df39f687564d2ddd7abf5fcb6b094a14a5f9ce74f224bf41de3b5878c193684b",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP270-27/30000111; SHA-256 60406612bd353de29253693aae13eadb460cdd03a56ae4ee30691a2e69d13660; manufacturer part PL9887187-27Ah.",
+      "file": "welion-shp270-27.pdf",
+      "bytes": 63757,
+      "revision": "002",
+      "document_date": "2025-04-09"
+    },
+    "welion-shp270-27-product": {
+      "uid": "src/welion-shp270-27-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP270-27 identity page",
+      "url": "https://welion-energy.com/SHP270-27/30000111",
+      "retrieved_at": "2026-09-21",
+      "sha256": "60406612bd353de29253693aae13eadb460cdd03a56ae4ee30691a2e69d13660",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp270-27-product.html",
+      "bytes": 81039,
+      "role": "identity_only"
+    },
+    "welion-shp270-30": {
+      "uid": "src/welion-shp270-30-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP270-30 Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/18/4d/f1/1730133143/SHP270-30%20datasheet.pdf?ts=1744633138",
+      "retrieved_at": "2026-09-21",
+      "sha256": "8fbfb4be7dda1fa45b0ea3e8179df05ead0320eb3ebb9edf82e5fb3329f6d12f",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP270-30/30000112; SHA-256 d18bf9a26081bab96e8b7aae5e4a5cdcb356aaabd5c0b5f092b7894d4fc5631b; manufacturer part PL10887187-30Ah.",
+      "file": "welion-shp270-30.pdf",
+      "bytes": 63781,
+      "revision": "002",
+      "document_date": "2025-04-09"
+    },
+    "welion-shp270-30-product": {
+      "uid": "src/welion-shp270-30-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP270-30 identity page",
+      "url": "https://welion-energy.com/SHP270-30/30000112",
+      "retrieved_at": "2026-09-21",
+      "sha256": "d18bf9a26081bab96e8b7aae5e4a5cdcb356aaabd5c0b5f092b7894d4fc5631b",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp270-30-product.html",
+      "bytes": 81038,
+      "role": "identity_only"
+    },
+    "welion-shp320-20": {
+      "uid": "src/welion-shp320-20-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP320-20 Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/8f/ba/05/1730132824/SHP320-20%20datasheet.pdf?ts=1744633185",
+      "retrieved_at": "2026-09-21",
+      "sha256": "e89a1301e16f780f74288d3ac29d13287b241450450b43ead2824d5dd3aed6a0",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP320-20/30000105; SHA-256 da19141c82e35f34992865176e18c1c4767fbf1ad87b7eff7128cd87610446e8; manufacturer part PL8574172-20Ah.",
+      "file": "welion-shp320-20.pdf",
+      "bytes": 62124,
+      "revision": "002",
+      "document_date": "2025-04-09"
+    },
+    "welion-shp320-20-product": {
+      "uid": "src/welion-shp320-20-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP320-20 identity page",
+      "url": "https://welion-energy.com/SHP320-20/30000105",
+      "retrieved_at": "2026-09-21",
+      "sha256": "da19141c82e35f34992865176e18c1c4767fbf1ad87b7eff7128cd87610446e8",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp320-20-product.html",
+      "bytes": 81031,
+      "role": "identity_only"
+    },
+    "welion-shp320-25": {
+      "uid": "src/welion-shp320-25-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP320-25 Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/07/1a/f0/1730132707/SHP320-25%20datasheet.pdf?ts=1744633210",
+      "retrieved_at": "2026-09-21",
+      "sha256": "65e91683e6dc2fd0d417efc7dda99ae5706caadd9903d150c611257972dbda94",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP320-25/30000106; SHA-256 a99f19c80357c673f64affe464d2ac0fff8e5dcf28c4bdc7f9e96b28e16f2b90; manufacturer part PL10474172-25Ah.",
+      "file": "welion-shp320-25.pdf",
+      "bytes": 62226,
+      "revision": "002",
+      "document_date": "2025-04-09"
+    },
+    "welion-shp320-25-product": {
+      "uid": "src/welion-shp320-25-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP320-25 identity page",
+      "url": "https://welion-energy.com/SHP320-25/30000106",
+      "retrieved_at": "2026-09-21",
+      "sha256": "a99f19c80357c673f64affe464d2ac0fff8e5dcf28c4bdc7f9e96b28e16f2b90",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp320-25-product.html",
+      "bytes": 81033,
+      "role": "identity_only"
+    },
+    "welion-shp320-32": {
+      "uid": "src/welion-shp320-32-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP320-32 Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/9b/92/ca/1730132597/SHP320-32%20datasheet.pdf?ts=1744633235",
+      "retrieved_at": "2026-09-21",
+      "sha256": "c26ae193a724507998416f86fa00bfc4453ffe712f74b199fc4e404a5cc1592a",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP320-32/30000107; SHA-256 5834f3c8e24a8eee832704d2abf7f90d39d1936cd174ee66a772fbcd6ef3e2bd; manufacturer part PL10387187-32Ah.",
+      "file": "welion-shp320-32.pdf",
+      "bytes": 62153,
+      "revision": "002",
+      "document_date": "2025-04-09"
+    },
+    "welion-shp320-32-product": {
+      "uid": "src/welion-shp320-32-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP320-32 identity page",
+      "url": "https://welion-energy.com/SHP320-32/30000107",
+      "retrieved_at": "2026-09-21",
+      "sha256": "5834f3c8e24a8eee832704d2abf7f90d39d1936cd174ee66a772fbcd6ef3e2bd",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp320-32-product.html",
+      "bytes": 81070,
+      "role": "identity_only"
+    },
+    "welion-shp320-35": {
+      "uid": "src/welion-shp320-35-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP320-35 Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/1e/02/33/1730132463/SHP320-35%20datasheet.pdf?ts=1744633262",
+      "retrieved_at": "2026-09-21",
+      "sha256": "0aa37c8abf84dd712762dab7a9fb965474fc048d9286186dc1023192a0da2d6b",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP320-35/30000108; SHA-256 68bb103fd3288d9c194dcc252ea38da328e520136c01e5d72b0146904b8a124c; manufacturer part PL1187187-35Ah.",
+      "file": "welion-shp320-35.pdf",
+      "bytes": 62224,
+      "revision": "002",
+      "document_date": "2025-04-09"
+    },
+    "welion-shp320-35-product": {
+      "uid": "src/welion-shp320-35-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP320-35 identity page",
+      "url": "https://welion-energy.com/SHP320-35/30000108",
+      "retrieved_at": "2026-09-21",
+      "sha256": "68bb103fd3288d9c194dcc252ea38da328e520136c01e5d72b0146904b8a124c",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp320-35-product.html",
+      "bytes": 81033,
+      "role": "identity_only"
+    },
+    "welion-shp350-30": {
+      "uid": "src/welion-shp350-30-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP350-30-TRIAL Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/3a/98/71/1782371864/SHP350-30-TRIAL_datasheet1.pdf?ts=1782371864",
+      "retrieved_at": "2026-09-21",
+      "sha256": "137a23cf44ad80c79021c885672ebed1a3af2ec061fa823fe85158c6bd1da1d9",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP350-30/30000170; SHA-256 9e4a0468e0cddd635b092587a3fd884925233a42de4910cbf32b3ea3084042e3; manufacturer part PL10674172-30Ah. TRIAL source; preliminary. The unsuffixed shop name is an alias, not a second cell.",
+      "file": "welion-shp350-30.pdf",
+      "bytes": 65108,
+      "revision": "002SB",
+      "document_date": "2026-06-23",
+      "is_final": false
+    },
+    "welion-shp350-30-product": {
+      "uid": "src/welion-shp350-30-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP350-30-TRIAL identity page",
+      "url": "https://welion-energy.com/SHP350-30/30000170",
+      "retrieved_at": "2026-09-21",
+      "sha256": "9e4a0468e0cddd635b092587a3fd884925233a42de4910cbf32b3ea3084042e3",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp350-30-product.html",
+      "bytes": 79362,
+      "role": "identity_only"
+    },
+    "welion-shp350-40": {
+      "uid": "src/welion-shp350-40-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "WeLion SHP350-40-TRIAL Semi-Solid-State datasheet",
+      "url": "https://welion-energy.com/media/4c/a6/07/1782223390/SHP350-40-TRIAL_datasheet%202.pdf?ts=1782223390",
+      "retrieved_at": "2026-09-21",
+      "sha256": "ae6cf3324fd441c603e900f607d844a16200fea6015a3b26213daf637afaccff",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP350-40/30000171; SHA-256 53c06f2562d4de4daf863c7c0acb0b1952c58122d2c52d2c70fc4f9d159134f9; manufacturer part PL1187187-40Ah. TRIAL source; preliminary. The unsuffixed shop name is an alias, not a second cell.",
+      "file": "welion-shp350-40.pdf",
+      "bytes": 68001,
+      "revision": "001SB",
+      "document_date": "2025-05-09",
+      "is_final": false
+    },
+    "welion-shp350-40-product": {
+      "uid": "src/welion-shp350-40-product-inspected-2026-09-21",
+      "kind": "distributor_listing",
+      "title": "WeLion SHP350-40-TRIAL identity page",
+      "url": "https://welion-energy.com/SHP350-40/30000171",
+      "retrieved_at": "2026-09-21",
+      "sha256": "53c06f2562d4de4daf863c7c0acb0b1952c58122d2c52d2c70fc4f9d159134f9",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Identity cross-reference only; numerical observations use the separately hashed PDF.",
+      "file": "welion-shp350-40-product.html",
+      "bytes": 79363,
+      "role": "identity_only"
+    },
+    "lg-cells-2024": {
+      "uid": "src/lg-cells-2024-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+      "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+      "retrieved_at": "2026-09-21",
+      "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements.",
+      "file": "lg-cells-2024.pdf",
+      "bytes": 330908
+    },
+    "hina-release": {
+      "uid": "src/hina-release-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "HiNa — Sodium-Ion Batteries Enter the Commercial Era",
+      "url": "https://www.hinabattery.com/en/index.php?id=77",
+      "retrieved_at": "2026-09-21",
+      "sha256": "4058fa75a61fa1d1cf78452ff60359f88585a21d4724b3934dc3b53c06fc68ac",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Parent publication for four model specification images; launch date 2025-10-31, article date 2025-11-01.",
+      "file": "hina-release.html",
+      "bytes": 17909,
+      "document_date": "2025-11-01",
+      "role": "context_only"
+    },
+    "hina-1761960446647304": {
+      "uid": "src/hina-1761960446647304-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "HiNa MP10 sodium-ion cell specification slide",
+      "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960446647304.png",
+      "retrieved_at": "2026-09-21",
+      "sha256": "967b6d4380588e0e65e57d42f1d76be2cd0f4d1b860e9f41db9d69af7bf99e3a",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. MP10 is shown with manufacturing partner Keyuan; the 100000 five-second pulse count is not full-cycle life and is excluded.",
+      "file": "hina-1761960446647304.png",
+      "bytes": 1196447,
+      "document_date": "2025-11-01"
+    },
+    "hina-1761960297460023": {
+      "uid": "src/hina-1761960297460023-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "HiNa HE240 sodium-ion cell specification slide",
+      "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960297460023.png",
+      "retrieved_at": "2026-09-21",
+      "sha256": "aea689e389dcdbd4e1c192a7561977dd60bc338971a675b5ac3f066b8563aad7",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. ",
+      "file": "hina-1761960297460023.png",
+      "bytes": 1079818,
+      "document_date": "2025-11-01"
+    },
+    "hina-1761960340685001": {
+      "uid": "src/hina-1761960340685001-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "HiNa NE170 sodium-ion cell specification slide",
+      "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960340685001.png",
+      "retrieved_at": "2026-09-21",
+      "sha256": "9eabacf60c7670f7e44d23f3eeb94565f0221e05e4a7cb62c48c1127be76d0cc",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. ",
+      "file": "hina-1761960340685001.png",
+      "bytes": 1087962,
+      "document_date": "2025-11-01"
+    },
+    "hina-1761960356537762": {
+      "uid": "src/hina-1761960356537762-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "HiNa MP200 sodium-ion cell specification slide",
+      "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960356537762.png",
+      "retrieved_at": "2026-09-21",
+      "sha256": "c047ff9e72749bb849ae740855d1953ef19511e288c66b35f31f3b77954bd007",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. MP200 is shown with manufacturing partner Kan Battery.",
+      "file": "hina-1761960356537762.png",
+      "bytes": 1507886,
+      "document_date": "2025-11-01"
+    },
+    "catl-ess-2026": {
+      "uid": "src/catl-ess-2026-inspected-2026-09-21",
+      "kind": "datasheet",
+      "title": "CATL energy storage solutions and products — LFP cell parameters",
+      "url": "https://www.catl.com/uploads/1/file/public/202604/20260409212143_f2npbuioci.pdf",
+      "retrieved_at": "2026-09-21",
+      "sha256": "4a968fd7036f97a48ee91654a8e3e90ea3295e62d40c5f3c842971156044d867",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. PDF page 9 contains printed pages 15–16. Public capacity-based product designations; orderable part codes are not supplied. The PDF metadata title contains 20241030 but creation/modification metadata is March/April 2026; no printed revision or document date is asserted. Specific cell rows override the general >8000-cycle headline. The 280Ah cell already has a pending record and is excluded. P denotes constant power, not C-rate. Capacity-test conditions are not explicitly linked to the separate charge/discharge rate row.",
+      "file": "catl-ess-2026.pdf",
+      "bytes": 29639315
+    },
+    "eve-lf206": {
+      "uid": "src/eve-lf206-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "EVE Energy LF206 product specifications",
+      "url": "https://www.evemall.eu/power-battery/prismatic-lfp-cell/lf206",
+      "retrieved_at": "2026-09-21",
+      "sha256": "b88b3bc108b27beb0f42418903de6d21413ea9a930dd5664bbd22efbcb5bdd43",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Current manufacturer product specification table; no printed document revision. Generic category capacity ranges are not expanded into products. Life text explicitly states 25°C, 1C charge / 0.5C discharge, 80% SOH. Dimension axis order is not named; dimensions are held. Initial IR lacks an AC/DC method and is held. Standard rates are not silently borrowed as capacity-test conditions.",
+      "file": "eve-lf206.html",
+      "bytes": 654454
+    },
+    "eve-lf235l": {
+      "uid": "src/eve-lf235l-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "EVE Energy LF235L product specifications",
+      "url": "https://www.evemall.eu/power-battery/prismatic-lfp-cell/lf235l",
+      "retrieved_at": "2026-09-21",
+      "sha256": "12bbc65bc8debff6691d2e107fd632dfd2c9c768ab38eb429721872a8422a1fc",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Current manufacturer product specification table; no printed document revision. Generic category capacity ranges are not expanded into products. The separate life graphic is labelled LF356L despite the LF235L page title; its SOH and test conditions are held. The model-specific table states 4000 cycles but no life-test protocol. Dimension precision follows the model-specific table (173.936 mm) rather than the rounded headline (173.93 mm). Initial IR lacks an AC/DC method and is held. Standard rates are not silently borrowed as capacity-test conditions.",
+      "file": "eve-lf235l.html",
+      "bytes": 646669
+    },
+    "eve-selection": {
+      "uid": "src/eve-selection-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "EVE MB31 vs. MB30 vs. 280K-V3 in Commercial ESS",
+      "url": "https://www.evemall.eu/selection-guide/eve-mb31-vs-mb30-vs-280k-v3-commercial-ess",
+      "retrieved_at": "2026-09-21",
+      "sha256": "2715f1b2af17adaf88dc26fe61b252d61053173fc1c2011a442a0713ea48460c",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Manufacturer selection guide. Only MB30 is added. MB31 is already accepted; LF280K exists in the SQL reference set and its V3 revision is not counted as an additional identity. MB30 life-test conditions are not specified. Bare IR is not assigned an AC or DC method. Approximate derived energy in the article is omitted.",
+      "file": "eve-selection.html",
+      "bytes": 555880,
+      "document_date": "2025-05-28"
+    },
+    "calb-filings": {
+      "uid": "src/calb-filings-inspected-2026-09-21",
+      "kind": "regulatory_filing",
+      "title": "Prairie Song Reliability Project — Data Request Response 2 Part 6; BESS HMA Rev B",
+      "url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=103666&tn=266609",
+      "retrieved_at": "2026-09-21",
+      "sha256": "9cb8964df3b6e18af87670a62cb7dfa0dfa58d06bf3e689b4d3f1259b9798219",
+      "license": "unspecified; public regulatory filing",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Public California Energy Commission filing, TN 266609. The cell is described on PDF page 114, printed HMA page 12, section 2.2. The HMA is watermarked DRAFT. The nominal cell rating is 3.2 V / 314 Ah; 332.8 V refers to the 104S module and is excluded. Publisher: project applicant / public regulatory docket; this is not a CALB datasheet or an independent capacity test. No equivalence to CALB 314Ah Gen2 or L173F314A is assumed.",
+      "file": "calb-filings.pdf",
+      "bytes": 11080265,
+      "revision": "HMA Rev B (DRAFT)",
+      "is_final": false
+    },
+    "calb-esie-2026": {
+      "uid": "src/calb-esie-2026-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "CALB ZHIJIU long-cycle energy-storage cell launch at ESIE 2026",
+      "url": "https://www.calb-tech.com/newsDetails/25.html",
+      "retrieved_at": "2026-09-21",
+      "sha256": "30b49fe8c34d29b497dfb466b71c729014d17d3f50220ace0bff21071492e345",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Manufacturer launch announcement, dated 2026-04-02 for the 2026-04-01 event. Public capacity-based designations, not unpublished orderable part codes. 392Ah, 588Ah and 661Ah are the three named versions. Exact cathode chemistry, form factor, voltage, dimensions and test protocols are not supplied and are not inferred. Life values are claims with unspecified conditions, not comparable verified test results. Do not combine with older life claims or treat system energy as cell energy.",
+      "file": "calb-esie-2026.html",
+      "bytes": 104524,
+      "document_date": "2026-04-02"
+    },
+    "calb-home": {
+      "uid": "src/calb-home-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "CALB current product showcase — 684Ah energy-storage cell",
+      "url": "https://www.calb-tech.com/",
+      "retrieved_at": "2026-09-21",
+      "sha256": "a866c1f962518266bc9b1dd97ac3ca61b95ece4d04895312aee0ed5a615cf716",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Manufacturer product showcase as retrieved, no printed revision/date. Capacity-based public designation; orderable part code, exact chemistry, cell voltage, dimensions and test protocol are not given. The 6.8MWh+ figure describes a 20-foot container and is excluded from the cell. The 314Ah Gen2 showcase is held separately because its relationship to L173F314 is unresolved. 684Ah is a different published capacity from the launch article’s 661Ah; they are not silently equated.",
+      "file": "calb-home.html",
+      "bytes": 257220
+    },
+    "eve-c46m-v1": {
+      "uid": "src/eve-c46m-v1-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "EVE C46M-V1 investigated product page",
+      "url": "https://www.evemall.eu/power-battery/cylindrical-lfp-cell/c46m1",
+      "retrieved_at": "2026-09-21",
+      "sha256": "919e8a7f6b69ca6165acbdca3c647c7377290835b8fd18ef420252e85596c31b",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Held: LFP product description and 3.6V nominal rating need reconciliation before import.",
+      "file": "eve-c46m-v1.html",
+      "bytes": 641979,
+      "role": "held"
+    },
+    "eve-c46m-v2": {
+      "uid": "src/eve-c46m-v2-inspected-2026-09-21",
+      "kind": "manufacturer_web",
+      "title": "EVE C46M-V2 investigated product page",
+      "url": "https://www.evemall.eu/power-battery/cylindrical-lfp-cell/c46m2",
+      "retrieved_at": "2026-09-21",
+      "sha256": "3055f6c6afba7673ffa41fb6145a9a57e5c24dd44f66b2422714f3682f54397e",
+      "license": "proprietary",
+      "redistributable": false,
+      "note": "Facts only; source body is not redistributed. Held: LFP product description and 3.6V nominal rating need reconciliation before import.",
+      "file": "eve-c46m-v2.html",
+      "bytes": 637543,
+      "role": "held"
+    }
+  },
+  "rows": [
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP270-16",
+      "source_key": "welion-shp270-16",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL7874172-16Ah"
+      ],
+      "capacity_ah": 16.0,
+      "energy_wh": 59.2,
+      "voltage_v": 3.7,
+      "specific_energy_wh_kg": 261.0,
+      "energy_density_wh_l": 604.0,
+      "thickness_mm": [
+        7.7,
+        0.3
+      ],
+      "width_mm": [
+        74.0,
+        1.0
+      ],
+      "length_mm": [
+        172.0,
+        2.0
+      ],
+      "mass_g": [
+        226.0,
+        4.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        60
+      ],
+      "charge_temperature_c": [
+        0,
+        45
+      ]
+    },
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP270-22",
+      "source_key": "welion-shp270-22",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL8574172-22Ah"
+      ],
+      "capacity_ah": 22.0,
+      "energy_wh": 81.4,
+      "voltage_v": 3.7,
+      "specific_energy_wh_kg": 273.0,
+      "energy_density_wh_l": 620.0,
+      "thickness_mm": [
+        10.3,
+        0.3
+      ],
+      "width_mm": [
+        74.0,
+        1.0
+      ],
+      "length_mm": [
+        172.0,
+        2.0
+      ],
+      "mass_g": [
+        298.0,
+        12.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        55
+      ],
+      "charge_temperature_c": [
+        0,
+        45
+      ]
+    },
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP270-27",
+      "source_key": "welion-shp270-27",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL9887187-27Ah"
+      ],
+      "capacity_ah": 27.0,
+      "energy_wh": 99.9,
+      "voltage_v": 3.7,
+      "specific_energy_wh_kg": 275.0,
+      "energy_density_wh_l": 633.0,
+      "thickness_mm": [
+        9.7,
+        0.3
+      ],
+      "width_mm": [
+        87.0,
+        1.0
+      ],
+      "length_mm": [
+        187.0,
+        2.0
+      ],
+      "mass_g": [
+        363.0,
+        5.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        55
+      ],
+      "charge_temperature_c": [
+        0,
+        45
+      ]
+    },
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP270-30",
+      "source_key": "welion-shp270-30",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL10887187-30Ah"
+      ],
+      "capacity_ah": 30.0,
+      "energy_wh": 111.0,
+      "voltage_v": 3.7,
+      "specific_energy_wh_kg": 275.0,
+      "energy_density_wh_l": 632.0,
+      "thickness_mm": [
+        10.8,
+        0.3
+      ],
+      "width_mm": [
+        87.0,
+        1.0
+      ],
+      "length_mm": [
+        187.0,
+        2.0
+      ],
+      "mass_g": [
+        404.0,
+        5.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        55
+      ],
+      "charge_temperature_c": [
+        0,
+        55
+      ]
+    },
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP320-20",
+      "source_key": "welion-shp320-20",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL8574172-20Ah"
+      ],
+      "capacity_ah": 20.0,
+      "energy_wh": 73.0,
+      "voltage_v": 3.65,
+      "specific_energy_wh_kg": 300.0,
+      "energy_density_wh_l": 674.0,
+      "thickness_mm": [
+        8.5,
+        0.3
+      ],
+      "width_mm": [
+        74.0,
+        1.0
+      ],
+      "length_mm": [
+        172.0,
+        2.0
+      ],
+      "mass_g": [
+        243.0,
+        12.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        55
+      ],
+      "charge_temperature_c": [
+        0,
+        45
+      ]
+    },
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP320-25",
+      "source_key": "welion-shp320-25",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL10474172-25Ah"
+      ],
+      "capacity_ah": 25.0,
+      "energy_wh": 91.25,
+      "voltage_v": 3.65,
+      "specific_energy_wh_kg": 305.0,
+      "energy_density_wh_l": 689.0,
+      "thickness_mm": [
+        10.4,
+        0.3
+      ],
+      "width_mm": [
+        74.0,
+        1.0
+      ],
+      "length_mm": [
+        172.0,
+        2.0
+      ],
+      "mass_g": [
+        299.0,
+        10.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        55
+      ],
+      "charge_temperature_c": [
+        0,
+        45
+      ]
+    },
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP320-32",
+      "source_key": "welion-shp320-32",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL10387187-32Ah"
+      ],
+      "capacity_ah": 32.0,
+      "energy_wh": 116.8,
+      "voltage_v": 3.65,
+      "specific_energy_wh_kg": 305.0,
+      "energy_density_wh_l": 690.0,
+      "thickness_mm": [
+        10.3,
+        0.3
+      ],
+      "width_mm": [
+        87.0,
+        1.0
+      ],
+      "length_mm": [
+        187.0,
+        2.0
+      ],
+      "mass_g": [
+        382.0,
+        12.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        55
+      ],
+      "charge_temperature_c": [
+        0,
+        45
+      ]
+    },
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP320-35",
+      "source_key": "welion-shp320-35",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL1187187-35Ah"
+      ],
+      "capacity_ah": 35.0,
+      "energy_wh": 127.75,
+      "voltage_v": 3.65,
+      "specific_energy_wh_kg": 311.0,
+      "energy_density_wh_l": 713.0,
+      "thickness_mm": [
+        11.0,
+        0.3
+      ],
+      "width_mm": [
+        87.0,
+        1.0
+      ],
+      "length_mm": [
+        187.0,
+        2.0
+      ],
+      "mass_g": [
+        410.0,
+        15.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        55
+      ],
+      "charge_temperature_c": [
+        0,
+        45
+      ]
+    },
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP350-30-TRIAL",
+      "source_key": "welion-shp350-30",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL10674172-30Ah",
+        "SHP350-30"
+      ],
+      "capacity_ah": 30.0,
+      "energy_wh": 108.0,
+      "voltage_v": 3.6,
+      "specific_energy_wh_kg": 346.0,
+      "energy_density_wh_l": 800.0,
+      "thickness_mm": [
+        10.6,
+        0.3
+      ],
+      "width_mm": [
+        74.0,
+        1.0
+      ],
+      "length_mm": [
+        172.0,
+        2.0
+      ],
+      "mass_g": [
+        312.0,
+        10.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        55
+      ],
+      "charge_temperature_c": [
+        0,
+        45
+      ]
+    },
+    {
+      "family": "welion",
+      "manufacturer": "WeLion",
+      "maker_slug": "welion",
+      "model": "SHP350-40-TRIAL",
+      "source_key": "welion-shp350-40",
+      "page": 1,
+      "form_factor": "pouch",
+      "aliases": [
+        "PL1187187-40Ah",
+        "SHP350-40"
+      ],
+      "capacity_ah": 40.0,
+      "energy_wh": 142.0,
+      "voltage_v": 3.55,
+      "specific_energy_wh_kg": 357.0,
+      "energy_density_wh_l": 794.0,
+      "thickness_mm": [
+        11.0,
+        0.3
+      ],
+      "width_mm": [
+        87.0,
+        1.0
+      ],
+      "length_mm": [
+        187.0,
+        2.0
+      ],
+      "mass_g": [
+        398.0,
+        10.0
+      ],
+      "discharge_temperature_c": [
+        -20,
+        55
+      ],
+      "charge_temperature_c": [
+        0,
+        45
+      ]
+    },
+    {
+      "family": "lg",
+      "manufacturer": "LG Energy Solution",
+      "maker_slug": "lg-energy-solution",
+      "model": "E101A",
+      "source_key": "lg-cells-2024",
+      "page": 1,
+      "form_factor": "pouch",
+      "cathode": "NCMA",
+      "anode": "Graphite",
+      "capacity_ah": 101.8,
+      "capacity_rate_c": 0.3,
+      "capacity_statistic": "minimum",
+      "capacity_quote": "E101A: 101.8 Ah; Min, 25°C, 0.3C",
+      "capacity_reference_only": false,
+      "voltage_v": 3.67,
+      "energy_wh": 374,
+      "energy_statistic": null,
+      "energy_quote": "E101A: Energy 374 Wh",
+      "specific_energy_wh_kg": 287,
+      "energy_density_wh_l": 637,
+      "density_statistic": "minimum",
+      "mass_g": 1303,
+      "mass_statistic": null,
+      "mass_quote": "E101A: Weight 1303 g",
+      "dimensions_mm": {
+        "length": 580,
+        "width": 112.4,
+        "thickness": 9
+      },
+      "dimension_quote": "L*W*T (mm): 580*112.4*9",
+      "dimension_statistic": null
+    },
+    {
+      "family": "lg",
+      "manufacturer": "LG Energy Solution",
+      "maker_slug": "lg-energy-solution",
+      "model": "E72B",
+      "source_key": "lg-cells-2024",
+      "page": 1,
+      "form_factor": "pouch",
+      "cathode": "NCMA",
+      "anode": "Graphite+SiO",
+      "capacity_ah": 72.2,
+      "capacity_rate_c": 0.3,
+      "capacity_statistic": "minimum",
+      "capacity_quote": "E72B: 72.2 Ah; Min, 25°C, 0.3C",
+      "capacity_reference_only": false,
+      "voltage_v": 3.67,
+      "energy_wh": 264,
+      "energy_statistic": null,
+      "energy_quote": "E72B: Energy 264 Wh",
+      "specific_energy_wh_kg": 287,
+      "energy_density_wh_l": 625,
+      "density_statistic": "minimum",
+      "mass_g": 906,
+      "mass_statistic": null,
+      "mass_quote": "E72B: Weight 906 g",
+      "dimensions_mm": {
+        "length": 354,
+        "width": 101.65,
+        "thickness": 11.44
+      },
+      "dimension_quote": "L*W*T (mm): 354*101.65*11.44",
+      "dimension_statistic": null
+    },
+    {
+      "family": "lg",
+      "manufacturer": "LG Energy Solution",
+      "maker_slug": "lg-energy-solution",
+      "model": "E79",
+      "source_key": "lg-cells-2024",
+      "page": 1,
+      "form_factor": "pouch",
+      "cathode": "NCMA",
+      "anode": "Graphite",
+      "capacity_ah": 78,
+      "capacity_rate_c": 0.3,
+      "capacity_statistic": "minimum",
+      "capacity_quote": "E79: 78 Ah; Min, 25°C, 0.3C",
+      "capacity_reference_only": false,
+      "voltage_v": 3.69,
+      "energy_wh": 287,
+      "energy_statistic": null,
+      "energy_quote": "E79: Energy 287 Wh",
+      "specific_energy_wh_kg": 267,
+      "energy_density_wh_l": 591,
+      "density_statistic": "minimum",
+      "mass_g": 1075,
+      "mass_statistic": null,
+      "mass_quote": "E79: Weight 1075 g",
+      "dimensions_mm": {
+        "length": 548,
+        "width": 100.1,
+        "thickness": 8.55
+      },
+      "dimension_quote": "L*W*T (mm): 548*100.1*8.55",
+      "dimension_statistic": null
+    },
+    {
+      "family": "lg",
+      "manufacturer": "LG Energy Solution",
+      "maker_slug": "lg-energy-solution",
+      "model": "JP3",
+      "source_key": "lg-cells-2024",
+      "page": 1,
+      "form_factor": "pouch",
+      "cathode": "NCM",
+      "anode": "Graphite",
+      "capacity_ah": 62.4,
+      "capacity_rate_c": 0.5,
+      "capacity_statistic": "minimum",
+      "capacity_quote": "JP3: 62.4 Ah; Min, 25°C, 0.5C",
+      "capacity_reference_only": false,
+      "voltage_v": 3.68,
+      "energy_wh": 229.6,
+      "energy_statistic": "minimum",
+      "energy_quote": "JP3: Energy 229.6 Wh (Min.)",
+      "specific_energy_wh_kg": 184,
+      "energy_density_wh_l": 389,
+      "density_statistic": "minimum",
+      "mass_g": 1245,
+      "mass_statistic": "maximum",
+      "mass_quote": "JP3: Weight Max. 1245 g",
+      "dimensions_mm": {
+        "length": 353.5,
+        "width": 101.7,
+        "thickness": 16.4
+      },
+      "dimension_quote": "L*W*T (mm): 353.5*101.7*16.4 (Max.)",
+      "dimension_statistic": "maximum"
+    },
+    {
+      "family": "lg",
+      "manufacturer": "LG Energy Solution",
+      "maker_slug": "lg-energy-solution",
+      "model": "JF1",
+      "source_key": "lg-cells-2024",
+      "page": 1,
+      "form_factor": "pouch",
+      "cathode": "LFP",
+      "anode": "Graphite",
+      "capacity_ah": 56.6,
+      "capacity_rate_c": 0.3,
+      "capacity_statistic": "minimum",
+      "capacity_quote": "JF1: 56.6 Ah; Min, 25°C, 0.3C",
+      "capacity_reference_only": false,
+      "voltage_v": 3.22,
+      "energy_wh": 182.25,
+      "energy_statistic": null,
+      "energy_quote": "JF1: Energy 182.25 Wh",
+      "specific_energy_wh_kg": 165.68,
+      "energy_density_wh_l": 320.4,
+      "density_statistic": "minimum",
+      "mass_g": 1100,
+      "mass_statistic": "maximum",
+      "mass_quote": "JF1: Weight Max. 1100 g",
+      "dimensions_mm": {
+        "length": 352.5,
+        "width": 100.2,
+        "thickness": 16.1
+      },
+      "dimension_quote": "L*W*T (mm): 352.5*100.2*16.1",
+      "dimension_statistic": null
+    },
+    {
+      "family": "lg",
+      "manufacturer": "LG Energy Solution",
+      "maker_slug": "lg-energy-solution",
+      "model": "JF2",
+      "source_key": "lg-cells-2024",
+      "page": 1,
+      "form_factor": "pouch",
+      "cathode": "LFP",
+      "anode": "Graphite",
+      "capacity_ah": 159.2,
+      "capacity_rate_c": 0.3,
+      "capacity_statistic": "minimum",
+      "capacity_quote": "JF2: 159.2 Ah; Min, 25°C, 0.3C",
+      "capacity_reference_only": false,
+      "voltage_v": null,
+      "energy_wh": 509.4,
+      "energy_statistic": null,
+      "energy_quote": "JF2: Energy 509.4 Wh",
+      "specific_energy_wh_kg": 182.4,
+      "energy_density_wh_l": 388.4,
+      "density_statistic": "minimum",
+      "mass_g": 2800,
+      "mass_statistic": "maximum",
+      "mass_quote": "JF2: Weight Max. 2800 g",
+      "dimensions_mm": {
+        "length": 601.0,
+        "width": 125.0,
+        "thickness": 18.0
+      },
+      "dimension_quote": "L*W*T (mm): 601.0*125.0*18.0 Max; at shipping state, without lead tab",
+      "dimension_statistic": "maximum"
+    },
+    {
+      "family": "lg",
+      "manufacturer": "LG Energy Solution",
+      "maker_slug": "lg-energy-solution",
+      "model": "JH4",
+      "source_key": "lg-cells-2024",
+      "page": 1,
+      "form_factor": "pouch",
+      "cathode": "NCM",
+      "anode": "Graphite",
+      "capacity_ah": 70.6,
+      "capacity_rate_c": 0.3,
+      "capacity_statistic": "minimum",
+      "capacity_quote": "JH4: 70.6 Ah; Min, 25°C, 0.3C",
+      "capacity_reference_only": false,
+      "voltage_v": null,
+      "energy_wh": 266,
+      "energy_statistic": "nominal",
+      "energy_quote": "JH4: Energy 266 Wh (nom)",
+      "specific_energy_wh_kg": 213.7,
+      "energy_density_wh_l": 467.8,
+      "density_statistic": "nominal",
+      "mass_g": 1245,
+      "mass_statistic": "maximum",
+      "mass_quote": "JH4: Weight Max. 1245 g",
+      "dimensions_mm": {},
+      "dimension_quote": "L*W*T (mm): ",
+      "dimension_statistic": null
+    },
+    {
+      "family": "lg",
+      "manufacturer": "LG Energy Solution",
+      "maker_slug": "lg-energy-solution",
+      "model": "M52V",
+      "source_key": "lg-cells-2024",
+      "page": 1,
+      "form_factor": "cylindrical",
+      "cathode": "NCMA",
+      "anode": "Graphite",
+      "capacity_ah": 5.07,
+      "capacity_rate_c": 0.2,
+      "capacity_statistic": "nominal",
+      "capacity_quote": "M52V: 5.07 Ah; nom, 0.2C; reference value; table header 25°C",
+      "capacity_reference_only": true,
+      "voltage_v": 3.69,
+      "energy_wh": 18.73,
+      "energy_statistic": "nominal",
+      "energy_quote": "M52V: Energy 18.73 Wh (nom)",
+      "specific_energy_wh_kg": 278,
+      "energy_density_wh_l": 763,
+      "density_statistic": "nominal",
+      "mass_g": 67.4,
+      "mass_statistic": null,
+      "mass_quote": "M52V: Weight 67.4 g",
+      "dimensions_mm": {
+        "diameter": 21.15,
+        "height": 70.6
+      },
+      "dimension_quote": "Diameter: 21.15mm (max); Height: 70.6mm (max) (Max.)",
+      "dimension_statistic": "maximum"
+    },
+    {
+      "family": "hina",
+      "manufacturer": "HiNa Battery",
+      "maker_slug": "hina-battery",
+      "model": "MP10",
+      "aliases": [
+        "NaCR32140-MP10"
+      ],
+      "source_key": "hina-1761960446647304",
+      "form_factor": "cylindrical",
+      "capacity_ah": 10,
+      "voltage_v": 3,
+      "specific_energy_wh_kg": 110,
+      "cycles": 10000,
+      "cycle_rate": 5,
+      "cycle_rate_unit": "C",
+      "cycle_quote": "循环寿命 >10,000次@5C（连续）"
+    },
+    {
+      "family": "hina",
+      "manufacturer": "HiNa Battery",
+      "maker_slug": "hina-battery",
+      "model": "HE240",
+      "aliases": [
+        "NaCP72173204-HE240"
+      ],
+      "source_key": "hina-1761960297460023",
+      "form_factor": "prismatic_hardcase",
+      "capacity_ah": 240,
+      "voltage_v": 3,
+      "specific_energy_wh_kg": 150,
+      "cycles": 8000,
+      "cycle_rate": 0.5,
+      "cycle_rate_unit": "P",
+      "cycle_quote": "循环寿命 >8000次@0.5P"
+    },
+    {
+      "family": "hina",
+      "manufacturer": "HiNa Battery",
+      "maker_slug": "hina-battery",
+      "model": "NE170",
+      "aliases": [
+        "NaPP72173204-NE170"
+      ],
+      "source_key": "hina-1761960340685001",
+      "form_factor": "prismatic_hardcase",
+      "capacity_ah": 170,
+      "voltage_v": 2.9,
+      "specific_energy_wh_kg": 100,
+      "cycles": 10000,
+      "cycle_rate": 1,
+      "cycle_rate_unit": "P",
+      "cycle_quote": "循环寿命 >10000次@1P"
+    },
+    {
+      "family": "hina",
+      "manufacturer": "HiNa Battery",
+      "maker_slug": "hina-battery",
+      "model": "MP200",
+      "aliases": [
+        "NaCP54173204-MP200"
+      ],
+      "source_key": "hina-1761960356537762",
+      "form_factor": "prismatic_hardcase",
+      "capacity_ah": 200,
+      "voltage_v": 3,
+      "specific_energy_wh_kg": 165,
+      "cycles": 10000,
+      "cycle_rate": 2,
+      "cycle_rate_unit": "C",
+      "cycle_quote": "循环寿命 >10,000次@2C"
+    },
+    {
+      "family": "catl",
+      "manufacturer": "CATL",
+      "maker_slug": "catl",
+      "model": "314Ah LFP ESS cell",
+      "source_key": "catl-ess-2026",
+      "page": 9,
+      "form_factor": "prismatic_hardcase",
+      "capacity_ah": 314,
+      "mass_kg": 5.58,
+      "cycles": 7000
+    },
+    {
+      "family": "catl",
+      "manufacturer": "CATL",
+      "maker_slug": "catl",
+      "model": "587Ah LFP ESS cell",
+      "source_key": "catl-ess-2026",
+      "page": 9,
+      "form_factor": "prismatic_hardcase",
+      "capacity_ah": 587,
+      "mass_kg": 9.83,
+      "cycles": 8000,
+      "note": "Additional source-revision review (2026-09-23): the user-submitted CATL Mall screenshot reports 10.6 ± 0.3 kg and 73.05 × 310 × 221.53 mm. Its relationship to this 9.83 kg brochure variant is unresolved. Separate, pending observations are in review/revisions/catl/587ah-lfp-ess-cell-mall-2026-09-23.yaml; source comparison and density arithmetic are in review/imports/2026-09-23-catl-587ah-review.md. Do not combine the two source revisions or count them as independently identified products."
+    },
+    {
+      "family": "eve",
+      "manufacturer": "EVE Energy",
+      "maker_slug": "eve",
+      "model": "LF206",
+      "source_key": "eve-lf206",
+      "form_factor": "prismatic_hardcase",
+      "capacity_ah": 206,
+      "voltage_v": 3.22,
+      "mass_g": [
+        3500,
+        105
+      ],
+      "cycles": 4000,
+      "charge_temperature_c": [
+        -10,
+        65
+      ],
+      "discharge_temperature_c": [
+        -35,
+        65
+      ],
+      "cycle_section": "Product Introduction",
+      "cycle_quote": "Up to 4000 Cycles; 80%SOH; (25℃ 1C/0.5C)",
+      "chemistry_quote": "LF206 Prismatic LFP / Lithium Iron Phosphate Battery"
+    },
+    {
+      "family": "eve",
+      "manufacturer": "EVE Energy",
+      "maker_slug": "eve",
+      "model": "LF235L",
+      "source_key": "eve-lf235l",
+      "form_factor": "prismatic_hardcase",
+      "capacity_ah": 235,
+      "voltage_v": 3.2,
+      "mass_g": [
+        4140,
+        124
+      ],
+      "cycles": 4000,
+      "charge_temperature_c": [
+        -10,
+        65
+      ],
+      "discharge_temperature_c": [
+        -35,
+        65
+      ],
+      "cycle_section": "Specifications / nominal cycles",
+      "cycle_quote": "Model Number LF235L; Nominal Cycles(times) 4000",
+      "chemistry_quote": "LF235L Prismatic LFP / Lithium Iron Phosphate Battery",
+      "dimensions_mm": {
+        "height": 207.2,
+        "length": 173.936,
+        "thickness": 53.85
+      },
+      "dimension_quote": "Height × Length × Thickness(mm) 207.2*173.936*53.85"
+    },
+    {
+      "family": "eve",
+      "manufacturer": "EVE Energy",
+      "maker_slug": "eve",
+      "model": "MB30",
+      "source_key": "eve-selection",
+      "capacity_ah": 306,
+      "mass_g": [
+        5600,
+        300
+      ],
+      "cycles": 10000,
+      "specific_energy_wh_kg": 174,
+      "cycle_section": "Our LFP Battery Solution",
+      "cycle_quote": "With a nominal capacity of 306Ah and a cycle life of 10,000 cycles, the MB30",
+      "chemistry_quote": "EVE MB31, EVE MB30, and EVE 280K-V3; all LiFePO4 batteries; same core chemistry"
+    },
+    {
+      "family": "calb",
+      "manufacturer": "CALB",
+      "maker_slug": "calb",
+      "model": "L173F314",
+      "source_key": "calb-filings",
+      "page": 114,
+      "form_factor": "prismatic_hardcase",
+      "capacity_ah": 314,
+      "voltage_v": 3.2,
+      "section": "HMA printed page 12 / 2.2 PT2 Cells, Modules, Racks/Clusters",
+      "capacity_quote": "CALB L173F314 cells; nominally rated 3.2 volts (V) and 314 ampere hours (Ah)",
+      "voltage_quote": "CALB L173F314 cells; nominally rated 3.2 volts (V) and 314 ampere hours (Ah)",
+      "chemistry_quote": "lithium iron phosphate (LFP) battery cells; CALB L173F314"
+    },
+    {
+      "family": "calb",
+      "manufacturer": "CALB",
+      "maker_slug": "calb",
+      "model": "ZHIJIU 392Ah long-cycle ESS cell",
+      "source_key": "calb-esie-2026",
+      "capacity_ah": 392,
+      "cycles": 15000,
+      "section": "全系列长循环电芯 / 2026-04-01 launch",
+      "capacity_quote": "至久系列长循环储能电芯 — 392Ah; published versions: 392Ah、588Ah、661Ah"
+    },
+    {
+      "family": "calb",
+      "manufacturer": "CALB",
+      "maker_slug": "calb",
+      "model": "ZHIJIU 588Ah long-cycle ESS cell",
+      "source_key": "calb-esie-2026",
+      "capacity_ah": 588,
+      "cycles": 15000,
+      "section": "全系列长循环电芯 / 2026-04-01 launch",
+      "capacity_quote": "至久系列长循环储能电芯 — 588Ah; published versions: 392Ah、588Ah、661Ah"
+    },
+    {
+      "family": "calb",
+      "manufacturer": "CALB",
+      "maker_slug": "calb",
+      "model": "ZHIJIU 661Ah long-cycle ESS cell",
+      "source_key": "calb-esie-2026",
+      "capacity_ah": 661,
+      "cycles": 15000,
+      "section": "全系列长循环电芯 / 2026-04-01 launch",
+      "capacity_quote": "至久系列长循环储能电芯 — 661Ah; published versions: 392Ah、588Ah、661Ah"
+    },
+    {
+      "family": "calb",
+      "manufacturer": "CALB",
+      "maker_slug": "calb",
+      "model": "684Ah ESS cell",
+      "source_key": "calb-home",
+      "capacity_ah": 684,
+      "energy_density_wh_l": 440,
+      "section": "Solutions and products / 684Ah储能电芯",
+      "capacity_quote": "684Ah储能电芯 — 全新一代 大容量叠片电芯"
+    }
+  ],
+  "held": [
+    {
+      "manufacturer": "EVE Energy",
+      "model": "C46M-V1 / C46M-V2",
+      "reason": "The pages call these lithium iron phosphate but specify 3.6 V nominal. Obtain a consistent model datasheet before adding either."
+    },
+    {
+      "manufacturer": "EVE Energy",
+      "model": "LF280K-V3",
+      "reason": "LF280K already exists in seed/001_reference_cells.sql. Do not count a document/generation revision as a new physical model without identity evidence."
+    },
+    {
+      "manufacturer": "CATL",
+      "model": "280Ah LFP ESS cell; first-generation sodium-ion; Naxtra passenger EV sodium-ion cell",
+      "reason": "Existing pending entries; not counted again."
+    },
+    {
+      "manufacturer": "HiTHIUM",
+      "model": "∞Cell N162Ah",
+      "reason": "Existing pending sodium-ion cell; not counted again."
+    },
+    {
+      "manufacturer": "CALB",
+      "model": "314Ah Gen2.0 showcase",
+      "reason": "Relationship to exact L173F314 model is unresolved; do not create a second identity from the same capacity."
+    },
+    {
+      "manufacturer": "LG Energy Solution",
+      "model": "JF2 / JH4",
+      "fields": [
+        "nominal_voltage"
+      ],
+      "reason": "Source cells print only 3 and 4 V respectively; suspicious precision/formatting. No voltage is inferred from energy divided by capacity."
+    },
+    {
+      "manufacturer": "LG Energy Solution",
+      "model": "JH4",
+      "fields": [
+        "dimensions"
+      ],
+      "reason": "Published dimension order reverses the long/short axes relative to other pouch columns; held for clarification."
+    },
+    {
+      "manufacturer": "EVE Energy",
+      "model": "LF235L",
+      "fields": [
+        "cycle_life_conditions"
+      ],
+      "reason": "Life graphic says LF356L. Import only LF235L model-specific table claims, without borrowing 70%SOH/25°C/0.5C conditions."
+    },
+    {
+      "manufacturer": "WeLion",
+      "model": "all ten",
+      "fields": [
+        "absolute_voltage_limits",
+        "maximum_continuous_current"
+      ],
+      "reason": "Maximal/minimal voltage labels and ultrafast C-rate labels do not identify absolute safety limits or continuous maximum current conditions."
+    },
+    {
+      "manufacturer": "LG Energy Solution",
+      "model": "M50L",
+      "source_key": "lg-cells-2024",
+      "reason": "Potential shortened identity of existing seed model INR21700-M50LT. Both sources describe 21700 cells with nominal 3.69 V / 18.2 Wh. The public summary does not resolve whether M50L is a separate part or shorthand. Hold outside the new-cell count; do not merge, alias or import reference capacity from the older M50LT specification without evidence.",
+      "existing_uid": "cell/lg-energy-solution/inr21700-m50lt",
+      "existing_file": "seed/001_reference_cells.sql",
+      "transcription": {
+        "family": "lg",
+        "manufacturer": "LG Energy Solution",
+        "maker_slug": "lg-energy-solution",
+        "model": "M50L",
+        "source_key": "lg-cells-2024",
+        "page": 1,
+        "form_factor": "cylindrical",
+        "cathode": "NCMA",
+        "anode": "Graphite",
+        "capacity_ah": 4.93,
+        "capacity_rate_c": 0.2,
+        "capacity_statistic": "nominal",
+        "capacity_quote": "M50L: 4.93 Ah; nom, 0.2C; reference value; table header 25°C",
+        "capacity_reference_only": true,
+        "voltage_v": 3.69,
+        "energy_wh": 18.2,
+        "energy_statistic": "nominal",
+        "energy_quote": "M50L: Energy 18.2 Wh (nom)",
+        "specific_energy_wh_kg": 270,
+        "energy_density_wh_l": 746,
+        "density_statistic": "nominal",
+        "mass_g": 67.2,
+        "mass_statistic": null,
+        "mass_quote": "M50L: Weight 67.2 g",
+        "dimensions_mm": {
+          "diameter": 21.15,
+          "height": 70.2
+        },
+        "dimension_quote": "Diameter: 21.15mm (max); Height: 70.2mm (max) (Max.)",
+        "dimension_statistic": "maximum"
+      }
+    }
+  ]
+}

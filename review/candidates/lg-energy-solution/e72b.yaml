@@ -1,0 +1,174 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/lg-energy-solution/e72b",
+    "kind": "cell",
+    "manufacturer": "LG Energy Solution",
+    "model_number": "E72B",
+    "is_rechargeable": true,
+    "form_factor": "pouch"
+  },
+  "source": {
+    "uid": "src/lg-cells-2024-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "LG Energy Solution — Cell Solutions for Powerful EV Performance",
+    "url": "https://www.lgensol.com/assets/file/LGES_spec_sheet_cells_2024.pdf",
+    "retrieved_at": "2026-09-21",
+    "sha256": "82f9bc5a10503dba4350f271eceade57d549c8d198d18fb8d4c7828b6f920d75",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. The URL names 2024 but the sheet has no printed issue date or revision; no date is inferred. Capacity exceptions in each column override the common minimum/0.3C header. M50L/M52V capacities are nominal reference values at 0.2C. E72B specifies Graphite+SiO. JF2 and JH4 nominal-voltage cells print only 3 and 4 respectively; those ambiguous fields are withheld. JH4 dimension axes also appear reversed and are withheld. Performance rows marked with an asterisk are reference cell tests; current/power/resistance rows are outside this batch. These are manufacturer claims, not independent lab measurements."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 72.2,
+      "unit": "Ah",
+      "locator": {
+        "section": "E72B column / Capacity (Min, 25°C, 0.3C)",
+        "quote": "E72B: 72.2 Ah; Min, 25°C, 0.3C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_c": 25,
+        "rate_value": 0.3,
+        "rate_unit": "C",
+        "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
+        "unstated": [
+          "voltage_lower_v",
+          "rate_reference_capacity_ah"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.67,
+      "unit": "V",
+      "locator": {
+        "section": "E72B column / Nominal Voltage",
+        "quote": "E72B: Nominal Voltage 3.67 Vdc",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "energy",
+      "value": 264,
+      "unit": "Wh",
+      "locator": {
+        "section": "E72B column / Energy",
+        "quote": "E72B: Energy 264 Wh",
+        "page": 1
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 287,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "E72B column / Energy Density (Min)",
+        "quote": "E72B: 287 Wh/kg (Min header)",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 625,
+      "unit": "Wh/L",
+      "locator": {
+        "section": "E72B column / Energy Density (Min)",
+        "quote": "E72B: 625 Wh/L (Min header)",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 906,
+      "unit": "g",
+      "locator": {
+        "section": "E72B column / Weight",
+        "quote": "E72B: Weight 906 g",
+        "page": 1
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 354,
+      "unit": "mm",
+      "locator": {
+        "section": "E72B column / Dimension",
+        "quote": "L*W*T (mm): 354*101.65*11.44",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "dimension_basis": "L*W*T (mm): 354*101.65*11.44"
+        }
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 101.65,
+      "unit": "mm",
+      "locator": {
+        "section": "E72B column / Dimension",
+        "quote": "L*W*T (mm): 354*101.65*11.44",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "dimension_basis": "L*W*T (mm): 354*101.65*11.44"
+        }
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 11.44,
+      "unit": "mm",
+      "locator": {
+        "section": "E72B column / Dimension",
+        "quote": "L*W*T (mm): 354*101.65*11.44",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "dimension_basis": "L*W*T (mm): 354*101.65*11.44"
+        }
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "NCMA",
+    "cathode_text": "NCMA",
+    "anode_text": "Graphite+SiO",
+    "locator": {
+      "section": "E72B column / Chemistry",
+      "quote": "E72B: NCMA/Graphite+SiO",
+      "page": 1
+    }
+  }
+}

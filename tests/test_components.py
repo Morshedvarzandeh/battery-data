@@ -34,7 +34,9 @@ class ComponentTests(unittest.TestCase):
 
     def test_sources_cover_all_categories_without_accepted_components(self):
         categories = set(json.loads((ROOT/'components/categories.json').read_text())['categories'])
-        self.assertEqual({d['product']['component_type'] for d in DOCS.values()}, categories)
+        initial_categories = {'contactor', 'fuse', 'precharge_contactor', 'inverter', 'dc_dc_converter', 'charger'}
+        self.assertEqual({d['product']['component_type'] for d in DOCS.values()}, initial_categories)
+        self.assertTrue(initial_categories <= categories)
         index = json.loads((ROOT/'review/index.json').read_text())['candidates']
         # This initial batch is reviewable; adding it cannot inflate the battery milestone.
         for doc in DOCS.values():

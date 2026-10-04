@@ -8,7 +8,8 @@
     "precharge_contactor",
     "inverter",
     "dc_dc_converter",
-    "charger"
+    "charger",
+    "precharge_resistor"
   ],
   "categories": [
     {
@@ -27,10 +28,16 @@
       "last_checked": "2026-10-04",
       "source_uids": [
         "src/littelfuse-25ev1k-inspected-2026-09-16",
+        "src/mersen-abat15c-inspected-2026-09-21",
+        "src/mersen-abat13c-inspected-2026-09-21",
+        "src/mersen-abat13d-inspected-2026-09-21",
+        "src/mersen-abat13g-inspected-2026-09-21",
+        "src/mersen-nhgbat-inspected-2026-09-21",
+        "src/sensata-gfp400-inspected-2026-09-21",
         "src/eaton-evk30-150-inspected-2026-10-04"
       ],
       "next_action": "Deep-check Eaton EVK exact variants and retrieve the current official EVK family datasheet before adding more models.",
-      "remaining": "Resolve the 25EV1K revision conflict (pending record 08/06/2026 versus current official text retrieval Revised: 01/09/2025), confirm the EVK30-150 interruption-test time constant, and obtain retrievable official PDF hashes."
+      "remaining": "Retrieve official EVK30-150 interruption test voltage and time constant. Review Mersen NH gBat revision DS-NHGBATF-15-1026_EN before accepting the September ratings; the URL now serves changed interruption conditions. The Littelfuse printed revision was confirmed by opening the exact source PDF; original byte retrieval remains unavailable."
     },
     {
       "category": "precharge_contactor",
@@ -41,7 +48,7 @@
         "src/sensata-p115-inspected-2026-10-04"
       ],
       "next_action": "Broaden precharge-duty coverage to an official non-Sensata source with an exact part and explicit application evidence.",
-      "remaining": "Resolve the P195 revision conflict (pending record 27-Jan-2026 versus current official text retrieval Rev:20-Jul-2022), retrieve original P115/P195 PDF bytes, and retain the selection guide as application-role evidence rather than an electrical-rating source."
+      "remaining": "The exact P195 PDF text confirms Rev:27-Jan-2026; the earlier discovery result was stale. Retrieve original P115/P195 PDF bytes and retain the selection guide as application-role evidence."
     },
     {
       "category": "inverter",
@@ -72,6 +79,16 @@
       ],
       "next_action": "Broaden to an EV on-board or industrial battery charger with an official exact-model datasheet.",
       "remaining": "Resolve the regional plug SKU and the unstated exact temperature for the Blue Smart IP22 12/20 nameplate current."
+    },
+    {
+      "category": "precharge_resistor",
+      "last_checked": "2026-09-21",
+      "source_uids": [
+        "src/vishay-hrha-inspected-2026-09-21",
+        "src/vishay-lto150h-inspected-2026-09-21"
+      ],
+      "next_action": "Inspect 52 new Vishay candidates. Research additional manufacturer-listed EV/BESS precharge resistor parts and compare exact identities with accepted and pending queues.",
+      "remaining": "Five custom/unsupported ordering variants held in the import manifest. LTO150H headline pulse limit requires curve-specific assessment; no universal 75 J value imported. Availability not verified."
     }
   ],
   "patents": {

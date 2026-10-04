@@ -3,13 +3,25 @@
 Files under `review/candidates/` are **not accepted battery data**. They are
 source-backed proposals waiting for a human decision.
 
-Every candidate has one GitHub issue containing:
+Every candidate has a generated review payload. When posted as a GitHub issue,
+it contains:
 
 - the product type and source revision;
 - every proposed value, unit, condition, and source locator excerpt, with any
   normalized table transcription disclosed in the source notes;
 - one owner-only approval checkbox;
 - a hidden, path-safe link to exactly one candidate file.
+
+The [21 September LiPol batch](../docs/14-lipol-expansion-2026-09-21.md) adds
+1,256 candidates with a complete source-row reconciliation. It is available for
+batch review through its files and pull request; generating payloads does not
+automatically open individual issues or accept records.
+
+The [sodium-ion, semi-solid and lithium cell batch](imports/2026-09-21-sodium-semisolid-lithium-cells.md)
+adds 32 further cell candidates from HiNa, WeLion, LG, EVE, CATL and CALB.
+Its manifest records source hashes, omitted ambiguous fields and existing
+identities excluded from the new count. Trial and announcement evidence stays
+explicitly qualified.
 
 When the repository owner checks **Approve this battery for the accepted
 library**, `.github/workflows/approve-candidate.yml` validates the candidate,
@@ -31,15 +43,16 @@ specifications.
 
 ## Where a candidate is declared
 
-Two kinds of declaration feed the builder, and both are checked in:
+The declarations feeding the builder are checked in:
 
 | Declaration | Emitted by | Covers |
 |---|---|---|
 | Python builders in `tools/build_review_batch.py` | the original six manufacturer functions | the 2026-08-06 batch |
 | `tools/expansion_aug_2026.py` | Maxell, Panasonic Energy and EEMB tables | the 2026-08-16 152-cell expansion |
-| JSON files in `review/batches/` | `recovered()` | candidates re-derived from their issues |
+| `tools/expansion_catalogs_2026.py` | earlier manufacturer catalog facts | the September catalog review |
+| JSON files in `review/batches/` | `recovered()` | issue recoveries and documented import batches |
 
-The second kind exists because the research process opens `[candidate]` issues
+Issue-recovery declarations exist because the research process opens `[candidate]` issues
 without committing their candidate files. Approving such an issue could not
 work: the promotion script resolves the path the issue names and finds nothing
 there. `tools/recover_issue_candidates.py` reads those issues back out of the

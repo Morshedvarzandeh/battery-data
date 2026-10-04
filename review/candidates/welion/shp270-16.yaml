@@ -1,0 +1,237 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/welion/shp270-16",
+    "kind": "cell",
+    "manufacturer": "WeLion",
+    "model_number": "SHP270-16",
+    "is_rechargeable": true,
+    "form_factor": "pouch",
+    "aliases": [
+      "PL7874172-16Ah"
+    ]
+  },
+  "source": {
+    "uid": "src/welion-shp270-16-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "WeLion SHP270-16 Semi-Solid-State datasheet",
+    "url": "https://welion-energy.com/media/fb/ef/b0/1730133629/SHP270-16%20datasheet.pdf?ts=1744633054",
+    "retrieved_at": "2026-09-21",
+    "sha256": "4eda175bf55d6b3eef3716ad11483bd9d2f79f5fe7d44a0bd9998a9faeaaba0a",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. WeLion NMC+ semi-solid pouch cell. Hosted by Universal Transmissions GmbH, the official European distributor (https://welion-energy.com/Imprint/). The sheet describes reference specifications, not a performance guarantee. Semi-solid describes the electrolyte; it is not all-solid-state. Ultrafast/standard C-rate rows are not identified as capacity-test conditions or continuous maximum current ratings and are not converted to amperes. Unqualified maximal/minimal voltages are held rather than assigned an absolute safety or charge-cutoff meaning. Identity mapping: https://welion-energy.com/SHP270-16/30000109; SHA-256 8db09795fc22ecebec24ea6623c62eb4574d097d0ed827b7ddc48289070c5cb4; manufacturer part PL7874172-16Ah.",
+    "revision": "002",
+    "document_date": "2025-04-09"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 16.0,
+      "unit": "Ah",
+      "locator": {
+        "section": "SHP270-16 / Capacity / Voltages",
+        "quote": "Typical 16.0 Ah",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "energy",
+      "value": 59.2,
+      "unit": "Wh",
+      "locator": {
+        "section": "SHP270-16 / Capacity / Voltages",
+        "quote": "Typical 59.2 Wh",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.7,
+      "unit": "V",
+      "locator": {
+        "section": "SHP270-16 / Capacity / Voltages",
+        "quote": "Voltages Nominal 3.7 V",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 261.0,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "SHP270-16 / Energy Density",
+        "quote": "Gravimetric 261.0 Wh/kg",
+        "page": 1
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 604.0,
+      "unit": "Wh/L",
+      "locator": {
+        "section": "SHP270-16 / Energy Density",
+        "quote": "Volumetric 604.0 Wh/L",
+        "page": 1
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 7.7,
+      "unit": "mm",
+      "locator": {
+        "section": "SHP270-16 / Dimensions",
+        "quote": "A Thickness 7.7 ± 0.3 mm",
+        "page": 1
+      },
+      "tol_plus": 0.3,
+      "tol_minus": 0.3
+    },
+    {
+      "quantity": "width",
+      "value": 74.0,
+      "unit": "mm",
+      "locator": {
+        "section": "SHP270-16 / Dimensions",
+        "quote": "B Width 74.0 ± 1.0 mm",
+        "page": 1
+      },
+      "tol_plus": 1.0,
+      "tol_minus": 1.0
+    },
+    {
+      "quantity": "length",
+      "value": 172.0,
+      "unit": "mm",
+      "locator": {
+        "section": "SHP270-16 / Dimensions",
+        "quote": "C Length 172.0 ± 2.0 mm",
+        "page": 1
+      },
+      "tol_plus": 2.0,
+      "tol_minus": 2.0
+    },
+    {
+      "quantity": "mass",
+      "value": 226.0,
+      "unit": "g",
+      "locator": {
+        "section": "SHP270-16 / Dimensions",
+        "quote": "Weight 226.0 ± 4.0 g",
+        "page": 1
+      },
+      "tol_plus": 4.0,
+      "tol_minus": 4.0
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "locator": {
+        "section": "SHP270-16 / Temperatures",
+        "quote": "Charge 0 to 45 °C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 45,
+      "unit": "°C",
+      "locator": {
+        "section": "SHP270-16 / Temperatures",
+        "quote": "Charge 0 to 45 °C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "locator": {
+        "section": "SHP270-16 / Temperatures",
+        "quote": "Discharge -20 to 60 °C",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "section": "SHP270-16 / Temperatures",
+        "quote": "Discharge -20 to 60 °C",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "NMC+",
+    "cathode_text": "NMC+",
+    "electrolyte_text": "Semi-Solid-State",
+    "locator": {
+      "section": "SHP270-16 / header",
+      "quote": "SHP270-16 — NMC+; Semi-Solid-State",
+      "page": 1
+    }
+  }
+}
