@@ -521,7 +521,7 @@ def main():
     expansion_catalogs_2026.build(records, register)
     index = {
         "schema_version": 1,
-        "batch": "2026-09-21-lipol-catalog-expansion",
+        "batch": "2026-09-21-battery-fuses-precharge-resistors",
         "status": "pending_review",
         "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
         "candidate_count": sum(item["state"] == "pending_review" for item in records),

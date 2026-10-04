@@ -130,6 +130,7 @@ jobs:
           python tools/validate_contrib.py review/candidates/
           python tools/validate_review.py
           python tools/check_duplicates.py
+          python tools/import_battery_components.py --check
           python tools/validate_patents.py
           python tools/validate_epo_patents.py
           python tools/check_patent_duplicates.py --fail-on exact

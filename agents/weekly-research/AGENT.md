@@ -3,7 +3,7 @@
 ## Purpose and schedule
 
 Maintain this repository's patent research and electrical component library. The
-owner requested patents **and all six component categories**. The Codex task
+owner requested patents **and all seven component categories**. The Codex task
 heartbeat `weekly-battery-patents-and-components` runs Mondays at 09:00 in
 Europe/Brussels. Its schedule lives in Codex; this file is its working contract.
 Do not create a second schedule or paid service. Local automation requires the
@@ -17,7 +17,7 @@ Codex application and this checkout to be available.
    work, especially patent intelligence PR #460; reuse its implementation if merged.
 2. Inspect accepted and pending records before research. Count battery kinds,
    electrical components, patent publications and patent families separately.
-3. Check all six category backlogs for new manufacturer datasheets or revisions;
+3. Check all seven category backlogs for new manufacturer datasheets or revisions;
    rotate deeper research across manufacturers. Prefer a small verified batch to
    filling a quota. Default ceiling: 20 new component models and 20 new patent
    publication candidates per run. Record categories searched even with no results.
@@ -36,14 +36,18 @@ Codex application and this checkout to be available.
    modes and required conditions; explicitly name missing conditions as unstated.
    Do not copy family headline ratings onto incompatible variants. Keep contact
    voltage separate from coil voltage, carry current from breaking current, fuse
-   nameplate current from allowable current, and inverter watts from volt-amperes.
+   nameplate current from allowable/trigger/breaking current, and inverter watts from
+   volt-amperes. For precharge resistors retain resistance/tolerance, case versus
+   ambient temperature, mounting material and thickness, and pulse waveform,
+   duration and recovery wait. Do not import a dielectric test as operating
+   voltage or turn resistance/ordering ranges into unlisted product identities.
 6. Check canonical manufacturer/model identity, aliases and existing revisions in
    both accepted and pending queues. A precharge role is a use of a contactor:
    never create two products for the same part merely to list it in two categories.
    Retain conflicts and source changes for review without overwriting accepted
    facts. Do not fabricate facts or skip rows to reach a count.
 7. Add components as deterministic `review/batches/YYYY-MM-DD-*.json` documents;
-   rebuild the normal review queue. They use `kind: component`, one of the six
+   rebuild the normal review queue. They use `kind: component`, one of the seven
    `component_type` values and `component/<manufacturer>/<model>` identities.
    Reuse the existing patent import, taxonomy, validation and review directories.
    Do not put unreviewed patents into accepted tables or invent a parallel store.

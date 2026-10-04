@@ -4,6 +4,7 @@
     "contactor": "Main contactor",
     "fuse": "Fuse",
     "precharge_contactor": "Precharge contactor",
+    "precharge_resistor": "Precharge resistor",
     "inverter": "Inverter",
     "dc_dc_converter": "DC/DC converter",
     "charger": "Charger"

@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-16",
+  "updated_at": "2026-09-21",
   "next_deep_research": [
     "contactor",
     "fuse",
     "precharge_contactor",
+    "precharge_resistor",
     "inverter",
     "dc_dc_converter",
     "charger",
@@ -23,12 +24,18 @@
     },
     {
       "category": "fuse",
-      "last_checked": "2026-09-16",
+      "last_checked": "2026-09-21",
       "source_uids": [
-        "src/littelfuse-25ev1k-inspected-2026-09-16"
+        "src/littelfuse-25ev1k-inspected-2026-09-16",
+        "src/mersen-abat15c-inspected-2026-09-21",
+        "src/mersen-abat13c-inspected-2026-09-21",
+        "src/mersen-abat13d-inspected-2026-09-21",
+        "src/mersen-abat13g-inspected-2026-09-21",
+        "src/mersen-nhgbat-inspected-2026-09-21",
+        "src/sensata-gfp400-inspected-2026-09-21"
       ],
-      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
-      "remaining": "Confirm remaining conditions and original-byte hashes where unavailable."
+      "next_action": "Inspect the 81 new battery-fuse candidates and resolve Sensata original-byte/visual verification. Next investigate exact Sensata HVF and Eaton ESS battery-fuse parts.",
+      "remaining": "Sensata catalog bytes unavailable; HVF feature list lacks exact part IDs. Eaton catalog needs part/table extraction. NH1/NH2 UL interruption values were not assigned from the family headline."
     },
     {
       "category": "precharge_contactor",
@@ -39,6 +46,16 @@
       ],
       "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
       "remaining": "Confirm remaining conditions and original-byte hashes where unavailable."
+    },
+    {
+      "category": "precharge_resistor",
+      "last_checked": "2026-09-21",
+      "source_uids": [
+        "src/vishay-hrha-inspected-2026-09-21",
+        "src/vishay-lto150h-inspected-2026-09-21"
+      ],
+      "next_action": "Inspect 52 new Vishay candidates. Research additional manufacturer-listed EV/BESS precharge resistor parts and compare exact identities with accepted and pending queues.",
+      "remaining": "Five custom/unsupported ordering variants held in the import manifest. LTO150H headline pulse limit requires curve-specific assessment; no universal 75 J value imported. Availability not verified."
     },
     {
       "category": "inverter",

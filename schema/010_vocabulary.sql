@@ -106,7 +106,7 @@ CREATE TYPE review_state AS ENUM (
 -- differ by >20 K under load; most datasheets never say which they mean.
 CREATE TYPE temperature_reference AS ENUM (
   'ambient', 'chamber_setpoint', 'cell_surface', 'can', 'tab',
-  'core', 'coolant_inlet', 'coolant_outlet', 'unspecified'
+  'core', 'coolant_inlet', 'coolant_outlet', 'component_case', 'unspecified'
 );
 
 -- The unit a rate is expressed in. C-rate, absolute current, IEC It

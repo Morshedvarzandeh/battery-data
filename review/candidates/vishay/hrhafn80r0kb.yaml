@@ -1,0 +1,216 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/vishay/hrhafn80r0kb",
+    "kind": "component",
+    "component_type": "precharge_resistor",
+    "manufacturer": "Vishay",
+    "model_number": "HRHAFN80R0KB"
+  },
+  "source": {
+    "url": "https://www.vishay.com/docs/32594/hrha.pdf",
+    "sha256": "d1e2029888485d902f3ae2d2a292d859f821518514c3443d89693138b6bb60e8",
+    "retrieved_at": "2026-09-21",
+    "uid": "src/vishay-hrha-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "Vishay HRHA charging resistor for EV",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "EV precharge/discharge application stated on page 1. Manufacturer-listed identities from https://www.vishay.com/en/product/32594/tab/quality/; identity-page hash and row retained per resistance/tolerance observation and in the import manifest. Resistance and tolerance decoded using page 3, not measurements. Only standard F/C-or-N/J-or-K/B codes imported; TP/custom entries held. Ratings depend on 6 mm mounting material, 30°C ambient and cooling wait. Historical datasheet, current commercial availability unverified.",
+    "revision": "14-Dec-2021"
+  },
+  "observations": [
+    {
+      "quantity": "resistance_rating",
+      "value": 80,
+      "unit": "ohm",
+      "statistic": "nominal",
+      "locator": {
+        "page": 3,
+        "section": "Global part number information",
+        "quote": "Ordering-code transcription: HRHAFN80R0KB; 80R0 = 80 ohm"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "identity_source_url": "https://www.vishay.com/en/product/32594/tab/quality/",
+          "identity_source_sha256": "6beb0e075326c6a530508d9e5d655910c7273f7e5898f0c8c362bd623a7f0ab9",
+          "identity_row": 3,
+          "value_basis": "Decoded from an actually listed part using the datasheet ordering legend",
+          "termination": "faston",
+          "coating": "not coated"
+        }
+      }
+    },
+    {
+      "quantity": "resistance_tolerance",
+      "value": 10,
+      "unit": "%",
+      "statistic": "nominal",
+      "locator": {
+        "page": 3,
+        "section": "Global part number information / tolerance",
+        "quote": "HRHAFN80R0KB; K = ±10 %"
+      },
+      "conditions": {
+        "extra": {
+          "identity_source_url": "https://www.vishay.com/en/product/32594/tab/quality/",
+          "identity_source_sha256": "6beb0e075326c6a530508d9e5d655910c7273f7e5898f0c8c362bd623a7f0ab9",
+          "identity_row": 3,
+          "value_basis": "Decoded from an actually listed part using the datasheet ordering legend",
+          "termination": "faston",
+          "coating": "not coated"
+        }
+      }
+    },
+    {
+      "quantity": "resistor_power_rating",
+      "value": 90,
+      "unit": "W",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Standard electrical specifications, note 1; page 2 Fig. 2 at Tamb=30°C",
+        "quote": "90 W on stainless steel, 6 mm thick; Fig. 2: Tamb=30°C"
+      },
+      "conditions": {
+        "temperature_c": 30,
+        "temperature_reference": "ambient",
+        "mounting_condition": "stainless steel, 6 mm thick",
+        "extra": {
+          "bottom_case_temperature_limit_c": 250
+        }
+      }
+    },
+    {
+      "quantity": "resistor_pulse_energy",
+      "value": 9000,
+      "unit": "J",
+      "statistic": "rated",
+      "locator": {
+        "page": 3,
+        "section": "Energy / continuous cycle",
+        "quote": "stainless steel, 6 mm thick: 9000 J; duration 1.8 s; wait 100 s; short circuit wave, Fig. 3"
+      },
+      "conditions": {
+        "temperature_c": 30,
+        "temperature_reference": "ambient",
+        "mounting_condition": "stainless steel, 6 mm thick",
+        "extra": {
+          "bottom_case_temperature_limit_c": 250,
+          "duty": "continuous cycle"
+        },
+        "pulse_duration_s": 1.8,
+        "pulse_waveform": "short circuit wave, Fig. 3",
+        "pulse_wait_s": 100
+      }
+    },
+    {
+      "quantity": "resistor_pulse_energy",
+      "value": 1850,
+      "unit": "J",
+      "statistic": "rated",
+      "locator": {
+        "page": 3,
+        "section": "Energy / continuous cycle",
+        "quote": "stainless steel, 6 mm thick: 1850 J; duration 0.74 s; wait 30 s; RC discharge wave, Fig. 4"
+      },
+      "conditions": {
+        "temperature_c": 30,
+        "temperature_reference": "ambient",
+        "mounting_condition": "stainless steel, 6 mm thick",
+        "extra": {
+          "bottom_case_temperature_limit_c": 250,
+          "duty": "continuous cycle"
+        },
+        "pulse_duration_s": 0.74,
+        "pulse_waveform": "RC discharge wave, Fig. 4",
+        "pulse_wait_s": 30
+      }
+    },
+    {
+      "quantity": "resistor_power_rating",
+      "value": 54,
+      "unit": "W",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Standard electrical specifications, note 1; page 2 Fig. 2 at Tamb=30°C",
+        "quote": "54 W on Pamitherm, 6 mm thick; Fig. 2: Tamb=30°C"
+      },
+      "conditions": {
+        "temperature_c": 30,
+        "temperature_reference": "ambient",
+        "mounting_condition": "Pamitherm, 6 mm thick",
+        "extra": {
+          "bottom_case_temperature_limit_c": 250
+        }
+      }
+    },
+    {
+      "quantity": "resistor_pulse_energy",
+      "value": 9000,
+      "unit": "J",
+      "statistic": "rated",
+      "locator": {
+        "page": 3,
+        "section": "Energy / continuous cycle",
+        "quote": "Pamitherm, 6 mm thick: 9000 J; duration 1.8 s; wait 167 s; short circuit wave, Fig. 3"
+      },
+      "conditions": {
+        "temperature_c": 30,
+        "temperature_reference": "ambient",
+        "mounting_condition": "Pamitherm, 6 mm thick",
+        "extra": {
+          "bottom_case_temperature_limit_c": 250,
+          "duty": "continuous cycle"
+        },
+        "pulse_duration_s": 1.8,
+        "pulse_waveform": "short circuit wave, Fig. 3",
+        "pulse_wait_s": 167
+      }
+    },
+    {
+      "quantity": "resistor_pulse_energy",
+      "value": 1850,
+      "unit": "J",
+      "statistic": "rated",
+      "locator": {
+        "page": 3,
+        "section": "Energy / continuous cycle",
+        "quote": "Pamitherm, 6 mm thick: 1850 J; duration 0.74 s; wait 34 s; RC discharge wave, Fig. 4"
+      },
+      "conditions": {
+        "temperature_c": 30,
+        "temperature_reference": "ambient",
+        "mounting_condition": "Pamitherm, 6 mm thick",
+        "extra": {
+          "bottom_case_temperature_limit_c": 250,
+          "duty": "continuous cycle"
+        },
+        "pulse_duration_s": 0.74,
+        "pulse_waveform": "RC discharge wave, Fig. 4",
+        "pulse_wait_s": 34
+      }
+    },
+    {
+      "quantity": "resistor_voltage_limit",
+      "value": 1000,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "General characteristics / voltage between terminals",
+        "quote": "1000 V DC"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "basis": "By-design terminal voltage ceiling; power and resistance also constrain operation"
+        }
+      }
+    }
+  ]
+}

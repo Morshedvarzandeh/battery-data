@@ -29,7 +29,7 @@ CREATE TABLE product (
   kind             product_kind NOT NULL,
   manufacturer_id  bigint NOT NULL REFERENCES organization(id),
   model_number     text NOT NULL,
-  component_type   text CHECK (component_type IN ('contactor','fuse','precharge_contactor','inverter','dc_dc_converter','charger')),
+  component_type   text CHECK (component_type IN ('contactor','fuse','precharge_contactor','precharge_resistor','inverter','dc_dc_converter','charger')),
   brand            text,
   product_family   text,
   form_factor      form_factor,

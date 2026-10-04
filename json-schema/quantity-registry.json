@@ -112,6 +112,9 @@
   "temperature_c",
   "conductor_description"
  ],
+ "fuse_trip_current": [
+  "temperature_c"
+ ],
  "fuse_voltage_rating": [
   "electrical_system"
  ],
@@ -175,6 +178,10 @@
  "max_runaway_temperature": [
   "soc_pct"
  ],
+ "minimum_interrupting_current": [
+  "test_voltage_v",
+  "electrical_system"
+ ],
  "nominal_voltage": [],
  "ohmic_resistance": [
   "soc_pct",
@@ -223,6 +230,26 @@
   "cycle_index",
   "temperature_c",
   "pulse_duration_s"
+ ],
+ "resistance_rating": [
+  "temperature_c"
+ ],
+ "resistance_tolerance": [],
+ "resistor_power_rating": [
+  "temperature_c",
+  "temperature_reference",
+  "mounting_condition"
+ ],
+ "resistor_pulse_energy": [
+  "pulse_duration_s",
+  "temperature_c",
+  "temperature_reference",
+  "mounting_condition",
+  "pulse_waveform",
+  "pulse_wait_s"
+ ],
+ "resistor_voltage_limit": [
+  "electrical_system"
  ],
  "reversible_expansion": [
   "soc_pct",

@@ -60,6 +60,7 @@ CREATE TABLE condition_set (
   electrical_system        text CHECK (electrical_system IN ('AC','DC')),
   test_voltage_v           double precision CHECK (test_voltage_v > 0),
   conductor_description    text,  -- retain AWG/mm2 and conductor count verbatim
+  mounting_condition       text,  -- heatsink material/thickness, clip or free air
 
   -- ---- state ------------------------------------------------------
   soc_pct                  double precision CHECK (soc_pct BETWEEN -5 AND 105),
@@ -76,6 +77,8 @@ CREATE TABLE condition_set (
   pulse_current_a          double precision,
   pulse_direction          text,                    -- 'discharge'|'regen'|'charge'
   rest_before_pulse_s      double precision,
+  pulse_waveform           text,  -- retain the manufacturer's waveform definition
+  pulse_wait_s             double precision CHECK (pulse_wait_s >= 0), -- recovery wait, not start-to-start period
 
   -- ---- AC / spectral ---------------------------------------------
   frequency_hz             double precision,
