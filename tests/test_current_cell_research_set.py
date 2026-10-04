@@ -1,4 +1,4 @@
-"""Keep the current-cell collection bounded, traceable and outside acceptance."""
+"""Keep the current-cell collection bounded and truthful about acceptance."""
 from collections import Counter
 import json
 from pathlib import Path
@@ -13,14 +13,17 @@ class CurrentCellResearchSetTests(unittest.TestCase):
     def setUpClass(cls):
         cls.collection = json.loads(COLLECTION.read_text())
         cls.entries = cls.collection['entries']
+        cls.index = {r['uid']: r for r in json.loads((ROOT / 'review/index.json').read_text())['candidates']}
         cls.documents = []
         for entry in cls.entries:
-            path = ROOT / entry['candidate']
+            path = ROOT / entry['record_file']
             cls.documents.append((entry, path, json.loads(path.read_text())))
 
-    def test_collection_has_a_bounded_unique_pending_scope(self):
+    def test_collection_has_a_bounded_unique_scope_with_explicit_status(self):
         self.assertEqual(self.collection['format'], 'lemonergy/current-cell-research-set@1')
-        self.assertEqual(self.collection['review_status'], 'pending_review')
+        self.assertEqual(self.collection['review_status'], 'mixed')
+        self.assertEqual(self.collection['accepted_count'], 25)
+        self.assertEqual(self.collection['pending_count'], 15)
         self.assertEqual(self.collection['decision_scope'], 'screening_only')
         self.assertEqual(len(self.entries), 40)
         self.assertEqual(len({entry['uid'] for entry in self.entries}), 40)
@@ -28,7 +31,10 @@ class CurrentCellResearchSetTests(unittest.TestCase):
     def test_every_entry_resolves_to_source_linked_non_draft_cell_evidence(self):
         for entry, path, document in self.documents:
             self.assertTrue(path.is_file(), entry['candidate'])
-            self.assertTrue(entry['candidate'].startswith('review/candidates/'))
+            state = self.index[entry['uid']]
+            self.assertEqual(entry['review_status'], state['state'])
+            self.assertEqual(entry['record_file'], state.get('accepted_file') or state['candidate_file'])
+            self.assertEqual(entry['candidate'], entry['record_file'])  # v1 compatibility
             self.assertEqual(document['product']['uid'], entry['uid'])
             self.assertEqual(document['product']['kind'], 'cell')
             self.assertNotIn(document['source'].get('is_final'), [False])

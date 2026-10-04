@@ -13,10 +13,12 @@ each specification.
 No account or database setup is needed to browse the GitHub library. Choose a
 manufacturer, find a model, and open its specification record and source document.
 
-**Library snapshot, 2026-10-04: 2,170 accepted battery product records; 1,394
-battery records pending review.** The new [LiPol catalog research batch](docs/14-lipol-expansion-2026-09-21.md)
-adds 1,256 distinct candidates with source hashes, row evidence and explicit
-missing test conditions. They await review and are outside the accepted catalog.
+**Library snapshot, 2026-10-04: 3,454 accepted battery product records; 110
+battery records remain on documented holds.** The [October publication review](docs/16-catalog-publication-2026-10-04.md)
+accepted 1,284 additional battery models and 152 electrical components, including
+the 1,256-model LiPol batch, sodium-ion and semi-solid cells, and recent LG, EVE,
+CATL and CALB source claims. Original units, source limitations and missing test
+conditions remain visible in the published records.
 The September acceptance review accepted 297 existing candidates and 1,791
 distinct models from manufacturer catalogs. Most additions are historical
 lithium-polymer models (2013/2019); current availability and undisclosed test
@@ -25,18 +27,19 @@ for sources, exclusions, and a decision for every pending record reviewed.
 
 For a focused view of recent technology, the
 [current cell research set](docs/15-current-cell-research-set.md) selects 40
-source-linked pending candidates across LG Energy Solution, EVE, CATL, CALB,
+source-linked records across LG Energy Solution, EVE, CATL, CALB,
 HiNa, HiTHIUM and WeLion. It covers LFP, sodium-ion, semi-solid, high-energy EV
-and high-power cylindrical cells. The set is screening-only and does not enter
-the accepted catalog until each underlying candidate passes review.
+and high-power cylindrical cells. Its 25 accepted records are in the public
+catalog; 15 remain pending. Each entry states its review status. The collection
+supports screening and does not establish design suitability.
 
 The separate patent review layer currently holds 1,056 deduplicated publication
 candidates (255 CORDIS-linked and 801 EPO Linked Open EP Data candidates), plus
 383 company/research-organisation profiles. None enters the accepted library
 without DOCDB-family resolution and human approval.
 
-The [electrical component library](components/README.md) now has 152 pending models
-with 802 sourced observations across contactors, battery fuses, precharge contactors
+The [electrical component library](components/README.md) now has 152 accepted models
+with 818 sourced observations across contactors, battery fuses, precharge contactors
 and resistors, inverters, DC/DC converters and chargers. [Browse the datasheets](components/catalog.md).
 A [weekly research agent](agents/weekly-research/AGENT.md) covers patents and all seven
 categories every Monday at 09:00 Europe/Brussels. Components and patents are

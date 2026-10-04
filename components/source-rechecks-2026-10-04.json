@@ -47,9 +47,14 @@
     {
       "source_uid": "src/sensata-gv210-inspected-2026-09-16",
       "url": "https://www.sensata.com/sites/default/files/a/sensata-GV210-series-contactors-datasheet.pdf",
-      "result": "bytes_and_revision_unavailable",
+      "result": "revision_text_unchanged_bytes_unavailable",
       "previous_revision": "02/27/20",
-      "note": "Direct retrieval returned an HTML access-response page and the official-domain discovery check did not expose a revision. The recorded revision remains pending and unchanged."
+      "note": "Publication review opened the exact official PDF text and verified the ordering example GV211BAX, conditioned carry-current ratings and printed revision. Original byte retrieval remains unavailable.",
+      "current_revision_text": "Rev:02/27/20",
+      "locator": {
+        "page": 3,
+        "section": "Printed revision"
+      }
     },
     {
       "source_uid": "src/littelfuse-25ev1k-inspected-2026-09-16",
@@ -74,7 +79,7 @@
     {
       "source_uid": "src/mersen-nhgbat-inspected-2026-09-21",
       "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-NH-fuse-links-gBAT-1000V-1500V-DC-EN.pdf",
-      "result": "new_revision_requires_review",
+      "result": "new_revision_reviewed_and_accepted",
       "previous_revision": "DS-NHGBATF-14-0426_EN",
       "previous_sha256": "770298c300419f0d8a52f75b2b32b27ba0c2387697200f223e251cec6dd923ca",
       "current_revision_text": "DS-NHGBATF-15-1026_EN",
@@ -92,7 +97,9 @@
         "size_NH2XL": "Current overview lists 100 kA at 1500 Vdc; September UL entry was 50 kA.",
         "size_NH3L": "Current overview retains 150 kA through 400 A and 200 kA for 450/500 A at 1500 Vdc."
       },
-      "note": "Preserve September observations as dated historical source claims. Do not accept them as current ratings or silently replace their source hash. Review the new rating basis and conditions before a new source revision is promoted."
+      "note": "Publication review visually verified page 1 and reconciled all 50 unchanged part rows. Accepted records now use revision 15 with its size-specific I.R. DC values and L/R upper bound. The prior source metadata remains in the acceptance audit and Git history.",
+      "acceptance_audit": "review/audits/2026-10-04-catalog-acceptance.json",
+      "accepted_source_uid": "src/mersen-nhgbat-inspected-2026-10-04"
     }
   ]
 }

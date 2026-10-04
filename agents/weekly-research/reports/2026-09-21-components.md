@@ -1,5 +1,9 @@
 # Battery fuses and precharge resistors — 21 September 2026
 
+> Publication update, 4 October: reviewed records have now been promoted.
+> This report preserves the research-stage counts and decisions. See the
+> [acceptance report](../../../docs/16-catalog-publication-2026-10-04.md) for current counts and remaining holds.
+
 ## Result
 
 133 additional manufacturer-listed component models, 712 observations, all pending

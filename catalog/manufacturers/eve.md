@@ -1,6 +1,6 @@
 # EVE Energy battery datasheets and specifications
 
-15 accepted product records in the **Lemonergy Battery Data** library.
+18 accepted product records in the **Lemonergy Battery Data** library.
 
 [All manufacturers](../README.md) · [Lemonergy](https://lemonergy.com/)
 
@@ -18,10 +18,13 @@ The record contains the values, original units, qualifiers, test conditions and 
 | A27-V2.1 | cell | [Specifications](../../contrib/cells/eve/a27-v2.1.yaml) | [Source](https://www.evemall.eu/power-battery/prismatic-lfp-cell/a27v21) |
 | C33 | cell | [Specifications](../../contrib/cells/eve/c33.yaml) | [Source](https://www.evemall.eu/power-battery/cylindrical-lfp-cell/c33135) |
 | LF105 | cell | [Specifications](../../contrib/cells/eve/lf105.yaml) | [Source](https://www.evemall.eu/power-battery/eu-warehouse/lf105) |
+| LF206 | cell | [Specifications](../../contrib/cells/eve/lf206.yaml) | [Source](https://www.evemall.eu/power-battery/prismatic-lfp-cell/lf206) |
+| LF235L | cell | [Specifications](../../contrib/cells/eve/lf235l.yaml) | [Source](https://www.evemall.eu/power-battery/prismatic-lfp-cell/lf235l) |
 | M21 | cell | [Specifications](../../contrib/cells/eve/m21.yaml) | [Source](https://www.evemall.eu/power-battery/prismatic-ncm-cell/m21) |
 | M21-V1.2 | cell | [Specifications](../../contrib/cells/eve/m21-v1.2.yaml) | [Source](https://www.evemall.eu/power-battery/prismatic-ncm-cell/m21-v1-2) |
 | M41 | cell | [Specifications](../../contrib/cells/eve/m41.yaml) | [Source](https://www.evemall.eu/power-battery/prismatic-ncm-cell/m41) |
 | M42 | cell | [Specifications](../../contrib/cells/eve/m42.yaml) | [Source](https://www.evemall.eu/power-battery/prismatic-ncm-cell/m42) |
+| MB30 | cell | [Specifications](../../contrib/cells/eve/mb30.yaml) | [Source](https://www.evemall.eu/selection-guide/eve-mb31-vs-mb30-vs-280k-v3-commercial-ess) |
 | MB31 | cell | [Specifications](../../contrib/cells/eve/mb31.yaml) | [Source](https://www.evemall.eu/power-battery/eu-warehouse/mb31) |
 
 ---

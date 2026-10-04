@@ -34,10 +34,11 @@
         "src/mersen-abat13g-inspected-2026-09-21",
         "src/mersen-nhgbat-inspected-2026-09-21",
         "src/sensata-gfp400-inspected-2026-09-21",
-        "src/eaton-evk30-150-inspected-2026-10-04"
+        "src/eaton-evk30-150-inspected-2026-10-04",
+        "src/mersen-nhgbat-inspected-2026-10-04"
       ],
       "next_action": "Deep-check Eaton EVK exact variants and retrieve the current official EVK family datasheet before adding more models.",
-      "remaining": "Retrieve official EVK30-150 interruption test voltage and time constant. Review Mersen NH gBat revision DS-NHGBATF-15-1026_EN before accepting the September ratings; the URL now serves changed interruption conditions. The Littelfuse printed revision was confirmed by opening the exact source PDF; original byte retrieval remains unavailable."
+      "remaining": "Mersen NH gBat revision 15 is reviewed and accepted; monitor future revisions. Retrieve EVK30-150 interruption test voltage/time constant and original Sensata/Littelfuse bytes. Supported fields are published with those gaps explicitly unstated."
     },
     {
       "category": "precharge_contactor",

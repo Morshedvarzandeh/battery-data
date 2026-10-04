@@ -273,7 +273,7 @@ def document(row, metadata):
             'retrieved_at': metadata['retrieved_at'], 'sha256': metadata['sha256'],
             'revision': 'Page revision and model availability date unstated',
             'license': 'proprietary', 'redistributable': False,
-            'note': 'Pending manufacturer catalog transcription, not a laboratory measurement. '
+            'note': 'Manufacturer catalog transcription, not a laboratory measurement. '
                     'Only row-specific facts are extracted. The Voltage column is retained as '
                     'voltage; its statistic and operating limits are unstated. Capacity test '
                     'conditions, dimension tolerances, and bare-cell versus protected-assembly '

@@ -1,6 +1,6 @@
 # Battery datasheets and specifications — Lemonergy
 
-Browse **2,170 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
+Browse **3,454 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
 
 [Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Patent research](../docs/08-patents.md)
 
@@ -11,13 +11,16 @@ Choose a manufacturer below, then use your browser’s **Find** command to searc
 | Manufacturer | Accepted products | Browse |
 |---|---:|---|
 | BYD | 1 | [Models and source documents](manufacturers/byd.md) |
-| CATL | 1 | [Models and source documents](manufacturers/catl.md) |
+| CALB | 4 | [Models and source documents](manufacturers/calb.md) |
+| CATL | 2 | [Models and source documents](manufacturers/catl.md) |
 | EEMB | 60 | [Models and source documents](manufacturers/eemb.md) |
 | Energizer | 17 | [Models and source documents](manufacturers/energizer.md) |
-| EVE Energy | 15 | [Models and source documents](manufacturers/eve.md) |
+| EVE Energy | 18 | [Models and source documents](manufacturers/eve.md) |
 | Harding Energy | 1,343 | [Models and source documents](manufacturers/harding-energy.md) |
+| HiNa Battery | 4 | [Models and source documents](manufacturers/hina-battery.md) |
 | HiTHIUM | 3 | [Models and source documents](manufacturers/hithium.md) |
-| LiPol Battery Co., Ltd. | 448 | [Models and source documents](manufacturers/lipol-battery.md) |
+| LG Energy Solution | 8 | [Models and source documents](manufacturers/lg-energy-solution.md) |
+| LiPol Battery Co., Ltd. | 1,704 | [Models and source documents](manufacturers/lipol-battery.md) |
 | Maxell | 57 | [Models and source documents](manufacturers/maxell.md) |
 | Murata | 11 | [Models and source documents](manufacturers/murata.md) |
 | Panasonic Energy | 32 | [Models and source documents](manufacturers/panasonic.md) |
@@ -25,12 +28,13 @@ Choose a manufacturer below, then use your browser’s **Find** command to searc
 | REPT BATTERO | 31 | [Models and source documents](manufacturers/rept.md) |
 | Samsung SDI | 1 | [Models and source documents](manufacturers/samsung-sdi.md) |
 | Toshiba | 9 | [Models and source documents](manufacturers/toshiba.md) |
+| WeLion | 8 | [Models and source documents](manufacturers/welion.md) |
 
 ## Coverage and review
 
  | Product type | Count |
 |---|---:|
-| cell | 1,920 |
+| cell | 3,204 |
 | module | 2 |
 | pack | 36 |
 | primary cell | 211 |
