@@ -7,7 +7,7 @@ dependency. Keeping the batch declarative and deterministic makes it possible
 to reproduce every candidate and audit the source quote used for every value.
 
 Nothing written here is accepted data. Files live under ``review/candidates``
-until the repository owner approves the matching GitHub issue.
+until the owner approves an issue or delegates a documented acceptance review.
 """
 from __future__ import annotations
 
@@ -501,12 +501,11 @@ def catl(records):
 
 
 def recovered(records):
-    """Emit the candidates re-derived from their own review issues.
+    """Emit declarative batches from issue recovery or documented imports.
 
-    Their declaration is a data file rather than a builder above because the
-    extraction that produced them is gone: ``tools/recover_issue_candidates.py``
-    rebuilt each one from the issue the owner reviews, and that JSON is the
-    checked-in record of what it found.
+    ``tools/recover_issue_candidates.py`` reconstructs issue-based declarations.
+    Documented importers also write batches here, keeping their evidence and
+    reconciliation under review/imports. Neither path accepts records.
     """
     for batch in sorted((ROOT / "review" / "batches").glob("*.json")):
         for entry in json.loads(batch.read_text())["candidates"]:
@@ -522,7 +521,7 @@ def main():
     expansion_catalogs_2026.build(records, register)
     index = {
         "schema_version": 1,
-        "batch": "2026-09-15-manufacturer-catalog-expansion",
+        "batch": "2026-09-21-lipol-catalog-expansion",
         "status": "pending_review",
         "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
         "candidate_count": sum(item["state"] == "pending_review" for item in records),

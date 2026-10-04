@@ -13,8 +13,11 @@ each specification.
 No account or database setup is needed to browse the GitHub library. Choose a
 manufacturer, find a model, and open its specification record and source document.
 
-**Library snapshot, 2026-09-16: 2,170 accepted battery product records; 106
-battery records pending review.** The latest review accepted 297 existing candidates and 1,791
+**Library snapshot, 2026-09-21: 2,170 accepted battery product records; 1,362
+battery records pending review.** The new [LiPol catalog research batch](docs/14-lipol-expansion-2026-09-21.md)
+adds 1,256 distinct candidates with source hashes, row evidence and explicit
+missing test conditions. They await review and are outside the accepted catalog.
+The September acceptance review accepted 297 existing candidates and 1,791
 distinct models from manufacturer catalogs. Most additions are historical
 lithium-polymer models (2013/2019); current availability and undisclosed test
 conditions are not implied. See the [review report](docs/09-catalog-review-2026-09.md)
