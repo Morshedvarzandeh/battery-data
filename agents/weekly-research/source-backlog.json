@@ -1,30 +1,31 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-21",
+  "updated_at": "2026-10-04",
   "next_deep_research": [
-    "contactor",
     "fuse",
+    "contactor",
+    "patents",
     "precharge_contactor",
-    "precharge_resistor",
     "inverter",
     "dc_dc_converter",
     "charger",
-    "patents"
+    "precharge_resistor"
   ],
   "categories": [
     {
       "category": "contactor",
-      "last_checked": "2026-09-16",
+      "last_checked": "2026-10-04",
       "source_uids": [
         "src/sensata-gv200-inspected-2026-09-16",
-        "src/te-ev200-inspected-2026-09-16"
+        "src/te-ev200-inspected-2026-09-16",
+        "src/te-eck50ba4aaa-inspected-2026-10-04"
       ],
-      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
-      "remaining": "Confirm remaining conditions and original-byte hashes where unavailable."
+      "next_action": "Broaden exact main-contactor coverage to Schaltbau or another official manufacturer; deduplicate first.",
+      "remaining": "Obtain the TE ECK50B PDF bytes or a printed revision and preserve contact-rating semantics before adding a carry-current claim."
     },
     {
       "category": "fuse",
-      "last_checked": "2026-09-21",
+      "last_checked": "2026-10-04",
       "source_uids": [
         "src/littelfuse-25ev1k-inspected-2026-09-16",
         "src/mersen-abat15c-inspected-2026-09-21",
@@ -32,20 +33,52 @@
         "src/mersen-abat13d-inspected-2026-09-21",
         "src/mersen-abat13g-inspected-2026-09-21",
         "src/mersen-nhgbat-inspected-2026-09-21",
-        "src/sensata-gfp400-inspected-2026-09-21"
+        "src/sensata-gfp400-inspected-2026-09-21",
+        "src/eaton-evk30-150-inspected-2026-10-04"
       ],
-      "next_action": "Inspect the 81 new battery-fuse candidates and resolve Sensata original-byte/visual verification. Next investigate exact Sensata HVF and Eaton ESS battery-fuse parts.",
-      "remaining": "Sensata catalog bytes unavailable; HVF feature list lacks exact part IDs. Eaton catalog needs part/table extraction. NH1/NH2 UL interruption values were not assigned from the family headline."
+      "next_action": "Deep-check Eaton EVK exact variants and retrieve the current official EVK family datasheet before adding more models.",
+      "remaining": "Retrieve official EVK30-150 interruption test voltage and time constant. Review Mersen NH gBat revision DS-NHGBATF-15-1026_EN before accepting the September ratings; the URL now serves changed interruption conditions. The Littelfuse printed revision was confirmed by opening the exact source PDF; original byte retrieval remains unavailable."
     },
     {
       "category": "precharge_contactor",
-      "last_checked": "2026-09-16",
+      "last_checked": "2026-10-04",
       "source_uids": [
         "src/sensata-gv210-inspected-2026-09-16",
-        "src/sensata-p195-inspected-2026-09-16"
+        "src/sensata-p195-inspected-2026-09-16",
+        "src/sensata-p115-inspected-2026-10-04"
       ],
-      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
-      "remaining": "Confirm remaining conditions and original-byte hashes where unavailable."
+      "next_action": "Broaden precharge-duty coverage to an official non-Sensata source with an exact part and explicit application evidence.",
+      "remaining": "The exact P195 PDF text confirms Rev:27-Jan-2026; the earlier discovery result was stale. Retrieve original P115/P195 PDF bytes and retain the selection guide as application-role evidence."
+    },
+    {
+      "category": "inverter",
+      "last_checked": "2026-10-04",
+      "source_uids": [
+        "src/victron-inverter-inspected-2026-09-16",
+        "src/victron-inverter-rechecked-2026-10-04"
+      ],
+      "next_action": "Broaden to an automotive inverter manufacturer with an official exact-model datasheet and conditioned continuous power.",
+      "remaining": "Resolve the regional outlet SKU for the VE.Direct 12/375 configuration."
+    },
+    {
+      "category": "dc_dc_converter",
+      "last_checked": "2026-10-04",
+      "source_uids": [
+        "src/victron-dcdc-inspected-2026-09-16",
+        "src/victron-dcdc-rechecked-2026-10-04"
+      ],
+      "next_action": "Broaden to an isolated automotive DC/DC converter with an exact orderable identity and cooling conditions.",
+      "remaining": "Confirm whether the Orion-Tr 15 A current is specified at a reference ambient below the stated 40°C derating threshold."
+    },
+    {
+      "category": "charger",
+      "last_checked": "2026-10-04",
+      "source_uids": [
+        "src/victron-charger-inspected-2026-09-16",
+        "src/victron-charger-rechecked-2026-10-04"
+      ],
+      "next_action": "Broaden to an EV on-board or industrial battery charger with an official exact-model datasheet.",
+      "remaining": "Resolve the regional plug SKU and the unstated exact temperature for the Blue Smart IP22 12/20 nameplate current."
     },
     {
       "category": "precharge_resistor",
@@ -56,38 +89,13 @@
       ],
       "next_action": "Inspect 52 new Vishay candidates. Research additional manufacturer-listed EV/BESS precharge resistor parts and compare exact identities with accepted and pending queues.",
       "remaining": "Five custom/unsupported ordering variants held in the import manifest. LTO150H headline pulse limit requires curve-specific assessment; no universal 75 J value imported. Availability not verified."
-    },
-    {
-      "category": "inverter",
-      "last_checked": "2026-09-16",
-      "source_uids": [
-        "src/victron-inverter-inspected-2026-09-16"
-      ],
-      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
-      "remaining": "Confirm missing conditions and obtain original-byte hashes where unavailable; resolve regional SKU options for converters."
-    },
-    {
-      "category": "dc_dc_converter",
-      "last_checked": "2026-09-16",
-      "source_uids": [
-        "src/victron-dcdc-inspected-2026-09-16"
-      ],
-      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
-      "remaining": "Confirm remaining conditions and original-byte hashes where unavailable."
-    },
-    {
-      "category": "charger",
-      "last_checked": "2026-09-16",
-      "source_uids": [
-        "src/victron-charger-inspected-2026-09-16"
-      ],
-      "next_action": "Check source revision and additional exact models, then broaden to another official manufacturer; deduplicate first.",
-      "remaining": "Confirm missing conditions and obtain original-byte hashes where unavailable; resolve regional SKU options for converters."
     }
   ],
   "patents": {
     "last_new_publication_search": null,
-    "status": "Existing 1056-publication review corpus retained; setup did not add publications. Inspect PR #460 before selecting the active search implementation.",
-    "next_action": "Run a date-bounded publication search for the previous 14 days on the first scheduled run; record coverage limits and deduplicate against existing imports."
+    "last_attempted_publication_search": "2026-10-04",
+    "attempted_window": "2026-09-21 through 2026-10-04 with IPC H01M",
+    "status": "Existing 1056-publication review corpus retained. Patent-agent PR #460 remains an open draft. The official EPO Register rejected the date-bounded automated request with HTTP 403, and official WIPO-domain discovery returned no verifiable results; no publication candidates were added and no coverage claim is made.",
+    "next_action": "Retry the same overlapped date-bounded window through an authorized free patent-office interface after PR #460 is merged or official access is available; do not substitute a paid BigQuery path without authorization."
   }
 }

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "batch": "2026-09-21-sodium-semisolid-lithium-cells",
+  "batch": "2026-10-04-electrical-components",
   "status": "pending_review",
   "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
-  "candidate_count": 1540,
-  "total_record_count": 3699,
+  "candidate_count": 1546,
+  "total_record_count": 3705,
   "candidates": [
     {
       "uid": "system/byd/battery-box-premium-hvs-5.1",
@@ -20069,6 +20069,78 @@
       "source_title": "WeLion SHP350-40-TRIAL Semi-Solid-State datasheet",
       "observation_count": 13,
       "state": "pending_review"
+    },
+    {
+      "uid": "component/te-connectivity/eck50ba4aaa",
+      "manufacturer": "TE Connectivity",
+      "model_number": "ECK50BA4AAA",
+      "kind": "component",
+      "candidate_file": "review/candidates/te-connectivity/eck50ba4aaa.yaml",
+      "source_url": "https://www.te.com/en/product-2071584-4.html",
+      "source_title": "TE Connectivity 2071584-4 / ECK50BA4AAA product page",
+      "observation_count": 2,
+      "state": "pending_review",
+      "component_type": "contactor"
+    },
+    {
+      "uid": "component/eaton-bussmann/evk30-150",
+      "manufacturer": "Eaton Bussmann",
+      "model_number": "EVK30-150",
+      "kind": "component",
+      "candidate_file": "review/candidates/eaton-bussmann/evk30-150.yaml",
+      "source_url": "https://www.eaton.com/us/en-us/skuPage.EVK30-150.html",
+      "source_title": "Eaton Bussmann EVK30-150 product page",
+      "observation_count": 4,
+      "state": "pending_review",
+      "component_type": "fuse"
+    },
+    {
+      "uid": "component/sensata-gigavac/p115bda",
+      "manufacturer": "Sensata GIGAVAC",
+      "model_number": "P115BDA",
+      "kind": "component",
+      "candidate_file": "review/candidates/sensata-gigavac/p115bda.yaml",
+      "source_url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-p115-series-minitactor-contactors-datasheet.pdf",
+      "source_title": "Sensata GIGAVAC P115 MiniTACTOR",
+      "observation_count": 5,
+      "state": "pending_review",
+      "component_type": "precharge_contactor"
+    },
+    {
+      "uid": "component/victron-energy/ve-direct-12-375-230v",
+      "manufacturer": "Victron Energy",
+      "model_number": "Inverter VE.Direct 12/375 (230 V)",
+      "kind": "component",
+      "candidate_file": "review/candidates/victron-energy/ve-direct-12-375-230v.yaml",
+      "source_url": "https://www.victronenergy.com/upload/documents/Datasheet-Inverter-VE.Direct-250VA-1600VA-EN.pdf",
+      "source_title": "Victron Inverter VE.Direct 250VA–1600VA",
+      "observation_count": 6,
+      "state": "pending_review",
+      "component_type": "inverter"
+    },
+    {
+      "uid": "component/victron-energy/orion-tr-24-12-15",
+      "manufacturer": "Victron Energy",
+      "model_number": "Orion-Tr 24/12-15",
+      "kind": "component",
+      "candidate_file": "review/candidates/victron-energy/orion-tr-24-12-15.yaml",
+      "source_url": "https://www.victronenergy.com/upload/documents/Datasheet-Orion-Tr-DC-DC-converters-low-power,-non-isolated-EN.pdf",
+      "source_title": "Victron Orion-Tr low-power non-isolated DC/DC converters",
+      "observation_count": 5,
+      "state": "pending_review",
+      "component_type": "dc_dc_converter"
+    },
+    {
+      "uid": "component/victron-energy/blue-smart-ip22-12-20-1-230v",
+      "manufacturer": "Victron Energy",
+      "model_number": "Blue Smart IP22 12/20 (1 output, 230 VAC)",
+      "kind": "component",
+      "candidate_file": "review/candidates/victron-energy/blue-smart-ip22-12-20-1-230v.yaml",
+      "source_url": "https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf",
+      "source_title": "Victron Blue Smart IP22 Charger 230 VAC",
+      "observation_count": 6,
+      "state": "pending_review",
+      "component_type": "charger"
     },
     {
       "uid": "primary_cell/maxell/sr44sw",

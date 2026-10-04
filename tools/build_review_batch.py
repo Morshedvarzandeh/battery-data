@@ -521,7 +521,8 @@ def main():
     expansion_catalogs_2026.build(records, register)
     index = {
         "schema_version": 1,
-        "batch": "2026-09-21-sodium-semisolid-lithium-cells",
+        "batch": max(["2026-09-15-manufacturer-catalog-expansion"] +
+                     [path.stem for path in (ROOT / "review" / "batches").glob("*.json")]),
         "status": "pending_review",
         "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
         "candidate_count": sum(item["state"] == "pending_review" for item in records),

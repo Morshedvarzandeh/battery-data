@@ -1,0 +1,79 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/eaton-bussmann/evk30-150",
+    "kind": "component",
+    "component_type": "fuse",
+    "manufacturer": "Eaton Bussmann",
+    "model_number": "EVK30-150"
+  },
+  "source": {
+    "uid": "src/eaton-evk30-150-inspected-2026-10-04",
+    "kind": "manufacturer_web",
+    "title": "Eaton Bussmann EVK30-150 product page",
+    "url": "https://www.eaton.com/us/en-us/skuPage.EVK30-150.html",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Official exact-catalog-number product page. No page revision is printed. The linked family PDF could not be retrieved reliably during this run, so no document hash is asserted. The interruption test time constant and temperature basis are not stated on the product page. The 1000 V nameplate rating is not an explicitly stated interruption test voltage; that test voltage remains unstated."
+  },
+  "observations": [
+    {
+      "quantity": "fuse_current_rating",
+      "value": 150,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "section": "Product specifications / Amperage Rating",
+        "quote": "Amperage Rating | 150 A"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "conductor_description"
+        ]
+      }
+    },
+    {
+      "quantity": "fuse_voltage_rating",
+      "value": 1000,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "section": "Product identity",
+        "quote": "EV Fuse 150A 1000VDC S30, EVK30, 150"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "interrupting_current",
+      "value": 25,
+      "unit": "kA",
+      "statistic": "rated",
+      "locator": {
+        "section": "Product specifications / Breaking capacity",
+        "quote": "Breaking capacity | 25 kA"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "unstated": [
+          "test_voltage_v",
+          "circuit_time_constant",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 156,
+      "unit": "g",
+      "statistic": "rated",
+      "locator": {
+        "section": "General specifications / Product Weight",
+        "quote": "Product Weight | 156 g"
+      }
+    }
+  ]
+}

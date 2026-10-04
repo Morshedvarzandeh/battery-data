@@ -1,0 +1,66 @@
+[
+  {
+    "uid": "src/te-eck50ba4aaa-inspected-2026-10-04",
+    "kind": "manufacturer_web",
+    "title": "TE Connectivity 2071584-4 / ECK50BA4AAA product page",
+    "url": "https://www.te.com/en/product-2071584-4.html",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Official exact-part product page. TE identifies internal number 2071584-4 and description ECK50BA4AAA. The page has no document revision. Direct retrieval returned an access-response page, so no content hash is asserted. Availability text is not converted into a technical observation."
+  },
+  {
+    "uid": "src/eaton-evk30-150-inspected-2026-10-04",
+    "kind": "manufacturer_web",
+    "title": "Eaton Bussmann EVK30-150 product page",
+    "url": "https://www.eaton.com/us/en-us/skuPage.EVK30-150.html",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Official exact-catalog-number product page. No page revision is printed. The linked family PDF could not be retrieved reliably during this run, so no document hash is asserted. The interruption test time constant and temperature basis are not stated on the product page. The 1000 V nameplate rating is not an explicitly stated interruption test voltage; that test voltage remains unstated."
+  },
+  {
+    "uid": "src/sensata-p115-inspected-2026-10-04",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC P115 MiniTACTOR",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-p115-series-minitactor-contactors-datasheet.pdf",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "Rev:04-Feb-2026",
+    "note": "Official four-page manufacturer datasheet inspected through text retrieval. Direct byte retrieval returned an HTML access-response page, so no PDF hash is asserted. Page 3 gives P115BDA as the ordering example and decodes B as the 12 V coil. Sensata's official contactor selection guide identifies the P Series as suitable for precharge circuits; this application role is not duplicated as a second product identity. The 1500 V observation is the operating contact-voltage maximum, not a 1500 V switching guarantee."
+  },
+  {
+    "uid": "src/victron-inverter-rechecked-2026-10-04",
+    "kind": "datasheet",
+    "title": "Victron Inverter VE.Direct 250VA–1600VA",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Inverter-VE.Direct-250VA-1600VA-EN.pdf",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "916707267a946a21660d77ad29faf145f4b0879ef37b427b12f84191b3e41902",
+    "note": "Original PDF bytes retrieved and hashed. The hash matches the 2026-09-16 source check. No printed revision/date was found. This source identifies electrical configurations; regional outlet options remain unstated."
+  },
+  {
+    "uid": "src/victron-dcdc-rechecked-2026-10-04",
+    "kind": "datasheet",
+    "title": "Victron Orion-Tr low-power non-isolated DC/DC converters",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Orion-Tr-DC-DC-converters-low-power,-non-isolated-EN.pdf",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "0bbbe885efe98a3ebc0a801b6303123703791dd5f5dec177085410262040a87b",
+    "note": "Original PDF bytes retrieved and hashed. The hash matches the 2026-09-16 source check. No printed revision/date was found."
+  },
+  {
+    "uid": "src/victron-charger-rechecked-2026-10-04",
+    "kind": "datasheet",
+    "title": "Victron Blue Smart IP22 Charger 230 VAC",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "ab251455ac8b2f49d77d135fd3b867cb7fe790980a062d8e352369eeb035e94c",
+    "note": "Original PDF bytes retrieved and hashed. The hash matches the 2026-09-16 source check. No printed revision/date was found. Electrical configurations are identified; regional plug options remain unstated."
+  }
+]

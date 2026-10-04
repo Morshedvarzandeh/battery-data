@@ -13,7 +13,7 @@ each specification.
 No account or database setup is needed to browse the GitHub library. Choose a
 manufacturer, find a model, and open its specification record and source document.
 
-**Library snapshot, 2026-09-21: 2,170 accepted battery product records; 1,362
+**Library snapshot, 2026-10-04: 2,170 accepted battery product records; 1,394
 battery records pending review.** The new [LiPol catalog research batch](docs/14-lipol-expansion-2026-09-21.md)
 adds 1,256 distinct candidates with source hashes, row evidence and explicit
 missing test conditions. They await review and are outside the accepted catalog.
@@ -35,12 +35,13 @@ candidates (255 CORDIS-linked and 801 EPO Linked Open EP Data candidates), plus
 383 company/research-organisation profiles. None enters the accepted library
 without DOCDB-family resolution and human approval.
 
-The [electrical component library](components/README.md) now has 146 pending models
-with 774 sourced observations across contactors, battery fuses, precharge contactors
+The [electrical component library](components/README.md) now has 152 pending models
+with 802 sourced observations across contactors, battery fuses, precharge contactors
 and resistors, inverters, DC/DC converters and chargers. [Browse the datasheets](components/catalog.md).
 A [weekly research agent](agents/weekly-research/AGENT.md) covers patents and all seven
 categories every Monday at 09:00 Europe/Brussels. Components and patents are
-counted separately from batteries.
+counted separately from batteries. See the [4 October review and source checks](agents/weekly-research/reports/2026-10-04.md)
+for the latest additions, corrections and unresolved source revisions.
 
 ## Start with your engineering question
 

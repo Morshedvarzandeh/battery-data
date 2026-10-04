@@ -1,19 +1,21 @@
 # Electrical components
 
-[Browse models and datasheets](catalog.md). The library has **146 pending
-component models / 774 observations** across seven categories, with none accepted.
+[Browse models and datasheets](catalog.md). As of 4 October 2026, the library has **152 pending
+component models / 802 observations** across seven categories, with none accepted.
 The [battery-fuse and precharge-resistor batch](../agents/weekly-research/reports/2026-09-21-components.md)
-adds 133 models / 712 observations to the initial 13-model batch.
+adds 133 models / 712 observations to the initial 13-model batch. The
+[4 October batch](../agents/weekly-research/reports/2026-10-04.md) adds six further
+models / 28 observations and records source-revision checks.
 
 | Category | Pending models | Key observations |
 |---|---:|---|
-| Main contactors | 2 | Contact voltage, coil voltage, qualified carry current |
-| Fuses | 84 | Rated current/voltage, trigger current, minimum/maximum interruption and circuit conditions |
-| Precharge contactors | 2 | Contact and coil voltage, conductor-dependent carry current |
+| Main contactors | 3 | Contact voltage, coil voltage, qualified carry current |
+| Fuses | 85 | Rated current/voltage, trigger current, minimum/maximum interruption and circuit conditions |
+| Precharge contactors | 3 | Contact and coil voltage, conductor-dependent carry current |
 | Precharge resistors | 52 | Resistance/tolerance, mounting-dependent power, qualified pulse energy and voltage limits |
-| Inverters | 2 | DC input range, AC output, continuous watts at 25/40°C |
-| DC/DC converters | 2 | Input range, output voltage/current, derating context |
-| Chargers | 2 | AC input, normal/low output current, absorption-mode voltage |
+| Inverters | 3 | DC input range, AC output, continuous watts at 25/40°C |
+| DC/DC converters | 3 | Input range, output voltage/current, derating context |
+| Chargers | 3 | AC input, normal/low output current, absorption-mode voltage |
 
 These are source-backed review candidates, not accepted design selections. The
 1,056 existing patent publication candidates stay in the separate patent layer.

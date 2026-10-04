@@ -1,0 +1,131 @@
+{
+  "reviewed_at": "2026-10-04",
+  "pull_requests": [
+    498,
+    499,
+    500,
+    502
+  ],
+  "scope": "Review and merge sourced pending candidates; no automatic promotion to accepted records.",
+  "accepted_products": 2170,
+  "pending_battery_products": 1394,
+  "pending_component_products": 152,
+  "new_models_in_pull_requests": {
+    "battery": 1288,
+    "component": 139
+  },
+  "source_checks": [
+    {
+      "source": "lipol-1000-3000",
+      "bytes": 607218,
+      "hash_matches_manifest": false,
+      "sha256": "a6ce252670e85b6453ab5b264ac440e302a5bfaaf0983b29b9f25903f11af5d4"
+    },
+    {
+      "source": "lipol-3000-5000",
+      "bytes": 476633,
+      "hash_matches_manifest": false,
+      "sha256": "5470f057b512c5a497e54794a3465b7718ffec7b6e84551b5c9fc83412b44a6a"
+    },
+    {
+      "source": "lipol-5000-10000",
+      "bytes": 430780,
+      "hash_matches_manifest": false,
+      "sha256": "8b0f2cf3ecd8275aa80ec0db33fbecc9c83c3c0c9efabbb395127ed08f4efbc0"
+    },
+    {
+      "source": "lipol-crosscheck-general",
+      "bytes": 450187,
+      "hash_matches_manifest": false,
+      "sha256": "06e6aa4ac1c31ef5bbbd6f4e4caeec7320f42075f3740185ee546896f58d0b1f"
+    },
+    {
+      "source": "lipol-crosscheck-1000",
+      "bytes": 612231,
+      "hash_matches_manifest": false,
+      "sha256": "0c1aa9ceba14e5c84c911c1b769a0b1b15d91bc3d45dd709ecc241d4cbf32e4e"
+    },
+    {
+      "source": "lipol-crosscheck-4800",
+      "bytes": 382323,
+      "hash_matches_manifest": false,
+      "sha256": "a1eddf2ad72f4adc9a4cc0c7a969fdbf3a28da9187279f0f8d7c10429fecff65"
+    },
+    {
+      "source": "mersen-abat15c",
+      "bytes": 1095364,
+      "hash_matches_manifest": true,
+      "sha256": "e461e676f78588e8119c5a2f44b6dcbcf67045a5c703eedc13ceb8b3d47ea9d1"
+    },
+    {
+      "source": "mersen-abat13c",
+      "bytes": 796517,
+      "hash_matches_manifest": true,
+      "sha256": "3c300c2a261c476f5bc9dd400cb3af78d6f2dab281055749774572f02969bf87"
+    },
+    {
+      "source": "mersen-abat13d",
+      "bytes": 773200,
+      "hash_matches_manifest": true,
+      "sha256": "988275270abd1e2e6048d8458d0c9dfbfed334329b873d2b5172cd84cd59271f"
+    },
+    {
+      "source": "mersen-abat13g",
+      "bytes": 905925,
+      "hash_matches_manifest": true,
+      "sha256": "7f042c594ac1de82b484d18923184436051913fa3e8abd1d7e827f25528d222e"
+    },
+    {
+      "source": "mersen-nhgbat",
+      "bytes": 3195444,
+      "hash_matches_manifest": false,
+      "sha256": "dc8674a15dcc2f28871fe4074150a4f753e710c85ace528c6a000d721a3c1ed5"
+    },
+    {
+      "source": "vishay-hrha",
+      "bytes": 99947,
+      "hash_matches_manifest": true,
+      "sha256": "d1e2029888485d902f3ae2d2a292d859f821518514c3443d89693138b6bb60e8"
+    },
+    {
+      "source": "vishay-lto150h",
+      "bytes": 150743,
+      "hash_matches_manifest": true,
+      "sha256": "6e4d27802081559527b5e94ec8ef5e48bb5f542b994adcc9ea4e06abadce3de7"
+    },
+    {
+      "source": "vishay-hrha-quality",
+      "bytes": 776564,
+      "hash_matches_manifest": false,
+      "sha256": "885bdc112c95d23e58d129325de11ccd428bd4adec5150db517a2908df839cde"
+    },
+    {
+      "source": "vishay-lto150h-quality",
+      "bytes": 772372,
+      "hash_matches_manifest": false,
+      "sha256": "398f0e1988066752c3439d486548cacb521453426345a432898d0b6043a639b9"
+    }
+  ],
+  "reconciliation": {
+    "lipol_catalog_rows_matched": 5621,
+    "mersen_part_rows_matched": 80,
+    "vishay_listed_part_identities_matched": 57,
+    "method": "Re-extract current manufacturer bodies with the committed parsers and compare exact values/locators; compare Vishay list identity and position. Web page hashes can change while extracted facts remain identical."
+  },
+  "fixes": [
+    "Preserve the conflicting CATL screenshot as a separate pending source revision with one product UID; validate links and schema.",
+    "Remove inferred Eaton interruption test voltage.",
+    "Distinguish Sensata P115 operating voltage from switching voltage.",
+    "Resolve stale P195 and Littelfuse discovery snippets against exact official PDF text.",
+    "Flag the newly served Mersen NH gBat revision without replacing historical source hashes or accepting stale conditions.",
+    "Regenerate the combined review queue and component catalog; label manufacturer pages accurately.",
+    "Derive the review index batch name from the latest declared batch."
+  ],
+  "unresolved": [
+    "Mersen changed interruption basis and conditions require source-revision review before acceptance.",
+    "CATL screenshot variant identity and relationship to brochure remain unresolved.",
+    "Some manufacturer PDF byte retrievals remain unavailable.",
+    "Three pre-existing Renata identity collisions remain held.",
+    "Missing test conditions and sparse launch-only evidence remain explicitly recorded."
+  ]
+}

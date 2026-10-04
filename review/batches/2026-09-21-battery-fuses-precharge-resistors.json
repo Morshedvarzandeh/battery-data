@@ -26,7 +26,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -107,7 +107,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -188,7 +188,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -269,7 +269,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -350,7 +350,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -431,7 +431,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -512,7 +512,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -593,7 +593,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -674,7 +674,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -755,7 +755,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -836,7 +836,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -917,7 +917,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -998,7 +998,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1079,7 +1079,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1160,7 +1160,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1241,7 +1241,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1322,7 +1322,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1425,7 +1425,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1528,7 +1528,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1631,7 +1631,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1734,7 +1734,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1837,7 +1837,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -1940,7 +1940,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2043,7 +2043,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2146,7 +2146,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2249,7 +2249,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2352,7 +2352,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2455,7 +2455,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2558,7 +2558,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2661,7 +2661,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2764,7 +2764,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2867,7 +2867,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -2970,7 +2970,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -3073,7 +3073,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -3176,7 +3176,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -3279,7 +3279,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -3382,7 +3382,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -3485,7 +3485,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -3588,7 +3588,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -3691,7 +3691,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -3794,7 +3794,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -3897,7 +3897,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -4000,7 +4000,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -4103,7 +4103,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -4206,7 +4206,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -4309,7 +4309,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -4412,7 +4412,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -4515,7 +4515,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -4618,7 +4618,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [
@@ -4721,7 +4721,7 @@
           "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
           "license": "proprietary",
           "redistributable": false,
-          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported.",
+          "note": "Battery-system fuses. Page 2 is 1000 V; pages 3–4 are 1500 V. Import only size/current-specific I.R. DC (UL) values from page 1. Do not copy the generic 150 kA headline onto every part; no interruption observation for NH1/NH2 because the UL table omits them. Plain versus bolted blades remain distinct. I²t, derating curves and minimum breaking capacity 2In are not numerically imported. Merge review 2026-10-04: this URL now serves DS-NHGBATF-15-1026_EN with changed interruption conditions. These observations retain the September revision and are historical pending claims, not confirmed current ratings. See components/source-rechecks-2026-10-04.json; review the newer rating basis before acceptance.",
           "revision": "DS-NHGBATF-14-0426_EN"
         },
         "observations": [

@@ -1,0 +1,114 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/victron-energy/ve-direct-12-375-230v",
+    "kind": "component",
+    "component_type": "inverter",
+    "manufacturer": "Victron Energy",
+    "model_number": "Inverter VE.Direct 12/375 (230 V)"
+  },
+  "source": {
+    "uid": "src/victron-inverter-rechecked-2026-10-04",
+    "kind": "datasheet",
+    "title": "Victron Inverter VE.Direct 250VA–1600VA",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-Inverter-VE.Direct-250VA-1600VA-EN.pdf",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "sha256": "916707267a946a21660d77ad29faf145f4b0879ef37b427b12f84191b3e41902",
+    "note": "Original PDF bytes retrieved and hashed. The hash matches the 2026-09-16 source check. No printed revision/date was found. This record identifies the 12/375, 230 V electrical configuration; the regional outlet option is unstated and no outlet SKU is invented."
+  },
+  "observations": [
+    {
+      "quantity": "input_voltage_min",
+      "value": 9.2,
+      "unit": "V",
+      "statistic": "minimum",
+      "locator": {
+        "page": 2,
+        "section": "Input voltage range / 12/375 DC-input variant",
+        "quote": "9,2 - 17 / 18,4 - 34,0 / 36,8 - 62,0V"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "input_voltage_max",
+      "value": 17,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 2,
+        "section": "Input voltage range / 12/375 DC-input variant",
+        "quote": "9,2 - 17 / 18,4 - 34,0 / 36,8 - 62,0V"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "rated_power",
+      "value": 300,
+      "unit": "W",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Continuous power at 25°C / 40°C / 12/375",
+        "quote": "300 / 260W"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "boundary": "ac_terminal"
+      }
+    },
+    {
+      "quantity": "rated_power",
+      "value": 260,
+      "unit": "W",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Continuous power at 25°C / 40°C / 12/375",
+        "quote": "300 / 260W"
+      },
+      "conditions": {
+        "temperature_c": 40,
+        "boundary": "ac_terminal"
+      }
+    },
+    {
+      "quantity": "rated_output_voltage",
+      "value": 230,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Output AC voltage / selected 230 V configuration",
+        "quote": "230VAC or 120VAC +/- 3%"
+      },
+      "conditions": {
+        "electrical_system": "AC",
+        "extra": {
+          "tolerance_pct": 3,
+          "frequency_options_hz": [
+            50,
+            60
+          ],
+          "adjustable": true
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 3,
+      "unit": "kg",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Weight / 12/375 power-class column",
+        "quote": "Weight 3,0kg"
+      }
+    }
+  ]
+}

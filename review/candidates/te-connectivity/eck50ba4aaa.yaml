@@ -1,0 +1,53 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/te-connectivity/eck50ba4aaa",
+    "kind": "component",
+    "component_type": "contactor",
+    "manufacturer": "TE Connectivity",
+    "model_number": "ECK50BA4AAA",
+    "aliases": [
+      "2071584-4"
+    ]
+  },
+  "source": {
+    "uid": "src/te-eck50ba4aaa-inspected-2026-10-04",
+    "kind": "manufacturer_web",
+    "title": "TE Connectivity 2071584-4 / ECK50BA4AAA product page",
+    "url": "https://www.te.com/en/product-2071584-4.html",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Official exact-part product page. TE identifies internal number 2071584-4 and description ECK50BA4AAA. The page has no document revision. Direct retrieval returned an access-response page, so no content hash is asserted. Availability text is not converted into a technical observation."
+  },
+  "observations": [
+    {
+      "quantity": "contact_voltage_rating",
+      "value": 1000,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Electrical Characteristics / Contact Switching Voltage (Max)",
+        "quote": "Contact Switching Voltage (Max) (VDC): 1000"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "section": "Electrical Characteristics / Coil Voltage Rating",
+        "quote": "Coil Voltage Rating (VDC): 12"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    }
+  ]
+}
