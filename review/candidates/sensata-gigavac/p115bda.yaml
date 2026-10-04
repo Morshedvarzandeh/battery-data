@@ -1,0 +1,98 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/sensata-gigavac/p115bda",
+    "kind": "component",
+    "component_type": "precharge_contactor",
+    "manufacturer": "Sensata GIGAVAC",
+    "model_number": "P115BDA"
+  },
+  "source": {
+    "uid": "src/sensata-p115-inspected-2026-10-04",
+    "kind": "datasheet",
+    "title": "Sensata GIGAVAC P115 MiniTACTOR",
+    "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-p115-series-minitactor-contactors-datasheet.pdf",
+    "retrieved_at": "2026-10-04",
+    "license": "proprietary",
+    "redistributable": false,
+    "revision": "Rev:04-Feb-2026",
+    "note": "Official four-page manufacturer datasheet inspected through text retrieval. Direct byte retrieval returned an HTML access-response page, so no PDF hash is asserted. Page 3 gives P115BDA as the ordering example and decodes B as the 12 V coil. Sensata's official contactor selection guide identifies the P Series as suitable for precharge circuits; this application role is not duplicated as a second product identity."
+  },
+  "observations": [
+    {
+      "quantity": "contact_voltage_rating",
+      "value": 1500,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Specifications / Contact Voltage, Operating Max",
+        "quote": "Contact Voltage, Operating Max Vdc 1500"
+      },
+      "conditions": {
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "continuous_carry_current",
+      "value": 50,
+      "unit": "A",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Specifications / Continuous Current Carry",
+        "quote": "Continuous Current Carry, Max (8 AWG) @ 25°C A 50"
+      },
+      "conditions": {
+        "temperature_c": 25,
+        "conductor_description": "8 AWG",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "continuous_carry_current",
+      "value": 25,
+      "unit": "A",
+      "statistic": "maximum",
+      "locator": {
+        "page": 1,
+        "section": "Specifications / Continuous Current Carry",
+        "quote": "Continuous Current Carry, Max (8 AWG) @ 65°C A 25"
+      },
+      "conditions": {
+        "temperature_c": 65,
+        "conductor_description": "8 AWG",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "coil_nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Coil ratings at 25°C / B; ordering example page 3",
+        "quote": "Coil Voltage Nominal B 12 Vdc; Example: P115BDA"
+      },
+      "conditions": {
+        "temperature_c": 25
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 135,
+      "unit": "g",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Specifications / Weight",
+        "quote": "Weight grams 135"
+      }
+    }
+  ]
+}
