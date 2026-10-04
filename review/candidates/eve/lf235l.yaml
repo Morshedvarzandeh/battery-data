@@ -1,0 +1,183 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/eve/lf235l",
+    "kind": "cell",
+    "manufacturer": "EVE Energy",
+    "model_number": "LF235L",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/eve-lf235l-inspected-2026-09-21",
+    "kind": "manufacturer_web",
+    "title": "EVE Energy LF235L product specifications",
+    "url": "https://www.evemall.eu/power-battery/prismatic-lfp-cell/lf235l",
+    "retrieved_at": "2026-09-21",
+    "sha256": "12bbc65bc8debff6691d2e107fd632dfd2c9c768ab38eb429721872a8422a1fc",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Current manufacturer product specification table; no printed document revision. Generic category capacity ranges are not expanded into products. The separate life graphic is labelled LF356L despite the LF235L page title; its SOH and test conditions are held. The model-specific table states 4000 cycles but no life-test protocol. Dimension precision follows the model-specific table (173.936 mm) rather than the rounded headline (173.93 mm). Initial IR lacks an AC/DC method and is held. Standard rates are not silently borrowed as capacity-test conditions."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 235,
+      "unit": "Ah",
+      "locator": {
+        "section": "LF235L / Specifications / nominal capacity",
+        "quote": "LF235L: nominal capacity 235Ah"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.2,
+      "unit": "V",
+      "locator": {
+        "section": "LF235L / Specifications / nominal voltage",
+        "quote": "LF235L: nominal voltage 3.2V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "mass",
+      "value": 4140,
+      "unit": "g",
+      "locator": {
+        "section": "LF235L / Specifications / weight",
+        "quote": "LF235L: 4140g ± 124g"
+      },
+      "tol_plus": 124,
+      "tol_minus": 124
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 4000,
+      "unit": "cycles",
+      "locator": {
+        "section": "LF235L / Specifications / nominal cycles",
+        "quote": "Model Number LF235L; Nominal Cycles(times) 4000"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "extra": {
+          "end_of_life_criterion": "not stated"
+        },
+        "unstated": [
+          "temperature_c",
+          "dod_pct",
+          "rate_value",
+          "rate_unit"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -10,
+      "unit": "°C",
+      "locator": {
+        "section": "LF235L / Specifications",
+        "quote": "Charge temperature -10 to 65 °C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "locator": {
+        "section": "LF235L / Specifications",
+        "quote": "Charge temperature -10 to 65 °C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -35,
+      "unit": "°C",
+      "locator": {
+        "section": "LF235L / Specifications",
+        "quote": "Discharge temperature -35 to 65 °C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 65,
+      "unit": "°C",
+      "locator": {
+        "section": "LF235L / Specifications",
+        "quote": "Discharge temperature -35 to 65 °C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 207.2,
+      "unit": "mm",
+      "locator": {
+        "section": "LF235L / Specifications / dimensions",
+        "quote": "Height × Length × Thickness(mm) 207.2*173.936*53.85"
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 173.936,
+      "unit": "mm",
+      "locator": {
+        "section": "LF235L / Specifications / dimensions",
+        "quote": "Height × Length × Thickness(mm) 207.2*173.936*53.85"
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 53.85,
+      "unit": "mm",
+      "locator": {
+        "section": "LF235L / Specifications / dimensions",
+        "quote": "Height × Length × Thickness(mm) 207.2*173.936*53.85"
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "Lithium iron phosphate",
+    "locator": {
+      "section": "Product title / chemistry",
+      "quote": "LF235L Prismatic LFP / Lithium Iron Phosphate Battery"
+    }
+  }
+}

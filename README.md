@@ -23,6 +23,13 @@ lithium-polymer models (2013/2019); current availability and undisclosed test
 conditions are not implied. See the [review report](docs/09-catalog-review-2026-09.md)
 for sources, exclusions, and a decision for every pending record reviewed.
 
+For a focused view of recent technology, the
+[current cell research set](docs/15-current-cell-research-set.md) selects 40
+source-linked pending candidates across LG Energy Solution, EVE, CATL, CALB,
+HiNa, HiTHIUM and WeLion. It covers LFP, sodium-ion, semi-solid, high-energy EV
+and high-power cylindrical cells. The set is screening-only and does not enter
+the accepted catalog until each underlying candidate passes review.
+
 The separate patent review layer currently holds 1,056 deduplicated publication
 candidates (255 CORDIS-linked and 801 EPO Linked Open EP Data candidates), plus
 383 company/research-organisation profiles. None enters the accepted library
@@ -238,6 +245,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/06-submitting-a-datasheet.md`](docs/06-submitting-a-datasheet.md) | **Upload a PDF, review what was extracted, accept or reject** |
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
 | [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary |
+| [`docs/15-current-cell-research-set.md`](docs/15-current-cell-research-set.md) | Versioned 40-cell research set and its acceptance gate |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---

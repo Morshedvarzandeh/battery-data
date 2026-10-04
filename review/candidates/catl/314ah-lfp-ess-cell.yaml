@@ -1,0 +1,87 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/catl/314ah-lfp-ess-cell",
+    "kind": "cell",
+    "manufacturer": "CATL",
+    "model_number": "314Ah LFP ESS cell",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/catl-ess-2026-inspected-2026-09-21",
+    "kind": "datasheet",
+    "title": "CATL energy storage solutions and products — LFP cell parameters",
+    "url": "https://www.catl.com/uploads/1/file/public/202604/20260409212143_f2npbuioci.pdf",
+    "retrieved_at": "2026-09-21",
+    "sha256": "4a968fd7036f97a48ee91654a8e3e90ea3295e62d40c5f3c842971156044d867",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. PDF page 9 contains printed pages 15–16. Public capacity-based product designations; orderable part codes are not supplied. The PDF metadata title contains 20241030 but creation/modification metadata is March/April 2026; no printed revision or document date is asserted. Specific cell rows override the general >8000-cycle headline. The 280Ah cell already has a pending record and is excluded. P denotes constant power, not C-rate. Capacity-test conditions are not explicitly linked to the separate charge/discharge rate row."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 314,
+      "unit": "Ah",
+      "locator": {
+        "section": "314Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+        "quote": "额定容量[Ah] 314",
+        "page": 9
+      },
+      "statistic": "rated",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 5.58,
+      "unit": "kg",
+      "locator": {
+        "section": "314Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+        "quote": "电芯重量[kg] 5.58",
+        "page": 9
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 7000,
+      "unit": "cycles",
+      "locator": {
+        "section": "314Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+        "quote": "循环寿命[次] [25°C, 0.5P/0.5P, 70%SOH] ≥7000",
+        "page": 9
+      },
+      "is_lower_bound": true,
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_c": 25,
+        "rate_value": 0.5,
+        "rate_unit": "P",
+        "direction": "symmetric",
+        "extra": {
+          "end_of_life_soh_pct": 70,
+          "soh_definition": "not stated"
+        },
+        "unstated": [
+          "dod_pct"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "LFP",
+    "cathode_text": "LFP",
+    "locator": {
+      "section": "314Ah LFP ESS cell / basic parameters (printed pages 15–16)",
+      "quote": "314Ah LFP",
+      "page": 9
+    }
+  }
+}

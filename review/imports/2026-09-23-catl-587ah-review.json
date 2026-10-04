@@ -1,0 +1,57 @@
+{
+  "reviewed_at": "2026-09-23",
+  "uid": "cell/catl/587ah-lfp-ess-cell",
+  "state": "pending_review",
+  "decision": "attach_source_revision_without_merging_conflicting_specifications",
+  "user_link": "https://lnkd.in/p/edS7ZNYh",
+  "resolved_post": "https://www.linkedin.com/posts/jerry-wan-069b41105_energystorage-catl-batterydesign-activity-7508442594948005888-pkOx",
+  "existing_candidate": "review/candidates/catl/587ah-lfp-ess-cell.yaml",
+  "revision_file": "review/revisions/catl/587ah-lfp-ess-cell-mall-2026-09-23.yaml",
+  "new_product_count": 0,
+  "new_source_revision_count": 1,
+  "source_evidence": [
+    {
+      "kind": "user_submitted_post",
+      "url": "https://www.linkedin.com/posts/jerry-wan-069b41105_energystorage-catl-batterydesign-activity-7508442594948005888-pkOx",
+      "sha256": "f361497543ee28b5bb90ec96d09559819360c7925b6ddb4f8a3979f6c905121b"
+    },
+    {
+      "kind": "reproduced_store_screenshot",
+      "url": "https://media.licdn.com/dms/image/v2/D5622AQEPaRuHq7bRLg/feedshare-shrink_800/B56aDNYwKcI0Ac-/0/1790152213407?e=2147483647&v=beta&t=ghrSkd6Sk7sbuBUJRDvQ6_bEjlcYVYI6QAQstwG5cAw",
+      "sha256": "65a9258bcefe61813c2935bd8121d35849590cc9b80e2441c86e7503c04f8d2e",
+      "independently_verified_store_listing": false
+    },
+    {
+      "kind": "manufacturer_announcement",
+      "url": "https://www.catl.com/news/8537.html",
+      "document_date": "2025-06-10",
+      "finding": "Confirms 587Ah LFP cell and historical 434 Wh/L claim; does not establish the current 310 mm case identity."
+    },
+    {
+      "kind": "earlier_brochure_candidate",
+      "url": "https://www.catl.com/uploads/1/file/public/202604/20260409212143_f2npbuioci.pdf",
+      "prior_sha256": "4a968fd7036f97a48ee91654a8e3e90ea3295e62d40c5f3c842971156044d867",
+      "reverified_on_review_date": false,
+      "note": "Previously inspected 2026-09-21. Fresh retrieval returned HTML rather than PDF."
+    }
+  ],
+  "calculations": {
+    "basis": "Arithmetic from reported nominal values and external rectangular dimensions; not measured usable energy or internal free volume.",
+    "nominal_energy_wh": 1878.4,
+    "external_volume_l": 5.016657615000001,
+    "calculated_energy_density_wh_per_l": 374.43256928348296,
+    "listed_energy_density_wh_per_l": 379,
+    "calculated_specific_energy_wh_per_kg": 177.20754716981133,
+    "old_dimensions_basis": "Post only; unverified revision identity.",
+    "post_old_external_volume_l": 4.374983493000001,
+    "external_volume_change_pct": 14.666892412889831,
+    "constant_energy_density_change_pct": -12.790869364522084
+  },
+  "held_claims": [
+    "Exact manufacturer part number and revision relationship between 9.83 kg and 10.6 kg variants.",
+    "379 Wh/L volume basis versus calculated 374.4326 Wh/L external-envelope result.",
+    "0.64 L internal empty space: cannot be determined from external volume and energy density.",
+    "Sodium-ion shell sharing and future chemistry rationale: post author hypotheses, not verified specifications.",
+    "Price 0.415-0.435 CNY/Wh: dated screenshot tiers, not a verified current quote or timeless cell property."
+  ]
+}

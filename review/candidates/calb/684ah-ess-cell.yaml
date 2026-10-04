@@ -1,0 +1,58 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/calb/684ah-ess-cell",
+    "kind": "cell",
+    "manufacturer": "CALB",
+    "model_number": "684Ah ESS cell",
+    "is_rechargeable": true
+  },
+  "source": {
+    "uid": "src/calb-home-inspected-2026-09-21",
+    "kind": "manufacturer_web",
+    "title": "CALB current product showcase — 684Ah energy-storage cell",
+    "url": "https://www.calb-tech.com/",
+    "retrieved_at": "2026-09-21",
+    "sha256": "a866c1f962518266bc9b1dd97ac3ca61b95ece4d04895312aee0ed5a615cf716",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Manufacturer product showcase as retrieved, no printed revision/date. Capacity-based public designation; orderable part code, exact chemistry, cell voltage, dimensions and test protocol are not given. The 6.8MWh+ figure describes a 20-foot container and is excluded from the cell. The 314Ah Gen2 showcase is held separately because its relationship to L173F314 is unresolved. 684Ah is a different published capacity from the launch article’s 661Ah; they are not silently equated."
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 684,
+      "unit": "Ah",
+      "locator": {
+        "section": "Solutions and products / 684Ah储能电芯",
+        "quote": "684Ah储能电芯 — 全新一代 大容量叠片电芯"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "energy_density",
+      "value": 440,
+      "unit": "Wh/L",
+      "locator": {
+        "section": "Solutions and products / 684Ah储能电芯",
+        "quote": "≥440Wh/L 能量密度"
+      },
+      "is_lower_bound": true,
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    }
+  ]
+}

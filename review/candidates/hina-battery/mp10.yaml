@@ -1,0 +1,142 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/hina-battery/mp10",
+    "kind": "cell",
+    "manufacturer": "HiNa Battery",
+    "model_number": "MP10",
+    "is_rechargeable": true,
+    "form_factor": "cylindrical",
+    "aliases": [
+      "NaCR32140-MP10"
+    ]
+  },
+  "source": {
+    "uid": "src/hina-1761960446647304-inspected-2026-09-21",
+    "kind": "manufacturer_web",
+    "title": "HiNa MP10 sodium-ion cell specification slide",
+    "url": "https://www.hinabattery.com/data/upload/image/20251101/1761960446647304.png",
+    "retrieved_at": "2026-09-21",
+    "sha256": "967b6d4380588e0e65e57d42f1d76be2cd0f4d1b860e9f41db9d69af7bf99e3a",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Manufacturer release slide linked from https://www.hinabattery.com/en/index.php?id=77 (published 2025-11-01). Sodium-ion; exact cathode/anode chemistry is not stated. Manufacturer performance claims; life-test temperature, depth of discharge and end-of-life criterion are not disclosed. Working temperature is not identified as a charging range. Strict > bounds are preserved in the excerpt and conditions.extra.source_comparator. MP10 is shown with manufacturing partner Keyuan; the 100000 five-second pulse count is not full-cycle life and is excluded.",
+    "document_date": "2025-11-01"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 10,
+      "unit": "Ah",
+      "locator": {
+        "section": "MP10 specification image",
+        "quote": "标称容量 10Ah"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3,
+      "unit": "V",
+      "locator": {
+        "section": "MP10 specification image",
+        "quote": "标称电压 3.0V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 110,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "MP10 specification image",
+        "quote": "能量密度 >110Wh/kg"
+      },
+      "is_lower_bound": true,
+      "statistic": "minimum",
+      "conditions": {
+        "extra": {
+          "source_comparator": ">"
+        },
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 10000,
+      "unit": "cycles",
+      "locator": {
+        "section": "MP10 specification image",
+        "quote": "循环寿命 >10,000次@5C（连续）"
+      },
+      "is_lower_bound": true,
+      "statistic": "minimum",
+      "conditions": {
+        "rate_value": 5,
+        "rate_unit": "C",
+        "extra": {
+          "source_comparator": ">",
+          "end_of_life_criterion": "not stated",
+          "rate_direction": "not stated"
+        },
+        "rate_reference_source": "Manufacturer C-rate label; reference capacity not stated",
+        "unstated": [
+          "rate_reference_capacity_ah",
+          "temperature_c",
+          "dod_pct"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "section": "MP10 specification image",
+        "quote": "工作温度 -40°C~60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "section": "MP10 specification image",
+        "quote": "工作温度 -40°C~60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ]
+      }
+    }
+  ],
+  "chemistry": {
+    "designation": "Sodium-ion",
+    "locator": {
+      "section": "Na-labelled cell / model identity",
+      "quote": "MP10 — NaCR32140-MP10 — Na"
+    }
+  }
+}
