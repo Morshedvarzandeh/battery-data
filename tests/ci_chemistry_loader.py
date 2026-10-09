@@ -17,14 +17,22 @@ try:
         reviewer = loader.ensure_contributor(cur, 'user/ci-chemistry-review', 'CI transaction only')
         args = SimpleNamespace(stage_only=False, extraction='manual_entry')
         batch = json.loads((ROOT / 'review/batches/2026-09-21-sodium-semisolid-lithium-cells.json').read_text())
+        index = {r['uid']: r for r in json.loads((ROOT / 'review/index.json').read_text())['candidates']}
         promoted = 0
         for entry in batch['candidates']:
             doc = entry['document']
-            _, maker, model = doc['product']['uid'].split('/')
-            result = loader.load_file(cur, str(ROOT / f'review/candidates/{maker}/{model}.yaml'), args, reviewer)
+            record = index[doc['product']['uid']]
+            result = loader.load_file(cur, str(ROOT / (record.get('accepted_file') or record['candidate_file'])), args, reviewer)
             assert not result.get('invalid'), result
             promoted += result.get('promoted', 0)
-        assert promoted == 262, promoted
+        # Accepted files were already loaded by the preceding CI step. Loading
+        # the mixed batch again must neither lose nor duplicate observations.
+        cur.execute("""SELECT count(*) FROM bd.observation o
+                         JOIN bd.product_revision r ON r.id=o.product_revision_id
+                         JOIN bd.product p ON p.id=r.product_id
+                        WHERE p.uid=ANY(%s)""",
+                    ([e['document']['product']['uid'] for e in batch['candidates']],))
+        assert cur.fetchone()[0] == 262
         cur.execute("""SELECT c.designation, c.cathode_text, c.electrolyte_text, l.page, l.section, l.quote, r.is_preliminary
                          FROM bd.product_chemistry c JOIN bd.product_revision r ON r.id=c.product_revision_id
                          JOIN bd.product p ON p.id=r.product_id JOIN bd.provenance pv ON pv.id=c.provenance_id

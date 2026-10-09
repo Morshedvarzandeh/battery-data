@@ -1,0 +1,102 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/mersen/10nh1gbat80b",
+    "kind": "component",
+    "component_type": "fuse",
+    "manufacturer": "Mersen",
+    "model_number": "10NH1GBAT80B",
+    "aliases": [
+      "M1068614"
+    ]
+  },
+  "source": {
+    "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-NH-fuse-links-gBAT-1000V-1500V-DC-EN.pdf",
+    "sha256": "dc8674a15dcc2f28871fe4074150a4f753e710c85ace528c6a000d721a3c1ed5",
+    "retrieved_at": "2026-10-04",
+    "uid": "src/mersen-nhgbat-inspected-2026-10-04",
+    "kind": "datasheet",
+    "title": "Mersen NH fuse-links gBat 1000V–1500V DC",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Battery-system fuses. Revision 15, visually checked page 1 and reconciled all 50 part-table rows on 2026-10-04. Size-specific I.R. DC values override the generic 150 kA headline. The common circuit condition is L/R up to 3 ms, not an exact time constant. NH1/NH2: 100 kA at 1000 Vdc; NH1XL: 50 kA; NH2XL: 100 kA; NH3L through 400 A: 150 kA; NH3L 450/500 A: 200 kA, all XL/3L at 1500 Vdc. No UL-specific rating label is inferred from the standards list. Plain and bolted blades remain distinct. Revision 14 claims are retained in Git history and the acceptance audit; they are not mixed with this revision.",
+    "revision": "DS-NHGBATF-15-1026_EN"
+  },
+  "observations": [
+    {
+      "quantity": "fuse_current_rating",
+      "value": 80,
+      "unit": "A",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / 10NH1GBAT80B / M1068614",
+        "quote": "10NH1GBAT80B: 80 A"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "conductor_description"
+        ],
+        "extra": {
+          "terminal_configuration": "direct mounting",
+          "item_number": "M1068614",
+          "characteristic": "gBat"
+        }
+      }
+    },
+    {
+      "quantity": "fuse_voltage_rating",
+      "value": 1000,
+      "unit": "V",
+      "statistic": "rated",
+      "locator": {
+        "page": 2,
+        "section": "Product range / 10NH1GBAT80B / M1068614",
+        "quote": "1000 V DC"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "extra": {
+          "terminal_configuration": "direct mounting",
+          "item_number": "M1068614",
+          "characteristic": "gBat"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 0.4,
+      "unit": "kg",
+      "statistic": "nominal",
+      "locator": {
+        "page": 2,
+        "section": "Product range / 10NH1GBAT80B / M1068614",
+        "quote": "Weight: 0.4 kg"
+      }
+    },
+    {
+      "quantity": "interrupting_current",
+      "value": 100,
+      "unit": "kA",
+      "statistic": "rated",
+      "locator": {
+        "page": 1,
+        "section": "Technical data overview / I.R. DC / size 1",
+        "quote": "1000 Vdc; size 1: 100 kA; L/R up to 3 ms"
+      },
+      "conditions": {
+        "electrical_system": "DC",
+        "test_voltage_v": 1000,
+        "extra": {
+          "terminal_configuration": "direct mounting",
+          "item_number": "M1068614",
+          "characteristic": "gBat",
+          "rating_basis": "I.R. DC",
+          "circuit_time_constant_ms": 3,
+          "circuit_time_constant_comparator": "<="
+        }
+      }
+    }
+  ]
+}

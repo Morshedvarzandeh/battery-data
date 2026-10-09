@@ -68,7 +68,7 @@ class ComponentEvidenceTests(unittest.TestCase):
         self.assertEqual(BATCH['candidate_count'], len(DOCS))
         self.assertEqual(Counter(d['product']['component_type'] for d in DOCS.values()),
                          {'fuse': 81, 'precharge_resistor': 52})
-        self.assertEqual(sum(len(d['observations']) for d in DOCS.values()), 712)
+        self.assertEqual(sum(len(d['observations']) for d in DOCS.values()), 728)
         self.assertEqual(Counter(r['source_key'] for r in MANIFEST['rows'] if r['source_key'].startswith('mersen-')),
                          importer.EXPECTED_ROWS)
 
@@ -91,13 +91,17 @@ class ComponentEvidenceTests(unittest.TestCase):
         self.assertIn('ABAT15C1000-AIB', DOCS)
         self.assertNotIn('ABAT15C1000-AIA', DOCS)  # not a generated suffix cross-product
 
-    def test_nh_ul_ratings_not_generic_headline(self):
-        for model, current, lr in [('15NH1XLGBAT50', 50, 1), ('15NH3LGBAT400', 150, 3), ('15NH3LGBAT450B', 200, 3)]:
+    def test_nh_revision_15_qualifiers_override_old_ul_table_and_headline(self):
+        for model, current, voltage in [('10NH1GBAT50', 100, 1000), ('10NH2GBAT200', 100, 1000),
+                                        ('15NH1XLGBAT50', 50, 1500), ('15NH2XLGBAT125', 100, 1500),
+                                        ('15NH3LGBAT400', 150, 1500), ('15NH3LGBAT450B', 200, 1500)]:
             o = observations(model, 'interrupting_current')[0]
             self.assertEqual(o['value'], current)
-            self.assertEqual(o['conditions']['extra']['circuit_time_constant_ms'], lr)
-            self.assertEqual(o['conditions']['extra']['rating_basis'], 'I.R. DC (UL)')
-        self.assertEqual(observations('10NH1GBAT50', 'interrupting_current'), [])
+            self.assertEqual(o['conditions']['test_voltage_v'], voltage)
+            self.assertEqual(o['conditions']['extra']['circuit_time_constant_ms'], 3)
+            self.assertEqual(o['conditions']['extra']['circuit_time_constant_comparator'], '<=')
+            self.assertEqual(o['conditions']['extra']['rating_basis'], 'I.R. DC')
+            self.assertEqual(DOCS[model]['source']['revision'], 'DS-NHGBATF-15-1026_EN')
 
     def test_hrha_mounting_and_four_pulse_conditions_survive_export(self):
         doc = DOCS['HRHAFC22R0JB']
@@ -151,10 +155,16 @@ class ComponentEvidenceTests(unittest.TestCase):
     def test_candidate_schema_and_review_notes(self):
         validator = jsonschema.Draft202012Validator(SCHEMA)
         issues = {e['uid']: e for e in json.loads((ROOT / 'review/issues.json').read_text())}
+        index = {e['uid']: e for e in json.loads((ROOT / 'review/index.json').read_text())['candidates']}
         for doc in DOCS.values():
             validator.validate(doc)
             self.assertNotIn('is_rechargeable', doc['product'])
-            self.assertIn(doc['source']['note'], issues[doc['product']['uid']]['body'])
+            row = index[doc['product']['uid']]
+            if row['state'] == 'accepted':
+                self.assertEqual(json.loads((ROOT / row['accepted_file']).read_text()), doc)
+                self.assertNotIn(doc['product']['uid'], issues)
+            else:
+                self.assertIn(doc['source']['note'], issues[doc['product']['uid']]['body'])
 
 
 if __name__ == '__main__':

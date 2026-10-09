@@ -170,9 +170,16 @@ class CommittedBatchTests(unittest.TestCase):
 
     def test_review_payloads_disclose_source_limitations(self):
         issues = {item['uid']: item for item in json.loads((ROOT / 'review/issues.json').read_text())}
+        index = {item['uid']: item for item in json.loads((ROOT / 'review/index.json').read_text())['candidates']}
         for candidate in self.batch['candidates']:
             doc = candidate['document']
-            self.assertIn(doc['source']['note'], issues[doc['product']['uid']]['body'])
+            row = index[doc['product']['uid']]
+            if row['state'] == 'accepted':
+                published = json.loads((ROOT / row['accepted_file']).read_text())
+                self.assertEqual(published, doc)
+                self.assertNotIn(doc['product']['uid'], issues)
+            else:
+                self.assertIn(doc['source']['note'], issues[doc['product']['uid']]['body'])
 
 
 if __name__ == '__main__':

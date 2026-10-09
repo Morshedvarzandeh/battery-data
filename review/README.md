@@ -1,7 +1,16 @@
 # Candidate review queue
 
 Files under `review/candidates/` are **not accepted battery data**. They are
-source-backed proposals waiting for a human decision.
+source-backed proposals awaiting acceptance. The owner can approve individual
+issues or delegate a documented source and identity review. Such reviews record
+every acceptance and hold in `review/audits/`, then move accepted records into
+`contrib/` and regenerate the public catalog. Merging research files alone does
+not perform that promotion.
+
+The [4 October publication review](../docs/16-catalog-publication-2026-10-04.md)
+published 1,284 battery models and 152 components. Only 110 battery records remain
+pending, with concrete source or identity reasons; missing fields alone are not
+a reason to hide otherwise supported specifications.
 
 Every candidate has a generated review payload. When posted as a GitHub issue,
 it contains:

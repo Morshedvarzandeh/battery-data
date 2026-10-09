@@ -1,55 +1,295 @@
 {
   "format": "lemonergy/current-cell-research-set@1",
-  "version": "2026-09-21",
-  "review_status": "pending_review",
+  "version": "2026-10-04",
+  "review_status": "mixed",
   "decision_scope": "screening_only",
-  "description": "A bounded, source-linked set of current cell candidates for structured evidence review. Inclusion is not acceptance, availability confirmation or design qualification.",
+  "description": "A bounded, source-linked research set with an explicit review status for each product. Accepted records are published source claims; inclusion does not establish availability or design qualification.",
   "entries": [
-    {"uid":"cell/lg-energy-solution/e101a","candidate":"review/candidates/lg-energy-solution/e101a.yaml","segment":"high-energy-ev"},
-    {"uid":"cell/lg-energy-solution/e72b","candidate":"review/candidates/lg-energy-solution/e72b.yaml","segment":"high-energy-ev"},
-    {"uid":"cell/lg-energy-solution/e79","candidate":"review/candidates/lg-energy-solution/e79.yaml","segment":"high-energy-ev"},
-    {"uid":"cell/lg-energy-solution/jf1","candidate":"review/candidates/lg-energy-solution/jf1.yaml","segment":"high-energy-ev"},
-    {"uid":"cell/lg-energy-solution/jf2","candidate":"review/candidates/lg-energy-solution/jf2.yaml","segment":"high-energy-ev"},
-    {"uid":"cell/lg-energy-solution/jh4","candidate":"review/candidates/lg-energy-solution/jh4.yaml","segment":"high-energy-ev"},
-    {"uid":"cell/lg-energy-solution/jp3","candidate":"review/candidates/lg-energy-solution/jp3.yaml","segment":"high-energy-ev"},
-    {"uid":"cell/lg-energy-solution/m52v","candidate":"review/candidates/lg-energy-solution/m52v.yaml","segment":"high-power-cylindrical"},
-
-    {"uid":"cell/eve/18650-30p","candidate":"review/candidates/eve/18650-30p.yaml","segment":"high-power-cylindrical"},
-    {"uid":"cell/eve/21700-40p","candidate":"review/candidates/eve/21700-40p.yaml","segment":"high-power-cylindrical"},
-    {"uid":"cell/eve/a41-v3","candidate":"review/candidates/eve/a41-v3.yaml","segment":"high-power-cylindrical"},
-    {"uid":"cell/eve/c40","candidate":"review/candidates/eve/c40.yaml","segment":"high-power-cylindrical"},
-    {"uid":"cell/eve/lf100la","candidate":"review/candidates/eve/lf100la.yaml","segment":"lfp-ess"},
-    {"uid":"cell/eve/lf206","candidate":"review/candidates/eve/lf206.yaml","segment":"lfp-ess"},
-    {"uid":"cell/eve/lf230","candidate":"review/candidates/eve/lf230.yaml","segment":"lfp-ess"},
-    {"uid":"cell/eve/lf235l","candidate":"review/candidates/eve/lf235l.yaml","segment":"lfp-ess"},
-    {"uid":"cell/eve/lf304","candidate":"review/candidates/eve/lf304.yaml","segment":"lfp-ess"},
-    {"uid":"cell/eve/lf356l","candidate":"review/candidates/eve/lf356l.yaml","segment":"lfp-ess"},
-
-    {"uid":"cell/catl/119ah-fast-charge-cell","candidate":"review/candidates/catl/119ah-fast-charge-cell.yaml","segment":"high-energy-ev"},
-    {"uid":"cell/catl/228ah-high-energy-density-cell","candidate":"review/candidates/catl/228ah-high-energy-density-cell.yaml","segment":"high-energy-ev"},
-    {"uid":"cell/catl/280ah-lfp-bess-cell","candidate":"review/candidates/catl/280ah-lfp-bess-cell.yaml","segment":"lfp-ess"},
-    {"uid":"cell/catl/314ah-lfp-ess-cell","candidate":"review/candidates/catl/314ah-lfp-ess-cell.yaml","segment":"lfp-ess"},
-    {"uid":"cell/catl/587ah-lfp-ess-cell","candidate":"review/candidates/catl/587ah-lfp-ess-cell.yaml","segment":"lfp-ess","revision_files":["review/revisions/catl/587ah-lfp-ess-cell-mall-2026-09-23.yaml"],"source_review":"review/imports/2026-09-23-catl-587ah-review.md"},
-
-    {"uid":"cell/calb/684ah-ess-cell","candidate":"review/candidates/calb/684ah-ess-cell.yaml","segment":"large-format-ess"},
-    {"uid":"cell/calb/zhijiu-392ah-long-cycle-ess-cell","candidate":"review/candidates/calb/zhijiu-392ah-long-cycle-ess-cell.yaml","segment":"large-format-ess"},
-    {"uid":"cell/calb/zhijiu-588ah-long-cycle-ess-cell","candidate":"review/candidates/calb/zhijiu-588ah-long-cycle-ess-cell.yaml","segment":"large-format-ess"},
-    {"uid":"cell/calb/zhijiu-661ah-long-cycle-ess-cell","candidate":"review/candidates/calb/zhijiu-661ah-long-cycle-ess-cell.yaml","segment":"large-format-ess"},
-
-    {"uid":"cell/hina-battery/he240","candidate":"review/candidates/hina-battery/he240.yaml","segment":"sodium-ion"},
-    {"uid":"cell/hina-battery/mp10","candidate":"review/candidates/hina-battery/mp10.yaml","segment":"sodium-ion"},
-    {"uid":"cell/hina-battery/mp200","candidate":"review/candidates/hina-battery/mp200.yaml","segment":"sodium-ion"},
-    {"uid":"cell/hina-battery/ne170","candidate":"review/candidates/hina-battery/ne170.yaml","segment":"sodium-ion"},
-
-    {"uid":"cell/hithium/ess-cell-280ah-1p","candidate":"review/candidates/hithium/ess-cell-280ah-1p.yaml","segment":"lfp-ess"},
-    {"uid":"cell/hithium/infinity-cell-587ah","candidate":"review/candidates/hithium/infinity-cell-587ah.yaml","segment":"lfp-ess"},
-    {"uid":"cell/hithium/infinity-cell-n162ah","candidate":"review/candidates/hithium/infinity-cell-n162ah.yaml","segment":"sodium-ion"},
-
-    {"uid":"cell/welion/shp270-16","candidate":"review/candidates/welion/shp270-16.yaml","segment":"semi-solid"},
-    {"uid":"cell/welion/shp270-30","candidate":"review/candidates/welion/shp270-30.yaml","segment":"semi-solid"},
-    {"uid":"cell/welion/shp320-20","candidate":"review/candidates/welion/shp320-20.yaml","segment":"semi-solid"},
-    {"uid":"cell/welion/shp320-25","candidate":"review/candidates/welion/shp320-25.yaml","segment":"semi-solid"},
-    {"uid":"cell/welion/shp320-32","candidate":"review/candidates/welion/shp320-32.yaml","segment":"semi-solid"},
-    {"uid":"cell/welion/shp320-35","candidate":"review/candidates/welion/shp320-35.yaml","segment":"semi-solid"}
-  ]
+    {
+      "uid": "cell/lg-energy-solution/e101a",
+      "candidate": "contrib/cells/lg-energy-solution/e101a.yaml",
+      "segment": "high-energy-ev",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/lg-energy-solution/e101a.yaml"
+    },
+    {
+      "uid": "cell/lg-energy-solution/e72b",
+      "candidate": "contrib/cells/lg-energy-solution/e72b.yaml",
+      "segment": "high-energy-ev",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/lg-energy-solution/e72b.yaml"
+    },
+    {
+      "uid": "cell/lg-energy-solution/e79",
+      "candidate": "contrib/cells/lg-energy-solution/e79.yaml",
+      "segment": "high-energy-ev",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/lg-energy-solution/e79.yaml"
+    },
+    {
+      "uid": "cell/lg-energy-solution/jf1",
+      "candidate": "contrib/cells/lg-energy-solution/jf1.yaml",
+      "segment": "high-energy-ev",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/lg-energy-solution/jf1.yaml"
+    },
+    {
+      "uid": "cell/lg-energy-solution/jf2",
+      "candidate": "contrib/cells/lg-energy-solution/jf2.yaml",
+      "segment": "high-energy-ev",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/lg-energy-solution/jf2.yaml"
+    },
+    {
+      "uid": "cell/lg-energy-solution/jh4",
+      "candidate": "contrib/cells/lg-energy-solution/jh4.yaml",
+      "segment": "high-energy-ev",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/lg-energy-solution/jh4.yaml"
+    },
+    {
+      "uid": "cell/lg-energy-solution/jp3",
+      "candidate": "contrib/cells/lg-energy-solution/jp3.yaml",
+      "segment": "high-energy-ev",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/lg-energy-solution/jp3.yaml"
+    },
+    {
+      "uid": "cell/lg-energy-solution/m52v",
+      "candidate": "contrib/cells/lg-energy-solution/m52v.yaml",
+      "segment": "high-power-cylindrical",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/lg-energy-solution/m52v.yaml"
+    },
+    {
+      "uid": "cell/eve/18650-30p",
+      "candidate": "review/candidates/eve/18650-30p.yaml",
+      "segment": "high-power-cylindrical",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/eve/18650-30p.yaml"
+    },
+    {
+      "uid": "cell/eve/21700-40p",
+      "candidate": "review/candidates/eve/21700-40p.yaml",
+      "segment": "high-power-cylindrical",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/eve/21700-40p.yaml"
+    },
+    {
+      "uid": "cell/eve/a41-v3",
+      "candidate": "review/candidates/eve/a41-v3.yaml",
+      "segment": "high-power-cylindrical",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/eve/a41-v3.yaml"
+    },
+    {
+      "uid": "cell/eve/c40",
+      "candidate": "review/candidates/eve/c40.yaml",
+      "segment": "high-power-cylindrical",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/eve/c40.yaml"
+    },
+    {
+      "uid": "cell/eve/lf100la",
+      "candidate": "review/candidates/eve/lf100la.yaml",
+      "segment": "lfp-ess",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/eve/lf100la.yaml"
+    },
+    {
+      "uid": "cell/eve/lf206",
+      "candidate": "contrib/cells/eve/lf206.yaml",
+      "segment": "lfp-ess",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/eve/lf206.yaml"
+    },
+    {
+      "uid": "cell/eve/lf230",
+      "candidate": "review/candidates/eve/lf230.yaml",
+      "segment": "lfp-ess",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/eve/lf230.yaml"
+    },
+    {
+      "uid": "cell/eve/lf235l",
+      "candidate": "contrib/cells/eve/lf235l.yaml",
+      "segment": "lfp-ess",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/eve/lf235l.yaml"
+    },
+    {
+      "uid": "cell/eve/lf304",
+      "candidate": "review/candidates/eve/lf304.yaml",
+      "segment": "lfp-ess",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/eve/lf304.yaml"
+    },
+    {
+      "uid": "cell/eve/lf356l",
+      "candidate": "review/candidates/eve/lf356l.yaml",
+      "segment": "lfp-ess",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/eve/lf356l.yaml"
+    },
+    {
+      "uid": "cell/catl/119ah-fast-charge-cell",
+      "candidate": "review/candidates/catl/119ah-fast-charge-cell.yaml",
+      "segment": "high-energy-ev",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/catl/119ah-fast-charge-cell.yaml"
+    },
+    {
+      "uid": "cell/catl/228ah-high-energy-density-cell",
+      "candidate": "review/candidates/catl/228ah-high-energy-density-cell.yaml",
+      "segment": "high-energy-ev",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/catl/228ah-high-energy-density-cell.yaml"
+    },
+    {
+      "uid": "cell/catl/280ah-lfp-bess-cell",
+      "candidate": "review/candidates/catl/280ah-lfp-bess-cell.yaml",
+      "segment": "lfp-ess",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/catl/280ah-lfp-bess-cell.yaml"
+    },
+    {
+      "uid": "cell/catl/314ah-lfp-ess-cell",
+      "candidate": "contrib/cells/catl/314ah-lfp-ess-cell.yaml",
+      "segment": "lfp-ess",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/catl/314ah-lfp-ess-cell.yaml"
+    },
+    {
+      "uid": "cell/catl/587ah-lfp-ess-cell",
+      "candidate": "review/candidates/catl/587ah-lfp-ess-cell.yaml",
+      "segment": "lfp-ess",
+      "revision_files": [
+        "review/revisions/catl/587ah-lfp-ess-cell-mall-2026-09-23.yaml"
+      ],
+      "source_review": "review/imports/2026-09-23-catl-587ah-review.md",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/catl/587ah-lfp-ess-cell.yaml"
+    },
+    {
+      "uid": "cell/calb/684ah-ess-cell",
+      "candidate": "contrib/cells/calb/684ah-ess-cell.yaml",
+      "segment": "large-format-ess",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/calb/684ah-ess-cell.yaml"
+    },
+    {
+      "uid": "cell/calb/zhijiu-392ah-long-cycle-ess-cell",
+      "candidate": "contrib/cells/calb/zhijiu-392ah-long-cycle-ess-cell.yaml",
+      "segment": "large-format-ess",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/calb/zhijiu-392ah-long-cycle-ess-cell.yaml"
+    },
+    {
+      "uid": "cell/calb/zhijiu-588ah-long-cycle-ess-cell",
+      "candidate": "contrib/cells/calb/zhijiu-588ah-long-cycle-ess-cell.yaml",
+      "segment": "large-format-ess",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/calb/zhijiu-588ah-long-cycle-ess-cell.yaml"
+    },
+    {
+      "uid": "cell/calb/zhijiu-661ah-long-cycle-ess-cell",
+      "candidate": "contrib/cells/calb/zhijiu-661ah-long-cycle-ess-cell.yaml",
+      "segment": "large-format-ess",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/calb/zhijiu-661ah-long-cycle-ess-cell.yaml"
+    },
+    {
+      "uid": "cell/hina-battery/he240",
+      "candidate": "contrib/cells/hina-battery/he240.yaml",
+      "segment": "sodium-ion",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/hina-battery/he240.yaml"
+    },
+    {
+      "uid": "cell/hina-battery/mp10",
+      "candidate": "contrib/cells/hina-battery/mp10.yaml",
+      "segment": "sodium-ion",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/hina-battery/mp10.yaml"
+    },
+    {
+      "uid": "cell/hina-battery/mp200",
+      "candidate": "contrib/cells/hina-battery/mp200.yaml",
+      "segment": "sodium-ion",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/hina-battery/mp200.yaml"
+    },
+    {
+      "uid": "cell/hina-battery/ne170",
+      "candidate": "contrib/cells/hina-battery/ne170.yaml",
+      "segment": "sodium-ion",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/hina-battery/ne170.yaml"
+    },
+    {
+      "uid": "cell/hithium/ess-cell-280ah-1p",
+      "candidate": "review/candidates/hithium/ess-cell-280ah-1p.yaml",
+      "segment": "lfp-ess",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/hithium/ess-cell-280ah-1p.yaml"
+    },
+    {
+      "uid": "cell/hithium/infinity-cell-587ah",
+      "candidate": "review/candidates/hithium/infinity-cell-587ah.yaml",
+      "segment": "lfp-ess",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/hithium/infinity-cell-587ah.yaml"
+    },
+    {
+      "uid": "cell/hithium/infinity-cell-n162ah",
+      "candidate": "review/candidates/hithium/infinity-cell-n162ah.yaml",
+      "segment": "sodium-ion",
+      "review_status": "pending_review",
+      "record_file": "review/candidates/hithium/infinity-cell-n162ah.yaml"
+    },
+    {
+      "uid": "cell/welion/shp270-16",
+      "candidate": "contrib/cells/welion/shp270-16.yaml",
+      "segment": "semi-solid",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/welion/shp270-16.yaml"
+    },
+    {
+      "uid": "cell/welion/shp270-30",
+      "candidate": "contrib/cells/welion/shp270-30.yaml",
+      "segment": "semi-solid",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/welion/shp270-30.yaml"
+    },
+    {
+      "uid": "cell/welion/shp320-20",
+      "candidate": "contrib/cells/welion/shp320-20.yaml",
+      "segment": "semi-solid",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/welion/shp320-20.yaml"
+    },
+    {
+      "uid": "cell/welion/shp320-25",
+      "candidate": "contrib/cells/welion/shp320-25.yaml",
+      "segment": "semi-solid",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/welion/shp320-25.yaml"
+    },
+    {
+      "uid": "cell/welion/shp320-32",
+      "candidate": "contrib/cells/welion/shp320-32.yaml",
+      "segment": "semi-solid",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/welion/shp320-32.yaml"
+    },
+    {
+      "uid": "cell/welion/shp320-35",
+      "candidate": "contrib/cells/welion/shp320-35.yaml",
+      "segment": "semi-solid",
+      "review_status": "accepted",
+      "record_file": "contrib/cells/welion/shp320-35.yaml"
+    }
+  ],
+  "accepted_count": 25,
+  "pending_count": 15
 }

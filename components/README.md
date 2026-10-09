@@ -1,13 +1,16 @@
 # Electrical components
 
-[Browse models and datasheets](catalog.md). As of 4 October 2026, the library has **152 pending
-component models / 802 observations** across seven categories, with none accepted.
+[Browse models and datasheets](catalog.md). As of 4 October 2026, the library has **152 accepted
+component models / 818 observations** across seven categories, with none pending.
 The [battery-fuse and precharge-resistor batch](../agents/weekly-research/reports/2026-09-21-components.md)
 adds 133 models / 712 observations to the initial 13-model batch. The
 [4 October batch](../agents/weekly-research/reports/2026-10-04.md) adds six further
-models / 28 observations and records source-revision checks.
+models / 28 observations and records source-revision checks. The
+[publication review](../docs/16-catalog-publication-2026-10-04.md) accepted all 152
+models and updated Mersen NH gBat to revision 15, adding 16 supported
+interruption observations while preserving the L/R upper bound.
 
-| Category | Pending models | Key observations |
+| Category | Accepted models | Key observations |
 |---|---:|---|
 | Main contactors | 3 | Contact voltage, coil voltage, qualified carry current |
 | Fuses | 85 | Rated current/voltage, trigger current, minimum/maximum interruption and circuit conditions |
@@ -17,7 +20,8 @@ models / 28 observations and records source-revision checks.
 | DC/DC converters | 3 | Input range, output voltage/current, derating context |
 | Chargers | 3 | AC input, normal/low output current, absorption-mode voltage |
 
-These are source-backed review candidates, not accepted design selections. The
+These are accepted source claims with preserved conditions and limitations.
+They do not establish suitability for a particular design. The
 1,056 existing patent publication candidates stay in the separate patent layer.
 Neither components nor patents count toward the 2,000-battery milestone.
 

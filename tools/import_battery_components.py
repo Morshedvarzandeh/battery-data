@@ -170,16 +170,18 @@ def mersen_document(row, sources):
                        loc if key in {'mersen-nhgbat', 'mersen-abat15c'} else 'Technical data overview / weight',
                        f'Weight: {row["mass_kg"]} kg', statistic='nominal')]
     if key == 'mersen-nhgbat':
-        # The generic 150 kA headline and the size-specific UL limits differ.
-        # Only propagate the explicitly size/current-qualified UL rows.
-        if row['size'] not in ('1', '2'):
-            breaking = 50 if row['size'] in ('1XL', '2XL') else 150 if current <= 400 else 200
-            lr = 1 if row['size'] in ('1XL', '2XL') else 3
-            obs.append(observation('interrupting_current', breaking, 'kA', 1,
-                       f'Technical data overview / I.R. DC (UL) / size {row["size"]}',
-                       f'{row["size"]}: {breaking} kA; L/R={lr} ms',
-                       {'electrical_system': 'DC', 'test_voltage_v': voltage,
-                        'extra': {**extra, 'rating_basis': 'I.R. DC (UL)', 'circuit_time_constant_ms': lr}}))
+        # Revision 15 replaces the old UL-specific overview. Retain its
+        # size/current-qualified ratings and the upper bound on L/R.
+        if sources[key]['revision'] != 'DS-NHGBATF-15-1026_EN':
+            raise ValueError('NH interruption table requires reviewed revision 15')
+        breaking = (100 if row['size'] in ('1', '2', '2XL') else
+                    50 if row['size'] == '1XL' else 150 if current <= 400 else 200)
+        obs.append(observation('interrupting_current', breaking, 'kA', 1,
+                   f'Technical data overview / I.R. DC / size {row["size"]}',
+                   f'{voltage} Vdc; size {row["size"]}: {breaking} kA; L/R up to 3 ms',
+                   {'electrical_system': 'DC', 'test_voltage_v': voltage,
+                    'extra': {**extra, 'rating_basis': 'I.R. DC', 'circuit_time_constant_ms': 3,
+                              'circuit_time_constant_comparator': '<='}}))
     else:
         cond = {'electrical_system': 'DC', 'test_voltage_v': voltage,
                 'extra': {**extra, 'circuit_time_constant_ms': 3}}

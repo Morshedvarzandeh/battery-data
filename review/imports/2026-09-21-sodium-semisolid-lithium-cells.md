@@ -1,5 +1,9 @@
 # Sodium-ion, semi-solid and lithium cell expansion — 21 September 2026
 
+> Publication update, 4 October: reviewed records have now been promoted.
+> This report preserves the research-stage counts and decisions. See the
+> [acceptance report](../../docs/16-catalog-publication-2026-10-04.md) for current counts and remaining holds.
+
 **32 additional pending cell entries / 262 observations**, based on 35 hashed evidence files. No accepted records are changed or counted as new.
 
 | Manufacturer | Added cells | Scope |

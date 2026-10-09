@@ -1,22 +1,24 @@
 # Current cell research set v1
 
-This collection gives reviewers a bounded set of **40 current cell candidates**
+This collection gives reviewers a bounded set of **40 current cell records**
 instead of mixing recent products into the much larger historical queue. It covers
 LG Energy Solution, EVE Energy, CATL, CALB, HiNa Battery, HiTHIUM and WeLion.
 
 The machine-readable collection is
 [`collections/current-cell-research-set-v1.json`](../collections/current-cell-research-set-v1.json).
-Every entry points to its candidate record and therefore to the primary source,
+Every entry points to its current record and therefore to the primary source,
 observation locator, units, conditions and explicit gaps.
 
 ## Review boundary
 
-- Status: `pending_review`
+- Status: `mixed` — 25 accepted records and 15 pending records
 - Use: market screening and evidence review
-- Excluded from: the accepted catalog, hosted API and Design cell library
+- Accepted records are published in the catalog and accepted-data export.
+- Pending records remain excluded from accepted-data exports. A hosted API must
+  import the updated snapshot before it serves the new records.
 - Inclusion does not confirm current availability, orderability or design suitability.
 - A reviewer must approve the underlying candidate through the normal acceptance
-  workflow before it can enter the accepted library.
+  workflow or a delegated acceptance audit before it can enter the accepted library.
 
 The set deliberately excludes the CALB L173F314 regulatory draft and WeLion trial
 cells whose sources say they are not final. It also avoids counting a press
@@ -41,3 +43,9 @@ duplicate checks and evidence review. Reviewers must confirm the exact model
 identity, final source status, every observation locator, units and test
 conditions. Missing data stays missing; it is not reconstructed from a related
 model or marketing graphic.
+
+The v1 `candidate` field is retained for compatibility and points to the current
+file in `contrib/` or `review/candidates/`. New consumers can use `record_file`
+and each entry’s `review_status`. Both path fields always resolve to the same
+record. The collection remains a screening set even when its source claims have
+been accepted into the library.
