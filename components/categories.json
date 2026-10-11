@@ -7,6 +7,7 @@
     "precharge_resistor": "Precharge resistor",
     "inverter": "Inverter",
     "dc_dc_converter": "DC/DC converter",
-    "charger": "Charger"
+    "charger": "Charger",
+    "bms": "Battery management system (BMS)"
   }
 }

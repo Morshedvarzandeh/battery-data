@@ -22,6 +22,11 @@ jobs:
         run: ./setup.sh
       - name: Load schema
         run: ./tools/build_db.sh batterydb
+      - name: Exercise additive BMS migration on the disposable database
+        run: |
+          psql -v ON_ERROR_STOP=1 -d batterydb -c "ALTER TABLE bd.product_revision DROP COLUMN lifecycle_evidence, DROP COLUMN bms_details; DELETE FROM bd.quantity WHERE code LIKE 'bms_%'; ALTER TABLE bd.product DROP CONSTRAINT product_component_type_check; ALTER TABLE bd.product ADD CONSTRAINT product_component_type_check CHECK (component_type IN ('contactor','fuse','precharge_contactor','precharge_resistor','inverter','dc_dc_converter','charger'));"
+          psql -v ON_ERROR_STOP=1 -d batterydb -f migrations/2026-10-09-bms-lifecycle.sql
+          psql -v ON_ERROR_STOP=1 -d batterydb -f migrations/2026-10-09-bms-lifecycle.sql
       - name: Load seed data
         run: psql -v ON_ERROR_STOP=1 -d batterydb -f seed/001_reference_cells.sql
       - name: Load packs and valuation seed
@@ -52,6 +57,9 @@ jobs:
 
       - name: Validate cell chemistry and source locators in a rolled-back transaction
         run: python tests/ci_chemistry_loader.py "dbname=batterydb host=localhost user=postgres password=postgres"
+
+      - name: Validate BMS lifecycle and scoped limits in the database
+        run: python tests/ci_bms_loader.py "dbname=batterydb host=localhost user=postgres password=postgres"
 
       - name: Load patent review corpus into staging
         run: |
@@ -149,6 +157,7 @@ jobs:
           python tools/build_review_batch.py
           python tools/render_review_issues.py
           python tools/build_component_catalog.py --check
+          python tools/build_bms_catalog.py --check
           python tools/build_browse_catalog.py --check
           git diff --exit-code -- review/ || {
             echo "::error::review batch is stale. Run the deterministic builders"

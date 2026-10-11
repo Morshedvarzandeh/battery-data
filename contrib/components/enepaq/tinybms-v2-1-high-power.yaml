@@ -1,0 +1,142 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/enepaq/tinybms-v2-1-high-power",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Enepaq",
+    "model_number": "TinyBMS v2.1 High Power"
+  },
+  "source": {
+    "uid": "src/enepaq-tinybms-v2-1-high-power-inspected-2026-10-09",
+    "kind": "datasheet",
+    "title": "Enepaq TinyBMS v2.1 High Power — datasheet",
+    "url": "https://enepaq.com/wp-content/uploads/2025/02/Tiny-BMS-v2.1-One-Pager-Datasheet-1.pdf",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted.",
+    "sha256": "d875fa917d1e6a067cb436285ff4b673e3925832de95ba67d67a8ed16ef79853",
+    "revision": "Revision F",
+    "document_date": "2026-08-17"
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "integrated",
+    "balancing": "passive",
+    "interfaces": [
+      "UART",
+      "Modbus",
+      "CAN (external adapter)",
+      "Bluetooth (external adapter)"
+    ],
+    "locator": {
+      "section": "Product features",
+      "quote": "ELECTRICAL SPECIFICATIONS",
+      "page": 1
+    },
+    "note": "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted.",
+    "datasheet_url": "https://enepaq.com/wp-content/uploads/2025/02/Tiny-BMS-v2.1-One-Pager-Datasheet-1.pdf"
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://enepaq.com/product/battery-management-system-bms-150a-set-tinybms-s516/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "TinyBMS v2.1 High Power"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": [
+      {
+        "event_type": "document_revision",
+        "precision": "day",
+        "date_text": "2026-08-17",
+        "evidence": {
+          "url": "https://enepaq.com/wp-content/uploads/2025/02/Tiny-BMS-v2.1-One-Pager-Datasheet-1.pdf",
+          "retrieved_at": "2026-10-09",
+          "locator": {
+            "section": "Footer / Revision F",
+            "quote": "2026-08-17"
+          },
+          "sha256": "d875fa917d1e6a067cb436285ff4b673e3925832de95ba67d67a8ed16ef79853"
+        },
+        "date": "2026-08-17",
+        "note": "Datasheet revision date, not a product release date."
+      }
+    ]
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_min",
+      "value": 4,
+      "unit": "1",
+      "statistic": "minimum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "4S – 16S",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 16,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "4S – 16S",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_pack_voltage_max",
+      "value": 75,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "9 – 75 V",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        },
+        "electrical_system": "DC"
+      }
+    },
+    {
+      "quantity": "bms_temperature_channels",
+      "value": 2,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "2 external sensors",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "external sensors"
+        }
+      }
+    }
+  ]
+}

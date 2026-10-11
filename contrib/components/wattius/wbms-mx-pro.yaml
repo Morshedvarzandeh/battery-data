@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/wattius/wbms-mx-pro",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Wattius",
+    "model_number": "wBMS-MX BMU Pro"
+  },
+  "source": {
+    "uid": "src/wattius-wbms-mx-pro-inspected-2026-10-09",
+    "kind": "datasheet",
+    "title": "Wattius wBMS-MX BMU Pro — datasheet",
+    "url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-MX-BMU-Pro-V3.pdf",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases.",
+    "sha256": "66504597544902c4bb621701eea74b707ef69155d189455a9cd5cd598a4a8bd7",
+    "revision": "20251212 RevF",
+    "document_date": "2025-12-12"
+  },
+  "bms": {
+    "identity_scope": "controller",
+    "architecture": "distributed",
+    "balancing": "unspecified",
+    "interfaces": [
+      "CAN",
+      "USB",
+      "Bluetooth"
+    ],
+    "locator": {
+      "section": "Product features",
+      "quote": "Connectivity",
+      "page": 1
+    },
+    "note": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases.",
+    "datasheet_url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-MX-BMU-Pro-V3.pdf"
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://wattius.com/wbms-mx-pro/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "wBMS-MX BMU Pro"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": [
+      {
+        "event_type": "document_revision",
+        "date": "2025-12-12",
+        "precision": "day",
+        "date_text": "20251212 RevF",
+        "evidence": {
+          "url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-MX-BMU-Pro-V3.pdf",
+          "retrieved_at": "2026-10-09",
+          "sha256": "66504597544902c4bb621701eea74b707ef69155d189455a9cd5cd598a4a8bd7",
+          "locator": {
+            "page": 2,
+            "section": "Printed footer",
+            "quote": "20251212 RevF"
+          }
+        },
+        "note": "Printed document revision; not a product release."
+      }
+    ]
+  },
+  "observations": [
+    {
+      "quantity": "bms_can_ports",
+      "value": 2,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "2x CAN bus 2.0 A/B",
+        "page": 2
+      },
+      "conditions": {
+        "extra": {
+          "scope": "BMU controller"
+        }
+      }
+    }
+  ]
+}

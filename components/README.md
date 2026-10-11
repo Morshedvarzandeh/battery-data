@@ -1,7 +1,7 @@
 # Electrical components
 
-[Browse models and datasheets](catalog.md). As of 4 October 2026, the library has **152 accepted
-component models / 818 observations** across seven categories, with none pending.
+[Browse models and datasheets](catalog.md). As of 11 October 2026, the library has **176 accepted
+component records / 871 observations** across eight categories, with none pending.
 The [battery-fuse and precharge-resistor batch](../agents/weekly-research/reports/2026-09-21-components.md)
 adds 133 models / 712 observations to the initial 13-model batch. The
 [4 October batch](../agents/weekly-research/reports/2026-10-04.md) adds six further
@@ -19,6 +19,10 @@ interruption observations while preserving the L/R upper bound.
 | Inverters | 3 | DC input range, AC output, continuous watts at 25/40°C |
 | DC/DC converters | 3 | Input range, output voltage/current, derating context |
 | Chargers | 3 | AC input, normal/low output current, absorption-mode voltage |
+| BMS | 24 | Scoped cell/voltage/channel limits, architecture, interfaces and dated release evidence |
+
+[Compare the BMS market inventory](bms.md). The [BMS review](../docs/17-bms-market-and-release-dates.md)
+explains release precision, unknown dates, announced products and legacy support.
 
 These are accepted source claims with preserved conditions and limitations.
 They do not establish suitability for a particular design. The
@@ -28,7 +32,7 @@ Neither components nor patents count toward the 2,000-battery milestone.
 ## One provenance pipeline
 
 ```text
-components/categories.json                  seven electrical categories
+components/categories.json                  eight electrical categories
 components/sources-2026-09-16.json           source URLs, revisions, retrieval evidence
 review/batches/YYYY-MM-DD-*.json            reproducible research batches
 review/candidates/<manufacturer>/*.yaml     unaccepted product documents
@@ -39,7 +43,7 @@ patents/                                   existing patent imports and review la
 ```
 
 A component uses `kind: component` and `component_type: contactor | fuse |
-precharge_contactor | precharge_resistor | inverter | dc_dc_converter | charger`. Stable identity is
+precharge_contactor | precharge_resistor | inverter | dc_dc_converter | charger | bms`. Stable identity is
 manufacturer plus exact part/configuration, independent of the application. Do
 not duplicate a contactor as a second product merely because it can be used for
 precharge. Configuration-level Victron entries explicitly leave the regional
@@ -53,9 +57,9 @@ handle components. Approval places their files under `contrib/components/`.
 state. Refresh it after any promotion; CI checks it for drift.
 
 In PostgreSQL, component identity is in `bd.product.component_type` (nullable
-for existing unclassified BOM items such as BMS units); source,
+for existing unclassified BOM items); source,
 revision, observation, conditions and provenance reuse the existing tables.
-Nineteen dedicated quantity codes cover electrical switching/protection, precharge
+Twenty-six dedicated quantity codes cover electrical switching/protection, precharge
 resistors and power conversion. `kA` retains its native unit and converts to amperes in `value_si`.
 The observation view exposes component category, AC/DC, interruption test
 voltage, conductor description, mounting, pulse waveform, recovery wait, unstated
@@ -74,7 +78,7 @@ FROM bd.v_observation
 WHERE product_kind = 'component' AND review = 'accepted';
 ```
 
-This query returns no component records until candidates are approved and loaded.
+This query returns accepted components after contributions are loaded.
 Schema SQL files are used for fresh installations and disposable CI databases.
 An existing deployed database needs an additive migration before the updated
 loader is used; `tools/build_db.sh` drops and recreates its target database.
@@ -110,6 +114,6 @@ loader is used; `tools/build_db.sh` drops and recreates its target database.
   at 25°C stay separate. Its headline pulse-energy limit is withheld pending
   assessment of the applicable curves. Dielectric withstand is not operating voltage.
 
-The [weekly agent](../agents/weekly-research/AGENT.md) searches patents and all seven
+The [weekly agent](../agents/weekly-research/AGENT.md) searches patents and all eight
 component categories on Mondays at 09:00 Europe/Brussels, through a Codex task
 heartbeat. New findings go to review with a dated report and duplicate checks.

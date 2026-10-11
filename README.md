@@ -8,12 +8,13 @@ each specification.
 
 **[Browse batteries by manufacturer and model](catalog/README.md)** ·
 **[Browse component datasheets](components/catalog.md)** ·
+**[Compare BMS and release evidence](components/bms.md)** ·
 **[Explore patent research](docs/08-patents.md)**
 
 No account or database setup is needed to browse the GitHub library. Choose a
 manufacturer, find a model, and open its specification record and source document.
 
-**Library snapshot, 2026-10-04: 3,454 accepted battery product records; 110
+**Library snapshot, 2026-10-11: 3,454 accepted battery product records; 110
 battery records remain on documented holds.** The [October publication review](docs/16-catalog-publication-2026-10-04.md)
 accepted 1,284 additional battery models and 152 electrical components, including
 the 1,256-model LiPol batch, sodium-ion and semi-solid cells, and recent LG, EVE,
@@ -38,13 +39,14 @@ candidates (255 CORDIS-linked and 801 EPO Linked Open EP Data candidates), plus
 383 company/research-organisation profiles. None enters the accepted library
 without DOCDB-family resolution and human approval.
 
-The [electrical component library](components/README.md) now has 152 accepted models
-with 818 sourced observations across contactors, battery fuses, precharge contactors
-and resistors, inverters, DC/DC converters and chargers. [Browse the datasheets](components/catalog.md).
-A [weekly research agent](agents/weekly-research/AGENT.md) covers patents and all seven
-categories every Monday at 09:00 Europe/Brussels. Components and patents are
-counted separately from batteries. See the [4 October review and source checks](agents/weekly-research/reports/2026-10-04.md)
-for the latest additions, corrections and unresolved source revisions.
+The [electrical component library](components/README.md) has **176 accepted records
+with 871 sourced observations** across eight categories, including BMS.
+[Compare 24 BMS records from 12 manufacturers/brands](components/bms.md), including
+five Lithium Balance products, with source links and explicit release-date evidence.
+Families, controllers and configurations retain their scope; unknown releases,
+announced products and legacy support are visible. See the [BMS review](docs/17-bms-market-and-release-dates.md).
+The [weekly research agent](agents/weekly-research/AGENT.md) covers patents and all
+eight categories. Components and patents are counted separately from batteries.
 
 ## Start with your engineering question
 
@@ -53,6 +55,7 @@ for the latest additions, corrections and unresolved source revisions.
 | A battery model and its datasheet | [Manufacturer and model index](catalog/README.md) |
 | Voltage, capacity, dimensions or current limits | Open a model's specification record; each observation includes its units and conditions |
 | Contactors, fuses, precharge contactors, inverters, DC/DC converters or chargers | [Component catalog](components/catalog.md), with review status |
+| BMS products, interfaces and release dates | [BMS comparison](components/bms.md) |
 | Battery-related patents and companies | [Patent research guide](docs/08-patents.md) |
 | How a specification was checked | [September review report](docs/09-catalog-review-2026-09.md) |
 | Data integration in your engineering tools | [Lemonergy Data & API](https://lemonergy.com/#measure); the GitHub data stays free |

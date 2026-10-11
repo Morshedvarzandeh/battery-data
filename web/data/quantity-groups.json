@@ -147,6 +147,15 @@
       "resistor_power_rating",
       "resistor_pulse_energy",
       "resistor_voltage_limit"
+    ],
+    "Battery management systems": [
+      "bms_series_cells_min",
+      "bms_series_cells_max",
+      "bms_pack_voltage_max",
+      "bms_temperature_channels",
+      "bms_can_ports",
+      "bms_balancing_current",
+      "bms_cell_banks_max"
     ]
   }
 }

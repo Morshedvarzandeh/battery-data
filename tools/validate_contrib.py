@@ -25,6 +25,8 @@ try:
 except ImportError:
     sys.exit("pip install pyyaml jsonschema")
 import jsonschema
+from datetime import date
+import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCHEMA = os.path.join(ROOT, "json-schema", "cell-contribution.schema.json")
@@ -81,7 +83,42 @@ def check(path: str, schema: dict, registry: dict, *, validator=None) -> list[st
             pass
 
     errs += check_applications(path, doc)
+    errs += check_lifecycle(path, doc)
     return errs
+
+
+def check_lifecycle(path: str, doc: dict) -> list[str]:
+    """A source update is not a launch; partial dates must stay partial."""
+    life = doc.get('lifecycle')
+    if not life:
+        return []
+    errors = []
+    checked = life['checked_at']
+    events = list(life['events'])
+    if life['release'].get('event'):
+        events.append(life['release']['event'])
+    for value in [checked, life['market_evidence']['retrieved_at']] + [e['evidence']['retrieved_at'] for e in events]:
+        try:
+            date.fromisoformat(value)
+        except ValueError:
+            errors.append(f'{path}: lifecycle: invalid calendar date {value}')
+    patterns = {'year': r'\d{4}', 'month': r'\d{4}-\d{2}', 'day': r'\d{4}-\d{2}-\d{2}'}
+    for event in events:
+        value, precision = event.get('date'), event['precision']
+        if precision == 'unspecified':
+            if value is not None:
+                errors.append(f'{path}: lifecycle: unspecified date must retain only date_text')
+            continue
+        if not value or not re.fullmatch(patterns[precision], value):
+            errors.append(f'{path}: lifecycle: date does not match {precision} precision')
+            continue
+        try:
+            date.fromisoformat(value + {'year': '-01-01', 'month': '-01', 'day': ''}[precision])
+        except ValueError:
+            errors.append(f'{path}: lifecycle: invalid event calendar date {value}')
+        if event['event_type'] != 'planned_availability' and value > checked[:len(value)]:
+            errors.append(f'{path}: lifecycle: an observed event cannot be in the future')
+    return errors
 
 
 # Bases where somebody with direct knowledge put the claim in writing. Anything

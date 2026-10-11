@@ -142,6 +142,8 @@ def product(doc: dict, path: str) -> dict:
     return {
         "uid": p["uid"], "kind": p["kind"],
         **({"component_type": p["component_type"]} if p.get("component_type") else {}),
+        **({"lifecycle": doc["lifecycle"]} if doc.get("lifecycle") else {}),
+        **({"bms": doc["bms"]} if doc.get("bms") else {}),
         "cell": f"{p['manufacturer']} {p['model_number']}",
         "manu": p["manufacturer"], "model": p["model_number"],
         "fmt": p.get("form_factor") or "", "shape": SHAPE.get(p.get("form_factor", ""), "pri"),

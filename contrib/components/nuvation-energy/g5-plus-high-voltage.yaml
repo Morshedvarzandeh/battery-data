@@ -1,0 +1,82 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/nuvation-energy/g5-plus-high-voltage",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Nuvation Energy",
+    "model_number": "G5 Plus High-Voltage BMS"
+  },
+  "source": {
+    "uid": "src/nuvation-energy-g5-plus-high-voltage-inspected-2026-10-09",
+    "kind": "manufacturer_web",
+    "title": "Nuvation Energy G5 Plus High-Voltage BMS — product information",
+    "url": "https://nuvationenergy.com/battery-management-systems/g5-plus-high-voltage-bms/",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made. Original bytes unavailable; no hash asserted."
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "distributed",
+    "balancing": "unspecified",
+    "interfaces": [],
+    "locator": {
+      "section": "Product features",
+      "quote": "G5 Plus High-Voltage BMS"
+    },
+    "note": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "announced",
+    "market_evidence": {
+      "url": "https://nuvationenergy.com/battery-management-systems/g5-plus-high-voltage-bms/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Platform comparison / Availability",
+        "quote": "Evaluation units planned for 2027"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": [
+      {
+        "event_type": "planned_availability",
+        "precision": "year",
+        "date_text": "2027",
+        "evidence": {
+          "url": "https://nuvationenergy.com/battery-management-systems/g5-plus-high-voltage-bms/",
+          "retrieved_at": "2026-10-09",
+          "locator": {
+            "section": "Platform comparison / Availability",
+            "quote": "Evaluation units planned for 2027"
+          }
+        },
+        "date": "2027",
+        "note": "Evaluation units only; not commercial availability."
+      }
+    ]
+  },
+  "observations": [
+    {
+      "quantity": "bms_pack_voltage_max",
+      "value": 1500,
+      "unit": "V",
+      "statistic": "design",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "1500V DC"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        },
+        "electrical_system": "DC"
+      }
+    }
+  ]
+}
