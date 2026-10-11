@@ -51,3 +51,25 @@ for(const [model,expected,absent] of [
   assert.ok(context.resultMD.includes('([evidence](https://'));
 }
 console.log('BMS display/export distinguish launch, partial release years, conflicts and future availability');
+
+const dateRecord={obs:[],source:{title:'Historical specification',url:'https://example.com/spec'},dates:{
+  source_document:{date:'2013',precision:'year'},source_revision:'Rev A',
+  source_retrieved:{date:'2026-09-21',precision:'day'},lifecycle_checked:{date:null,precision:null},
+  release:{status:'not_researched'},events:[]}};
+context.ROWS=[{cell:'Historical cell',manu:'Example',chem:'',fmt:'',rec:dateRecord}];
+vm.runInNewContext('curCell=ROWS[0].cell; drawSheet(); resultMD=sheetMD();',context);
+for(const expected of ['2013 (year precision)','2026-09-21 (day precision)','product release: Not researched',
+  'product lifecycle checked: Not recorded'])assert.ok(context.resultMD.includes(expected),expected);
+assert.ok(!context.resultMD.includes('2013-01-01'));
+assert.ok(text(nodes.get('#sheet')).includes('Not researched'));
+console.log('All product sheets/export separate historical document dates from retrieval and unresearched release');
+
+// Sorting document dates must put unknowns last, including descending order.
+const compareSource=page.slice(page.indexOf('function drawTable(){'),page.indexOf('function drawTable(){')+320);
+const sortBody=compareSource.slice(compareSource.indexOf('const x='),compareSource.indexOf('});'));
+for(const direction of [-1,1]){
+  const ctx={sortK:'year',sortD:direction,rows:[{year:null},{year:2026},{year:2013},{year:null}]};
+  vm.runInNewContext(`rows.sort((a,b)=>{${sortBody}});`,ctx);
+  assert.deepEqual(ctx.rows.map(r=>r.year), direction===1?[2013,2026,null,null]:[2026,2013,null,null]);
+}
+console.log('Unknown source years sort last in either direction');

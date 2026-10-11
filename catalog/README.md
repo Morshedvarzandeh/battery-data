@@ -2,7 +2,7 @@
 
 Browse **3,454 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
 
-[Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Patent research](../docs/08-patents.md)
+[Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Dates and technology timeline](dates.md) · [Patent research](../docs/08-patents.md)
 
 ## Find a model
 

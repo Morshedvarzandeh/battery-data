@@ -37,6 +37,7 @@ drop one that does. That check is what would have caught the invented registry.
 """
 from __future__ import annotations
 import argparse, glob, json, math, os, re, sys
+from catalog_dates import record_dates
 
 try:
     import yaml
@@ -141,6 +142,7 @@ def product(doc: dict, path: str) -> dict:
 
     return {
         "uid": p["uid"], "kind": p["kind"],
+        "dates": record_dates(doc),
         **({"component_type": p["component_type"]} if p.get("component_type") else {}),
         **({"lifecycle": doc["lifecycle"]} if doc.get("lifecycle") else {}),
         **({"bms": doc["bms"]} if doc.get("bms") else {}),
