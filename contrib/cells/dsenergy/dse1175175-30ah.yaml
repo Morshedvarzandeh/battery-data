@@ -1,0 +1,354 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/dsenergy/dse1175175-30ah",
+    "kind": "cell",
+    "manufacturer": "DSEnergy",
+    "model_number": "DSE1175175-30Ah",
+    "is_rechargeable": true,
+    "form_factor": "pouch"
+  },
+  "source": {
+    "uid": "src/dsenergy-dse1175175-30ah-web-2026-10-11",
+    "kind": "manufacturer_web",
+    "title": "DSEnergy DSE1175175-30Ah semi-solid pouch cell supplier specifications",
+    "url": "https://dsnrg.com/product/dsenergy-30ah-3-7v-350wh-kg-semi-solid-battery-cell/",
+    "retrieved_at": "2026-10-11",
+    "sha256": "60c3b1e82059f8b2b90471b257b2e97a8212f989d91b6ace484761c81e8090f6",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "First-party DSEnergy / Shenzhen DS Tech Co., Ltd. product listing. Manufacturer is the listed product brand; the underlying cell factory is not identified. Supplier claims, not independent test results or marine type approval. No dated or downloadable full datasheet, batch report, or cell-specific certification document is linked. Facts only; source body is not redistributed. ACIR is not DCIR; AC measurement frequency, temperature and SOC are unstated. The 10C pulse is limited to at most 3 seconds; no pulse amperes are transcribed because the C-rate reference capacity is unstated. Standard 0.2C and fast 0.5C CC/CV charging at 25°C are described; neither establishes a maximum continuous charge rating. Pouch-body dimensional upper bounds exclude exposed tabs (14 ± 1mm) and installed expansion allowance. Approximate 308g mass and supplier-calculated 111Wh imply about 360.4Wh/kg, while the separate claimed rating is 350Wh/kg; preserve these claims without silently reconciling them. Cathode is NCM; semi-solid is an electrolyte/technology label, with composition and anode not stated. No DCIR, heat capacity, OCV curve, price, or marine approval is invented. Older search snippets use DSE0300M; the inspected page does not establish it as an alias, so it is not merged."
+  },
+  "chemistry": {
+    "designation": "NCM",
+    "cathode_text": "NCM",
+    "electrolyte_text": "Semi-Solid",
+    "locator": {
+      "section": "Cell & electrical specifications / Cell chemistry / format",
+      "quote": "Semi-Solid NCM / Pouch Cell"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 30,
+      "unit": "Ah",
+      "locator": {
+        "section": "Engineering data at a glance / Cell & electrical specifications",
+        "quote": "30Ah / 30,000mAh At 0.2C discharge"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "rate_value": 0.2,
+        "rate_unit": "C",
+        "direction": "discharge",
+        "rate_reference_source": "Supplier C-rate label; numerical reference capacity is not explicitly stated",
+        "unstated": [
+          "temperature_c",
+          "voltage_lower_v",
+          "rate_reference_capacity_ah"
+        ]
+      }
+    },
+    {
+      "quantity": "capacity",
+      "value": 29,
+      "unit": "Ah",
+      "locator": {
+        "section": "Engineering data at a glance / Cell & electrical specifications",
+        "quote": "29Ah / 29,000mAh At 0.2C discharge"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "rate_value": 0.2,
+        "rate_unit": "C",
+        "direction": "discharge",
+        "rate_reference_source": "Supplier C-rate label; numerical reference capacity is not explicitly stated",
+        "unstated": [
+          "temperature_c",
+          "voltage_lower_v",
+          "rate_reference_capacity_ah"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3.7,
+      "unit": "V",
+      "locator": {
+        "section": "Engineering data at a glance / Cell & electrical specifications",
+        "quote": "Nominal voltage 3.7V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "energy",
+      "value": 111,
+      "unit": "Wh",
+      "locator": {
+        "section": "Engineering data at a glance / Cell & electrical specifications",
+        "quote": "111Wh Calculated: 3.7V × 30Ah"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "extra": {
+          "value_basis": "Supplier-calculated nominal voltage times nominal capacity; not a measured discharge-energy result"
+        },
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 350,
+      "unit": "Wh/kg",
+      "locator": {
+        "section": "Engineering data at a glance / Cell & electrical specifications",
+        "quote": "350Wh/kg Cell-level product rating, not pack-level"
+      },
+      "statistic": "rated",
+      "conditions": {
+        "extra": {
+          "source_scope": "Supplier cell-level rating; does not reconcile exactly with separately approximate 308g mass and calculated 111Wh energy"
+        },
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 2,
+      "unit": "mohm",
+      "locator": {
+        "section": "Engineering data at a glance / Cell & electrical specifications",
+        "quote": "AC internal resistance ≤2.0mΩ"
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "conditions": {
+        "unstated": [
+          "frequency_hz",
+          "soc_pct",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "charge_cutoff_voltage",
+      "value": 4.25,
+      "unit": "V",
+      "locator": {
+        "section": "Engineering data at a glance / Charging & operating limits",
+        "quote": "Full-charge / cut-off voltage 4.25V / 2.5V"
+      },
+      "conditions": {
+        "direction": "charge",
+        "extra": {
+          "protocol": "Standard 0.2C or fast 0.5C CC/CV at 25°C; CV to ≤0.03C, numerical C-rate capacity basis not specified"
+        }
+      }
+    },
+    {
+      "quantity": "discharge_cutoff_voltage",
+      "value": 2.5,
+      "unit": "V",
+      "locator": {
+        "section": "Engineering data at a glance / Charging & operating limits",
+        "quote": "Full-charge / cut-off voltage 4.25V / 2.5V"
+      },
+      "conditions": {
+        "direction": "discharge"
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 150,
+      "unit": "A",
+      "locator": {
+        "section": "Engineering data at a glance / Charging & operating limits",
+        "quote": "Continuous discharge 5C / 150A"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "locator": {
+        "section": "Engineering data at a glance / Charging & operating limits",
+        "quote": "Charge / discharge temperature 0°C to 45°C / −20°C to 60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 45,
+      "unit": "°C",
+      "locator": {
+        "section": "Engineering data at a glance / Charging & operating limits",
+        "quote": "Charge / discharge temperature 0°C to 45°C / −20°C to 60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "locator": {
+        "section": "Engineering data at a glance / Charging & operating limits",
+        "quote": "Charge / discharge temperature 0°C to 45°C / −20°C to 60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "section": "Engineering data at a glance / Charging & operating limits",
+        "quote": "Charge / discharge temperature 0°C to 45°C / −20°C to 60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 300,
+      "unit": "cycles",
+      "locator": {
+        "section": "Engineering data at a glance / Charging & operating limits",
+        "quote": "≥300 cycles to ≥80% capacity 25°C; 0.2C charge / 0.2C discharge to 2.5V"
+      },
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "conditions": {
+        "temperature_c": 25,
+        "rate_value": 0.2,
+        "rate_unit": "C",
+        "direction": "symmetric",
+        "voltage_lower_v": 2.5,
+        "extra": {
+          "end_of_life_capacity_retention_pct": 80,
+          "source_retention_comparator": ">=",
+          "cycle_count_is_supplier_requirement": true
+        },
+        "rate_reference_source": "Supplier C-rate label; numerical reference capacity is not explicitly stated",
+        "unstated": [
+          "dod_pct",
+          "rate_reference_capacity_ah"
+        ]
+      }
+    },
+    {
+      "quantity": "shipping_voltage",
+      "value": 3.5,
+      "unit": "V",
+      "locator": {
+        "section": "Engineering data at a glance / Charging & operating limits",
+        "quote": "Shipment voltage 3.5V to 3.7V"
+      },
+      "statistic": "minimum",
+      "value_min": 3.5,
+      "value_max": 3.7
+    },
+    {
+      "quantity": "thickness",
+      "value": 11,
+      "unit": "mm",
+      "locator": {
+        "section": "Mechanical specification / Cell body & terminals",
+        "quote": "Body thickness, T ≤11.0mm"
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "conditions": {
+        "extra": {
+          "dimension_scope": "Pouch body only; exposed tabs extend 14 ± 1.0mm beyond body; not the assembled-cell overall envelope",
+          "source_axis": "Body thickness, T"
+        }
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 75,
+      "unit": "mm",
+      "locator": {
+        "section": "Mechanical specification / Cell body & terminals",
+        "quote": "Body width, W ≤75.0mm"
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "conditions": {
+        "extra": {
+          "dimension_scope": "Pouch body only; exposed tabs extend 14 ± 1.0mm beyond body; not the assembled-cell overall envelope",
+          "source_axis": "Body width, W"
+        }
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 175,
+      "unit": "mm",
+      "locator": {
+        "section": "Mechanical specification / Cell body & terminals",
+        "quote": "Body length, L ≤175.0mm"
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "conditions": {
+        "extra": {
+          "dimension_scope": "Pouch body only; exposed tabs extend 14 ± 1.0mm beyond body; not the assembled-cell overall envelope",
+          "source_axis": "Body length, L"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 308,
+      "unit": "g",
+      "locator": {
+        "section": "Mechanical specification / Cell body & terminals",
+        "quote": "Cell weight Approx. 308g Reference value"
+      },
+      "conditions": {
+        "extra": {
+          "value_qualifier": "Approximate reference value; no tolerance stated"
+        }
+      }
+    }
+  ]
+}

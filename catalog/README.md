@@ -1,6 +1,6 @@
 # Battery datasheets and specifications — Lemonergy
 
-Browse **3,454 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
+Browse **3,455 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
 
 [Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Dates and technology timeline](dates.md) · [Patent research](../docs/08-patents.md)
 
@@ -13,6 +13,7 @@ Choose a manufacturer below, then use your browser’s **Find** command to searc
 | BYD | 1 | [Models and source documents](manufacturers/byd.md) |
 | CALB | 4 | [Models and source documents](manufacturers/calb.md) |
 | CATL | 2 | [Models and source documents](manufacturers/catl.md) |
+| DSEnergy | 1 | [Models and source documents](manufacturers/dsenergy.md) |
 | EEMB | 60 | [Models and source documents](manufacturers/eemb.md) |
 | Energizer | 17 | [Models and source documents](manufacturers/energizer.md) |
 | EVE Energy | 18 | [Models and source documents](manufacturers/eve.md) |
@@ -34,7 +35,7 @@ Choose a manufacturer below, then use your browser’s **Find** command to searc
 
  | Product type | Count |
 |---|---:|
-| cell | 3,204 |
+| cell | 3,205 |
 | module | 2 |
 | pack | 36 |
 | primary cell | 211 |
