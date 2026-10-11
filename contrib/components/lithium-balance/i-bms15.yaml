@@ -1,0 +1,151 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/lithium-balance/i-bms15",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Lithium Balance",
+    "model_number": "i-BMS15"
+  },
+  "source": {
+    "uid": "src/lithium-balance-i-bms15-inspected-2026-10-09",
+    "kind": "datasheet",
+    "title": "Lithium Balance i-BMS15 — datasheet",
+    "url": "https://lithiumbalance.com/wp-content/uploads/i-BMS-datasheet-lithium-balance.pdf",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100916 integrated controller. PDF and webpage disagree on continuous/peak current and parallel-pack count; those fields are withheld. Six external temperature sensors exclude four onboard channels.",
+    "sha256": "16e88d63f33d579d0d5a2616081a9a99ced4980111037425a418133e19c4673d"
+  },
+  "bms": {
+    "identity_scope": "controller",
+    "architecture": "integrated",
+    "balancing": "passive",
+    "interfaces": [
+      "CAN"
+    ],
+    "locator": {
+      "section": "Features and specifications",
+      "quote": "SPECIFICATIONS",
+      "page": 2
+    },
+    "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100916 integrated controller. PDF and webpage disagree on continuous/peak current and parallel-pack count; those fields are withheld. Six external temperature sensors exclude four onboard channels.",
+    "datasheet_url": "https://lithiumbalance.com/wp-content/uploads/i-BMS-datasheet-lithium-balance.pdf"
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://lithiumbalance.com/products/i-bms15/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "Battery Management System"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": [
+      {
+        "event_type": "announcement",
+        "precision": "day",
+        "date_text": "September 9, 2021",
+        "evidence": {
+          "url": "https://www.sensata.com/contact/newsroom/st-debut-new-battery-management-systems-battery-show-north-america",
+          "retrieved_at": "2026-10-09",
+          "locator": {
+            "section": "Announcement dateline",
+            "quote": "September 9, 2021"
+          }
+        },
+        "date": "2021-09-09"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 15,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "channels 8 - 15",
+        "page": 2
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_can_ports",
+      "value": 1,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "CAN ports 1",
+        "page": 2
+      },
+      "conditions": {
+        "extra": {
+          "scope": "controller"
+        }
+      }
+    },
+    {
+      "quantity": "bms_temperature_channels",
+      "value": 6,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "6 external (NTC)",
+        "page": 2
+      },
+      "conditions": {
+        "extra": {
+          "scope": "external sensors on controller"
+        }
+      }
+    },
+    {
+      "quantity": "bms_series_cells_min",
+      "value": 8,
+      "unit": "1",
+      "statistic": "minimum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "channels 8 - 15",
+        "page": 2
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_pack_voltage_max",
+      "value": 60,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Introduction / application voltage",
+        "quote": "applications up to 60V",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        },
+        "electrical_system": "DC"
+      }
+    }
+  ]
+}

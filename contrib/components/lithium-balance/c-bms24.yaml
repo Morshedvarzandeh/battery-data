@@ -1,0 +1,103 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/lithium-balance/c-bms24",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Lithium Balance",
+    "model_number": "c-BMS24"
+  },
+  "source": {
+    "uid": "src/lithium-balance-c-bms24-inspected-2026-10-09",
+    "kind": "datasheet",
+    "title": "Lithium Balance c-BMS24 — datasheet",
+    "url": "https://lithiumbalance.com/wp-content/uploads/c-BMS24-datasheet-lithium-balance.pdf",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100924 controller. The 120 V HV measurement range is not imported as a pack operating limit. Website/PDF mass conflict is omitted.",
+    "sha256": "c7d3dd54028e229196727b10148622cca6e8114e6ca45d139c84dbb99774c9fb"
+  },
+  "bms": {
+    "identity_scope": "controller",
+    "architecture": "centralized",
+    "balancing": "passive",
+    "interfaces": [
+      "CAN"
+    ],
+    "locator": {
+      "section": "Features and specifications",
+      "quote": "SPECIFICATIONS",
+      "page": 2
+    },
+    "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100924 controller. The 120 V HV measurement range is not imported as a pack operating limit. Website/PDF mass conflict is omitted.",
+    "datasheet_url": "https://lithiumbalance.com/wp-content/uploads/c-BMS24-datasheet-lithium-balance.pdf"
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://lithiumbalance.com/products/c-bms24/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "Battery Management System"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 24,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "24 cells",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_can_ports",
+      "value": 1,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "CAN ports 1",
+        "page": 2
+      },
+      "conditions": {
+        "extra": {
+          "scope": "controller"
+        }
+      }
+    },
+    {
+      "quantity": "bms_temperature_channels",
+      "value": 6,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "Temperature channels Up to 6",
+        "page": 2
+      },
+      "conditions": {
+        "extra": {
+          "scope": "external sensors on controller"
+        }
+      }
+    }
+  ]
+}

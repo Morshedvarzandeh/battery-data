@@ -1,0 +1,66 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/rec/10m-master",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "REC",
+    "model_number": "10M Master BMS"
+  },
+  "source": {
+    "uid": "src/rec-10m-master-inspected-2026-10-09",
+    "kind": "manufacturer_web",
+    "title": "REC 10M Master BMS — product information",
+    "url": "https://www.rec-bms.com/",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Master-system scope, up to twelve 16-cell slaves. Per-slave sensor counts are not published as whole-system limits.",
+    "sha256": "6d8167a90793d8ed3cd83187725d726d41c42358b6399b43f15b896b9f79db4e"
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "distributed",
+    "balancing": "unspecified",
+    "interfaces": [],
+    "locator": {
+      "section": "Product features",
+      "quote": "REC 10M MASTER BMS"
+    },
+    "note": "Master-system scope, up to twelve 16-cell slaves. Per-slave sensor counts are not published as whole-system limits."
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://www.rec-bms.com/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "10M Master BMS"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 192,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "REC 10M Master BMS",
+        "quote": "192 cells"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    }
+  ]
+}

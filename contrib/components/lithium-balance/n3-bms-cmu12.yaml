@@ -1,0 +1,115 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/lithium-balance/n3-bms-cmu12",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Lithium Balance",
+    "model_number": "n3-BMS (CMU12 system)"
+  },
+  "source": {
+    "uid": "src/lithium-balance-n3-bms-cmu12-inspected-2026-10-09",
+    "kind": "datasheet",
+    "title": "Lithium Balance n3-BMS (CMU12 system) — datasheet",
+    "url": "https://lithiumbalance.com/wp-content/uploads/n3-BMS-cmu12-datasheet-lithium-balance.pdf",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. Scope is the MCU plus CMU12 system; 12 channels is a CMU limit, not the system maximum. Redundant temperature pairs are not imported as independent channels.",
+    "sha256": "7f4324926af48bbeba4ea29444d2d7e3207161b20ee54f7efc95b435353634f6"
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "distributed",
+    "balancing": "passive",
+    "interfaces": [],
+    "locator": {
+      "section": "Features and specifications",
+      "quote": "SPECIFICATIONS",
+      "page": 2
+    },
+    "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. Scope is the MCU plus CMU12 system; 12 channels is a CMU limit, not the system maximum. Redundant temperature pairs are not imported as independent channels.",
+    "datasheet_url": "https://lithiumbalance.com/wp-content/uploads/n3-BMS-cmu12-datasheet-lithium-balance.pdf"
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://lithiumbalance.com/products/n3-bms-battery-management-system-bms/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "Battery Management System"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": [
+      {
+        "event_type": "announcement",
+        "precision": "day",
+        "date_text": "September 13, 2022",
+        "evidence": {
+          "url": "https://www.sensata.com/contact/newsroom/sensata-technologies-lithium-balance-debuts-asil-c-certified-battery-management",
+          "retrieved_at": "2026-10-09",
+          "locator": {
+            "section": "Dateline and planned availability",
+            "quote": "September 13, 2022"
+          }
+        },
+        "date": "2022-09-13"
+      },
+      {
+        "event_type": "planned_availability",
+        "precision": "unspecified",
+        "date_text": "early 2023",
+        "evidence": {
+          "url": "https://www.sensata.com/contact/newsroom/sensata-technologies-lithium-balance-debuts-asil-c-certified-battery-management",
+          "retrieved_at": "2026-10-09",
+          "locator": {
+            "section": "Planned availability",
+            "quote": "early 2023"
+          }
+        },
+        "note": "Historical plan, not evidence of shipment. No exact day inferred."
+      }
+    ]
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 360,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "360 cells",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_pack_voltage_max",
+      "value": 1000,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "cells or 1000V",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        },
+        "electrical_system": "DC"
+      }
+    }
+  ]
+}

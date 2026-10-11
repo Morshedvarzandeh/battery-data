@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-11",
+  "reviewer": "Codex, source and identity review under the owner's ongoing BMS expansion and publication request",
+  "authorization": [
+    "regarding bms, for instance lithium balannce i do not see them or sth like this, we need to see all the bms on the market, it may be better to find the date of release of each product",
+    "review the one that are there and pending and if they are right not duplicated accept them",
+    "push the new results"
+  ],
+  "scope": "24 BMS manufacturer-claim records; explicitly scoped families/controllers/configurations. The separate scheduled Schaltbau batch is not accepted by this review.",
+  "acceptance_basis": [
+    "Compared numeric limits to primary PDF tables and manufacturer product pages; do not treat these as independently tested values.",
+    "Compared identities across accepted and pending records. No BMS duplicates found; historical Sensata branding does not create separate Lithium Balance identities.",
+    "Held fields, rather than guessed values: Lithium Balance current/mass conflicts, n-BMS MCU SKU conflict, conditioned power-path currents and unsupported system cell-count extrapolations.",
+    "Retained source-supported launch dates or partial release years; source revision/upload/retrieval dates are not substituted for release.",
+    "G5 shipping article date conflict is unresolved; G5 Plus is announced for future evaluation, and Elithion is legacy support only."
+  ],
+  "decisions": [
+    {
+      "uid": "component/lithium-balance/n3-bms-cmu12",
+      "decision": "accept",
+      "candidate_file": "review/candidates/lithium-balance/n3-bms-cmu12.yaml",
+      "accepted_file": "contrib/components/lithium-balance/n3-bms-cmu12.yaml",
+      "reviewed_document_sha256": "ebcf84177840a1d127135f847605c2ba2c53e47d61e1c3dd627bd310a0c5bd22",
+      "accepted_document_sha256": "ebcf84177840a1d127135f847605c2ba2c53e47d61e1c3dd627bd310a0c5bd22",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Current Lithium Balance identity; historical Sensata branding is not a second product. Scope is the MCU plus CMU12 system; 12 channels is a CMU limit, not the system maximum. Redundant temperature pairs are not imported as independent channels."
+    },
+    {
+      "uid": "component/lithium-balance/n-bms-12ch",
+      "decision": "accept",
+      "candidate_file": "review/candidates/lithium-balance/n-bms-12ch.yaml",
+      "accepted_file": "contrib/components/lithium-balance/n-bms-12ch.yaml",
+      "reviewed_document_sha256": "de4afdbec45a06c295ad19f4cd3f0777f98d0b559b48948955cb4496f25a031a",
+      "accepted_document_sha256": "de4afdbec45a06c295ad19f4cd3f0777f98d0b559b48948955cb4496f25a031a",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Current Lithium Balance identity; historical Sensata branding is not a second product. Whole system supports 32 CMUs. Product page and PDF show different MCU identifiers (100800 / 100807); exact MCU SKU is unresolved."
+    },
+    {
+      "uid": "component/lithium-balance/c-bms24",
+      "decision": "accept",
+      "candidate_file": "review/candidates/lithium-balance/c-bms24.yaml",
+      "accepted_file": "contrib/components/lithium-balance/c-bms24.yaml",
+      "reviewed_document_sha256": "19fb6cf631fe1b5d64a2b168f12eb51934cb2af025be949bfc2e211c56a7fd18",
+      "accepted_document_sha256": "19fb6cf631fe1b5d64a2b168f12eb51934cb2af025be949bfc2e211c56a7fd18",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100924 controller. The 120 V HV measurement range is not imported as a pack operating limit. Website/PDF mass conflict is omitted."
+    },
+    {
+      "uid": "component/lithium-balance/c-bms24x",
+      "decision": "accept",
+      "candidate_file": "review/candidates/lithium-balance/c-bms24x.yaml",
+      "accepted_file": "contrib/components/lithium-balance/c-bms24x.yaml",
+      "reviewed_document_sha256": "50d4b0fd43a441bfee5579c4b0545a965bfab29e5b7c516111461c1d89bc9667",
+      "accepted_document_sha256": "50d4b0fd43a441bfee5579c4b0545a965bfab29e5b7c516111461c1d89bc9667",
+      "release_status": "documented",
+      "market_status": "manufacturer_listed",
+      "limitations": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100925 controller. Launch-announcement date does not establish first shipment. Measurement range and monitored current are not power-path ratings."
+    },
+    {
+      "uid": "component/lithium-balance/i-bms15",
+      "decision": "accept",
+      "candidate_file": "review/candidates/lithium-balance/i-bms15.yaml",
+      "accepted_file": "contrib/components/lithium-balance/i-bms15.yaml",
+      "reviewed_document_sha256": "3872b45828d74a88ffa3e3f96eb009c37493e48805a2471a0183d74c48311e8d",
+      "accepted_document_sha256": "3872b45828d74a88ffa3e3f96eb009c37493e48805a2471a0183d74c48311e8d",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100916 integrated controller. PDF and webpage disagree on continuous/peak current and parallel-pack count; those fields are withheld. Six external temperature sensors exclude four onboard channels."
+    },
+    {
+      "uid": "component/ewert-energy-systems/orion-bms-2",
+      "decision": "accept",
+      "candidate_file": "review/candidates/ewert-energy-systems/orion-bms-2.yaml",
+      "accepted_file": "contrib/components/ewert-energy-systems/orion-bms-2.yaml",
+      "reviewed_document_sha256": "762f59ec7010f789680c655e45150494daacb282bddc9ebfd9a59e6663c57c40",
+      "accepted_document_sha256": "762f59ec7010f789680c655e45150494daacb282bddc9ebfd9a59e6663c57c40",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "One family covering 24–180-channel ordering configurations, not fourteen separate product records. Pack-voltage limit includes remote expansion; 180-channel limit is per main unit."
+    },
+    {
+      "uid": "component/ewert-energy-systems/orion-jr-2",
+      "decision": "accept",
+      "candidate_file": "review/candidates/ewert-energy-systems/orion-jr-2.yaml",
+      "accepted_file": "contrib/components/ewert-energy-systems/orion-jr-2.yaml",
+      "reviewed_document_sha256": "545aab9b504beb5115f17d57d066f4d6274d43e7dc91c89c6994f566292648e6",
+      "accepted_document_sha256": "545aab9b504beb5115f17d57d066f4d6274d43e7dc91c89c6994f566292648e6",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Family scope; CAN-enabled versus base option is not resolved to a purchasing SKU. 48 V is nominal, 60 V is the maximum."
+    },
+    {
+      "uid": "component/nuvation-energy/g4-high-voltage",
+      "decision": "accept",
+      "candidate_file": "review/candidates/nuvation-energy/g4-high-voltage.yaml",
+      "accepted_file": "contrib/components/nuvation-energy/g4-high-voltage.yaml",
+      "reviewed_document_sha256": "17db6680bf385aeffe98c59770f404b5da539778f9e63e7efa6201bfbd7f768c",
+      "accepted_document_sha256": "17db6680bf385aeffe98c59770f404b5da539778f9e63e7efa6201bfbd7f768c",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+    },
+    {
+      "uid": "component/nuvation-energy/g5-high-voltage",
+      "decision": "accept",
+      "candidate_file": "review/candidates/nuvation-energy/g5-high-voltage.yaml",
+      "accepted_file": "contrib/components/nuvation-energy/g5-high-voltage.yaml",
+      "reviewed_document_sha256": "5be1ec418fa382ad2a5320195f26181d59cf27fd7dfef1cf22c1cedafdec1b20",
+      "accepted_document_sha256": "5be1ec418fa382ad2a5320195f26181d59cf27fd7dfef1cf22c1cedafdec1b20",
+      "release_status": "conflicting",
+      "market_status": "manufacturer_listed",
+      "limitations": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+    },
+    {
+      "uid": "component/nuvation-energy/g5-plus-high-voltage",
+      "decision": "accept",
+      "candidate_file": "review/candidates/nuvation-energy/g5-plus-high-voltage.yaml",
+      "accepted_file": "contrib/components/nuvation-energy/g5-plus-high-voltage.yaml",
+      "reviewed_document_sha256": "fac968b68eef2882d9aa507e777c7c8f98bff24d1d8b230373c0a7fa19da6a8c",
+      "accepted_document_sha256": "fac968b68eef2882d9aa507e777c7c8f98bff24d1d8b230373c0a7fa19da6a8c",
+      "release_status": "not_found",
+      "market_status": "announced",
+      "limitations": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+    },
+    {
+      "uid": "component/enepaq/tinybms-v2-1-high-power",
+      "decision": "accept",
+      "candidate_file": "review/candidates/enepaq/tinybms-v2-1-high-power.yaml",
+      "accepted_file": "contrib/components/enepaq/tinybms-v2-1-high-power.yaml",
+      "reviewed_document_sha256": "b7afb2f7bb485790adaff618ec21eb279a85d7fd04da45cb25a0feb11aa7fa05",
+      "accepted_document_sha256": "b7afb2f7bb485790adaff618ec21eb279a85d7fd04da45cb25a0feb11aa7fa05",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted."
+    },
+    {
+      "uid": "component/enepaq/tinybms-v2-2-high-power",
+      "decision": "accept",
+      "candidate_file": "review/candidates/enepaq/tinybms-v2-2-high-power.yaml",
+      "accepted_file": "contrib/components/enepaq/tinybms-v2-2-high-power.yaml",
+      "reviewed_document_sha256": "ef9765d229e76a6c7919fcb1a803121a355e263616dcad84a72c8edd53157ab6",
+      "accepted_document_sha256": "ef9765d229e76a6c7919fcb1a803121a355e263616dcad84a72c8edd53157ab6",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted."
+    },
+    {
+      "uid": "component/emus/mini-3",
+      "decision": "accept",
+      "candidate_file": "review/candidates/emus/mini-3.yaml",
+      "accepted_file": "contrib/components/emus/mini-3.yaml",
+      "reviewed_document_sha256": "b0d55f5e32044f360a6a799c520ea2199e6de4012c9e8b74ee7e419a5e6c0690",
+      "accepted_document_sha256": "b0d55f5e32044f360a6a799c520ea2199e6de4012c9e8b74ee7e419a5e6c0690",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Mini 3 family. FAQ publication date and manual download timestamp do not establish the product release; no exact MNC313 hardware revision inferred."
+    },
+    {
+      "uid": "component/rec/active-bms-4s",
+      "decision": "accept",
+      "candidate_file": "review/candidates/rec/active-bms-4s.yaml",
+      "accepted_file": "contrib/components/rec/active-bms-4s.yaml",
+      "reviewed_document_sha256": "185564fcc8178750a5fa44c17992a1cb66aa7ecd967d7b052d72ebc72aaaf805",
+      "accepted_document_sha256": "185564fcc8178750a5fa44c17992a1cb66aa7ecd967d7b052d72ebc72aaaf805",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Single 4S controller; keep separate from REC 2Q and high-voltage master products."
+    },
+    {
+      "uid": "component/rec/2q-16s",
+      "decision": "accept",
+      "candidate_file": "review/candidates/rec/2q-16s.yaml",
+      "accepted_file": "contrib/components/rec/2q-16s.yaml",
+      "reviewed_document_sha256": "3cc8bab1512e71f8adca2b743334059a0321c1f5a8649adafb3c519946bf5648",
+      "accepted_document_sha256": "3cc8bab1512e71f8adca2b743334059a0321c1f5a8649adafb3c519946bf5648",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Controller family; exact firmware and loom variant unspecified. No balancing topology inferred from the model name."
+    },
+    {
+      "uid": "component/rec/10m-master",
+      "decision": "accept",
+      "candidate_file": "review/candidates/rec/10m-master.yaml",
+      "accepted_file": "contrib/components/rec/10m-master.yaml",
+      "reviewed_document_sha256": "ba7b3f3007aa70d8cd3217ef70d8a9260b2cd8d2678a57c5c7b92284eae280fb",
+      "accepted_document_sha256": "ba7b3f3007aa70d8cd3217ef70d8a9260b2cd8d2678a57c5c7b92284eae280fb",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Master-system scope, up to twelve 16-cell slaves. Per-slave sensor counts are not published as whole-system limits."
+    },
+    {
+      "uid": "component/prohelion/d1000-gen2",
+      "decision": "accept",
+      "candidate_file": "review/candidates/prohelion/d1000-gen2.yaml",
+      "accepted_file": "contrib/components/prohelion/d1000-gen2.yaml",
+      "reviewed_document_sha256": "7234c07d611139af44ac121e5cfa0f8e3fb2bac53243d09a58880dd391ee8382",
+      "accepted_document_sha256": "7234c07d611139af44ac121e5cfa0f8e3fb2bac53243d09a58880dd391ee8382",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Complete Gen2 system, not the 14-channel CMU alone. 12 V and 24 V auxiliary-supply variants remain unspecified."
+    },
+    {
+      "uid": "component/wattius/wbms-hx",
+      "decision": "accept",
+      "candidate_file": "review/candidates/wattius/wbms-hx.yaml",
+      "accepted_file": "contrib/components/wattius/wbms-hx.yaml",
+      "reviewed_document_sha256": "edb40a67e1e3f710ae8c1922cc07aed22d714760ee2e6a946ba6e4df967c3858",
+      "accepted_document_sha256": "edb40a67e1e3f710ae8c1922cc07aed22d714760ee2e6a946ba6e4df967c3858",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases."
+    },
+    {
+      "uid": "component/wattius/wbms-mx-pro",
+      "decision": "accept",
+      "candidate_file": "review/candidates/wattius/wbms-mx-pro.yaml",
+      "accepted_file": "contrib/components/wattius/wbms-mx-pro.yaml",
+      "reviewed_document_sha256": "05e11da71e4e8fc347fb9f6dfe21827ae8e2e65a91099129a0800ad727719e0c",
+      "accepted_document_sha256": "05e11da71e4e8fc347fb9f6dfe21827ae8e2e65a91099129a0800ad727719e0c",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases."
+    },
+    {
+      "uid": "component/elithion/lithiumate-pro",
+      "decision": "accept",
+      "candidate_file": "review/candidates/elithion/lithiumate-pro.yaml",
+      "accepted_file": "contrib/components/elithion/lithiumate-pro.yaml",
+      "reviewed_document_sha256": "91a0706585e2b7ae73ecdd5ff05388ba48cb52125acad8d988559295ad5977ea",
+      "accepted_document_sha256": "91a0706585e2b7ae73ecdd5ff05388ba48cb52125acad8d988559295ad5977ea",
+      "release_status": "documented",
+      "market_status": "legacy_support_only",
+      "limitations": "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems."
+    },
+    {
+      "uid": "component/elithion/lithiumate-hd",
+      "decision": "accept",
+      "candidate_file": "review/candidates/elithion/lithiumate-hd.yaml",
+      "accepted_file": "contrib/components/elithion/lithiumate-hd.yaml",
+      "reviewed_document_sha256": "0a3fa5ec07bf2fd50a44a3a55c9df971f34f546536c0e0145d80f5afdda0f1df",
+      "accepted_document_sha256": "0a3fa5ec07bf2fd50a44a3a55c9df971f34f546536c0e0145d80f5afdda0f1df",
+      "release_status": "documented",
+      "market_status": "legacy_support_only",
+      "limitations": "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems."
+    },
+    {
+      "uid": "component/jikong/jk-pb2a16s-20p-v14",
+      "decision": "accept",
+      "candidate_file": "review/candidates/jikong/jk-pb2a16s-20p-v14.yaml",
+      "accepted_file": "contrib/components/jikong/jk-pb2a16s-20p-v14.yaml",
+      "reviewed_document_sha256": "4dabb0bcaa72eaf06f0441c6f613587176ba7c86308c2071f577654bd5952ab0",
+      "accepted_document_sha256": "4dabb0bcaa72eaf06f0441c6f613587176ba7c86308c2071f577654bd5952ab0",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "JK-branded V14.0 page; date field is blank. Page timestamp is not a release. Setting-range currents and supply voltage are not treated as conditioned power-path or pack limits."
+    },
+    {
+      "uid": "component/daly/k-series-smart",
+      "decision": "accept",
+      "candidate_file": "review/candidates/daly/k-series-smart.yaml",
+      "accepted_file": "contrib/components/daly/k-series-smart.yaml",
+      "reviewed_document_sha256": "c10245cde38b908f4f027ace455ba9e2ca91635821399ac59484cf04ea3c3e4d",
+      "accepted_document_sha256": "c10245cde38b908f4f027ace455ba9e2ca91635821399ac59484cf04ea3c3e4d",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Family-level coverage across 40/60/100 A options; no Cartesian expansion into unverified ordering codes or universal current rating."
+    },
+    {
+      "uid": "component/batrium/watchmoncore-cellmatek9",
+      "decision": "accept",
+      "candidate_file": "review/candidates/batrium/watchmoncore-cellmatek9.yaml",
+      "accepted_file": "contrib/components/batrium/watchmoncore-cellmatek9.yaml",
+      "reviewed_document_sha256": "116aee6d04c2ea4cd1816535114587ecbf0f1224c78db308c1758a76f1c7d182",
+      "accepted_document_sha256": "116aee6d04c2ea4cd1816535114587ecbf0f1224c78db308c1758a76f1c7d182",
+      "release_status": "not_found",
+      "market_status": "manufacturer_listed",
+      "limitations": "Explicit controller-plus-one-monitor configuration; CellMate-K9 alone is not a complete BMS. The ShuntMon voltage rating is not a whole-system operating limit."
+    }
+  ]
+}

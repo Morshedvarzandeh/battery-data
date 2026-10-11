@@ -2,7 +2,9 @@
 
 Generated from the accepted library and review queue. Run `python tools/build_component_catalog.py` to refresh.
 
-**152 accepted; 2 pending review.** Component records are separate from the battery count.
+**176 accepted; 2 pending review.** Component records are separate from the battery count.
+
+[Compare BMS products and release evidence](bms.md).
 
 The record link contains every value, unit, condition and page/section locator. Datasheets are linked; proprietary PDFs are not redistributed.
 
@@ -194,6 +196,35 @@ The record link contains every value, unit, condition and page/section locator. 
 | [Victron Energy Blue Smart IP22 12/15 (1 output, 230 VAC)](../contrib/components/victron-energy/blue-smart-ip22-12-15-1-230v.yaml) | accepted | 6 | [Datasheet](https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf) |
 | [Victron Energy Blue Smart IP22 12/20 (1 output, 230 VAC)](../contrib/components/victron-energy/blue-smart-ip22-12-20-1-230v.yaml) | accepted | 6 | [Datasheet](https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf) |
 | [Victron Energy Blue Smart IP22 24/16 (1 output, 230 VAC)](../contrib/components/victron-energy/blue-smart-ip22-24-16-1-230v.yaml) | accepted | 6 | [Datasheet](https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf) |
+
+## Battery management system (BMS)
+
+| Manufacturer / model | State | Specifications | Source |
+|---|---|---:|---|
+| [Batrium WatchMonCORE + one CellMate-K9](../contrib/components/batrium/watchmoncore-cellmatek9.yaml) | accepted | 2 | [Manufacturer page](https://www.batrium.com/pages/getting-started) |
+| [DALY K Series Smart BMS (3S–24S family)](../contrib/components/daly/k-series-smart.yaml) | accepted | 2 | [Manufacturer page](https://www.dalybms.com/12v-100a-bms-k-series-smart-bms-3s-to-24s-40a-60a-product/) |
+| [Elithion Lithiumate HD Master](../contrib/components/elithion/lithiumate-hd.yaml) | accepted | 1 | [Manufacturer page](https://www.elithion.com/lithiumate_controllers.php) |
+| [Elithion Lithiumate Pro Master](../contrib/components/elithion/lithiumate-pro.yaml) | accepted | 1 | [Manufacturer page](https://www.elithion.com/lithiumate_controllers.php) |
+| [EMUS Mini 3](../contrib/components/emus/mini-3.yaml) | accepted | 2 | [Manufacturer page](https://emusbms.com/faq/) |
+| [Enepaq TinyBMS v2.1 High Power](../contrib/components/enepaq/tinybms-v2-1-high-power.yaml) | accepted | 4 | [Datasheet](https://enepaq.com/wp-content/uploads/2025/02/Tiny-BMS-v2.1-One-Pager-Datasheet-1.pdf) |
+| [Enepaq TinyBMS v2.2 High Power](../contrib/components/enepaq/tinybms-v2-2-high-power.yaml) | accepted | 4 | [Datasheet](https://enepaq.com/wp-content/uploads/2025/07/Tiny-BMS-v2.2-One-Pager-Datasheet-1.pdf) |
+| [Ewert Energy Systems Orion BMS 2](../contrib/components/ewert-energy-systems/orion-bms-2.yaml) | accepted | 3 | [Manufacturer page](https://www.orionbms.com/products/orion-bms-standard/) |
+| [Ewert Energy Systems Orion Jr 2 BMS](../contrib/components/ewert-energy-systems/orion-jr-2.yaml) | accepted | 3 | [Manufacturer page](https://www.orionbms.com/products/orion-jr-2-bms/) |
+| [JK (Jikong) JK-PB2A16S-20P V14.0](../contrib/components/jikong/jk-pb2a16s-20p-v14.yaml) | accepted | 2 | [Manufacturer page](https://www.jkbms.com/product/jk-pb2a16s20p-jk-pb2a16s-20p/) |
+| [Lithium Balance c-BMS24](../contrib/components/lithium-balance/c-bms24.yaml) | accepted | 3 | [Datasheet](https://lithiumbalance.com/wp-content/uploads/c-BMS24-datasheet-lithium-balance.pdf) |
+| [Lithium Balance c-BMS24X](../contrib/components/lithium-balance/c-bms24x.yaml) | accepted | 3 | [Datasheet](https://lithiumbalance.com/wp-content/uploads/c-BMS24X-datasheet-lithium-balance.pdf) |
+| [Lithium Balance i-BMS15](../contrib/components/lithium-balance/i-bms15.yaml) | accepted | 5 | [Datasheet](https://lithiumbalance.com/wp-content/uploads/i-BMS-datasheet-lithium-balance.pdf) |
+| [Lithium Balance n-BMS (12-channel CMU system)](../contrib/components/lithium-balance/n-bms-12ch.yaml) | accepted | 2 | [Datasheet](https://lithiumbalance.com/wp-content/uploads/n-BMS-datasheet-lithium-balance.pdf) |
+| [Lithium Balance n3-BMS (CMU12 system)](../contrib/components/lithium-balance/n3-bms-cmu12.yaml) | accepted | 2 | [Datasheet](https://lithiumbalance.com/wp-content/uploads/n3-BMS-cmu12-datasheet-lithium-balance.pdf) |
+| [Nuvation Energy G4 High-Voltage BMS](../contrib/components/nuvation-energy/g4-high-voltage.yaml) | accepted | 1 | [Manufacturer page](https://nuvationenergy.com/battery-management-systems/g4-high-voltage-bms/) |
+| [Nuvation Energy G5 High-Voltage BMS](../contrib/components/nuvation-energy/g5-high-voltage.yaml) | accepted | 1 | [Manufacturer page](https://nuvationenergy.com/battery-management-systems/g5-high-voltage-bms/) |
+| [Nuvation Energy G5 Plus High-Voltage BMS](../contrib/components/nuvation-energy/g5-plus-high-voltage.yaml) | accepted | 1 | [Manufacturer page](https://nuvationenergy.com/battery-management-systems/g5-plus-high-voltage-bms/) |
+| [Prohelion D1000 Gen2](../contrib/components/prohelion/d1000-gen2.yaml) | accepted | 4 | [Manufacturer page](https://docs.prohelion.com/Battery_Management_Systems/Prohelion_BMS_D1000_Gen2/index.html) |
+| [REC 10M Master BMS](../contrib/components/rec/10m-master.yaml) | accepted | 1 | [Manufacturer page](https://www.rec-bms.com/) |
+| [REC 2Q BMS 16S](../contrib/components/rec/2q-16s.yaml) | accepted | 2 | [Manufacturer page](https://www.rec-bms.com/) |
+| [REC Active BMS 4S](../contrib/components/rec/active-bms-4s.yaml) | accepted | 1 | [Manufacturer page](https://www.rec-bms.com/) |
+| [Wattius wBMS-HX BMU V4](../contrib/components/wattius/wbms-hx.yaml) | accepted | 2 | [Datasheet](https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-HX-BMU-V4-Datasheet.pdf) |
+| [Wattius wBMS-MX BMU Pro](../contrib/components/wattius/wbms-mx-pro.yaml) | accepted | 1 | [Datasheet](https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-MX-BMU-Pro-V3.pdf) |
 
 ---
 

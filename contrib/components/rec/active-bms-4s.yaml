@@ -1,0 +1,69 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/rec/active-bms-4s",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "REC",
+    "model_number": "Active BMS 4S"
+  },
+  "source": {
+    "uid": "src/rec-active-bms-4s-inspected-2026-10-09",
+    "kind": "manufacturer_web",
+    "title": "REC Active BMS 4S — product information",
+    "url": "https://www.rec-bms.com/",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Single 4S controller; keep separate from REC 2Q and high-voltage master products.",
+    "sha256": "6d8167a90793d8ed3cd83187725d726d41c42358b6399b43f15b896b9f79db4e"
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "centralized",
+    "balancing": "active",
+    "interfaces": [
+      "CAN",
+      "RS485"
+    ],
+    "locator": {
+      "section": "Product features",
+      "quote": "REC Active BMS"
+    },
+    "note": "Single 4S controller; keep separate from REC 2Q and high-voltage master products."
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://www.rec-bms.com/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "Active BMS 4S"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 4,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "REC Active BMS",
+        "quote": "4 series connected cells"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    }
+  ]
+}

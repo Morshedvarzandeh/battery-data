@@ -1,0 +1,2448 @@
+{
+  "schema_version": 1,
+  "batch": "2026-10-09-bms-market",
+  "origin": "Primary-source BMS market research and lifecycle evidence, inspected 9–11 October 2026",
+  "candidate_count": 24,
+  "candidates": [
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/lithium-balance/n3-bms-cmu12",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Lithium Balance",
+          "model_number": "n3-BMS (CMU12 system)"
+        },
+        "source": {
+          "uid": "src/lithium-balance-n3-bms-cmu12-inspected-2026-10-09",
+          "kind": "datasheet",
+          "title": "Lithium Balance n3-BMS (CMU12 system) — datasheet",
+          "url": "https://lithiumbalance.com/wp-content/uploads/n3-BMS-cmu12-datasheet-lithium-balance.pdf",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. Scope is the MCU plus CMU12 system; 12 channels is a CMU limit, not the system maximum. Redundant temperature pairs are not imported as independent channels.",
+          "sha256": "7f4324926af48bbeba4ea29444d2d7e3207161b20ee54f7efc95b435353634f6"
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "distributed",
+          "balancing": "passive",
+          "interfaces": [],
+          "locator": {
+            "section": "Features and specifications",
+            "quote": "SPECIFICATIONS",
+            "page": 2
+          },
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. Scope is the MCU plus CMU12 system; 12 channels is a CMU limit, not the system maximum. Redundant temperature pairs are not imported as independent channels.",
+          "datasheet_url": "https://lithiumbalance.com/wp-content/uploads/n3-BMS-cmu12-datasheet-lithium-balance.pdf"
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://lithiumbalance.com/products/n3-bms-battery-management-system-bms/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "Battery Management System"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": [
+            {
+              "event_type": "announcement",
+              "precision": "day",
+              "date_text": "September 13, 2022",
+              "evidence": {
+                "url": "https://www.sensata.com/contact/newsroom/sensata-technologies-lithium-balance-debuts-asil-c-certified-battery-management",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Dateline and planned availability",
+                  "quote": "September 13, 2022"
+                }
+              },
+              "date": "2022-09-13"
+            },
+            {
+              "event_type": "planned_availability",
+              "precision": "unspecified",
+              "date_text": "early 2023",
+              "evidence": {
+                "url": "https://www.sensata.com/contact/newsroom/sensata-technologies-lithium-balance-debuts-asil-c-certified-battery-management",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Planned availability",
+                  "quote": "early 2023"
+                }
+              },
+              "note": "Historical plan, not evidence of shipment. No exact day inferred."
+            }
+          ]
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 360,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "360 cells",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 1000,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "cells or 1000V",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Current Lithium Balance identity; historical Sensata branding is not a second product. Scope is the MCU plus CMU12 system; 12 channels is a CMU limit, not the system maximum. Redundant temperature pairs are not imported as independent channels."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/lithium-balance/n-bms-12ch",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Lithium Balance",
+          "model_number": "n-BMS (12-channel CMU system)"
+        },
+        "source": {
+          "uid": "src/lithium-balance-n-bms-12ch-inspected-2026-10-09",
+          "kind": "datasheet",
+          "title": "Lithium Balance n-BMS (12-channel CMU system) — datasheet",
+          "url": "https://lithiumbalance.com/wp-content/uploads/n-BMS-datasheet-lithium-balance.pdf",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. Whole system supports 32 CMUs. Product page and PDF show different MCU identifiers (100800 / 100807); exact MCU SKU is unresolved.",
+          "sha256": "66313b3884592f7c1d41d174d8b2c65e0a7f438f5bc47a362ede36b47f194293"
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "distributed",
+          "balancing": "passive",
+          "interfaces": [
+            "CAN"
+          ],
+          "locator": {
+            "section": "Features and specifications",
+            "quote": "SPECIFICATIONS",
+            "page": 2
+          },
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. Whole system supports 32 CMUs. Product page and PDF show different MCU identifiers (100800 / 100807); exact MCU SKU is unresolved.",
+          "datasheet_url": "https://lithiumbalance.com/wp-content/uploads/n-BMS-datasheet-lithium-balance.pdf"
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://lithiumbalance.com/products/n-bms/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "Battery Management System"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 384,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "384 cells",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 1000,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "cells or 1000V",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Current Lithium Balance identity; historical Sensata branding is not a second product. Whole system supports 32 CMUs. Product page and PDF show different MCU identifiers (100800 / 100807); exact MCU SKU is unresolved."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/lithium-balance/c-bms24",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Lithium Balance",
+          "model_number": "c-BMS24"
+        },
+        "source": {
+          "uid": "src/lithium-balance-c-bms24-inspected-2026-10-09",
+          "kind": "datasheet",
+          "title": "Lithium Balance c-BMS24 — datasheet",
+          "url": "https://lithiumbalance.com/wp-content/uploads/c-BMS24-datasheet-lithium-balance.pdf",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100924 controller. The 120 V HV measurement range is not imported as a pack operating limit. Website/PDF mass conflict is omitted.",
+          "sha256": "c7d3dd54028e229196727b10148622cca6e8114e6ca45d139c84dbb99774c9fb"
+        },
+        "bms": {
+          "identity_scope": "controller",
+          "architecture": "centralized",
+          "balancing": "passive",
+          "interfaces": [
+            "CAN"
+          ],
+          "locator": {
+            "section": "Features and specifications",
+            "quote": "SPECIFICATIONS",
+            "page": 2
+          },
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100924 controller. The 120 V HV measurement range is not imported as a pack operating limit. Website/PDF mass conflict is omitted.",
+          "datasheet_url": "https://lithiumbalance.com/wp-content/uploads/c-BMS24-datasheet-lithium-balance.pdf"
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://lithiumbalance.com/products/c-bms24/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "Battery Management System"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 24,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "24 cells",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_can_ports",
+            "value": 1,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "CAN ports 1",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "controller"
+              }
+            }
+          },
+          {
+            "quantity": "bms_temperature_channels",
+            "value": 6,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "Temperature channels Up to 6",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "external sensors on controller"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Current Lithium Balance identity; historical Sensata branding is not a second product. 100924 controller. The 120 V HV measurement range is not imported as a pack operating limit. Website/PDF mass conflict is omitted."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/lithium-balance/c-bms24x",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Lithium Balance",
+          "model_number": "c-BMS24X"
+        },
+        "source": {
+          "uid": "src/lithium-balance-c-bms24x-inspected-2026-10-09",
+          "kind": "datasheet",
+          "title": "Lithium Balance c-BMS24X — datasheet",
+          "url": "https://lithiumbalance.com/wp-content/uploads/c-BMS24X-datasheet-lithium-balance.pdf",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100925 controller. Launch-announcement date does not establish first shipment. Measurement range and monitored current are not power-path ratings.",
+          "sha256": "f1019534fdca92db9a16a569660e07f876ffbe36c212615094e85ac79f9fd708"
+        },
+        "bms": {
+          "identity_scope": "controller",
+          "architecture": "centralized",
+          "balancing": "passive",
+          "interfaces": [
+            "CAN"
+          ],
+          "locator": {
+            "section": "Features and specifications",
+            "quote": "SPECIFICATIONS",
+            "page": 2
+          },
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100925 controller. Launch-announcement date does not establish first shipment. Measurement range and monitored current are not power-path ratings.",
+          "datasheet_url": "https://lithiumbalance.com/wp-content/uploads/c-BMS24X-datasheet-lithium-balance.pdf"
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://lithiumbalance.com/products/c-bms24x/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "Battery Management System"
+            }
+          },
+          "release": {
+            "status": "documented",
+            "note": "Dated launch announcement; first shipment date is not established.",
+            "event": {
+              "event_type": "launch_announcement",
+              "precision": "day",
+              "date_text": "May 17, 2023",
+              "evidence": {
+                "url": "https://www.sensata.com/contact/newsroom/sensata-technologies-launches-c-bms24x-battery-management-system",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Announcement dateline",
+                  "quote": "May 17, 2023"
+                }
+              },
+              "date": "2023-05-17"
+            }
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 24,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "24 cells",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_can_ports",
+            "value": 1,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "CAN ports 1",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "controller"
+              }
+            }
+          },
+          {
+            "quantity": "bms_temperature_channels",
+            "value": 6,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "Temperature channels Up to 6",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "external sensors on controller"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Current Lithium Balance identity; historical Sensata branding is not a second product. 100925 controller. Launch-announcement date does not establish first shipment. Measurement range and monitored current are not power-path ratings."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/lithium-balance/i-bms15",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Lithium Balance",
+          "model_number": "i-BMS15"
+        },
+        "source": {
+          "uid": "src/lithium-balance-i-bms15-inspected-2026-10-09",
+          "kind": "datasheet",
+          "title": "Lithium Balance i-BMS15 — datasheet",
+          "url": "https://lithiumbalance.com/wp-content/uploads/i-BMS-datasheet-lithium-balance.pdf",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100916 integrated controller. PDF and webpage disagree on continuous/peak current and parallel-pack count; those fields are withheld. Six external temperature sensors exclude four onboard channels.",
+          "sha256": "16e88d63f33d579d0d5a2616081a9a99ced4980111037425a418133e19c4673d"
+        },
+        "bms": {
+          "identity_scope": "controller",
+          "architecture": "integrated",
+          "balancing": "passive",
+          "interfaces": [
+            "CAN"
+          ],
+          "locator": {
+            "section": "Features and specifications",
+            "quote": "SPECIFICATIONS",
+            "page": 2
+          },
+          "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. 100916 integrated controller. PDF and webpage disagree on continuous/peak current and parallel-pack count; those fields are withheld. Six external temperature sensors exclude four onboard channels.",
+          "datasheet_url": "https://lithiumbalance.com/wp-content/uploads/i-BMS-datasheet-lithium-balance.pdf"
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://lithiumbalance.com/products/i-bms15/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "Battery Management System"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": [
+            {
+              "event_type": "announcement",
+              "precision": "day",
+              "date_text": "September 9, 2021",
+              "evidence": {
+                "url": "https://www.sensata.com/contact/newsroom/st-debut-new-battery-management-systems-battery-show-north-america",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Announcement dateline",
+                  "quote": "September 9, 2021"
+                }
+              },
+              "date": "2021-09-09"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 15,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "channels 8 - 15",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_can_ports",
+            "value": 1,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "CAN ports 1",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "controller"
+              }
+            }
+          },
+          {
+            "quantity": "bms_temperature_channels",
+            "value": 6,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "6 external (NTC)",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "external sensors on controller"
+              }
+            }
+          },
+          {
+            "quantity": "bms_series_cells_min",
+            "value": 8,
+            "unit": "1",
+            "statistic": "minimum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "channels 8 - 15",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 60,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Introduction / application voltage",
+              "quote": "applications up to 60V",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Current Lithium Balance identity; historical Sensata branding is not a second product. 100916 integrated controller. PDF and webpage disagree on continuous/peak current and parallel-pack count; those fields are withheld. Six external temperature sensors exclude four onboard channels."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/ewert-energy-systems/orion-bms-2",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Ewert Energy Systems",
+          "model_number": "Orion BMS 2"
+        },
+        "source": {
+          "uid": "src/ewert-energy-systems-orion-bms-2-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "Ewert Energy Systems Orion BMS 2 — product information",
+          "url": "https://www.orionbms.com/products/orion-bms-standard/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "One family covering 24–180-channel ordering configurations, not fourteen separate product records. Pack-voltage limit includes remote expansion; 180-channel limit is per main unit. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "centralized",
+          "balancing": "passive",
+          "interfaces": [
+            "CAN"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "Quick Specifications"
+          },
+          "note": "One family covering 24–180-channel ordering configurations, not fourteen separate product records. Pack-voltage limit includes remote expansion; 180-channel limit is per main unit."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://www.orionbms.com/products/orion-bms-standard/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "Orion BMS 2"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 180,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "180 battery cells"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "per main unit; capacity varies by purchased configuration"
+              }
+            }
+          },
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 800,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "800vDC max"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "system with remote expansion modules; maximum two remote modules"
+              },
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "bms_can_ports",
+            "value": 2,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "Dual (x2) CANBUS"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "main unit"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "One family covering 24–180-channel ordering configurations, not fourteen separate product records. Pack-voltage limit includes remote expansion; 180-channel limit is per main unit."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/ewert-energy-systems/orion-jr-2",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Ewert Energy Systems",
+          "model_number": "Orion Jr 2 BMS"
+        },
+        "source": {
+          "uid": "src/ewert-energy-systems-orion-jr-2-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "Ewert Energy Systems Orion Jr 2 BMS — product information",
+          "url": "https://www.orionbms.com/products/orion-jr-2-bms/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Family scope; CAN-enabled versus base option is not resolved to a purchasing SKU. 48 V is nominal, 60 V is the maximum. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "centralized",
+          "balancing": "passive",
+          "interfaces": [
+            "CAN (optional variant)"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "Orion Jr 2 BMS"
+          },
+          "note": "Family scope; CAN-enabled versus base option is not resolved to a purchasing SKU. 48 V is nominal, 60 V is the maximum."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://www.orionbms.com/products/orion-jr-2-bms/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "Orion Jr 2 BMS"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_min",
+            "value": 1,
+            "unit": "1",
+            "statistic": "minimum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "1 to 16 cells"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 16,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "1 to 16 cells"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 60,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "(60V max)"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Family scope; CAN-enabled versus base option is not resolved to a purchasing SKU. 48 V is nominal, 60 V is the maximum."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/nuvation-energy/g4-high-voltage",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Nuvation Energy",
+          "model_number": "G4 High-Voltage BMS"
+        },
+        "source": {
+          "uid": "src/nuvation-energy-g4-high-voltage-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "Nuvation Energy G4 High-Voltage BMS — product information",
+          "url": "https://nuvationenergy.com/battery-management-systems/g4-high-voltage-bms/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [],
+          "locator": {
+            "section": "Product features",
+            "quote": "G4 High-Voltage BMS"
+          },
+          "note": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://nuvationenergy.com/battery-management-systems/g4-high-voltage-bms/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "G4 High-Voltage BMS"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 1250,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "1250V DC"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/nuvation-energy/g5-high-voltage",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Nuvation Energy",
+          "model_number": "G5 High-Voltage BMS"
+        },
+        "source": {
+          "uid": "src/nuvation-energy-g5-high-voltage-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "Nuvation Energy G5 High-Voltage BMS — product information",
+          "url": "https://nuvationenergy.com/battery-management-systems/g5-high-voltage-bms/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [],
+          "locator": {
+            "section": "Product features",
+            "quote": "G5 High-Voltage BMS"
+          },
+          "note": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://nuvationenergy.com/battery-management-systems/g5-high-voltage-bms/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "G5 High-Voltage BMS"
+            }
+          },
+          "release": {
+            "status": "conflicting",
+            "note": "Shipping article header says 25 March 2024; body dateline says 26 March 2023. Neither is selected as an exact release date."
+          },
+          "events": [
+            {
+              "event_type": "volume_shipping",
+              "precision": "unspecified",
+              "date_text": "Header: March 25, 2024; body: March 26, 2023",
+              "evidence": {
+                "url": "https://nuvationenergy.com/news/nuvation-energys-made-in-us-and-canada-g5-battery-management-system-for-energy-storage-begins-volume-shipping/",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Header; compare body dateline",
+                  "quote": "March 25, 2024"
+                }
+              },
+              "note": "Unresolved one-year disagreement in the original article."
+            }
+          ]
+        },
+        "observations": [
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 1500,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "1500V DC"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/nuvation-energy/g5-plus-high-voltage",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Nuvation Energy",
+          "model_number": "G5 Plus High-Voltage BMS"
+        },
+        "source": {
+          "uid": "src/nuvation-energy-g5-plus-high-voltage-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "Nuvation Energy G5 Plus High-Voltage BMS — product information",
+          "url": "https://nuvationenergy.com/battery-management-systems/g5-plus-high-voltage-bms/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [],
+          "locator": {
+            "section": "Product features",
+            "quote": "G5 Plus High-Voltage BMS"
+          },
+          "note": "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "announced",
+          "market_evidence": {
+            "url": "https://nuvationenergy.com/battery-management-systems/g5-plus-high-voltage-bms/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Platform comparison / Availability",
+              "quote": "Evaluation units planned for 2027"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": [
+            {
+              "event_type": "planned_availability",
+              "precision": "year",
+              "date_text": "2027",
+              "evidence": {
+                "url": "https://nuvationenergy.com/battery-management-systems/g5-plus-high-voltage-bms/",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Platform comparison / Availability",
+                  "quote": "Evaluation units planned for 2027"
+                }
+              },
+              "date": "2027",
+              "note": "Evaluation units only; not commercial availability."
+            }
+          ]
+        },
+        "observations": [
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 1500,
+            "unit": "V",
+            "statistic": "design",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "1500V DC"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "System family. CI cell-channel limits and 200/300/350 A configurations are not copied to a universal system rating. No independent certification claim is made."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/enepaq/tinybms-v2-1-high-power",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Enepaq",
+          "model_number": "TinyBMS v2.1 High Power"
+        },
+        "source": {
+          "uid": "src/enepaq-tinybms-v2-1-high-power-inspected-2026-10-09",
+          "kind": "datasheet",
+          "title": "Enepaq TinyBMS v2.1 High Power — datasheet",
+          "url": "https://enepaq.com/wp-content/uploads/2025/02/Tiny-BMS-v2.1-One-Pager-Datasheet-1.pdf",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted.",
+          "sha256": "d875fa917d1e6a067cb436285ff4b673e3925832de95ba67d67a8ed16ef79853",
+          "revision": "Revision F",
+          "document_date": "2026-08-17"
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "integrated",
+          "balancing": "passive",
+          "interfaces": [
+            "UART",
+            "Modbus",
+            "CAN (external adapter)",
+            "Bluetooth (external adapter)"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "ELECTRICAL SPECIFICATIONS",
+            "page": 1
+          },
+          "note": "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted.",
+          "datasheet_url": "https://enepaq.com/wp-content/uploads/2025/02/Tiny-BMS-v2.1-One-Pager-Datasheet-1.pdf"
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://enepaq.com/product/battery-management-system-bms-150a-set-tinybms-s516/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "TinyBMS v2.1 High Power"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": [
+            {
+              "event_type": "document_revision",
+              "precision": "day",
+              "date_text": "2026-08-17",
+              "evidence": {
+                "url": "https://enepaq.com/wp-content/uploads/2025/02/Tiny-BMS-v2.1-One-Pager-Datasheet-1.pdf",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Footer / Revision F",
+                  "quote": "2026-08-17"
+                },
+                "sha256": "d875fa917d1e6a067cb436285ff4b673e3925832de95ba67d67a8ed16ef79853"
+              },
+              "date": "2026-08-17",
+              "note": "Datasheet revision date, not a product release date."
+            }
+          ]
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_min",
+            "value": 4,
+            "unit": "1",
+            "statistic": "minimum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "4S – 16S",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 16,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "4S – 16S",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 75,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "9 – 75 V",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "bms_temperature_channels",
+            "value": 2,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "2 external sensors",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "external sensors"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/enepaq/tinybms-v2-2-high-power",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Enepaq",
+          "model_number": "TinyBMS v2.2 High Power"
+        },
+        "source": {
+          "uid": "src/enepaq-tinybms-v2-2-high-power-inspected-2026-10-09",
+          "kind": "datasheet",
+          "title": "Enepaq TinyBMS v2.2 High Power — datasheet",
+          "url": "https://enepaq.com/wp-content/uploads/2025/07/Tiny-BMS-v2.2-One-Pager-Datasheet-1.pdf",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted.",
+          "sha256": "7054001fceef192c1a1f61856bc7f26545f7eca06c09811a60666bf7ec31467c",
+          "revision": "Revision A",
+          "document_date": "2026-08-17"
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "integrated",
+          "balancing": "passive",
+          "interfaces": [
+            "UART",
+            "Modbus",
+            "CAN (external adapter)",
+            "Bluetooth (external adapter)"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "ELECTRICAL SPECIFICATIONS",
+            "page": 1
+          },
+          "note": "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted.",
+          "datasheet_url": "https://enepaq.com/wp-content/uploads/2025/07/Tiny-BMS-v2.2-One-Pager-Datasheet-1.pdf"
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://enepaq.com/product/battery-management-system-bms-tinybms-v2-2-high-power/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "TinyBMS v2.2 High Power"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": [
+            {
+              "event_type": "document_revision",
+              "precision": "day",
+              "date_text": "2026-08-17",
+              "evidence": {
+                "url": "https://enepaq.com/wp-content/uploads/2025/07/Tiny-BMS-v2.2-One-Pager-Datasheet-1.pdf",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Footer / Revision A",
+                  "quote": "2026-08-17"
+                },
+                "sha256": "7054001fceef192c1a1f61856bc7f26545f7eca06c09811a60666bf7ec31467c"
+              },
+              "date": "2026-08-17",
+              "note": "Datasheet revision date, not a product release date."
+            }
+          ]
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_min",
+            "value": 4,
+            "unit": "1",
+            "statistic": "minimum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "4S – 16S",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 16,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "4S – 16S",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 75,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "9 – 75 V",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          },
+          {
+            "quantity": "bms_temperature_channels",
+            "value": 2,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "2 external sensors",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "external sensors"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Version-specific High Power board; nominal 12–60 V differs from 9–75 V battery range. CAN and Bluetooth need external adapters; no native CAN-port count asserted."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/emus/mini-3",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "EMUS",
+          "model_number": "Mini 3"
+        },
+        "source": {
+          "uid": "src/emus-mini-3-inspected-2026-10-11",
+          "kind": "manufacturer_web",
+          "title": "EMUS Mini 3 — product information",
+          "url": "https://emusbms.com/faq/",
+          "retrieved_at": "2026-10-11",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Mini 3 family. FAQ publication date and manual download timestamp do not establish the product release; no exact MNC313 hardware revision inferred. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "integrated",
+          "balancing": "passive",
+          "interfaces": [
+            "CAN",
+            "USB"
+          ],
+          "locator": {
+            "section": "Which EMUS BMS system to choose? / BMS Mini",
+            "quote": "Mini 3 Datasheet"
+          },
+          "note": "Mini 3 family. FAQ publication date and manual download timestamp do not establish the product release; no exact MNC313 hardware revision inferred."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-11",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://emusbms.com/faq/",
+            "retrieved_at": "2026-10-11",
+            "locator": {
+              "section": "FAQ 9 / How many cells",
+              "quote": "EMUS BMS Mini 3"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_min",
+            "value": 6,
+            "unit": "1",
+            "statistic": "minimum",
+            "locator": {
+              "section": "Which EMUS BMS system to choose? / BMS Mini",
+              "quote": "6-16 cells"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 16,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Which EMUS BMS system to choose? / BMS Mini",
+              "quote": "6-16 cells"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Mini 3 family. FAQ publication date and manual download timestamp do not establish the product release; no exact MNC313 hardware revision inferred."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/rec/active-bms-4s",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "REC",
+          "model_number": "Active BMS 4S"
+        },
+        "source": {
+          "uid": "src/rec-active-bms-4s-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "REC Active BMS 4S — product information",
+          "url": "https://www.rec-bms.com/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Single 4S controller; keep separate from REC 2Q and high-voltage master products.",
+          "sha256": "6d8167a90793d8ed3cd83187725d726d41c42358b6399b43f15b896b9f79db4e"
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "centralized",
+          "balancing": "active",
+          "interfaces": [
+            "CAN",
+            "RS485"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "REC Active BMS"
+          },
+          "note": "Single 4S controller; keep separate from REC 2Q and high-voltage master products."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://www.rec-bms.com/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "Active BMS 4S"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 4,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "REC Active BMS",
+              "quote": "4 series connected cells"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Single 4S controller; keep separate from REC 2Q and high-voltage master products."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/rec/2q-16s",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "REC",
+          "model_number": "2Q BMS 16S"
+        },
+        "source": {
+          "uid": "src/rec-2q-16s-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "REC 2Q BMS 16S — product information",
+          "url": "https://www.rec-bms.com/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Controller family; exact firmware and loom variant unspecified. No balancing topology inferred from the model name.",
+          "sha256": "6d8167a90793d8ed3cd83187725d726d41c42358b6399b43f15b896b9f79db4e"
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "centralized",
+          "balancing": "unspecified",
+          "interfaces": [
+            "CAN"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "REC 2Q BMS"
+          },
+          "note": "Controller family; exact firmware and loom variant unspecified. No balancing topology inferred from the model name."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://www.rec-bms.com/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "2Q BMS 16S"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_min",
+            "value": 4,
+            "unit": "1",
+            "statistic": "minimum",
+            "locator": {
+              "section": "REC 2Q BMS",
+              "quote": "from 4 to 16"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 16,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "REC 2Q BMS",
+              "quote": "from 4 to 16"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Controller family; exact firmware and loom variant unspecified. No balancing topology inferred from the model name."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/rec/10m-master",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "REC",
+          "model_number": "10M Master BMS"
+        },
+        "source": {
+          "uid": "src/rec-10m-master-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "REC 10M Master BMS — product information",
+          "url": "https://www.rec-bms.com/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Master-system scope, up to twelve 16-cell slaves. Per-slave sensor counts are not published as whole-system limits.",
+          "sha256": "6d8167a90793d8ed3cd83187725d726d41c42358b6399b43f15b896b9f79db4e"
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [],
+          "locator": {
+            "section": "Product features",
+            "quote": "REC 10M MASTER BMS"
+          },
+          "note": "Master-system scope, up to twelve 16-cell slaves. Per-slave sensor counts are not published as whole-system limits."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://www.rec-bms.com/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "10M Master BMS"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 192,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "REC 10M Master BMS",
+              "quote": "192 cells"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Master-system scope, up to twelve 16-cell slaves. Per-slave sensor counts are not published as whole-system limits."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/prohelion/d1000-gen2",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Prohelion",
+          "model_number": "D1000 Gen2"
+        },
+        "source": {
+          "uid": "src/prohelion-d1000-gen2-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "Prohelion D1000 Gen2 — product information",
+          "url": "https://docs.prohelion.com/Battery_Management_Systems/Prohelion_BMS_D1000_Gen2/index.html",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Complete Gen2 system, not the 14-channel CMU alone. 12 V and 24 V auxiliary-supply variants remain unspecified.",
+          "sha256": "0a56e7ea7cbbe0116be8fa21958d5fdbdf51cff6e69370f53325286862a8d4bc"
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [
+            "CAN"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "Prohelion BMS D1000 Gen2"
+          },
+          "note": "Complete Gen2 system, not the 14-channel CMU alone. 12 V and 24 V auxiliary-supply variants remain unspecified."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://docs.prohelion.com/Battery_Management_Systems/Prohelion_BMS_D1000_Gen2/index.html",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "D1000 Gen2"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_min",
+            "value": 4,
+            "unit": "1",
+            "statistic": "minimum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "4-448 (configurable)"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 448,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "4-448 (configurable)"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_temperature_channels",
+            "value": 128,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "0-128 (configurable)"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 1000,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Introduction / battery pack voltage",
+              "quote": "up to 1000V"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              },
+              "electrical_system": "DC"
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Complete Gen2 system, not the 14-channel CMU alone. 12 V and 24 V auxiliary-supply variants remain unspecified."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/wattius/wbms-hx",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Wattius",
+          "model_number": "wBMS-HX BMU V4"
+        },
+        "source": {
+          "uid": "src/wattius-wbms-hx-inspected-2026-10-09",
+          "kind": "datasheet",
+          "title": "Wattius wBMS-HX BMU V4 — datasheet",
+          "url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-HX-BMU-V4-Datasheet.pdf",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases.",
+          "sha256": "b75e48398e1972ae11cb26dd72fb6214a896c82b2146eec404d42288ccaa2022",
+          "revision": "20251212 RevD",
+          "document_date": "2025-12-12"
+        },
+        "bms": {
+          "identity_scope": "controller",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [
+            "CAN",
+            "USB",
+            "Bluetooth",
+            "Ethernet / Modbus TCP"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "Connectivity",
+            "page": 1
+          },
+          "note": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases.",
+          "datasheet_url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-HX-BMU-V4-Datasheet.pdf"
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://wattius.com/wbms-hx/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "wBMS-HX BMU V4"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": [
+            {
+              "event_type": "document_revision",
+              "date": "2025-12-12",
+              "precision": "day",
+              "date_text": "20251212 RevD",
+              "evidence": {
+                "url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-HX-BMU-V4-Datasheet.pdf",
+                "retrieved_at": "2026-10-09",
+                "sha256": "b75e48398e1972ae11cb26dd72fb6214a896c82b2146eec404d42288ccaa2022",
+                "locator": {
+                  "page": 2,
+                  "section": "Printed footer",
+                  "quote": "20251212 RevD"
+                }
+              },
+              "note": "Printed document revision; not a product release."
+            }
+          ]
+        },
+        "observations": [
+          {
+            "quantity": "bms_can_ports",
+            "value": 2,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "2x Isolated CAN bus",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "BMU controller"
+              }
+            }
+          },
+          {
+            "quantity": "bms_pack_voltage_max",
+            "value": 1500,
+            "unit": "V",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "applications up to 1.500 V",
+              "page": 1
+            },
+            "conditions": {
+              "extra": {
+                "scope": "HX system application capability"
+              },
+              "electrical_system": "DC"
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/wattius/wbms-mx-pro",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Wattius",
+          "model_number": "wBMS-MX BMU Pro"
+        },
+        "source": {
+          "uid": "src/wattius-wbms-mx-pro-inspected-2026-10-09",
+          "kind": "datasheet",
+          "title": "Wattius wBMS-MX BMU Pro — datasheet",
+          "url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-MX-BMU-Pro-V3.pdf",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases.",
+          "sha256": "66504597544902c4bb621701eea74b707ef69155d189455a9cd5cd598a4a8bd7",
+          "revision": "20251212 RevF",
+          "document_date": "2025-12-12"
+        },
+        "bms": {
+          "identity_scope": "controller",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [
+            "CAN",
+            "USB",
+            "Bluetooth"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "Connectivity",
+            "page": 1
+          },
+          "note": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases.",
+          "datasheet_url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-MX-BMU-Pro-V3.pdf"
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://wattius.com/wbms-mx-pro/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "wBMS-MX BMU Pro"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": [
+            {
+              "event_type": "document_revision",
+              "date": "2025-12-12",
+              "precision": "day",
+              "date_text": "20251212 RevF",
+              "evidence": {
+                "url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-MX-BMU-Pro-V3.pdf",
+                "retrieved_at": "2026-10-09",
+                "sha256": "66504597544902c4bb621701eea74b707ef69155d189455a9cd5cd598a4a8bd7",
+                "locator": {
+                  "page": 2,
+                  "section": "Printed footer",
+                  "quote": "20251212 RevF"
+                }
+              },
+              "note": "Printed document revision; not a product release."
+            }
+          ]
+        },
+        "observations": [
+          {
+            "quantity": "bms_can_ports",
+            "value": 2,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "2x CAN bus 2.0 A/B",
+              "page": 2
+            },
+            "conditions": {
+              "extra": {
+                "scope": "BMU controller"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/elithion/lithiumate-pro",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Elithion",
+          "model_number": "Lithiumate Pro Master"
+        },
+        "source": {
+          "uid": "src/elithion-lithiumate-pro-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "Elithion Lithiumate Pro Master — product information",
+          "url": "https://www.elithion.com/lithiumate_controllers.php",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "controller",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [
+            "CAN",
+            "RS232"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "Lithiumate"
+          },
+          "note": "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-11",
+          "market_status": "legacy_support_only",
+          "market_evidence": {
+            "url": "https://www.elithion.com/index.php",
+            "retrieved_at": "2026-10-11",
+            "locator": {
+              "section": "Current news",
+              "quote": "We no longer sell new systems."
+            }
+          },
+          "release": {
+            "status": "documented",
+            "event": {
+              "event_type": "commercial_release",
+              "precision": "year",
+              "date_text": "2007",
+              "evidence": {
+                "url": "https://www.elithion.com/lithiumate_controllers.php",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Pro / HD comparison table",
+                  "quote": "Released 2007 2015"
+                }
+              },
+              "date": "2007"
+            },
+            "note": "Manufacturer supplies a release year only; no day or month inferred."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_cell_banks_max",
+            "value": 16,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Pro / HD comparison table",
+              "quote": "Banks 16 8"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "master controller banks, not cells"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/elithion/lithiumate-hd",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Elithion",
+          "model_number": "Lithiumate HD Master"
+        },
+        "source": {
+          "uid": "src/elithion-lithiumate-hd-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "Elithion Lithiumate HD Master — product information",
+          "url": "https://www.elithion.com/lithiumate_controllers.php",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "controller",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [
+            "CAN",
+            "USB"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "Lithiumate"
+          },
+          "note": "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-11",
+          "market_status": "legacy_support_only",
+          "market_evidence": {
+            "url": "https://www.elithion.com/index.php",
+            "retrieved_at": "2026-10-11",
+            "locator": {
+              "section": "Current news",
+              "quote": "We no longer sell new systems."
+            }
+          },
+          "release": {
+            "status": "documented",
+            "event": {
+              "event_type": "commercial_release",
+              "precision": "year",
+              "date_text": "2015",
+              "evidence": {
+                "url": "https://www.elithion.com/lithiumate_controllers.php",
+                "retrieved_at": "2026-10-09",
+                "locator": {
+                  "section": "Pro / HD comparison table",
+                  "quote": "Released 2007 2015"
+                }
+              },
+              "date": "2015"
+            },
+            "note": "Manufacturer supplies a release year only; no day or month inferred."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_cell_banks_max",
+            "value": 8,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Pro / HD comparison table",
+              "quote": "Banks 16 8"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "master controller banks, not cells"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/jikong/jk-pb2a16s-20p-v14",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "JK (Jikong)",
+          "model_number": "JK-PB2A16S-20P V14.0"
+        },
+        "source": {
+          "uid": "src/jikong-jk-pb2a16s-20p-v14-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "JK (Jikong) JK-PB2A16S-20P V14.0 — product information",
+          "url": "https://www.jkbms.com/product/jk-pb2a16s20p-jk-pb2a16s-20p/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "JK-branded V14.0 page; date field is blank. Page timestamp is not a release. Setting-range currents and supply voltage are not treated as conditioned power-path or pack limits. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "controller",
+          "architecture": "integrated",
+          "balancing": "active",
+          "interfaces": [
+            "CAN",
+            "RS485",
+            "RS232",
+            "Bluetooth"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "JK-PB2A16S-20P"
+          },
+          "note": "JK-branded V14.0 page; date field is blank. Page timestamp is not a release. Setting-range currents and supply voltage are not treated as conditioned power-path or pack limits."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://www.jkbms.com/product/jk-pb2a16s20p-jk-pb2a16s-20p/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "JK-PB2A16S-20P"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 16,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Specifications / Supported Cell Number",
+              "quote": "Supported Cell Number 16"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_temperature_channels",
+            "value": 4,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Features",
+              "quote": "4-channel temperature detection"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "JK-branded V14.0 page; date field is blank. Page timestamp is not a release. Setting-range currents and supply voltage are not treated as conditioned power-path or pack limits."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/daly/k-series-smart",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "DALY",
+          "model_number": "K Series Smart BMS (3S–24S family)"
+        },
+        "source": {
+          "uid": "src/daly-k-series-smart-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "DALY K Series Smart BMS (3S–24S family) — product information",
+          "url": "https://www.dalybms.com/12v-100a-bms-k-series-smart-bms-3s-to-24s-40a-60a-product/",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Family-level coverage across 40/60/100 A options; no Cartesian expansion into unverified ordering codes or universal current rating. Original bytes unavailable; no hash asserted."
+        },
+        "bms": {
+          "identity_scope": "system_family",
+          "architecture": "integrated",
+          "balancing": "passive",
+          "interfaces": [
+            "CAN",
+            "RS485",
+            "UART"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "K Series Smart BMS"
+          },
+          "note": "Family-level coverage across 40/60/100 A options; no Cartesian expansion into unverified ordering codes or universal current rating."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://www.dalybms.com/12v-100a-bms-k-series-smart-bms-3s-to-24s-40a-60a-product/",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "K Series Smart BMS"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_min",
+            "value": 3,
+            "unit": "1",
+            "statistic": "minimum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "3S to 24S"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          },
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 24,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "Technical specifications",
+              "quote": "3S to 24S"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "whole system"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Family-level coverage across 40/60/100 A options; no Cartesian expansion into unverified ordering codes or universal current rating."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/batrium/watchmoncore-cellmatek9",
+          "kind": "component",
+          "component_type": "bms",
+          "manufacturer": "Batrium",
+          "model_number": "WatchMonCORE + one CellMate-K9"
+        },
+        "source": {
+          "uid": "src/batrium-watchmoncore-cellmatek9-inspected-2026-10-09",
+          "kind": "manufacturer_web",
+          "title": "Batrium WatchMonCORE + one CellMate-K9 — product information",
+          "url": "https://www.batrium.com/pages/getting-started",
+          "retrieved_at": "2026-10-09",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Explicit controller-plus-one-monitor configuration; CellMate-K9 alone is not a complete BMS. The ShuntMon voltage rating is not a whole-system operating limit.",
+          "sha256": "3c7a950f10eca9570c7a75cb5b7242fd0fff537dc6e066b87b1b845625dfcc1d"
+        },
+        "bms": {
+          "identity_scope": "configuration",
+          "architecture": "distributed",
+          "balancing": "unspecified",
+          "interfaces": [
+            "CAN",
+            "USB",
+            "WiFi"
+          ],
+          "locator": {
+            "section": "Product features",
+            "quote": "WatchMonCORE"
+          },
+          "note": "Explicit controller-plus-one-monitor configuration; CellMate-K9 alone is not a complete BMS. The ShuntMon voltage rating is not a whole-system operating limit."
+        },
+        "lifecycle": {
+          "checked_at": "2026-10-09",
+          "market_status": "manufacturer_listed",
+          "market_evidence": {
+            "url": "https://www.batrium.com/pages/getting-started",
+            "retrieved_at": "2026-10-09",
+            "locator": {
+              "section": "Product information",
+              "quote": "WatchMonCORE"
+            }
+          },
+          "release": {
+            "status": "not_found",
+            "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+          },
+          "events": []
+        },
+        "observations": [
+          {
+            "quantity": "bms_series_cells_min",
+            "value": 3,
+            "unit": "1",
+            "statistic": "minimum",
+            "locator": {
+              "section": "CellMate-K9",
+              "quote": "3 to 16 cells"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "one CellMate-K9 configuration"
+              }
+            }
+          },
+          {
+            "quantity": "bms_series_cells_max",
+            "value": 16,
+            "unit": "1",
+            "statistic": "maximum",
+            "locator": {
+              "section": "CellMate-K9",
+              "quote": "3 to 16 cells"
+            },
+            "conditions": {
+              "extra": {
+                "scope": "one CellMate-K9 configuration"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Explicit controller-plus-one-monitor configuration; CellMate-K9 alone is not a complete BMS. The ShuntMon voltage rating is not a whole-system operating limit."
+      ]
+    }
+  ]
+}

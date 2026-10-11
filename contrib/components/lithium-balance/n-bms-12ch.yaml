@@ -1,0 +1,88 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/lithium-balance/n-bms-12ch",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Lithium Balance",
+    "model_number": "n-BMS (12-channel CMU system)"
+  },
+  "source": {
+    "uid": "src/lithium-balance-n-bms-12ch-inspected-2026-10-09",
+    "kind": "datasheet",
+    "title": "Lithium Balance n-BMS (12-channel CMU system) — datasheet",
+    "url": "https://lithiumbalance.com/wp-content/uploads/n-BMS-datasheet-lithium-balance.pdf",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. Whole system supports 32 CMUs. Product page and PDF show different MCU identifiers (100800 / 100807); exact MCU SKU is unresolved.",
+    "sha256": "66313b3884592f7c1d41d174d8b2c65e0a7f438f5bc47a362ede36b47f194293"
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "distributed",
+    "balancing": "passive",
+    "interfaces": [
+      "CAN"
+    ],
+    "locator": {
+      "section": "Features and specifications",
+      "quote": "SPECIFICATIONS",
+      "page": 2
+    },
+    "note": "Current Lithium Balance identity; historical Sensata branding is not a second product. Whole system supports 32 CMUs. Product page and PDF show different MCU identifiers (100800 / 100807); exact MCU SKU is unresolved.",
+    "datasheet_url": "https://lithiumbalance.com/wp-content/uploads/n-BMS-datasheet-lithium-balance.pdf"
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://lithiumbalance.com/products/n-bms/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "Battery Management System"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 384,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "384 cells",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_pack_voltage_max",
+      "value": 1000,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "cells or 1000V",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        },
+        "electrical_system": "DC"
+      }
+    }
+  ]
+}
