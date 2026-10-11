@@ -6,7 +6,6 @@ from pathlib import Path
 import re
 
 import jsonschema
-from referencing import Registry, Resource
 
 ROOT = Path(__file__).resolve().parents[1]
 TIMELINE = Path('technology/milestones.json')
@@ -57,9 +56,14 @@ def load_timeline(root=ROOT):
     payload = json.loads(path.read_text())
     contribution = json.loads((ROOT / 'json-schema/cell-contribution.schema.json').read_text())
     schema = json.loads((ROOT / 'json-schema/technology-timeline.schema.json').read_text())
-    registry = Registry().with_resource(contribution['$id'], Resource.from_contents(contribution))
+    # Resolve the one external schema reference locally. Keep compatibility with
+    # the system jsonschema used by setup.sh; do not require its newer optional
+    # referencing API just to validate ordinary contribution dates.
+    schema['$defs'] = contribution['$defs']
+    schema['properties']['milestones']['items']['properties']['event'] = {
+        '$ref': '#/$defs/lifecycle_event'}
     try:
-        jsonschema.Draft202012Validator(schema, registry=registry,
+        jsonschema.Draft202012Validator(schema,
                                       format_checker=jsonschema.FormatChecker()).validate(payload)
     except jsonschema.ValidationError as error:
         raise ValueError(f'{path}: {error.message}') from error
