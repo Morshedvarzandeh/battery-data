@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 """Export a deterministic read snapshot of the accepted library.
 
-The snapshot is derived from contrib/ alone: review/, seed/ and patent
+The accepted records are derived from contrib/ alone: review/, seed/ and patent
 candidates never enter it. It is the file Lemonergy's hosted Data API is
 built from, and the same file anyone can build locally to check what that
 API serves. Every record keeps its values, units, conditions, bounds, source
-and locator; nothing is summarised here.
+and locator. Each entry also exposes a derived dates view. Reviewed platform
+milestones from technology/milestones.json remain separate from product facts.
 
     python tools/export_catalog_snapshot.py --output build/catalog.json
 
 Each record is validated with the contribution schema and the quantity
 registry first (tools/validate_contrib.py). One invalid file refuses the
 whole export: a snapshot that silently dropped a record would look complete
-and be wrong. The export also refuses a dirty contrib/ tree, so the recorded
-revision is the commit the records actually came from.
+and be wrong. Uncommitted contributions or milestone changes refuse a normal
+export, so its revision identifies the evidence actually exported.
 """
 from __future__ import annotations
 
@@ -32,6 +33,7 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from validate_contrib import REGISTRY, SCHEMA, check  # noqa: E402
+from catalog_dates import TIMELINE, load_timeline, record_dates  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "https://github.com/Morshedvarzandeh/battery-data"
@@ -65,7 +67,7 @@ def git_revision(root: Path) -> str:
 
 
 def contrib_is_dirty(root: Path) -> bool:
-    result = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--", "contrib"],
+    result = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--", "contrib", str(TIMELINE)],
                             capture_output=True, text=True)
     return result.returncode == 0 and bool(result.stdout.strip())
 
@@ -79,9 +81,9 @@ def build(root: Path, revision: str, *, schema: dict | None = None,
     if not contrib.is_dir():
         raise ValueError(f"no contrib/ directory under {root}")
     if schema is None:
-        schema = json.load(open(SCHEMA))
+        schema = json.loads(Path(SCHEMA).read_text())
     if registry is None:
-        registry = json.load(open(REGISTRY))
+        registry = json.loads(Path(REGISTRY).read_text())
     validator = jsonschema.Draft202012Validator(schema)
 
     records, seen, errors = [], {}, []
@@ -100,7 +102,7 @@ def build(root: Path, revision: str, *, schema: dict | None = None,
             continue
         seen[uid] = relative
         # Approval is the promotion into contrib/; nothing else is scanned.
-        records.append({"file": relative, "record": doc})
+        records.append({"file": relative, "record": doc, "dates": record_dates(doc)})
     if errors:
         raise ValueError("\n".join(errors))
     if not records:
@@ -117,6 +119,7 @@ def build(root: Path, revision: str, *, schema: dict | None = None,
             "by_kind": dict(sorted(Counter(entry["record"]["product"]["kind"] for entry in records).items())),
         },
         "records": records,
+        "technology_milestones": load_timeline(root),
     }
     return {**content, "release": digest(content)}
 
@@ -130,13 +133,13 @@ def main() -> int:
                         help="full commit SHA the records come from (default: git rev-parse HEAD)")
     parser.add_argument("--output", type=Path, required=True, help="where to write catalog.json")
     parser.add_argument("--allow-dirty", action="store_true",
-                        help="export even if contrib/ has uncommitted changes (local checks only)")
+                        help="export even if contributions or milestones have uncommitted changes (local checks only)")
     args = parser.parse_args()
     root = args.root.resolve()
     try:
         revision = args.revision or git_revision(root)
         if not args.allow_dirty and contrib_is_dirty(root):
-            raise ValueError("contrib/ has uncommitted changes; commit them or pass --allow-dirty")
+            raise ValueError("contrib/ or technology/milestones.json has uncommitted changes; commit them or pass --allow-dirty")
         snapshot = build(root, revision)
     except ValueError as error:
         print(f"export refused:\n{error}", file=sys.stderr)

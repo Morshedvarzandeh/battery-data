@@ -56,6 +56,7 @@ jobs:
           python tools/build_web_data.py
           python tools/build_component_catalog.py
           python tools/build_browse_catalog.py
+          python tools/build_date_catalog.py
 
       - name: Commit the accepted record
         env:

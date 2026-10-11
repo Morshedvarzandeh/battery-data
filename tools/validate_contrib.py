@@ -27,6 +27,7 @@ except ImportError:
 import jsonschema
 from datetime import date
 import re
+from catalog_dates import date_value
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCHEMA = os.path.join(ROOT, "json-schema", "cell-contribution.schema.json")
@@ -84,6 +85,14 @@ def check(path: str, schema: dict, registry: dict, *, validator=None) -> list[st
 
     errs += check_applications(path, doc)
     errs += check_lifecycle(path, doc)
+    for field in ('document_date', 'retrieved_at'):
+        value = doc.get('source', {}).get(field)
+        try:
+            parsed = date_value(value)
+            if value and field == 'retrieved_at' and parsed['precision'] != 'day':
+                raise ValueError('retrieved_at must identify the day checked')
+        except ValueError as error:
+            errs.append(f'{path}: source.{field}: {error}')
     return errs
 
 
@@ -97,11 +106,29 @@ def check_lifecycle(path: str, doc: dict) -> list[str]:
     events = list(life['events'])
     if life['release'].get('event'):
         events.append(life['release']['event'])
-    for value in [checked, life['market_evidence']['retrieved_at']] + [e['evidence']['retrieved_at'] for e in events]:
+    errors += check_events(path, events, checked)
+    value = life['market_evidence']['retrieved_at']
+    try:
+        if date_value(value)['precision'] != 'day':
+            raise ValueError('market evidence retrieval requires day precision')
+        if value > checked:
+            errors.append(f'{path}: lifecycle: market evidence retrieved after check')
+    except ValueError:
+        errors.append(f'{path}: lifecycle: invalid calendar date {value}')
+    return errors
+
+
+def check_events(path: str, events: list, checked: str) -> list[str]:
+    """Shared chronology checks for product lifecycle and platform milestones."""
+    errors = []
+    for value in [checked] + [e['evidence']['retrieved_at'] for e in events]:
         try:
-            date.fromisoformat(value)
+            if date_value(value)['precision'] != 'day':
+                raise ValueError('evidence checks require day precision')
         except ValueError:
             errors.append(f'{path}: lifecycle: invalid calendar date {value}')
+        if value > checked:
+            errors.append(f'{path}: lifecycle: evidence retrieved after check')
     patterns = {'year': r'\d{4}', 'month': r'\d{4}-\d{2}', 'day': r'\d{4}-\d{2}-\d{2}'}
     for event in events:
         value, precision = event.get('date'), event['precision']

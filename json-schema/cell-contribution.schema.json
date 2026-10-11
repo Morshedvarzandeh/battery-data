@@ -157,7 +157,8 @@
         },
         "document_date": {
           "type": "string",
-          "format": "date"
+          "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$",
+          "description": "Printed source date at its original year, month or day precision. This is not a product release date; calendar validity is checked by validate_contrib.py."
         },
         "is_final": {
           "type": "boolean"

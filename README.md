@@ -9,6 +9,7 @@ each specification.
 **[Browse batteries by manufacturer and model](catalog/README.md)** ·
 **[Browse component datasheets](components/catalog.md)** ·
 **[Compare BMS and release evidence](components/bms.md)** ·
+**[Dates and technology timeline](catalog/dates.md)** ·
 **[Explore patent research](docs/08-patents.md)**
 
 No account or database setup is needed to browse the GitHub library. Choose a
@@ -56,6 +57,7 @@ eight categories. Components and patents are counted separately from batteries.
 | Voltage, capacity, dimensions or current limits | Open a model's specification record; each observation includes its units and conditions |
 | Contactors, fuses, precharge contactors, inverters, DC/DC converters or chargers | [Component catalog](components/catalog.md), with review status |
 | BMS products, interfaces and release dates | [BMS comparison](components/bms.md) |
+| Technology generations, release dates and specification age | [Date coverage and timeline](catalog/dates.md); unknown dates and roadmap targets stay explicit |
 | Battery-related patents and companies | [Patent research guide](docs/08-patents.md) |
 | How a specification was checked | [September review report](docs/09-catalog-review-2026-09.md) |
 | Data integration in your engineering tools | [Lemonergy Data & API](https://lemonergy.com/#measure); the GitHub data stays free |

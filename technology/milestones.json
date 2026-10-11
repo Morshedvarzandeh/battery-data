@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-11",
+  "scope_note": "Scoped manufacturer milestones and explicitly labelled plans, reviewed against primary pages. They are separate from accepted specification records, do not add to product counts, and are never inherited as release dates by matching manufacturer or chemistry. This is an initial timeline, not complete market or invention history. Byte hashes are included only where original response bodies were retrieved; other pages were inspected through web retrieval.",
+  "milestones": [
+    {
+      "id": "catl-sodium-gen1-2021",
+      "manufacturer": "CATL",
+      "subject": "First-generation sodium-ion battery",
+      "scope": "manufacturer_platform",
+      "technology": [
+        "sodium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "manufacturer",
+      "scope_note": "CATL platform unveiling; not the invention of sodium-ion chemistry, a catalog cell release, or proof of commercial shipment.",
+      "event": {
+        "event_type": "launch_announcement",
+        "precision": "day",
+        "date_text": "2021-07-29",
+        "evidence": {
+          "url": "https://www.catl.com/en/technologybrand/831.html",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Event date and first-generation unveiling",
+            "quote": "Event Date 2021-07-29"
+          }
+        },
+        "date": "2021-07-29"
+      }
+    },
+    {
+      "id": "catl-shenxing-gen1-2023",
+      "manufacturer": "CATL",
+      "subject": "Shenxing, first generation",
+      "scope": "product_family",
+      "technology": [
+        "LFP",
+        "lithium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "manufacturer",
+      "scope_note": "Named fast-charge LFP family. No release date is assigned to the unrelated CATL 302Ah or 314Ah catalog cells.",
+      "event": {
+        "event_type": "launch_announcement",
+        "precision": "day",
+        "date_text": "August 16, 2023",
+        "evidence": {
+          "url": "https://www.catl.com/en/news/6091.html",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Opening announcement",
+            "quote": "On August 16, CATL launched Shenxing"
+          }
+        },
+        "date": "2023-08-16"
+      },
+      "source_document_date": "2023-08-16"
+    },
+    {
+      "id": "catl-naxtra-2025",
+      "manufacturer": "CATL",
+      "subject": "Naxtra sodium-ion battery",
+      "scope": "product_family",
+      "technology": [
+        "sodium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "manufacturer",
+      "scope_note": "Launch of a named family. Promotional mass-production wording does not establish first customer shipment; retain the later production plan separately.",
+      "event": {
+        "event_type": "launch_announcement",
+        "precision": "day",
+        "date_text": "April 21, 2025",
+        "evidence": {
+          "url": "https://www.catl.com/en/news/6401.html",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Opening announcement and Naxtra section",
+            "quote": "On April 21, 2025, CATL unveiled"
+          },
+          "sha256": "03fbcd93b2466da32f19cf27b23d9a838fd2668cbbaa9d2577068c84310a7dd9"
+        },
+        "date": "2025-04-21"
+      },
+      "source_document_date": "2025-04-21"
+    },
+    {
+      "id": "catl-shenxing-gen2-2025",
+      "manufacturer": "CATL",
+      "subject": "Shenxing, second generation",
+      "scope": "product_family",
+      "technology": [
+        "LFP",
+        "lithium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "manufacturer",
+      "scope_note": "Second-generation family launch, not a new release date for every LFP cell.",
+      "event": {
+        "event_type": "launch_announcement",
+        "precision": "day",
+        "date_text": "April 21, 2025",
+        "evidence": {
+          "url": "https://www.catl.com/en/news/6401.html",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Opening announcement",
+            "quote": "second-generation Shenxing Superfast Charging Battery"
+          },
+          "sha256": "03fbcd93b2466da32f19cf27b23d9a838fd2668cbbaa9d2577068c84310a7dd9"
+        },
+        "date": "2025-04-21"
+      },
+      "source_document_date": "2025-04-21"
+    },
+    {
+      "id": "catl-shenxing-gen3-2026",
+      "manufacturer": "CATL",
+      "subject": "Shenxing, third generation",
+      "scope": "product_family",
+      "technology": [
+        "LFP",
+        "lithium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "manufacturer",
+      "scope_note": "Third-generation family unveiling. This date does not establish commercial availability of an orderable cell SKU.",
+      "event": {
+        "event_type": "launch_announcement",
+        "precision": "day",
+        "date_text": "2026-04-21",
+        "evidence": {
+          "url": "https://www.catl.com/en/news/6811.html",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Article date and opening announcement",
+            "quote": "third-generation Shenxing Superfast Charging Battery"
+          }
+        },
+        "date": "2026-04-21"
+      },
+      "source_document_date": "2026-04-21"
+    },
+    {
+      "id": "catl-naxtra-production-plan-2026",
+      "manufacturer": "CATL",
+      "subject": "Naxtra full-scale production plan",
+      "scope": "product_family",
+      "technology": [
+        "sodium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "manufacturer",
+      "scope_note": "The April 2026 article forecasts full-scale mass production. This is a plan, not proof of shipment, and remains a plan even after its target year passes.",
+      "event": {
+        "event_type": "planned_availability",
+        "precision": "year",
+        "date_text": "by the end of 2026",
+        "evidence": {
+          "url": "https://www.catl.com/en/news/6811.html",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Naxtra Sodium-ion Battery: Achieving GWh-scale Sodium-ion Industrialisation",
+            "quote": "by the end of 2026"
+          }
+        },
+        "date": "2026"
+      },
+      "source_document_date": "2026-04-21"
+    },
+    {
+      "id": "calb-zhijiu-launch-2026",
+      "manufacturer": "CALB",
+      "subject": "ZHIJIU 392Ah / 588Ah / 661Ah long-cycle ESS family",
+      "scope": "product_family",
+      "technology": [
+        "lithium-ion",
+        "long-cycle ESS"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "manufacturer",
+      "scope_note": "Event date is April 1; the article date is April 2. Applies only to the three named capacity versions; does not date the CALB 684Ah cell or imply exact cathode chemistry.",
+      "event": {
+        "event_type": "launch_announcement",
+        "precision": "day",
+        "date_text": "4月1日; first day of ESIE 2026",
+        "evidence": {
+          "url": "https://www.calb-tech.com/newsDetails/25.html",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Opening paragraph: ESIE 2026 first-day launch",
+            "quote": "正式发布“至久”系列392Ah、588Ah、661Ah"
+          }
+        },
+        "date": "2026-04-01"
+      },
+      "source_document_date": "2026-04-02"
+    },
+    {
+      "id": "hithium-n162-launch-2024",
+      "manufacturer": "HiTHIUM",
+      "subject": "∞Cell N162Ah",
+      "scope": "named_product",
+      "technology": [
+        "sodium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "manufacturer",
+      "scope_note": "Named product announcement; its numeric candidate remains subject to the separate observation/identity review. Sampling is distinct from volume deliveries.",
+      "event": {
+        "event_type": "launch_announcement",
+        "precision": "day",
+        "date_text": "December 12th, 2024",
+        "evidence": {
+          "url": "https://en.hithium.com/newsroom/latest/details/57",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Eco-Day opening and sodium-ion section",
+            "quote": "the first specialized sodium-ion battery for utility-scale energy storage—∞Cell N162Ah"
+          },
+          "sha256": "e51da2dccb6c4c0fff7ece27c2b1b4458cc55f0b7b2082913a30a4cc6bcb47e6"
+        },
+        "date": "2024-12-12"
+      },
+      "source_document_date": "2024-12-12"
+    },
+    {
+      "id": "hithium-n162-production-plan-2025",
+      "manufacturer": "HiTHIUM",
+      "subject": "∞Cell N162Ah production plan",
+      "scope": "named_product",
+      "technology": [
+        "sodium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "manufacturer",
+      "scope_note": "Historical plan in the December 2024 article. Completion has not been established by this source; no quarter start or end day is fabricated.",
+      "event": {
+        "event_type": "planned_availability",
+        "precision": "unspecified",
+        "date_text": "Q4 2025",
+        "evidence": {
+          "url": "https://en.hithium.com/newsroom/latest/details/57",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Sodium-ion section",
+            "quote": "GWh mass production planned for Q4 2025"
+          },
+          "sha256": "e51da2dccb6c4c0fff7ece27c2b1b4458cc55f0b7b2082913a30a4cc6bcb47e6"
+        }
+      },
+      "source_document_date": "2024-12-12"
+    },
+    {
+      "id": "welion-semi-solid-gen2-roadmap-2026",
+      "manufacturer": "WeLion",
+      "subject": "Second-generation semi-solid-state technology roadmap",
+      "scope": "manufacturer_platform",
+      "technology": [
+        "semi-solid-state",
+        "lithium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "official_distributor",
+      "scope_note": "Official European distributor roadmap, not verified completion or a release date for the existing SHP270/SHP320 models. Semi-solid is not all-solid-state.",
+      "event": {
+        "event_type": "planned_availability",
+        "precision": "year",
+        "date_text": "2026",
+        "evidence": {
+          "url": "https://welion-energy.com/Technology/",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Battery Roadmap / 2026",
+            "quote": "Start of 2nd generation technology: WELION Semi-Solid-State Battery"
+          },
+          "sha256": "af750151c6f68aec0beead1b3bd0bcd86574a2ca369d1e849dbc80f96790a4bf"
+        },
+        "date": "2026"
+      }
+    },
+    {
+      "id": "welion-solid-gen3-roadmap-2028",
+      "manufacturer": "WeLion",
+      "subject": "Third-generation fully solid-state technology roadmap",
+      "scope": "manufacturer_platform",
+      "technology": [
+        "all-solid-state",
+        "lithium-ion"
+      ],
+      "checked_at": "2026-10-11",
+      "source_basis": "official_distributor",
+      "scope_note": "Official European distributor roadmap for a future generation; not a currently released cell. The page has no recorded publication date.",
+      "event": {
+        "event_type": "planned_availability",
+        "precision": "year",
+        "date_text": "2028",
+        "evidence": {
+          "url": "https://welion-energy.com/Technology/",
+          "retrieved_at": "2026-10-11",
+          "locator": {
+            "section": "Battery Roadmap / 2028",
+            "quote": "Start of 3rd Generation: Fully solid-state WELION battery"
+          },
+          "sha256": "af750151c6f68aec0beead1b3bd0bcd86574a2ca369d1e849dbc80f96790a4bf"
+        },
+        "date": "2028"
+      }
+    }
+  ]
+}

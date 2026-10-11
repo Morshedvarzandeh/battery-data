@@ -5,6 +5,7 @@ from collections import Counter
 import json
 from pathlib import Path
 import yaml
+from catalog_dates import record_dates, release_label
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -37,16 +38,18 @@ def render(root=ROOT):
     lines = ['# Electrical component catalog', '',
              'Generated from the accepted library and review queue. Run `python tools/build_component_catalog.py` to refresh.', '',
              f"**{counts['accepted']} accepted; {counts['pending review']} pending review.** Component records are separate from the battery count.", '',
-             '[Compare BMS products and release evidence](bms.md).', '',
+             '[Compare BMS products and release evidence](bms.md) · [Dates and technology timeline](../catalog/dates.md).', '',
+             'Document and source-retrieval dates are separate from release dates. Not researched means no structured release review; not found means no release date in inspected sources.', '',
              'The record link contains every value, unit, condition and page/section locator. Datasheets are linked; proprietary PDFs are not redistributed.', '']
     for category, label in categories.items():
-        lines += [f'## {label}', '', '| Manufacturer / model | State | Specifications | Source |', '|---|---|---:|---|']
+        lines += [f'## {label}', '', '| Manufacturer / model | State | Specifications | Source | Document date | Source retrieved | Product release / launch |', '|---|---|---:|---|---|---|---|']
         for doc, path, state in rows:
             p, s = doc['product'], doc['source']
             if p['component_type'] != category:
                 continue
             source_label = 'Datasheet' if s['kind'] == 'datasheet' else 'Manufacturer page'
-            lines.append(f"| [{p['manufacturer']} {p['model_number']}](../{path}) | {state} | {len(doc['observations'])} | [{source_label}]({s['url']}) |")
+            dates = record_dates(doc)
+            lines.append(f"| [{p['manufacturer']} {p['model_number']}](../{path}) | {state} | {len(doc['observations'])} | [{source_label}]({s['url']}) | {dates['source_document']['date'] or 'Not recorded'} | {dates['source_retrieved']['date'] or 'Not recorded'} | {release_label(doc)} |")
         lines.append('')
     lines += ['---', '', 'Maintained by **Lemonergy** · [Battery library](../catalog/README.md) · [API access for accepted records](https://lemonergy.com/#measure)', '', 'The public library is free. Manufacturer datasheets remain attributed to their original publishers.', '']
     return '\n'.join(lines)
