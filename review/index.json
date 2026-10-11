@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "batch": "2026-10-04-electrical-components",
+  "batch": "2026-10-11-electrical-components",
   "status": "pending_review",
   "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
-  "candidate_count": 110,
-  "total_record_count": 3705,
+  "candidate_count": 112,
+  "total_record_count": 3707,
   "candidates": [
     {
       "uid": "system/byd/battery-box-premium-hvs-5.1",
@@ -25885,6 +25885,30 @@
       "issue_number": null,
       "issue_url": null,
       "review_audit": "review/audits/2026-10-04-catalog-acceptance.json"
+    },
+    {
+      "uid": "component/schaltbau/c310a-300",
+      "manufacturer": "Schaltbau",
+      "model_number": "C310A/300 (coil/auxiliary options unspecified)",
+      "kind": "component",
+      "candidate_file": "review/candidates/schaltbau/c310a-300.yaml",
+      "source_url": "https://schaltbau.com/en/product/contactors/c310/",
+      "source_title": "Schaltbau C310 product page: A-series configurations and specifications",
+      "observation_count": 2,
+      "state": "pending_review",
+      "component_type": "contactor"
+    },
+    {
+      "uid": "component/schaltbau/c310a-500",
+      "manufacturer": "Schaltbau",
+      "model_number": "C310A/500 (coil/auxiliary options unspecified)",
+      "kind": "component",
+      "candidate_file": "review/candidates/schaltbau/c310a-500.yaml",
+      "source_url": "https://schaltbau.com/en/product/contactors/c310/",
+      "source_title": "Schaltbau C310 product page: A-series configurations and specifications",
+      "observation_count": 2,
+      "state": "pending_review",
+      "component_type": "contactor"
     },
     {
       "uid": "primary_cell/maxell/sr44sw",

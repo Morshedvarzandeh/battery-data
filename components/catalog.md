@@ -2,7 +2,7 @@
 
 Generated from the accepted library and review queue. Run `python tools/build_component_catalog.py` to refresh.
 
-**152 accepted; 0 pending review.** Component records are separate from the battery count.
+**152 accepted; 2 pending review.** Component records are separate from the battery count.
 
 The record link contains every value, unit, condition and page/section locator. Datasheets are linked; proprietary PDFs are not redistributed.
 
@@ -10,6 +10,8 @@ The record link contains every value, unit, condition and page/section locator. 
 
 | Manufacturer / model | State | Specifications | Source |
 |---|---|---:|---|
+| [Schaltbau C310A/300 (coil/auxiliary options unspecified)](../review/candidates/schaltbau/c310a-300.yaml) | pending review | 2 | [Manufacturer page](https://schaltbau.com/en/product/contactors/c310/) |
+| [Schaltbau C310A/500 (coil/auxiliary options unspecified)](../review/candidates/schaltbau/c310a-500.yaml) | pending review | 2 | [Manufacturer page](https://schaltbau.com/en/product/contactors/c310/) |
 | [Sensata GIGAVAC GV200CC-1](../contrib/components/sensata-gigavac/gv200cc-1.yaml) | accepted | 3 | [Datasheet](https://www.sensata.com/sites/default/files/a/sensata-gigavac-gv200-series-open-contactors-datasheet.pdf?cb=222d1bd0) |
 | [TE Connectivity ECK50BA4AAA](../contrib/components/te-connectivity/eck50ba4aaa.yaml) | accepted | 2 | [Manufacturer page](https://www.te.com/en/product-2071584-4.html) |
 | [TE Connectivity EV200AAANA](../contrib/components/te-connectivity/ev200aaana.yaml) | accepted | 4 | [Datasheet](https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=5-1773450-5_sec7_EV200A&DocType=Catalog+Section&PartCntxt=1618002-7) |
