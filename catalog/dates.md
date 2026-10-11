@@ -2,7 +2,7 @@
 
 [Battery models](README.md) · [Electrical components](../components/catalog.md) · [Date policy and data fields](../docs/18-technology-dates.md)
 
-All **3,630 accepted products** have a consistent date view. A missing date stays unknown; a recent source check does not make a product new.
+All **3,631 accepted products** have a consistent date view. A missing date stays unknown; a recent source check does not make a product new.
 
 ## Date coverage
 
@@ -11,7 +11,7 @@ Counts reflect structured evidence in accepted records, not dates guessed from t
 | Category | Products | Document date | Source retrieved | Lifecycle checked | Dated release / launch | Release not found | Release conflict | Release not researched |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | bms | 24 | 4 | 24 | 24 | 3 | 20 | 1 | 0 |
-| cell | 3,204 | 24 | 1,284 | 0 | 0 | 0 | 0 | 3,204 |
+| cell | 3,205 | 24 | 1,285 | 0 | 0 | 0 | 0 | 3,205 |
 | charger | 3 | 0 | 3 | 0 | 0 | 0 | 0 | 3 |
 | contactor | 3 | 0 | 3 | 0 | 0 | 0 | 0 | 3 |
 | dc dc converter | 3 | 0 | 3 | 0 | 0 | 0 | 0 | 3 |

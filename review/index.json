@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "batch": "2026-10-09-bms-market",
+  "batch": "2026-10-11-dsenergy-semisolid-marine",
   "status": "pending_review",
   "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
   "candidate_count": 110,
-  "total_record_count": 3729,
+  "total_record_count": 3730,
   "candidates": [
     {
       "uid": "system/byd/battery-box-premium-hvs-5.1",
@@ -26269,6 +26269,21 @@
       "issue_number": null,
       "issue_url": null,
       "review_audit": "review/audits/2026-10-11-bms-acceptance.json"
+    },
+    {
+      "uid": "cell/dsenergy/dse1175175-30ah",
+      "manufacturer": "DSEnergy",
+      "model_number": "DSE1175175-30Ah",
+      "kind": "cell",
+      "candidate_file": "review/candidates/dsenergy/dse1175175-30ah.yaml",
+      "source_url": "https://dsnrg.com/product/dsenergy-30ah-3-7v-350wh-kg-semi-solid-battery-cell/",
+      "source_title": "DSEnergy DSE1175175-30Ah semi-solid pouch cell supplier specifications",
+      "observation_count": 19,
+      "state": "accepted",
+      "accepted_file": "contrib/cells/dsenergy/dse1175175-30ah.yaml",
+      "issue_number": null,
+      "issue_url": null,
+      "review_audit": "review/audits/2026-10-11-dsenergy-semisolid-marine.json"
     },
     {
       "uid": "primary_cell/maxell/sr44sw",

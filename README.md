@@ -15,7 +15,7 @@ each specification.
 No account or database setup is needed to browse the GitHub library. Choose a
 manufacturer, find a model, and open its specification record and source document.
 
-**Library snapshot, 2026-10-11: 3,454 accepted battery product records; 110
+**Library snapshot, 2026-10-11: 3,455 accepted battery product records; 110
 battery records remain on documented holds.** The [October publication review](docs/16-catalog-publication-2026-10-04.md)
 accepted 1,284 additional battery models and 152 electrical components, including
 the 1,256-model LiPol batch, sodium-ion and semi-solid cells, and recent LG, EVE,
@@ -26,6 +26,10 @@ distinct models from manufacturer catalogs. Most additions are historical
 lithium-polymer models (2013/2019); current availability and undisclosed test
 conditions are not implied. See the [review report](docs/09-catalog-review-2026-09.md)
 for sources, exclusions, and a decision for every pending record reviewed.
+
+The [semi-solid marine source review](docs/19-semisolid-marine-source-review.md)
+adds DSEnergy's DSE1175175-30Ah with its stated limits and explicit modeling gaps.
+The existing eight accepted WeLion records remain available without duplication.
 
 For a focused view of recent technology, the
 [current cell research set](docs/15-current-cell-research-set.md) selects 40
