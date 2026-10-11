@@ -84,7 +84,8 @@
             "precharge_resistor",
             "inverter",
             "dc_dc_converter",
-            "charger"
+            "charger",
+            "bms"
           ],
           "description": "Electrical component category. Components are excluded from the battery product target."
         }
@@ -231,6 +232,163 @@
       "items": {
         "$ref": "#/$defs/application"
       }
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "checked_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "market_status": {
+          "enum": [
+            "manufacturer_listed",
+            "announced",
+            "legacy_support_only",
+            "discontinued",
+            "unknown"
+          ]
+        },
+        "market_evidence": {
+          "$ref": "#/$defs/dated_evidence"
+        },
+        "release": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "enum": [
+                "documented",
+                "not_found",
+                "conflicting"
+              ]
+            },
+            "event": {
+              "$ref": "#/$defs/lifecycle_event"
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "documented"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "event"
+                ],
+                "properties": {
+                  "event": {
+                    "required": [
+                      "date"
+                    ],
+                    "properties": {
+                      "event_type": {
+                        "enum": [
+                          "launch_announcement",
+                          "commercial_release"
+                        ]
+                      },
+                      "precision": {
+                        "enum": [
+                          "year",
+                          "month",
+                          "day"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "else": {
+                "not": {
+                  "required": [
+                    "event"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/lifecycle_event"
+          }
+        }
+      },
+      "required": [
+        "checked_at",
+        "market_status",
+        "market_evidence",
+        "release",
+        "events"
+      ]
+    },
+    "bms": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "identity_scope": {
+          "enum": [
+            "system_family",
+            "controller",
+            "configuration"
+          ]
+        },
+        "architecture": {
+          "enum": [
+            "centralized",
+            "distributed",
+            "integrated",
+            "unspecified"
+          ]
+        },
+        "balancing": {
+          "enum": [
+            "passive",
+            "active",
+            "unspecified"
+          ]
+        },
+        "interfaces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "datasheet_url": {
+          "type": "string",
+          "pattern": "^https?://"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "identity_scope",
+        "architecture",
+        "balancing",
+        "interfaces",
+        "locator",
+        "note"
+      ]
     }
   },
   "$defs": {
@@ -687,6 +845,128 @@
           "$ref": "#/$defs/locator"
         }
       }
+    },
+    "dated_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https?://"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "url",
+        "retrieved_at",
+        "locator"
+      ]
+    },
+    "lifecycle_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_type": {
+          "enum": [
+            "announcement",
+            "launch_announcement",
+            "commercial_release",
+            "planned_availability",
+            "volume_shipping",
+            "document_revision",
+            "discontinuation"
+          ]
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+        },
+        "precision": {
+          "enum": [
+            "year",
+            "month",
+            "day",
+            "unspecified"
+          ]
+        },
+        "date_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "$ref": "#/$defs/dated_evidence"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "precision",
+        "date_text",
+        "evidence"
+      ]
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "bms"
+        ]
+      },
+      "then": {
+        "properties": {
+          "product": {
+            "properties": {
+              "kind": {
+                "const": "component"
+              },
+              "component_type": {
+                "const": "bms"
+              }
+            },
+            "required": [
+              "component_type"
+            ]
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "product": {
+            "properties": {
+              "component_type": {
+                "const": "bms"
+              }
+            },
+            "required": [
+              "component_type"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "bms",
+          "lifecycle"
+        ]
+      }
+    }
+  ]
 }

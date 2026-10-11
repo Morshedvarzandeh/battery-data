@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-11",
+  "coverage_claim": "Non-exhaustive inventory of documented BMS products and scoped families; no verified global market denominator. BMS ICs, unlisted custom OEM systems, accessories alone and inferred SKU combinations are outside this batch.",
+  "covered_manufacturers": {
+    "Lithium Balance": [
+      {
+        "uid": "component/lithium-balance/n3-bms-cmu12",
+        "scope": "system_family",
+        "source_url": "https://lithiumbalance.com/wp-content/uploads/n3-BMS-cmu12-datasheet-lithium-balance.pdf",
+        "release_status": "not_found"
+      },
+      {
+        "uid": "component/lithium-balance/n-bms-12ch",
+        "scope": "system_family",
+        "source_url": "https://lithiumbalance.com/wp-content/uploads/n-BMS-datasheet-lithium-balance.pdf",
+        "release_status": "not_found"
+      },
+      {
+        "uid": "component/lithium-balance/c-bms24",
+        "scope": "controller",
+        "source_url": "https://lithiumbalance.com/wp-content/uploads/c-BMS24-datasheet-lithium-balance.pdf",
+        "release_status": "not_found"
+      },
+      {
+        "uid": "component/lithium-balance/c-bms24x",
+        "scope": "controller",
+        "source_url": "https://lithiumbalance.com/wp-content/uploads/c-BMS24X-datasheet-lithium-balance.pdf",
+        "release_status": "documented"
+      },
+      {
+        "uid": "component/lithium-balance/i-bms15",
+        "scope": "controller",
+        "source_url": "https://lithiumbalance.com/wp-content/uploads/i-BMS-datasheet-lithium-balance.pdf",
+        "release_status": "not_found"
+      }
+    ],
+    "Ewert Energy Systems": [
+      {
+        "uid": "component/ewert-energy-systems/orion-bms-2",
+        "scope": "system_family",
+        "source_url": "https://www.orionbms.com/products/orion-bms-standard/",
+        "release_status": "not_found"
+      },
+      {
+        "uid": "component/ewert-energy-systems/orion-jr-2",
+        "scope": "system_family",
+        "source_url": "https://www.orionbms.com/products/orion-jr-2-bms/",
+        "release_status": "not_found"
+      }
+    ],
+    "Nuvation Energy": [
+      {
+        "uid": "component/nuvation-energy/g4-high-voltage",
+        "scope": "system_family",
+        "source_url": "https://nuvationenergy.com/battery-management-systems/g4-high-voltage-bms/",
+        "release_status": "not_found"
+      },
+      {
+        "uid": "component/nuvation-energy/g5-high-voltage",
+        "scope": "system_family",
+        "source_url": "https://nuvationenergy.com/battery-management-systems/g5-high-voltage-bms/",
+        "release_status": "conflicting"
+      },
+      {
+        "uid": "component/nuvation-energy/g5-plus-high-voltage",
+        "scope": "system_family",
+        "source_url": "https://nuvationenergy.com/battery-management-systems/g5-plus-high-voltage-bms/",
+        "release_status": "not_found"
+      }
+    ],
+    "Enepaq": [
+      {
+        "uid": "component/enepaq/tinybms-v2-1-high-power",
+        "scope": "system_family",
+        "source_url": "https://enepaq.com/wp-content/uploads/2025/02/Tiny-BMS-v2.1-One-Pager-Datasheet-1.pdf",
+        "release_status": "not_found"
+      },
+      {
+        "uid": "component/enepaq/tinybms-v2-2-high-power",
+        "scope": "system_family",
+        "source_url": "https://enepaq.com/wp-content/uploads/2025/07/Tiny-BMS-v2.2-One-Pager-Datasheet-1.pdf",
+        "release_status": "not_found"
+      }
+    ],
+    "EMUS": [
+      {
+        "uid": "component/emus/mini-3",
+        "scope": "system_family",
+        "source_url": "https://emusbms.com/faq/",
+        "release_status": "not_found"
+      }
+    ],
+    "REC": [
+      {
+        "uid": "component/rec/active-bms-4s",
+        "scope": "system_family",
+        "source_url": "https://www.rec-bms.com/",
+        "release_status": "not_found"
+      },
+      {
+        "uid": "component/rec/2q-16s",
+        "scope": "system_family",
+        "source_url": "https://www.rec-bms.com/",
+        "release_status": "not_found"
+      },
+      {
+        "uid": "component/rec/10m-master",
+        "scope": "system_family",
+        "source_url": "https://www.rec-bms.com/",
+        "release_status": "not_found"
+      }
+    ],
+    "Prohelion": [
+      {
+        "uid": "component/prohelion/d1000-gen2",
+        "scope": "system_family",
+        "source_url": "https://docs.prohelion.com/Battery_Management_Systems/Prohelion_BMS_D1000_Gen2/index.html",
+        "release_status": "not_found"
+      }
+    ],
+    "Wattius": [
+      {
+        "uid": "component/wattius/wbms-hx",
+        "scope": "controller",
+        "source_url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-HX-BMU-V4-Datasheet.pdf",
+        "release_status": "not_found"
+      },
+      {
+        "uid": "component/wattius/wbms-mx-pro",
+        "scope": "controller",
+        "source_url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-MX-BMU-Pro-V3.pdf",
+        "release_status": "not_found"
+      }
+    ],
+    "Elithion": [
+      {
+        "uid": "component/elithion/lithiumate-pro",
+        "scope": "controller",
+        "source_url": "https://www.elithion.com/lithiumate_controllers.php",
+        "release_status": "documented"
+      },
+      {
+        "uid": "component/elithion/lithiumate-hd",
+        "scope": "controller",
+        "source_url": "https://www.elithion.com/lithiumate_controllers.php",
+        "release_status": "documented"
+      }
+    ],
+    "JK (Jikong)": [
+      {
+        "uid": "component/jikong/jk-pb2a16s-20p-v14",
+        "scope": "controller",
+        "source_url": "https://www.jkbms.com/product/jk-pb2a16s20p-jk-pb2a16s-20p/",
+        "release_status": "not_found"
+      }
+    ],
+    "DALY": [
+      {
+        "uid": "component/daly/k-series-smart",
+        "scope": "system_family",
+        "source_url": "https://www.dalybms.com/12v-100a-bms-k-series-smart-bms-3s-to-24s-40a-60a-product/",
+        "release_status": "not_found"
+      }
+    ],
+    "Batrium": [
+      {
+        "uid": "component/batrium/watchmoncore-cellmatek9",
+        "scope": "configuration",
+        "source_url": "https://www.batrium.com/pages/getting-started",
+        "release_status": "not_found"
+      }
+    ]
+  },
+  "next_sources": [
+    {
+      "manufacturer": "Lithium Balance",
+      "url": "https://helpdesk.lithiumbalance.com/hc/en-us/articles/39188199622161-List-of-all-off-the-shelf-Lithium-Balance-BMS-and-their-datasheets",
+      "status": "lead_only",
+      "next_action": "Check CMU18 and k-BMS planned products; separate CMU accessory from complete BMS and verify availability before adding new identities."
+    },
+    {
+      "manufacturer": "EMUS",
+      "url": "https://emusbms.com/manuals-downloads",
+      "status": "lead_only",
+      "next_action": "Review G1 controller and topology-specific limits; do not count the same CU in four systems as four hardware models."
+    },
+    {
+      "manufacturer": "Prohelion",
+      "url": "https://prohelion.com/product-category/battery-management-systems/",
+      "status": "lead_only",
+      "next_action": "Review D1000 Gen1 and C48 Gen2 datasheets and release history."
+    },
+    {
+      "manufacturer": "BMS PowerSafe",
+      "url": "https://bmspowersafe.com/en/embedded-bms-solutions/",
+      "status": "lead_only",
+      "next_action": "Resolve exact current products, public specifications and release evidence."
+    },
+    {
+      "manufacturer": "Epec",
+      "url": "https://epec.fi/wp-content/uploads/2022/06/Epec_Catalog_ver2-2025_web.pdf",
+      "status": "lead_only",
+      "next_action": "Identify BMS system products versus generic controllers; catalog edition is not product release."
+    }
+  ],
+  "remaining_work": [
+    "Expand non-overlapping manufacturers and exact purchasing variants from primary sources.",
+    "Find original announcements or shipping notices for the 20 unestablished dates; resolve the Nuvation G5 conflict.",
+    "Review conditioned balancing currents, chemistry support and safety-standard evidence without promoting marketing headlines into certified results.",
+    "Maintain old and announced products separately from products listed for new designs."
+  ]
+}

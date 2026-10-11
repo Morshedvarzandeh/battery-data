@@ -1,0 +1,84 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/daly/k-series-smart",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "DALY",
+    "model_number": "K Series Smart BMS (3S–24S family)"
+  },
+  "source": {
+    "uid": "src/daly-k-series-smart-inspected-2026-10-09",
+    "kind": "manufacturer_web",
+    "title": "DALY K Series Smart BMS (3S–24S family) — product information",
+    "url": "https://www.dalybms.com/12v-100a-bms-k-series-smart-bms-3s-to-24s-40a-60a-product/",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Family-level coverage across 40/60/100 A options; no Cartesian expansion into unverified ordering codes or universal current rating. Original bytes unavailable; no hash asserted."
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "integrated",
+    "balancing": "passive",
+    "interfaces": [
+      "CAN",
+      "RS485",
+      "UART"
+    ],
+    "locator": {
+      "section": "Product features",
+      "quote": "K Series Smart BMS"
+    },
+    "note": "Family-level coverage across 40/60/100 A options; no Cartesian expansion into unverified ordering codes or universal current rating."
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://www.dalybms.com/12v-100a-bms-k-series-smart-bms-3s-to-24s-40a-60a-product/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "K Series Smart BMS"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_min",
+      "value": 3,
+      "unit": "1",
+      "statistic": "minimum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "3S to 24S"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 24,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "3S to 24S"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    }
+  ]
+}

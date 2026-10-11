@@ -1,7 +1,8 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-04",
+  "updated_at": "2026-10-11",
   "next_deep_research": [
+    "bms",
     "fuse",
     "contactor",
     "patents",
@@ -90,6 +91,38 @@
       ],
       "next_action": "Inspect 52 new Vishay candidates. Research additional manufacturer-listed EV/BESS precharge resistor parts and compare exact identities with accepted and pending queues.",
       "remaining": "Five custom/unsupported ordering variants held in the import manifest. LTO150H headline pulse limit requires curve-specific assessment; no universal 75 J value imported. Availability not verified."
+    },
+    {
+      "category": "bms",
+      "last_checked": "2026-10-11",
+      "source_uids": [
+        "src/lithium-balance-n3-bms-cmu12-inspected-2026-10-09",
+        "src/lithium-balance-n-bms-12ch-inspected-2026-10-09",
+        "src/lithium-balance-c-bms24-inspected-2026-10-09",
+        "src/lithium-balance-c-bms24x-inspected-2026-10-09",
+        "src/lithium-balance-i-bms15-inspected-2026-10-09",
+        "src/ewert-energy-systems-orion-bms-2-inspected-2026-10-09",
+        "src/ewert-energy-systems-orion-jr-2-inspected-2026-10-09",
+        "src/nuvation-energy-g4-high-voltage-inspected-2026-10-09",
+        "src/nuvation-energy-g5-high-voltage-inspected-2026-10-09",
+        "src/nuvation-energy-g5-plus-high-voltage-inspected-2026-10-09",
+        "src/enepaq-tinybms-v2-1-high-power-inspected-2026-10-09",
+        "src/enepaq-tinybms-v2-2-high-power-inspected-2026-10-09",
+        "src/emus-mini-3-inspected-2026-10-11",
+        "src/rec-active-bms-4s-inspected-2026-10-09",
+        "src/rec-2q-16s-inspected-2026-10-09",
+        "src/rec-10m-master-inspected-2026-10-09",
+        "src/prohelion-d1000-gen2-inspected-2026-10-09",
+        "src/wattius-wbms-hx-inspected-2026-10-09",
+        "src/wattius-wbms-mx-pro-inspected-2026-10-09",
+        "src/elithion-lithiumate-pro-inspected-2026-10-09",
+        "src/elithion-lithiumate-hd-inspected-2026-10-09",
+        "src/jikong-jk-pb2a16s-20p-v14-inspected-2026-10-09",
+        "src/daly-k-series-smart-inspected-2026-10-09",
+        "src/batrium-watchmoncore-cellmatek9-inspected-2026-10-09"
+      ],
+      "next_action": "Follow components/bms-coverage.json for additional manufacturers and exact product variants; research original release and availability events.",
+      "remaining": "Current inventory: 24 records from 12 manufacturers/brands. Twenty release dates not established; G5 shipping date conflicts. Never use PDF revision/upload dates as launch dates."
     }
   ],
   "patents": {

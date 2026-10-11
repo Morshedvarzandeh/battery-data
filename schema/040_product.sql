@@ -29,7 +29,7 @@ CREATE TABLE product (
   kind             product_kind NOT NULL,
   manufacturer_id  bigint NOT NULL REFERENCES organization(id),
   model_number     text NOT NULL,
-  component_type   text CHECK (component_type IN ('contactor','fuse','precharge_contactor','precharge_resistor','inverter','dc_dc_converter','charger')),
+  component_type   text CHECK (component_type IN ('contactor','fuse','precharge_contactor','precharge_resistor','inverter','dc_dc_converter','charger','bms')),
   brand            text,
   product_family   text,
   form_factor      form_factor,
@@ -88,6 +88,8 @@ CREATE TABLE product_revision (
   is_preliminary boolean NOT NULL DEFAULT false,
   supersedes_id  bigint REFERENCES product_revision(id),
   review         review_state NOT NULL DEFAULT 'pending_review',
+  lifecycle_evidence jsonb,
+  bms_details    jsonb,
   created_at     timestamptz NOT NULL DEFAULT now(),
   UNIQUE (product_id, source_id)
 );

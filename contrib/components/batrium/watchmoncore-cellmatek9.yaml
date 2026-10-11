@@ -1,0 +1,85 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/batrium/watchmoncore-cellmatek9",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Batrium",
+    "model_number": "WatchMonCORE + one CellMate-K9"
+  },
+  "source": {
+    "uid": "src/batrium-watchmoncore-cellmatek9-inspected-2026-10-09",
+    "kind": "manufacturer_web",
+    "title": "Batrium WatchMonCORE + one CellMate-K9 — product information",
+    "url": "https://www.batrium.com/pages/getting-started",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Explicit controller-plus-one-monitor configuration; CellMate-K9 alone is not a complete BMS. The ShuntMon voltage rating is not a whole-system operating limit.",
+    "sha256": "3c7a950f10eca9570c7a75cb5b7242fd0fff537dc6e066b87b1b845625dfcc1d"
+  },
+  "bms": {
+    "identity_scope": "configuration",
+    "architecture": "distributed",
+    "balancing": "unspecified",
+    "interfaces": [
+      "CAN",
+      "USB",
+      "WiFi"
+    ],
+    "locator": {
+      "section": "Product features",
+      "quote": "WatchMonCORE"
+    },
+    "note": "Explicit controller-plus-one-monitor configuration; CellMate-K9 alone is not a complete BMS. The ShuntMon voltage rating is not a whole-system operating limit."
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://www.batrium.com/pages/getting-started",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "WatchMonCORE"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_min",
+      "value": 3,
+      "unit": "1",
+      "statistic": "minimum",
+      "locator": {
+        "section": "CellMate-K9",
+        "quote": "3 to 16 cells"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "one CellMate-K9 configuration"
+        }
+      }
+    },
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 16,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "CellMate-K9",
+        "quote": "3 to 16 cells"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "one CellMate-K9 configuration"
+        }
+      }
+    }
+  ]
+}

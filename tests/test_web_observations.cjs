@@ -35,3 +35,19 @@ assert.match(rendered,/150.0/);
 assert.match(rendered,/8 AWG/);
 assert.match(rendered,/4 AWG/);
 console.log('Sheet display and Markdown retain both conductor-dependent ratings and their conditions');
+const bmsBatch=JSON.parse(fs.readFileSync(path.join(root,'review/batches/2026-10-09-bms-market.json')));
+for(const [model,expected,absent] of [
+  ['c-BMS24X','2023-05-17 (day precision; launch announcement)',''],
+  ['Lithiumate Pro Master','2007 (year precision; commercial release)','2007-01-01'],
+  ['G5 High-Voltage BMS','Conflicting dates; unresolved',''],
+  ['G5 Plus High-Voltage BMS','Announced; not released','']]){
+  const d=bmsBatch.candidates.find(e=>e.document.product.model_number===model).document;
+  context.ROWS=[{cell:model,manu:d.product.manufacturer,chem:'',fmt:'',rec:{obs:[],source:d.source,lifecycle:d.lifecycle,bms:d.bms}}];
+  vm.runInNewContext(`curCell=ROWS[0].cell; drawSheet(); resultMD=sheetMD();`,context);
+  const renderedBms=text(nodes.get('#sheet'));
+  assert.ok(renderedBms.includes(expected),expected);
+  assert.ok(context.resultMD.includes(expected),expected);
+  if(absent)assert.ok(!context.resultMD.includes(absent),absent);
+  assert.ok(context.resultMD.includes('([evidence](https://'));
+}
+console.log('BMS display/export distinguish launch, partial release years, conflicts and future availability');

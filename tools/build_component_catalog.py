@@ -37,6 +37,7 @@ def render(root=ROOT):
     lines = ['# Electrical component catalog', '',
              'Generated from the accepted library and review queue. Run `python tools/build_component_catalog.py` to refresh.', '',
              f"**{counts['accepted']} accepted; {counts['pending review']} pending review.** Component records are separate from the battery count.", '',
+             '[Compare BMS products and release evidence](bms.md).', '',
              'The record link contains every value, unit, condition and page/section locator. Datasheets are linked; proprietary PDFs are not redistributed.', '']
     for category, label in categories.items():
         lines += [f'## {label}', '', '| Manufacturer / model | State | Specifications | Source |', '|---|---|---:|---|']

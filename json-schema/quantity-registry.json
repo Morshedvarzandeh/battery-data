@@ -13,6 +13,17 @@
   "rate_unit",
   "area_kind"
  ],
+ "bms_balancing_current": [
+  "temperature_c"
+ ],
+ "bms_can_ports": [],
+ "bms_cell_banks_max": [],
+ "bms_pack_voltage_max": [
+  "electrical_system"
+ ],
+ "bms_series_cells_max": [],
+ "bms_series_cells_min": [],
+ "bms_temperature_channels": [],
  "calendar_life": [
   "temperature_c",
   "soc_pct"

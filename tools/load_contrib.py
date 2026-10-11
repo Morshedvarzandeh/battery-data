@@ -373,6 +373,13 @@ def promote_file(cur, document: dict, org_id: int, source_id: int, staged: list,
     product, source = document["product"], document["source"]
     product_id = ensure_product(cur, product, org_id)
     revision_id = ensure_revision(cur, product, source, product_id, source_id)
+    # Keep dated claims with the reviewed document, including partial dates and
+    # their evidence. Never coerce an announcement or a year into first_released.
+    if document.get("lifecycle") or document.get("bms"):
+        cur.execute(
+            "UPDATE bd.product_revision SET lifecycle_evidence=%s, bms_details=%s WHERE id=%s",
+            (psycopg2.extras.Json(document.get("lifecycle")),
+             psycopg2.extras.Json(document.get("bms")), revision_id))
     evidence = EVIDENCE_BY_SOURCE_KIND.get(source["kind"], "manufacturer_claim")
     note = f"accepted into contrib/ as {relative}"
     if document.get("chemistry"):

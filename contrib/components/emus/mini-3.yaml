@@ -1,0 +1,83 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/emus/mini-3",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "EMUS",
+    "model_number": "Mini 3"
+  },
+  "source": {
+    "uid": "src/emus-mini-3-inspected-2026-10-11",
+    "kind": "manufacturer_web",
+    "title": "EMUS Mini 3 — product information",
+    "url": "https://emusbms.com/faq/",
+    "retrieved_at": "2026-10-11",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Mini 3 family. FAQ publication date and manual download timestamp do not establish the product release; no exact MNC313 hardware revision inferred. Original bytes unavailable; no hash asserted."
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "integrated",
+    "balancing": "passive",
+    "interfaces": [
+      "CAN",
+      "USB"
+    ],
+    "locator": {
+      "section": "Which EMUS BMS system to choose? / BMS Mini",
+      "quote": "Mini 3 Datasheet"
+    },
+    "note": "Mini 3 family. FAQ publication date and manual download timestamp do not establish the product release; no exact MNC313 hardware revision inferred."
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-11",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://emusbms.com/faq/",
+      "retrieved_at": "2026-10-11",
+      "locator": {
+        "section": "FAQ 9 / How many cells",
+        "quote": "EMUS BMS Mini 3"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_min",
+      "value": 6,
+      "unit": "1",
+      "statistic": "minimum",
+      "locator": {
+        "section": "Which EMUS BMS system to choose? / BMS Mini",
+        "quote": "6-16 cells"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 16,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Which EMUS BMS system to choose? / BMS Mini",
+        "quote": "6-16 cells"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    }
+  ]
+}

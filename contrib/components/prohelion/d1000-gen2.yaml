@@ -1,0 +1,114 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/prohelion/d1000-gen2",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Prohelion",
+    "model_number": "D1000 Gen2"
+  },
+  "source": {
+    "uid": "src/prohelion-d1000-gen2-inspected-2026-10-09",
+    "kind": "manufacturer_web",
+    "title": "Prohelion D1000 Gen2 — product information",
+    "url": "https://docs.prohelion.com/Battery_Management_Systems/Prohelion_BMS_D1000_Gen2/index.html",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Complete Gen2 system, not the 14-channel CMU alone. 12 V and 24 V auxiliary-supply variants remain unspecified.",
+    "sha256": "0a56e7ea7cbbe0116be8fa21958d5fdbdf51cff6e69370f53325286862a8d4bc"
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "distributed",
+    "balancing": "unspecified",
+    "interfaces": [
+      "CAN"
+    ],
+    "locator": {
+      "section": "Product features",
+      "quote": "Prohelion BMS D1000 Gen2"
+    },
+    "note": "Complete Gen2 system, not the 14-channel CMU alone. 12 V and 24 V auxiliary-supply variants remain unspecified."
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://docs.prohelion.com/Battery_Management_Systems/Prohelion_BMS_D1000_Gen2/index.html",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "D1000 Gen2"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_min",
+      "value": 4,
+      "unit": "1",
+      "statistic": "minimum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "4-448 (configurable)"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 448,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "4-448 (configurable)"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_temperature_channels",
+      "value": 128,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "0-128 (configurable)"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_pack_voltage_max",
+      "value": 1000,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Introduction / battery pack voltage",
+        "quote": "up to 1000V"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        },
+        "electrical_system": "DC"
+      }
+    }
+  ]
+}

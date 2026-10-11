@@ -3,7 +3,7 @@
 ## Purpose and schedule
 
 Maintain this repository's patent research and electrical component library. The
-owner requested patents **and all seven component categories**. The Codex task
+owner requested patents **and all eight component categories**. The Codex task
 heartbeat `weekly-battery-patents-and-components` runs Mondays at 09:00 in
 Europe/Brussels. Its schedule lives in Codex; this file is its working contract.
 Do not create a second schedule or paid service. Local automation requires the
@@ -17,7 +17,7 @@ Codex application and this checkout to be available.
    work, especially patent intelligence PR #460; reuse its implementation if merged.
 2. Inspect accepted and pending records before research. Count battery kinds,
    electrical components, patent publications and patent families separately.
-3. Check all seven category backlogs for new manufacturer datasheets or revisions;
+3. Check all eight category backlogs for new manufacturer datasheets or revisions;
    rotate deeper research across manufacturers. Prefer a small verified batch to
    filling a quota. Default ceiling: 20 new component models and 20 new patent
    publication candidates per run. Record categories searched even with no results.
@@ -29,7 +29,16 @@ Codex application and this checkout to be available.
    evidence, retain priority/applicant provenance, and distinguish an applicant
    from current ownership. Do not infer legal status or validity. This task is
    technical research, not a freedom-to-operate opinion.
-5. For components, use official manufacturer datasheets and product pages. Capture
+5. BMS is the eighth category, explicitly requested by the owner. Read
+   `components/bms-coverage.json` and check current listings plus original
+   release evidence. Keep system families, controllers, CMUs and ordering
+   configurations distinct. Separate pack voltage from auxiliary supply,
+   whole-system cell counts from per-CMU counts, optional adapters from native
+   ports, and balancing from load current. Record release precision and evidence;
+   retain unknown/conflicting dates, plans and legacy status. A datasheet revision
+   is not a launch.
+
+   For components, use official manufacturer datasheets and product pages. Capture
    exact orderable part or a clearly scoped configuration, category, source URL,
    revision, retrieval date, byte hash when retrievable, and a page/section locator
    for every observation. Preserve native units, bounds, qualifiers, operating
@@ -47,7 +56,7 @@ Codex application and this checkout to be available.
    Retain conflicts and source changes for review without overwriting accepted
    facts. Do not fabricate facts or skip rows to reach a count.
 7. Add components as deterministic `review/batches/YYYY-MM-DD-*.json` documents;
-   rebuild the normal review queue. They use `kind: component`, one of the seven
+   rebuild the normal review queue. They use `kind: component`, one of the eight
    `component_type` values and `component/<manufacturer>/<model>` identities.
    Reuse the existing patent import, taxonomy, validation and review directories.
    Do not put unreviewed patents into accepted tables or invent a parallel store.
@@ -82,6 +91,7 @@ If access fails, report the concrete missing access and continue other sources.
 python tools/build_review_batch.py
 python tools/render_review_issues.py
 python tools/build_component_catalog.py
+python tools/build_bms_catalog.py
 python tools/validate_contrib.py contrib/
 python tools/validate_contrib.py review/candidates/
 python tools/validate_review.py

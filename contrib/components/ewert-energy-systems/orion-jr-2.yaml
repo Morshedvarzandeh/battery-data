@@ -1,0 +1,98 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/ewert-energy-systems/orion-jr-2",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Ewert Energy Systems",
+    "model_number": "Orion Jr 2 BMS"
+  },
+  "source": {
+    "uid": "src/ewert-energy-systems-orion-jr-2-inspected-2026-10-09",
+    "kind": "manufacturer_web",
+    "title": "Ewert Energy Systems Orion Jr 2 BMS — product information",
+    "url": "https://www.orionbms.com/products/orion-jr-2-bms/",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Family scope; CAN-enabled versus base option is not resolved to a purchasing SKU. 48 V is nominal, 60 V is the maximum. Original bytes unavailable; no hash asserted."
+  },
+  "bms": {
+    "identity_scope": "system_family",
+    "architecture": "centralized",
+    "balancing": "passive",
+    "interfaces": [
+      "CAN (optional variant)"
+    ],
+    "locator": {
+      "section": "Product features",
+      "quote": "Orion Jr 2 BMS"
+    },
+    "note": "Family scope; CAN-enabled versus base option is not resolved to a purchasing SKU. 48 V is nominal, 60 V is the maximum."
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://www.orionbms.com/products/orion-jr-2-bms/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "Orion Jr 2 BMS"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_series_cells_min",
+      "value": 1,
+      "unit": "1",
+      "statistic": "minimum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "1 to 16 cells"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_series_cells_max",
+      "value": 16,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "1 to 16 cells"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        }
+      }
+    },
+    {
+      "quantity": "bms_pack_voltage_max",
+      "value": 60,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "(60V max)"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "whole system"
+        },
+        "electrical_system": "DC"
+      }
+    }
+  ]
+}

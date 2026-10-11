@@ -1,0 +1,82 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/elithion/lithiumate-hd",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Elithion",
+    "model_number": "Lithiumate HD Master"
+  },
+  "source": {
+    "uid": "src/elithion-lithiumate-hd-inspected-2026-10-09",
+    "kind": "manufacturer_web",
+    "title": "Elithion Lithiumate HD Master — product information",
+    "url": "https://www.elithion.com/lithiumate_controllers.php",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems. Original bytes unavailable; no hash asserted."
+  },
+  "bms": {
+    "identity_scope": "controller",
+    "architecture": "distributed",
+    "balancing": "unspecified",
+    "interfaces": [
+      "CAN",
+      "USB"
+    ],
+    "locator": {
+      "section": "Product features",
+      "quote": "Lithiumate"
+    },
+    "note": "Legacy controller family; enclosure/HVFE/current-sensor options are not separate models here. Manufacturer supports existing systems but no longer sells new systems."
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-11",
+    "market_status": "legacy_support_only",
+    "market_evidence": {
+      "url": "https://www.elithion.com/index.php",
+      "retrieved_at": "2026-10-11",
+      "locator": {
+        "section": "Current news",
+        "quote": "We no longer sell new systems."
+      }
+    },
+    "release": {
+      "status": "documented",
+      "event": {
+        "event_type": "commercial_release",
+        "precision": "year",
+        "date_text": "2015",
+        "evidence": {
+          "url": "https://www.elithion.com/lithiumate_controllers.php",
+          "retrieved_at": "2026-10-09",
+          "locator": {
+            "section": "Pro / HD comparison table",
+            "quote": "Released 2007 2015"
+          }
+        },
+        "date": "2015"
+      },
+      "note": "Manufacturer supplies a release year only; no day or month inferred."
+    },
+    "events": []
+  },
+  "observations": [
+    {
+      "quantity": "bms_cell_banks_max",
+      "value": 8,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Pro / HD comparison table",
+        "quote": "Banks 16 8"
+      },
+      "conditions": {
+        "extra": {
+          "scope": "master controller banks, not cells"
+        }
+      }
+    }
+  ]
+}

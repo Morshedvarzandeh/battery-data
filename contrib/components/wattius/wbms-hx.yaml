@@ -1,0 +1,111 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "component/wattius/wbms-hx",
+    "kind": "component",
+    "component_type": "bms",
+    "manufacturer": "Wattius",
+    "model_number": "wBMS-HX BMU V4"
+  },
+  "source": {
+    "uid": "src/wattius-wbms-hx-inspected-2026-10-09",
+    "kind": "datasheet",
+    "title": "Wattius wBMS-HX BMU V4 — datasheet",
+    "url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-HX-BMU-V4-Datasheet.pdf",
+    "retrieved_at": "2026-10-09",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases.",
+    "sha256": "b75e48398e1972ae11cb26dd72fb6214a896c82b2146eec404d42288ccaa2022",
+    "revision": "20251212 RevD",
+    "document_date": "2025-12-12"
+  },
+  "bms": {
+    "identity_scope": "controller",
+    "architecture": "distributed",
+    "balancing": "unspecified",
+    "interfaces": [
+      "CAN",
+      "USB",
+      "Bluetooth",
+      "Ethernet / Modbus TCP"
+    ],
+    "locator": {
+      "section": "Product features",
+      "quote": "Connectivity",
+      "page": 1
+    },
+    "note": "BMU controller; external compatible CMUs are required. Do not multiply per-CMU channels into an unverified system cell count. PDF filename/upload dates are not product releases.",
+    "datasheet_url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-HX-BMU-V4-Datasheet.pdf"
+  },
+  "lifecycle": {
+    "checked_at": "2026-10-09",
+    "market_status": "manufacturer_listed",
+    "market_evidence": {
+      "url": "https://wattius.com/wbms-hx/",
+      "retrieved_at": "2026-10-09",
+      "locator": {
+        "section": "Product information",
+        "quote": "wBMS-HX BMU V4"
+      }
+    },
+    "release": {
+      "status": "not_found",
+      "note": "No original release date established by the inspected primary sources. Retrieval, upload and document dates are not release dates."
+    },
+    "events": [
+      {
+        "event_type": "document_revision",
+        "date": "2025-12-12",
+        "precision": "day",
+        "date_text": "20251212 RevD",
+        "evidence": {
+          "url": "https://wattius.com/wp-content/uploads/2026/06/20251212-Wattius-wBMS-HX-BMU-V4-Datasheet.pdf",
+          "retrieved_at": "2026-10-09",
+          "sha256": "b75e48398e1972ae11cb26dd72fb6214a896c82b2146eec404d42288ccaa2022",
+          "locator": {
+            "page": 2,
+            "section": "Printed footer",
+            "quote": "20251212 RevD"
+          }
+        },
+        "note": "Printed document revision; not a product release."
+      }
+    ]
+  },
+  "observations": [
+    {
+      "quantity": "bms_can_ports",
+      "value": 2,
+      "unit": "1",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "2x Isolated CAN bus",
+        "page": 2
+      },
+      "conditions": {
+        "extra": {
+          "scope": "BMU controller"
+        }
+      }
+    },
+    {
+      "quantity": "bms_pack_voltage_max",
+      "value": 1500,
+      "unit": "V",
+      "statistic": "maximum",
+      "locator": {
+        "section": "Technical specifications",
+        "quote": "applications up to 1.500 V",
+        "page": 1
+      },
+      "conditions": {
+        "extra": {
+          "scope": "HX system application capability"
+        },
+        "electrical_system": "DC"
+      }
+    }
+  ]
+}
