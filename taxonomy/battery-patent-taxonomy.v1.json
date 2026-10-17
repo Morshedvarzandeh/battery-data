@@ -1,0 +1,583 @@
+{
+  "$schema": "../json-schema/battery-patent-taxonomy.schema.json",
+  "taxonomy_version": "1.0.0",
+  "title": "battery-data battery patent taxonomy",
+  "classification_snapshot": {
+    "cpc": "2026.05",
+    "ipc": "2026.01",
+    "note": "Classification codes are discovery evidence, not the user-facing taxonomy. Re-run historical shards when the CPC/IPC crosswalk changes."
+  },
+  "coverage_contract": {
+    "primary_prefixes": [
+      "H01M4", "H01M6", "H01M10", "H01M12", "H01M50", "Y02E60/10"
+    ],
+    "historical_prefixes": ["H01M2"],
+    "cross_domain_profiles": [
+      {
+        "id": "battery_testing",
+        "classification_prefixes": ["G01R31/36"],
+        "required_terms": ["battery", "cell", "accumulator"]
+      },
+      {
+        "id": "battery_charging",
+        "classification_prefixes": ["H02J7", "B60L53"],
+        "required_terms": ["battery", "cell", "accumulator", "state of charge"]
+      },
+      {
+        "id": "traction_battery",
+        "classification_prefixes": ["B60L50/64", "B60L58", "B60K1/04"],
+        "required_terms": ["battery", "cell", "accumulator"]
+      },
+      {
+        "id": "battery_recycling",
+        "classification_prefixes": ["B09B3", "C22B7", "C22B26/12"],
+        "required_terms": ["battery", "cell", "black mass", "electrode"]
+      },
+      {
+        "id": "battery_materials",
+        "classification_prefixes": ["C01G", "C01B", "C08F", "C08G"],
+        "required_terms": ["battery", "cathode", "anode", "electrolyte", "separator"]
+      }
+    ],
+    "exclusion_profiles": [
+      {
+        "id": "fuel_cell_only",
+        "classification_prefixes": ["H01M8"],
+        "unless_terms": ["secondary battery", "rechargeable battery", "battery pack"]
+      }
+    ]
+  },
+  "taxa": [
+    {
+      "id": "scope/battery",
+      "facet": "scope",
+      "code": "battery",
+      "label": "Battery technology",
+      "description": "Broad battery relevance gate.",
+      "rules": {
+        "classification_prefixes": ["H01M4", "H01M6", "H01M10", "H01M12", "H01M50", "Y02E60/10"],
+        "keywords": ["battery", "electrochemical cell", "accumulator"]
+      }
+    },
+
+    {
+      "id": "chemistry/lithium_ion",
+      "facet": "chemistry",
+      "code": "lithium_ion",
+      "label": "Lithium-ion",
+      "rules": {
+        "classification_prefixes": ["H01M10/052", "H01M10/0525"],
+        "keywords": ["lithium-ion", "lithium ion", "li-ion"]
+      }
+    },
+    {
+      "id": "chemistry/lithium_metal",
+      "facet": "chemistry",
+      "code": "lithium_metal",
+      "label": "Lithium-metal",
+      "rules": {
+        "classification_prefixes": ["H01M10/052"],
+        "keywords": ["lithium metal anode", "anode-free lithium", "lithium-metal"]
+      }
+    },
+    {
+      "id": "chemistry/solid_state",
+      "facet": "chemistry",
+      "code": "solid_state",
+      "label": "Solid-state battery",
+      "rules": {
+        "classification_prefixes": ["H01M10/0562"],
+        "keywords": ["solid-state battery", "solid state battery", "solid electrolyte"]
+      }
+    },
+    {
+      "id": "chemistry/sodium_ion",
+      "facet": "chemistry",
+      "code": "sodium_ion",
+      "label": "Sodium-ion",
+      "rules": {
+        "classification_prefixes": ["H01M10/054"],
+        "keywords": ["sodium-ion", "sodium ion", "na-ion"]
+      }
+    },
+    {
+      "id": "chemistry/lithium_sulfur",
+      "facet": "chemistry",
+      "code": "lithium_sulfur",
+      "label": "Lithium-sulfur",
+      "rules": {
+        "classification_prefixes": ["H01M10/052", "H01M4/38"],
+        "keywords": ["lithium-sulfur", "lithium sulfur", "polysulfide shuttle"]
+      }
+    },
+    {
+      "id": "chemistry/metal_air",
+      "facet": "chemistry",
+      "code": "metal_air",
+      "label": "Metal-air",
+      "rules": {
+        "classification_prefixes": ["H01M12"],
+        "keywords": ["metal-air battery", "lithium-air", "zinc-air"]
+      }
+    },
+    {
+      "id": "chemistry/lead_acid",
+      "facet": "chemistry",
+      "code": "lead_acid",
+      "label": "Lead-acid",
+      "rules": {
+        "classification_prefixes": ["H01M10/06", "H01M10/12"],
+        "keywords": ["lead-acid", "lead acid battery"]
+      }
+    },
+    {
+      "id": "chemistry/nickel_based",
+      "facet": "chemistry",
+      "code": "nickel_based",
+      "label": "Nickel-based rechargeable",
+      "rules": {
+        "classification_prefixes": ["H01M10/24", "H01M10/30"],
+        "keywords": ["nickel-metal hydride", "nickel cadmium", "nimh"]
+      }
+    },
+    {
+      "id": "chemistry/flow_battery",
+      "facet": "chemistry",
+      "code": "flow_battery",
+      "label": "Flow battery",
+      "rules": {
+        "classification_prefixes": ["H01M8/18"],
+        "keywords": ["redox flow battery", "flow battery", "vanadium redox"]
+      }
+    },
+
+    {
+      "id": "component/cathode",
+      "facet": "component",
+      "code": "cathode",
+      "label": "Positive electrode / cathode",
+      "rules": {
+        "classification_prefixes": ["H01M4/13", "H01M4/50", "H01M4/52", "H01M4/58"],
+        "keywords": ["cathode active material", "positive electrode"]
+      }
+    },
+    {
+      "id": "component/anode",
+      "facet": "component",
+      "code": "anode",
+      "label": "Negative electrode / anode",
+      "rules": {
+        "classification_prefixes": ["H01M4/13", "H01M4/36", "H01M4/38", "H01M4/48"],
+        "keywords": ["anode active material", "negative electrode", "silicon anode", "graphite anode"]
+      }
+    },
+    {
+      "id": "component/electrolyte",
+      "facet": "component",
+      "code": "electrolyte",
+      "label": "Electrolyte",
+      "rules": {
+        "classification_prefixes": ["H01M10/056", "H01M10/0562", "H01M10/0565", "H01M10/0567"],
+        "keywords": ["electrolyte composition", "electrolyte additive", "ionic liquid electrolyte"]
+      }
+    },
+    {
+      "id": "component/separator",
+      "facet": "component",
+      "code": "separator",
+      "label": "Separator",
+      "rules": {
+        "classification_prefixes": ["H01M50/40", "H01M50/44", "H01M50/46"],
+        "keywords": ["battery separator", "separator membrane"]
+      }
+    },
+    {
+      "id": "component/current_collector",
+      "facet": "component",
+      "code": "current_collector",
+      "label": "Current collector",
+      "rules": {
+        "classification_prefixes": ["H01M4/64", "H01M4/66"],
+        "keywords": ["current collector", "copper foil", "aluminum foil"]
+      }
+    },
+    {
+      "id": "component/binder_conductive_additive",
+      "facet": "component",
+      "code": "binder_conductive_additive",
+      "label": "Binder and conductive additive",
+      "rules": {
+        "classification_prefixes": ["H01M4/62"],
+        "keywords": ["electrode binder", "conductive additive", "carbon black"]
+      }
+    },
+    {
+      "id": "component/cell_housing",
+      "facet": "component",
+      "code": "cell_housing",
+      "label": "Cell housing and sealing",
+      "rules": {
+        "classification_prefixes": ["H01M50/10", "H01M50/116", "H01M50/124"],
+        "keywords": ["cell housing", "battery can", "pouch sealing"]
+      }
+    },
+    {
+      "id": "component/terminal_busbar",
+      "facet": "component",
+      "code": "terminal_busbar",
+      "label": "Terminal, tab and busbar",
+      "rules": {
+        "classification_prefixes": ["H01M50/50", "H01M50/503", "H01M50/505"],
+        "keywords": ["battery terminal", "electrode tab", "busbar"]
+      }
+    },
+
+    {
+      "id": "manufacturing/material_synthesis",
+      "facet": "manufacturing",
+      "code": "material_synthesis",
+      "label": "Active-material synthesis",
+      "rules": {
+        "classification_prefixes": ["C01G", "H01M4/04"],
+        "keywords": ["precursor synthesis", "co-precipitation", "calcination", "active material production"]
+      }
+    },
+    {
+      "id": "manufacturing/electrode_mixing_coating",
+      "facet": "manufacturing",
+      "code": "electrode_mixing_coating",
+      "label": "Electrode mixing and coating",
+      "rules": {
+        "classification_prefixes": ["H01M4/04"],
+        "keywords": ["electrode slurry", "electrode coating", "dry electrode"]
+      }
+    },
+    {
+      "id": "manufacturing/calendering_drying",
+      "facet": "manufacturing",
+      "code": "calendering_drying",
+      "label": "Calendering and drying",
+      "rules": {
+        "classification_prefixes": ["H01M4/04"],
+        "keywords": ["electrode calendering", "electrode drying", "roll pressing"]
+      }
+    },
+    {
+      "id": "manufacturing/stacking_winding",
+      "facet": "manufacturing",
+      "code": "stacking_winding",
+      "label": "Cell stacking and winding",
+      "rules": {
+        "classification_prefixes": ["H01M10/04", "H01M10/0587"],
+        "keywords": ["jelly roll", "electrode winding", "electrode stacking"]
+      }
+    },
+    {
+      "id": "manufacturing/electrolyte_filling_sealing",
+      "facet": "manufacturing",
+      "code": "electrolyte_filling_sealing",
+      "label": "Electrolyte filling and sealing",
+      "rules": {
+        "classification_prefixes": ["H01M10/04", "H01M50/116"],
+        "keywords": ["electrolyte filling", "vacuum filling", "cell sealing"]
+      }
+    },
+    {
+      "id": "manufacturing/formation_aging",
+      "facet": "manufacturing",
+      "code": "formation_aging",
+      "label": "Formation and ageing",
+      "rules": {
+        "classification_prefixes": ["H01M10/44"],
+        "keywords": ["cell formation", "formation cycling", "cell aging process"]
+      }
+    },
+    {
+      "id": "manufacturing/inspection_quality",
+      "facet": "manufacturing",
+      "code": "inspection_quality",
+      "label": "Inspection and quality control",
+      "rules": {
+        "classification_prefixes": ["G01R31/36", "H01M10/42"],
+        "keywords": ["battery inspection", "cell defect detection", "inline quality"]
+      }
+    },
+
+    {
+      "id": "pack_system/module_pack_architecture",
+      "facet": "pack_system",
+      "code": "module_pack_architecture",
+      "label": "Module and pack architecture",
+      "rules": {
+        "classification_prefixes": ["H01M50/20", "H01M50/204", "H01M50/209"],
+        "keywords": ["battery module", "battery pack", "cell-to-pack", "cell to chassis"]
+      }
+    },
+    {
+      "id": "pack_system/electrical_interconnection",
+      "facet": "pack_system",
+      "code": "electrical_interconnection",
+      "label": "Electrical interconnection",
+      "rules": {
+        "classification_prefixes": ["H01M50/50", "H01M50/503"],
+        "keywords": ["cell interconnection", "battery busbar", "flexible interconnect"]
+      }
+    },
+    {
+      "id": "pack_system/bms_estimation",
+      "facet": "pack_system",
+      "code": "bms_estimation",
+      "label": "BMS and state estimation",
+      "rules": {
+        "classification_prefixes": ["H01M10/48", "G01R31/367", "G01R31/392", "B60L58"],
+        "keywords": ["battery management system", "state of charge", "state of health", "state of power"]
+      }
+    },
+    {
+      "id": "pack_system/balancing",
+      "facet": "pack_system",
+      "code": "balancing",
+      "label": "Cell balancing",
+      "rules": {
+        "classification_prefixes": ["H02J7/00"],
+        "keywords": ["cell balancing", "active balancing", "passive balancing"]
+      }
+    },
+    {
+      "id": "pack_system/thermal_management",
+      "facet": "pack_system",
+      "code": "thermal_management",
+      "label": "Battery thermal management",
+      "rules": {
+        "classification_prefixes": ["H01M10/60", "H01M10/613", "H01M10/625", "H01M10/656"],
+        "keywords": ["battery cooling", "battery heating", "thermal management system"]
+      }
+    },
+    {
+      "id": "pack_system/safety_venting_propagation",
+      "facet": "pack_system",
+      "code": "safety_venting_propagation",
+      "label": "Venting and thermal-runaway propagation",
+      "rules": {
+        "classification_prefixes": ["H01M50/30", "H01M50/342", "H01M50/383", "H01M10/658"],
+        "keywords": ["thermal runaway", "propagation barrier", "battery venting", "burst disc"]
+      }
+    },
+    {
+      "id": "pack_system/contactors_precharge_protection",
+      "facet": "pack_system",
+      "code": "contactors_precharge_protection",
+      "label": "Contactors, precharge and protection",
+      "rules": {
+        "classification_prefixes": ["H01M50/572", "H02H7"],
+        "keywords": ["battery contactor", "precharge circuit", "battery disconnect", "pyro fuse"]
+      }
+    },
+
+    {
+      "id": "charging/fast_charging",
+      "facet": "charging",
+      "code": "fast_charging",
+      "label": "Fast charging",
+      "rules": {
+        "classification_prefixes": ["H01M10/44", "H02J7", "B60L53"],
+        "keywords": ["fast charging", "rapid charging", "extreme fast charge"]
+      }
+    },
+    {
+      "id": "charging/wireless",
+      "facet": "charging",
+      "code": "wireless",
+      "label": "Wireless charging",
+      "rules": {
+        "classification_prefixes": ["B60L53/12", "H02J50"],
+        "keywords": ["wireless charging", "inductive charging"]
+      }
+    },
+    {
+      "id": "charging/bidirectional_v2x",
+      "facet": "charging",
+      "code": "bidirectional_v2x",
+      "label": "Bidirectional charging and V2X",
+      "rules": {
+        "classification_prefixes": ["B60L53", "H02J7"],
+        "keywords": ["vehicle-to-grid", "vehicle to grid", "bidirectional charging", "v2g", "v2h"]
+      }
+    },
+    {
+      "id": "charging/battery_swap",
+      "facet": "charging",
+      "code": "battery_swap",
+      "label": "Battery swapping",
+      "rules": {
+        "classification_prefixes": ["B60L53"],
+        "keywords": ["battery swap", "swappable battery", "battery exchange station"]
+      }
+    },
+
+    {
+      "id": "lifecycle/diagnostics_prognostics",
+      "facet": "lifecycle",
+      "code": "diagnostics_prognostics",
+      "label": "Diagnostics and prognostics",
+      "rules": {
+        "classification_prefixes": ["G01R31/36", "H01M10/48"],
+        "keywords": ["remaining useful life", "battery diagnostics", "fault diagnosis", "battery prognostics"]
+      }
+    },
+    {
+      "id": "lifecycle/repair_remanufacture",
+      "facet": "lifecycle",
+      "code": "repair_remanufacture",
+      "label": "Repair and remanufacture",
+      "rules": {
+        "classification_prefixes": ["H01M10/42", "H01M50/20"],
+        "keywords": ["battery repair", "pack refurbishment", "battery remanufacturing"]
+      }
+    },
+    {
+      "id": "lifecycle/second_life",
+      "facet": "lifecycle",
+      "code": "second_life",
+      "label": "Second life and repurposing",
+      "rules": {
+        "classification_prefixes": ["Y02E60/10"],
+        "keywords": ["second-life battery", "second life battery", "battery repurposing"]
+      }
+    },
+    {
+      "id": "lifecycle/recycling_hydrometallurgy",
+      "facet": "lifecycle",
+      "code": "recycling_hydrometallurgy",
+      "label": "Hydrometallurgical recycling",
+      "rules": {
+        "classification_prefixes": ["C22B3", "C22B7", "C22B26/12"],
+        "keywords": ["battery leaching", "hydrometallurgical recycling", "black mass leaching"]
+      }
+    },
+    {
+      "id": "lifecycle/recycling_pyrometallurgy",
+      "facet": "lifecycle",
+      "code": "recycling_pyrometallurgy",
+      "label": "Pyrometallurgical recycling",
+      "rules": {
+        "classification_prefixes": ["C22B7"],
+        "keywords": ["pyrometallurgical battery recycling", "battery smelting"]
+      }
+    },
+    {
+      "id": "lifecycle/recycling_direct",
+      "facet": "lifecycle",
+      "code": "recycling_direct",
+      "label": "Direct recycling and regeneration",
+      "rules": {
+        "classification_prefixes": ["H01M10/54"],
+        "keywords": ["direct battery recycling", "cathode regeneration", "relithiation"]
+      }
+    },
+    {
+      "id": "lifecycle/disassembly_sorting",
+      "facet": "lifecycle",
+      "code": "disassembly_sorting",
+      "label": "Disassembly and sorting",
+      "rules": {
+        "classification_prefixes": ["B09B3", "H01M10/54"],
+        "keywords": ["battery disassembly", "cell sorting", "pack dismantling"]
+      }
+    },
+
+    {
+      "id": "application/road_vehicle",
+      "facet": "application",
+      "code": "road_vehicle",
+      "label": "Road vehicle",
+      "rules": {
+        "classification_prefixes": ["B60L50/64", "B60L53", "B60L58", "B60K1/04"],
+        "keywords": ["electric vehicle", "traction battery", "automotive battery"]
+      }
+    },
+    {
+      "id": "application/marine",
+      "facet": "application",
+      "code": "marine",
+      "label": "Marine vessel",
+      "rules": {
+        "classification_prefixes": ["B63H21"],
+        "keywords": ["marine battery", "electric vessel", "ship battery"]
+      }
+    },
+    {
+      "id": "application/aviation",
+      "facet": "application",
+      "code": "aviation",
+      "label": "Aviation and eVTOL",
+      "rules": {
+        "classification_prefixes": ["B64D27", "B64U50"],
+        "keywords": ["aircraft battery", "evtol battery", "electric aircraft"]
+      }
+    },
+    {
+      "id": "application/grid_stationary",
+      "facet": "application",
+      "code": "grid_stationary",
+      "label": "Grid and stationary storage",
+      "rules": {
+        "classification_prefixes": ["H02J3", "Y02E60/10"],
+        "keywords": ["battery energy storage system", "grid battery", "stationary storage", "bess"]
+      }
+    },
+    {
+      "id": "application/portable_device",
+      "facet": "application",
+      "code": "portable_device",
+      "label": "Portable and consumer device",
+      "rules": {
+        "classification_prefixes": ["H04M1", "G06F1"],
+        "keywords": ["portable device battery", "wearable battery", "mobile device battery"]
+      }
+    },
+
+    {
+      "id": "objective/energy_density",
+      "facet": "objective",
+      "code": "energy_density",
+      "label": "Energy-density improvement",
+      "rules": {"classification_prefixes": [], "keywords": ["energy density", "specific energy"]}
+    },
+    {
+      "id": "objective/power_fast_charge",
+      "facet": "objective",
+      "code": "power_fast_charge",
+      "label": "Power and fast-charge improvement",
+      "rules": {"classification_prefixes": [], "keywords": ["power density", "fast charge", "high rate capability"]}
+    },
+    {
+      "id": "objective/lifetime",
+      "facet": "objective",
+      "code": "lifetime",
+      "label": "Lifetime improvement",
+      "rules": {"classification_prefixes": [], "keywords": ["cycle life", "calendar life", "capacity retention", "battery lifetime"]}
+    },
+    {
+      "id": "objective/safety",
+      "facet": "objective",
+      "code": "safety",
+      "label": "Safety improvement",
+      "rules": {"classification_prefixes": ["H01M10/42", "H01M50/30"], "keywords": ["battery safety", "thermal runaway", "internal short circuit"]}
+    },
+    {
+      "id": "objective/cost_manufacturability",
+      "facet": "objective",
+      "code": "cost_manufacturability",
+      "label": "Cost and manufacturability",
+      "rules": {"classification_prefixes": [], "keywords": ["manufacturing cost", "low-cost battery", "production throughput"]}
+    },
+    {
+      "id": "objective/sustainability",
+      "facet": "objective",
+      "code": "sustainability",
+      "label": "Sustainability and material efficiency",
+      "rules": {"classification_prefixes": ["Y02E60/10"], "keywords": ["sustainable battery", "critical material reduction", "cobalt-free"]}
+    }
+  ]
+}

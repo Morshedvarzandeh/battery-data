@@ -13,6 +13,30 @@ document body. `source.redistributable` in the schema controls the exception.
 Kept this way, a takedown request is a per-source problem rather than a
 project-ending one.
 
+## Patent intelligence sources
+
+Patent coverage is multi-source because no office or aggregator is complete on
+families, legal events, citations, full text, languages and update latency at
+the same time. The implementation and rights boundary are documented in
+[`agents/patent-miner/AGENT.md`](../agents/patent-miner/AGENT.md).
+
+- **Google Patents Public Data / BigQuery** is the global discovery backbone.
+  Google hosts the public dataset; the querying project pays query costs beyond
+  the applicable free tier. Scheduled runs therefore create a bounded plan
+  only. Execution needs an explicit manual checkbox and hard bytes-billed cap.
+- **EPO Open Patent Services (OPS)** exposes EPO worldwide bibliographic,
+  family, legal-status, full-text and image data through a standardized XML
+  API. It is the planned family/legal-event enrichment source. Registration,
+  fair-use limits and OPS terms still apply.
+- **WIPO PATENTSCOPE** covers published PCT applications and participating
+  national/regional collections. Use an authorised data/API product; the
+  PATENTSCOPE human interface is not a bulk retrieval endpoint.
+- **USPTO Open Data Portal** provides official US APIs and bulk products. Bulk
+  archive identity, file hashes and product dates must remain in provenance.
+
+Patent document bodies are not mirrored merely because they are readable in a
+browser. Every release records metadata and full-text rights separately.
+
 ---
 
 ## Referenced, not reproduced

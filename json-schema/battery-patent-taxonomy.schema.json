@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lemonergy.com/schemas/battery-patent-taxonomy.v1.json",
+  "title": "Battery patent taxonomy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["taxonomy_version", "title", "classification_snapshot", "coverage_contract", "taxa"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "taxonomy_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "classification_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpc", "ipc", "note"],
+      "properties": {
+        "cpc": {"type": "string"},
+        "ipc": {"type": "string"},
+        "note": {"type": "string"}
+      }
+    },
+    "coverage_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary_prefixes", "historical_prefixes", "cross_domain_profiles", "exclusion_profiles"],
+      "properties": {
+        "primary_prefixes": {"$ref": "#/$defs/nonEmptyStrings"},
+        "historical_prefixes": {"$ref": "#/$defs/strings"},
+        "cross_domain_profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "classification_prefixes", "required_terms"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+              "classification_prefixes": {"$ref": "#/$defs/nonEmptyStrings"},
+              "required_terms": {"$ref": "#/$defs/nonEmptyStrings"}
+            }
+          }
+        },
+        "exclusion_profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "classification_prefixes", "unless_terms"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+              "classification_prefixes": {"$ref": "#/$defs/nonEmptyStrings"},
+              "unless_terms": {"$ref": "#/$defs/nonEmptyStrings"}
+            }
+          }
+        }
+      }
+    },
+    "taxa": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "facet", "code", "label", "rules"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9_]+/[a-z0-9_]+$"},
+          "facet": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+          "code": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+          "label": {"type": "string", "minLength": 1},
+          "description": {"type": "string"},
+          "parent": {"type": ["string", "null"]},
+          "rules": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["classification_prefixes", "keywords"],
+            "properties": {
+              "classification_prefixes": {"$ref": "#/$defs/strings"},
+              "keywords": {"$ref": "#/$defs/strings"},
+              "negative_keywords": {"$ref": "#/$defs/strings"}
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "strings": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "nonEmptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    }
+  }
+}
