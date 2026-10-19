@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-11",
+  "checks": [
+    {
+      "category": "fuse",
+      "source_uid": "src/mersen-nhgbat-inspected-2026-10-04",
+      "url": "https://www.mersen.com/sites/default/files/medias/PIM/files/DS-NH-fuse-links-gBAT-1000V-1500V-DC-EN.pdf",
+      "previous_sha256": "dc8674a15dcc2f28871fe4074150a4f753e710c85ace528c6a000d721a3c1ed5",
+      "result": "recheck_bytes_unavailable",
+      "note": "Direct retrieval returned HTTP 403; no assertion of unchanged content or new revision."
+    },
+    {
+      "category": "precharge_resistor",
+      "source_uid": "src/vishay-hrha-inspected-2026-09-21",
+      "url": "https://www.vishay.com/docs/32594/hrha.pdf",
+      "previous_sha256": "d1e2029888485d902f3ae2d2a292d859f821518514c3443d89693138b6bb60e8",
+      "result": "unchanged_hash",
+      "current_sha256": "d1e2029888485d902f3ae2d2a292d859f821518514c3443d89693138b6bb60e8",
+      "bytes": 99947
+    },
+    {
+      "category": "inverter",
+      "source_uid": "src/victron-inverter-rechecked-2026-10-04",
+      "url": "https://www.victronenergy.com/upload/documents/Datasheet-Inverter-VE.Direct-250VA-1600VA-EN.pdf",
+      "previous_sha256": "916707267a946a21660d77ad29faf145f4b0879ef37b427b12f84191b3e41902",
+      "result": "unchanged_hash",
+      "current_sha256": "916707267a946a21660d77ad29faf145f4b0879ef37b427b12f84191b3e41902",
+      "bytes": 815347
+    },
+    {
+      "category": "charger",
+      "source_uid": "src/victron-charger-inspected-2026-09-16",
+      "url": "https://www.victronenergy.com/upload/documents/Datasheet-Blue-Smart-IP22-Charger-230-VAC-EN.pdf",
+      "previous_sha256": "ab251455ac8b2f49d77d135fd3b867cb7fe790980a062d8e352369eeb035e94c",
+      "result": "unchanged_hash",
+      "current_sha256": "ab251455ac8b2f49d77d135fd3b867cb7fe790980a062d8e352369eeb035e94c",
+      "bytes": 310916
+    },
+    {
+      "category": "dc_dc_converter",
+      "source_uid": "src/victron-dcdc-rechecked-2026-10-04",
+      "url": "https://www.victronenergy.com/upload/documents/Datasheet-Orion-Tr-DC-DC-converters-low-power,-non-isolated-EN.pdf",
+      "previous_sha256": "0bbbe885efe98a3ebc0a801b6303123703791dd5f5dec177085410262040a87b",
+      "result": "unchanged_hash",
+      "current_sha256": "0bbbe885efe98a3ebc0a801b6303123703791dd5f5dec177085410262040a87b",
+      "bytes": 441164
+    },
+    {
+      "category": "contactor",
+      "source_uid": "src/te-ev200-inspected-2026-09-16",
+      "url": "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=5-1773450-5_sec7_EV200A&DocType=Catalog+Section&PartCntxt=1618002-7",
+      "previous_sha256": "79d4e7166505712cbf747d100ea34b16f42d148e84fcbf3bc6d7b78f2c8b46b7",
+      "result": "recheck_bytes_unavailable",
+      "note": "Direct retrieval returned HTTP 403; no assertion of unchanged content or new revision."
+    },
+    {
+      "category": "precharge_contactor",
+      "source_uid": "src/sensata-p115-inspected-2026-10-04",
+      "url": "https://www.sensata.com/sites/default/files/a/sensata-gigavac-p115-series-minitactor-contactors-datasheet.pdf",
+      "previous_sha256": null,
+      "result": "recheck_bytes_unavailable",
+      "note": "Direct retrieval returned HTTP 403; no assertion of unchanged content or new revision."
+    }
+  ],
+  "new_source": {
+    "uid": "src/schaltbau-c310-page-inspected-2026-10-11",
+    "kind": "manufacturer_web",
+    "title": "Schaltbau C310 product page: A-series configurations and specifications",
+    "url": "https://schaltbau.com/en/product/contactors/c310/",
+    "retrieved_at": "2026-10-11",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Configuration-level identity: C310A/300 or C310A/500 with coil, auxiliary-switch and mounting options unspecified; not a fully qualified ordering code. Official page inspected through web retrieval. No printed revision or release date. Direct page retrieval returned HTTP 403; catalogue endpoints returned HTML instead of PDF. No original-content hash is asserted. Specifications table is the source of the retained current conditions. Separate feature prose names C360 and gives a different 500 A/185 mm²/85°C condition; that prose is not imported or reconciled as a C310 rating. 1500 V insulation and 1000 V C310A operating voltage are distinct. No make/break rating or coil option is inferred."
+  },
+  "source_conflicts": [
+    {
+      "url": "https://schaltbau.com/en/product/contactors/c310/",
+      "section": "High conventional thermal current vs Specifications",
+      "note": "Feature text names C360 and gives 500 A / 185 mm² / 85°C; C310 table gives 500 A / 2x150 mm² / 40°C. Keep table-specific conditions and flag the discrepancy."
+    }
+  ]
+}

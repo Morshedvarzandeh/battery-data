@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "batch": "2026-10-11-electrical-components",
+  "origin": "Scheduled primary-source research; configuration-scoped claims pending review",
+  "candidate_count": 2,
+  "candidates": [
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/schaltbau/c310a-300",
+          "kind": "component",
+          "component_type": "contactor",
+          "manufacturer": "Schaltbau",
+          "model_number": "C310A/300 (coil/auxiliary options unspecified)"
+        },
+        "source": {
+          "uid": "src/schaltbau-c310-page-inspected-2026-10-11",
+          "kind": "manufacturer_web",
+          "title": "Schaltbau C310 product page: A-series configurations and specifications",
+          "url": "https://schaltbau.com/en/product/contactors/c310/",
+          "retrieved_at": "2026-10-11",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Configuration-level identity: C310A/300 or C310A/500 with coil, auxiliary-switch and mounting options unspecified; not a fully qualified ordering code. Official page inspected through web retrieval. No printed revision or release date. Direct page retrieval returned HTTP 403; catalogue endpoints returned HTML instead of PDF. No original-content hash is asserted. Specifications table is the source of the retained current conditions. Separate feature prose names C360 and gives a different 500 A/185 mm²/85°C condition; that prose is not imported or reconciled as a C310 rating. 1500 V insulation and 1000 V C310A operating voltage are distinct. No make/break rating or coil option is inferred."
+        },
+        "observations": [
+          {
+            "quantity": "contact_voltage_rating",
+            "value": 1000,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "section": "Specifications / Rated operating voltage Ue / C310A",
+              "quote": "C310A: 1,000 V"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "extra": {
+                "rating_basis": "Ue",
+                "direction": "bidirectional"
+              }
+            }
+          },
+          {
+            "quantity": "continuous_carry_current",
+            "value": 300,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "section": "Specifications / Conv. thermal current Ith / 300 A row",
+              "quote": "300 A @ 185 mm² and 70° C"
+            },
+            "conditions": {
+              "temperature_c": 70,
+              "conductor_description": "185 mm²",
+              "unstated": [
+                "temperature_reference"
+              ],
+              "extra": {
+                "rating_basis": "conventional thermal current Ith",
+                "source_scope": "C310 specifications table; not the conflicting C360 feature paragraph"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Resolve the fully qualified ordering code before treating the configuration as a procurement SKU.",
+        "Retained current values come only from the specifications table; conflicting feature prose requires manufacturer clarification."
+      ]
+    },
+    {
+      "document": {
+        "schema_version": "1",
+        "product": {
+          "uid": "component/schaltbau/c310a-500",
+          "kind": "component",
+          "component_type": "contactor",
+          "manufacturer": "Schaltbau",
+          "model_number": "C310A/500 (coil/auxiliary options unspecified)"
+        },
+        "source": {
+          "uid": "src/schaltbau-c310-page-inspected-2026-10-11",
+          "kind": "manufacturer_web",
+          "title": "Schaltbau C310 product page: A-series configurations and specifications",
+          "url": "https://schaltbau.com/en/product/contactors/c310/",
+          "retrieved_at": "2026-10-11",
+          "license": "proprietary",
+          "redistributable": false,
+          "note": "Configuration-level identity: C310A/300 or C310A/500 with coil, auxiliary-switch and mounting options unspecified; not a fully qualified ordering code. Official page inspected through web retrieval. No printed revision or release date. Direct page retrieval returned HTTP 403; catalogue endpoints returned HTML instead of PDF. No original-content hash is asserted. Specifications table is the source of the retained current conditions. Separate feature prose names C360 and gives a different 500 A/185 mm²/85°C condition; that prose is not imported or reconciled as a C310 rating. 1500 V insulation and 1000 V C310A operating voltage are distinct. No make/break rating or coil option is inferred."
+        },
+        "observations": [
+          {
+            "quantity": "contact_voltage_rating",
+            "value": 1000,
+            "unit": "V",
+            "statistic": "rated",
+            "locator": {
+              "section": "Specifications / Rated operating voltage Ue / C310A",
+              "quote": "C310A: 1,000 V"
+            },
+            "conditions": {
+              "electrical_system": "DC",
+              "extra": {
+                "rating_basis": "Ue",
+                "direction": "bidirectional"
+              }
+            }
+          },
+          {
+            "quantity": "continuous_carry_current",
+            "value": 500,
+            "unit": "A",
+            "statistic": "rated",
+            "locator": {
+              "section": "Specifications / Conv. thermal current Ith / 500 A row",
+              "quote": "500A @ 2x 150 mm² and 40° C"
+            },
+            "conditions": {
+              "temperature_c": 40,
+              "conductor_description": "2x 150 mm²",
+              "unstated": [
+                "temperature_reference"
+              ],
+              "extra": {
+                "rating_basis": "conventional thermal current Ith",
+                "source_scope": "C310 specifications table; not the conflicting C360 feature paragraph"
+              }
+            }
+          }
+        ]
+      },
+      "review_notes": [
+        "Resolve the fully qualified ordering code before treating the configuration as a procurement SKU.",
+        "Retained current values come only from the specifications table; conflicting feature prose requires manufacturer clarification."
+      ]
+    }
+  ]
+}

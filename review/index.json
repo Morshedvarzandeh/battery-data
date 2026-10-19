@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "batch": "2026-10-11-dsenergy-semisolid-marine",
+  "batch": "2026-10-11-electrical-components",
   "status": "pending_review",
   "approval_rule": "Repository owner approves on the matching issue, or explicitly delegates a documented source and identity review. See review_audit on delegated acceptances.",
   "candidate_count": 110,
-  "total_record_count": 3730,
+  "total_record_count": 3732,
   "candidates": [
     {
       "uid": "system/byd/battery-box-premium-hvs-5.1",
@@ -26284,6 +26284,38 @@
       "issue_number": null,
       "issue_url": null,
       "review_audit": "review/audits/2026-10-11-dsenergy-semisolid-marine.json"
+    },
+    {
+      "uid": "component/schaltbau/c310a-300",
+      "manufacturer": "Schaltbau",
+      "model_number": "C310A/300 (coil/auxiliary options unspecified)",
+      "kind": "component",
+      "candidate_file": "review/candidates/schaltbau/c310a-300.yaml",
+      "source_url": "https://schaltbau.com/en/product/contactors/c310/",
+      "source_title": "Schaltbau C310 product page: A-series configurations and specifications",
+      "observation_count": 2,
+      "state": "accepted",
+      "component_type": "contactor",
+      "accepted_file": "contrib/components/schaltbau/c310a-300.yaml",
+      "issue_number": null,
+      "issue_url": null,
+      "review_audit": "review/audits/2026-10-20-final-publication.json"
+    },
+    {
+      "uid": "component/schaltbau/c310a-500",
+      "manufacturer": "Schaltbau",
+      "model_number": "C310A/500 (coil/auxiliary options unspecified)",
+      "kind": "component",
+      "candidate_file": "review/candidates/schaltbau/c310a-500.yaml",
+      "source_url": "https://schaltbau.com/en/product/contactors/c310/",
+      "source_title": "Schaltbau C310 product page: A-series configurations and specifications",
+      "observation_count": 2,
+      "state": "accepted",
+      "component_type": "contactor",
+      "accepted_file": "contrib/components/schaltbau/c310a-500.yaml",
+      "issue_number": null,
+      "issue_url": null,
+      "review_audit": "review/audits/2026-10-20-final-publication.json"
     },
     {
       "uid": "primary_cell/maxell/sr44sw",
