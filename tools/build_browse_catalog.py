@@ -5,6 +5,7 @@ from collections import Counter, defaultdict
 import json
 from pathlib import Path
 import yaml
+from catalog_dates import record_dates, release_label
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -24,7 +25,7 @@ def build():
     total=sum(kinds.values())
     head=['# Battery datasheets and specifications — Lemonergy','',
           f'Browse **{total:,} accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.','',
-          '[Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Patent research](../docs/08-patents.md)','',
+          '[Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Dates and technology timeline](dates.md) · [Patent research](../docs/08-patents.md)','',
           '## Find a model','',
           'Choose a manufacturer below, then use your browser’s **Find** command to search the model number. The linked YAML records are readable text; no database setup is needed.','',
           '| Manufacturer | Accepted products | Browse |','|---|---:|---|']
@@ -33,14 +34,16 @@ def build():
         head.append(f'| {name} | {len(rows):,} | [Models and source documents](manufacturers/{maker}.md) |')
         page=[f'# {name} battery datasheets and specifications','',
               f'{len(rows):,} accepted product records in the **Lemonergy Battery Data** library.','',
-              '[All manufacturers](../README.md) · [Lemonergy](https://lemonergy.com/)','',
+              '[All manufacturers](../README.md) · [Date definitions and technology timeline](../dates.md) · [Lemonergy](https://lemonergy.com/)','',
               'The record contains the values, original units, qualifiers, test conditions and page/section evidence. Source documents may be historical; inclusion does not establish current availability or suitability for a design.','',
-              '| Model | Product type | Record | Original source |','|---|---|---|---|']
+              'Document and retrieval dates do not establish product release or current availability. Not researched means no structured release review; not found means the inspected sources supplied no release date.','',
+              '| Model | Product type | Record | Original source | Document date | Source retrieved | Product release / launch |','|---|---|---|---|---|---|---|']
         for doc,path in sorted(rows,key=lambda row:row[0]['product']['model_number'].casefold()):
             p,s=doc['product'],doc['source']
             label=p['model_number'].replace('|','\\|')
             source=f"[Source]({s['url']})" if s.get('url') else 'URL not supplied'
-            page.append(f"| {label} | {p['kind'].replace('_',' ')} | [Specifications](../../{path.relative_to(ROOT).as_posix()}) | {source} |")
+            dates = record_dates(doc)
+            page.append(f"| {label} | {p['kind'].replace('_',' ')} | [Specifications](../../{path.relative_to(ROOT).as_posix()}) | {source} | {dates['source_document']['date'] or 'Not recorded'} | {dates['source_retrieved']['date'] or 'Not recorded'} | {release_label(doc)} |")
         page += ['', '---', '', 'Maintained by **Lemonergy** · [Use this data in your tools](https://lemonergy.com/#measure) · The public library is free.']
         output[Path('catalog/manufacturers')/f'{maker}.md']='\n'.join(page)+'\n'
     head+=['','## Coverage and review','',

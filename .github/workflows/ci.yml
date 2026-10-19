@@ -19,7 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: One-command setup (what a user actually runs)
-        run: ./setup.sh
+        run: |
+          ./setup.sh || {
+            cat /tmp/bd_contrib.log 2>/dev/null || true
+            exit 1
+          }
       - name: Load schema
         run: ./tools/build_db.sh batterydb
       - name: Exercise additive BMS migration on the disposable database
@@ -158,6 +162,7 @@ jobs:
           python tools/render_review_issues.py
           python tools/build_component_catalog.py --check
           python tools/build_bms_catalog.py --check
+          python tools/build_date_catalog.py --check
           python tools/build_browse_catalog.py --check
           git diff --exit-code -- review/ || {
             echo "::error::review batch is stale. Run the deterministic builders"

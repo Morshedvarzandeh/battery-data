@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-11",
+  "reviewer": "Codex, acting under the repository owner instruction to find and add a semi-solid cell for the boat comparison",
+  "authorization": [
+    "No find it the semisolid on the net add it to battery data then go on"
+  ],
+  "scope": "One exact DSEnergy supplier-listed cell. Existing eight accepted WeLion semi-solid cells were reviewed and not duplicated. No schema, loader, or acceptance workflow change.",
+  "source_evidence": {
+    "url": "https://dsnrg.com/product/dsenergy-30ah-3-7v-350wh-kg-semi-solid-battery-cell/",
+    "sha256": "60c3b1e82059f8b2b90471b257b2e97a8212f989d91b6ace484761c81e8090f6",
+    "bytes": 1004151,
+    "retrieved_at": "2026-10-11",
+    "source_document_date": null,
+    "source_body_committed": false
+  },
+  "decisions": [
+    {
+      "uid": "cell/dsenergy/dse1175175-30ah",
+      "decision": "accept",
+      "accepted_file": "contrib/cells/dsenergy/dse1175175-30ah.yaml",
+      "accepted_document_sha256": "bf638b09c9f974ddeaaffbb4b7640d90f7cccafe3619b5d0521a5b95c1864dd6",
+      "observation_count": 19,
+      "reasons": [
+        "The current first-party product page names this exact model and supports each observation; unknown test conditions remain explicit.",
+        "No exact/alias match for this model or supplier in the accepted and pending library. DSE0300M is not imported as an alias without identity evidence.",
+        "Discrete supplier claims are retained even where incomplete; qualifying notes expose the energy/mass discrepancy, body-only dimensions, AC/DC resistance distinction and lack of marine approval."
+      ]
+    }
+  ],
+  "held_fields": [
+    "internal_resistance_dc",
+    "specific_heat_capacity",
+    "open_circuit_voltage_curve",
+    "maximum_continuous_charge_current",
+    "maximum_pulse_discharge_current_in_amperes",
+    "price",
+    "independent_test_results",
+    "marine_approval",
+    "underlying_cell_factory_identity"
+  ],
+  "validation": {
+    "status": "passed",
+    "checked_at": "2026-10-11",
+    "checks": [
+      {
+        "command": "python3 tools/validate_contrib.py contrib/",
+        "result": "3631 files, zero errors"
+      },
+      {
+        "command": "python3 tools/validate_review.py",
+        "result": "110 pending candidates, zero errors"
+      },
+      {
+        "command": "python3 tools/check_duplicates.py",
+        "result": "Zero exact duplicates, zero probable duplicates; three pre-existing review collisions unrelated to this cell"
+      },
+      {
+        "command": "python3 tools/import_chemistry_cells.py --check",
+        "result": "Existing 32-cell / 262-observation source batch remains current"
+      },
+      {
+        "command": "python3 tools/build_browse_catalog.py --check",
+        "result": "20 manufacturer indexes current"
+      },
+      {
+        "command": "python3 tools/build_date_catalog.py --check",
+        "result": "Date coverage current"
+      },
+      {
+        "command": "python3 tools/build_web_data.py --check",
+        "result": "3631 products, 146 charted; generated page current"
+      },
+      {
+        "command": "node tests/test_web_observations.cjs",
+        "result": "Display and Markdown export observations/dates checks pass"
+      },
+      {
+        "command": "python3 -m unittest discover -s tests -p 'test_*.py'",
+        "result": "108 tests pass in15.404seconds"
+      },
+      {
+        "command": "git diff --check",
+        "result": "No whitespace errors"
+      }
+    ],
+    "not_run": [
+      "No production database or hosted Data API deployment was performed.",
+      "PostgreSQL transaction tests were not run; the contribution schema, existing exporter/renderer and unit tests passed."
+    ]
+  }
+}

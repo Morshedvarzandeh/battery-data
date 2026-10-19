@@ -38,6 +38,23 @@ Codex application and this checkout to be available.
    retain unknown/conflicting dates, plans and legacy status. A datasheet revision
    is not a launch.
 
+   Apply the same date discipline to **all eight component categories** and any
+   battery models researched, including sodium-ion, semi-solid, LFP and newer
+   LG/EVE/CATL/CALB generations. Read `docs/18-technology-dates.md` and
+   `catalog/dates.md`. New records should carry a scoped `lifecycle` review even
+   when the release is `not_found`. Record announcement, commercial release,
+   shipping, planned availability and discontinuation as distinct sourced events.
+   Preserve printed date precision and separate source publication/revision,
+   specification retrieval and lifecycle-check dates. Do not refresh a source's
+   retrieval date without inspecting it. Do not infer release from a filename,
+   URL timestamp, Git commit, newer datasheet or a different generation.
+
+   Family/platform milestones belong in `technology/milestones.json` only after
+   evidence review; they must not overwrite catalog model releases or promote
+   pending specification candidates. Keep historical plans explicitly planned
+   until completed delivery has its own evidence. Retain conflicts and unknowns.
+   Record date gaps and the next exact manufacturer/model to check in the report.
+
    For components, use official manufacturer datasheets and product pages. Capture
    exact orderable part or a clearly scoped configuration, category, source URL,
    revision, retrieval date, byte hash when retrievable, and a page/section locator
@@ -92,6 +109,8 @@ python tools/build_review_batch.py
 python tools/render_review_issues.py
 python tools/build_component_catalog.py
 python tools/build_bms_catalog.py
+python tools/build_date_catalog.py
+python tools/build_browse_catalog.py
 python tools/validate_contrib.py contrib/
 python tools/validate_contrib.py review/candidates/
 python tools/validate_review.py

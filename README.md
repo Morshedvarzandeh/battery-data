@@ -9,12 +9,13 @@ each specification.
 **[Browse batteries by manufacturer and model](catalog/README.md)** ·
 **[Browse component datasheets](components/catalog.md)** ·
 **[Compare BMS and release evidence](components/bms.md)** ·
+**[Dates and technology timeline](catalog/dates.md)** ·
 **[Explore patent research](docs/08-patents.md)**
 
 No account or database setup is needed to browse the GitHub library. Choose a
 manufacturer, find a model, and open its specification record and source document.
 
-**Library snapshot, 2026-10-11: 3,454 accepted battery product records; 110
+**Library snapshot, 2026-10-11: 3,455 accepted battery product records; 110
 battery records remain on documented holds.** The [October publication review](docs/16-catalog-publication-2026-10-04.md)
 accepted 1,284 additional battery models and 152 electrical components, including
 the 1,256-model LiPol batch, sodium-ion and semi-solid cells, and recent LG, EVE,
@@ -25,6 +26,10 @@ distinct models from manufacturer catalogs. Most additions are historical
 lithium-polymer models (2013/2019); current availability and undisclosed test
 conditions are not implied. See the [review report](docs/09-catalog-review-2026-09.md)
 for sources, exclusions, and a decision for every pending record reviewed.
+
+The [semi-solid marine source review](docs/19-semisolid-marine-source-review.md)
+adds DSEnergy's DSE1175175-30Ah with its stated limits and explicit modeling gaps.
+The existing eight accepted WeLion records remain available without duplication.
 
 For a focused view of recent technology, the
 [current cell research set](docs/15-current-cell-research-set.md) selects 40
@@ -56,6 +61,7 @@ eight categories. Components and patents are counted separately from batteries.
 | Voltage, capacity, dimensions or current limits | Open a model's specification record; each observation includes its units and conditions |
 | Contactors, fuses, precharge contactors, inverters, DC/DC converters or chargers | [Component catalog](components/catalog.md), with review status |
 | BMS products, interfaces and release dates | [BMS comparison](components/bms.md) |
+| Technology generations, release dates and specification age | [Date coverage and timeline](catalog/dates.md); unknown dates and roadmap targets stay explicit |
 | Battery-related patents and companies | [Patent research guide](docs/08-patents.md) |
 | How a specification was checked | [September review report](docs/09-catalog-review-2026-09.md) |
 | Data integration in your engineering tools | [Lemonergy Data & API](https://lemonergy.com/#measure); the GitHub data stays free |
