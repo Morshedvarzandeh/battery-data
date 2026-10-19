@@ -50,6 +50,10 @@ promotion. `tools/check_duplicates.py` compares pending and accepted products
 using exact UIDs, normalized identities, aliases, sources and key physical
 specifications.
 
+The [20 October final publication](../docs/19-final-publication-2026-10-20.md)
+accepts the two reviewed Schaltbau configurations and retains the 110 documented
+battery holds. All accepted products expose a consistent date view.
+
 ## Where a candidate is declared
 
 The declarations feeding the builder are checked in:

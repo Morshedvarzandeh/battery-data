@@ -20,7 +20,13 @@ class WeeklyOctober11Tests(unittest.TestCase):
             self.assertEqual(current['conditions']['temperature_c'], temp)
             self.assertEqual(current['conditions']['conductor_description'], conductor)
             self.assertIn('temperature_reference', current['conditions']['unstated'])
-            self.assertEqual(index[doc['product']['uid']]['state'], 'pending_review')
+            row = index[doc['product']['uid']]
+            self.assertEqual(row['state'], 'accepted')
+            accepted = json.loads((ROOT / row['accepted_file']).read_text())
+            self.assertEqual(accepted['observations'], doc['observations'])
+            self.assertEqual(accepted['lifecycle']['release']['status'], 'not_found')
+            self.assertEqual(accepted['lifecycle']['market_status'], 'manufacturer_listed')
+            self.assertFalse((ROOT / row['candidate_file']).exists())
             self.assertNotIn('sha256', doc['source'])
             self.assertIn('C360', doc['source']['note'])
 

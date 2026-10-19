@@ -1,0 +1,923 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-20",
+  "reviewer": "Codex, source and identity review explicitly delegated by the repository owner",
+  "authorization": [
+    "review and publish the final data"
+  ],
+  "scope": "Review the two remaining Schaltbau configurations in PR 504 and reconcile all existing battery holds. Earlier accepted records are preserved; this is not a fresh source check of the entire historical catalog.",
+  "acceptance_basis": [
+    "Manufacturer product page re-opened during the October 19/20 review; both named A-series configurations and retained specification-table values match.",
+    "1000 V is C310A operating voltage; 1500 V insulation is not substituted.",
+    "Carry current retains conductor size, temperature, and explicitly unknown temperature reference. Conflicting feature prose names C360 and is excluded.",
+    "Accept configuration-level manufacturer claims, not fully specified procurement SKUs or independently tested ratings.",
+    "No duplicate UID or manufacturer/model identity exists among accepted or other pending records.",
+    "No release date appears in the inspected page; current listing and source inspection are distinct from release."
+  ],
+  "decisions": [
+    {
+      "uid": "component/schaltbau/c310a-300",
+      "decision": "accept",
+      "candidate_file": "review/candidates/schaltbau/c310a-300.yaml",
+      "accepted_file": "contrib/components/schaltbau/c310a-300.yaml",
+      "reviewed_document_sha256": "4829cfaee779a458fde306d3de60943fe1e87d184c402893cfdd003bf8220f82",
+      "accepted_document_sha256": "eb8dd24fdc8074d6a6ce088a3b592a56f2c56be9ded40b603ba9fb45968fed15",
+      "source_url": "https://schaltbau.com/en/product/contactors/c310/",
+      "changes": "Refreshed the inspected-source date and added explicit unknown release/current-listing evidence. Numeric observations unchanged.",
+      "limitations": "Coil/auxiliary options unspecified; temperature reference unstated. C360 prose conflict retained in source note; no make/break rating inferred."
+    },
+    {
+      "uid": "component/schaltbau/c310a-500",
+      "decision": "accept",
+      "candidate_file": "review/candidates/schaltbau/c310a-500.yaml",
+      "accepted_file": "contrib/components/schaltbau/c310a-500.yaml",
+      "reviewed_document_sha256": "3f13d3e9eb66eee7ff1a121ea717f804cd0ba303dd325877c87b4296867997a0",
+      "accepted_document_sha256": "f58b3f688ddf263128a4d4f8a9542a49c8491442ecf7a0d03378a15b5e5d4785",
+      "source_url": "https://schaltbau.com/en/product/contactors/c310/",
+      "changes": "Refreshed the inspected-source date and added explicit unknown release/current-listing evidence. Numeric observations unchanged.",
+      "limitations": "Coil/auxiliary options unspecified; temperature reference unstated. C360 prose conflict retained in source note; no make/break rating inferred."
+    }
+  ],
+  "retained_holds": [
+    {
+      "uid": "system/byd/battery-box-premium-hvs-7.7",
+      "decision": "hold",
+      "candidate_file": "review/candidates/byd/battery-box-premium-hvs-7.7.yaml",
+      "candidate_document_sha256": "e7b5184ed3103aed6340e9d5c0eed0a17f02ec3ea0136d17991c02270906897c",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/byd/battery-box-premium-hvs-10.2",
+      "decision": "hold",
+      "candidate_file": "review/candidates/byd/battery-box-premium-hvs-10.2.yaml",
+      "candidate_document_sha256": "f38d26e47a1c5843b28647620ebe21470084559d84e709ceee886a48fc768aa1",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/byd/battery-box-premium-hvs-12.8",
+      "decision": "hold",
+      "candidate_file": "review/candidates/byd/battery-box-premium-hvs-12.8.yaml",
+      "candidate_document_sha256": "b65d3ff481d12bc1e914c4c68b67bcd1ec7fe0fef415b921ddf0943eced2fe02",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/byd/battery-box-premium-hvm-8.3",
+      "decision": "hold",
+      "candidate_file": "review/candidates/byd/battery-box-premium-hvm-8.3.yaml",
+      "candidate_document_sha256": "7d141385b16e3b4fd1ba608507c67758a40ef06218a006b57e104c2b1192b334",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/byd/battery-box-premium-hvm-11.0",
+      "decision": "hold",
+      "candidate_file": "review/candidates/byd/battery-box-premium-hvm-11.0.yaml",
+      "candidate_document_sha256": "e65b81fcfba778f6d78aace63c5fb9d11847c24949673a1fa84235ad36642d5f",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/byd/battery-box-premium-hvm-13.8",
+      "decision": "hold",
+      "candidate_file": "review/candidates/byd/battery-box-premium-hvm-13.8.yaml",
+      "candidate_document_sha256": "7ed5c7eda91d3b9d3b09448ff8c0c21d98383c076949a19f440ad7dd923d706d",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/byd/battery-box-premium-hvm-16.6",
+      "decision": "hold",
+      "candidate_file": "review/candidates/byd/battery-box-premium-hvm-16.6.yaml",
+      "candidate_document_sha256": "9ac4946ddef6ffceb160fdeb169e375202bed1558f0825a45e9058bbbd11e719",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/byd/battery-box-premium-hvm-19.3",
+      "decision": "hold",
+      "candidate_file": "review/candidates/byd/battery-box-premium-hvm-19.3.yaml",
+      "candidate_document_sha256": "6e191e39de4ae5fe6de8ffd806879db2280442e544b19dab6017b62c4cc6c3c9",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/byd/battery-box-premium-hvm-22.1",
+      "decision": "hold",
+      "candidate_file": "review/candidates/byd/battery-box-premium-hvm-22.1.yaml",
+      "candidate_document_sha256": "e5e34624150b180eaa5c64b07cf4c58c2bc830a57c1929b67871934df684c133",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/hithium/infinity-cell-n162ah",
+      "decision": "hold",
+      "candidate_file": "review/candidates/hithium/infinity-cell-n162ah.yaml",
+      "candidate_document_sha256": "066202a9f95d2dd8c041148e268d17603e6798d97848cafa7af4e36676f0dd53",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/hithium/infinity-cell-587ah",
+      "decision": "hold",
+      "candidate_file": "review/candidates/hithium/infinity-cell-587ah.yaml",
+      "candidate_document_sha256": "1c355bbefff4196975bb5e670a516cf0efce4dbab01cf65ca2adbf67afeed53a",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/hithium/ess-cell-280ah-1p",
+      "decision": "hold",
+      "candidate_file": "review/candidates/hithium/ess-cell-280ah-1p.yaml",
+      "candidate_document_sha256": "cb1d44cb9b2160b9f3d71d406ba90a91ef0690f80214f25d2ebc7015e2d796be",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/cnte/star-x",
+      "decision": "hold",
+      "candidate_file": "review/candidates/cnte/star-x.yaml",
+      "candidate_document_sha256": "46a5f9330f2a9cdb9d805d3102fd576f410b282b4bdfdaffbcff941f94992567",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/cnte/star-h-232",
+      "decision": "hold",
+      "candidate_file": "review/candidates/cnte/star-h-232.yaml",
+      "candidate_document_sha256": "a046786c7646a33bda45789a4fba9c3ac65fb012efb90df6723b9dafbc495251",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/cnte/star-h-254-sp",
+      "decision": "hold",
+      "candidate_file": "review/candidates/cnte/star-h-254-sp.yaml",
+      "candidate_document_sha256": "a27541743673b7e4bee270da565478d564c95b49f34955386a2d99d14d258bf2",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/cnte/star-h-plus-306ah",
+      "decision": "hold",
+      "candidate_file": "review/candidates/cnte/star-h-plus-306ah.yaml",
+      "candidate_document_sha256": "a6005b2ef2d9ca1e0d20a2aed63735549f456933837a98f21ac4faf436d6b414",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/cnte/star-h-plus-314ah",
+      "decision": "hold",
+      "candidate_file": "review/candidates/cnte/star-h-plus-314ah.yaml",
+      "candidate_document_sha256": "e0cf7f451ec9192a31fc700a145021e2828e8fe0cf7071f208fc51cc7c1406ea",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/cnte/star-h-max",
+      "decision": "hold",
+      "candidate_file": "review/candidates/cnte/star-h-max.yaml",
+      "candidate_document_sha256": "3389bfcd5d725735b2322d66a59ce2c70ff8efe59651dd9eb915f7ada42b52f9",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/cnte/star-q",
+      "decision": "hold",
+      "candidate_file": "review/candidates/cnte/star-q.yaml",
+      "candidate_document_sha256": "cc0917ba8d0953f782d4d298503bd3a09f0b05464d548138596b5094f046857a",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "module/samsung-sdi/m2994",
+      "decision": "hold",
+      "candidate_file": "review/candidates/samsung-sdi/m2994.yaml",
+      "candidate_document_sha256": "9a82f81e1331ebfa61bfef4484153bafe601d7d9a962ad98cc3f7b85f33eab27",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "module/samsung-sdi/m2963-m2968",
+      "decision": "hold",
+      "candidate_file": "review/candidates/samsung-sdi/m2963-m2968.yaml",
+      "candidate_document_sha256": "1ed501a79fdaa5fd140f177fe9d571f0781d10d98e7ec28d249f57d8b665c34b",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "module/samsung-sdi/m8994-e2",
+      "decision": "hold",
+      "candidate_file": "review/candidates/samsung-sdi/m8994-e2.yaml",
+      "candidate_document_sha256": "fd59bc1c3e6d96b1f01f38c04beb35a5c5810b68613bc306c91ab76570acf1d6",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "module/samsung-sdi/m8194-m2",
+      "decision": "hold",
+      "candidate_file": "review/candidates/samsung-sdi/m8194-m2.yaml",
+      "candidate_document_sha256": "e1972826728f891d5ede1aa7b7ad95ae61244592ec3191bad9e102a8c7ff5bd0",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "module/samsung-sdi/m8068-p2",
+      "decision": "hold",
+      "candidate_file": "review/candidates/samsung-sdi/m8068-p2.yaml",
+      "candidate_document_sha256": "8c0a36bab0321ebc2371738b9869ca6211c2ecf4730b84610fcc4464275e27c9",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "pack/lg-energy-solution/resu7h-type-r",
+      "decision": "hold",
+      "candidate_file": "review/candidates/lg-energy-solution/resu7h-type-r.yaml",
+      "candidate_document_sha256": "0953637b10f01fafdf475b0bd06cc3f6f01b7b081701894246447d321a81be55",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "pack/lg-energy-solution/resu10h-type-r",
+      "decision": "hold",
+      "candidate_file": "review/candidates/lg-energy-solution/resu10h-type-r.yaml",
+      "candidate_document_sha256": "4dfd20ac77263303cefacf5eadb5973d445d0ec1f32946863a2f4c1bb451e6c7",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "pack/lg-energy-solution/resu10h-type-c",
+      "decision": "hold",
+      "candidate_file": "review/candidates/lg-energy-solution/resu10h-type-c.yaml",
+      "candidate_document_sha256": "d4f667cc6128f402ed779ee51f4793dd4ef207c19e506c3a2ce38b3358c0642d",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "pack/lg-energy-solution/10h-prime",
+      "decision": "hold",
+      "candidate_file": "review/candidates/lg-energy-solution/10h-prime.yaml",
+      "candidate_document_sha256": "6dbda38366039663faedd53f47129b0cb1ca8126fb39c4cb7984e763a06e85c7",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "pack/lg-energy-solution/16h-prime",
+      "decision": "hold",
+      "candidate_file": "review/candidates/lg-energy-solution/16h-prime.yaml",
+      "candidate_document_sha256": "c2eab407c0b5812fc3315717bdc53cac027412f16cd95591305999b952dc0f13",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/catl/enerone",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/enerone.yaml",
+      "candidate_document_sha256": "c773444c98b41e321439f3df346f2859d6c74450466d784675c7765160d489fd",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/catl/tener",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/tener.yaml",
+      "candidate_document_sha256": "ec14db3badad80e6be7f9f45eb92c93e3947d0a35e100f6578e804f76c6deee5",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/catl/tener-stack",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/tener-stack.yaml",
+      "candidate_document_sha256": "9ab454c42d4dcdceeb1dffb0cde73da2325dd38a00fe19a5b66b6b9076a1d707",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "system/catl/tener-flex",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/tener-flex.yaml",
+      "candidate_document_sha256": "18548cbaf213cb46af36932875a2baf1d38aeff3b7252108a41bf19a6dd76115",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/bak/n18650ch",
+      "decision": "hold",
+      "candidate_file": "review/candidates/bak/n18650ch.yaml",
+      "candidate_document_sha256": "c3df5c9173b03bd1d4d94a19b964303843a2a8a0586876e9db4d9ab38e645d5d",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/bak/n18650cl-29",
+      "decision": "hold",
+      "candidate_file": "review/candidates/bak/n18650cl-29.yaml",
+      "candidate_document_sha256": "2f6921bfa2dc6eed0e24dfe03c2749bbb71416da35b2f399597f37ecf7c44579",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/bak/n18650cr-35e",
+      "decision": "hold",
+      "candidate_file": "review/candidates/bak/n18650cr-35e.yaml",
+      "candidate_document_sha256": "44c22275ac9e53530529e1f83dc4b0e6ca03053e6f983f0e17c2aaa63abf3360",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/bak/n21700cd-53e",
+      "decision": "hold",
+      "candidate_file": "review/candidates/bak/n21700cd-53e.yaml",
+      "candidate_document_sha256": "2c1f8d6824d90767bc3bf780f8ece1331930dceddcfc33ed77b1e58bf34900dd",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/bak/n21700cg-50e",
+      "decision": "hold",
+      "candidate_file": "review/candidates/bak/n21700cg-50e.yaml",
+      "candidate_document_sha256": "d8d99e7cd70e4f164566602a5fde03325116877b0f54c6dbab5cddd7ab3d28d2",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/bak/n21700cgp",
+      "decision": "hold",
+      "candidate_file": "review/candidates/bak/n21700cgp.yaml",
+      "candidate_document_sha256": "a28dad677af73ea6be93698fbcdd555e29c452c2f8e4d5b7d57781b6dd1d2b4e",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/catl/119ah-fast-charge-cell",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/119ah-fast-charge-cell.yaml",
+      "candidate_document_sha256": "4cf7830a22c75bb6e068520f1a3d087fbad377ada6a54030a122080a14e3a2a0",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/catl/228ah-high-energy-density-cell",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/228ah-high-energy-density-cell.yaml",
+      "candidate_document_sha256": "af140b8efc880e5919be78f266f9b836711f0639b469bf63e6d377f8fd574aae",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/catl/280ah-lfp-bess-cell",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/280ah-lfp-bess-cell.yaml",
+      "candidate_document_sha256": "d2e50f92a4e6b8d97b60e11688a12c98556d5c362442ddbf5af931f8736ccdca",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/catl/28ah-fast-charge-cell",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/28ah-fast-charge-cell.yaml",
+      "candidate_document_sha256": "ed40921de7dd9488d71bdea88dc7b91d8a8df823a1f3a06ee1d959a98457ee66",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/catl/first-generation-sodium-ion-cell",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/first-generation-sodium-ion-cell.yaml",
+      "candidate_document_sha256": "8672c808559d1cc764f936c68333deec6b02d1062dfa42a5dacdc166a5e3bbbd",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/catl/naxtra-passenger-sodium-ion-cell",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/naxtra-passenger-sodium-ion-cell.yaml",
+      "candidate_document_sha256": "579a9841c99593cc2e52f846a40637f0859c3ca5d051c1865a37203340054512",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/18650-30p",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/18650-30p.yaml",
+      "candidate_document_sha256": "11cff3105fa65a0f8287f92220f6c44a506f4a63a55e76cdae1e07affea49572",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/21700-40p",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/21700-40p.yaml",
+      "candidate_document_sha256": "25b62df4902ef133f3202f4454dd5facd005da14b5c34c82f9a54b66793d0375",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/a41-v3",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/a41-v3.yaml",
+      "candidate_document_sha256": "96e73f6f75d56c5d1cc919bed59ba1ff74919661077f389da1f12e819dbb7a28",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/c40",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/c40.yaml",
+      "candidate_document_sha256": "0498f76283d32a33dddc7814cb065b5bcfd0b11fd551f6f7ede9c65979329691",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/lf100la",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/lf100la.yaml",
+      "candidate_document_sha256": "2b839c482e5361fb036cde30fb988b3e456be5abd324b0bb5c1e6d303a70eef7",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/lf230",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/lf230.yaml",
+      "candidate_document_sha256": "af48d2baf44c012d97b025f8e04e35924a72386a19b4e1117ead58fb7acc8ecc",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/lf304",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/lf304.yaml",
+      "candidate_document_sha256": "3e03c0708623969d7675a5a6eda0736498e3e196c1b18f877604638c82dd1118",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/lf356l",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/lf356l.yaml",
+      "candidate_document_sha256": "5ea9ca30079e1606d62d7540296121b6116dab52ad867127eac716aac19e538e",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/m21-v2",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/m21-v2.yaml",
+      "candidate_document_sha256": "7b3078d7dd2c15c58cb11bd9b266e4d8ecc36ae6fdc31d0ef6517690c9b63c7f",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/eve/m43",
+      "decision": "hold",
+      "candidate_file": "review/candidates/eve/m43.yaml",
+      "candidate_document_sha256": "4c547a2eefe24ffbb789fb0a0f982cb8e1c8f7b544e33018c51ee07116ad288e",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr18650-m30a",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr18650-m30a.yaml",
+      "candidate_document_sha256": "bef5f2d782e5c84035864630dbccf648d83699d330534a5364fe220626785892",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr18650-m35a",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr18650-m35a.yaml",
+      "candidate_document_sha256": "8f616b647e7c3f980bada316d9c8e4a515d5ebabfffcd4ad3dde6a381276ca33",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr18650-p22s",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr18650-p22s.yaml",
+      "candidate_document_sha256": "80391b47c99f84c568d888b025c50e814686aaf7dad47a4043dd582559fb000c",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr18650-p26a",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr18650-p26a.yaml",
+      "candidate_document_sha256": "5be939cd676eeb904800e3a61513244d0a33633e61798b514406e49d29873a6e",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr18650-p28a",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr18650-p28a.yaml",
+      "candidate_document_sha256": "c0c445668c9850d60b83e97b6212b109a670a2246dd6e9ebdf4ea65236af17c8",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr18650-p30b",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr18650-p30b.yaml",
+      "candidate_document_sha256": "1c9b25418221e1d165b933edfd4376b3579f41f183ec1763d67c229259941e4a",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr18650-p30s",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr18650-p30s.yaml",
+      "candidate_document_sha256": "d81b6753236870c6052c0ff047e1e600800654f966b896ae3ca2970cc10fa968",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr21700-m65a",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr21700-m65a.yaml",
+      "candidate_document_sha256": "90e097a3dbd63d115bf4cb8d13eb1f8a1c13ca3c6543faf467811b056b32d3fc",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr21700-p42a",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr21700-p42a.yaml",
+      "candidate_document_sha256": "af5a23d714d25fea3d028770ca98cccd7d93b6d737da6c6a9753996494bd162d",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr21700-p45b",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr21700-p45b.yaml",
+      "candidate_document_sha256": "77a60a8877ab8ec62cfe5cd3dc5789e746efc9d305e6bdcb39b4118d03297820",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr21700-p50b",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr21700-p50b.yaml",
+      "candidate_document_sha256": "b4d2a9b9703f42f6f19fe4810ea9042c3b49bf37f9d436031d5fd9b69c29ed97",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr21700-p50s",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr21700-p50s.yaml",
+      "candidate_document_sha256": "1a674890fc5268efe4b4a09d2d5255702c5d3412a8cd1eee81e6fa7e4d4f72f9",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/molicel/inr21700-p60c",
+      "decision": "hold",
+      "candidate_file": "review/candidates/molicel/inr21700-p60c.yaml",
+      "candidate_document_sha256": "e4738ca1682e6149626390dc65389af5a2c386c8b67c7edba644ca0ef0450133",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/panasonic/cr2016",
+      "decision": "hold",
+      "candidate_file": "review/candidates/panasonic/cr2016.yaml",
+      "candidate_document_sha256": "3468123210ab53457385a9139d870a4564ff6d7bc6b5e94306f8dccd4e03ba25",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2016-mfr",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2016-mfr.yaml",
+      "candidate_document_sha256": "586f7a8d93b2fb9e79dce5f894e3575795b94b52ee3b26e379fd7c77dfe791bf",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2016.mfr",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2016.mfr.yaml",
+      "candidate_document_sha256": "4af0e31cd03720a25c63901d91153c731fa40a849beb930718f1e91dd6ec8b0c",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2025-mfr-hf1",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2025-mfr-hf1.yaml",
+      "candidate_document_sha256": "cc78be3d2b7321ef8ca74ea76c1c19431b8db2965b7fe19e1bdc85e386585e83",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2025-mfr",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2025-mfr.yaml",
+      "candidate_document_sha256": "d34abd70e1d8ff3b88ed6311e58bb2b8abd7eb6b01d25e506888e79d13c5db46",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2025.mfr",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2025.mfr.yaml",
+      "candidate_document_sha256": "3c856722c62bd765c33f0c6732d070818db00524b8ce555d4537818674b02a96",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2032-mfr",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2032-mfr.yaml",
+      "candidate_document_sha256": "67739d3b9861d6c7c2d1aa991fe15496f2544972b31941cab14625bcce3bce42",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2032.mfr",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2032.mfr.yaml",
+      "candidate_document_sha256": "424061c4f697ceb745c19a07ee90924a9e1e3bf86c7743d035d5e3e025a0148b",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2450n-mfr-hf",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2450n-mfr-hf.yaml",
+      "candidate_document_sha256": "9fcd0673fce685f16ca998561703fa0f88261f763bda5c304bf2dec83aff9f20",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2450n-mfr-hf3",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2450n-mfr-hf3.yaml",
+      "candidate_document_sha256": "aa24cd413c55f47c6d84a295691e768cb7910ca7e73812633646439ed87c9cda",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2450n-mfr-hr",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2450n-mfr-hr.yaml",
+      "candidate_document_sha256": "c1d91b878be21b5cc614e487273b7812147b719609d5953dc18222cba051b1e0",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2450n-mfr-hr1",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2450n-mfr-hr1.yaml",
+      "candidate_document_sha256": "c72f1f576a8d8ec1bc2a33952b4213b457d30a0ceee695cf3aff46d00d353468",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2450n-mfr-rv",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2450n-mfr-rv.yaml",
+      "candidate_document_sha256": "36ea491f798c7f7685fe7563a45b5b9319d810d295d6ffa5b46323be2937d217",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2450n-mfr-vf",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2450n-mfr-vf.yaml",
+      "candidate_document_sha256": "23d6eb36a70792e5e6a8ee4eca5c5d668e68cc3c0e8c5f7646fa71ede59a9219",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2450n-mfr-vf3",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2450n-mfr-vf3.yaml",
+      "candidate_document_sha256": "a8a87aae00e2f6b0ad95624a2f7507acb2ab87b29a9d9852520f6885b032c92c",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/renata/cr2450n-mfr",
+      "decision": "hold",
+      "candidate_file": "review/candidates/renata/cr2450n-mfr.yaml",
+      "candidate_document_sha256": "f7d8c0c125a064b740ded65cd1baef30ca1e22ff011bc22b1da758a6db0b079d",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/calb/l173f314",
+      "decision": "hold",
+      "candidate_file": "review/candidates/calb/l173f314.yaml",
+      "candidate_document_sha256": "afcde89e7dd7defaa9b27797b5f064bbada3e57a7130043885c832da91756af6",
+      "previous_review_audit": "review/audits/2026-10-04-catalog-acceptance.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/catl/587ah-lfp-ess-cell",
+      "decision": "hold",
+      "candidate_file": "review/candidates/catl/587ah-lfp-ess-cell.yaml",
+      "candidate_document_sha256": "34c22b187e0fa6cb3733a120381b8064eab8529a3c3e1d92e15d7ab8f7b949e9",
+      "previous_review_audit": "review/audits/2026-10-04-catalog-acceptance.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/welion/shp350-30-trial",
+      "decision": "hold",
+      "candidate_file": "review/candidates/welion/shp350-30-trial.yaml",
+      "candidate_document_sha256": "b75be04a3282af74bc7cbaeca387576caa3a1e807d4b1f18270fbc5cf7ddeba3",
+      "previous_review_audit": "review/audits/2026-10-04-catalog-acceptance.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/welion/shp350-40-trial",
+      "decision": "hold",
+      "candidate_file": "review/candidates/welion/shp350-40-trial.yaml",
+      "candidate_document_sha256": "77cfd76fba5315e1dd74ed8ee7b2977ec5624027f67bd9a1ea3032c030fc6754",
+      "previous_review_audit": "review/audits/2026-10-04-catalog-acceptance.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/maxell/sr927sw",
+      "decision": "hold",
+      "candidate_file": "review/candidates/maxell/sr927sw.yaml",
+      "candidate_document_sha256": "c11dd59adf6709efedce0d1978572a9d53afa42b4bb7e0e1952d0aae00de7e67",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/maxell/sr920sw",
+      "decision": "hold",
+      "candidate_file": "review/candidates/maxell/sr920sw.yaml",
+      "candidate_document_sha256": "116a7f28b8feaa917ba4f05a589210679ec54c189856dec46f7be27a1e2b4c56",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/maxell/sr716sw",
+      "decision": "hold",
+      "candidate_file": "review/candidates/maxell/sr716sw.yaml",
+      "candidate_document_sha256": "543afce7f992030788714998fe1090eb52b5c9c412e47e0b32f2f76a0a32ba91",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/maxell/sr626sw",
+      "decision": "hold",
+      "candidate_file": "review/candidates/maxell/sr626sw.yaml",
+      "candidate_document_sha256": "48cf5398a8e4b80f9f930debac3e389e9fd2209bdb77f6a7be3f74d7d3800d73",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/maxell/sr621sw",
+      "decision": "hold",
+      "candidate_file": "review/candidates/maxell/sr621sw.yaml",
+      "candidate_document_sha256": "95915cec08c09940e49248facb759ecfadda8d89a731e3b70d61371f455bcaf6",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/maxell/sr616sw",
+      "decision": "hold",
+      "candidate_file": "review/candidates/maxell/sr616sw.yaml",
+      "candidate_document_sha256": "d18caf9fb01324fa22ed54e334ca93246db7d43b8252dd4c77efc229ac0c9438",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/maxell/sr521sw",
+      "decision": "hold",
+      "candidate_file": "review/candidates/maxell/sr521sw.yaml",
+      "candidate_document_sha256": "0fd3f59d810445f7766f44fdec997a2f308487b62df45a4ab90d9871eb0b0cc1",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/maxell/sr927w",
+      "decision": "hold",
+      "candidate_file": "review/candidates/maxell/sr927w.yaml",
+      "candidate_document_sha256": "32468ac22a4fdfba659464eff31129dbe5eb664256b04beb146438e6c503374c",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/energizer/123",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/123.yaml",
+      "candidate_document_sha256": "8e0512180840d336e15a4d0f0b4d369ebb06d85303946f8ddc930df85720c1fc",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/energizer/1cr2",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/1cr2.yaml",
+      "candidate_document_sha256": "b31bf98624fdc26e62fe5b5f034dab0338de50b4e1705bec11f3dcc1f7ccbbc4",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/energizer/2l76",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/2l76.yaml",
+      "candidate_document_sha256": "1020f16fcbc1541bee0c8173590441598aeced0eb47ad35b4f7ee14c4fb01d47",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/energizer/l91",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/l91.yaml",
+      "candidate_document_sha256": "e19998fdeccc7cfd874e104227ad169af5d7aa5f1a22f05d9b891d899a4c5755",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "primary_cell/energizer/l92",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/l92.yaml",
+      "candidate_document_sha256": "09f7de76b51db38e73e0ace49dc1a3866aef21f618046413c27c37e4a30ce0fd",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "pack/energizer/l522",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/l522.yaml",
+      "candidate_document_sha256": "9663e05417d730d9b7a394718fc145c9f22eb5c818ae6c19fbe7411805f74717",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/energizer/nh12-500",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/nh12-500.yaml",
+      "candidate_document_sha256": "f47e9510548554cda41635f63b77219c48eec004df8711eb69d89c76e4e05d4d",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/energizer/nh12-700",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/nh12-700.yaml",
+      "candidate_document_sha256": "a47535260e588253b050d67d2725f7d22026c2fcc9a77d63c4ae8f9e10475d03",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/energizer/nh12-800",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/nh12-800.yaml",
+      "candidate_document_sha256": "8dca69296959a4842b8a81f5d163237c1d91b2fa2743ee2aa48be5051e7ad7f5",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/energizer/nh15-2000",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/nh15-2000.yaml",
+      "candidate_document_sha256": "5f52a5b3ec33ba8feafd5248107841acae0b8d055d5ba4051ce9214ae0eeed40",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/energizer/nh15-2300",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/nh15-2300.yaml",
+      "candidate_document_sha256": "c24a5749ccd1dc72571a019b42aec9f12c46a7139a10a3cf5f3a6cce0e140545",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "pack/energizer/nh22-175",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/nh22-175.yaml",
+      "candidate_document_sha256": "9248412ca990b75f153a8b640f95603bc4333ea466cbe882a1f2bef0d49abe6b",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/energizer/nh35-2500",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/nh35-2500.yaml",
+      "candidate_document_sha256": "777da4d808bfe3a65c570ad1ecd29c8aa39401ae6b7d193240ef232031c0202a",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    },
+    {
+      "uid": "cell/energizer/nh50-2500",
+      "decision": "hold",
+      "candidate_file": "review/candidates/energizer/nh50-2500.yaml",
+      "candidate_document_sha256": "1acebad1d9c7dfc9e66cc41f27d302311c317208b253229c32ba00a3076da0a7",
+      "previous_review_audit": "review/audits/2026-09-16-catalog-review.json",
+      "reason": "Previous source/identity hold remains unresolved; no new evidence supports acceptance in this publication."
+    }
+  ]
+}
