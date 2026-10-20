@@ -9,37 +9,34 @@
 <meta property="og:description" content="Battery specifications and datasheet references for engineers. Free, open data with source evidence.">
 
 <style>
+/* Lemonergy design system — the same palette as battery-core
+   (docs/assets/site.css) and the design workbench, so every island reads as
+   one site: Arial, white surfaces separated by thin grey lines, one blue for
+   actions, small grey uppercase labels. Light only, no gradients, no green.
+   If the sibling palette changes, change it here too: this page carries its
+   own copy because it is a single self-contained file. */
 :root{
-  --ground:#F4F6F5; --surface:#FCFCFB; --surface-2:#EEF1F0; --line:#DBE2E0;
-  --ink:#101615; --ink-2:#3A4644; --muted:#5F6D69;
-  --accent:#0B6E5F; --accent-ink:#FFFFFF; --accent-soft:#E3F0ED;
-  --missing:#B4441F; --missing-soft:#FBEAE3;
-  --ok:#2F6B3A;
-  --c1:#0E9C82; --c2:#2E6FD0; --c3:#D2551F; --c4:#9257D8; --c5:#A8820A;
+  color-scheme:light;
+  --ground:#FFFFFF; --surface:#FFFFFF; --surface-2:#F5F6F8; --line:#DCE1E8;
+  --ink:#202938; --ink-2:#3B4658; --muted:#596579;
+  --accent:#2459A8; --accent-strong:#1C4786; --accent-ink:#FFFFFF;
+  --accent-soft:#EEF4FF; --accent-edge:#A5B8D5;
+  /* State is carried by the coloured text and border, not by a tinted fill. */
+  --missing:#C2410C; --missing-soft:#FFFFFF;
+  /* "Sourced" / OK states are the course blue, not green — as in battery-core. */
+  --ok:#2459A8;
   /* Chart series. Three slots, not more: the categorical palette only clears
      the all-pairs colour-vision gates at three, and a scatter puts every pair
      on screen at once. Past three formats the chart facets instead of
-     inventing a fourth hue. Validated in both modes with
-     dataviz/scripts/validate_palette.js --pairs all. */
-  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+     inventing a fourth hue. Course blue, orange, and battery-core's amber;
+     validated on white with dataviz/scripts/validate_palette.js --pairs all
+     (worst CVD ΔE 9.9, worst normal-vision ΔE 16.1). */
+  --s1:#2459A8; --s2:#EB6834; --s3:#9A5B13;
+  --lemon:#FFD94A;
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
-  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --sans:Arial,Helvetica,sans-serif;
   --r:6px;
 }
-@media (prefers-color-scheme:dark){
-  :root{--ground:#0F1413;--surface:#1A1A19;--surface-2:#222826;--line:#333B39;
-    --ink:#E8EDEB;--ink-2:#BFC9C6;--muted:#93A29E;--accent:#4FD1B5;--accent-ink:#08201C;
-    --accent-soft:#16302B;--missing:#F08A5F;--missing-soft:#3A211A;--ok:#7CC48A;
-    --s1:#3987e5;--s2:#d95926;--s3:#199e70;}
-}
-:root[data-theme="dark"]{--ground:#0F1413;--surface:#1A1A19;--surface-2:#222826;--line:#333B39;
-  --ink:#E8EDEB;--ink-2:#BFC9C6;--muted:#93A29E;--accent:#4FD1B5;--accent-ink:#08201C;
-  --accent-soft:#16302B;--missing:#F08A5F;--missing-soft:#3A211A;--ok:#7CC48A;
-  --s1:#3987e5;--s2:#d95926;--s3:#199e70;}
-:root[data-theme="light"]{--ground:#F4F6F5;--surface:#FCFCFB;--surface-2:#EEF1F0;--line:#DBE2E0;
-  --ink:#101615;--ink-2:#3A4644;--muted:#5F6D69;--accent:#0B6E5F;--accent-ink:#FFFFFF;
-  --accent-soft:#E3F0ED;--missing:#B4441F;--missing-soft:#FBEAE3;--ok:#2F6B3A;
-  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;}
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
@@ -52,15 +49,17 @@ button,input,select,textarea{font:inherit;color:inherit}
 
 header{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}
 .hwrap{max-width:1400px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.brand{display:flex;align-items:baseline;gap:9px}
-.brand b{font-size:15px;font-weight:650;letter-spacing:-.02em}
+.brand{display:flex;align-items:center;gap:9px;color:inherit;text-decoration:none}
+/* The mark: a lemon that is also a cell, as in battery-core's header. */
+.brand svg{width:40px;height:25px;flex:none}
+.brand b{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
 .brand span{font-size:11px;color:var(--muted)}
 .chip{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:11px;
   padding:4px 9px;border-radius:20px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2)}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--muted)}
 .dot.live{background:var(--ok)}
-nav{display:flex;gap:2px;max-width:1400px;margin:0 auto;padding:0 20px}
-nav button{background:none;border:0;padding:9px 13px;cursor:pointer;font-size:13px;
+nav{display:flex;gap:2px;max-width:1400px;margin:0 auto;padding:0 20px;overflow-x:auto;scrollbar-width:none}
+nav button{background:none;border:0;padding:9px 13px;cursor:pointer;font-size:13px;white-space:nowrap;
   color:var(--muted);border-bottom:2px solid transparent;font-weight:500}
 nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
 nav button:hover{color:var(--ink)}
@@ -73,17 +72,19 @@ main{max-width:1400px;margin:0 auto;padding:20px}
   display:flex;align-items:center;gap:9px}
 .card .body{padding:14px}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.btn{padding:6px 12px;border:1px solid var(--line);background:var(--surface-2);
-  border-radius:4px;cursor:pointer;font-size:12.5px;font-weight:500}
-.btn:hover{border-color:var(--muted)}
+.btn{padding:6px 12px;border:1px solid #C3CAD5;background:var(--surface);color:var(--ink);
+  border-radius:4px;cursor:pointer;font-size:12.5px;font-weight:500;text-decoration:none}
+.btn:hover{border-color:var(--accent-edge);background:var(--accent-soft)}
 .btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+.btn.pri:hover{background:var(--accent-strong);border-color:var(--accent-strong)}
+a{color:var(--accent)}
 .btn.ghost{background:none}
 input[type=search],select.f{padding:7px 10px;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
 
 .warn{background:var(--missing-soft);border:1px solid var(--missing);border-radius:var(--r);
   padding:11px 13px;font-size:12.5px;color:var(--ink-2);margin-bottom:14px}
 .warn b{color:var(--missing)}
-.note{background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--r);
+.note{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--r);
   padding:11px 13px;font-size:12.5px;color:var(--ink-2);margin-bottom:14px}
 
 .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
@@ -128,7 +129,7 @@ svg text{font-family:var(--sans)}
   margin:20px 0 8px;font-weight:650}
 .rep p{font-size:13px;color:var(--ink-2);max-width:70ch}
 .stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-bottom:6px}
-.stat div{border:1px solid var(--line);border-radius:5px;padding:10px 12px;background:var(--ground)}
+.stat > div{border:1px solid var(--line);border-radius:5px;padding:10px 12px;background:var(--ground)}
 .stat .v{font-family:var(--mono);font-size:19px;font-weight:650;font-variant-numeric:tabular-nums;
   letter-spacing:-.02em}
 .stat .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:2px}
@@ -141,7 +142,7 @@ svg text{font-family:var(--sans)}
 
 <header>
   <div class="hwrap">
-    <div class="brand"><b>Lemonergy</b><span>Battery Data · engineering library</span></div>
+    <a class="brand" href="https://lemonergy.com/" aria-label="Lemonergy home"><svg viewBox="0 6 32 20" aria-hidden="true" focusable="false"><path d="M3.6 16 C3.6 10.4 9.2 7 15.6 7 C22 7 27 10.4 27 16 C27 21.6 22 25 15.6 25 C9.2 25 3.6 21.6 3.6 16 Z" fill="#ffd94a" stroke="#b8901f" stroke-width="1.8"/><path d="M1.4 16 L3.9 14.4 L3.9 17.6 Z" fill="#b8901f"/><rect x="27.4" y="13" width="3.2" height="6" rx="1.2" fill="#2459a8"/><rect x="9" y="11.6" width="3.2" height="8.8" rx="1.1" fill="#2459a8"/><rect x="14" y="11.6" width="3.2" height="8.8" rx="1.1" fill="#2459a8"/><rect x="19" y="11.6" width="3.2" height="8.8" rx="1.1" fill="#2459a8"/></svg><b>Lemonergy</b><span>Battery Data · engineering library</span></a>
     <a class="btn" href="https://github.com/Morshedvarzandeh/battery-data">Free GitHub library</a> · <a href="https://lemonergy.com/#measure">API for engineering tools</a>
     <div class="chip"><i class="dot" id="srcdot"></i><span id="srclabel">loading</span></div>
   </div>
@@ -1075,9 +1076,14 @@ function drawDocs(){
    Toshiba at 200 s. pulse_duration_s is a required condition for exactly
    this reason. Sequential ramp, one hue, light to dark — magnitude, so
    never a categorical palette and never a rainbow.                        */
-const RAMP=["#E6F4F1","#B7E1D9","#7FC9BC","#48AE9C","#1E8F7C","#0B6E5F"];
-function rampFor(x,max){ if(!max)return RAMP[0];
-  return RAMP[Math.min(RAMP.length-1,Math.floor((Math.abs(x)/max)*RAMP.length))]; }
+const RAMP=["#EEF4FF","#C1D0E7","#9BB0D1","#7994BE","#45689F","#1C4786"];
+/* Course blue, wash to --accent-strong, stepped in OKLab. Steps 0–3 take ink
+   text (≥4.7:1) and steps 4–5 white text (≥5.6:1); RAMP_WHITE marks the
+   switch, so the text colour follows the step rather than a raw ratio. */
+const RAMP_WHITE=4;
+function rampIdx(x,max){ if(!max)return 0;
+  return Math.min(RAMP.length-1,Math.floor((Math.abs(x)/max)*RAMP.length)); }
+function rampFor(x,max){ return RAMP[rampIdx(x,max)]; }
 
 function pulseGrid(title,grid,socs,ah,dur,note){
   const temps=Object.keys(grid).map(Number).sort((a,b)=>a-b);
@@ -1101,7 +1107,7 @@ function pulseGrid(title,grid,socs,ah,dur,note){
     grid[tp].forEach((c,i)=>{
       const amps=Math.abs(c)*ah;
       const td=el("td",{class:"num",
-        style:c?`background:${rampFor(c,max)};color:${Math.abs(c)/max>0.55?"#fff":"var(--ink)"}`:"",
+        style:c?`background:${rampFor(c,max)};color:${rampIdx(c,max)>=RAMP_WHITE?"#fff":"var(--ink)"}`:"",
         title:`${Math.abs(c)}C for ${dur}s at ${tp}°C, SOC ${socs[i]}% → ${amps.toFixed(0)} A`},
         c?Math.abs(c).toFixed(2):"—");
       tr.append(td);
