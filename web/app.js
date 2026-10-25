@@ -165,7 +165,7 @@
   const $ = s => document.querySelector(s);
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const mfrLabel = m => m.replace(" Co., Ltd.", "").replace(" Energy Solution", " ES");
-  const state = { q: "", kind: "cell", chem: "", ff: "", mfr: "", core: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
+  const state = { q: "", kind: "cell", chem: new Set(), ff: new Set(), mfr: new Set(), core: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
   let rows = [], REG = { REG: {}, GROUPS: {} }, summary = null;
   const shards = new Map();
 
@@ -191,33 +191,62 @@
     $("#f-cyc").textContent = s.with_cycle_life.toLocaleString("en");
     $("#release").textContent = s.observations.toLocaleString("en") + " observations from contrib/";
   }
-  function fillFilters() {
-    const fill = (sel, counts, label) => { const s = $(sel); [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).forEach(([v, n]) => { const o = document.createElement("option"); o.value = v; o.textContent = (label ? label(v) : v) + " (" + n + ")"; s.appendChild(o); }); };
-    const cnt = f => { const c = new Map(); rows.forEach(r => { const v = f(r); if (v) c.set(v, (c.get(v) || 0) + 1); }); return c; };
-    fill("#f-chem", cnt(r => r.chem));
-    fill("#f-ff", cnt(r => r.fmt ? BD.FF[r.fmt] || r.fmt : null));
-    fill("#f-mfr", cnt(r => r.manu), mfrLabel);
-  }
-  const isCore = r => r.ah != null && r.v != null && r.g != null;
-  function filtered() {
+  // Facets: pick several makers, chemistries or formats at once. Within a
+  // facet the picks are OR-ed, across facets AND-ed. Each menu's counts are
+  // computed against every *other* active filter, so a count says how many
+  // more rows ticking that box would bring in.
+  const FACETS = {
+    mfr: { label: "Company", value: r => r.manu, text: mfrLabel },
+    chem: { label: "Chemistry", value: r => r.chem, text: v => v },
+    ff: { label: "Format", value: r => r.fmt ? BD.FF[r.fmt] || r.fmt : null, text: v => v },
+  };
+  function matches(r, skip) {
+    if (state.kind === "pack") { if (!["pack", "module", "system"].includes(r.kind)) return false; }
+    else if (state.kind && r.kind !== state.kind) return false;
+    for (const k of Object.keys(FACETS)) if (k !== skip && state[k].size && !state[k].has(FACETS[k].value(r))) return false;
+    if (state.core && !isCore(r)) return false;
     const q = state.q.toLowerCase().split(/\s+/).filter(Boolean);
-    return rows.filter(r => {
-      if (state.kind === "pack") { if (!["pack", "module", "system"].includes(r.kind)) return false; }
-      else if (state.kind && r.kind !== state.kind) return false;
-      if (state.chem && r.chem !== state.chem) return false;
-      if (state.ff && (BD.FF[r.fmt] || r.fmt) !== state.ff) return false;
-      if (state.mfr && r.manu !== state.mfr) return false;
-      if (state.core && !isCore(r)) return false;
-      if (q.length) { const hay = [r.model, r.manu, r.chem, r.fmt, r.ffc, BD.FF[r.fmt], r.ct, r.kind].join(" ").toLowerCase(); if (!q.every(t => hay.includes(t))) return false; }
-      return true;
-    });
+    if (q.length) { const hay = [r.model, r.manu, r.chem, r.fmt, r.ffc, BD.FF[r.fmt], r.ct, r.kind].join(" ").toLowerCase(); if (!q.every(t => hay.includes(t))) return false; }
+    return true;
   }
+  function facetMenu(k) {
+    const f = FACETS[k], menu = $("#facet-" + k), btn = document.querySelector('.facet[data-facet="' + k + '"] .facet-btn');
+    const counts = new Map();
+    rows.forEach(r => { const v = f.value(r); if (!v) return; if (!counts.has(v)) counts.set(v, 0); if (matches(r, k)) counts.set(v, counts.get(v) + 1); });
+    const q = (menu.dataset.q || "").toLowerCase();
+    const entries = [...counts].filter(([v]) => !q || f.text(v).toLowerCase().includes(q))
+      .sort((a, b) => (state[k].has(b[0]) - state[k].has(a[0])) || (b[1] - a[1]) || f.text(a[0]).localeCompare(f.text(b[0])));
+    menu.innerHTML = (counts.size > 8 ? '<input class="fsearch" type="search" placeholder="Filter ' + f.label.toLowerCase() + '…" value="' + esc(menu.dataset.q || "") + '" aria-label="Filter list">' : "") +
+      entries.map(([v, n]) => '<label class="' + (n === 0 && !state[k].has(v) ? "zero" : "") + '"><input type="checkbox" value="' + esc(v) + '"' + (state[k].has(v) ? " checked" : "") + "><span>" + esc(f.text(v)) + "</span><small>" + n.toLocaleString("en") + "</small></label>").join("") +
+      '<div class="facet-foot"><button type="button" data-act="clear">Clear</button><button type="button" data-act="close">Done</button></div>';
+    btn.innerHTML = esc(f.label) + (state[k].size ? '<span class="n">' + state[k].size + "</span>" : "");
+    btn.classList.toggle("on", state[k].size > 0);
+    menu.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.addEventListener("change", () => { if (cb.checked) state[k].add(cb.value); else state[k].delete(cb.value); refilter(); facetMenu(k); }));
+    const fs = menu.querySelector(".fsearch"); if (fs) { fs.addEventListener("input", () => { menu.dataset.q = fs.value; const pos = fs.selectionStart; facetMenu(k); const nf = menu.querySelector(".fsearch"); nf.focus(); nf.setSelectionRange(pos, pos); }); }
+    menu.querySelector('[data-act="clear"]').onclick = () => { state[k].clear(); menu.dataset.q = ""; refilter(); facetMenu(k); };
+    menu.querySelector('[data-act="close"]').onclick = () => closeFacets();
+    $("#f-clear").hidden = !Object.keys(FACETS).some(x => state[x].size);
+  }
+  function closeFacets() { document.querySelectorAll(".facet-menu").forEach(m => { m.hidden = true; }); document.querySelectorAll(".facet-btn").forEach(b => b.setAttribute("aria-expanded", "false")); }
+  function fillFilters() {
+    Object.keys(FACETS).forEach(k => {
+      const btn = document.querySelector('.facet[data-facet="' + k + '"] .facet-btn'), menu = $("#facet-" + k);
+      btn.addEventListener("click", () => { const open = !menu.hidden; closeFacets(); if (!open) { facetMenu(k); menu.hidden = false; btn.setAttribute("aria-expanded", "true"); } });
+      facetMenu(k);
+    });
+    document.addEventListener("click", e => { if (!e.target.closest(".facet")) closeFacets(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeFacets(); });
+    $("#f-clear").onclick = () => { Object.keys(FACETS).forEach(k => state[k].clear()); refilter(); Object.keys(FACETS).forEach(facetMenu); };
+  }
+  function refreshFacets() { Object.keys(FACETS).forEach(k => { if (!$("#facet-" + k).hidden) facetMenu(k); else facetMenu(k); }); }
+  const isCore = r => r.ah != null && r.v != null && r.g != null;
+  function filtered() { return rows.filter(r => matches(r, null)); }
   function sorted(list) {
     const k = state.sort, d = state.dir;
     const tie = (a, b) => (b.depth - a.depth) || ((b.src === "datasheet") - (a.src === "datasheet")) || (a.manu + a.model).localeCompare(b.manu + b.model);
     return list.slice().sort((a, b) => {
       let x = a[k], y = b[k];
-      if (k === "model") { x = a.manu + " " + a.model; y = b.manu + " " + b.model; }
+      if (k === "model") { x = a.model || ""; y = b.model || ""; }
       if (k === "ff") { x = a.fmt || a.ffc; y = b.fmt || b.ffc; }
       if (x == null && y == null) return tie(a, b);
       if (x == null) return 1; if (y == null) return -1;
@@ -225,10 +254,10 @@
       return d * (x - y) || tie(a, b);
     });
   }
-  const CELL_COLS = [["model", "Cell", ""], ["chem", "Chemistry", ""], ["ff", "Format", ""], ["ah", "Ah", "r"], ["v", "V", "r"], ["g", "g", "r"],
+  const CELL_COLS = [["model", "Cell", ""], ["manu", "Company", ""], ["chem", "Chemistry", ""], ["ff", "Format", ""], ["ah", "Ah", "r"], ["v", "V", "r"], ["g", "g", "r"],
     ["whkg", "Wh/kg", "r"], ["a", "A cont.", "r"], ["cyc", "Cycles", "r"], ["depth", "Stated", ""]];
-  const COMP_COLS = [["model", "Component", ""], ["ct", "Type", ""], ["ratings", "Key ratings as printed", ""], ["n", "Observations", "r"]];
-  const SORT_LABEL = { depth: "how much the source states", model: "name", chem: "chemistry", ff: "format", ah: "capacity", v: "voltage", g: "mass",
+  const COMP_COLS = [["model", "Component", ""], ["manu", "Company", ""], ["ct", "Type", ""], ["ratings", "Key ratings as printed", ""], ["n", "Observations", "r"]];
+  const SORT_LABEL = { depth: "how much the source states", model: "name", manu: "company", chem: "chemistry", ff: "format", ah: "capacity", v: "voltage", g: "mass",
     whkg: "specific energy", a: "discharge current", cyc: "cycle life", ct: "type", n: "observation count", ratings: "ratings" };
   const depthHTML = d => '<span class="depth" title="' + d + ' of 8 core specifications stated">' + Array.from({ length: 8 }, (_, i) => '<i class="' + (i < d ? "on" : "") + '"></i>').join("") + "</span>";
   const num = (v, d) => v == null ? '<td class="r dash">–</td>' : '<td class="r">' + BD.fmt(v, d) + "</td>";
@@ -237,23 +266,25 @@
     if (!cols.some(c => c[0] === state.sort)) { state.sort = state.kind === "component" ? "n" : "depth"; state.dir = -1; }
     $("#tbl thead tr").innerHTML = cols.map(([k, t, cls]) => '<th class="' + cls + (state.sort === k ? " on" : "") + '" data-k="' + k + '">' + t + (state.sort === k ? '<span class="dir">' + (state.dir < 0 ? "▼" : "▲") + "</span>" : "") + "</th>").join("");
     document.querySelectorAll("#tbl th").forEach(th => th.addEventListener("click", () => {
-      const k = th.dataset.k; if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = ["model", "chem", "ff", "ct", "ratings"].includes(k) ? 1 : -1; }
+      const k = th.dataset.k; if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = ["model", "manu", "chem", "ff", "ct", "ratings"].includes(k) ? 1 : -1; }
       render();
     }));
   }
   function rowHTML(r) {
-    const sub = mfrLabel(r.manu) + (r.kind !== "cell" && r.kind !== "component" ? " · " + r.kind.replace("_", " ") : "");
+    const sub = r.kind !== "cell" && r.kind !== "component" ? r.kind.replace("_", " ") : (r.vq === "voltage" ? "" : "");
+    const company = '<td class="company" title="' + esc(r.manu) + '">' + esc(r.manu) + "</td>";
     if (state.kind === "component") {
-      return '<td class="model">' + esc(r.model) + "<small>" + esc(sub) + "</small></td><td>" + esc((r.ct || "").replace(/_/g, " ")) +
+      return '<td class="model">' + esc(r.model) + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</td>" + company + "<td>" + esc((r.ct || "").replace(/_/g, " ")) +
         '</td><td class="ratings">' + (r.ratings.length ? r.ratings.map(esc).join(" · ") : '<span class="dash">–</span>') + '</td><td class="r">' + r.n + "</td>";
     }
     const v = r.v == null ? '<td class="r dash">–</td>' : r.vq === "voltage" ? '<td class="r"><span class="printed" title="Printed as “Voltage”; the source does not say it is the nominal voltage">' + BD.fmt(r.v, 2) + "</span></td>" : '<td class="r">' + BD.fmt(r.v, 2) + "</td>";
     const whkg = r.whkg == null ? '<td class="r dash">–</td>' : '<td class="r"' + (r.whkg_d ? ' title="Calculated from capacity, voltage and mass"' : "") + ">" + BD.fmt(r.whkg, 0) + (r.whkg_d ? "<sup style=\"color:var(--muted);font-size:9px\"> calc</sup>" : "") + "</td>";
-    return '<td class="model">' + esc(r.model || "—") + "<small>" + esc(sub) + "</small></td>" +
+    return '<td class="model">' + esc(r.model || "—") + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</td>" + company +
       '<td class="chem" title="' + esc(r.chem || "") + '">' + (r.chem ? esc(r.chem) : '<span class="dash">–</span>') + "</td>" +
       '<td class="ff">' + (r.fmt ? esc(BD.FF[r.fmt] || r.fmt) : r.ffc ? esc(r.ffc) : '<span class="dash">–</span>') + (r.ffc && r.fmt ? ' <span class="pill">' + esc(r.ffc) + "</span>" : "") + "</td>" +
       num(r.ah, r.ah < 1 ? 3 : 1) + v + num(r.g, 1) + whkg + num(r.a, 1) + num(r.cyc, 0) + "<td>" + depthHTML(r.depth) + "</td>";
   }
+  function refilter() { state.shown = 100; const list = render(); if (list.length && !list.some(r => r.uid === state.sel)) select(list[0].uid); refreshFacets(); }
   function render() {
     header();
     const list = sorted(filtered());
@@ -423,15 +454,15 @@
 
   function wire() {
     $("#sform").addEventListener("submit", e => { e.preventDefault(); state.q = $("#q").value; state.shown = 100; render(); });
-    $("#q").addEventListener("input", e => { state.q = e.target.value; state.shown = 100; render(); });
+    $("#q").addEventListener("input", e => { state.q = e.target.value; state.shown = 100; render(); refreshFacets(); });
     document.querySelectorAll(".chip").forEach(c => c.onclick = () => {
       if (c.dataset.kind !== undefined) { state.kind = c.dataset.kind; $("#f-kind").value = c.dataset.kind; }
-      if (c.dataset.chem) { state.chem = c.dataset.chem; $("#f-chem").value = c.dataset.chem; state.q = ""; $("#q").value = ""; }
-      else { state.chem = ""; $("#f-chem").value = ""; state.q = c.dataset.q || ""; $("#q").value = state.q; }
-      state.shown = 100; const list = render(); if (list[0]) select(list[0].uid);
+      state.chem.clear();
+      if (c.dataset.chem) { state.chem.add(c.dataset.chem); state.q = ""; $("#q").value = ""; }
+      else { state.q = c.dataset.q || ""; $("#q").value = state.q; }
+      state.shown = 100; const list = render(); if (list[0]) select(list[0].uid); refreshFacets();
     });
-    const refilter = () => { state.shown = 100; const list = render(); if (list.length && !list.some(r => r.uid === state.sel)) select(list[0].uid); };
-    [["#f-kind", "kind"], ["#f-chem", "chem"], ["#f-ff", "ff"], ["#f-mfr", "mfr"]].forEach(([s, k]) => $(s).addEventListener("change", e => { state[k] = e.target.value; refilter(); }));
+    $("#f-kind").addEventListener("change", e => { state.kind = e.target.value; refilter(); });
     $("#f-core-only").addEventListener("change", e => { state.core = e.target.checked; refilter(); });
     $("#morebtn").onclick = () => { state.shown += 100; render(); };
     $("#csv").onclick = () => save("lemonergy-data-" + new Date().toISOString().slice(0, 10) + ".csv", BD.toCSV(sorted(filtered())), "text/csv");
