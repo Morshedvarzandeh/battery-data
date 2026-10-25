@@ -31,8 +31,11 @@ jobs:
           # On main, run everything; on a PR, only what the diff touches.
           if [ "${{ github.event_name }}" != "pull_request" ]; then
             for k in schema contrib code; do echo "$k=true" >> "$GITHUB_OUTPUT"; done; exit 0; fi
+          # Shallow checkout: compare trees (two dots), which needs no merge base.
+          # HEAD is the PR merge commit, so base..HEAD is exactly the PR's files.
           git fetch -q origin "${{ github.base_ref }}" --depth=1
-          files=$(git diff --name-only "origin/${{ github.base_ref }}"...HEAD)
+          files=$(git diff --name-only "origin/${{ github.base_ref }}" HEAD)
+          echo "$files" | sed "s/^/  /"
           m() { echo "$files" | grep -Eq "$1" && echo true || echo false; }
           echo "schema=$(m '^(schema|seed|migrations|tests/(010|020|ci_)|tools/(load_|export_crosswalk|build_db)|setup.sh|contrib/|patents/|\.github/workflows/ci.yml)')" >> "$GITHUB_OUTPUT"
           echo "contrib=$(m '^(contrib/|review/|components/|catalog/|json-schema/|web/|tools/|tests/|agents/|patents/|technology/|\.github/)')" >> "$GITHUB_OUTPUT"
