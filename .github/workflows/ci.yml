@@ -1,8 +1,46 @@
 name: ci
-on: [push, pull_request]
+# Every pull request runs once, and main runs once after a merge. Pushing to a
+# branch that has an open PR used to run everything twice; a second push while
+# the first run was still going kept both alive. Together those were most of the
+# Actions minutes this repository spent. Jobs also skip when nothing they test
+# changed: a docs-only PR does not need a Postgres service.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      schema: ${{ steps.f.outputs.schema }}
+      contrib: ${{ steps.f.outputs.contrib }}
+      code: ${{ steps.f.outputs.code }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: f
+        shell: bash
+        run: |
+          # On main, run everything; on a PR, only what the diff touches.
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            for k in schema contrib code; do echo "$k=true" >> "$GITHUB_OUTPUT"; done; exit 0; fi
+          git fetch -q origin "${{ github.base_ref }}" --depth=1
+          files=$(git diff --name-only "origin/${{ github.base_ref }}"...HEAD)
+          m() { echo "$files" | grep -Eq "$1" && echo true || echo false; }
+          echo "schema=$(m '^(schema|seed|migrations|tests/(010|020|ci_)|tools/(load_|export_crosswalk|build_db)|setup.sh|contrib/|patents/|\.github/workflows/ci.yml)')" >> "$GITHUB_OUTPUT"
+          echo "contrib=$(m '^(contrib/|review/|components/|catalog/|json-schema/|web/|tools/|tests/|agents/|patents/|technology/|\.github/)')" >> "$GITHUB_OUTPUT"
+          echo "code=$(m '^(tools/|tests/|web/|json-schema/|schema/010_vocabulary.sql|\.github/)')" >> "$GITHUB_OUTPUT"
+
   schema:
+    needs: changes
+    if: needs.changes.outputs.schema == 'true'
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -115,6 +153,8 @@ jobs:
         run: python tools/export_crosswalk.py batterydb
 
   units:
+    needs: changes
+    if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -129,6 +169,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py'
 
   contrib:
+    needs: changes
+    if: needs.changes.outputs.contrib == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -168,17 +210,15 @@ jobs:
             echo "::error::review batch is stale. Run the deterministic builders"
             exit 1
           }
-      - name: The page is generated, not maintained
-        # web/index.html carries a copy of the contribution data. If the two
-        # can drift, a merged submission lands in contrib/ and never appears
-        # in the UI -- which makes a working submission flow look broken. This
-        # regenerates and fails on any difference, so the copy cannot rot.
+      - name: The finder's data builds from the contributions
+        # web/data/*.json is generated at deploy time (pages.yml) and never
+        # committed, so nothing can go stale. What can still break is the
+        # build itself: a heading naming a quantity that does not exist, a
+        # unit the metrics cannot convert, a record the page cannot index.
+        # Build into a scratch directory and fail on any of those.
         run: |
-          python tools/build_web_data.py
-          git diff --exit-code -- web/index.html || {
-            echo "::error::web/index.html is stale. Run: python tools/build_web_data.py"
-            exit 1
-          }
+          python tools/build_web_data.py --out "$RUNNER_TEMP/web-data"
+          test -s "$RUNNER_TEMP/web-data/cells.json"
       - name: Extraction schema builds from the contribution schema
         # No API key and no network: this checks that the schema the model is
         # forced to fill is still derivable from the schema the validator

@@ -1,0 +1,62 @@
+# =====================================================================
+# Deploy the cell finder (web/) to GitHub Pages.
+#
+# The page's data files are built here from contrib/ and never committed, so
+# the deployed finder is always the accepted library as of the commit it was
+# built from. One-time setup: repository Settings -> Pages -> Source:
+# "GitHub Actions". Until that is set, this workflow builds and uploads the
+# artifact and the deploy step fails with a clear message; nothing else breaks.
+# =====================================================================
+name: pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+      - 'contrib/**'
+      - 'json-schema/**'
+      - 'schema/010_vocabulary.sql'
+      - 'tools/build_web_data.py'
+      - 'tools/catalog_dates.py'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install pyyaml jsonschema
+      - name: Build the finder's data from contrib/
+        run: |
+          python tools/build_web_data.py
+          du -sh web/data
+          python - <<'PY'
+          import json; s = json.load(open("web/data/summary.json"))
+          print({k: v for k, v in s.items() if k != "by_manufacturer"})
+          PY
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: web }
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
