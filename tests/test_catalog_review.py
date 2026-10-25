@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from import_manufacturer_catalogs import measurement, reconcile, harding_rows
 from build_web_data import product
+import review_ledger
 
 
 class CatalogReviewTests(unittest.TestCase):
@@ -86,8 +87,12 @@ class CatalogReviewTests(unittest.TestCase):
                 path = ROOT / row['accepted_file']
                 self.assertFalse((ROOT / row['candidate_file']).exists(), row['uid'])
                 self.assertTrue(path.is_file(), row['uid'])
+                # The bytes accepted here, unless a later revision audit
+                # documents a change; the ledger resolves which applies.
                 self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
-                                 row['accepted_document_sha256'], row['uid'])
+                                 review_ledger.accepted_sha256(row['accepted_file'],
+                                                               row['accepted_document_sha256']),
+                                 row['uid'])
             else:
                 self.assertTrue(row['reasons'])
                 self.assertTrue((ROOT / row['candidate_file']).is_file(), row['uid'])

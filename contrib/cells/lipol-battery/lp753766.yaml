@@ -5,6 +5,7 @@
     "kind": "cell",
     "manufacturer": "LiPol Battery Co., Ltd.",
     "model_number": "LP753766",
+    "form_factor": "pouch",
     "is_rechargeable": true
   },
   "source": {
@@ -13,7 +14,7 @@
     "title": "LiPo batteries new models 2013",
     "url": "https://www.lipolbattery.com/lipo%20batteries.html",
     "revision": "Page heading: new models 2013; revision date unstated",
-    "note": "Historical manufacturer listing; present availability is unverified. Only row-specific specifications are extracted. General marketing claims about cycle life, charge voltage, and self-discharge are not assigned to individual models. Capacity test conditions are absent. Retrieved 2026-09-15. Row quotes normalize whitespace.",
+    "note": "Historical manufacturer listing; present availability is unverified. Only row-specific specifications are extracted. General marketing claims about cycle life, charge voltage, and self-discharge are not assigned to individual models. Capacity test conditions are absent. Retrieved 2026-09-15. Row quotes normalize whitespace. Form factor recorded as pouch by tools/migrate_form_factor.py: derived from the lithium-polymer family heading and the rectangular length x width x thickness dimension set; the source does not print a form factor per row.",
     "license": "proprietary",
     "redistributable": false,
     "sha256": "e7e37014e958387d4eac4abda5e3d218aaa00fde4e27889ac9de40379bcac640"

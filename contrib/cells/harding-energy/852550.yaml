@@ -5,6 +5,7 @@
     "kind": "cell",
     "manufacturer": "Harding Energy",
     "model_number": "852550",
+    "form_factor": "pouch",
     "is_rechargeable": true
   },
   "source": {
@@ -13,7 +14,7 @@
     "title": "2019 Lithium Polymer Cell Selection Guide",
     "url": "https://www.hardingenergy.com/wp-content/uploads/2019/03/HEI-Lithium-Polymer-Cell-Selection-Guide-2019.pdf",
     "revision": "2019",
-    "note": "Historical manufacturer catalog; present availability is unverified. Dimensions cover bare cells, excluding protection boards and assemblies, and the manufacturer asks customers to verify dimensions. The printed voltage is stored as voltage with any printed lower bound, not as an operating cutoff. Capacity test conditions are absent. Retrieved 2026-09-15. Row quotes normalize whitespace.",
+    "note": "Historical manufacturer catalog; present availability is unverified. Dimensions cover bare cells, excluding protection boards and assemblies, and the manufacturer asks customers to verify dimensions. The printed voltage is stored as voltage with any printed lower bound, not as an operating cutoff. Capacity test conditions are absent. Retrieved 2026-09-15. Row quotes normalize whitespace. Form factor recorded as pouch by tools/migrate_form_factor.py: derived from the lithium-polymer family heading and the rectangular length x width x thickness dimension set; the source does not print a form factor per row.",
     "license": "proprietary",
     "redistributable": false,
     "sha256": "1680b454e9470c4bafb780eb99b22b78798e142ae92b39b986dc2a402a43b500"

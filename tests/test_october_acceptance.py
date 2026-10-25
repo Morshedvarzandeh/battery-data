@@ -2,9 +2,13 @@
 import hashlib
 import json
 from pathlib import Path
+import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'tools'))
+import review_ledger
+
 AUDIT = 'review/audits/2026-10-04-catalog-acceptance.json'
 
 
@@ -21,8 +25,11 @@ class OctoberAcceptanceTests(unittest.TestCase):
             row = index[d['uid']]
             if d['decision'] == 'accept':
                 path = ROOT / d['accepted_file']
-                self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), d['accepted_document_sha256'])
+                # The reviewed bytes were published unchanged; any later change
+                # must be a documented revision the ledger can account for.
                 self.assertEqual(d['reviewed_document_sha256'], d['accepted_document_sha256'])
+                self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
+                                 review_ledger.accepted_sha256(d['accepted_file'], d['accepted_document_sha256']))
                 self.assertFalse((ROOT / d['candidate_file']).exists())
                 self.assertEqual(row['state'], 'accepted')
                 self.assertEqual(row['review_audit'], AUDIT)

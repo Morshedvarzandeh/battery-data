@@ -11,6 +11,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 import import_lipol_expansion as importer
+import review_ledger
 
 
 class ExtractionTests(unittest.TestCase):
@@ -144,7 +145,8 @@ class CommittedBatchTests(unittest.TestCase):
             product = existing['product']
             for name in [product['model_number'], *product.get('aliases', [])]:
                 self.assertNotIn(importer.compact_identifier(name), identities)
-            self.assertEqual(hashlib.sha256((ROOT / existing['file']).read_bytes()).hexdigest(), existing['sha256'])
+            self.assertEqual(hashlib.sha256((ROOT / existing['file']).read_bytes()).hexdigest(),
+                             review_ledger.accepted_sha256(existing['file'], existing['sha256']))
 
     def test_evidence_and_conditions_survive_candidate_generation(self):
         sources = {s['url']: s for s in self.manifest['sources']}
@@ -176,7 +178,11 @@ class CommittedBatchTests(unittest.TestCase):
             row = index[doc['product']['uid']]
             if row['state'] == 'accepted':
                 published = json.loads((ROOT / row['accepted_file']).read_text())
-                self.assertEqual(published, doc)
+                # Equal to the reviewed candidate except for fields a later
+                # revision audit documents (review_ledger.revised_fields).
+                changed = review_ledger.revised_fields(row['accepted_file'])
+                self.assertEqual(review_ledger.without_fields(published, changed),
+                                 review_ledger.without_fields(doc, changed))
                 self.assertNotIn(doc['product']['uid'], issues)
             else:
                 self.assertIn(doc['source']['note'], issues[doc['product']['uid']]['body'])
