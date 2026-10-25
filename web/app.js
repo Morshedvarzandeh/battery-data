@@ -138,7 +138,7 @@
     ["voltage_quantity", r => r.vq], ["mass_g", r => r.g], ["energy_wh", r => r.wh], ["wh_per_kg", r => r.whkg], ["wh_per_kg_derived", r => r.whkg_d],
     ["wh_per_l", r => r.whl], ["continuous_discharge_a", r => r.a], ["cycle_life", r => r.cyc], ["internal_resistance_mohm", r => r.ir],
     ["dimensions_mm", r => r.dims && r.dims.join(" x ")], ["t_min_c", r => r.tmin], ["t_max_c", r => r.tmax], ["specs_stated_of_8", r => r.depth],
-    ["observations", r => r.n], ["source_kind", r => r.src], ["document_year", r => r.doc], ["source_url", r => r.url]];
+    ["observations", r => r.n], ["source_kind", r => r.src], ["document_year", r => r.doc], ["year", r => r.year], ["year_kind", r => r.yk], ["source_url", r => r.url]];
   BD.toCSV = function (rows) {
     const cell = v => { if (v == null) return ""; const s = String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
     return [BD.CSV_COLS.map(c => c[0]).join(",")].concat(rows.map(r => BD.CSV_COLS.map(c => cell(c[1](r))).join(","))).join("\n");
@@ -165,7 +165,7 @@
   const $ = s => document.querySelector(s);
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const mfrLabel = m => m.replace(" Co., Ltd.", "").replace(" Energy Solution", " ES");
-  const state = { q: "", kind: "cell", chem: "", ff: "", mfr: "", core: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
+  const state = { q: "", kind: new Set(["cell"]), chem: new Set(), ff: new Set(), mfr: new Set(), year: new Set(), core: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
   let rows = [], REG = { REG: {}, GROUPS: {} }, summary = null;
   const shards = new Map();
 
@@ -191,33 +191,69 @@
     $("#f-cyc").textContent = s.with_cycle_life.toLocaleString("en");
     $("#release").textContent = s.observations.toLocaleString("en") + " observations from contrib/";
   }
-  function fillFilters() {
-    const fill = (sel, counts, label) => { const s = $(sel); [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).forEach(([v, n]) => { const o = document.createElement("option"); o.value = v; o.textContent = (label ? label(v) : v) + " (" + n + ")"; s.appendChild(o); }); };
-    const cnt = f => { const c = new Map(); rows.forEach(r => { const v = f(r); if (v) c.set(v, (c.get(v) || 0) + 1); }); return c; };
-    fill("#f-chem", cnt(r => r.chem));
-    fill("#f-ff", cnt(r => r.fmt ? BD.FF[r.fmt] || r.fmt : null));
-    fill("#f-mfr", cnt(r => r.manu), mfrLabel);
-  }
-  const isCore = r => r.ah != null && r.v != null && r.g != null;
-  function filtered() {
+  // Facets: pick several makers, chemistries or formats at once. Within a
+  // facet the picks are OR-ed, across facets AND-ed. Each menu's counts are
+  // computed against every *other* active filter, so a count says how many
+  // more rows ticking that box would bring in.
+  const KIND = { cell: "Rechargeable cells", primary_cell: "Primary cells", pack: "Modules, packs and systems", component: "Electrical components" };
+  const kindOf = r => ["pack", "module", "system"].includes(r.kind) ? "pack" : r.kind;
+  const FACETS = {
+    kind: { label: "Kind", value: kindOf, text: v => KIND[v] || v, order: Object.keys(KIND) },
+    mfr: { label: "Company", value: r => r.manu, text: mfrLabel },
+    chem: { label: "Chemistry", value: r => r.chem, text: v => v },
+    ff: { label: "Format", value: r => r.fmt ? BD.FF[r.fmt] || r.fmt : null, text: v => v },
+    year: { label: "Year", value: r => r.year || "not stated", text: v => v, desc: true },
+  };
+  const componentsOnly = () => state.kind.size === 1 && state.kind.has("component");
+  function matches(r, skip) {
+    for (const k of Object.keys(FACETS)) if (k !== skip && state[k].size && !state[k].has(FACETS[k].value(r))) return false;
+    if (state.core && !isCore(r)) return false;
     const q = state.q.toLowerCase().split(/\s+/).filter(Boolean);
-    return rows.filter(r => {
-      if (state.kind === "pack") { if (!["pack", "module", "system"].includes(r.kind)) return false; }
-      else if (state.kind && r.kind !== state.kind) return false;
-      if (state.chem && r.chem !== state.chem) return false;
-      if (state.ff && (BD.FF[r.fmt] || r.fmt) !== state.ff) return false;
-      if (state.mfr && r.manu !== state.mfr) return false;
-      if (state.core && !isCore(r)) return false;
-      if (q.length) { const hay = [r.model, r.manu, r.chem, r.fmt, r.ffc, BD.FF[r.fmt], r.ct, r.kind].join(" ").toLowerCase(); if (!q.every(t => hay.includes(t))) return false; }
-      return true;
-    });
+    if (q.length) { const hay = [r.model, r.manu, r.chem, r.fmt, r.ffc, BD.FF[r.fmt], r.ct, r.kind].join(" ").toLowerCase(); if (!q.every(t => hay.includes(t))) return false; }
+    return true;
   }
+  function facetMenu(k) {
+    const f = FACETS[k], menu = $("#facet-" + k), btn = document.querySelector('.facet[data-facet="' + k + '"] .facet-btn');
+    const counts = new Map();
+    rows.forEach(r => { const v = f.value(r); if (!v) return; if (!counts.has(v)) counts.set(v, 0); if (matches(r, k)) counts.set(v, counts.get(v) + 1); });
+    const q = (menu.dataset.q || "").toLowerCase();
+    const entries = [...counts].filter(([v]) => !q || f.text(v).toLowerCase().includes(q))
+      .sort((a, b) => f.order ? f.order.indexOf(a[0]) - f.order.indexOf(b[0])
+        : f.desc ? (a[0] === "not stated") - (b[0] === "not stated") || String(b[0]).localeCompare(String(a[0]))
+        : (state[k].has(b[0]) - state[k].has(a[0])) || (b[1] - a[1]) || f.text(a[0]).localeCompare(f.text(b[0])));
+    menu.innerHTML = (counts.size > 8 ? '<input class="fsearch" type="search" placeholder="Filter ' + f.label.toLowerCase() + '…" value="' + esc(menu.dataset.q || "") + '" aria-label="Filter list">' : "") +
+      entries.map(([v, n]) => '<label class="' + (n === 0 && !state[k].has(v) ? "zero" : "") + '"><input type="checkbox" value="' + esc(v) + '"' + (state[k].has(v) ? " checked" : "") + "><span>" + esc(f.text(v)) + "</span><small>" + n.toLocaleString("en") + "</small></label>").join("") +
+      '<div class="facet-foot"><button type="button" data-act="clear">Clear</button><button type="button" data-act="close">Done</button></div>';
+    btn.innerHTML = esc(f.label) + (state[k].size ? '<span class="n">' + state[k].size + "</span>" : "");
+    btn.classList.toggle("on", state[k].size > 0 && !(k === "kind" && state[k].size === 1 && state[k].has("cell")));
+    menu.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.addEventListener("change", () => { if (cb.checked) state[k].add(cb.value); else state[k].delete(cb.value); refilter(); facetMenu(k); }));
+    const fs = menu.querySelector(".fsearch"); if (fs) { fs.addEventListener("input", () => { menu.dataset.q = fs.value; const pos = fs.selectionStart; facetMenu(k); const nf = menu.querySelector(".fsearch"); nf.focus(); nf.setSelectionRange(pos, pos); }); }
+    menu.querySelector('[data-act="clear"]').onclick = () => { state[k].clear(); menu.dataset.q = ""; refilter(); facetMenu(k); };
+    menu.querySelector('[data-act="close"]').onclick = () => closeFacets();
+    const kindDefault = state.kind.size === 1 && state.kind.has("cell");
+    $("#f-clear").hidden = !Object.keys(FACETS).some(x => x === "kind" ? !kindDefault : state[x].size);
+  }
+  function closeFacets() { document.querySelectorAll(".facet-menu").forEach(m => { m.hidden = true; }); document.querySelectorAll(".facet-btn").forEach(b => b.setAttribute("aria-expanded", "false")); }
+  function fillFilters() {
+    Object.keys(FACETS).forEach(k => {
+      const btn = document.querySelector('.facet[data-facet="' + k + '"] .facet-btn'), menu = $("#facet-" + k);
+      btn.addEventListener("click", () => { const open = !menu.hidden; closeFacets(); if (!open) { facetMenu(k); menu.hidden = false; btn.setAttribute("aria-expanded", "true"); } });
+      facetMenu(k);
+    });
+    // composedPath, not closest: a click on the count badge replaces the badge while the event is in flight.
+    document.addEventListener("click", e => { if (!e.composedPath().some(n => n.classList && n.classList.contains("facet"))) closeFacets(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeFacets(); });
+    $("#f-clear").onclick = () => { Object.keys(FACETS).forEach(k => state[k].clear()); state.kind.add("cell"); refilter(); Object.keys(FACETS).forEach(facetMenu); };
+  }
+  function refreshFacets() { Object.keys(FACETS).forEach(k => { if (!$("#facet-" + k).hidden) facetMenu(k); else facetMenu(k); }); }
+  const isCore = r => r.ah != null && r.v != null && r.g != null;
+  function filtered() { return rows.filter(r => matches(r, null)); }
   function sorted(list) {
     const k = state.sort, d = state.dir;
     const tie = (a, b) => (b.depth - a.depth) || ((b.src === "datasheet") - (a.src === "datasheet")) || (a.manu + a.model).localeCompare(b.manu + b.model);
     return list.slice().sort((a, b) => {
       let x = a[k], y = b[k];
-      if (k === "model") { x = a.manu + " " + a.model; y = b.manu + " " + b.model; }
+      if (k === "model") { x = a.model || ""; y = b.model || ""; }
       if (k === "ff") { x = a.fmt || a.ffc; y = b.fmt || b.ffc; }
       if (x == null && y == null) return tie(a, b);
       if (x == null) return 1; if (y == null) return -1;
@@ -225,42 +261,48 @@
       return d * (x - y) || tie(a, b);
     });
   }
-  const CELL_COLS = [["model", "Cell", ""], ["chem", "Chemistry", ""], ["ff", "Format", ""], ["ah", "Ah", "r"], ["v", "V", "r"], ["g", "g", "r"],
-    ["whkg", "Wh/kg", "r"], ["a", "A cont.", "r"], ["cyc", "Cycles", "r"], ["depth", "Stated", ""]];
-  const COMP_COLS = [["model", "Component", ""], ["ct", "Type", ""], ["ratings", "Key ratings as printed", ""], ["n", "Observations", "r"]];
-  const SORT_LABEL = { depth: "how much the source states", model: "name", chem: "chemistry", ff: "format", ah: "capacity", v: "voltage", g: "mass",
+  const CELL_COLS = [["model", "Cell", ""], ["manu", "Company", ""], ["chem", "Chemistry", ""], ["ff", "Format", ""], ["ah", "Ah", "r"], ["v", "V", "r"], ["g", "g", "r"],
+    ["whkg", "Wh/kg", "r"], ["a", "A cont.", "r"], ["cyc", "Cycles", "r"], ["year", "Year", "r"], ["depth", "Stated", ""]];
+  const COMP_COLS = [["model", "Component", ""], ["manu", "Company", ""], ["ct", "Type", ""], ["ratings", "Key ratings as printed", ""], ["year", "Year", "r"], ["n", "Observations", "r"]];
+  const SORT_LABEL = { depth: "how much the source states", model: "name", manu: "company", year: "year", chem: "chemistry", ff: "format", ah: "capacity", v: "voltage", g: "mass",
     whkg: "specific energy", a: "discharge current", cyc: "cycle life", ct: "type", n: "observation count", ratings: "ratings" };
   const depthHTML = d => '<span class="depth" title="' + d + ' of 8 core specifications stated">' + Array.from({ length: 8 }, (_, i) => '<i class="' + (i < d ? "on" : "") + '"></i>').join("") + "</span>";
   const num = (v, d) => v == null ? '<td class="r dash">–</td>' : '<td class="r">' + BD.fmt(v, d) + "</td>";
+  // Year: a documented product release reads plain; a document date reads with a "doc" mark — the sheet's year, not the product's.
+  const yearCell = r => r.year == null ? '<td class="r dash" title="Neither a release date nor a dated document is recorded">–</td>'
+    : r.yk === "release" ? '<td class="r" title="Documented product release">' + esc(r.year) + "</td>"
+    : '<td class="r" title="Date of the source document, not the product release"><span class="printed">' + esc(r.year) + '</span><sup style="color:var(--muted);font-size:9px"> doc</sup></td>';
   function header() {
-    const cols = state.kind === "component" ? COMP_COLS : CELL_COLS;
-    if (!cols.some(c => c[0] === state.sort)) { state.sort = state.kind === "component" ? "n" : "depth"; state.dir = -1; }
+    const cols = componentsOnly() ? COMP_COLS : CELL_COLS;
+    if (!cols.some(c => c[0] === state.sort)) { state.sort = componentsOnly() ? "n" : "depth"; state.dir = -1; }
     $("#tbl thead tr").innerHTML = cols.map(([k, t, cls]) => '<th class="' + cls + (state.sort === k ? " on" : "") + '" data-k="' + k + '">' + t + (state.sort === k ? '<span class="dir">' + (state.dir < 0 ? "▼" : "▲") + "</span>" : "") + "</th>").join("");
     document.querySelectorAll("#tbl th").forEach(th => th.addEventListener("click", () => {
-      const k = th.dataset.k; if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = ["model", "chem", "ff", "ct", "ratings"].includes(k) ? 1 : -1; }
+      const k = th.dataset.k; if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = ["model", "manu", "chem", "ff", "ct", "ratings"].includes(k) ? 1 : -1; }
       render();
     }));
   }
   function rowHTML(r) {
-    const sub = mfrLabel(r.manu) + (r.kind !== "cell" && r.kind !== "component" ? " · " + r.kind.replace("_", " ") : "");
-    if (state.kind === "component") {
-      return '<td class="model">' + esc(r.model) + "<small>" + esc(sub) + "</small></td><td>" + esc((r.ct || "").replace(/_/g, " ")) +
-        '</td><td class="ratings">' + (r.ratings.length ? r.ratings.map(esc).join(" · ") : '<span class="dash">–</span>') + '</td><td class="r">' + r.n + "</td>";
+    const sub = r.kind !== "cell" && r.kind !== "component" ? r.kind.replace("_", " ") : (r.vq === "voltage" ? "" : "");
+    const company = '<td class="company" title="' + esc(r.manu) + '">' + esc(r.manu) + "</td>";
+    if (componentsOnly()) {
+      return '<td class="model">' + esc(r.model) + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</td>" + company + "<td>" + esc((r.ct || "").replace(/_/g, " ")) +
+        '</td><td class="ratings">' + (r.ratings.length ? r.ratings.map(esc).join(" · ") : '<span class="dash">–</span>') + "</td>" + yearCell(r) + '<td class="r">' + r.n + "</td>";
     }
     const v = r.v == null ? '<td class="r dash">–</td>' : r.vq === "voltage" ? '<td class="r"><span class="printed" title="Printed as “Voltage”; the source does not say it is the nominal voltage">' + BD.fmt(r.v, 2) + "</span></td>" : '<td class="r">' + BD.fmt(r.v, 2) + "</td>";
     const whkg = r.whkg == null ? '<td class="r dash">–</td>' : '<td class="r"' + (r.whkg_d ? ' title="Calculated from capacity, voltage and mass"' : "") + ">" + BD.fmt(r.whkg, 0) + (r.whkg_d ? "<sup style=\"color:var(--muted);font-size:9px\"> calc</sup>" : "") + "</td>";
-    return '<td class="model">' + esc(r.model || "—") + "<small>" + esc(sub) + "</small></td>" +
+    return '<td class="model">' + esc(r.model || "—") + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</td>" + company +
       '<td class="chem" title="' + esc(r.chem || "") + '">' + (r.chem ? esc(r.chem) : '<span class="dash">–</span>') + "</td>" +
       '<td class="ff">' + (r.fmt ? esc(BD.FF[r.fmt] || r.fmt) : r.ffc ? esc(r.ffc) : '<span class="dash">–</span>') + (r.ffc && r.fmt ? ' <span class="pill">' + esc(r.ffc) + "</span>" : "") + "</td>" +
-      num(r.ah, r.ah < 1 ? 3 : 1) + v + num(r.g, 1) + whkg + num(r.a, 1) + num(r.cyc, 0) + "<td>" + depthHTML(r.depth) + "</td>";
+      num(r.ah, r.ah < 1 ? 3 : 1) + v + num(r.g, 1) + whkg + num(r.a, 1) + num(r.cyc, 0) + yearCell(r) + "<td>" + depthHTML(r.depth) + "</td>";
   }
+  function refilter() { state.shown = 100; const list = render(); if (list.length && !list.some(r => r.uid === state.sel)) select(list[0].uid); refreshFacets(); }
   function render() {
     header();
     const list = sorted(filtered());
     $("#count").textContent = list.length.toLocaleString("en") + " of " + rows.length.toLocaleString("en") + " records · sorted by " + SORT_LABEL[state.sort];
     const tb = $("#tbl tbody"); tb.innerHTML = "";
     list.slice(0, state.shown).forEach(r => {
-      const tr = document.createElement("tr"); tr.dataset.uid = r.uid; if (state.sel === r.uid) tr.className = "sel";
+      const tr = document.createElement("tr"); tr.dataset.uid = r.uid; tr.className = (state.sel === r.uid ? "sel " : "") + (state.cmp.includes(r.uid) ? "incmp" : "");
       tr.innerHTML = rowHTML(r);
       tr.addEventListener("click", () => select(r.uid));
       tb.appendChild(tr);
@@ -275,7 +317,7 @@
   function select(uid) {
     const r = rows.find(x => x.uid === uid); if (!r) return;
     state.sel = uid;
-    document.querySelectorAll("#tbl tbody tr").forEach(t => t.classList.toggle("sel", t.dataset.uid === uid));
+    document.querySelectorAll("#tbl tbody tr").forEach(t => { t.classList.toggle("sel", t.dataset.uid === uid); t.classList.toggle("incmp", state.cmp.includes(t.dataset.uid)); });
     const show = (v, unit, d) => v == null ? null : BD.fmt(v, d) + (unit ? " " + unit : "");
     const spec = (k, disp, c, calc) => '<div class="spec ' + (disp == null ? "miss" : "") + (calc ? " calc" : "") + '"><span class="k">' + k + '</span><span class="v">' + (disp == null ? "not stated" : disp) + "</span>" + (c ? '<span class="c">' + c + "</span>" : "") + "</div>";
     const inCmp = state.cmp.includes(uid);
@@ -300,11 +342,11 @@
       '<div class="hd"><p class="eyebrow">' + esc(r.manu) + "</p><h2>" + esc(r.model || "—") + '</h2><div class="meta">' +
       (r.chem ? '<span class="pill">' + esc(r.chem) + "</span>" : "") + (r.fmt ? '<span class="pill">' + esc(BD.FF[r.fmt] || r.fmt) + "</span>" : "") + (r.ffc ? '<span class="pill">' + esc(r.ffc) + "</span>" : "") +
       '<span class="pill">' + esc((r.ct || r.kind).replace(/_/g, " ")) + '</span><span class="pill src">' + (r.src === "datasheet" ? "datasheet" : "manufacturer web page") + "</span></div></div>" + specs +
-      '<div class="srcbox">Source: ' + esc(r.title || (r.src === "datasheet" ? "manufacturer datasheet" : "manufacturer web page")) + (r.doc ? " · " + r.doc : " · document date not recorded") + " · " + r.n + " observations" +
+      '<div class="srcbox">Source: ' + esc(r.title || (r.src === "datasheet" ? "manufacturer datasheet" : "manufacturer web page")) + (r.yk === "release" ? " · released " + esc(r.year) : r.year ? " · document dated " + esc(r.year) + " (product release not researched)" : " · no date recorded") + " · " + r.n + " observations" +
       (r.url ? ' · <a href="' + esc(r.url) + '" target="_blank" rel="noopener">open ↗</a>' : "") + "</div>" +
       (sim.length ? '<div class="similar"><span class="lbl">Similar records</span>' + sim.map(s => '<button type="button" data-u="' + esc(s.uid) + '">' + esc(s.model) + "<span>" + esc(mfrLabel(s.manu)) + (s.ah != null ? " · " + BD.fmt(s.ah, 1) + " Ah" : "") + (s.whkg != null ? " · " + BD.fmt(s.whkg, 0) + " Wh/kg" : "") + "</span></button>").join("") + "</div>" : "") +
-      '<div class="acts"><button class="btn sm pri" id="fullrec" type="button">Full record</button><button class="btn sm" id="cmpbtn" type="button">' + (inCmp ? "Remove from comparison" : "Compare +") + "</button></div>";
-    $("#cmpbtn").onclick = () => { if (inCmp) state.cmp = state.cmp.filter(x => x !== uid); else { if (state.cmp.length >= 4) state.cmp.shift(); state.cmp.push(uid); } writeHash(); renderCmp(); select(uid); };
+      '<div class="acts"><button class="btn sm pri" id="fullrec" type="button">Full record</button><button class="btn sm' + (inCmp ? "" : state.cmp.length ? " pri" : "") + '" id="cmpbtn" type="button">' + (inCmp ? "Remove from comparison" : state.cmp.length ? "Add as cell " + (state.cmp.length + 1) + " of 4" : "Compare +") + "</button></div>";
+    $("#cmpbtn").onclick = () => { if (inCmp) state.cmp = state.cmp.filter(x => x !== uid); else { if (state.cmp.length >= 4) state.cmp.shift(); state.cmp.push(uid); } writeHash(); renderCmp(); select(uid); if (state.cmp.length === 1) $("#cmpbar").scrollIntoView({ behavior: "smooth", block: "nearest" }); };
     $("#fullrec").onclick = () => openRecord(r);
     document.querySelectorAll("#insp .similar button").forEach(b => b.onclick = () => select(b.dataset.u));
     if (r.kind !== "component" && r.ah != null) loadRecord(r).then(rec => {
@@ -364,8 +406,15 @@
   /* compare */
   function renderCmp() {
     const sel = state.cmp.map(u => rows.find(r => r.uid === u)).filter(Boolean);
-    $("#tray").hidden = sel.length === 0; $("#traycount").textContent = sel.length + " of 4 · the better value in each row is marked";
-    if (!sel.length) return;
+    // The bar above the table says what to do next; the tray below holds the result.
+    $("#cmpbar").hidden = sel.length === 0;
+    $("#cmpbar-step").textContent = sel.length === 1 ? "1 of 4 picked — select the next cell in the table and press “Add as cell 2”"
+      : sel.length < 4 ? sel.length + " of 4 picked — add another, or compare them now" : "4 of 4 picked — compare them, or remove one to swap";
+    $("#cmpbar-chips").innerHTML = sel.map(r => '<span class="pill"><b>' + esc(r.model) + "</b> " + esc(mfrLabel(r.manu)) + '<button type="button" data-u="' + esc(r.uid) + '" aria-label="Remove ' + esc(r.model) + '">×</button></span>').join("");
+    $("#cmpbar-go").hidden = sel.length < 2;
+    document.querySelectorAll("#cmpbar-chips button").forEach(b => b.onclick = () => { state.cmp = state.cmp.filter(x => x !== b.dataset.u); writeHash(); renderCmp(); if (state.sel) select(state.sel); });
+    $("#tray").hidden = sel.length < 2; $("#traycount").textContent = sel.length + " of 4 · the better value in each row is marked";
+    if (sel.length < 2) { render(); return; }
     const R = [["Chemistry", r => r.chem, null], ["Format", r => r.fmt ? BD.FF[r.fmt] : r.ffc, null], ["Capacity (Ah)", r => r.ah, "max"], ["Voltage (V)", r => r.v, null],
       ["Energy (Wh)", r => r.wh, "max"], ["Mass (g)", r => r.g, "min"], ["Wh/kg", r => r.whkg, "max"], ["Continuous discharge (A)", r => r.a, "max"],
       ["Cycle life", r => r.cyc, "max"], ["Internal resistance (mΩ)", r => r.ir, "min"], ["Dimensions (mm)", r => r.dims && r.dims.join(" × "), null],
@@ -410,7 +459,7 @@
     const segs = await getJSON("coverage-status.json").catch(() => []);
     $("#segs").innerHTML = segs.map(s => { const have = s.cells.filter(c => c.status === "sourced").length; return '<div class="seg-card"><b>' + esc(s.segment) + "</b><small>" + esc(s.note) + " · " + have + " of " + s.cells.length + " sourced</small><ul>" +
       s.cells.map(c => '<li class="' + (c.status === "sourced" ? "have" : "") + '">' + (c.uid && c.status === "sourced" ? '<a href="#" data-u="' + esc(c.uid) + '">' + esc(c.name) + "</a>" : esc(c.name)) + '<span class="st">' + (c.status === "sourced" ? "sourced" : "wanted") + "</span></li>").join("") + "</ul></div>"; }).join("");
-    document.querySelectorAll("#segs a[data-u]").forEach(a => a.onclick = e => { e.preventDefault(); const u = a.dataset.u; state.kind = ""; $("#f-kind").value = ""; state.q = ""; $("#q").value = ""; render(); select(u); $("#finder").scrollIntoView({ behavior: "smooth" }); });
+    document.querySelectorAll("#segs a[data-u]").forEach(a => a.onclick = e => { e.preventDefault(); const u = a.dataset.u; state.kind.clear(); state.q = ""; $("#q").value = ""; render(); refreshFacets(); select(u); $("#finder").scrollIntoView({ behavior: "smooth" }); });
   }
 
   /* code sample */
@@ -423,21 +472,21 @@
 
   function wire() {
     $("#sform").addEventListener("submit", e => { e.preventDefault(); state.q = $("#q").value; state.shown = 100; render(); });
-    $("#q").addEventListener("input", e => { state.q = e.target.value; state.shown = 100; render(); });
+    $("#q").addEventListener("input", e => { state.q = e.target.value; state.shown = 100; render(); refreshFacets(); });
     document.querySelectorAll(".chip").forEach(c => c.onclick = () => {
-      if (c.dataset.kind !== undefined) { state.kind = c.dataset.kind; $("#f-kind").value = c.dataset.kind; }
-      if (c.dataset.chem) { state.chem = c.dataset.chem; $("#f-chem").value = c.dataset.chem; state.q = ""; $("#q").value = ""; }
-      else { state.chem = ""; $("#f-chem").value = ""; state.q = c.dataset.q || ""; $("#q").value = state.q; }
-      state.shown = 100; const list = render(); if (list[0]) select(list[0].uid);
+      if (c.dataset.kind !== undefined) { state.kind.clear(); if (c.dataset.kind) state.kind.add(c.dataset.kind); }
+      state.chem.clear();
+      if (c.dataset.chem) { state.chem.add(c.dataset.chem); state.q = ""; $("#q").value = ""; }
+      else { state.q = c.dataset.q || ""; $("#q").value = state.q; }
+      state.shown = 100; const list = render(); if (list[0]) select(list[0].uid); refreshFacets();
     });
-    const refilter = () => { state.shown = 100; const list = render(); if (list.length && !list.some(r => r.uid === state.sel)) select(list[0].uid); };
-    [["#f-kind", "kind"], ["#f-chem", "chem"], ["#f-ff", "ff"], ["#f-mfr", "mfr"]].forEach(([s, k]) => $(s).addEventListener("change", e => { state[k] = e.target.value; refilter(); }));
     $("#f-core-only").addEventListener("change", e => { state.core = e.target.checked; refilter(); });
     $("#morebtn").onclick = () => { state.shown += 100; render(); };
     $("#csv").onclick = () => save("lemonergy-data-" + new Date().toISOString().slice(0, 10) + ".csv", BD.toCSV(sorted(filtered())), "text/csv");
     $("#v-table").onclick = () => { state.view = "table"; $("#v-table").setAttribute("aria-pressed", "true"); $("#v-chart").setAttribute("aria-pressed", "false"); $("#tableview").hidden = false; $("#chartview").hidden = true; };
     $("#v-chart").onclick = () => { state.view = "chart"; $("#v-chart").setAttribute("aria-pressed", "true"); $("#v-table").setAttribute("aria-pressed", "false"); $("#tableview").hidden = true; $("#chartview").hidden = false; render(); };
-    $("#trayclear").onclick = () => { state.cmp = []; writeHash(); renderCmp(); if (state.sel) select(state.sel); };
+    $("#trayclear").onclick = $("#cmpbar-clear").onclick = () => { state.cmp = []; writeHash(); renderCmp(); if (state.sel) select(state.sel); };
+    $("#cmpbar-go").onclick = e => { e.preventDefault(); $("#tray").scrollIntoView({ behavior: "smooth", block: "start" }); };
     $("#traylink").onclick = async e => { try { await navigator.clipboard.writeText(location.href); e.target.textContent = "Copied"; } catch (_) { e.target.textContent = "Copy the address bar"; } setTimeout(() => e.target.textContent = "Copy link", 1500); };
     setCode("curl");
     document.querySelectorAll(".code .tabs [role=tab]").forEach(b => b.onclick = () => setCode(b.dataset.lang));

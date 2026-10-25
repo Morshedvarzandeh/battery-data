@@ -61,16 +61,12 @@
 
 <section class="wrap" id="finder">
   <div class="tools" role="toolbar" aria-label="Filters">
-    <select class="f" id="f-kind" aria-label="Kind">
-      <option value="">Everything</option>
-      <option value="cell" selected>Rechargeable cells</option>
-      <option value="primary_cell">Primary cells</option>
-      <option value="pack">Modules, packs and systems</option>
-      <option value="component">Electrical components</option>
-    </select>
-    <select class="f" id="f-chem" aria-label="Chemistry"><option value="">All chemistries</option></select>
-    <select class="f" id="f-ff" aria-label="Format"><option value="">All formats</option></select>
-    <select class="f" id="f-mfr" aria-label="Manufacturer"><option value="">All manufacturers</option></select>
+    <div class="facet" data-facet="kind"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-kind">Kind</button><div class="facet-menu" id="facet-kind" hidden></div></div>
+    <div class="facet" data-facet="mfr"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-mfr">Company</button><div class="facet-menu" id="facet-mfr" hidden></div></div>
+    <div class="facet" data-facet="chem"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-chem">Chemistry</button><div class="facet-menu" id="facet-chem" hidden></div></div>
+    <div class="facet" data-facet="ff"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-ff">Format</button><div class="facet-menu" id="facet-ff" hidden></div></div>
+    <div class="facet" data-facet="year"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-year">Year</button><div class="facet-menu" id="facet-year" hidden></div></div>
+    <button type="button" class="btn sm ghost" id="f-clear" hidden>Clear filters</button>
     <label class="toggle"><input type="checkbox" id="f-core-only"> Only records with capacity, voltage and mass</label>
     <div class="seg" role="group" aria-label="View">
       <button type="button" id="v-table" aria-pressed="true">Table</button>
@@ -78,6 +74,7 @@
     </div>
   </div>
   <p class="count"><span id="count">Loading the library…</span><button class="btn sm" id="csv" type="button">Export CSV</button></p>
+  <div class="cmpbar" id="cmpbar" hidden role="status" aria-live="polite"><span class="cmpbar-step" id="cmpbar-step"></span><span class="cmpbar-chips" id="cmpbar-chips"></span><a class="btn sm pri" id="cmpbar-go" href="#tray" hidden>Compare them ↓</a><button class="btn sm ghost" id="cmpbar-clear" type="button">Clear</button></div>
 
   <div class="work">
     <div id="tableview">

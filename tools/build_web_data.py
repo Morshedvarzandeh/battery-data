@@ -400,6 +400,17 @@ def index_row(p: dict) -> dict:
                ir is not None, dims is not None, tmin is not None]
     s = p["source"]
     doc = (s.get("date") or "")[:4] or None
+    # Year, as the source supports it. A documented product release first; else
+    # the document's own date; else a revision that is plainly a year ("2019"
+    # on a 2019 selection guide). `yk` says which, so the page can label it.
+    year, yk = None, None
+    rel = (p.get("dates") or {}).get("release") or {}
+    if rel.get("status") == "documented" and (rel.get("event") or {}).get("date"):
+        year, yk = rel["event"]["date"][:4], "release"
+    elif doc:
+        year, yk = doc, "doc"
+    elif re.fullmatch(r"(19|20)\d{2}", str(s.get("ref") or "")):
+        year, yk = str(s["ref"]), "doc"
     # the three ratings that matter most for a component, as printed
     ratings = []
     if p["kind"] == "component":
@@ -419,7 +430,7 @@ def index_row(p: dict) -> dict:
         "g": g, "wh": wh, "whkg": whkg, "whkg_d": whkg_d, "whl": m["whl"],
         "a": m["a"], "crate": m["crate"], "cyc": cyc, "ir": ir, "dims": dims, "shape": p["shape"],
         "tmin": tmin, "tmax": tmax, "depth": sum(present), "n": len(p["obs"]),
-        "src": s.get("kind"), "doc": doc, "url": s.get("url"), "title": s.get("title"),
+        "src": s.get("kind"), "doc": doc, "year": year, "yk": yk, "url": s.get("url"), "title": s.get("title"),
         "ratings": ratings, "shard": slug(p["manu"]),
     }
 
@@ -437,6 +448,8 @@ def summary(rows: list[dict]) -> dict:
         "with_internal_resistance": sum(1 for r in cells if r["ir"] is not None),
         "with_form_factor": sum(1 for r in cells if r["fmt"]),
         "with_document_date": sum(1 for r in cells if r["doc"]),
+        "with_release_year": sum(1 for r in cells if r["yk"] == "release"),
+        "with_any_year": sum(1 for r in cells if r["year"]),
         "observations": sum(r["n"] for r in rows),
         "by_manufacturer": dict(sorted(((m, sum(1 for r in cells if r["manu"] == m)) for m in {r["manu"] for r in cells}), key=lambda kv: -kv[1])),
     }
