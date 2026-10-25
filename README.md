@@ -289,6 +289,7 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | `crosswalk/` | Generated BDF ↔ EMMO ↔ BPX ↔ Battery Passport mapping |
 | `tools/validate_contrib.py` | CI gate: refuses a contribution whose values lack their conditions |
 | `tools/check_duplicates.py` | Cross-library identity gate for exact UIDs, normalized model aliases, and specification conflicts |
+| `tools/coverage_report.py` | How many accepted cells state each quantity, and the analysis each gap blocks. A quantity no record carries is printed as a zero, never left out |
 | `patents/` | Raw patent/IP observations, publication candidates, taxonomy, reconciliation and duplicate reports |
 | `tools/validate_patents.py` | Patent import gate: identity evidence, review boundary, categories and source-row reconciliation |
 
