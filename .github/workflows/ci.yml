@@ -34,9 +34,11 @@ jobs:
           # Shallow checkout: compare trees (two dots), which needs no merge base.
           # HEAD is the PR merge commit, so base..HEAD is exactly the PR's files.
           git fetch -q origin "${{ github.base_ref }}" --depth=1
-          files=$(git diff --name-only "origin/${{ github.base_ref }}" HEAD)
-          echo "$files" | sed "s/^/  /"
-          m() { echo "$files" | grep -Eq "$1" && echo true || echo false; }
+          git diff --name-only "origin/${{ github.base_ref }}" HEAD > "$RUNNER_TEMP/changed"
+          sed "s/^/  /" "$RUNNER_TEMP/changed"
+          # grep the file, not a pipe: under pipefail, `echo | grep -q` can
+          # report the writer's SIGPIPE as a failure and turn a match into false.
+          m() { if grep -Eq "$1" "$RUNNER_TEMP/changed"; then echo true; else echo false; fi; }
           echo "schema=$(m '^(schema|seed|migrations|tests/(010|020|ci_)|tools/(load_|export_crosswalk|build_db)|setup.sh|contrib/|patents/|\.github/workflows/ci.yml)')" >> "$GITHUB_OUTPUT"
           echo "contrib=$(m '^(contrib/|review/|components/|catalog/|json-schema/|web/|tools/|tests/|agents/|patents/|technology/|\.github/)')" >> "$GITHUB_OUTPUT"
           echo "code=$(m '^(tools/|tests/|web/|json-schema/|schema/010_vocabulary.sql|\.github/)')" >> "$GITHUB_OUTPUT"
