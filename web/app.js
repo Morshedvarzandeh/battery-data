@@ -165,7 +165,7 @@
   const $ = s => document.querySelector(s);
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const mfrLabel = m => m.replace(" Co., Ltd.", "").replace(" Energy Solution", " ES");
-  const state = { q: "", kind: new Set(["cell"]), chem: new Set(), ff: new Set(), mfr: new Set(), year: new Set(), core: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
+  const state = { q: "", kind: new Set(["cell"]), chem: new Set(), ff: new Set(), mfr: new Set(), year: new Set(), src: new Set(), lim: {}, keepUnknown: true, core: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
   let rows = [], REG = { REG: {}, GROUPS: {} }, summary = null;
   const shards = new Map();
 
@@ -203,11 +203,35 @@
     chem: { label: "Chemistry", value: r => r.chem, text: v => v },
     ff: { label: "Format", value: r => r.fmt ? BD.FF[r.fmt] || r.fmt : null, text: v => v },
     year: { label: "Year", value: r => r.year || "not stated", text: v => v, desc: true },
+    src: { label: "Source", value: r => r.src, text: v => ({ datasheet: "Datasheet", manufacturer_web: "Manufacturer web page" })[v] || v },
   };
+  // The number limits the hub's first finder had, plus Wh/kg, cycle life and thickness.
+  // Each is [key, label, unit, row field, kinds of bound]. A "min" keeps rows at or above it.
+  const LIMITS = [
+    ["ah", "Capacity", "Ah", "ah", "minmax"], ["v", "Voltage", "V", "v", "minmax"], ["wh", "Energy", "Wh", "wh", "minmax"],
+    ["g", "Mass", "g", "g", "minmax"], ["a", "Continuous discharge", "A", "a", "min"], ["whkg", "Specific energy", "Wh/kg", "whkg", "min"],
+    ["cyc", "Cycle life", "cycles", "cyc", "min"], ["el", "Length or height", "mm", "el", "max"], ["ew", "Width or diameter", "mm", "ew", "max"],
+    ["et", "Thickness", "mm", "et", "max"], ["tmin", "Operates down to", "°C", "tmin", "lowtemp"], ["tmax", "Operates up to", "°C", "tmax", "hightemp"],
+  ];
+  const activeLimits = () => LIMITS.filter(([k]) => state.lim[k] && (state.lim[k].min != null || state.lim[k].max != null));
+  // [passes, missing labels]. A missing value passes only when the keep-unknown box is ticked.
+  function limitCheck(r) {
+    const missing = [];
+    for (const [k, label, , f, kind] of activeLimits()) {
+      const v = r[f], L = state.lim[k];
+      if (v == null) { missing.push(label.toLowerCase()); continue; }
+      if (kind === "lowtemp") { if (L.max != null && v > L.max) return [false, missing]; continue; }
+      if (kind === "hightemp") { if (L.min != null && v < L.min) return [false, missing]; continue; }
+      if (L.min != null && v < L.min) return [false, missing];
+      if (L.max != null && v > L.max) return [false, missing];
+    }
+    return [missing.length === 0 || state.keepUnknown, missing];
+  }
   const componentsOnly = () => state.kind.size === 1 && state.kind.has("component");
   function matches(r, skip) {
     for (const k of Object.keys(FACETS)) if (k !== skip && state[k].size && !state[k].has(FACETS[k].value(r))) return false;
     if (state.core && !isCore(r)) return false;
+    if (!limitCheck(r)[0]) return false;
     const q = state.q.toLowerCase().split(/\s+/).filter(Boolean);
     if (q.length) { const hay = [r.model, r.manu, r.chem, r.fmt, r.ffc, BD.FF[r.fmt], r.ct, r.kind].join(" ").toLowerCase(); if (!q.every(t => hay.includes(t))) return false; }
     return true;
@@ -231,7 +255,7 @@
     menu.querySelector('[data-act="clear"]').onclick = () => { state[k].clear(); menu.dataset.q = ""; refilter(); facetMenu(k); };
     menu.querySelector('[data-act="close"]').onclick = () => closeFacets();
     const kindDefault = state.kind.size === 1 && state.kind.has("cell");
-    $("#f-clear").hidden = !Object.keys(FACETS).some(x => x === "kind" ? !kindDefault : state[x].size);
+    $("#f-clear").hidden = !Object.keys(FACETS).some(x => x === "kind" ? !kindDefault : state[x].size) && !activeLimits().length;
   }
   function closeFacets() { document.querySelectorAll(".facet-menu").forEach(m => { m.hidden = true; }); document.querySelectorAll(".facet-btn").forEach(b => b.setAttribute("aria-expanded", "false")); }
   function fillFilters() {
@@ -243,15 +267,18 @@
     // composedPath, not closest: a click on the count badge replaces the badge while the event is in flight.
     document.addEventListener("click", e => { if (!e.composedPath().some(n => n.classList && n.classList.contains("facet"))) closeFacets(); });
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeFacets(); });
-    $("#f-clear").onclick = () => { Object.keys(FACETS).forEach(k => state[k].clear()); state.kind.add("cell"); refilter(); Object.keys(FACETS).forEach(facetMenu); };
+    $("#f-clear").onclick = () => { Object.keys(FACETS).forEach(k => state[k].clear()); state.kind.add("cell"); $("#limits").reset(); refilter(); Object.keys(FACETS).forEach(facetMenu); };
   }
   function refreshFacets() { Object.keys(FACETS).forEach(k => { if (!$("#facet-" + k).hidden) facetMenu(k); else facetMenu(k); }); }
   const isCore = r => r.ah != null && r.v != null && r.g != null;
   function filtered() { return rows.filter(r => matches(r, null)); }
   function sorted(list) {
     const k = state.sort, d = state.dir;
+    const unknownFirst = activeLimits().length && state.keepUnknown;
+    const miss = unknownFirst ? new Map(list.map(r => [r.uid, limitCheck(r)[1].length > 0])) : null;
     const tie = (a, b) => (b.depth - a.depth) || ((b.src === "datasheet") - (a.src === "datasheet")) || (a.manu + a.model).localeCompare(b.manu + b.model);
     return list.slice().sort((a, b) => {
+      if (miss) { const m = miss.get(a.uid) - miss.get(b.uid); if (m) return m; }
       let x = a[k], y = b[k];
       if (k === "model") { x = a.model || ""; y = b.model || ""; }
       if (k === "ff") { x = a.fmt || a.ffc; y = b.fmt || b.ffc; }
@@ -265,7 +292,16 @@
     ["whkg", "Wh/kg", "r"], ["a", "A cont.", "r"], ["cyc", "Cycles", "r"], ["year", "Year", "r"], ["depth", "Stated", ""]];
   const COMP_COLS = [["model", "Component", ""], ["manu", "Company", ""], ["ct", "Type", ""], ["ratings", "Key ratings as printed", ""], ["year", "Year", "r"], ["n", "Observations", "r"]];
   const SORT_LABEL = { depth: "how much the source states", model: "name", manu: "company", year: "year", chem: "chemistry", ff: "format", ah: "capacity", v: "voltage", g: "mass",
-    whkg: "specific energy", a: "discharge current", cyc: "cycle life", ct: "type", n: "observation count", ratings: "ratings" };
+    whkg: "specific energy", a: "discharge current", cyc: "cycle life", ct: "type", n: "observation count", ratings: "ratings",
+    wh: "energy", el: "length or height", ew: "width or diameter", et: "thickness", tmin: "lowest operating temperature", tmax: "highest operating temperature" };
+  const TEXT_KEYS = ["model", "manu", "chem", "ff", "ct", "ratings"];
+  function sortControl() {
+    const keys = componentsOnly() ? ["n", "model", "manu", "ct", "year"] : ["depth", "model", "manu", "chem", "ff", "ah", "v", "wh", "g", "whkg", "a", "cyc", "year", "el", "ew", "et", "tmin", "tmax"];
+    const sel = $("#sortby");
+    sel.innerHTML = keys.map(k => '<option value="' + k + '"' + (k === state.sort ? " selected" : "") + ">" + SORT_LABEL[k].charAt(0).toUpperCase() + SORT_LABEL[k].slice(1) + "</option>").join("");
+    const text = TEXT_KEYS.includes(state.sort);
+    $("#sortdir").textContent = text ? (state.dir > 0 ? "A → Z" : "Z → A") : (state.dir < 0 ? "High → low" : "Low → high");
+  }
   const depthHTML = d => '<span class="depth" title="' + d + ' of 8 core specifications stated">' + Array.from({ length: 8 }, (_, i) => '<i class="' + (i < d ? "on" : "") + '"></i>').join("") + "</span>";
   const num = (v, d) => v == null ? '<td class="r dash">–</td>' : '<td class="r">' + BD.fmt(v, d) + "</td>";
   // Year: a documented product release reads plain; a document date reads with a "doc" mark — the sheet's year, not the product's.
@@ -277,7 +313,7 @@
     if (!cols.some(c => c[0] === state.sort)) { state.sort = componentsOnly() ? "n" : "depth"; state.dir = -1; }
     $("#tbl thead tr").innerHTML = cols.map(([k, t, cls]) => '<th class="' + cls + (state.sort === k ? " on" : "") + '" data-k="' + k + '">' + t + (state.sort === k ? '<span class="dir">' + (state.dir < 0 ? "▼" : "▲") + "</span>" : "") + "</th>").join("");
     document.querySelectorAll("#tbl th").forEach(th => th.addEventListener("click", () => {
-      const k = th.dataset.k; if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = ["model", "manu", "chem", "ff", "ct", "ratings"].includes(k) ? 1 : -1; }
+      const k = th.dataset.k; if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = TEXT_KEYS.includes(k) ? 1 : -1; }
       render();
     }));
   }
@@ -299,10 +335,18 @@
   function render() {
     header();
     const list = sorted(filtered());
-    $("#count").textContent = list.length.toLocaleString("en") + " of " + rows.length.toLocaleString("en") + " records · sorted by " + SORT_LABEL[state.sort];
+    const lims = activeLimits().length;
+    const unknownN = lims && state.keepUnknown ? list.filter(r => limitCheck(r)[1].length).length : 0;
+    $("#count").textContent = lims
+      ? (list.length - unknownN).toLocaleString("en") + " meet every limit" + (unknownN ? " · " + unknownN.toLocaleString("en") + " don't state a limited value (faded, listed after)" : "") + " · of " + rows.length.toLocaleString("en")
+      : list.length.toLocaleString("en") + " of " + rows.length.toLocaleString("en") + " records";
+    sortControl();
     const tb = $("#tbl tbody"); tb.innerHTML = "";
     list.slice(0, state.shown).forEach(r => {
-      const tr = document.createElement("tr"); tr.dataset.uid = r.uid; tr.className = (state.sel === r.uid ? "sel " : "") + (state.cmp.includes(r.uid) ? "incmp" : "");
+      const tr = document.createElement("tr"); tr.dataset.uid = r.uid;
+      const missing = lims ? limitCheck(r)[1] : [];
+      tr.className = (state.sel === r.uid ? "sel " : "") + (state.cmp.includes(r.uid) ? "incmp " : "") + (missing.length ? "unknown" : "");
+      if (missing.length) tr.title = "Not stated by the source: " + missing.join(", ");
       tr.innerHTML = rowHTML(r);
       tr.addEventListener("click", () => select(r.uid));
       tb.appendChild(tr);
@@ -481,6 +525,28 @@
       state.shown = 100; const list = render(); if (list[0]) select(list[0].uid); refreshFacets();
     });
     $("#f-core-only").addEventListener("change", e => { state.core = e.target.checked; refilter(); });
+    $("#limits-grid").innerHTML = LIMITS.map(([k, label, unit, , kind]) => {
+      const one = kind !== "minmax";
+      const ph = kind === "min" || kind === "hightemp" ? "at least" : kind === "max" || kind === "lowtemp" ? "at most" : "";
+      const bound = kind === "min" || kind === "hightemp" ? "min" : kind === "max" || kind === "lowtemp" ? "max" : null;
+      return '<label class="lim' + (one ? " single" : "") + '"><span>' + label + " <small>" + unit + "</small></span><span class=\"pair\">" +
+        (one ? '<input type="number" step="any" inputmode="decimal" data-k="' + k + '" data-b="' + bound + '" placeholder="' + (kind === "lowtemp" ? "e.g. −20" : kind === "hightemp" ? "e.g. 60" : ph) + '" aria-label="' + label + " " + ph + '">'
+             : '<input type="number" step="any" inputmode="decimal" data-k="' + k + '" data-b="min" placeholder="min" aria-label="' + label + ' minimum"><input type="number" step="any" inputmode="decimal" data-k="' + k + '" data-b="max" placeholder="max" aria-label="' + label + ' maximum">') +
+        "</span></label>";
+    }).join("");
+    let limTimer;
+    $("#limits-grid").addEventListener("input", e => {
+      const i = e.target; if (!i.dataset.k) return;
+      const v = i.value === "" ? null : Number(i.value);
+      state.lim[i.dataset.k] = Object.assign({}, state.lim[i.dataset.k], { [i.dataset.b]: Number.isFinite(v) ? v : null });
+      i.classList.toggle("set", v != null && Number.isFinite(v));
+      clearTimeout(limTimer); limTimer = setTimeout(refilter, 180);
+    });
+    $("#limits").addEventListener("submit", e => e.preventDefault());
+    $("#limits").addEventListener("reset", () => { state.lim = {}; setTimeout(() => { document.querySelectorAll("#limits-grid input").forEach(i => i.classList.remove("set")); refilter(); }); });
+    $("#f-unknown").addEventListener("change", e => { state.keepUnknown = e.target.checked; refilter(); });
+    $("#sortby").addEventListener("change", e => { state.sort = e.target.value; state.dir = TEXT_KEYS.includes(state.sort) ? 1 : -1; render(); });
+    $("#sortdir").addEventListener("click", () => { state.dir *= -1; render(); });
     $("#morebtn").onclick = () => { state.shown += 100; render(); };
     $("#csv").onclick = () => save("lemonergy-data-" + new Date().toISOString().slice(0, 10) + ".csv", BD.toCSV(sorted(filtered())), "text/csv");
     $("#v-table").onclick = () => { state.view = "table"; $("#v-table").setAttribute("aria-pressed", "true"); $("#v-chart").setAttribute("aria-pressed", "false"); $("#tableview").hidden = false; $("#chartview").hidden = true; };

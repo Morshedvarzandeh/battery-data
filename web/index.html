@@ -66,6 +66,7 @@
     <div class="facet" data-facet="chem"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-chem">Chemistry</button><div class="facet-menu" id="facet-chem" hidden></div></div>
     <div class="facet" data-facet="ff"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-ff">Format</button><div class="facet-menu" id="facet-ff" hidden></div></div>
     <div class="facet" data-facet="year"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-year">Year</button><div class="facet-menu" id="facet-year" hidden></div></div>
+    <div class="facet" data-facet="src"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-src">Source</button><div class="facet-menu" id="facet-src" hidden></div></div>
     <button type="button" class="btn sm ghost" id="f-clear" hidden>Clear filters</button>
     <label class="toggle"><input type="checkbox" id="f-core-only"> Only records with capacity, voltage and mass</label>
     <div class="seg" role="group" aria-label="View">
@@ -73,7 +74,15 @@
       <button type="button" id="v-chart" aria-pressed="false">Energy map</button>
     </div>
   </div>
-  <p class="count"><span id="count">Loading the library…</span><button class="btn sm" id="csv" type="button">Export CSV</button></p>
+  <form class="limits" id="limits" aria-label="Specification limits" autocomplete="off">
+    <div class="limits-hd"><b>Specification limits</b><span>Per cell. Leave a box empty for no limit.</span>
+      <label class="toggle sm"><input type="checkbox" id="f-unknown" checked> Keep records that don't state a limited value</label>
+      <button type="reset" class="btn sm ghost" id="limits-reset">Reset limits</button></div>
+    <div class="limits-grid" id="limits-grid"></div>
+  </form>
+  <p class="count"><span id="count">Loading the library…</span>
+    <span class="sortctl"><label for="sortby">Sort by</label><select class="f" id="sortby"></select><button class="btn sm" id="sortdir" type="button" aria-label="Reverse sort order">High → low</button></span>
+    <button class="btn sm" id="csv" type="button">Export CSV</button></p>
   <div class="cmpbar" id="cmpbar" hidden role="status" aria-live="polite"><span class="cmpbar-step" id="cmpbar-step"></span><span class="cmpbar-chips" id="cmpbar-chips"></span><a class="btn sm pri" id="cmpbar-go" href="#tray" hidden>Compare them ↓</a><button class="btn sm ghost" id="cmpbar-clear" type="button">Clear</button></div>
 
   <div class="work">
