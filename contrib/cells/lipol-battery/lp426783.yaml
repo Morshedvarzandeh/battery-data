@@ -5,6 +5,7 @@
     "kind": "cell",
     "manufacturer": "LiPol Battery Co., Ltd.",
     "model_number": "LP426783",
+    "form_factor": "pouch",
     "is_rechargeable": true
   },
   "source": {
@@ -17,7 +18,7 @@
     "revision": "Page revision and model availability date unstated",
     "license": "proprietary",
     "redistributable": false,
-    "note": "Manufacturer catalog transcription, not a laboratory measurement. Only row-specific facts are extracted. The Voltage column is retained as voltage; its statistic and operating limits are unstated. Capacity test conditions, dimension tolerances, and bare-cell versus protected-assembly dimension scope are unstated. PCM, connector, certification, cycle-life and generic page claims are not assigned to this model. Availability is unverified. Table numbers follow HTML document order; data rows exclude the header. Row quotes normalize whitespace and insert column separators. Repeated tables are deduplicated; cross-page conflicts are held separately."
+    "note": "Manufacturer catalog transcription, not a laboratory measurement. Only row-specific facts are extracted. The Voltage column is retained as voltage; its statistic and operating limits are unstated. Capacity test conditions, dimension tolerances, and bare-cell versus protected-assembly dimension scope are unstated. PCM, connector, certification, cycle-life and generic page claims are not assigned to this model. Availability is unverified. Table numbers follow HTML document order; data rows exclude the header. Row quotes normalize whitespace and insert column separators. Repeated tables are deduplicated; cross-page conflicts are held separately. Form factor recorded as pouch by tools/migrate_form_factor.py: derived from the lithium-polymer family heading and the rectangular length x width x thickness dimension set; the source does not print a form factor per row."
   },
   "chemistry": {
     "designation": "Lithium polymer",

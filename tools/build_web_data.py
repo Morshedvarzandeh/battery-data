@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate web/index.html's data blobs from contrib/ and the registry.
+"""Build the finder's data files (web/data/) from contrib/ and the registry.
 
 WHY THIS EXISTS
 ---------------
@@ -18,9 +18,18 @@ is no other door.
 
 WHAT IS DERIVED AND WHAT IS NOT
 -------------------------------
-Derived from contrib/**/*.yaml            -> products, observations, curves, the chart
-Derived from json-schema/quantity-registry -> the quantity registry the entry form reads
-Derived from schema/010_vocabulary.sql     -> the test-kind taxonomy
+Derived from contrib/**/*.yaml            -> web/data/cells.json (finder index),
+                                             web/data/records/<manufacturer>.json
+                                             (full records: every observation with
+                                             its conditions and locator),
+                                             web/data/summary.json (honest counts),
+                                             web/data/coverage-status.json
+Derived from json-schema/quantity-registry -> web/data/registry.json
+Derived from schema/010_vocabulary.sql     -> the test-kind taxonomy (checked)
+
+The generated files are not committed (see .gitignore). The deploy workflow and
+the local server build them; CI runs --check so a broken contribution or a
+heading that names a non-existent quantity still fails the build.
 
 Hand-curated, in web/data/, and checked against the above:
   quantity-groups.json  which of the 98 quantities sit under which heading
@@ -32,8 +41,8 @@ The hand-curated files are presentation and intent. They are still checked:
 a heading may not name a quantity that does not exist, and may not silently
 drop one that does. That check is what would have caught the invented registry.
 
-    python tools/build_web_data.py          # rewrite the page
-    python tools/build_web_data.py --check  # fail if the page is stale (CI)
+    python tools/build_web_data.py          # write web/data/
+    python tools/build_web_data.py --check  # validate only (CI)
 """
 from __future__ import annotations
 import argparse, glob, json, math, os, re, sys
@@ -45,15 +54,10 @@ except ImportError:
     sys.exit("pip install pyyaml")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGE = os.path.join(ROOT, "web", "index.html")
 DATA = os.path.join(ROOT, "web", "data")
 REGISTRY = os.path.join(ROOT, "json-schema", "quantity-registry.json")
 VOCAB = os.path.join(ROOT, "schema", "010_vocabulary.sql")
 
-# Marker pairs in the page. Everything between them is machine-owned; edit the
-# contribution or the file in web/data/, never the region.
-BEGIN = "/* GENERATED: {} -- do not edit, run tools/build_web_data.py */"
-END = "/* END GENERATED: {} */"
 
 SHAPE = {"cylindrical": "cyl", "prismatic_hardcase": "pri", "prismatic": "pri",
          "pouch": "pou", "blade": "pri", "coin": "cyl", "button": "cyl"}
@@ -148,7 +152,8 @@ def product(doc: dict, path: str) -> dict:
         **({"bms": doc["bms"]} if doc.get("bms") else {}),
         "cell": f"{p['manufacturer']} {p['model_number']}",
         "manu": p["manufacturer"], "model": p["model_number"],
-        "fmt": p.get("form_factor") or "", "shape": SHAPE.get(p.get("form_factor", ""), "pri"),
+        "fmt": p.get("form_factor") or "", "ffc": p.get("form_factor_code"),
+        "shape": SHAPE.get(p.get("form_factor", ""), "pri"),
         "dims": dims,
         "chem": {"designation": chem.get("designation"),
                  "cathode": chem.get("cathode_text"), "anode": chem.get("anode_text"),
@@ -354,32 +359,130 @@ def render(page: str, blobs: dict) -> str:
     return page
 
 
+def slug(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
+CORE = ("capacity", "voltage", "mass", "max_continuous_discharge_current", "cycle_life",
+        "internal_resistance", "dims", "operating_temperature")
+
+
+def index_row(p: dict) -> dict:
+    """One compact row for the finder table. Derived values are flagged.
+
+    `v` is the nominal voltage when the source states one; otherwise the
+    printed `voltage` column with `vq: "voltage"`, so the page can say the
+    document printed a voltage without asserting it is nominal. Energy and
+    Wh/kg derived from that value inherit the flag through `whkg_derived`.
+    """
+    by, units = {}, {}
+    for o in p["obs"]:
+        if o.get("lower_bound") or o.get("upper_bound"):
+            continue
+        by.setdefault(o["q"], o["v"]); units.setdefault(o["q"], o["u"])
+    m = p["m"]
+    v, vq = m["v"], "nominal_voltage"
+    if v is None and by.get("voltage") is not None and units.get("voltage") == "V":
+        v, vq = by["voltage"], "voltage"
+    ah, g = m["ah"], m["mass_g"]
+    wh = m["wh"] if m["wh"] is not None else (round(ah * v, 3) if ah is not None and v is not None else None)
+    whkg, whkg_d = m["whkg"], m["whkg_derived"]
+    if whkg is None and wh is not None and g:
+        whkg, whkg_d = round(wh / g * 1000, 1), True
+    ir = None
+    for q in ("internal_resistance_ac", "internal_resistance_dc"):
+        if by.get(q) is not None and units.get(q) in ("mohm", "mΩ", "ohm", "Ω"):
+            ir = by[q] * (1000 if units[q] in ("ohm", "Ω") else 1); break
+    dims = p["dims"]
+    cyc = by.get("cycle_life")
+    tmin, tmax = by.get("operating_temperature_min"), by.get("operating_temperature_max")
+    present = [ah is not None, v is not None, g is not None, m["a"] is not None, cyc is not None,
+               ir is not None, dims is not None, tmin is not None]
+    s = p["source"]
+    doc = (s.get("date") or "")[:4] or None
+    # the three ratings that matter most for a component, as printed
+    ratings = []
+    if p["kind"] == "component":
+        for q in ("continuous_carry_current", "contact_voltage_rating", "fuse_current_rating",
+                  "fuse_voltage_rating", "interrupting_current", "bms_series_cells_max",
+                  "bms_pack_voltage_max", "rated_output_current", "input_voltage_max",
+                  "resistance_rating", "resistor_power_rating"):
+            if by.get(q) is not None:
+                ratings.append(f"{q.replace('_', ' ')} {by[q]:g} {units.get(q) or ''}".strip())
+            if len(ratings) == 3:
+                break
+    return {
+        "uid": p["uid"], "kind": p["kind"], "manu": p["manu"], "model": p["model"],
+        **({"ct": p["component_type"]} if p.get("component_type") else {}),
+        "chem": p["chem"]["designation"], "fmt": p["fmt"] or None,
+        "ffc": p.get("ffc"), "ah": ah, "v": v, "vq": vq if v is not None else None,
+        "g": g, "wh": wh, "whkg": whkg, "whkg_d": whkg_d, "whl": m["whl"],
+        "a": m["a"], "crate": m["crate"], "cyc": cyc, "ir": ir, "dims": dims, "shape": p["shape"],
+        "tmin": tmin, "tmax": tmax, "depth": sum(present), "n": len(p["obs"]),
+        "src": s.get("kind"), "doc": doc, "url": s.get("url"), "title": s.get("title"),
+        "ratings": ratings, "shard": slug(p["manu"]),
+    }
+
+
+def summary(rows: list[dict]) -> dict:
+    cells = [r for r in rows if r["kind"] != "component"]
+    return {
+        "battery_records": len(cells),
+        "component_records": len(rows) - len(cells),
+        "manufacturers": len({r["manu"] for r in cells}),
+        "with_capacity_voltage_mass": sum(1 for r in cells if r["ah"] is not None and r["v"] is not None and r["g"] is not None),
+        "with_nominal_voltage": sum(1 for r in cells if r["vq"] == "nominal_voltage"),
+        "with_continuous_discharge": sum(1 for r in cells if r["a"] is not None),
+        "with_cycle_life": sum(1 for r in cells if r["cyc"] is not None),
+        "with_internal_resistance": sum(1 for r in cells if r["ir"] is not None),
+        "with_form_factor": sum(1 for r in cells if r["fmt"]),
+        "with_document_date": sum(1 for r in cells if r["doc"]),
+        "observations": sum(r["n"] for r in rows),
+        "by_manufacturer": dict(sorted(((m, sum(1 for r in cells if r["manu"] == m)) for m in {r["manu"] for r in cells}), key=lambda kv: -kv[1])),
+    }
+
+
+def write_json(path: str, payload) -> bool:
+    """Write only when the content changed, so timestamps stay honest."""
+    body = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n"
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    if os.path.exists(path) and open(path, encoding="utf-8").read() == body:
+        return False
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(body)
+    return True
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true",
-                    help="exit non-zero if the page is out of date")
+                    help="validate groupings and contributions; write nothing")
+    ap.add_argument("--out", default=DATA, help="output directory (default web/data)")
     a = ap.parse_args()
 
     blobs = build()
-    current = open(PAGE).read()
-    new = render(current, blobs)
-
-    n = len(blobs["CONTRIB"]["PRODUCTS"])
-    charted = sum(1 for p in blobs["CONTRIB"]["PRODUCTS"]
-                  if p["kind"] == "cell" and p["m"]["whkg"])
+    products = blobs["CONTRIB"]["PRODUCTS"]
+    rows = [index_row(p) for p in products]
+    n, charted = len(rows), sum(1 for r in rows if r["kind"] != "component" and r["whkg"])
+    for p in products:
+        for e in p["unit_errors"]:
+            print(f"  {p['uid']}: {e}", file=sys.stderr)
     if a.check:
-        if new != current:
-            print("web/index.html is stale. Run: python tools/build_web_data.py",
-                  file=sys.stderr)
-            return 1
-        print(f"web/index.html is up to date ({n} products, {charted} charted)")
+        print(f"ok: {n} products build ({charted} chartable); groupings consistent")
         return 0
 
-    open(PAGE, "w").write(new)
-    print(f"wrote {os.path.relpath(PAGE, ROOT)}: {n} products, {charted} on the chart")
-    for p in blobs["CONTRIB"]["PRODUCTS"]:
-        print(f"  {p['kind']:7} {p['cell']:38} {len(p['obs']):3} obs "
-              f"{len(p['curves']):3} curves")
+    out = a.out
+    changed = write_json(os.path.join(out, "cells.json"), rows)
+    changed |= write_json(os.path.join(out, "summary.json"), summary(rows))
+    changed |= write_json(os.path.join(out, "registry.json"), blobs["REGISTRY"])
+    changed |= write_json(os.path.join(out, "coverage-status.json"), blobs["CONTRIB"]["COVERAGE"])
+    shards: dict[str, list[dict]] = {}
+    for p in products:
+        shards.setdefault(slug(p["manu"]), []).append(p)
+    for name, recs in shards.items():
+        changed |= write_json(os.path.join(out, "records", f"{name}.json"), recs)
+    print(f"wrote {os.path.relpath(out, ROOT)}/: {n} products in {len(shards)} record shards, "
+          f"{charted} on the chart{'' if changed else ' (no change)'}")
     return 0
 
 

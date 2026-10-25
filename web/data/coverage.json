@@ -1,211 +1,426 @@
 [
- {
-  "cells": [
-   {
-    "name": "CATL 302Ah",
-    "uid": "cell/catl/302ah-lifepo4"
-   },
-   {
-    "name": "CATL Shenxing"
-   },
-   {
-    "name": "BYD Blade"
-   },
-   {
-    "name": "EVE LF280K"
-   },
-   {
-    "name": "EVE LF304"
-   },
-   {
-    "name": "Gotion L600"
-   },
-   {
-    "name": "REPT 320Ah"
-   },
-   {
-    "name": "Hithium 314Ah"
-   }
-  ],
-  "note": "the volume segment of the market",
-  "segment": "EV prismatic LFP"
- },
- {
-  "cells": [
-   {
-    "name": "EVE LF280K"
-   },
-   {
-    "name": "CATL 314Ah"
-   },
-   {
-    "name": "Hithium 314Ah"
-   },
-   {
-    "name": "REPT 320Ah"
-   },
-   {
-    "name": "Great Power 314Ah"
-   }
-  ],
-  "note": "grid storage, 280-320Ah class",
-  "segment": "ESS prismatic LFP"
- },
- {
-  "cells": [
-   {
-    "name": "CATL NMC prismatic"
-   },
-   {
-    "name": "Samsung SDI Gen5"
-   },
-   {
-    "name": "SK On NMC"
-   },
-   {
-    "name": "LG NMC prismatic"
-   }
-  ],
-  "note": "premium range segment",
-  "segment": "EV prismatic NMC"
- },
- {
-  "cells": [
-   {
-    "name": "Tesla 4680"
-   },
-   {
-    "name": "Panasonic 4680"
-   },
-   {
-    "name": "LG 4680"
-   },
-   {
-    "name": "EVE 4695"
-   }
-  ],
-  "note": "the format the industry is retooling for",
-  "segment": "EV cylindrical 4680"
- },
- {
-  "cells": [
-   {
-    "name": "Panasonic NCA 2170"
-   },
-   {
-    "name": "LG INR21700-M50"
-   },
-   {
-    "name": "Samsung INR21700-50E",
-    "uid": "cell/samsung-sdi/inr21700-50e"
-   },
-   {
-    "name": "Molicel P42A"
-   },
-   {
-    "name": "Molicel P45B"
-   },
-   {
-    "name": "EVE 40PL"
-   }
-  ],
-  "note": "",
-  "segment": "EV / power cylindrical 21700"
- },
- {
-  "cells": [
-   {
-    "name": "Samsung INR18650-35E"
-   },
-   {
-    "name": "LG INR18650-MJ1"
-   },
-   {
-    "name": "Panasonic NCR18650B"
-   },
-   {
-    "name": "Murata VTC6"
-   },
-   {
-    "name": "Molicel P26A"
-   },
-   {
-    "name": "Samsung 30Q"
-   }
-  ],
-  "note": "mature, still shipping in volume",
-  "segment": "Consumer / power 18650"
- },
- {
-  "cells": [
-   {
-    "name": "LG pouch NMC"
-   },
-   {
-    "name": "SK On pouch"
-   },
-   {
-    "name": "AESC pouch"
-   }
-  ],
-  "note": "",
-  "segment": "EV pouch NMC"
- },
- {
-  "cells": [
-   {
-    "name": "Toshiba SCiB 20Ah"
-   },
-   {
-    "name": "Toshiba SCiB 23Ah"
-   },
-   {
-    "name": "Toshiba SCiB 10Ah"
-   },
-   {
-    "name": "Toshiba SCiB 2.9Ah"
-   },
-   {
-    "name": "Altairnano"
-   },
-   {
-    "name": "Yinlong LTO"
-   }
-  ],
-  "note": "fast charge and cold climate",
-  "segment": "LTO"
- },
- {
-  "cells": [
-   {
-    "name": "CATL sodium-ion"
-   },
-   {
-    "name": "HiNa NaCR32140"
-   },
-   {
-    "name": "Natron Blue Tray"
-   }
-  ],
-  "note": "early market, moving fast",
-  "segment": "Sodium-ion"
- },
- {
-  "cells": [
-   {
-    "name": "WeLion semi-solid"
-   },
-   {
-    "name": "QuantumScape QSE-5"
-   },
-   {
-    "name": "Solid Power A-sample"
-   },
-   {
-    "name": "ProLogium"
-   }
-  ],
-  "note": "pre-volume, worth tracking",
-  "segment": "Semi-solid / solid-state"
- }
+  {
+    "cells": [
+      {
+        "name": "CATL 302Ah",
+        "uid": "cell/catl/302ah-lifepo4"
+      },
+      {
+        "name": "CATL Shenxing"
+      },
+      {
+        "name": "BYD Blade"
+      },
+      {
+        "name": "EVE LF280K"
+      },
+      {
+        "name": "EVE LF304"
+      },
+      {
+        "name": "Gotion L600"
+      },
+      {
+        "name": "REPT 320Ah"
+      },
+      {
+        "name": "Hithium 314Ah",
+        "uid": "cell/hithium/ess-cell-314ah"
+      }
+    ],
+    "note": "the volume segment of the market",
+    "segment": "EV prismatic LFP"
+  },
+  {
+    "cells": [
+      {
+        "name": "EVE LF280K"
+      },
+      {
+        "name": "CATL 314Ah",
+        "uid": "cell/catl/314ah-lfp-ess-cell"
+      },
+      {
+        "name": "Hithium 314Ah",
+        "uid": "cell/hithium/ess-cell-314ah"
+      },
+      {
+        "name": "REPT 320Ah"
+      },
+      {
+        "name": "Great Power 314Ah"
+      }
+    ],
+    "note": "grid storage, 280-320Ah class",
+    "segment": "ESS prismatic LFP"
+  },
+  {
+    "cells": [
+      {
+        "name": "CATL NMC prismatic"
+      },
+      {
+        "name": "Samsung SDI Gen5"
+      },
+      {
+        "name": "SK On NMC"
+      },
+      {
+        "name": "LG NMC prismatic"
+      }
+    ],
+    "note": "premium range segment",
+    "segment": "EV prismatic NMC"
+  },
+  {
+    "cells": [
+      {
+        "name": "Tesla 4680"
+      },
+      {
+        "name": "Panasonic 4680"
+      },
+      {
+        "name": "LG 4680"
+      },
+      {
+        "name": "EVE 4695"
+      }
+    ],
+    "note": "the format the industry is retooling for",
+    "segment": "EV cylindrical 4680"
+  },
+  {
+    "cells": [
+      {
+        "name": "Panasonic NCA 2170"
+      },
+      {
+        "name": "LG INR21700-M50"
+      },
+      {
+        "name": "Samsung INR21700-50E",
+        "uid": "cell/samsung-sdi/inr21700-50e"
+      },
+      {
+        "name": "Molicel P42A"
+      },
+      {
+        "name": "Molicel P45B"
+      },
+      {
+        "name": "EVE 40PL",
+        "uid": "cell/eve/21700-40pl"
+      }
+    ],
+    "note": "",
+    "segment": "EV / power cylindrical 21700"
+  },
+  {
+    "cells": [
+      {
+        "name": "Samsung INR18650-35E"
+      },
+      {
+        "name": "LG INR18650-MJ1"
+      },
+      {
+        "name": "Panasonic NCR18650B"
+      },
+      {
+        "name": "Murata VTC6",
+        "uid": "cell/murata/us18650vtc6"
+      },
+      {
+        "name": "Molicel P26A"
+      },
+      {
+        "name": "Samsung 30Q"
+      }
+    ],
+    "note": "mature, still shipping in volume",
+    "segment": "Consumer / power 18650"
+  },
+  {
+    "cells": [
+      {
+        "name": "LG pouch NMC"
+      },
+      {
+        "name": "SK On pouch"
+      },
+      {
+        "name": "AESC pouch"
+      }
+    ],
+    "note": "",
+    "segment": "EV pouch NMC"
+  },
+  {
+    "cells": [
+      {
+        "name": "Toshiba SCiB 20Ah",
+        "uid": "cell/toshiba/scib-20ah"
+      },
+      {
+        "name": "Toshiba SCiB 23Ah",
+        "uid": "cell/toshiba/scib-23ah"
+      },
+      {
+        "name": "Toshiba SCiB 10Ah",
+        "uid": "cell/toshiba/scib-10ah"
+      },
+      {
+        "name": "Toshiba SCiB 2.9Ah",
+        "uid": "cell/toshiba/scib-2-9ah"
+      },
+      {
+        "name": "Altairnano"
+      },
+      {
+        "name": "Yinlong LTO"
+      }
+    ],
+    "note": "fast charge and cold climate",
+    "segment": "LTO"
+  },
+  {
+    "cells": [
+      {
+        "name": "CATL sodium-ion"
+      },
+      {
+        "name": "HiNa NaCR32140",
+        "uid": "cell/hina-battery/ne170"
+      },
+      {
+        "name": "Natron Blue Tray"
+      }
+    ],
+    "note": "early market, moving fast",
+    "segment": "Sodium-ion"
+  },
+  {
+    "cells": [
+      {
+        "name": "WeLion semi-solid",
+        "uid": "cell/welion/shp320-35"
+      },
+      {
+        "name": "QuantumScape QSE-5"
+      },
+      {
+        "name": "Solid Power A-sample"
+      },
+      {
+        "name": "ProLogium"
+      }
+    ],
+    "note": "pre-volume, worth tracking",
+    "segment": "Semi-solid / solid-state"
+  },
+  {
+    "segment": "Power cylindrical 21700 — Phase B batch 1",
+    "note": "the cells pack designers compare first; datasheets are public PDFs",
+    "cells": [
+      {
+        "name": "Molicel INR21700-P45B"
+      },
+      {
+        "name": "Molicel INR21700-P42A"
+      },
+      {
+        "name": "Molicel INR21700-P50B"
+      },
+      {
+        "name": "Samsung INR21700-50S"
+      },
+      {
+        "name": "Samsung INR21700-40T"
+      },
+      {
+        "name": "Samsung INR21700-30T"
+      },
+      {
+        "name": "LG INR21700-M50LT"
+      },
+      {
+        "name": "LG INR21700-M58"
+      },
+      {
+        "name": "Panasonic NCR2170 (Tesla type)"
+      },
+      {
+        "name": "Murata US21700VTC6A",
+        "uid": "cell/murata/us21700vtc6a"
+      },
+      {
+        "name": "EVE INR21700-50E"
+      },
+      {
+        "name": "BAK N21700CG-50"
+      },
+      {
+        "name": "Tenpower INR21700-50E"
+      },
+      {
+        "name": "Lishen LR2170SF"
+      }
+    ]
+  },
+  {
+    "segment": "18650 — Phase B batch 2",
+    "note": "legacy formats still specified in tools, e-bikes and industrial packs",
+    "cells": [
+      {
+        "name": "Samsung INR18650-35E"
+      },
+      {
+        "name": "Samsung INR18650-30Q"
+      },
+      {
+        "name": "Samsung INR18650-25R"
+      },
+      {
+        "name": "LG INR18650-MJ1"
+      },
+      {
+        "name": "LG INR18650-HG2"
+      },
+      {
+        "name": "Panasonic NCR18650B"
+      },
+      {
+        "name": "Panasonic NCR18650GA",
+        "uid": "cell/panasonic/ncr-18650ga"
+      },
+      {
+        "name": "Murata US18650VTC5A",
+        "uid": "cell/murata/us18650vtc5a"
+      },
+      {
+        "name": "Molicel INR18650-P28A"
+      },
+      {
+        "name": "Molicel INR18650-P26A"
+      },
+      {
+        "name": "EVE INR18650-35V"
+      },
+      {
+        "name": "BAK N18650CL-29"
+      }
+    ]
+  },
+  {
+    "segment": "Prismatic LFP, 100–320 Ah — Phase B batch 3",
+    "note": "stationary storage and commercial vehicles; conditions (rate, temperature, EoL) matter most here",
+    "cells": [
+      {
+        "name": "EVE LF280K"
+      },
+      {
+        "name": "EVE LF304"
+      },
+      {
+        "name": "EVE LF105"
+      },
+      {
+        "name": "CATL 280Ah (CB2W0)"
+      },
+      {
+        "name": "CATL 302Ah",
+        "uid": "cell/catl/302ah-lifepo4"
+      },
+      {
+        "name": "CATL 314Ah",
+        "uid": "cell/catl/314ah-lfp-ess-cell"
+      },
+      {
+        "name": "Gotion 314Ah"
+      },
+      {
+        "name": "REPT 280Ah"
+      },
+      {
+        "name": "REPT 320Ah"
+      },
+      {
+        "name": "Hithium 280Ah"
+      },
+      {
+        "name": "CALB L173F280"
+      },
+      {
+        "name": "BYD Blade (FinDreams) 138Ah"
+      },
+      {
+        "name": "Lishen 280Ah"
+      },
+      {
+        "name": "Great Power 314Ah"
+      }
+    ]
+  },
+  {
+    "segment": "Automotive pouch and prismatic NMC — Phase B batch 4",
+    "note": "datasheets are rarely public; record OEM specification sheets and conference disclosures with their limits",
+    "cells": [
+      {
+        "name": "LG E66A (pouch)"
+      },
+      {
+        "name": "LG E78 (pouch)"
+      },
+      {
+        "name": "SK On E582 (pouch)"
+      },
+      {
+        "name": "Farasis 68Ah (pouch)"
+      },
+      {
+        "name": "CATL NMC 50Ah prismatic"
+      },
+      {
+        "name": "Samsung SDI PRiMX 94Ah"
+      },
+      {
+        "name": "Samsung SDI Gen5 prismatic"
+      },
+      {
+        "name": "CALB L221N113A"
+      },
+      {
+        "name": "SVOLT 115Ah prismatic"
+      },
+      {
+        "name": "Northvolt Lingonberry (prismatic)"
+      }
+    ]
+  },
+  {
+    "segment": "Coin and primary — Phase B batch 5",
+    "note": "small cells for electronics; mostly already sourced, needs discharge conditions",
+    "cells": [
+      {
+        "name": "Energizer CR2032",
+        "uid": "primary_cell/energizer/cr2032"
+      },
+      {
+        "name": "Renata CR2032"
+      },
+      {
+        "name": "Murata CR2032"
+      },
+      {
+        "name": "Energizer L91 (AA lithium)"
+      },
+      {
+        "name": "Panasonic BR2032"
+      },
+      {
+        "name": "Maxell CR2450"
+      }
+    ]
+  }
 ]

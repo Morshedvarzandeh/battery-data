@@ -57,7 +57,7 @@ eight categories. Components and patents are counted separately from batteries.
 
 | I am looking for… | Start here |
 |---|---|
-| A battery model and its datasheet | [Manufacturer and model index](catalog/README.md) |
+| A battery model and its datasheet | [Manufacturer and model index](catalog/README.md), or the [cell finder](web/README.md) (filter, compare, read every value with its conditions) |
 | Voltage, capacity, dimensions or current limits | Open a model's specification record; each observation includes its units and conditions |
 | Contactors, fuses, precharge contactors, inverters, DC/DC converters or chargers | [Component catalog](components/catalog.md), with review status |
 | BMS products, interfaces and release dates | [BMS comparison](components/bms.md) |
@@ -259,6 +259,8 @@ omission is a fact about the datasheet worth storing, and a NULL cannot express 
 | [`docs/07-candidate-review.md`](docs/07-candidate-review.md) | Owner-only issue checkbox → validated accepted library |
 | [`docs/08-patents.md`](docs/08-patents.md) | Patent-family identity, classification and review boundary |
 | [`docs/15-current-cell-research-set.md`](docs/15-current-cell-research-set.md) | Versioned 40-cell research set and its acceptance gate |
+| [`docs/20-finder-redesign-and-depth-plan.md`](docs/20-finder-redesign-and-depth-plan.md) | **How deep the library really is**, the finder redesign, the hub hand-off and the extraction batches that fix the depth |
+| [`web/README.md`](web/README.md) | The cell finder: run it locally, what it shows and refuses to show |
 | [`agents/literature-miner/AGENT.md`](agents/literature-miner/AGENT.md) | The papers → data agent |
 
 ---
