@@ -4,7 +4,8 @@
  *   cells.json              one compact row per product, for the table and chart
  *   records/<maker>.json    full records, fetched when a record is opened
  *   registry.json           quantity registry + headings, for the full-record view
- *   summary.json            the honest counts in the hero
+ *   summary.json            the honest counts in the hero, and any seller's stock list
+ *                           (offers/*.json: a seller's own statement, kept off the records)
  *   coverage-status.json    the target list, marked sourced/missing by looking
  *
  * The first half is pure functions (no DOM) and is exported for tests
@@ -20,10 +21,13 @@
   BD.UNIT = { mass: "g", diameter: "mm", height: "mm", length: "mm", width: "mm", thickness: "mm", volume: "L",
     nominal_voltage: "V", capacity: "Ah", voltage: "V", max_continuous_discharge_current: "A", max_pulse_discharge_current: "A",
     max_continuous_charge_current: "A", standard_charge_current: "A", specific_energy: "Wh/kg", energy_density: "Wh/L",
+    max_continuous_discharge_rate: "C", max_pulse_discharge_rate: "C", max_continuous_charge_rate: "C", standard_charge_rate: "C",
     internal_resistance_ac: "mΩ", internal_resistance_dc: "mΩ", cycle_life: "cycles", calendar_life: "years",
     operating_temperature_min: "°C", operating_temperature_max: "°C", storage_temperature_min: "°C", storage_temperature_max: "°C" };
   BD.LABEL = { max_continuous_discharge_current: "Continuous discharge current", max_continuous_charge_current: "Continuous charge current",
     max_pulse_discharge_current: "Pulse discharge current", standard_charge_current: "Standard charge current",
+    max_continuous_discharge_rate: "Continuous discharge rate", max_pulse_discharge_rate: "Pulse discharge rate",
+    max_continuous_charge_rate: "Charge rate, maximum", standard_charge_rate: "Charge rate, standard",
     internal_resistance_ac: "AC internal resistance", internal_resistance_dc: "DC internal resistance",
     cv_cutoff_current: "CV cut-off current", operating_temperature_min: "Operating temperature, min",
     operating_temperature_max: "Operating temperature, max", specific_energy: "Specific energy", energy_density: "Energy density",
@@ -108,8 +112,26 @@
     if (stray.length) groups.push({ group: "Other recorded quantities", rows: stray.map(q => ({ q, label: BD.label(q), obs: K[q] })), n: stray.length, of: stray.length });
     return { groups, absent };
   };
+  /** How a stored unit reads. A C-rate is stored as "C-rate" because "C" is the coulomb in the unit table. */
+  BD.UNIT_TEXT = { "C-rate": "C", mohm: "mΩ", W_per_kg: "W/kg" };
+  BD.unitText = function (u, q) { return BD.UNIT_TEXT[u] || u || BD.UNIT[q] || ""; };
   BD.valueText = function (o) {
-    return BD.boundPrefix(o) + BD.fmt(o.v, o.v < 10 ? 2 : o.v < 1000 ? 1 : 0) + " " + (o.u || BD.UNIT[o.q] || "");
+    return BD.boundPrefix(o) + BD.fmt(o.v, o.v < 10 ? 2 : o.v < 1000 ? 1 : 0) + " " + BD.unitText(o.u, o.q);
+  };
+  /** Source kind as a reader would say it. */
+  BD.SRC = { datasheet: "datasheet", manufacturer_web: "manufacturer web page", distributor_listing: "supplier list",
+    regulatory_filing: "regulatory filing", third_party_test: "third-party test", user_submission: "user submission" };
+  BD.srcText = function (k) { return BD.SRC[k] || String(k || "source").replace(/_/g, " "); };
+  /** Continuous discharge as the source printed it: amperes, or a C-rate when no ampere figure exists. */
+  BD.dischargeText = function (r) {
+    if (r.a != null) return BD.fmt(r.a, 1) + " A" + (r.crate ? " · " + BD.fmt(r.crate, 1) + " C" : "");
+    if (r.crate_s && r.crate != null) return BD.fmt(r.crate, 1) + " C (printed as a C-rate)";
+    return null;
+  };
+  /** A seller's stock line: "In stock at Lemonergy · as of 2026-10-28". */
+  BD.stockText = function (st) {
+    if (!st) return null;
+    return (st.s === "in_stock" ? "In stock at " : "Available on request from ") + st.by + " · as of " + st.d;
   };
   /** Markdown export of one record: every observation with its conditions and evidence, then what is not stated. */
   BD.recordMarkdown = function (rec, GROUPS) {
@@ -125,7 +147,7 @@
       L.push("## " + g.group, "", "| Quantity | Value | Unit | Recorded conditions | Source |", "|---|--:|---|---|---|");
       g.rows.forEach(r => r.obs.forEach(o => {
         const evidence = [o.stat, o.src, o.pg ? "page " + o.pg : "", o.section].filter(Boolean).join("; ");
-        L.push("| `" + r.q + "` | " + BD.boundPrefix(o) + BD.fmt(o.v, 2) + " | " + (o.u || BD.UNIT[r.q] || "") + " | " + esc(BD.conditionDetails(o)) + " | " + esc(evidence) + " |");
+        L.push("| `" + r.q + "` | " + BD.boundPrefix(o) + BD.fmt(o.v, 2) + " | " + BD.unitText(o.u, r.q) + " | " + esc(BD.conditionDetails(o)) + " | " + esc(evidence) + " |");
       }));
       L.push("");
     });
@@ -136,9 +158,11 @@
   BD.CSV_COLS = [["uid", r => r.uid], ["manufacturer", r => r.manu], ["model", r => r.model], ["kind", r => r.kind], ["component_type", r => r.ct],
     ["chemistry", r => r.chem], ["format", r => r.fmt], ["format_code", r => r.ffc], ["capacity_ah", r => r.ah], ["voltage_v", r => r.v],
     ["voltage_quantity", r => r.vq], ["mass_g", r => r.g], ["energy_wh", r => r.wh], ["wh_per_kg", r => r.whkg], ["wh_per_kg_derived", r => r.whkg_d],
-    ["wh_per_l", r => r.whl], ["continuous_discharge_a", r => r.a], ["cycle_life", r => r.cyc], ["internal_resistance_mohm", r => r.ir],
+    ["wh_per_l", r => r.whl], ["continuous_discharge_a", r => r.a], ["continuous_discharge_c_rate", r => r.crate], ["c_rate_as_printed", r => r.crate_s ? "yes" : ""], ["cycle_life", r => r.cyc], ["cycle_life_bound", r => r.cyc_b && r.cyc_b.join(" ")], ["internal_resistance_mohm", r => r.ir],
+    ["internal_resistance_bound_mohm", r => r.ir_b && r.ir_b.join(" ")],
     ["dimensions_mm", r => r.dims && r.dims.join(" x ")], ["t_min_c", r => r.tmin], ["t_max_c", r => r.tmax], ["specs_stated_of_8", r => r.depth],
-    ["observations", r => r.n], ["source_kind", r => r.src], ["document_year", r => r.doc], ["year", r => r.year], ["year_kind", r => r.yk], ["source_url", r => r.url]];
+    ["observations", r => r.n], ["source_kind", r => r.src], ["document_year", r => r.doc], ["year", r => r.year], ["year_kind", r => r.yk], ["source_url", r => r.url],
+    ["availability", r => BD.stockText(r.stock)]];
   BD.toCSV = function (rows) {
     const cell = v => { if (v == null) return ""; const s = String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
     return [BD.CSV_COLS.map(c => c[0]).join(",")].concat(rows.map(r => BD.CSV_COLS.map(c => cell(c[1](r))).join(","))).join("\n");
@@ -165,7 +189,7 @@
   const $ = s => document.querySelector(s);
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const mfrLabel = m => m.replace(" Co., Ltd.", "").replace(" Energy Solution", " ES");
-  const state = { q: "", kind: new Set(["cell"]), chem: new Set(), ff: new Set(), mfr: new Set(), year: new Set(), core: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
+  const state = { q: "", kind: new Set(["cell"]), chem: new Set(), ff: new Set(), mfr: new Set(), year: new Set(), core: false, stock: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
   let rows = [], REG = { REG: {}, GROUPS: {} }, summary = null;
   const shards = new Map();
 
@@ -208,6 +232,7 @@
   function matches(r, skip) {
     for (const k of Object.keys(FACETS)) if (k !== skip && state[k].size && !state[k].has(FACETS[k].value(r))) return false;
     if (state.core && !isCore(r)) return false;
+    if (state.stock && !(r.stock && r.stock.s === "in_stock")) return false;
     const q = state.q.toLowerCase().split(/\s+/).filter(Boolean);
     if (q.length) { const hay = [r.model, r.manu, r.chem, r.fmt, r.ffc, BD.FF[r.fmt], r.ct, r.kind].join(" ").toLowerCase(); if (!q.every(t => hay.includes(t))) return false; }
     return true;
@@ -268,6 +293,14 @@
     whkg: "specific energy", a: "discharge current", cyc: "cycle life", ct: "type", n: "observation count", ratings: "ratings" };
   const depthHTML = d => '<span class="depth" title="' + d + ' of 8 core specifications stated">' + Array.from({ length: 8 }, (_, i) => '<i class="' + (i < d ? "on" : "") + '"></i>').join("") + "</span>";
   const num = (v, d) => v == null ? '<td class="r dash">–</td>' : '<td class="r">' + BD.fmt(v, d) + "</td>";
+  // Amperes when printed; a C-rate printed without amperes shows as such and is never converted.
+  // A printed bound shows as one ("≥3,000"); it is not a point value and does not sort as one.
+  const boundCell = (b, d) => '<td class="r" title="Printed as a bound, not a point value"><span class="printed">' + esc(b[0]) + BD.fmt(b[1], d) + "</span></td>";
+  const ampCell = r => r.a != null ? num(r.a, 1) : r.crate_s && r.crate != null
+    ? '<td class="r" title="Printed as a C-rate; the capacity it refers to is not stated, so no ampere value is derived"><span class="printed">' + BD.fmt(r.crate, 1) + '</span><sup style="color:var(--muted);font-size:9px"> C</sup></td>'
+    : '<td class="r dash">–</td>';
+  // On its own line under the model, so a long model name cannot push it out of the cell.
+  const stockPill = r => r.stock && r.stock.s === "in_stock" ? '<small class="stock" title="' + esc(BD.stockText(r.stock)) + '">In stock · ' + esc(r.stock.by) + "</small>" : "";
   // Year: a documented product release reads plain; a document date reads with a "doc" mark — the sheet's year, not the product's.
   const yearCell = r => r.year == null ? '<td class="r dash" title="Neither a release date nor a dated document is recorded">–</td>'
     : r.yk === "release" ? '<td class="r" title="Documented product release">' + esc(r.year) + "</td>"
@@ -290,10 +323,10 @@
     }
     const v = r.v == null ? '<td class="r dash">–</td>' : r.vq === "voltage" ? '<td class="r"><span class="printed" title="Printed as “Voltage”; the source does not say it is the nominal voltage">' + BD.fmt(r.v, 2) + "</span></td>" : '<td class="r">' + BD.fmt(r.v, 2) + "</td>";
     const whkg = r.whkg == null ? '<td class="r dash">–</td>' : '<td class="r"' + (r.whkg_d ? ' title="Calculated from capacity, voltage and mass"' : "") + ">" + BD.fmt(r.whkg, 0) + (r.whkg_d ? "<sup style=\"color:var(--muted);font-size:9px\"> calc</sup>" : "") + "</td>";
-    return '<td class="model">' + esc(r.model || "—") + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</td>" + company +
+    return '<td class="model">' + esc(r.model || "—") + stockPill(r) + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</td>" + company +
       '<td class="chem" title="' + esc(r.chem || "") + '">' + (r.chem ? esc(r.chem) : '<span class="dash">–</span>') + "</td>" +
       '<td class="ff">' + (r.fmt ? esc(BD.FF[r.fmt] || r.fmt) : r.ffc ? esc(r.ffc) : '<span class="dash">–</span>') + (r.ffc && r.fmt ? ' <span class="pill">' + esc(r.ffc) + "</span>" : "") + "</td>" +
-      num(r.ah, r.ah < 1 ? 3 : 1) + v + num(r.g, 1) + whkg + num(r.a, 1) + num(r.cyc, 0) + yearCell(r) + "<td>" + depthHTML(r.depth) + "</td>";
+      num(r.ah, r.ah < 1 ? 3 : 1) + v + num(r.g, 1) + whkg + ampCell(r) + (r.cyc == null && r.cyc_b ? boundCell(r.cyc_b, 0) : num(r.cyc, 0)) + yearCell(r) + "<td>" + depthHTML(r.depth) + "</td>";
   }
   function refilter() { state.shown = 100; const list = render(); if (list.length && !list.some(r => r.uid === state.sel)) select(list[0].uid); refreshFacets(); }
   function render() {
@@ -326,23 +359,28 @@
       specs = r.ratings.length ? r.ratings.map(t => spec(esc(t.replace(/ [\d.,]+ \S*$/, "")), esc(t.match(/[\d.,]+ \S*$/)[0]))).join("") : '<div class="spec miss"><span class="k">Ratings</span><span class="v">open the full record</span></div>';
     } else {
       const missing = [];
-      if (r.a == null) missing.push("continuous discharge current"); if (r.cyc == null) missing.push("cycle life"); if (r.ir == null) missing.push("internal resistance");
+      if (r.a == null && !r.crate_s) missing.push("continuous discharge current"); if (r.cyc == null && !r.cyc_b) missing.push("cycle life"); if (r.ir == null && !r.ir_b) missing.push("internal resistance");
       if (r.vq !== "nominal_voltage") missing.push("nominal voltage"); if (r.g == null) missing.push("mass"); if (r.tmin == null) missing.push("operating temperature");
       specs = spec("Capacity", show(r.ah, "Ah", r.ah < 1 ? 3 : 2), r.ah != null ? '<span id="capcond">conditions load with the record…</span>' : "") +
         spec(r.vq === "voltage" ? 'Voltage <span class="pill warn" title="Printed as “Voltage”; not asserted as nominal">as printed</span>' : "Nominal voltage", show(r.v, "V", 2)) +
         spec("Energy", show(r.wh, "Wh", 2), null, true) + spec("Mass", show(r.g, "g", 1)) +
-        spec("Specific energy", show(r.whkg, "Wh/kg", 0), null, r.whkg_d) + spec("Continuous discharge", show(r.a, "A", 1) + (r.crate ? " · " + BD.fmt(r.crate, 1) + " C" : "")) +
-        spec("Cycle life", show(r.cyc, "cycles", 0)) + spec("Internal resistance", show(r.ir, "mΩ", 1)) +
+        spec("Specific energy", show(r.whkg, "Wh/kg", 0), null, r.whkg_d) + spec("Continuous discharge", BD.dischargeText(r), r.crate_s ? "no ampere figure is printed; the capacity the C-rate refers to is not stated" : null) +
+        spec("Cycle life", r.cyc != null ? show(r.cyc, "cycles", 0) : r.cyc_b ? r.cyc_b[0] + " " + BD.fmt(r.cyc_b[1], 0) + " cycles" : null, r.cyc == null && r.cyc_b ? "printed as a bound; conditions in the full record" : null) +
+        spec("Internal resistance", r.ir != null ? show(r.ir, "mΩ", 1) : r.ir_b ? r.ir_b[0] + " " + BD.fmt(r.ir_b[1], 2) + " mΩ" : null, r.ir == null && r.ir_b ? "printed as a bound" : null) +
         spec("Dimensions", r.dims ? r.dims.map(x => BD.fmt(x, 1)).join(" × ") + " mm" + (r.shape === "cyl" && r.dims.length === 2 ? " (Ø × h)" : "") : null) +
         spec("Operating temperature", r.tmin != null ? r.tmin + " to " + r.tmax + " °C" : null) +
-        (missing.length ? '<div class="gap"><b>Not stated by the source:</b> ' + missing.join(", ") + ". " + (r.a == null ? "Without a discharge rating this record cannot size a pack for power." : "") + "</div>" : "");
+        (missing.length ? '<div class="gap"><b>Not stated by the source:</b> ' + missing.join(", ") + ". " + (r.a == null && !r.crate_s ? "Without a discharge rating this record cannot size a pack for power." : "") + "</div>" : "");
     }
     const sim = BD.similar(r, rows, 5);
+    const seller = r.stock && ((summary && summary.sellers) || []).find(s => s.name === r.stock.by);
+    const buy = seller ? '<div class="buy"><div><b>' + esc(BD.stockText(r.stock)) + '</b><small title="' + esc(seller.statement) + '">The seller\'s own statement, not a datasheet value. It does not change this record or its rank.</small></div>' +
+      '<a class="btn sm pri" href="' + esc(seller.contact + (seller.contact.startsWith("mailto:") ? "?subject=" + encodeURIComponent("Quote request: " + r.model) +
+        "&body=" + encodeURIComponent("Product: " + r.model + "\nRecord: " + r.uid + "\nQuantity:\nDelivery country:\n") : "")) + '">Request a quote</a></div>' : "";
     $("#insp").innerHTML =
       '<div class="hd"><p class="eyebrow">' + esc(r.manu) + "</p><h2>" + esc(r.model || "—") + '</h2><div class="meta">' +
       (r.chem ? '<span class="pill">' + esc(r.chem) + "</span>" : "") + (r.fmt ? '<span class="pill">' + esc(BD.FF[r.fmt] || r.fmt) + "</span>" : "") + (r.ffc ? '<span class="pill">' + esc(r.ffc) + "</span>" : "") +
-      '<span class="pill">' + esc((r.ct || r.kind).replace(/_/g, " ")) + '</span><span class="pill src">' + (r.src === "datasheet" ? "datasheet" : "manufacturer web page") + "</span></div></div>" + specs +
-      '<div class="srcbox">Source: ' + esc(r.title || (r.src === "datasheet" ? "manufacturer datasheet" : "manufacturer web page")) + (r.yk === "release" ? " · released " + esc(r.year) : r.year ? " · document dated " + esc(r.year) + " (product release not researched)" : " · no date recorded") + " · " + r.n + " observations" +
+      '<span class="pill">' + esc((r.ct || r.kind).replace(/_/g, " ")) + '</span><span class="pill src">' + esc(BD.srcText(r.src)) + "</span></div></div>" + buy + specs +
+      '<div class="srcbox">Source: ' + esc(r.title || BD.srcText(r.src)) + (r.yk === "release" ? " · released " + esc(r.year) : r.year ? " · document dated " + esc(r.year) + " (product release not researched)" : " · no date recorded") + " · " + r.n + " observations" +
       (r.url ? ' · <a href="' + esc(r.url) + '" target="_blank" rel="noopener">open ↗</a>' : "") + "</div>" +
       (sim.length ? '<div class="similar"><span class="lbl">Similar records</span>' + sim.map(s => '<button type="button" data-u="' + esc(s.uid) + '">' + esc(s.model) + "<span>" + esc(mfrLabel(s.manu)) + (s.ah != null ? " · " + BD.fmt(s.ah, 1) + " Ah" : "") + (s.whkg != null ? " · " + BD.fmt(s.whkg, 0) + " Wh/kg" : "") + "</span></button>").join("") + "</div>" : "") +
       '<div class="acts"><button class="btn sm pri" id="fullrec" type="button">Full record</button><button class="btn sm' + (inCmp ? "" : state.cmp.length ? " pri" : "") + '" id="cmpbtn" type="button">' + (inCmp ? "Remove from comparison" : state.cmp.length ? "Add as cell " + (state.cmp.length + 1) + " of 4" : "Compare +") + "</button></div>";
@@ -379,7 +417,7 @@
       g.rows.forEach(row => row.obs.forEach(o => {
         const req = (REG.REG[row.q] || []).length;
         h += '<div class="obs"><span class="q">' + esc(row.label) + "<small>" + esc(row.q) + "</small></span><span class=\"v\">" + esc(BD.valueText(o)) + "</span>" +
-          '<span class="d">' + (o.stat ? '<span class="pill">' + esc(o.stat) + "</span>" : "") + '<span class="pill src">' + esc(o.src || "source") + (o.pg ? " · page " + o.pg : "") + "</span>" +
+          '<span class="d">' + (o.stat ? '<span class="pill">' + esc(o.stat) + "</span>" : "") + '<span class="pill src">' + esc(BD.srcText(o.src)) + (o.pg ? " · page " + o.pg : "") + "</span>" +
           (Object.keys(o.cond || {}).length ? "<span>" + esc(BD.conditionDetails({ cond: o.cond })) + "</span>" : req ? '<span class="warn">no conditions recorded</span>' : "") +
           (o.unstated && o.unstated.length ? '<span class="warn">not stated: ' + esc(o.unstated.join(", ")) + "</span>" : "") + "</span>" +
           (o.quote ? '<span class="quote">“' + esc(o.quote) + "”" + (o.section ? " — " + esc(o.section) : "") + "</span>" : "") + "</div>";
@@ -416,9 +454,9 @@
     $("#tray").hidden = sel.length < 2; $("#traycount").textContent = sel.length + " of 4 · the better value in each row is marked";
     if (sel.length < 2) { render(); return; }
     const R = [["Chemistry", r => r.chem, null], ["Format", r => r.fmt ? BD.FF[r.fmt] : r.ffc, null], ["Capacity (Ah)", r => r.ah, "max"], ["Voltage (V)", r => r.v, null],
-      ["Energy (Wh)", r => r.wh, "max"], ["Mass (g)", r => r.g, "min"], ["Wh/kg", r => r.whkg, "max"], ["Continuous discharge (A)", r => r.a, "max"],
+      ["Energy (Wh)", r => r.wh, "max"], ["Mass (g)", r => r.g, "min"], ["Wh/kg", r => r.whkg, "max"], ["Continuous discharge (A)", r => r.a, "max"], ["Continuous discharge (C)", r => r.crate, "max"],
       ["Cycle life", r => r.cyc, "max"], ["Internal resistance (mΩ)", r => r.ir, "min"], ["Dimensions (mm)", r => r.dims && r.dims.join(" × "), null],
-      ["Source", r => (r.src === "datasheet" ? "datasheet" : "web page") + (r.doc ? " · " + r.doc : ""), null], ["Specs stated (of 8)", r => r.depth, "max"]];
+      ["Source", r => BD.srcText(r.src) + (r.doc ? " · " + r.doc : ""), null], ["Specs stated (of 8)", r => r.depth, "max"], ["Availability", r => BD.stockText(r.stock), null]];
     let h = "<thead><tr><th></th>" + sel.map(r => "<th>" + esc(r.model) + '<br><span style="font-weight:400;color:var(--muted);font-size:12px">' + esc(mfrLabel(r.manu)) + '</span><button class="x" data-u="' + esc(r.uid) + '" aria-label="Remove" type="button">×</button></th>').join("") + "</tr></thead><tbody>";
     R.forEach(([k, f, best]) => {
       const vals = sel.map(f); let bi = -1;
@@ -474,6 +512,7 @@
     $("#sform").addEventListener("submit", e => { e.preventDefault(); state.q = $("#q").value; state.shown = 100; render(); });
     $("#q").addEventListener("input", e => { state.q = e.target.value; state.shown = 100; render(); refreshFacets(); });
     document.querySelectorAll(".chip").forEach(c => c.onclick = () => {
+      if (c.dataset.stock !== undefined) { state.stock = true; const b = $("#f-stock"); if (b) b.checked = true; state.q = ""; $("#q").value = ""; state.chem.clear(); state.shown = 100; const l = render(); if (l[0]) select(l[0].uid); refreshFacets(); return; }
       if (c.dataset.kind !== undefined) { state.kind.clear(); if (c.dataset.kind) state.kind.add(c.dataset.kind); }
       state.chem.clear();
       if (c.dataset.chem) { state.chem.add(c.dataset.chem); state.q = ""; $("#q").value = ""; }
@@ -481,6 +520,11 @@
       state.shown = 100; const list = render(); if (list[0]) select(list[0].uid); refreshFacets();
     });
     $("#f-core-only").addEventListener("change", e => { state.core = e.target.checked; refilter(); });
+    const stockBox = $("#f-stock"), stockN = (summary && summary.available_now) || 0;
+    if (stockBox) {
+      stockBox.closest("label").hidden = stockN === 0;
+      stockBox.addEventListener("change", e => { state.stock = e.target.checked; refilter(); });
+    }
     $("#morebtn").onclick = () => { state.shown += 100; render(); };
     $("#csv").onclick = () => save("lemonergy-data-" + new Date().toISOString().slice(0, 10) + ".csv", BD.toCSV(sorted(filtered())), "text/csv");
     $("#v-table").onclick = () => { state.view = "table"; $("#v-table").setAttribute("aria-pressed", "true"); $("#v-chart").setAttribute("aria-pressed", "false"); $("#tableview").hidden = false; $("#chartview").hidden = true; };

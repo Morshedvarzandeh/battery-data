@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Morshedvarzandeh/battery-data/json-schema/offer.schema.json",
+  "title": "Seller stock list",
+  "description": "A seller's own availability statement for accepted products. It lives in offers/, never in a product record, so a commercial status cannot change a record's values, evidence or rank. Every uid must name an accepted product in contrib/.",
+  "type": "object",
+  "required": ["schema_version", "seller", "statement", "stated_by", "offers"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "seller": {
+      "type": "object",
+      "required": ["name", "url", "contact"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "pattern": "^https://"},
+        "contact": {"type": "string", "pattern": "^(mailto:|https://)"}
+      }
+    },
+    "statement": {"type": "string", "minLength": 20},
+    "stated_by": {"type": "string", "minLength": 1},
+    "offers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["uid", "status", "as_of"],
+        "additionalProperties": false,
+        "properties": {
+          "uid": {"type": "string", "pattern": "^[a-z_]+/[a-z0-9-]+/[a-z0-9._-]+$"},
+          "status": {
+            "enum": ["in_stock", "on_request"],
+            "description": "in_stock: the seller says it can supply now. on_request: the seller can source it; lead time is quoted per request."
+          },
+          "as_of": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"}
+        }
+      }
+    }
+  }
+}

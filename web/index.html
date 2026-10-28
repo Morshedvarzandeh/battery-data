@@ -48,6 +48,7 @@
       <button type="button" class="chip" data-q="CR2032" data-kind="">CR2032</button>
       <button type="button" class="chip" data-q="sodium" data-kind="">sodium-ion</button>
       <button type="button" class="chip" data-kind="component" data-q="bms">BMS</button>
+      <button type="button" class="chip" data-stock="1" data-kind="">in stock now</button>
     </div>
     <div class="facts" id="facts" aria-label="What the library holds">
       <div class="fact"><b id="f-n">—</b><span>battery records</span></div>
@@ -68,6 +69,7 @@
     <div class="facet" data-facet="year"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-year">Year</button><div class="facet-menu" id="facet-year" hidden></div></div>
     <button type="button" class="btn sm ghost" id="f-clear" hidden>Clear filters</button>
     <label class="toggle"><input type="checkbox" id="f-core-only"> Only records with capacity, voltage and mass</label>
+    <label class="toggle" hidden><input type="checkbox" id="f-stock"> Available now from Lemonergy</label>
     <div class="seg" role="group" aria-label="View">
       <button type="button" id="v-table" aria-pressed="true">Table</button>
       <button type="button" id="v-chart" aria-pressed="false">Energy map</button>

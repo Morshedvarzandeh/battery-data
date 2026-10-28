@@ -179,10 +179,20 @@
  "max_continuous_charge_current": [
   "temperature_c"
  ],
+ "max_continuous_charge_rate": [
+  "temperature_c"
+ ],
  "max_continuous_discharge_current": [
   "temperature_c"
  ],
+ "max_continuous_discharge_rate": [
+  "temperature_c"
+ ],
  "max_pulse_discharge_current": [
+  "pulse_duration_s",
+  "temperature_c"
+ ],
+ "max_pulse_discharge_rate": [
   "pulse_duration_s",
   "temperature_c"
  ],
@@ -317,6 +327,9 @@
   "constraint_mode"
  ],
  "standard_charge_current": [
+  "temperature_c"
+ ],
+ "standard_charge_rate": [
   "temperature_c"
  ],
  "standby_consumption": [],

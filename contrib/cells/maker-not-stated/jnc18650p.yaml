@@ -1,0 +1,334 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/maker-not-stated/jnc18650p",
+    "kind": "cell",
+    "manufacturer": "Maker not stated",
+    "model_number": "JNC18650P",
+    "is_rechargeable": true,
+    "form_factor": "cylindrical"
+  },
+  "source": {
+    "uid": "src/partner-sodium-ion-cell-spreadsheet-2026h2",
+    "kind": "distributor_listing",
+    "title": "Sodium-ion battery cell spreadsheet 2026H2 (partner supplier list)",
+    "revision": "2026H2",
+    "document_date": "2026",
+    "retrieved_at": "2026-10-28",
+    "sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. One-page supplier cell spreadsheet supplied to Lemonergy by a commercial partner on 2026-10-28. The document is issued by a distributor, not by the cell producer, and does not name the producer; the manufacturer is therefore recorded as not stated. The model number is the distributor's designation. The issuing distributor's company name and its contact person, e-mail address and telephone number appear on the document and are deliberately not recorded, at the repository owner's instruction. The document is identified by its SHA-256 only and has no public URL. Quotes are normalized table transcriptions: row model, column header, then the cell text as printed. The sheet states no test conditions. Capacity rate, temperature and cut-off; AC resistance frequency, SOC and temperature; cycle-life temperature, depth of discharge and end-of-life criterion are all unstated. C-rates are kept as printed and never converted to amperes, because the sheet does not state the capacity they refer to. 'cont' and 'pulse' labels are kept; no pulse duration is printed. A Charge Rate printed without 'std' or 'max' is recorded as a maximum charge rate with that ambiguity noted on the value. 'Voltage Range' is recorded as the discharge and charge cut-off voltages. Pulse-cycle counts are kept as a qualifier on the cycle-life value, not as full-cycle life. The sheet itself notes that the production schedule is not fixed and that stock and lead time should be checked; Lemonergy's own stock statement is kept separately in offers/lemonergy.json."
+  },
+  "chemistry": {
+    "designation": "Sodium-ion",
+    "locator": {
+      "page": 1,
+      "section": "Title and Chemistry column",
+      "quote": "Sodium ion Battery Cell Spreadsheet 2026H2 · JNC18650P · Chemistry: NFPP"
+    },
+    "cathode_text": "NFPP"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 0.9,
+      "unit": "Ah",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Capacity",
+        "quote": "JNC18650P · Capacity: 0.9 Ah"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 2.85,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Nominal Voltage",
+        "quote": "JNC18650P · Nominal Voltage: 2.85 V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "discharge_cutoff_voltage",
+      "value": 1.5,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Voltage Range",
+        "quote": "JNC18650P · Voltage Range: 1.5-3.5 V"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "extra": {
+          "source_label": "Voltage Range"
+        }
+      }
+    },
+    {
+      "quantity": "charge_cutoff_voltage",
+      "value": 3.5,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Voltage Range",
+        "quote": "JNC18650P · Voltage Range: 1.5-3.5 V"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "source_label": "Voltage Range"
+        }
+      }
+    },
+    {
+      "quantity": "diameter",
+      "value": 18.3,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Dimensions",
+        "quote": "JNC18650P · Dimensions: Ø18.3×65.3 mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 65.3,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Dimensions",
+        "quote": "JNC18650P · Dimensions: Ø18.3×65.3 mm"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 33,
+      "unit": "g",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Weight",
+        "quote": "JNC18650P · Weight: 33 g"
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 15,
+      "unit": "mohm",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column ACIR",
+        "quote": "JNC18650P · ACIR: ≤15 mΩ"
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "conditions": {
+        "unstated": [
+          "frequency_hz",
+          "soc_pct",
+          "temperature_c"
+        ],
+        "extra": {
+          "source_label": "ACIR",
+          "source_comparator": "≤"
+        }
+      }
+    },
+    {
+      "quantity": "standard_charge_rate",
+      "value": 1,
+      "unit": "C-rate",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Charge Rate",
+        "quote": "JNC18650P · Charge Rate: 1C std / 5C max"
+      },
+      "statistic": "standard",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "printed": "1C std",
+          "source_column": "Charge Rate",
+          "rate_reference": "Supplier C-rate label; the capacity the C-rate refers to is not stated"
+        }
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_rate",
+      "value": 5,
+      "unit": "C-rate",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Charge Rate",
+        "quote": "JNC18650P · Charge Rate: 1C std / 5C max"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "printed": "5C max",
+          "source_column": "Charge Rate",
+          "rate_reference": "Supplier C-rate label; the capacity the C-rate refers to is not stated",
+          "label_scope": "printed as 'max'; whether continuous or peak is not stated"
+        }
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_rate",
+      "value": 35,
+      "unit": "C-rate",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Discharge Rate",
+        "quote": "JNC18650P · Discharge Rate: 35C cont / 70C pulse"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "printed": "35C cont",
+          "source_column": "Discharge Rate",
+          "rate_reference": "Supplier C-rate label; the capacity the C-rate refers to is not stated"
+        }
+      }
+    },
+    {
+      "quantity": "max_pulse_discharge_rate",
+      "value": 70,
+      "unit": "C-rate",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Discharge Rate",
+        "quote": "JNC18650P · Discharge Rate: 35C cont / 70C pulse"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "pulse_duration_s",
+          "temperature_c"
+        ],
+        "extra": {
+          "printed": "70C pulse",
+          "source_column": "Discharge Rate",
+          "rate_reference": "Supplier C-rate label; the capacity the C-rate refers to is not stated"
+        }
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 2000,
+      "unit": "cycles",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Cycle Life",
+        "quote": "JNC18650P · Cycle Life: ≥2000 cycles (1C) / ≥20,000 pulse cycles"
+      },
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "conditions": {
+        "rate_value": 1,
+        "rate_unit": "C",
+        "rate_reference_source": "Supplier C-rate label; the capacity the C-rate refers to is not stated",
+        "unstated": [
+          "rate_reference_capacity_ah",
+          "temperature_c",
+          "dod_pct"
+        ],
+        "extra": {
+          "source_comparator": "≥",
+          "end_of_life_criterion": "not stated",
+          "rate_direction": "not stated",
+          "pulse_cycle_claim": "≥20,000 pulse cycles; pulse profile and end-of-life criterion not stated; not a full-cycle life"
+        }
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -10,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Temp Range (Charge/Discharge)",
+        "quote": "JNC18650P · Temp Range (Charge/Discharge): Charge −10~70°C Discharge −40~70°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 70,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Temp Range (Charge/Discharge)",
+        "quote": "JNC18650P · Temp Range (Charge/Discharge): Charge −10~70°C Discharge −40~70°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Temp Range (Charge/Discharge)",
+        "quote": "JNC18650P · Temp Range (Charge/Discharge): Charge −10~70°C Discharge −40~70°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 70,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNC18650P, column Temp Range (Charge/Discharge)",
+        "quote": "JNC18650P · Temp Range (Charge/Discharge): Charge −10~70°C Discharge −40~70°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    }
+  ]
+}

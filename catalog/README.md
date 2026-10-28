@@ -1,6 +1,6 @@
 # Battery datasheets and specifications — Lemonergy
 
-Browse **3,455 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
+Browse **3,495 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
 
 [Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Dates and technology timeline](dates.md) · [Patent research](../docs/08-patents.md)
 
@@ -22,6 +22,7 @@ Choose a manufacturer below, then use your browser’s **Find** command to searc
 | HiTHIUM | 3 | [Models and source documents](manufacturers/hithium.md) |
 | LG Energy Solution | 8 | [Models and source documents](manufacturers/lg-energy-solution.md) |
 | LiPol Battery Co., Ltd. | 1,704 | [Models and source documents](manufacturers/lipol-battery.md) |
+| Maker not stated | 40 | [Models and source documents](manufacturers/maker-not-stated.md) |
 | Maxell | 57 | [Models and source documents](manufacturers/maxell.md) |
 | Murata | 11 | [Models and source documents](manufacturers/murata.md) |
 | Panasonic Energy | 32 | [Models and source documents](manufacturers/panasonic.md) |
@@ -35,7 +36,7 @@ Choose a manufacturer below, then use your browser’s **Find** command to searc
 
  | Product type | Count |
 |---|---:|
-| cell | 3,205 |
+| cell | 3,245 |
 | module | 2 |
 | pack | 36 |
 | primary cell | 211 |
