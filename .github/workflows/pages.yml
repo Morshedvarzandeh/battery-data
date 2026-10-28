@@ -15,6 +15,7 @@ on:
     paths:
       - 'web/**'
       - 'contrib/**'
+      - 'offers/**'
       - 'json-schema/**'
       - 'schema/010_vocabulary.sql'
       - 'tools/build_web_data.py'

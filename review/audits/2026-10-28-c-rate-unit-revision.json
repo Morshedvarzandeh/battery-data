@@ -1,0 +1,230 @@
+{
+ "schema_version": "1",
+ "reviewed_at": "2026-10-28",
+ "reviewer": "deterministic migration, tools/migrate_c_rate_units.py",
+ "authorization": "Repository owner, in chat, 2026-10-28: explain the REPT unit error and fix it",
+ "scope": "Accepted records storing a C-rate in an ampere current quantity with unit C",
+ "basis": "Unit C is the coulomb in schema/010_vocabulary.sql. Each value is moved, unchanged, to the matching C-rate quantity from schema/138_c_rate_quantities.sql with unit C-rate. No ampere value is derived.",
+ "revisions": [
+  {
+   "uid": "cell/rept/104ah",
+   "file": "contrib/cells/rept/104ah.yaml",
+   "previous_sha256": "926a41500b5c6665516c6019d61362215fe43fe8d585a44967fcba5b4d5a3ca3",
+   "revised_sha256": "8ddb8bf5faab329123d1921352ad2484dc783d168dd8159b765c97df5a446ee2",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/106ah",
+   "file": "contrib/cells/rept/106ah.yaml",
+   "previous_sha256": "7d7b41a9f617c71d1c3dea6775776df7423f131232fe1893cf0300b2205c3a90",
+   "revised_sha256": "cf0e177c745a4619b9642cd53d1f7e27dc6be838fdc4dfd70ae4cd290442ba80",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/120ah",
+   "file": "contrib/cells/rept/120ah.yaml",
+   "previous_sha256": "79bb67c95d5fb047400438647e87d30e90130cf3480fd5bdd47188b121952b4a",
+   "revised_sha256": "fb9912f66735d9ac8fcbca77524bd477c49054abe3e4adca6f0a0c8dfda20e9e",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/132-5ah",
+   "file": "contrib/cells/rept/132-5ah.yaml",
+   "previous_sha256": "19685e43d646ed3efc29c87d103b5fc0b2d4a268e646fb2846e4a4c26b10ceba",
+   "revised_sha256": "92d37fdfa030b2237e4626828441fa8813d27abb68006aac03129fcd9f35ba1c",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/141ah",
+   "file": "contrib/cells/rept/141ah.yaml",
+   "previous_sha256": "5ca1703931a6757fcb5594f997802f350dc3f5c8e269cb668b0e68a1d96b9904",
+   "revised_sha256": "2b78ce4c9a67d0b592b107a2008aa85afe552df1b97efb6261660fa2c5324168",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/143-5ah",
+   "file": "contrib/cells/rept/143-5ah.yaml",
+   "previous_sha256": "3dfc9252680326f0a6381b88534862dcbf4ac9628eada11657d983f6a9892668",
+   "revised_sha256": "4757576f2e7da7c9eb7b5f61fd6232e148d371283350eac5ae02679c29413c0f",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/150ah",
+   "file": "contrib/cells/rept/150ah.yaml",
+   "previous_sha256": "b2e6b73573a12edf988f3c1d0a0ae38c3441c0a472a63ef2dfacd7f087ad41db",
+   "revised_sha256": "eb8bf448438f0ddfda516cf5406b9fd3b9c65340760835c618a540510cb3b741",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/175ah",
+   "file": "contrib/cells/rept/175ah.yaml",
+   "previous_sha256": "1f4f2a1bef5ecc354444d0d2566019302992fd1765f51dfe1f5b16bbb203da00",
+   "revised_sha256": "4f3c6ac5a15f3a0d1cca406983369f4fcf0f94979d4b1763163f51a0d85850c9",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/206ah",
+   "file": "contrib/cells/rept/206ah.yaml",
+   "previous_sha256": "35caaaac14abc8e6116d9c659be55bcdad99d5b3bef69079652b2c64d0458789",
+   "revised_sha256": "631cac62c39c71844564b8998fef0431ea018c3236d08d9bbb6eaed40c6ab8b2",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/215ah",
+   "file": "contrib/cells/rept/215ah.yaml",
+   "previous_sha256": "2c22000d14b2cf95525135b0bd66843bdd76da05141e3a9a1d96b912754daba9",
+   "revised_sha256": "cb53ba841f3cd087b83fdf94335347fe614966402ad8ab1c605f36d41b98cb29",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/223ah",
+   "file": "contrib/cells/rept/223ah.yaml",
+   "previous_sha256": "56d8c84d60a56e5678ffb8dbd6c4a897d773d9c4f107a135e3c18bbbc1fb4016",
+   "revised_sha256": "bf0fa1f10981ce55b3caa09c5282c2ca9c7bddf044c203e4912d6cf74efba61a",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/230ah",
+   "file": "contrib/cells/rept/230ah.yaml",
+   "previous_sha256": "fe12be67c134baa476ba9241a5317fe4a9eea4f1e73da1613e5f8369644f7ea4",
+   "revised_sha256": "ca9c78f6715766992a4495b9661803bd34e0357955820e13f085b17263c99b47",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/267ah",
+   "file": "contrib/cells/rept/267ah.yaml",
+   "previous_sha256": "0d6ddb184fbe29a79e40d3ea1d3698099154569c1eeff374b046eaa5a18e086f",
+   "revised_sha256": "effe6b07d6a6138d6fdff2f4b486fe7679969842137677fc7eb16bfbe91da4d8",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/268ah",
+   "file": "contrib/cells/rept/268ah.yaml",
+   "previous_sha256": "099c221d3085946e12a5bd275f37cb1223a504bb210e60b55814c4d3188e5c7d",
+   "revised_sha256": "6cce370c694c6020b437edf4d9fe26dc7d9bdc8d46109c36dba2c91983ae367a",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/295ah",
+   "file": "contrib/cells/rept/295ah.yaml",
+   "previous_sha256": "417090e033a38091b2ade0d013821b3b8de69f07f76f4bae9c54aafb3b9b3222",
+   "revised_sha256": "c405e25d8daff194e77ecb5539fdeb5a7f20a3297b2aa318fc45ed8e3d163a06",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/324ah",
+   "file": "contrib/cells/rept/324ah.yaml",
+   "previous_sha256": "dcd7c41ff0033609020592857cd0c6066d8e096f9d02814bcc1cee10508f49ca",
+   "revised_sha256": "0f6ad8f7030d031ae22f02be84a9ef51b9683e9b1fcc8c8a70704a23ea130d3c",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/340ah",
+   "file": "contrib/cells/rept/340ah.yaml",
+   "previous_sha256": "79293b595515d18983815447ac61d9b3d0a3b3d99160867ffd77449524e14916",
+   "revised_sha256": "42ddab2de75f685900e5a0c98d6d26715b571e3e7488e7cdef0ff89c0d9e8095",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/54ah",
+   "file": "contrib/cells/rept/54ah.yaml",
+   "previous_sha256": "b593b2ea7077b1d957ad7d6b3f8fdc3bc14facaa9f3c224ef27d4a7e8b27e4be",
+   "revised_sha256": "4b9ae76f39180854e9ef30b7af43e53c9562ff5fd976e22499a5d20d21999b85",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/65ah",
+   "file": "contrib/cells/rept/65ah.yaml",
+   "previous_sha256": "ccfeff227358af7778726eb40d20ab240fb082f658fccf3d7a77804eb5484821",
+   "revised_sha256": "1dbae9fe86964ee5cb255b88587462cc0b027d5e160877963b6c3e2045a6382f",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  },
+  {
+   "uid": "cell/rept/79ah",
+   "file": "contrib/cells/rept/79ah.yaml",
+   "previous_sha256": "5a7b5115a0f434875aa24afcb756ca90bba482d7c56d4626e61d78e78f5e4ea1",
+   "revised_sha256": "e1cadeb69ec1e10df20e5e94a9b55d7b412675ebfb01d064684a7fc04903079f",
+   "fields": [
+    "observations",
+    "source.note"
+   ],
+   "change": "max_continuous_charge_rate: unit C (coulomb) -> C-rate"
+  }
+ ]
+}

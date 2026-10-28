@@ -66,6 +66,38 @@ class PartnerSodiumCells(unittest.TestCase):
             self.assertIsNone(email.search(text), path.name)
             self.assertIsNone(phone.search(text.replace(d["source"]["sha256"], "")), path.name)
 
+    def test_no_accepted_record_stores_a_c_rate_as_coulombs(self):
+        out = subprocess.run([sys.executable, str(ROOT / "tools" / "migrate_c_rate_units.py"), "--check"],
+                             capture_output=True, text=True)
+        self.assertEqual(out.returncode, 0, out.stdout)
+
+    def test_validator_refuses_unit_c_on_a_current(self):
+        import tempfile
+        import validate_contrib as vc
+        doc = next(records())[1]
+        bad = json.loads(json.dumps(doc))
+        bad["observations"].append({"quantity": "max_continuous_charge_current", "value": 2, "unit": "C",
+                                    "conditions": {"unstated": ["temperature_c"]},
+                                    "locator": {"quote": "Fast charging 2C (test)"}})
+        schema = json.loads((ROOT / "json-schema" / "cell-contribution.schema.json").read_text())
+        reg = json.loads((ROOT / "json-schema" / "quantity-registry.json").read_text())
+        with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False) as fh:
+            json.dump(bad, fh)
+        errs = vc.check(fh.name, schema, reg)
+        Path(fh.name).unlink()
+        self.assertTrue(any("is the coulomb" in e for e in errs), errs)
+
+    def test_shared_rule_moves_a_c_rate_and_keeps_its_evidence(self):
+        import c_rates
+        o = {"quantity": "standard_charge_current", "value": 0.5, "unit": "C",
+             "locator": {"quote": "Standard charge 0.5C"}}
+        self.assertTrue(c_rates.normalize(o))
+        self.assertEqual((o["quantity"], o["value"], o["unit"]), ("standard_charge_rate", 0.5, "C-rate"))
+        self.assertEqual(o["locator"]["quote"], "Standard charge 0.5C")
+        self.assertFalse(c_rates.normalize(o))
+        amps = {"quantity": "standard_charge_current", "value": 2, "unit": "A", "locator": {"quote": "Charge 2 A (x)"}}
+        self.assertFalse(c_rates.normalize(amps))
+
     def test_registry_and_schema_know_the_rate_quantities(self):
         reg = json.loads((ROOT / "json-schema" / "quantity-registry.json").read_text())
         sql = (ROOT / "schema" / "138_c_rate_quantities.sql").read_text()

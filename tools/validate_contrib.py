@@ -19,6 +19,8 @@ dumped by tools/dump_quantities.py.
 """
 from __future__ import annotations
 import argparse, json, os, sys, glob
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import c_rates  # noqa: E402
 
 try:
     import yaml
@@ -67,6 +69,13 @@ def check(path: str, schema: dict, registry: dict, *, validator=None) -> list[st
         if q not in registry:
             errs.append(f"{where}: unknown quantity")
             continue
+
+        # "C" is the coulomb in the unit table. A printed C-rate stored here
+        # loads as a charge, not a current (2.2C became 2.2 coulombs).
+        if c_rates.is_misfiled(obs):
+            errs.append(f"{where}: unit 'C' is the coulomb, not a C-rate. Record a printed "
+                        f"C-rate as '{c_rates.TWIN[q]}' with unit 'C-rate'; do not convert it "
+                        f"to amperes unless the source does.")
 
         cond = obs.get("conditions") or {}
         unstated = set(cond.get("unstated") or [])
