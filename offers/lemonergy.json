@@ -1,0 +1,212 @@
+{
+ "schema_version": 1,
+ "seller": {
+  "name": "Lemonergy",
+  "url": "https://lemonergy.com/",
+  "contact": "mailto:info@lemonergy.com"
+ },
+ "statement": "Lemonergy supplies these products through a sourcing partner. Availability is Lemonergy's own commercial statement, not a fact from any datasheet. It is kept here, outside the product records, so it never changes a record's values, its evidence or its position in any sort or filter the reader did not choose.",
+ "stated_by": "Repository owner, 2026-10-28",
+ "offers": [
+  {
+   "uid": "cell/maker-not-stated/jnb13420144",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnb14700230",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnb20420144",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnb27420144",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnb57420162",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc120420",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc18650p",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc26650h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc26650p",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc27175204",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32140h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32140p",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32700h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32700p",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32700s",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc40140p",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc40160h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc46145h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc60145h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc60145l",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc60145p",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc66160h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc66160p",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp1814867-5.5hp",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp27148140",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp27175204",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp50160118c",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp50160118h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp50160118l",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp50160118p",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp54173207h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp54173207l",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp72173208c",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp73174207h",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/jsp3636245",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/nacp51160120-216wh",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/nacr46145-40.3wh-3.1v",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/nfpp54173204-285wh",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/nfpp71173207-me170",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  },
+  {
+   "uid": "cell/maker-not-stated/nfpp71174207-he175",
+   "status": "in_stock",
+   "as_of": "2026-10-28"
+  }
+ ]
+}

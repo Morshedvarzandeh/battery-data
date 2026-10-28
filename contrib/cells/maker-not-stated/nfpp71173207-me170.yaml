@@ -1,0 +1,403 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/maker-not-stated/nfpp71173207-me170",
+    "kind": "cell",
+    "manufacturer": "Maker not stated",
+    "model_number": "NFPP71173207-ME170",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/partner-datasheet-nfpp71173207-me170",
+    "kind": "datasheet",
+    "title": "Sodium-ion cell datasheet NFPP71173207-ME170 (partner supplier)",
+    "retrieved_at": "2026-10-28",
+    "sha256": "88db7a1397d746f5ee5561c90dac364013dba6af5b5f5e45396a2083038d320a",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. One-page supplier datasheet supplied to Lemonergy by a commercial partner on 2026-10-28. The document is issued by a distributor, not by the cell producer, and does not name the producer; the manufacturer is therefore recorded as not stated. The model number is the distributor's designation. The issuing distributor's company name and its contact person, e-mail address and telephone number appear on the document and are deliberately not recorded, at the repository owner's instruction. The document is identified by its SHA-256 only and has no public URL. Cathode family is read from the NFPP prefix of the model designation. Charge and discharge ratings are printed as constant-power rates (P) with the corresponding watts; no current is printed. Cycle life is printed at 0.5P, room temperature (no number given), 100% DOD and a 300 kgf fixture force, to 80% and to 70% of an unstated quantity. The drawing is the same as for the 175 Ah model: thickness drawn at 300 kgf ± 20 kgf; heights H2 207.10 and H1 204.20 ± 0.5 mm. Held: '1P Discharge Energy Retention ≥95%' (reference and test not stated). Not recorded: the 'Special at 0V: Shippable and Rechargeable' claim (a qualitative statement, no voltage quantity fits it). The cycle-life graph is not digitised."
+  },
+  "chemistry": {
+    "designation": "Sodium-ion",
+    "cathode_text": "NFPP",
+    "locator": {
+      "page": 1,
+      "section": "Title",
+      "quote": "Rechargeable Sodium ion Battery Product Datasheet NFPP71173207-ME170"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 170,
+      "unit": "Ah",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Nominal Capacity 170Ah 484.5Wh"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "energy",
+      "value": 484.5,
+      "unit": "Wh",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Nominal Capacity 170Ah 484.5Wh"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ],
+        "extra": {
+          "value_basis": "equals 170 Ah × 2.85 V as printed; not stated to be a measured discharge energy"
+        }
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 2.85,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Nominal Voltage 2.85V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "discharge_cutoff_voltage",
+      "value": 1.5,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Voltage Range 1.5V~3.45V"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "extra": {
+          "source_label": "Voltage Range"
+        }
+      }
+    },
+    {
+      "quantity": "charge_cutoff_voltage",
+      "value": 3.45,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Voltage Range 1.5V~3.45V"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "source_label": "Voltage Range"
+        }
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 103,
+      "unit": "Wh/kg",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Energy Density ≥103Wh/Kg"
+      },
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ],
+        "extra": {
+          "source_comparator": "≥"
+        }
+      }
+    },
+    {
+      "quantity": "rated_power",
+      "value": 484.5,
+      "unit": "W",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Max. Cont. Charge Rate 1P/484.5W"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "boundary": "cell",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "rate_label": "1P",
+          "continuity": "continuous"
+        }
+      }
+    },
+    {
+      "quantity": "rated_power",
+      "value": 484.5,
+      "unit": "W",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Max. Discharge Rate 1P/484.5W"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "boundary": "cell",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "rate_label": "1P",
+          "continuity": "not stated"
+        }
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 0.3,
+      "unit": "mohm",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Internal Resistance AC≤0.3mΩ at 1KHz 40%SOC"
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "conditions": {
+        "frequency_hz": 1000,
+        "soc_pct": 40,
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "source_comparator": "≤"
+        }
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 71.7,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Dimension T 71.7±0.5mm x W 174.2±0.5mm x H 207.1±0.5mm"
+      },
+      "conditions": {
+        "extra": {
+          "fixture_force": "drawn at 300 kgf ± 20 kgf"
+        }
+      },
+      "tol_plus": 0.5,
+      "tol_minus": 0.5
+    },
+    {
+      "quantity": "width",
+      "value": 174.2,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Dimension T 71.7±0.5mm x W 174.2±0.5mm x H 207.1±0.5mm"
+      },
+      "tol_plus": 0.5,
+      "tol_minus": 0.5
+    },
+    {
+      "quantity": "height",
+      "value": 207.1,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Dimension T 71.7±0.5mm x W 174.2±0.5mm x H 207.1±0.5mm"
+      },
+      "conditions": {
+        "extra": {
+          "drawing_label": "H2: 207.10±0.5mm"
+        }
+      },
+      "tol_plus": 0.5,
+      "tol_minus": 0.5
+    },
+    {
+      "quantity": "height",
+      "value": 204.2,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Dimension drawing",
+        "quote": "H2: 207.10±0.5mm H1: 204.20±0.5mm"
+      },
+      "conditions": {
+        "extra": {
+          "drawing_label": "H1: 204.20±0.5mm",
+          "note": "second drawn height; which features each height includes is not stated"
+        }
+      },
+      "tol_plus": 0.5,
+      "tol_minus": 0.5
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 6000,
+      "unit": "cycles",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Cycle Life @0.5P RT 100%DOD 300kgf ≥6000 Times to 80%"
+      },
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "conditions": {
+        "dod_pct": 100,
+        "rate_value": 0.5,
+        "rate_unit": "P",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "source_comparator": "≥",
+          "temperature_text": "RT",
+          "fixture_force": "300 kgf",
+          "end_of_life_criterion": "80% (of an unstated quantity)"
+        }
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 10000,
+      "unit": "cycles",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Cycle Life @0.5P RT 100%DOD 300kgf ≥10000 Times to 70%"
+      },
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "conditions": {
+        "dod_pct": 100,
+        "rate_value": 0.5,
+        "rate_unit": "P",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "source_comparator": "≥",
+          "temperature_text": "RT",
+          "fixture_force": "300 kgf",
+          "end_of_life_criterion": "70% (of an unstated quantity)"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 4.65,
+      "unit": "kg",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Approx. Weight 4.65kg"
+      },
+      "statistic": "typical",
+      "conditions": {
+        "extra": {
+          "source_label": "Approx. Weight"
+        }
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics / Operating Temperature",
+        "quote": "Charge: 0℃~60℃"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics / Operating Temperature",
+        "quote": "Charge: 0℃~60℃"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics / Operating Temperature",
+        "quote": "Disharge: -40℃~60℃"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics / Operating Temperature",
+        "quote": "Disharge: -40℃~60℃"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    }
+  ]
+}

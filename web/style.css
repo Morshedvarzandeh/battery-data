@@ -176,6 +176,13 @@ td.dash, .dash { color: var(--line-strong); }
 .pill { display: inline-block; font-size: 11px; line-height: 1.4; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); background: var(--paper); font-weight: 400; text-transform: none; letter-spacing: 0; white-space: nowrap; }
 .pill.src { border-style: dashed; }
 .pill.warn { border-color: var(--missing); color: var(--missing); }
+/* A seller's stock line. Blue like every other action: availability is an
+   offer to act on, not a quality of the cell, so it gets no colour of its own. */
+td.model small.stock { color: var(--accent); font-weight: 700; font-size: 11.5px; }
+.buy { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; justify-content: space-between; margin: 14px 18px 6px; padding: 10px 12px; border: 1px solid var(--accent-edge); background: var(--accent-soft); border-radius: var(--r); }
+.buy b { display: block; font-size: 13.5px; color: var(--ink); }
+.buy small { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+.buy .btn { flex: none; text-decoration: none; }
 .more { display: flex; justify-content: center; padding: 14px; }
 .empty { padding: 40px 20px; text-align: center; color: var(--muted); }
 

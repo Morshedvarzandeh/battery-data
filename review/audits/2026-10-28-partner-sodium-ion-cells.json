@@ -1,0 +1,647 @@
+{
+ "schema_version": 1,
+ "reviewed_at": "2026-10-28",
+ "reviewer": "Claude, acting under the repository owner's instruction in chat, with an independent value check by a separate agent against the seven PDFs",
+ "authorization": [
+  "Owner, in chat, 2026-10-28 (paraphrased so that no partner name appears): add these sodium-ion cells; record the cells only, and the producer only if a document states it; leave out the supplier's contact person.",
+  "Owner: the distributor that issued the documents is not the producer.",
+  "Owner: Lemonergy has found a partner and can sell these cells now; they are in stock.",
+  "Owner, answering: producer - name it only if clear, otherwise not; partner name - hide it; availability - badge and filter on the finder."
+ ],
+ "scope": "40 sodium-ion cells from 7 partner-supplied documents (one 35-row spreadsheet, six datasheets; the spreadsheet row JNP1814867 is filed once from its datasheet). Adds the C-rate unit and four C-rate quantities, the offers/ stock list and its finder display. No existing accepted record is changed.",
+ "identity_policy": {
+  "manufacturer": "Maker not stated (no document names the producer; the issuer is a distributor)",
+  "withheld": "Distributor company name, contact person, e-mail and telephone are not recorded anywhere in the repository",
+  "duplicates": "tools/check_duplicates.py: zero exact, zero probable, no new review collisions"
+ },
+ "sources": {
+  "src/partner-sodium-ion-cell-spreadsheet-2026h2": {
+   "kind": "distributor_listing",
+   "sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "retrieved_at": "2026-10-28",
+   "document_date": "2026",
+   "source_body_committed": false,
+   "url": null
+  },
+  "src/partner-datasheet-jnp1814867-5.5hp": {
+   "kind": "datasheet",
+   "sha256": "0ccff58eeb656f1989b687720140b1af3e18bd1797cf9ef23de8f10203c6eee9",
+   "retrieved_at": "2026-10-28",
+   "document_date": null,
+   "source_body_committed": false,
+   "url": null
+  },
+  "src/partner-datasheet-nacp51160120-216wh": {
+   "kind": "datasheet",
+   "sha256": "ee868e9d419ff1dcc4ba4c30f349dd46f394b096c31974ea1b68ba929d130f9e",
+   "retrieved_at": "2026-10-28",
+   "document_date": null,
+   "source_body_committed": false,
+   "url": null
+  },
+  "src/partner-datasheet-nacr46145-40.3wh-3.1v": {
+   "kind": "datasheet",
+   "sha256": "3a5f9e5942ff999aa6f4dae4bd6964307915ae1f8c9f22cc8fe3012dc6039c6a",
+   "retrieved_at": "2026-10-28",
+   "document_date": null,
+   "source_body_committed": false,
+   "url": null
+  },
+  "src/partner-datasheet-nfpp54173204-285wh": {
+   "kind": "datasheet",
+   "sha256": "29b16475385cd2c4c76fb45038b668d40139d2dcc3250066934fb9a245915f38",
+   "retrieved_at": "2026-10-28",
+   "document_date": null,
+   "source_body_committed": false,
+   "url": null
+  },
+  "src/partner-datasheet-nfpp71173207-me170": {
+   "kind": "datasheet",
+   "sha256": "88db7a1397d746f5ee5561c90dac364013dba6af5b5f5e45396a2083038d320a",
+   "retrieved_at": "2026-10-28",
+   "document_date": null,
+   "source_body_committed": false,
+   "url": null
+  },
+  "src/partner-datasheet-nfpp71174207-he175": {
+   "kind": "datasheet",
+   "sha256": "268bcb8e3914220930119bb907b837666ebc9bd7da0278b5b42565e7a3f24724",
+   "retrieved_at": "2026-10-28",
+   "document_date": null,
+   "source_body_committed": false,
+   "url": null
+  }
+ },
+ "decisions": [
+  {
+   "uid": "cell/maker-not-stated/jnb13420144",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnb13420144.yaml",
+   "accepted_document_sha256": "35c712fcc8fbaf5d7ac5bff459e0bf8fe40a16601db7996a2a93d891beed941b",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnb14700230",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnb14700230.yaml",
+   "accepted_document_sha256": "4e4f9e5ef4f254bb4247c323eae3be216c4dac8682a7cd859f527ea39c407fd9",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnb20420144",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnb20420144.yaml",
+   "accepted_document_sha256": "d2eca5545df00020176cc470796d2c66a5efc0c8616b7c2f1d7826934b405ffe",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnb27420144",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnb27420144.yaml",
+   "accepted_document_sha256": "587f71585030d80fa96e1148caa52a7f5e088e187829052b8ee4915b42b71772",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnb57420162",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnb57420162.yaml",
+   "accepted_document_sha256": "8f78f69757c11c26683ba7d9104a8bfdbff0c14c04ec171f5edd1babfc4c4b6d",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc120420",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc120420.yaml",
+   "accepted_document_sha256": "b18447f2da33dd8139f77fcb0abcf33973d8e3bbbcf8bf4bb3d1adce2e89460b",
+   "observation_count": 15,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc18650p",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc18650p.yaml",
+   "accepted_document_sha256": "90033c6dc5bd63871c4880fbc021c4e1d6de01965c5cc299840af6e32b209954",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc26650h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc26650h.yaml",
+   "accepted_document_sha256": "29c9d6f40da48a393e8f77d936941955dadeee864f3e4240333bb14cd91c6a3f",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc26650p",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc26650p.yaml",
+   "accepted_document_sha256": "4c52cdb9f31bec1de3b19129508e8d8658b418af633a5108a205c97be59a4afc",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc27175204",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc27175204.yaml",
+   "accepted_document_sha256": "e41db9c545c173a6c745bb9d8feec27b5de16d1cf5158e35f2eda395dfd25264",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32140h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc32140h.yaml",
+   "accepted_document_sha256": "86236396853251e253ea4872349b2e49ccbbf2f13590375c97a66628a695df61",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32140p",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc32140p.yaml",
+   "accepted_document_sha256": "1b11aa3d694a38d34e19b3cc8e67d44a694fa3be6ed5bbd1b99bb562505f0762",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32700h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc32700h.yaml",
+   "accepted_document_sha256": "58cf089cf9a2d10c02eb0f8c03e8bbdc2ad49be9c7fb21eed8f4927c8aee112f",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32700p",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc32700p.yaml",
+   "accepted_document_sha256": "84cc3b2113e69470bd9fa6b83a56ca0571f27250bb1c68c59a8e6050e113c6ac",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc32700s",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc32700s.yaml",
+   "accepted_document_sha256": "ffe969f7051b68c2756a8e6e5386e5ca1e832c5f21c5359142f5c81710dccaf9",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc40140p",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc40140p.yaml",
+   "accepted_document_sha256": "f717d38727cb41d31c0946e8685f8305b96e077d8937276f25097baaf5d89ad5",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc40160h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc40160h.yaml",
+   "accepted_document_sha256": "e80d011c10f8dea9df930faec6f71ea26d3f6eca8365a2beb7e5ad546de44c9c",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc46145h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc46145h.yaml",
+   "accepted_document_sha256": "f131f0d9c154c08d9f9704f9d1ed3e5592be99745aab37d048234ea07914e9e3",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc60145h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc60145h.yaml",
+   "accepted_document_sha256": "07d36dc32785f755c9b021b33f611b424644cb220f576887af6c822a113b7afe",
+   "observation_count": 15,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc60145l",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc60145l.yaml",
+   "accepted_document_sha256": "03de6870ba0ce48ba26d1b00d6864349e21a2dadba335343683e4e7fe9b24df9",
+   "observation_count": 15,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc60145p",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc60145p.yaml",
+   "accepted_document_sha256": "bdb55fa1e71dcaded721071e9ee6bb28eeb31892bc95d79bb8cde33630e086c9",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc66160h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc66160h.yaml",
+   "accepted_document_sha256": "192d1e530b3c533a627218c15d92b9bdf0da067fad7fa7840fffedf1ba89f965",
+   "observation_count": 15,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnc66160p",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnc66160p.yaml",
+   "accepted_document_sha256": "3a6a9b4e83b66d9f9e7aa587fa685b52627b8ab5b4185de52c63e37e09d47c20",
+   "observation_count": 15,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp1814867-5.5hp",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp1814867-5.5hp.yaml",
+   "accepted_document_sha256": "e0a6877920d3d77792452c50cf973949aa24e93a25946feca5d641098bc112c1",
+   "observation_count": 22,
+   "source_sha256": "0ccff58eeb656f1989b687720140b1af3e18bd1797cf9ef23de8f10203c6eee9",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Single-cell datasheet transcribed by hand; disclosed inconsistencies are kept as printed."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp27148140",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp27148140.yaml",
+   "accepted_document_sha256": "330561acf82b6a56553978a584e8b3c8c4c0394a32b5bfddafc71195f08f1059",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp27175204",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp27175204.yaml",
+   "accepted_document_sha256": "5303632c9ca57b022c1f59a5e59eadaf7a2523b6bf29da65b8b9f341e58a4b30",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp50160118c",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp50160118c.yaml",
+   "accepted_document_sha256": "87e67e4bdeddf5df54efe1b555d69dead29f38cbd1d3dec3c33ba74cdfae2e98",
+   "observation_count": 18,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp50160118h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp50160118h.yaml",
+   "accepted_document_sha256": "c3a3c18d6137c25db92823da5521d425dfa015538d7b1486e7a9915e366b8219",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp50160118l",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp50160118l.yaml",
+   "accepted_document_sha256": "e8fa2e3cee6d2075895891f0ec99e688e7dfd8068ac5d9f5699728e10fb3a42a",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp50160118p",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp50160118p.yaml",
+   "accepted_document_sha256": "1b6553add69d9f57b05b5e9a048eeda16f9b6a0ed2513fe5d3d3ae1b0bd9230f",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp54173207h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp54173207h.yaml",
+   "accepted_document_sha256": "f4c09125d2a3806735ea9a8179e4ac117389698d9214eebee745df2ce3c9446e",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp54173207l",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp54173207l.yaml",
+   "accepted_document_sha256": "5d3416ea309c8bb1dae524aa7fa2c239bf161a10c21edb7b738f830695934e76",
+   "observation_count": 19,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp72173208c",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp72173208c.yaml",
+   "accepted_document_sha256": "ff9cd45dfc962296100868609ce3626236483a6f579ca2b4dc4ae40ef4e3e2c2",
+   "observation_count": 17,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jnp73174207h",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jnp73174207h.yaml",
+   "accepted_document_sha256": "d6229abadbb259f0a5a10729644d9a3c5799135a01aa380443e42b88a6712f69",
+   "observation_count": 16,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/jsp3636245",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/jsp3636245.yaml",
+   "accepted_document_sha256": "17226af06ee36b9ae0e119d5926a772ca73b5c978ae6a777fe63e1c402d9a85c",
+   "observation_count": 13,
+   "source_sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Spreadsheet row transcribed by a deterministic parser from the printed cell text (tools/import_partner_sodium_cells.py)."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/nacp51160120-216wh",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/nacp51160120-216wh.yaml",
+   "accepted_document_sha256": "a2af4839b4e876672a042cd48d0c45f841c38aa7ec9db6841910eb2f52fafd4a",
+   "observation_count": 22,
+   "source_sha256": "ee868e9d419ff1dcc4ba4c30f349dd46f394b096c31974ea1b68ba929d130f9e",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Single-cell datasheet transcribed by hand; disclosed inconsistencies are kept as printed."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/nacr46145-40.3wh-3.1v",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/nacr46145-40.3wh-3.1v.yaml",
+   "accepted_document_sha256": "44ca777bce659621273d75046ba9fd9e857a5dd5c9aa7efa4654676a83b307fb",
+   "observation_count": 19,
+   "source_sha256": "3a5f9e5942ff999aa6f4dae4bd6964307915ae1f8c9f22cc8fe3012dc6039c6a",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Single-cell datasheet transcribed by hand; disclosed inconsistencies are kept as printed."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/nfpp54173204-285wh",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/nfpp54173204-285wh.yaml",
+   "accepted_document_sha256": "0a6dbda4390e2b70d02237a4b39d469482922e9c8551e5ed531ddcd61da6895d",
+   "observation_count": 24,
+   "source_sha256": "29b16475385cd2c4c76fb45038b668d40139d2dcc3250066934fb9a245915f38",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Single-cell datasheet transcribed by hand; disclosed inconsistencies are kept as printed."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/nfpp71173207-me170",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/nfpp71173207-me170.yaml",
+   "accepted_document_sha256": "1e5ae4c91bdd10020fe8b63abe2657c8350bc512220a75f2276bf618433f090f",
+   "observation_count": 20,
+   "source_sha256": "88db7a1397d746f5ee5561c90dac364013dba6af5b5f5e45396a2083038d320a",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Single-cell datasheet transcribed by hand; disclosed inconsistencies are kept as printed."
+   ]
+  },
+  {
+   "uid": "cell/maker-not-stated/nfpp71174207-he175",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/maker-not-stated/nfpp71174207-he175.yaml",
+   "accepted_document_sha256": "fdab4e2e12ceb51197696da42c5e47d2cdc1db95f9c09cc3a7037bba1612cc1f",
+   "observation_count": 20,
+   "source_sha256": "268bcb8e3914220930119bb907b837666ebc9bd7da0278b5b42565e7a3f24724",
+   "reasons": [
+    "Every observation cites the supplied document's own text; conditions the document omits are declared unstated.",
+    "The document names no producer, so the manufacturer is recorded as not stated rather than inferred from the distributor.",
+    "Single-cell datasheet transcribed by hand; disclosed inconsistencies are kept as printed."
+   ]
+  }
+ ],
+ "held_fields": [
+  "pulse_cycle_counts_as_cycle_life",
+  "peak_charge_current (no quantity; 40C/220A and 3C/300A printed)",
+  "1P_discharge_energy_retention (reference not stated)",
+  "zero_volt_shipping_claim (qualitative)",
+  "nail_penetration_claim (no test standard named)",
+  "high_rate_temperature_tables (NaCR46145; module voltages mixed in)",
+  "cycle_life_and_temperature_rise_graphs (not digitised)",
+  "inconsistent_300A_continuous_charge (NFPP54173204)",
+  "chemistry NVP for JNP1814867-5.5HP (printed only on the spreadsheet, not on the record's own source)"
+ ],
+ "validation": {
+  "status": "passed",
+  "checked_at": "2026-10-28",
+  "checks": [
+   {
+    "command": "python3 tools/validate_contrib.py contrib/",
+    "result": "3673 files, zero errors"
+   },
+   {
+    "command": "python3 tools/validate_review.py",
+    "result": "110 pending candidates, zero errors"
+   },
+   {
+    "command": "python3 tools/check_duplicates.py",
+    "result": "Zero exact, zero probable duplicates; the three pre-existing review collisions only"
+   },
+   {
+    "command": "python3 tools/import_partner_sodium_cells.py --check",
+    "result": "batch declaration current"
+   },
+   {
+    "command": "python3 tools/build_web_data.py --check",
+    "result": "3673 products build; 40 offered by 1 seller; zero offer or unit errors"
+   },
+   {
+    "command": "python3 tools/load_contrib.py (fresh Postgres 16)",
+    "result": "3673 files loaded, 20420 observations promoted, zero rejected; C-rate values reach value_si as 1/s"
+   },
+   {
+    "command": "python -m unittest discover -s tests; node tests/test_web_observations.cjs",
+    "result": "121 Python tests and the web tests pass"
+   },
+   {
+    "command": "independent agent check against the seven PDFs",
+    "result": "All 40 records checked; zero wrong values. Three gaps it found were fixed before acceptance: a misread drawing figure in one note, the second drawn height on the 170 Ah record, the drawing dimensions on the 285 Wh record."
+   }
+  ]
+ },
+ "observation_total": 680
+}

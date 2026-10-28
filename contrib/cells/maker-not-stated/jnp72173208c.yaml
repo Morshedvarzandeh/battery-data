@@ -1,0 +1,335 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/maker-not-stated/jnp72173208c",
+    "kind": "cell",
+    "manufacturer": "Maker not stated",
+    "model_number": "JNP72173208C",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/partner-sodium-ion-cell-spreadsheet-2026h2",
+    "kind": "distributor_listing",
+    "title": "Sodium-ion battery cell spreadsheet 2026H2 (partner supplier list)",
+    "revision": "2026H2",
+    "document_date": "2026",
+    "retrieved_at": "2026-10-28",
+    "sha256": "83abdfa4dfa77e5bfb41d79a1118e8d2653b1d48f1702728c6c5c36307ab7e17",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. One-page supplier cell spreadsheet supplied to Lemonergy by a commercial partner on 2026-10-28. The document is issued by a distributor, not by the cell producer, and does not name the producer; the manufacturer is therefore recorded as not stated. The model number is the distributor's designation. The issuing distributor's company name and its contact person, e-mail address and telephone number appear on the document and are deliberately not recorded, at the repository owner's instruction. The document is identified by its SHA-256 only and has no public URL. Quotes are normalized table transcriptions: row model, column header, then the cell text as printed. The sheet states no test conditions. Capacity rate, temperature and cut-off; AC resistance frequency, SOC and temperature; cycle-life temperature, depth of discharge and end-of-life criterion are all unstated. C-rates are kept as printed and never converted to amperes, because the sheet does not state the capacity they refer to. 'cont' and 'pulse' labels are kept; no pulse duration is printed. A Charge Rate printed without 'std' or 'max' is recorded as a maximum charge rate with that ambiguity noted on the value. 'Voltage Range' is recorded as the discharge and charge cut-off voltages. Pulse-cycle counts are kept as a qualifier on the cycle-life value, not as full-cycle life. The sheet itself notes that the production schedule is not fixed and that stock and lead time should be checked; Lemonergy's own stock statement is kept separately in offers/lemonergy.json. The model code reads 208 but the printed height is 207 mm; the printed value is kept. Chemistry is printed as NCO and is not expanded. Shape is printed as Prismatic; hard-case construction is the schema's only prismatic format."
+  },
+  "chemistry": {
+    "designation": "Sodium-ion",
+    "locator": {
+      "page": 1,
+      "section": "Title and Chemistry column",
+      "quote": "Sodium ion Battery Cell Spreadsheet 2026H2 · JNP72173208C · Chemistry: NCO"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 210,
+      "unit": "Ah",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Capacity",
+        "quote": "JNP72173208C · Capacity: 210 Ah"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 2.9,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Nominal Voltage",
+        "quote": "JNP72173208C · Nominal Voltage: 2.9 V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "discharge_cutoff_voltage",
+      "value": 2,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Voltage Range",
+        "quote": "JNP72173208C · Voltage Range: 2.0-3.4 V"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "extra": {
+          "source_label": "Voltage Range"
+        }
+      }
+    },
+    {
+      "quantity": "charge_cutoff_voltage",
+      "value": 3.4,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Voltage Range",
+        "quote": "JNP72173208C · Voltage Range: 2.0-3.4 V"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "source_label": "Voltage Range"
+        }
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 174.6,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Dimensions",
+        "quote": "JNP72173208C · Dimensions: 174.6×72×207 mm"
+      },
+      "conditions": {
+        "extra": {
+          "axis_basis": "The sheet prints dimensions without axis labels. Axes are matched to the thickness-width-height digits of the model code, the order the same supplier's datasheets label (for example 18-148-67 mm, T x W x H)."
+        }
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 72,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Dimensions",
+        "quote": "JNP72173208C · Dimensions: 174.6×72×207 mm"
+      },
+      "conditions": {
+        "extra": {
+          "axis_basis": "The sheet prints dimensions without axis labels. Axes are matched to the thickness-width-height digits of the model code, the order the same supplier's datasheets label (for example 18-148-67 mm, T x W x H)."
+        }
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 207,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Dimensions",
+        "quote": "JNP72173208C · Dimensions: 174.6×72×207 mm"
+      },
+      "conditions": {
+        "extra": {
+          "axis_basis": "The sheet prints dimensions without axis labels. Axes are matched to the thickness-width-height digits of the model code, the order the same supplier's datasheets label (for example 18-148-67 mm, T x W x H)."
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 5100,
+      "unit": "g",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Weight",
+        "quote": "JNP72173208C · Weight: 5100 g"
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 1,
+      "unit": "mohm",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column ACIR",
+        "quote": "JNP72173208C · ACIR: ≤1 mΩ"
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "conditions": {
+        "unstated": [
+          "frequency_hz",
+          "soc_pct",
+          "temperature_c"
+        ],
+        "extra": {
+          "source_label": "ACIR",
+          "source_comparator": "≤"
+        }
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_rate",
+      "value": 0.5,
+      "unit": "C-rate",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Charge Rate",
+        "quote": "JNP72173208C · Charge Rate: 0.5C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "printed": "0.5C",
+          "source_column": "Charge Rate",
+          "rate_reference": "Supplier C-rate label; the capacity the C-rate refers to is not stated",
+          "label_scope": "printed without 'std' or 'max'; whether this is the standard or the maximum rate, and continuous or peak, is not stated"
+        }
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_rate",
+      "value": 0.5,
+      "unit": "C-rate",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Discharge Rate",
+        "quote": "JNP72173208C · Discharge Rate: 0.5C cont / 1C pulse"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "printed": "0.5C cont",
+          "source_column": "Discharge Rate",
+          "rate_reference": "Supplier C-rate label; the capacity the C-rate refers to is not stated"
+        }
+      }
+    },
+    {
+      "quantity": "max_pulse_discharge_rate",
+      "value": 1,
+      "unit": "C-rate",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Discharge Rate",
+        "quote": "JNP72173208C · Discharge Rate: 0.5C cont / 1C pulse"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "pulse_duration_s",
+          "temperature_c"
+        ],
+        "extra": {
+          "printed": "1C pulse",
+          "source_column": "Discharge Rate",
+          "rate_reference": "Supplier C-rate label; the capacity the C-rate refers to is not stated"
+        }
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 30000,
+      "unit": "cycles",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Cycle Life",
+        "quote": "JNP72173208C · Cycle Life: ≥30000 cycles (0.5C)"
+      },
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "conditions": {
+        "rate_value": 0.5,
+        "rate_unit": "C",
+        "rate_reference_source": "Supplier C-rate label; the capacity the C-rate refers to is not stated",
+        "unstated": [
+          "rate_reference_capacity_ah",
+          "temperature_c",
+          "dod_pct"
+        ],
+        "extra": {
+          "source_comparator": "≥",
+          "end_of_life_criterion": "not stated",
+          "rate_direction": "not stated"
+        }
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Temp Range (Charge/Discharge)",
+        "quote": "JNP72173208C · Temp Range (Charge/Discharge): Charge 0~40°C Discharge −40~60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 40,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Temp Range (Charge/Discharge)",
+        "quote": "JNP72173208C · Temp Range (Charge/Discharge): Charge 0~40°C Discharge −40~60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Temp Range (Charge/Discharge)",
+        "quote": "JNP72173208C · Temp Range (Charge/Discharge): Charge 0~40°C Discharge −40~60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell table, row JNP72173208C, column Temp Range (Charge/Discharge)",
+        "quote": "JNP72173208C · Temp Range (Charge/Discharge): Charge 0~40°C Discharge −40~60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    }
+  ]
+}

@@ -5,9 +5,13 @@
   "groups": {
     "Current and power": [
       "max_continuous_discharge_current",
+      "max_continuous_discharge_rate",
       "max_continuous_charge_current",
+      "max_continuous_charge_rate",
       "max_pulse_discharge_current",
+      "max_pulse_discharge_rate",
       "standard_charge_current",
+      "standard_charge_rate",
       "cv_cutoff_current",
       "peak_power",
       "rated_power",
