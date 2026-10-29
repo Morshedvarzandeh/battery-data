@@ -52,14 +52,19 @@ def _cycle(t0_clock, restart_relative, cycle_no, label):
     """
     One XJTU-shaped cycle, rests included as in the released files:
     1800 s charge at +4 A, 300 s rest, 3600 s discharge at -2 A, 300 s rest.
+    As in those files, relative time restarts at every step.
     """
     n_chg, n_rest, n_dch = 1800, 300, 3600
+    steps = [n_chg, n_rest, n_dch, n_rest]
     cur = np.concatenate([np.full(n_chg, 4.0), np.zeros(n_rest),
                           np.full(n_dch, -2.0), np.zeros(n_rest)])
     volt = np.concatenate([np.linspace(3.6, 4.2, n_chg), np.full(n_rest, 4.15),
                            np.linspace(4.2, 2.5, n_dch), np.full(n_rest, 2.9)])
     secs = np.arange(len(cur), dtype=float)
-    rel_min = secs / 60.0 if restart_relative else (secs + cycle_no * 10_000) / 60.0
+    if restart_relative:
+        rel_min = np.concatenate([np.arange(n, dtype=float) for n in steps]) / 60.0
+    else:
+        rel_min = (secs + cycle_no * 10_000) / 60.0
     if t0_clock is None:
         clock = np.zeros(len(secs))          # unparseable: forces the fallback
     else:
@@ -126,8 +131,11 @@ class XjtuConverterTest(unittest.TestCase):
             with self.subTest(restart_relative=restart):
                 r = self._convert(use_clock=False, restart_relative=restart)
                 self.assertTrue(r["time_basis"].startswith("relative_time_min"))
-                t = cyclers.normalise(r["csv"]).frame["test_time_second"].to_numpy()
+                nz = cyclers.normalise(r["csv"])
+                t = nz.frame["test_time_second"].to_numpy()
                 self.assertTrue((np.diff(t) > 0).all())
+                for c in cyclers.summarise_cycles(nz):
+                    self.assertAlmostEqual(c["discharge_capacity_ah"], 2.0, places=2)
 
     def test_sidecar_keeps_the_capacity_check_labels(self):
         r = self._convert(use_clock=True)

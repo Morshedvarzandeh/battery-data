@@ -39,10 +39,11 @@ Choices made on purpose:
 - The 'description' labels go to the sidecar so the 'test capacity'
   cycles of batches 4-6 stay identifiable. cyclers does not read them.
 - Test time is made continuous. Within a cycle, relative_time_min sets the
-  spacing (it is finer than the 1 s clock). If system_time parses, it
-  places each cycle's start, which keeps the rests between cycles.
+  spacing (it is finer than the 1 s clock), but it restarts at every step,
+  so each restart is bridged with the clock gap. If system_time parses, it
+  also places each cycle's start, which keeps the rests between cycles.
   Otherwise each cycle starts one sample after the previous one ended, and
-  the real gap is unknown. The sidecar says which happened.
+  the real gaps are unknown. The sidecar says which happened.
 - The file's own per-cycle charge and discharge capacities go into the
   sidecar next to each label, so integrated values can be checked.
 
@@ -103,29 +104,64 @@ _CLOCK_FORMATS = ("%Y-%m-%d,%H:%M:%S", "%Y-%m-%d %H:%M:%S", "%Y/%m/%d %H:%M:%S",
                   "%Y-%m-%dT%H:%M:%S")
 
 
-def _cycle_start_clock(raw):
+def _parse_clock(value):
     """
-    The first system_time of a cycle as seconds on the logger's clock, or
-    None if it does not parse. Only differences between cycle starts are
-    used: the time zone is not stated, so no absolute Unix time is written.
+    One system_time value as seconds on the logger's clock, or None if it
+    does not parse. Only differences are used: the time zone is not
+    stated, so no absolute Unix time is written.
     """
     import datetime as dt
     import numpy as np
-    arr = _vector(raw)
-    if arr.size == 0:
-        return None
-    first = arr[0]
-    if isinstance(first, (int, float, np.integer, np.floating)):
+    while isinstance(value, np.ndarray):
+        if value.size == 0:
+            return None
+        value = value.ravel()[0]
+    if isinstance(value, (int, float, np.integer, np.floating)):
         lo, hi = _DATENUM_RANGE
-        v = float(first)
+        v = float(value)
         return (v - _DATENUM_EPOCH) * 86400.0 if lo < v < hi else None
-    text = str(first).strip()
+    text = str(value).strip()
     for fmt in _CLOCK_FORMATS:
         try:
             return (dt.datetime.strptime(text, fmt) - dt.datetime(1970, 1, 1)).total_seconds()
         except ValueError:
             continue
     return None
+
+
+def _stamp(raw, k):
+    """The k-th system_time of a cycle, parsed, without unpacking the rest."""
+    import numpy as np
+    arr = np.asarray(raw).ravel()
+    return _parse_clock(arr[k]) if 0 <= k < arr.size else None
+
+
+def _within_cycle_seconds(rel_s, clock_raw, default_step):
+    """
+    Seconds since the cycle's first sample.
+
+    relative_time_min in the released files restarts at every step
+    (charge, rest, discharge, rest), not once per cycle. Taken as it is,
+    each restart is a negative time step, and integrating current over it
+    subtracts the length of the step before: about 0.17 Ah off every 1C
+    discharge in batch 1. Each restart is bridged with the wall-clock gap
+    between the two samples, or one sample interval if the clock does not
+    say.
+    """
+    import numpy as np
+    if rel_s.size == 0:
+        return rel_s, default_step
+    d = np.diff(rel_s)
+    forward = d[d >= 0]
+    step = default_step
+    if forward.size:
+        m = float(np.median(forward))
+        if np.isfinite(m) and m > 0:
+            step = m
+    for k in np.where(d < 0)[0]:
+        a, b = _stamp(clock_raw, k), _stamp(clock_raw, k + 1)
+        d[k] = (b - a) if (a is not None and b is not None and b - a > 0) else step
+    return np.concatenate([[0.0], np.cumsum(d)]), step
 
 
 def convert(path: str, out_dir: str) -> dict:
@@ -141,9 +177,9 @@ def convert(path: str, out_dir: str) -> dict:
 
     frames, labels = [], []
     # Within a cycle, relative_time_min is finer than the 1 s wall clock, so it
-    # sets the sample spacing. The clock only places each cycle's start, which
-    # keeps the rests between cycles.
-    starts = [_cycle_start_clock(_field(e, "system_time")) for e in cycles]
+    # sets the sample spacing. The clock places each cycle's start, which
+    # keeps the rests between cycles, and bridges the step restarts.
+    starts = [_stamp(_field(e, "system_time"), 0) for e in cycles]
     use_clock = all(s is not None for s in starts)
 
     last_end, step = None, 1.0
@@ -155,25 +191,14 @@ def convert(path: str, out_dir: str) -> dict:
             "cycle_count": i,
             "temperature_t1_celsius": _vector(_field(element, "temperature_C")).astype(float),
         })
-        if rel_s.size > 1:
-            d = float(np.nanmedian(np.diff(rel_s)))
-            if np.isfinite(d) and d > 0:
-                step = d
-        if use_clock and rel_s.size:
-            t = (starts[i - 1] - starts[0]) + (rel_s - rel_s[0])
-            # A cycle cannot start before the last one ended; the 1 s clock
-            # can say it does by a sample.
-            if last_end is not None and t[0] <= last_end:
-                t = t + (last_end - t[0] + step)
-        else:
-            # Relative time either restarts each cycle or runs on; only a
-            # restart needs shifting.
-            offset = 0.0
-            if last_end is not None and rel_s.size and rel_s[0] <= last_end:
-                offset = last_end - rel_s[0] + step
-            t = rel_s + offset
+        within, step = _within_cycle_seconds(rel_s, _field(element, "system_time"), step)
+        t = within + ((starts[i - 1] - starts[0]) if use_clock else 0.0)
+        # A cycle cannot start before the last one ended. Without a clock that
+        # is every cycle; with one, the 1 s resolution can say so by a sample.
+        if last_end is not None and t.size and t[0] <= last_end:
+            t = t + (last_end - t[0] + step)
         frame["test_time_second"] = t
-        if rel_s.size:
+        if t.size:
             last_end = float(t[-1])
         frames.append(frame)
         labels.append({"cycle_count": i, "description": _text(_field(element, "description")),
