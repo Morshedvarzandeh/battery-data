@@ -144,6 +144,19 @@ def _stamp(raw, k):
     return _parse_clock(arr[k]) if 0 <= k < arr.size else None
 
 
+def _cycle_start(clock_raw, within, look=50):
+    """
+    The cycle's start on the logger clock: the first timestamp that parses,
+    back-dated by its offset within the cycle. Some released cycles have a
+    missing (NaN) first timestamp and valid ones after it.
+    """
+    for k in range(min(look, len(within))):
+        c = _stamp(clock_raw, k)
+        if c is not None:
+            return c - float(within[k])
+    return None
+
+
 def _within_cycle_seconds(rel_s, clock_raw, default_step):
     """
     Seconds since the cycle's first sample.
@@ -198,19 +211,27 @@ def load_cell(path: str):
     # Within a cycle, relative_time_min is finer than the 1 s wall clock, so it
     # sets the sample spacing. The clock places each cycle's start, which
     # keeps the rests between cycles, and bridges the step restarts.
-    starts = [_stamp(_field(e, "system_time"), 0) for e in cycles]
+    withins, starts, step = [], [], 1.0
+    for e in cycles:
+        rel_s = _vector(_field(e, "relative_time_min")).astype(float) * 60.0
+        within, step = _within_cycle_seconds(rel_s, _field(e, "system_time"), step)
+        withins.append(within)
+        starts.append(_cycle_start(_field(e, "system_time"), within))
     use_clock = all(s is not None for s in starts)
 
     last_end, step = None, 1.0
     for i, element in enumerate(cycles, start=1):
-        rel_s = _vector(_field(element, "relative_time_min")).astype(float) * 60.0
         frame = pd.DataFrame({
             "voltage_volt": _vector(_field(element, "voltage_V")).astype(float),
             "current_ampere": _vector(_field(element, "current_A")).astype(float),
             "cycle_count": i,
             "temperature_t1_celsius": _vector(_field(element, "temperature_C")).astype(float),
         })
-        within, step = _within_cycle_seconds(rel_s, _field(element, "system_time"), step)
+        within = withins[i - 1]
+        if within.size > 1:
+            d = float(np.median(np.diff(within)))
+            if np.isfinite(d) and d > 0:
+                step = d
         t = within + ((starts[i - 1] - starts[0]) if use_clock else 0.0)
         # A cycle cannot start before the last one ended. Without a clock that
         # is every cycle; with one, the 1 s resolution can say so by a sample.

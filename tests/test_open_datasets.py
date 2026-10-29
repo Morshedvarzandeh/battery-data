@@ -83,12 +83,17 @@ SUMMARY_FIELDS = ["charge_capacity_Ah", "discharge_capacity_Ah", "charge_power_W
                   "charge_mean_voltage", "discharge_mean_voltage", "cycle_life", "description"]
 
 
-def _write_mat(path, use_clock, restart_relative=True):
+def _write_mat(path, use_clock, restart_relative=True, blank_first_stamp_of=None):
     labels = ["2C charge 1C discharge", "test capacity", "2C charge 1C discharge"]
     starts = ["2023-03-01 08:00:00", "2023-03-01 09:40:00", "2023-03-01 11:20:00"]
     data = np.zeros((1, 3), dtype=[(f, object) for f in xjtu.DATA_FIELDS])
     for i in range(3):
-        data[0, i] = _cycle(starts[i] if use_clock else None, restart_relative, i, labels[i])
+        cyc = list(_cycle(starts[i] if use_clock else None, restart_relative, i, labels[i]))
+        if i == blank_first_stamp_of:                 # as in R3_battery-7 of the release
+            clock = cyc[0].astype(object)
+            clock[0, 0] = np.nan
+            cyc[0] = clock
+        data[0, i] = tuple(cyc)
     # The released files' summary layout: per-cycle arrays, then cycle life
     # and a description in positions 8 and 9.
     summary = np.zeros((1, 1), dtype=[(f, object) for f in SUMMARY_FIELDS])
@@ -125,6 +130,14 @@ class XjtuConverterTest(unittest.TestCase):
         for c in cycles:
             self.assertAlmostEqual(c["charge_capacity_ah"], 2.0, places=2)
             self.assertAlmostEqual(c["discharge_capacity_ah"], 2.0, places=2)
+
+    def test_a_missing_first_timestamp_is_back_dated_from_the_next(self):
+        mat = os.path.join(self.tmp, "2C_battery-1.mat")
+        _write_mat(mat, use_clock=True, blank_first_stamp_of=1)
+        r = xjtu.convert(mat, os.path.join(self.tmp, "csv"))
+        self.assertTrue(r["time_basis"].startswith("system_time"))
+        t = cyclers.normalise(r["csv"]).frame["test_time_second"].to_numpy()
+        self.assertAlmostEqual(t[ROWS_PER_CYCLE], 6000.0)
 
     def test_relative_time_is_joined_when_the_clock_does_not_parse(self):
         for restart in (True, False):
