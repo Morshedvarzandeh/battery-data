@@ -64,6 +64,7 @@ class Classification(unittest.TestCase):
         self.assertFalse(cls.designable(TAX, "Lead-acid"))
         self.assertTrue(cls.designable(TAX, "Lithium-ion") and cls.designable(TAX, "Sodium-ion"))
         self.assertTrue(cls.designable(TAX, None), "an unstated technology is not excluded on a guess")
+        self.assertFalse(cls.designable(TAX, None, rechargeable=False), "a primary cell is not lithium-ion")
         self.assertEqual([t["name"] for t in TAX["technologies"] if t["design"]], ["Lithium-ion", "Sodium-ion"])
         broken = {**TAX, "technologies": [{k: v for k, v in t.items() if k != "design"} for t in TAX["technologies"]]}
         self.assertTrue(any("design: true or false" in e for e in cls.check(broken, [])))

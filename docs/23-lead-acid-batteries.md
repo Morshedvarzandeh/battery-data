@@ -43,7 +43,8 @@ marked:
   offer these records, *Open in Design* refuses them, and the discharge
   calculator does not list them.
 
-A record that states no technology is not excluded on a guess.
+A rechargeable record that states no technology is not excluded on a guess;
+a primary (non-rechargeable) one is, whatever its label says.
 
 ## Ratings lead-acid needs
 

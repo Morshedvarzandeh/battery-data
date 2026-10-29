@@ -12,8 +12,10 @@ one chemistry. Nothing here is written back into a record.
 
     classify(tax, designation, cathode, electrolyte)
         -> {"tech": ..., "variant": ..., "chem": ...}   (None where unstated)
-    designable(tax, tech) -> False only for a technology Lemonergy Design must
-        never be offered (everything but lithium-ion and sodium-ion)
+    designable(tax, tech, rechargeable) -> False for a technology Lemonergy
+        Design must never be offered (everything but lithium-ion and
+        sodium-ion), and for a non-rechargeable product whose technology is
+        not stated
     check(tax, records) -> list of problems; empty means every label is filed
 """
 from __future__ import annotations
@@ -69,16 +71,18 @@ def classify(tax: dict, designation: str | None, cathode: str | None = None,
     return {"tech": tech, "variant": variant, "chem": chem}
 
 
-def designable(tax: dict, tech: str | None) -> bool:
+def designable(tax: dict, tech: str | None, rechargeable: bool = True) -> bool:
     """May Lemonergy Design use a record of this technology?
 
     Design is for lithium-ion and sodium-ion. A technology says so with
     ``"design": true``; every other one -- lead-acid first of all -- is kept
-    for reference only. A record whose technology is not stated cannot be
-    shown to be one of the excluded ones, so it is not excluded here.
+    for reference only. A rechargeable record whose technology is not stated
+    cannot be shown to be one of the excluded ones, so it is not excluded; a
+    primary (non-rechargeable) one is neither lithium-ion nor sodium-ion
+    whatever its label.
     """
     if tech is None:
-        return True
+        return rechargeable
     for t in tax["technologies"]:
         if t["name"] == tech:
             return t.get("design") is True

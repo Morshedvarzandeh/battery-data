@@ -201,7 +201,8 @@ def product(doc: dict, path: str) -> dict:
         "class": klass,
         # Lemonergy Design takes lithium-ion and sodium-ion only; a lead-acid
         # (or any other non-design) record is listed but never handed over.
-        "design": classification.designable(taxonomy(), klass["tech"]),
+        "design": classification.designable(taxonomy(), klass["tech"],
+                                            p.get("is_rechargeable") is not False and p["kind"] != "primary_cell"),
         "source": {"title": src.get("title"), "ref": src.get("revision"),
                    "date": src.get("document_date"), "kind": src.get("kind"),
                    "url": src.get("url"), "sha256": src.get("sha256"),
