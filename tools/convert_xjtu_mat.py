@@ -38,10 +38,13 @@ Choices made on purpose:
   does not say where the sensor sits.
 - The 'description' labels go to the sidecar so the 'test capacity'
   cycles of batches 4-6 stay identifiable. cyclers does not read them.
-- Test time is made continuous. If system_time parses as a timestamp it
-  is used, which keeps the rests between cycles. Otherwise each cycle's
-  relative time is shifted to start one sample after the previous cycle
-  ended, and the real gap is unknown; the sidecar says which happened.
+- Test time is made continuous. Within a cycle, relative_time_min sets the
+  spacing (it is finer than the 1 s clock). If system_time parses, it
+  places each cycle's start, which keeps the rests between cycles.
+  Otherwise each cycle starts one sample after the previous one ended, and
+  the real gap is unknown. The sidecar says which happened.
+- The file's own per-cycle charge and discharge capacities go into the
+  sidecar next to each label, so integrated values can be checked.
 
 Written against the published loader, not yet run on the released files.
 Run 'plan' on the output before the first real ingest.
@@ -93,28 +96,36 @@ def _text(value) -> str:
     return str(first).strip()
 
 
-def _clock_seconds(raw):
+# The released files write '2022-09-16,15:05:22'. That comma defeats pandas'
+# format inference, which then falls back to a slow per-value parser and
+# still fails, so known layouts are tried explicitly.
+_CLOCK_FORMATS = ("%Y-%m-%d,%H:%M:%S", "%Y-%m-%d %H:%M:%S", "%Y/%m/%d %H:%M:%S",
+                  "%Y-%m-%dT%H:%M:%S")
+
+
+def _cycle_start_clock(raw):
     """
-    system_time as seconds on the logger's own clock, or None if it does not
-    parse. Only differences are used: the time zone is not stated, so no
-    absolute Unix time is written.
+    The first system_time of a cycle as seconds on the logger's clock, or
+    None if it does not parse. Only differences between cycle starts are
+    used: the time zone is not stated, so no absolute Unix time is written.
     """
+    import datetime as dt
     import numpy as np
-    import pandas as pd
     arr = _vector(raw)
     if arr.size == 0:
         return None
-    if arr.dtype.kind in "iuf":
-        vals = arr.astype(float)
+    first = arr[0]
+    if isinstance(first, (int, float, np.integer, np.floating)):
         lo, hi = _DATENUM_RANGE
-        if np.all(np.isfinite(vals)) and vals.min() > lo and vals.max() < hi:
-            return (vals - _DATENUM_EPOCH) * 86400.0
-        return None
-    parsed = pd.to_datetime(pd.Series([str(v).strip() for v in arr]),
-                            errors="coerce")
-    if parsed.isna().mean() > 0.01:
-        return None
-    return (parsed - pd.Timestamp("1970-01-01")).dt.total_seconds().to_numpy(dtype=float)
+        v = float(first)
+        return (v - _DATENUM_EPOCH) * 86400.0 if lo < v < hi else None
+    text = str(first).strip()
+    for fmt in _CLOCK_FORMATS:
+        try:
+            return (dt.datetime.strptime(text, fmt) - dt.datetime(1970, 1, 1)).total_seconds()
+        except ValueError:
+            continue
+    return None
 
 
 def convert(path: str, out_dir: str) -> dict:
@@ -129,8 +140,11 @@ def convert(path: str, out_dir: str) -> dict:
     cycles = data.ravel()
 
     frames, labels = [], []
-    clocks = [_clock_seconds(_field(e, "system_time")) for e in cycles]
-    use_clock = all(c is not None for c in clocks)
+    # Within a cycle, relative_time_min is finer than the 1 s wall clock, so it
+    # sets the sample spacing. The clock only places each cycle's start, which
+    # keeps the rests between cycles.
+    starts = [_cycle_start_clock(_field(e, "system_time")) for e in cycles]
+    use_clock = all(s is not None for s in starts)
 
     last_end, step = None, 1.0
     for i, element in enumerate(cycles, start=1):
@@ -141,34 +155,38 @@ def convert(path: str, out_dir: str) -> dict:
             "cycle_count": i,
             "temperature_t1_celsius": _vector(_field(element, "temperature_C")).astype(float),
         })
-        if use_clock:
-            frame["test_time_second"] = clocks[i - 1]
+        if rel_s.size > 1:
+            d = float(np.nanmedian(np.diff(rel_s)))
+            if np.isfinite(d) and d > 0:
+                step = d
+        if use_clock and rel_s.size:
+            t = (starts[i - 1] - starts[0]) + (rel_s - rel_s[0])
+            # A cycle cannot start before the last one ended; the 1 s clock
+            # can say it does by a sample.
+            if last_end is not None and t[0] <= last_end:
+                t = t + (last_end - t[0] + step)
         else:
-            if rel_s.size > 1:
-                d = float(np.nanmedian(np.diff(rel_s)))
-                if np.isfinite(d) and d > 0:
-                    step = d
             # Relative time either restarts each cycle or runs on; only a
             # restart needs shifting.
             offset = 0.0
             if last_end is not None and rel_s.size and rel_s[0] <= last_end:
                 offset = last_end - rel_s[0] + step
-            frame["test_time_second"] = rel_s + offset
-            if rel_s.size:
-                last_end = float(rel_s[-1] + offset)
+            t = rel_s + offset
+        frame["test_time_second"] = t
+        if rel_s.size:
+            last_end = float(t[-1])
         frames.append(frame)
         labels.append({"cycle_count": i, "description": _text(_field(element, "description")),
                        "rows": int(len(frame))})
 
     table = pd.concat(frames, ignore_index=True)
-    if use_clock:
-        table["test_time_second"] -= table["test_time_second"].iloc[0]
     table = table[["test_time_second", "voltage_volt", "current_ampere", "cycle_count",
                    "temperature_t1_celsius"]]
 
     summary = {}
     if "summary" in mat:
         s = mat["summary"].ravel()[0]
+        names = getattr(s.dtype, "names", None) or ()
         try:
             summary["cycle_life"] = int(np.asarray(s[8]).ravel()[0])
         except (IndexError, TypeError, ValueError):
@@ -177,6 +195,14 @@ def convert(path: str, out_dir: str) -> dict:
             summary["description"] = _text(s[9])
         except (IndexError, TypeError):
             pass
+        # The file's own per-cycle capacities, kept beside each label so the
+        # integrated values can be checked against what the lab reported.
+        for name in ("charge_capacity_Ah", "discharge_capacity_Ah"):
+            if name in names:
+                vals = np.asarray(s[name], dtype=float).ravel()
+                key = "reported_" + name.lower()
+                for lab, v in zip(labels, vals):
+                    lab[key] = None if not np.isfinite(v) else round(float(v), 6)
 
     stem = os.path.splitext(os.path.basename(path))[0]
     os.makedirs(out_dir, exist_ok=True)
@@ -184,7 +210,7 @@ def convert(path: str, out_dir: str) -> dict:
     table.to_csv(csv_path, index=False)
     sidecar = {
         "source_file": os.path.basename(path),
-        "time_basis": "system_time" if use_clock else
+        "time_basis": "system_time for cycle starts; relative_time_min within cycles" if use_clock else
                       "relative_time_min, cycles joined end to end; real gaps unknown",
         "summary": summary,
         "cycles": labels,
@@ -211,7 +237,7 @@ def main(argv=None) -> int:
         try:
             r = convert(p, a.out)
             print(f"{os.path.basename(p):32} {r['cycles']:5} cycles {r['rows']:10} rows  "
-                  f"time: {r['time_basis'].split(',')[0]}")
+                  f"time: {r['time_basis'].split(' ')[0]}")
         except Exception as exc:                                  # noqa: BLE001
             failed += 1
             print(f"{os.path.basename(p):32} FAILED: {exc}", file=sys.stderr)

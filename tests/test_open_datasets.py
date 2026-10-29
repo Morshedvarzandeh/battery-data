@@ -60,7 +60,8 @@ def _cycle(t0_clock, restart_relative, cycle_no, label):
     else:
         import pandas as pd
         stamps = pd.Timestamp(t0_clock) + pd.to_timedelta(secs, unit="s")
-        clock = np.array([s.strftime("%Y-%m-%d %H:%M:%S") for s in stamps])
+        # The released files write the date and time with a comma between them.
+        clock = np.array([s.strftime("%Y-%m-%d,%H:%M:%S") for s in stamps])
     return (clock.reshape(-1, 1), rel_min.reshape(-1, 1), volt.reshape(-1, 1),
             cur.reshape(-1, 1), np.zeros((len(secs), 1)), np.zeros((len(secs), 1)),
             np.full((len(secs), 1), 25.0), label)
@@ -93,7 +94,7 @@ class XjtuConverterTest(unittest.TestCase):
     def test_clock_time_keeps_the_rest_between_cycles(self):
         r = self._convert(use_clock=True)
         self.assertEqual((r["cycles"], r["rows"]), (3, 3 * 5400))
-        self.assertEqual(r["time_basis"], "system_time")
+        self.assertTrue(r["time_basis"].startswith("system_time"))
         nz = cyclers.normalise(r["csv"])
         self.assertEqual(nz.dialect, "bdf")
         t = nz.frame["test_time_second"].to_numpy()
