@@ -4,6 +4,9 @@
  *   cells.json              one compact row per product, for the table and chart
  *   records/<maker>.json    full records, fetched when a record is opened
  *   registry.json           quantity registry + headings, for the full-record view
+ *   technologies-and-chemistries.json
+ *                           the two classifications (technology, chemistry) and
+ *                           the words a reader may type for each
  *   summary.json            the honest counts in the hero, and any seller's stock list
  *                           (offers/*.json: a seller's own statement, kept off the records)
  *   coverage-status.json    the target list, marked sourced/missing by looking
@@ -156,7 +159,8 @@
     return L.join("\n");
   };
   BD.CSV_COLS = [["uid", r => r.uid], ["manufacturer", r => r.manu], ["model", r => r.model], ["kind", r => r.kind], ["component_type", r => r.ct],
-    ["chemistry", r => r.chem], ["format", r => r.fmt], ["format_code", r => r.ffc], ["capacity_ah", r => r.ah], ["voltage_v", r => r.v],
+    ["technology", r => r.tech], ["technology_variant", r => r.tvar], ["chemistry", r => r.cclass], ["chemistry_as_printed", r => r.chem],
+    ["format", r => r.fmt], ["format_code", r => r.ffc], ["capacity_ah", r => r.ah], ["voltage_v", r => r.v],
     ["voltage_quantity", r => r.vq], ["mass_g", r => r.g], ["energy_wh", r => r.wh], ["wh_per_kg", r => r.whkg], ["wh_per_kg_derived", r => r.whkg_d],
     ["wh_per_l", r => r.whl], ["continuous_discharge_a", r => r.a], ["continuous_discharge_c_rate", r => r.crate], ["c_rate_as_printed", r => r.crate_s ? "yes" : ""], ["cycle_life", r => r.cyc], ["cycle_life_bound", r => r.cyc_b && r.cyc_b.join(" ")], ["internal_resistance_mohm", r => r.ir],
     ["internal_resistance_bound_mohm", r => r.ir_b && r.ir_b.join(" ")],
@@ -167,6 +171,53 @@
     const cell = v => { if (v == null) return ""; const s = String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
     return [BD.CSV_COLS.map(c => c[0]).join(",")].concat(rows.map(r => BD.CSV_COLS.map(c => cell(c[1](r))).join(","))).join("\n");
   };
+  /* Technology (lithium-ion, sodium-ion, lead-acid › AGM…) and chemistry (LFP,
+   * NMC, NFPP…) are two classifications, kept apart. Search understands the
+   * words for both: "na", "lead acid", "AGM", "LiFePO4". A word that names a
+   * class matches by class, never as a substring, so "na" finds sodium-ion
+   * cells and not Panasonic. Every other word is a substring, as before. */
+  BD.SEP = " \u203a ";
+  BD.normalizeText = s => String(s == null ? "" : s).toLowerCase().replace(/[-_/]+/g, " ").replace(/\s+/g, " ").trim();
+  BD.searchIndex = function (tax) {
+    const map = new Map(); let maxWords = 1;
+    const add = (alias, key) => {
+      const a = BD.normalizeText(alias); if (!a) return;
+      if (!map.has(a)) map.set(a, new Set());
+      map.get(a).add(key); maxWords = Math.max(maxWords, a.split(" ").length);
+    };
+    ((tax && tax.technologies) || []).forEach(t => {
+      [t.name].concat(t.aliases || []).forEach(a => add(a, "t:" + t.name));
+      (t.variants || []).forEach(v => [v.name].concat(v.aliases || []).forEach(a => add(a, "v:" + t.name + BD.SEP + v.name)));
+    });
+    ((tax && tax.chemistries) || []).forEach(c => [c.name].concat(c.aliases || []).forEach(a => add(a, "c:" + c.name)));
+    return { map, maxWords };
+  };
+  /** Split a query into class words (longest phrase first) and plain substrings. */
+  BD.parseQuery = function (q, idx) {
+    const toks = BD.normalizeText(q).split(" ").filter(Boolean), terms = [];
+    for (let i = 0; i < toks.length;) {
+      let hit = null;
+      if (idx) for (let n = Math.min(idx.maxWords, toks.length - i); n >= 1 && !hit; n--) {
+        const phrase = toks.slice(i, i + n).join(" ");
+        if (idx.map.has(phrase)) hit = { alias: phrase, keys: idx.map.get(phrase), n };
+      }
+      if (hit) { terms.push({ alias: hit.alias, keys: hit.keys }); i += hit.n; } else { terms.push({ text: toks[i] }); i += 1; }
+    }
+    return terms;
+  };
+  BD.classKeys = r => {
+    const k = [];
+    if (r.tech) { k.push("t:" + r.tech); if (r.tvar) k.push("v:" + r.tech + BD.SEP + r.tvar); }
+    if (r.cclass) k.push("c:" + r.cclass);
+    return k;
+  };
+  BD.matchesQuery = function (r, terms) {
+    if (!terms || !terms.length) return true;
+    const hay = BD.normalizeText([r.model, r.manu, r.chem, r.fmt, r.ffc, BD.FF[r.fmt], r.ct, r.kind].join(" ")), keys = BD.classKeys(r);
+    return terms.every(t => t.keys ? keys.some(k => t.keys.has(k)) : hay.includes(t.text));
+  };
+  BD.techText = r => r.tech ? r.tech + (r.tvar ? " · " + r.tvar : "") : null;
+
   /** Nearest records by format, chemistry, capacity and specific energy. */
   BD.similar = function (row, rows, k) {
     k = k || 5;
@@ -189,8 +240,8 @@
   const $ = s => document.querySelector(s);
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const mfrLabel = m => m.replace(" Co., Ltd.", "").replace(" Energy Solution", " ES");
-  const state = { q: "", kind: new Set(["cell"]), chem: new Set(), ff: new Set(), mfr: new Set(), year: new Set(), core: false, stock: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
-  let rows = [], REG = { REG: {}, GROUPS: {} }, summary = null;
+  const state = { q: "", kind: new Set(["cell"]), tech: new Set(), chem: new Set(), ff: new Set(), mfr: new Set(), year: new Set(), core: false, stock: false, sort: "depth", dir: -1, shown: 100, sel: null, cmp: [], view: "table" };
+  let rows = [], REG = { REG: {}, GROUPS: {} }, summary = null, IDX = null, terms = [], termsFor = null, EMPTY_HTML = "";
   const shards = new Map();
 
   const DATA = (document.currentScript && document.currentScript.dataset.base) || "data/";
@@ -198,11 +249,17 @@
 
   async function boot() {
     try {
-      [rows, REG, summary] = await Promise.all([getJSON("cells.json"), getJSON("registry.json"), getJSON("summary.json")]);
+      let tax;
+      [rows, REG, summary, tax] = await Promise.all([getJSON("cells.json"), getJSON("registry.json"), getJSON("summary.json"),
+        getJSON("technologies-and-chemistries.json").catch(() => ({ technologies: [], chemistries: [] }))]);
+      IDX = BD.searchIndex(tax);
+      FACETS.tech.order = [].concat(...tax.technologies.map(t => [t.name].concat((t.variants || []).map(v => t.name + BD.SEP + v.name)))).concat(["Not stated"]);
+      FACETS.chem.order = tax.chemistries.map(c => c.name).concat(["Not stated"]);
     } catch (e) {
       $("#count").textContent = "The data files are not built. Run: python tools/build_web_data.py — then serve this folder.";
       return;
     }
+    EMPTY_HTML = $("#empty").innerHTML;
     facts(); fillFilters(); wire(); readHash(); render(); renderCmp(); coverage();
     const first = sorted(filtered())[0]; if (state.sel) select(state.sel); else if (first) select(first.uid);
   }
@@ -224,30 +281,36 @@
   const FACETS = {
     kind: { label: "Kind", value: kindOf, text: v => KIND[v] || v, order: Object.keys(KIND) },
     mfr: { label: "Company", value: r => r.manu, text: mfrLabel },
-    chem: { label: "Chemistry", value: r => r.chem, text: v => v },
+    // Technology and chemistry are separate filters. A technology tick keeps
+    // all of its variants; a variant tick (Lead-acid › AGM) keeps only that one.
+    tech: { label: "Technology", values: r => r.kind === "component" ? [] : r.tech ? [r.tech].concat(r.tvar ? [r.tech + BD.SEP + r.tvar] : []) : ["Not stated"],
+      text: v => v.includes(BD.SEP) ? v.split(BD.SEP)[1] : v, sub: v => v.includes(BD.SEP), order: [], all: true },
+    chem: { label: "Chemistry", values: r => r.kind === "component" ? [] : [r.cclass || "Not stated"], text: v => v, order: [], all: true },
     ff: { label: "Format", value: r => r.fmt ? BD.FF[r.fmt] || r.fmt : null, text: v => v },
     year: { label: "Year", value: r => r.year || "not stated", text: v => v, desc: true },
   };
   const componentsOnly = () => state.kind.size === 1 && state.kind.has("component");
+  const facetValues = (f, r) => f.values ? f.values(r) : [f.value(r)];
   function matches(r, skip) {
-    for (const k of Object.keys(FACETS)) if (k !== skip && state[k].size && !state[k].has(FACETS[k].value(r))) return false;
+    for (const k of Object.keys(FACETS)) if (k !== skip && state[k].size && !facetValues(FACETS[k], r).some(v => state[k].has(v))) return false;
     if (state.core && !isCore(r)) return false;
     if (state.stock && !(r.stock && r.stock.s === "in_stock")) return false;
-    const q = state.q.toLowerCase().split(/\s+/).filter(Boolean);
-    if (q.length) { const hay = [r.model, r.manu, r.chem, r.fmt, r.ffc, BD.FF[r.fmt], r.ct, r.kind].join(" ").toLowerCase(); if (!q.every(t => hay.includes(t))) return false; }
-    return true;
+    if (termsFor !== state.q) { terms = BD.parseQuery(state.q, IDX); termsFor = state.q; }
+    return BD.matchesQuery(r, terms);
   }
   function facetMenu(k) {
     const f = FACETS[k], menu = $("#facet-" + k), btn = document.querySelector('.facet[data-facet="' + k + '"] .facet-btn');
     const counts = new Map();
-    rows.forEach(r => { const v = f.value(r); if (!v) return; if (!counts.has(v)) counts.set(v, 0); if (matches(r, k)) counts.set(v, counts.get(v) + 1); });
+    // Listed classes stay visible at zero: "Lead-acid 0" says the library has none yet.
+    if (f.all) f.order.forEach(v => counts.set(v, 0));
+    rows.forEach(r => facetValues(f, r).forEach(v => { if (!v) return; if (!counts.has(v)) counts.set(v, 0); if (matches(r, k)) counts.set(v, counts.get(v) + 1); }));
     const q = (menu.dataset.q || "").toLowerCase();
     const entries = [...counts].filter(([v]) => !q || f.text(v).toLowerCase().includes(q))
       .sort((a, b) => f.order ? f.order.indexOf(a[0]) - f.order.indexOf(b[0])
         : f.desc ? (a[0] === "not stated") - (b[0] === "not stated") || String(b[0]).localeCompare(String(a[0]))
         : (state[k].has(b[0]) - state[k].has(a[0])) || (b[1] - a[1]) || f.text(a[0]).localeCompare(f.text(b[0])));
     menu.innerHTML = (counts.size > 8 ? '<input class="fsearch" type="search" placeholder="Filter ' + f.label.toLowerCase() + '…" value="' + esc(menu.dataset.q || "") + '" aria-label="Filter list">' : "") +
-      entries.map(([v, n]) => '<label class="' + (n === 0 && !state[k].has(v) ? "zero" : "") + '"><input type="checkbox" value="' + esc(v) + '"' + (state[k].has(v) ? " checked" : "") + "><span>" + esc(f.text(v)) + "</span><small>" + n.toLocaleString("en") + "</small></label>").join("") +
+      entries.map(([v, n]) => '<label class="' + (n === 0 && !state[k].has(v) ? "zero" : "") + (f.sub && f.sub(v) ? " sub" : "") + '"><input type="checkbox" value="' + esc(v) + '"' + (state[k].has(v) ? " checked" : "") + "><span>" + esc(f.text(v)) + "</span><small>" + n.toLocaleString("en") + "</small></label>").join("") +
       '<div class="facet-foot"><button type="button" data-act="clear">Clear</button><button type="button" data-act="close">Done</button></div>';
     btn.innerHTML = esc(f.label) + (state[k].size ? '<span class="n">' + state[k].size + "</span>" : "");
     btn.classList.toggle("on", state[k].size > 0 && !(k === "kind" && state[k].size === 1 && state[k].has("cell")));
@@ -286,10 +349,10 @@
       return d * (x - y) || tie(a, b);
     });
   }
-  const CELL_COLS = [["model", "Cell", ""], ["manu", "Company", ""], ["chem", "Chemistry", ""], ["ff", "Format", ""], ["ah", "Ah", "r"], ["v", "V", "r"], ["g", "g", "r"],
+  const CELL_COLS = [["model", "Cell", ""], ["manu", "Company", ""], ["tech", "Technology", ""], ["cclass", "Chemistry", ""], ["ff", "Format", ""], ["ah", "Ah", "r"], ["v", "V", "r"], ["g", "g", "r"],
     ["whkg", "Wh/kg", "r"], ["a", "A cont.", "r"], ["cyc", "Cycles", "r"], ["year", "Year", "r"], ["depth", "Stated", ""]];
   const COMP_COLS = [["model", "Component", ""], ["manu", "Company", ""], ["ct", "Type", ""], ["ratings", "Key ratings as printed", ""], ["year", "Year", "r"], ["n", "Observations", "r"]];
-  const SORT_LABEL = { depth: "how much the source states", model: "name", manu: "company", year: "year", chem: "chemistry", ff: "format", ah: "capacity", v: "voltage", g: "mass",
+  const SORT_LABEL = { depth: "how much the source states", model: "name", manu: "company", year: "year", tech: "technology", cclass: "chemistry", chem: "chemistry", ff: "format", ah: "capacity", v: "voltage", g: "mass",
     whkg: "specific energy", a: "discharge current", cyc: "cycle life", ct: "type", n: "observation count", ratings: "ratings" };
   const depthHTML = d => '<span class="depth" title="' + d + ' of 8 core specifications stated">' + Array.from({ length: 8 }, (_, i) => '<i class="' + (i < d ? "on" : "") + '"></i>').join("") + "</span>";
   const num = (v, d) => v == null ? '<td class="r dash">–</td>' : '<td class="r">' + BD.fmt(v, d) + "</td>";
@@ -310,7 +373,7 @@
     if (!cols.some(c => c[0] === state.sort)) { state.sort = componentsOnly() ? "n" : "depth"; state.dir = -1; }
     $("#tbl thead tr").innerHTML = cols.map(([k, t, cls]) => '<th class="' + cls + (state.sort === k ? " on" : "") + '" data-k="' + k + '">' + t + (state.sort === k ? '<span class="dir">' + (state.dir < 0 ? "▼" : "▲") + "</span>" : "") + "</th>").join("");
     document.querySelectorAll("#tbl th").forEach(th => th.addEventListener("click", () => {
-      const k = th.dataset.k; if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = ["model", "manu", "chem", "ff", "ct", "ratings"].includes(k) ? 1 : -1; }
+      const k = th.dataset.k; if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = ["model", "manu", "tech", "cclass", "chem", "ff", "ct", "ratings"].includes(k) ? 1 : -1; }
       render();
     }));
   }
@@ -324,9 +387,21 @@
     const v = r.v == null ? '<td class="r dash">–</td>' : r.vq === "voltage" ? '<td class="r"><span class="printed" title="Printed as “Voltage”; the source does not say it is the nominal voltage">' + BD.fmt(r.v, 2) + "</span></td>" : '<td class="r">' + BD.fmt(r.v, 2) + "</td>";
     const whkg = r.whkg == null ? '<td class="r dash">–</td>' : '<td class="r"' + (r.whkg_d ? ' title="Calculated from capacity, voltage and mass"' : "") + ">" + BD.fmt(r.whkg, 0) + (r.whkg_d ? "<sup style=\"color:var(--muted);font-size:9px\"> calc</sup>" : "") + "</td>";
     return '<td class="model">' + esc(r.model || "—") + stockPill(r) + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</td>" + company +
-      '<td class="chem" title="' + esc(r.chem || "") + '">' + (r.chem ? esc(r.chem) : '<span class="dash">–</span>') + "</td>" +
+      '<td class="chem" title="' + esc(BD.techText(r) || "Technology not stated") + '">' + (r.tech ? esc(r.tech) + (r.tvar ? "<small>" + esc(r.tvar) + "</small>" : "") : '<span class="dash">–</span>') + "</td>" +
+      '<td class="chem" title="' + esc(r.chem ? "As printed: " + r.chem : "Not stated by the source") + '">' + (r.cclass ? esc(r.cclass) : '<span class="dash">–</span>') + "</td>" +
       '<td class="ff">' + (r.fmt ? esc(BD.FF[r.fmt] || r.fmt) : r.ffc ? esc(r.ffc) : '<span class="dash">–</span>') + (r.ffc && r.fmt ? ' <span class="pill">' + esc(r.ffc) + "</span>" : "") + "</td>" +
       num(r.ah, r.ah < 1 ? 3 : 1) + v + num(r.g, 1) + whkg + ampCell(r) + (r.cyc == null && r.cyc_b ? boundCell(r.cyc_b, 0) : num(r.cyc, 0)) + yearCell(r) + "<td>" + depthHTML(r.depth) + "</td>";
+  }
+  // When nothing matches because the library holds no such battery yet, say so.
+  function emptyMessage() {
+    const none = [];
+    for (const v of state.tech) if (!rows.some(r => FACETS.tech.values(r).includes(v))) none.push(FACETS.tech.text(v));
+    for (const t of terms) if (t.keys && !rows.some(r => BD.classKeys(r).some(k => t.keys.has(k)))) none.push(...[...t.keys].map(k => k.slice(2).split(BD.SEP).pop()));
+    if (!none.length) return EMPTY_HTML;
+    none.splice(0, none.length, ...new Set(none));
+    return "The library has no " + esc(none.join(", ")) + " records yet. " +
+      '<a href="mailto:info@lemonergy.com?subject=' + encodeURIComponent("Battery data: please add " + none.join(", ")) + '">Ask for them</a>, or ' +
+      '<a href="https://github.com/Morshedvarzandeh/battery-data/blob/main/docs/06-submitting-a-datasheet.md">submit a datasheet</a> and it joins the review queue.';
   }
   function refilter() { state.shown = 100; const list = render(); if (list.length && !list.some(r => r.uid === state.sel)) select(list[0].uid); refreshFacets(); }
   function render() {
@@ -341,6 +416,7 @@
       tb.appendChild(tr);
     });
     $("#more").hidden = list.length <= state.shown; $("#empty").hidden = list.length > 0;
+    if (!list.length) $("#empty").innerHTML = emptyMessage();
     $("#csv").disabled = list.length === 0;
     if (state.view === "chart") drawChart(list);
     return list;
@@ -378,7 +454,8 @@
         "&body=" + encodeURIComponent("Product: " + r.model + "\nRecord: " + r.uid + "\nQuantity:\nDelivery country:\n") : "")) + '">Request a quote</a></div>' : "";
     $("#insp").innerHTML =
       '<div class="hd"><p class="eyebrow">' + esc(r.manu) + "</p><h2>" + esc(r.model || "—") + '</h2><div class="meta">' +
-      (r.chem ? '<span class="pill">' + esc(r.chem) + "</span>" : "") + (r.fmt ? '<span class="pill">' + esc(BD.FF[r.fmt] || r.fmt) + "</span>" : "") + (r.ffc ? '<span class="pill">' + esc(r.ffc) + "</span>" : "") +
+      (r.tech ? '<span class="pill">' + esc(r.tech) + "</span>" : "") + (r.tvar ? '<span class="pill">' + esc(r.tvar) + "</span>" : "") +
+      (r.cclass ? '<span class="pill">' + esc(r.cclass) + "</span>" : "") + (r.fmt ? '<span class="pill">' + esc(BD.FF[r.fmt] || r.fmt) + "</span>" : "") + (r.ffc ? '<span class="pill">' + esc(r.ffc) + "</span>" : "") +
       '<span class="pill">' + esc((r.ct || r.kind).replace(/_/g, " ")) + '</span><span class="pill src">' + esc(BD.srcText(r.src)) + "</span></div></div>" + buy + specs +
       '<div class="srcbox">Source: ' + esc(r.title || BD.srcText(r.src)) + (r.yk === "release" ? " · released " + esc(r.year) : r.year ? " · document dated " + esc(r.year) + " (product release not researched)" : " · no date recorded") + " · " + r.n + " observations" +
       (r.url ? ' · <a href="' + esc(r.url) + '" target="_blank" rel="noopener">open ↗</a>' : "") + "</div>" +
@@ -411,7 +488,8 @@
     h += "<h3>Source and dates</h3>" + kv("source document", S.title || "not stated", S.url) + kv("reference", S.ref || "not stated in this document", null, !S.ref) + (S.note ? kv("source notes", S.note) : "") +
       BD.lifecycleRows(rec).map(([k, v, url]) => kv(k, v, url, /^not /i.test(String(v)))).join("");
     const ch = rec.chem || {};
-    if (ch.designation || ch.cathode || ch.anode) h += "<h3>Chemistry</h3>" + (ch.designation ? kv("designation", ch.designation) : "") + (ch.cathode ? kv("cathode", ch.cathode) : "") + (ch.anode ? kv("anode", ch.anode) : "") + (ch.electrolyte ? kv("electrolyte", ch.electrolyte) : "") + (ch.separator ? kv("separator", ch.separator) : "");
+    if (r.tech || ch.designation || ch.cathode || ch.anode) h += "<h3>Technology and chemistry</h3>" + kv("technology", BD.techText(r) || "not stated", null, !r.tech) +
+      kv("chemistry", r.cclass || "not stated by the source", null, !r.cclass) + (ch.designation ? kv("designation as printed", ch.designation) : "") + (ch.cathode ? kv("cathode", ch.cathode) : "") + (ch.anode ? kv("anode", ch.anode) : "") + (ch.electrolyte ? kv("electrolyte", ch.electrolyte) : "") + (ch.separator ? kv("separator", ch.separator) : "");
     groups.forEach(g => {
       h += "<h3>" + esc(g.group) + "<span>" + g.n + " of " + g.of + " recorded</span></h3>";
       g.rows.forEach(row => row.obs.forEach(o => {
@@ -453,7 +531,7 @@
     document.querySelectorAll("#cmpbar-chips button").forEach(b => b.onclick = () => { state.cmp = state.cmp.filter(x => x !== b.dataset.u); writeHash(); renderCmp(); if (state.sel) select(state.sel); });
     $("#tray").hidden = sel.length < 2; $("#traycount").textContent = sel.length + " of 4 · the better value in each row is marked";
     if (sel.length < 2) { render(); return; }
-    const R = [["Chemistry", r => r.chem, null], ["Format", r => r.fmt ? BD.FF[r.fmt] : r.ffc, null], ["Capacity (Ah)", r => r.ah, "max"], ["Voltage (V)", r => r.v, null],
+    const R = [["Technology", r => BD.techText(r), null], ["Chemistry", r => r.cclass, null], ["Format", r => r.fmt ? BD.FF[r.fmt] : r.ffc, null], ["Capacity (Ah)", r => r.ah, "max"], ["Voltage (V)", r => r.v, null],
       ["Energy (Wh)", r => r.wh, "max"], ["Mass (g)", r => r.g, "min"], ["Wh/kg", r => r.whkg, "max"], ["Continuous discharge (A)", r => r.a, "max"], ["Continuous discharge (C)", r => r.crate, "max"],
       ["Cycle life", r => r.cyc, "max"], ["Internal resistance (mΩ)", r => r.ir, "min"], ["Dimensions (mm)", r => r.dims && r.dims.join(" × "), null],
       ["Source", r => BD.srcText(r.src) + (r.doc ? " · " + r.doc : ""), null], ["Specs stated (of 8)", r => r.depth, "max"], ["Availability", r => BD.stockText(r.stock), null]];
