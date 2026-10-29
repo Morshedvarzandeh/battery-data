@@ -90,6 +90,13 @@ archive, convert, then plan and ingest as usual:
     python tools/ingest_open_dataset.py plan xjtu-2024 ~/data/xjtu-csv/
     python tools/ingest_open_dataset.py ingest xjtu-2024 ~/data/xjtu-csv/ --emit-sql xjtu.sql
 
+CALCE ships each cell as a folder of session files. Time and cycle numbers
+restart in every file and some sessions were exported twice, so each cell is
+merged first:
+
+    python tools/convert_calce_cs2.py ~/data/calce/CS2_35/ ~/data/calce/CS2_36/ --out ~/data/calce-csv/
+    python tools/ingest_open_dataset.py plan calce ~/data/calce-csv/
+
 Batches 4–6 never discharge fully, so their per-cycle capacity is not a
 capacity measurement. The converter keeps each cycle's label, including the
 `test capacity` cycles that are, in a `.cycles.json` file next to each CSV.

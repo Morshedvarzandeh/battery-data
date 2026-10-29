@@ -130,11 +130,13 @@ DATASETS: dict[str, dict] = {
         "chemistry": "LCO", "form_factor": "prismatic_hardcase", "ff_code": None,
         "nominal_ah": 1.1, "nominal_v": 3.7,
         "manufacturer": "unstated", "model": "CS2",
-        "file_glob": "*.xlsx",
+        "file_glob": "*.csv",
         "test_kind": "cycle_life",
         "notes": ("Set --nominal-ah per cell type; they differ (1.1 / 1.35 / 1.5 / 2.0 Ah). "
-                  "Arbin exports as Excel, so convert to CSV for the sniffer. CS2_8 and "
-                  "CS2_21 came off a CADEX tester and ship as .txt instead. Campaigns go "
+                  "Each cell is a folder of session files whose time and cycle numbering "
+                  "restart, and some sessions are exported twice; merge each cell with "
+                  "tools/convert_calce_cs2.py, which also reads the CADEX .txt exports of "
+                  "CS2_8 and CS2_21. Arbin cells ship as Excel. Campaigns go "
                   "well beyond plain cycling: low-current and incremental OCV at 0/25/45 C, "
                   "DST/US06/FUDS drive cycles, pulsed-discharge profiles, temperature "
                   "cycling 25-55 C, and partial-SOC ageing with periodic full "
