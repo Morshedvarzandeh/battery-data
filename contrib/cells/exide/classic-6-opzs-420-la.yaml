@@ -1,0 +1,182 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/exide/classic-6-opzs-420-la",
+    "kind": "cell",
+    "manufacturer": "Exide",
+    "model_number": "Classic 6 OPzS 420 LA",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase",
+    "aliases": [
+      "6 OPzS 420 LA",
+      "NVZS020420WC0FB"
+    ]
+  },
+  "source": {
+    "uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+    "kind": "datasheet",
+    "title": "Classic OPzS Technical data sheet",
+    "url": "https://www.exidegroup.com/eu/sites/default/files/2024-03/Classic_OPzS_technicaldata.pdf",
+    "retrieved_at": "2026-10-29",
+    "sha256": "4debaadb1419d7b9832aff17ad308430ab4287a473ea717b86e64a8869eed3af",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. 15-page Exide technical data sheet (1,056,049 bytes; PDF created 2024-03-25; no printed date or revision). Reached from https://www.exidegroup.com/eu/en/document/classic-opzs-datasheet. Main table on page 2: nominal capacity C10 to 1.80 Vpc at 20 °C; dimensions are maxima; height includes the installed connector and 'can differ depending on the used vent(s)'; weight includes acid and 'may differ by ±5%'. The separate acid weight is not recorded. Flooded is read from the sheet's liquid electrolyte ('diluted sulphuric acid') and its 'W (wet)' part-number code; the word 'flooded' is not printed. Internal resistance is printed without its method and is not recorded. The constant-current and constant-power discharge tables (pages 4-15) are not transcribed; they are kept for the later lead-acid design work."
+  },
+  "chemistry": {
+    "designation": "Lead-acid flooded",
+    "locator": {
+      "section": "Page 1, Technical features and part-number note",
+      "quote": "Electrolyte: diluted sulphuric acid dN = 1.24 kg/l · Change W (wet) to D (dry) in the part number",
+      "page": 1
+    },
+    "electrolyte_text": "Diluted sulphuric acid, dN = 1.24 kg/l"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 455,
+      "unit": "Ah",
+      "locator": {
+        "section": "Page 2, Technical characteristics and data, row 6 OPzS 420 LA, column Nominal capacity C10 1.80 Vpc 20 °C",
+        "quote": "6 OPzS 420 LA | NVZS020420WC0FB | 2 | 455 | 147 | 157 | 208 | 511 | 31.0 | 9.30 | 0.56 | 3650 | F-M8",
+        "page": 2
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "rate_value": 0.1,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 455,
+        "rate_reference_source": "10-hour rate: the current is this 10-hour capacity divided by 10 h",
+        "temperature_c": 20,
+        "voltage_lower_v": 1.8,
+        "extra": {
+          "hour_rate_h": 10,
+          "source_label": "Nominal capacity C10 1.80 Vpc 20 °C",
+          "cutoff_per_cell_v": 1.8
+        }
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 2,
+      "unit": "V",
+      "locator": {
+        "section": "Page 2, Technical characteristics and data, row 6 OPzS 420 LA, column Nom. voltage",
+        "quote": "6 OPzS 420 LA | NVZS020420WC0FB | 2 | 455 | 147 | 157 | 208 | 511 | 31.0 | 9.30 | 0.56 | 3650 | F-M8",
+        "page": 2
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "length",
+      "value": 147,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 2, Technical characteristics and data, row 6 OPzS 420 LA, column Length (l) max. mm",
+        "quote": "6 OPzS 420 LA | NVZS020420WC0FB | 2 | 455 | 147 | 157 | 208 | 511 | 31.0 | 9.30 | 0.56 | 3650 | F-M8",
+        "page": 2
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "width",
+      "value": 208,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 2, Technical characteristics and data, row 6 OPzS 420 LA, column Width (w) max. mm",
+        "quote": "6 OPzS 420 LA | NVZS020420WC0FB | 2 | 455 | 147 | 157 | 208 | 511 | 31.0 | 9.30 | 0.56 | 3650 | F-M8",
+        "page": 2
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "height",
+      "value": 511,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 2, Technical characteristics and data, row 6 OPzS 420 LA, column Height* (h) max. mm",
+        "quote": "6 OPzS 420 LA | NVZS020420WC0FB | 2 | 455 | 147 | 157 | 208 | 511 | 31.0 | 9.30 | 0.56 | 3650 | F-M8",
+        "page": 2
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "note": "* Includes installed connector, the above mentioned height can differ depending on the used vent(s)."
+        }
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 157,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 2, Technical characteristics and data, row 6 OPzS 420 LA, column Installed length (L) max. mm",
+        "quote": "6 OPzS 420 LA | NVZS020420WC0FB | 2 | 455 | 147 | 157 | 208 | 511 | 31.0 | 9.30 | 0.56 | 3650 | F-M8",
+        "page": 2
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "source_label": "Installed length (L)"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 31,
+      "unit": "kg",
+      "locator": {
+        "section": "Page 2, Technical characteristics and data, row 6 OPzS 420 LA, column Weight incl. acid** approx. kg",
+        "quote": "6 OPzS 420 LA | NVZS020420WC0FB | 2 | 455 | 147 | 157 | 208 | 511 | 31.0 | 9.30 | 0.56 | 3650 | F-M8",
+        "page": 2
+      },
+      "statistic": "typical",
+      "conditions": {
+        "extra": {
+          "source_label": "Weight incl. acid",
+          "note": "** Actual weight may differ by ±5%"
+        }
+      }
+    },
+    {
+      "quantity": "short_circuit_current",
+      "value": 3650,
+      "unit": "A",
+      "locator": {
+        "section": "Page 2, Technical characteristics and data, row 6 OPzS 420 LA, column Short circuit current A",
+        "quote": "6 OPzS 420 LA | NVZS020420WC0FB | 2 | 455 | 147 | 157 | 208 | 511 | 31.0 | 9.30 | 0.56 | 3650 | F-M8",
+        "page": 2
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "standard": "not stated on the sheet"
+        }
+      }
+    },
+    {
+      "quantity": "calendar_life",
+      "value": 20,
+      "unit": "year",
+      "locator": {
+        "section": "Page 1, Technical features",
+        "quote": "• 20 years design life at 20 °C ambient temperature (until 80% nominal C10)",
+        "page": 1
+      },
+      "statistic": "design",
+      "conditions": {
+        "temperature_c": 20,
+        "unstated": [
+          "soc_pct"
+        ],
+        "extra": {
+          "basis": "Design life",
+          "end_of_life": "80% nominal C10"
+        }
+      }
+    }
+  ]
+}

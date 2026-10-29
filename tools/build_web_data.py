@@ -156,6 +156,14 @@ def product(doc: dict, path: str) -> dict:
         dims = [by["height"], by["width"], by["thickness"]]
     elif {"diameter", "height"} <= set(by):
         dims = [by["diameter"], by["height"]]
+    elif {"length", "width", "height"} <= set(by):
+        # A block battery (or a prismatic cell) printed as L x W x H. The first
+        # length and height stated win, as everywhere else: a sheet that adds an
+        # installed length or a height over the terminals prints it second.
+        first = {}
+        for o in obs:
+            first.setdefault(o["q"], o["v"])
+        dims = [first["length"], first["width"], first["height"]]
 
     chem = doc.get("chemistry") or {}
     cloc = chem.get("locator") or {}
@@ -191,6 +199,9 @@ def product(doc: dict, path: str) -> dict:
                  "anode_pg": cloc.get("page"), "cathode_pg": cloc.get("page"),
                  **({"electrolyte_locator": cloc} if chem.get("electrolyte_text") else {})},
         "class": klass,
+        # Lemonergy Design takes lithium-ion and sodium-ion only; a lead-acid
+        # (or any other non-design) record is listed but never handed over.
+        "design": classification.designable(taxonomy(), klass["tech"]),
         "source": {"title": src.get("title"), "ref": src.get("revision"),
                    "date": src.get("document_date"), "kind": src.get("kind"),
                    "url": src.get("url"), "sha256": src.get("sha256"),
@@ -486,6 +497,7 @@ def index_row(p: dict, offer: dict | None = None) -> dict:
         **({"ct": p["component_type"]} if p.get("component_type") else {}),
         "chem": p["chem"]["designation"], "fmt": p["fmt"] or None,
         "tech": p["class"]["tech"], "tvar": p["class"]["variant"], "cclass": p["class"]["chem"],
+        **({"nodesign": True} if not p["design"] else {}),
         "ffc": p.get("ffc"), "ah": ah, "v": v, "vq": vq if v is not None else None,
         "g": g, "wh": wh, "whkg": whkg, "whkg_d": whkg_d, "whl": m["whl"],
         "a": m["a"], "crate": m["crate"], "crate_s": m["crate_s"], "cyc": cyc, "ir": ir, "dims": dims,

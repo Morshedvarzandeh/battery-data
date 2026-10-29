@@ -204,6 +204,8 @@ td.model small.stock { color: var(--accent); font-weight: 700; font-size: 11.5px
 .srcbox a:hover { text-decoration: underline; }
 .gap { padding: 12px 18px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); }
 .gap b { color: var(--missing); }
+.gap.nodesign b { color: var(--ink); }
+.linkbtn { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; }
 .similar { padding: 10px 18px 12px; border-top: 1px solid var(--line); font-size: 13px; }
 .similar .lbl { display: block; margin-bottom: 6px; }
 .similar button { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 4px 0; cursor: pointer; color: var(--accent); font-weight: 700; font-size: 13px; }

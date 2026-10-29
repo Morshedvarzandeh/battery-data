@@ -1,0 +1,172 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/exide/sonnenschein-a602-500",
+    "kind": "cell",
+    "manufacturer": "Exide",
+    "model_number": "Sonnenschein A602/500",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase",
+    "aliases": [
+      "A602/500",
+      "NGA6020500HS0FA",
+      "6 OPzV 420"
+    ]
+  },
+  "source": {
+    "uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+    "kind": "datasheet",
+    "title": "Sonnenschein A600 Technical data sheet",
+    "url": "https://www.exidegroup.com/nz/sites/default/files/2023-04/230404_Sonnenschein_A600_technicaldata.pdf",
+    "retrieved_at": "2026-10-29",
+    "sha256": "7aebed8bf66aa876082efb665f6855359cf3369be29649bd2dc40d278ef81e1c",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. 10-page Exide technical data sheet (381,728 bytes; PDF created 2023-04-04; no printed date or revision). Main table on page 1: nominal capacity C10 to 1.80 Vpc at 20 °C; dimensions are maxima; weight is approximate; h2 includes the installed connector. The 'Type acc. to DIN' column prints a footnote digit after each type (superscript 1 = DIN 40 742 cells, 2 = DIN 40 744 blocks); the types are recorded without it. The datasheet does not name the electrolyte: the gel designation comes from Exide's own A600 product page (https://www.exidegroup.com/eu/en/product/sonnenschein-a600, retrieved 2026-10-29: 'Valve regulated Gel technology (VRLA)'). Internal resistance is printed without its method and is not recorded (the library keeps AC and DC resistance apart and has no method-free quantity). The constant-current and constant-power discharge tables (pages 3-10, 1.60-1.90 Vpc, 3 min-10 h) are not transcribed; they are kept for the later lead-acid design work. Shelf life ('up to 2 years at 20 °C without recharge') is not recorded."
+  },
+  "chemistry": {
+    "designation": "Lead-acid gel",
+    "locator": {
+      "section": "Exide product page for the Sonnenschein A600 series (https://www.exidegroup.com/eu/en/product/sonnenschein-a600), not the datasheet",
+      "quote": "Valve regulated Gel technology (VRLA)"
+    },
+    "electrolyte_text": "Gel (valve-regulated)"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 499,
+      "unit": "Ah",
+      "locator": {
+        "section": "Page 1, Technical characteristics and data, row A602/500, column Nominal capacity C10 1.80 Vpc 20 °C",
+        "quote": "A602/500 | NGA6020500HS0FA | 6 OPzV 4201 | 2 | 499 | 147 | 208 | 473 | 515 | 35.0 | 0.53 | 3950 | F-M8",
+        "page": 1
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "rate_value": 0.1,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 499,
+        "rate_reference_source": "10-hour rate: the current is this 10-hour capacity divided by 10 h",
+        "temperature_c": 20,
+        "voltage_lower_v": 1.8,
+        "extra": {
+          "hour_rate_h": 10,
+          "source_label": "Nominal capacity C10 1.80 Vpc 20 °C",
+          "cutoff_per_cell_v": 1.8
+        }
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 2,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, Technical characteristics and data, row A602/500, column Nom. voltage",
+        "quote": "A602/500 | NGA6020500HS0FA | 6 OPzV 4201 | 2 | 499 | 147 | 208 | 473 | 515 | 35.0 | 0.53 | 3950 | F-M8",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "length",
+      "value": 147,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 1, Technical characteristics and data, row A602/500, column Length (l) max. mm",
+        "quote": "A602/500 | NGA6020500HS0FA | 6 OPzV 4201 | 2 | 499 | 147 | 208 | 473 | 515 | 35.0 | 0.53 | 3950 | F-M8",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "width",
+      "value": 208,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 1, Technical characteristics and data, row A602/500, column Width (w) max. mm",
+        "quote": "A602/500 | NGA6020500HS0FA | 6 OPzV 4201 | 2 | 499 | 147 | 208 | 473 | 515 | 35.0 | 0.53 | 3950 | F-M8",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "height",
+      "value": 473,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 1, Technical characteristics and data, row A602/500, column Height (h1) max. mm",
+        "quote": "A602/500 | NGA6020500HS0FA | 6 OPzV 4201 | 2 | 499 | 147 | 208 | 473 | 515 | 35.0 | 0.53 | 3950 | F-M8",
+        "page": 1
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "height",
+      "value": 515,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 1, Technical characteristics and data, row A602/500, column Height (h2)* max. mm",
+        "quote": "A602/500 | NGA6020500HS0FA | 6 OPzV 4201 | 2 | 499 | 147 | 208 | 473 | 515 | 35.0 | 0.53 | 3950 | F-M8",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "source_label": "Height (h2)*",
+          "note": "* Includes installed connector"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 35,
+      "unit": "kg",
+      "locator": {
+        "section": "Page 1, Technical characteristics and data, row A602/500, column Weight approx. kg",
+        "quote": "A602/500 | NGA6020500HS0FA | 6 OPzV 4201 | 2 | 499 | 147 | 208 | 473 | 515 | 35.0 | 0.53 | 3950 | F-M8",
+        "page": 1
+      },
+      "statistic": "typical"
+    },
+    {
+      "quantity": "short_circuit_current",
+      "value": 3950,
+      "unit": "A",
+      "locator": {
+        "section": "Page 1, Technical characteristics and data, row A602/500, column Short circuit current A",
+        "quote": "A602/500 | NGA6020500HS0FA | 6 OPzV 4201 | 2 | 499 | 147 | 208 | 473 | 515 | 35.0 | 0.53 | 3950 | F-M8",
+        "page": 1
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "standard": "not stated on the sheet; designed in accordance with IEC 60896-21/22"
+        }
+      }
+    },
+    {
+      "quantity": "calendar_life",
+      "value": 20,
+      "unit": "year",
+      "locator": {
+        "section": "Page 1, Technical features",
+        "quote": "Design life: 15 years for 6/12 V blocks and 20 years for 2 V cells at 20 °C (80% remaining capacity from C10)",
+        "page": 1
+      },
+      "statistic": "design",
+      "conditions": {
+        "temperature_c": 20,
+        "unstated": [
+          "soc_pct"
+        ],
+        "extra": {
+          "basis": "Design life",
+          "end_of_life": "80% remaining capacity from C10"
+        }
+      }
+    }
+  ]
+}

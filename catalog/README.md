@@ -1,6 +1,6 @@
 # Battery datasheets and specifications — Lemonergy
 
-Browse **3,495 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
+Browse **3,592 accepted battery product records** by manufacturer. Each model links to the recorded specifications and its original source.
 
 [Lemonergy](https://lemonergy.com/) · [Component datasheets](../components/catalog.md) · [Dates and technology timeline](dates.md) · [Patent research](../docs/08-patents.md)
 
@@ -13,10 +13,13 @@ Choose a manufacturer below, then use your browser’s **Find** command to searc
 | BYD | 1 | [Models and source documents](manufacturers/byd.md) |
 | CALB | 4 | [Models and source documents](manufacturers/calb.md) |
 | CATL | 2 | [Models and source documents](manufacturers/catl.md) |
+| Clarios | 11 | [Models and source documents](manufacturers/clarios.md) |
 | DSEnergy | 1 | [Models and source documents](manufacturers/dsenergy.md) |
 | EEMB | 60 | [Models and source documents](manufacturers/eemb.md) |
 | Energizer | 17 | [Models and source documents](manufacturers/energizer.md) |
+| EnerSys | 16 | [Models and source documents](manufacturers/enersys.md) |
 | EVE Energy | 18 | [Models and source documents](manufacturers/eve.md) |
+| Exide | 45 | [Models and source documents](manufacturers/exide.md) |
 | Harding Energy | 1,343 | [Models and source documents](manufacturers/harding-energy.md) |
 | HiNa Battery | 4 | [Models and source documents](manufacturers/hina-battery.md) |
 | HiTHIUM | 3 | [Models and source documents](manufacturers/hithium.md) |
@@ -30,14 +33,17 @@ Choose a manufacturer below, then use your browser’s **Find** command to searc
 | REPT BATTERO | 31 | [Models and source documents](manufacturers/rept.md) |
 | Samsung SDI | 1 | [Models and source documents](manufacturers/samsung-sdi.md) |
 | Toshiba | 9 | [Models and source documents](manufacturers/toshiba.md) |
+| Trojan Battery | 1 | [Models and source documents](manufacturers/trojan-battery.md) |
+| Victron Energy | 19 | [Models and source documents](manufacturers/victron-energy.md) |
 | WeLion | 8 | [Models and source documents](manufacturers/welion.md) |
+| Yuasa | 5 | [Models and source documents](manufacturers/yuasa.md) |
 
 ## Coverage and review
 
  | Product type | Count |
 |---|---:|
-| cell | 3,245 |
-| module | 2 |
+| cell | 3,280 |
+| module | 64 |
 | pack | 36 |
 | primary cell | 211 |
 | system | 1 |
