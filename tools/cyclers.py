@@ -462,6 +462,15 @@ def detect_capacity_accumulation(df) -> str | None:
     return "net_signed"
 
 
+def current_noise_floor(cur) -> float:
+    """|current| at or below which a sample is rest for cycle counting."""
+    import numpy as np
+    a = np.abs(np.asarray(cur, dtype=float))
+    a = a[np.isfinite(a)]
+    peak = float(np.percentile(a, 99)) if a.size else 0.0
+    return max(1e-9, min(0.005, 0.005 * peak))
+
+
 def derive_cycle_index(df, sign: str):
     """
     Recompute cycle index with an explicit, named rule:
@@ -477,13 +486,20 @@ def derive_cycle_index(df, sign: str):
     protocols almost always rest there, and comparing only adjacent rows
     found no boundary at all in such files, collapsing a whole campaign
     into one cycle.
+
+    Currents inside the noise floor count as rest. Testers hold about
+    +/-1 mA in some rests (CALCE CS2 Arbin files), and treating that as
+    charge or discharge split every real cycle into a charge half and a
+    discharge half. The floor is 5 mA, or 0.5 % of the test's peak current
+    for cells small enough that 5 mA is a real current.
     """
     import numpy as np
     cur = df["current_ampere"].to_numpy(dtype=float)
     if sign == "discharge_positive":
         cur = -cur
-    charging = cur > 1e-9
-    discharging = cur < -1e-9
+    floor = current_noise_floor(cur)
+    charging = cur > floor
+    discharging = cur < -floor
 
     idx = np.zeros(len(cur), dtype=int)
     n, seen_charge, last_active = 1, False, None

@@ -194,6 +194,13 @@ class CycleBoundaryTest(unittest.TestCase):
         self.assertEqual(idx.iloc[len(one) - 1], 1)
         self.assertEqual(idx.iloc[len(one)], 2)
 
+    def test_milliamp_noise_in_rests_does_not_split_cycles(self):
+        import pandas as pd
+        # CALCE CS2 pattern: charge, rest with -0.3 mA, +1 mA blip, discharge, rest, +1 mA blip.
+        one = [0.55] * 5 + [-0.0003] * 2 + [0.001] * 2 + [-1.1] * 5 + [0.0] * 2 + [0.001] * 2
+        idx = cyclers.derive_cycle_index(pd.DataFrame({"current_ampere": one * 3}), "charge_positive")
+        self.assertEqual(list(idx.unique()), [1, 2, 3])
+
 
 if __name__ == "__main__":
     unittest.main()
