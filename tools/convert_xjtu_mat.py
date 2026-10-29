@@ -86,6 +86,14 @@ def _vector(value):
     return arr.ravel()
 
 
+def _unwrap(value):
+    """Peel single-element object arrays, which squeezed loading leaves behind."""
+    import numpy as np
+    while isinstance(value, np.ndarray) and value.dtype == object and value.size == 1:
+        value = value.ravel()[0]
+    return value
+
+
 def _text(value) -> str:
     import numpy as np
     arr = np.asarray(value).ravel()
@@ -169,11 +177,14 @@ def convert(path: str, out_dir: str) -> dict:
     import pandas as pd
     from scipy.io import loadmat
 
-    mat = loadmat(path)
+    # squeeze_me turns the cell array of timestamps into plain strings. Without
+    # it each of the ~2.7 million timestamps per cell is its own small array,
+    # which took over 2 GB per cell and would not fit the largest (Batch-6)
+    # files in a few GB of memory.
+    mat = loadmat(path, squeeze_me=True)
     if "data" not in mat:
         raise ValueError(f"{path}: no 'data' variable; not an XJTU cell file")
-    data = mat["data"]
-    cycles = data.ravel()
+    cycles = np.atleast_1d(mat["data"]).ravel()
 
     frames, labels = [], []
     # Within a cycle, relative_time_min is finer than the 1 s wall clock, so it
@@ -210,21 +221,21 @@ def convert(path: str, out_dir: str) -> dict:
 
     summary = {}
     if "summary" in mat:
-        s = mat["summary"].ravel()[0]
+        s = np.asarray(mat["summary"]).ravel()[0]
         names = getattr(s.dtype, "names", None) or ()
         try:
-            summary["cycle_life"] = int(np.asarray(s[8]).ravel()[0])
+            summary["cycle_life"] = int(np.asarray(_unwrap(s[8])).ravel()[0])
         except (IndexError, TypeError, ValueError):
             pass
         try:
-            summary["description"] = _text(s[9])
+            summary["description"] = _text(_unwrap(s[9]))
         except (IndexError, TypeError):
             pass
         # The file's own per-cycle capacities, kept beside each label so the
         # integrated values can be checked against what the lab reported.
         for name in ("charge_capacity_Ah", "discharge_capacity_Ah"):
             if name in names:
-                vals = np.asarray(s[name], dtype=float).ravel()
+                vals = np.atleast_1d(np.asarray(_unwrap(s[name]), dtype=float)).ravel()
                 key = "reported_" + name.lower()
                 for lab, v in zip(labels, vals):
                     lab[key] = None if not np.isfinite(v) else round(float(v), 6)
