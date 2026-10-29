@@ -172,7 +172,15 @@ def _within_cycle_seconds(rel_s, clock_raw, default_step):
     return np.concatenate([[0.0], np.cumsum(d)]), step
 
 
-def convert(path: str, out_dir: str) -> dict:
+def load_cell(path: str):
+    """
+    Read one XJTU cell file into (table, sidecar) without writing anything.
+
+    table is the BDF-named frame convert() writes as CSV; sidecar is the
+    dict it writes as <cell>.cycles.json. Bulk runs can hand the table to
+    the cycler pipeline directly and skip the CSV round trip, which takes
+    about a third of the time per cell.
+    """
     import numpy as np
     import pandas as pd
     from scipy.io import loadmat
@@ -240,10 +248,6 @@ def convert(path: str, out_dir: str) -> dict:
                 for lab, v in zip(labels, vals):
                     lab[key] = None if not np.isfinite(v) else round(float(v), 6)
 
-    stem = os.path.splitext(os.path.basename(path))[0]
-    os.makedirs(out_dir, exist_ok=True)
-    csv_path = os.path.join(out_dir, stem + ".csv")
-    table.to_csv(csv_path, index=False)
     sidecar = {
         "source_file": os.path.basename(path),
         "time_basis": "system_time for cycle starts; relative_time_min within cycles" if use_clock else
@@ -251,6 +255,16 @@ def convert(path: str, out_dir: str) -> dict:
         "summary": summary,
         "cycles": labels,
     }
+    return table, sidecar
+
+
+def convert(path: str, out_dir: str) -> dict:
+    table, sidecar = load_cell(path)
+    labels = sidecar["cycles"]
+    stem = os.path.splitext(os.path.basename(path))[0]
+    os.makedirs(out_dir, exist_ok=True)
+    csv_path = os.path.join(out_dir, stem + ".csv")
+    table.to_csv(csv_path, index=False)
     with open(os.path.join(out_dir, stem + ".cycles.json"), "w") as fh:
         json.dump(sidecar, fh, indent=2, ensure_ascii=False)
     return {"csv": csv_path, "rows": int(len(table)), "cycles": len(labels),

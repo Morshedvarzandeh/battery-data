@@ -137,6 +137,14 @@ class XjtuConverterTest(unittest.TestCase):
                 for c in cyclers.summarise_cycles(nz):
                     self.assertAlmostEqual(c["discharge_capacity_ah"], 2.0, places=2)
 
+    def test_in_memory_load_matches_the_written_csv(self):
+        import pandas as pd
+        r = self._convert(use_clock=True)
+        table, side = xjtu.load_cell(os.path.join(self.tmp, "2C_battery-1.mat"))
+        pd.testing.assert_frame_equal(table.reset_index(drop=True), pd.read_csv(r["csv"]),
+                                      check_dtype=False)
+        self.assertEqual(len(side["cycles"]), 3)
+
     def test_sidecar_keeps_the_capacity_check_labels(self):
         r = self._convert(use_clock=True)
         with open(r["csv"].replace(".csv", ".cycles.json")) as fh:
