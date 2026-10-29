@@ -154,6 +154,9 @@ class XjtuConverterTest(unittest.TestCase):
         self.assertEqual((stats["files"], stats["cycles"], stats["failed"]), (1, 3, []))
         sql = out.getvalue()
         self.assertIn("'cell/lishen/unstated/unit/xjtu-2024/2C_battery-1'", sql)
+        # Each test run cites the dataset's own provenance row, not row 1.
+        run_insert = sql[sql.index("INSERT INTO bd.test_run"):sql.index("INSERT INTO bd.test_segment")]
+        self.assertIn("WHERE s.uid = 'src/dataset/xjtu-2024'", run_insert)
         # No capacity column, so the sign falls back to the BDF default and says so.
         self.assertTrue(any("current sign not determinable" in w for w in stats["warnings"]))
 

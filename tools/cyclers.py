@@ -601,11 +601,17 @@ def _lit(v) -> str:
     return "'" + str(v).replace("'", "''") + "'"
 
 
-def emit_sql(nz: Normalised, unit_uid: str, run_uid: str, provenance_id: int,
+def emit_sql(nz: Normalised, unit_uid: str, run_uid: str, provenance_id: int | None,
              test_kind: str = "cycle_life", c_rate_ref_ah: float | None = None,
-             c_rate_ref_src: str | None = None) -> tuple[str, dict]:
+             c_rate_ref_src: str | None = None,
+             provenance_sql: str | None = None) -> tuple[str, dict]:
     """
     Render the whole ingest as a single SQL transaction.
+
+    provenance_sql, when given, is a scalar SQL subquery that resolves the
+    provenance row inside the database. A literal id only works when the
+    caller knows it, and a hardcoded 1 points at whichever row happens to
+    be first - usually somebody else's source.
 
     Exists so ingestion works anywhere `psql` does, with no Python database
     driver installed - which is a common state on lab machines and in
@@ -629,7 +635,7 @@ SELECT {_lit(run_uid)}, pu.id, {_lit(test_kind)}::test_kind,
        {_lit(c_rate_ref_ah)}, {_lit(c_rate_ref_src)},
        {_lit(nz.dialect)}, {_lit(DIALECTS[nz.dialect].encoding)},
        'tools/cyclers.py', '0.3.0',
-       {_lit(nz.warnings)}, {_lit(provenance_id)}
+       {_lit(nz.warnings)}, {provenance_sql if provenance_sql else _lit(provenance_id)}
   FROM bd.product_unit pu WHERE pu.uid = {_lit(unit_uid)};""", ""]
 
     out.append("-- segments: the [aging, RPT, aging, RPT, ...] structure")

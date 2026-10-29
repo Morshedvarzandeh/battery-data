@@ -444,9 +444,22 @@ def cmd_plan(a) -> int:
     return 0
 
 
+def dataset_provenance_sql(key: str) -> str:
+    """The provenance row provenance_sql() creates for this dataset, as a subquery."""
+    return ("(SELECT p.id FROM bd.provenance p"
+            " JOIN bd.source_location sl ON sl.id = p.source_location_id"
+            " JOIN bd.source s ON s.id = sl.source_id"
+            f" WHERE s.uid = {lit('src/dataset/' + key)} ORDER BY p.id LIMIT 1)")
+
+
 def run_pipeline(key: str, ds: dict, files: list[str], out, *,
                  chemistry=None, nominal_ah=None, test_kind=None,
-                 provenance_id: int = 1) -> dict:
+                 provenance_id: int | None = None) -> dict:
+    """
+    provenance_id is resolved in the database from the dataset's own source
+    unless given. It used to default to 1, which in a database holding
+    seeds or contributions is another source's provenance row.
+    """
     retrieved = _dt.date.today().isoformat()
     hashed = [(p, sha256(p)) for p in files]
     out.write(spine_sql(ds, key, retrieved, hashed, chemistry, nominal_ah))
@@ -466,6 +479,7 @@ def run_pipeline(key: str, ds: dict, files: list[str], out, *,
                 unit_uid=f"{prod_uid}/unit/{key}/{stem}",
                 run_uid=f"run/{key}/{stem}",
                 provenance_id=provenance_id,
+                provenance_sql=None if provenance_id is not None else dataset_provenance_sql(key),
                 test_kind=test_kind or ds["test_kind"],
                 c_rate_ref_ah=nominal_ah if nominal_ah is not None else ds.get("nominal_ah"),
                 c_rate_ref_src="dataset_nominal" if ds.get("nominal_ah") else None,
