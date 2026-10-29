@@ -165,7 +165,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
-      - run: pip install pandas numpy pyyaml jsonschema
+      - run: pip install pandas numpy scipy pyyaml jsonschema
       - name: Cycler adapters - sniff, normalise, conventions, RPT segmentation
         run: python tools/cyclers.py selftest
       - name: Specification display and Markdown preserve multiple ratings

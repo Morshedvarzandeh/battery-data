@@ -114,8 +114,17 @@ DATASETS: dict[str, dict] = {
         "name": "CALCE battery cycling data",
         "publisher": "Center for Advanced Life Cycle Engineering, U. Maryland",
         "landing": "https://calce.umd.edu/battery-data",
-        "citation": "CALCE Battery Research Group, University of Maryland.",
-        "license": "research use - verify at landing page",
+        # The CS2 set is the one most often reused (it is the 2011 CALCE set in
+        # cell-to-pack SOH work). CALCE asks for the experiment article, and
+        # lists these three for CS2; the first describes the experiments.
+        "citation": ("He, W., Williard, N., Osterman, M., Pecht, M. Prognostics of "
+                     "lithium-ion batteries based on Dempster-Shafer theory and the "
+                     "Bayesian Monte Carlo method. Journal of Power Sources 196(23), "
+                     "10314-10321 (2011). Also cited by CALCE for CS2: Xing et al., "
+                     "Microelectronics Reliability 53(6), 811-820 (2013); Williard et "
+                     "al., Int. J. Prognostics and Health Management 4, 1-7 (2013)."),
+        "license": ("open access, no licence stated; CALCE asks for the articles "
+                    "to be cited - verify at landing page"),
         "cells": ("5 cell types: INR18650-20R 2.0Ah NMC/graphite, A123 1.1Ah LFP, "
                   "CS2 1.1Ah prismatic LCO, CX2 1.35Ah prismatic LCO, PL 1.5Ah pouch LCO"),
         "chemistry": "LCO", "form_factor": "prismatic_hardcase", "ff_code": None,
@@ -130,7 +139,47 @@ DATASETS: dict[str, dict] = {
                   "DST/US06/FUDS drive cycles, pulsed-discharge profiles, temperature "
                   "cycling 25-55 C, and partial-SOC ageing with periodic full "
                   "characterisation. Cite the CALCE article for the experiment, not just "
-                  "the page."),
+                  "the page. CS2 specifically: LiCoO2, 1100 mAh rated, maker not stated; "
+                  "every cell charged 0.5C CC to 4.2 V then CV to 0.05 A, discharge "
+                  "cut-off 2.7 V unless stated. Six test types: 0.5C cycling (CS2-8, 21, "
+                  "33, 34); 1C cycling (CS2-35 to 38); discharge current stepped "
+                  "0.11-2.2 A cycle to cycle (CS2-3, 9); 0.55 A with the cut-off moved "
+                  "at random (CS2-7); partial cycling 3.77-2.7 V (CS2-5, 6) and "
+                  "4.2-3.77 V (CS2-24, 25). The partial-cycling cells stay inside a "
+                  "voltage window, so their per-cycle capacity is not a full-capacity "
+                  "check."),
+    },
+    "xjtu-2024": {
+        "name": "XJTU battery degradation dataset (55 x 18650 NCM)",
+        "publisher": "Xi'an Jiaotong University",
+        "landing": "https://zenodo.org/records/10963339",
+        "citation": ("Wang, F., Zhai, Z., Zhao, Z. et al. Physics-informed neural "
+                     "network for lithium-ion battery degradation stable modeling and "
+                     "prognosis. Nature Communications 15, 4332 (2024). "
+                     "doi:10.1038/s41467-024-48779-z"),
+        # Dataset DOI, not the article's: the source row describes the files.
+        "doi": "10.5281/zenodo.10963339",
+        "license": "CC BY 4.0 - verify at landing page",
+        "cells": ("55 x LISHEN 18650 LiNi0.5Co0.2Mn0.3O2, 2.0 Ah / 3.6 V, "
+                  "6 batches of charge and discharge strategy"),
+        "chemistry": "NMC523", "form_factor": "cylindrical", "ff_code": "18650",
+        "nominal_ah": 2.0, "nominal_v": 3.6,
+        # The dataset names the maker but not a model number.
+        "manufacturer": "Lishen", "model": "unstated",
+        "file_glob": "*.csv",
+        "test_kind": "cycle_life",
+        "notes": ("Ships as one 2.4 GB zip of MATLAB .mat files, one per cell. Convert "
+                  "each with tools/convert_xjtu_mat.py to BDF CSV first; the sniffer "
+                  "cannot read .mat. Room temperature, 1 Hz, 4.2 V charge cut-off, 2.5 V "
+                  "discharge cut-off, end of life below 80 % of initial capacity. "
+                  "Batches: (1) 8 cells, 2C charge / 1C discharge; (2) 15 cells, 3C / 1C; "
+                  "(3) 8 cells, 2C charge, discharge rate cycled 0.5-1-2-3-5C to 2.5 V; "
+                  "(4) 8 cells, as batch 3 but to 3.0 V, capacity checked every cycle; "
+                  "(5) 8 cells, random 2-8 A discharge pulses of 2-6 min to 3.0 V, "
+                  "capacity checked periodically from cycle 21; (6) 8 cells, simulated "
+                  "GEO satellite, 2C charge and 0.667C discharge, capacity checked about "
+                  "every 5 cycles. Batches 4-6 do not discharge fully, so only the "
+                  "cycles each file labels 'test capacity' measure capacity."),
     },
     "batteryarchive": {
         "name": "Battery Archive (aggregator)",
