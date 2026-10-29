@@ -49,11 +49,16 @@ class RegistryTest(unittest.TestCase):
 
 
 def _cycle(t0_clock, restart_relative, cycle_no, label):
-    """One XJTU-shaped cycle: 1800 s charge at +4 A, 3600 s discharge at -2 A."""
-    n_chg, n_dch = 1800, 3600
-    cur = np.concatenate([np.full(n_chg, 4.0), np.full(n_dch, -2.0)])
-    volt = np.concatenate([np.linspace(3.6, 4.2, n_chg), np.linspace(4.2, 2.5, n_dch)])
-    secs = np.arange(n_chg + n_dch, dtype=float)
+    """
+    One XJTU-shaped cycle, rests included as in the released files:
+    1800 s charge at +4 A, 300 s rest, 3600 s discharge at -2 A, 300 s rest.
+    """
+    n_chg, n_rest, n_dch = 1800, 300, 3600
+    cur = np.concatenate([np.full(n_chg, 4.0), np.zeros(n_rest),
+                          np.full(n_dch, -2.0), np.zeros(n_rest)])
+    volt = np.concatenate([np.linspace(3.6, 4.2, n_chg), np.full(n_rest, 4.15),
+                           np.linspace(4.2, 2.5, n_dch), np.full(n_rest, 2.9)])
+    secs = np.arange(len(cur), dtype=float)
     rel_min = secs / 60.0 if restart_relative else (secs + cycle_no * 10_000) / 60.0
     if t0_clock is None:
         clock = np.zeros(len(secs))          # unparseable: forces the fallback
@@ -67,14 +72,24 @@ def _cycle(t0_clock, restart_relative, cycle_no, label):
             np.full((len(secs), 1), 25.0), label)
 
 
+ROWS_PER_CYCLE = 6000
+SUMMARY_FIELDS = ["charge_capacity_Ah", "discharge_capacity_Ah", "charge_power_Wh",
+                  "discharge_power_Wh", "charge_median_voltage", "discharge_median_voltage",
+                  "charge_mean_voltage", "discharge_mean_voltage", "cycle_life", "description"]
+
+
 def _write_mat(path, use_clock, restart_relative=True):
     labels = ["2C charge 1C discharge", "test capacity", "2C charge 1C discharge"]
     starts = ["2023-03-01 08:00:00", "2023-03-01 09:40:00", "2023-03-01 11:20:00"]
     data = np.zeros((1, 3), dtype=[(f, object) for f in xjtu.DATA_FIELDS])
     for i in range(3):
         data[0, i] = _cycle(starts[i] if use_clock else None, restart_relative, i, labels[i])
-    summary = np.zeros((1, 1), dtype=[(f"f{k}", object) for k in range(10)])
-    summary[0, 0] = tuple([0] * 8 + [3, "batch-1 synthetic"])
+    # The released files' summary layout: per-cycle arrays, then cycle life
+    # and a description in positions 8 and 9.
+    summary = np.zeros((1, 1), dtype=[(f, object) for f in SUMMARY_FIELDS])
+    reported = np.array([[2.0], [1.98], [1.96]])
+    summary[0, 0] = tuple([reported, reported] + [np.zeros((3, 1))] * 6
+                          + [np.array([[3]]), "batch-1 synthetic"])
     savemat(path, {"data": data, "summary": summary})
 
 
@@ -93,13 +108,13 @@ class XjtuConverterTest(unittest.TestCase):
 
     def test_clock_time_keeps_the_rest_between_cycles(self):
         r = self._convert(use_clock=True)
-        self.assertEqual((r["cycles"], r["rows"]), (3, 3 * 5400))
+        self.assertEqual((r["cycles"], r["rows"]), (3, 3 * ROWS_PER_CYCLE))
         self.assertTrue(r["time_basis"].startswith("system_time"))
         nz = cyclers.normalise(r["csv"])
         self.assertEqual(nz.dialect, "bdf")
         t = nz.frame["test_time_second"].to_numpy()
         # cycle 2 starts 100 min after cycle 1 started, so 6000 s on the clock.
-        self.assertAlmostEqual(t[5400], 6000.0)
+        self.assertAlmostEqual(t[ROWS_PER_CYCLE], 6000.0)
         cycles = cyclers.summarise_cycles(nz)
         self.assertEqual(len(cycles), 3)
         for c in cycles:
@@ -120,6 +135,8 @@ class XjtuConverterTest(unittest.TestCase):
             side = json.load(fh)
         self.assertEqual(side["summary"], {"cycle_life": 3, "description": "batch-1 synthetic"})
         self.assertEqual([c["description"] for c in side["cycles"]][1], "test capacity")
+        self.assertEqual([c["reported_discharge_capacity_ah"] for c in side["cycles"]],
+                         [2.0, 1.98, 1.96])
 
     def test_converted_file_runs_through_the_ingest_pipeline(self):
         r = self._convert(use_clock=True)
@@ -131,6 +148,19 @@ class XjtuConverterTest(unittest.TestCase):
         self.assertIn("'cell/lishen/unstated/unit/xjtu-2024/2C_battery-1'", sql)
         # No capacity column, so the sign falls back to the BDF default and says so.
         self.assertTrue(any("current sign not determinable" in w for w in stats["warnings"]))
+
+
+@unittest.skipUnless(HAVE_SCIPY, "scipy not installed")
+class CycleBoundaryTest(unittest.TestCase):
+    def test_a_rest_between_discharge_and_charge_still_ends_the_cycle(self):
+        import pandas as pd
+        one = [4.0] * 5 + [0.0] * 3 + [-2.0] * 5 + [0.0] * 3
+        df = pd.DataFrame({"current_ampere": one * 4})
+        idx = cyclers.derive_cycle_index(df, "charge_positive")
+        self.assertEqual(list(idx.unique()), [1, 2, 3, 4])
+        # The rest after a discharge stays with the cycle it ends.
+        self.assertEqual(idx.iloc[len(one) - 1], 1)
+        self.assertEqual(idx.iloc[len(one)], 2)
 
 
 if __name__ == "__main__":

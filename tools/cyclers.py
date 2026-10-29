@@ -462,6 +462,12 @@ def derive_cycle_index(df, sign: str):
     disagree. Neware's BTSDA counts backward step-index jumps; fastnda
     counts charge->discharge completion and documents the divergence;
     NewareNDA exposes three user-selectable modes.
+
+    A new cycle starts at the first charging row after a discharge. Rest
+    rows (zero current) between the two do not break the transition: real
+    protocols almost always rest there, and comparing only adjacent rows
+    found no boundary at all in such files, collapsing a whole campaign
+    into one cycle.
     """
     import numpy as np
     cur = df["current_ampere"].to_numpy(dtype=float)
@@ -471,16 +477,15 @@ def derive_cycle_index(df, sign: str):
     discharging = cur < -1e-9
 
     idx = np.zeros(len(cur), dtype=int)
-    n, seen_charge = 1, False
+    n, seen_charge, last_active = 1, False, None
     for i in range(len(cur)):
         if charging[i]:
-            seen_charge = True
-        elif discharging[i] and seen_charge:
-            pass
+            if last_active == "discharge" and seen_charge:
+                n += 1
+            seen_charge, last_active = True, "charge"
+        elif discharging[i]:
+            last_active = "discharge"
         idx[i] = n
-        if i > 0 and discharging[i - 1] and charging[i] and seen_charge:
-            n += 1
-            idx[i] = n
     import pandas as pd
     return pd.Series(idx, index=df.index)
 
