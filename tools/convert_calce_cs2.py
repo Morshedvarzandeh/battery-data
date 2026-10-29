@@ -22,8 +22,10 @@ double-counts cycles and runs time backwards. So, per cell:
 - Sessions are ordered by their first timestamp (Arbin) or by the date in
   the file name (CADEX).
 - An exact repeat of an earlier session is dropped; rows of a later
-  session that fall inside an earlier one's time span are trimmed. The
-  sidecar lists every session and what was done with it.
+  session that fall inside an earlier one's time span are trimmed. CADEX
+  files are progressive snapshots of one running test, each repeating the
+  earlier ones from the start, so each chain collapses to its longest
+  file. The sidecar lists every session and what was done with it.
 - Arbin sessions are placed on one time axis by Date_Time, with the finer
   Test_Time inside each session. CADEX files carry no clock, so their
   sessions are joined end to end and the real gaps are unknown.
@@ -147,6 +149,34 @@ def _fingerprint(df) -> str:
     return h.hexdigest()
 
 
+def _snapshot_drops(loaded) -> dict:
+    """
+    CADEX files are progressive snapshots of one running test: each later
+    export repeats the earlier ones from the start (CS2_8_4_8_10 holds all
+    of CS2_8_4_5_10 and more). Joined end to end they would count most of
+    the data two or three times. Each chain collapses to its longest file;
+    returns {file: reason} for the files dropped.
+    """
+    import numpy as np
+    cols = ["test_time_s", "voltage_v", "current_a"]
+    drops, last = {}, None
+    for f, df, _k in loaded:
+        if last is not None and len(df):
+            lf, ldf = last
+            n = min(len(ldf), len(df))
+            if n and np.allclose(ldf[cols].iloc[:n].to_numpy(dtype=float),
+                                 df[cols].iloc[:n].to_numpy(dtype=float), rtol=0, atol=1e-9):
+                if len(df) >= len(ldf):
+                    drops[os.path.basename(lf)] = "dropped: earlier snapshot of " + os.path.basename(f)
+                    last = (f, df)
+                else:
+                    drops[os.path.basename(f)] = "dropped: shorter copy of " + os.path.basename(lf)
+                continue
+        if len(df):
+            last = (f, df)
+    return drops
+
+
 def session_files(cell_dir: str) -> list[str]:
     files = [f for f in glob.glob(os.path.join(cell_dir, "*"))
              if os.path.splitext(f)[1].lower() in (".xlsx", ".xls", ".txt")]
@@ -175,11 +205,17 @@ def merge_cell(files: list[str]):
         loaded.sort(key=lambda x: (x[1]["date_time"].min() if len(x[1]) else pd.Timestamp.max,
                                    os.path.basename(x[0])))
 
+    drops = _snapshot_drops(loaded) if kind == "cadex" else {}
+
     frames, log, seen = [], [], {}
     clock0, last_clock_end, last_end, step = None, None, None, 1.0
     cyc_off, step_off = 0, 0
     for f, df, _k in loaded:
         entry = {"file": os.path.basename(f), "rows_in": int(len(df))}
+        if entry["file"] in drops:
+            entry.update(action=drops[entry["file"]], rows_kept=0)
+            log.append(entry)
+            continue
         if df.empty:
             entry.update(action="empty", rows_kept=0)
             log.append(entry)

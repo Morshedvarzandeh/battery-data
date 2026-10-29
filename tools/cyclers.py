@@ -348,6 +348,15 @@ def normalise(path: str, dialect_name: str | None = None) -> Normalised:
     if "step_count" not in nf.columns and "step_id" in nf.columns:
         nf["step_count"] = nf["step_id"]
 
+    import numpy as np
+    tt = nf["test_time_second"].to_numpy(dtype=float)
+    gap = logging_gap_threshold(tt)
+    jumps = (np.diff(tt) > gap) & (np.abs(nf["current_ampere"].to_numpy(dtype=float)[1:]) > 1e-9)
+    if jumps.any():
+        warnings.append(
+            f"{int(jumps.sum())} logging gap(s) longer than {gap:.0f} s with current "
+            f"flowing after them; not integrated into cycle capacity.")
+
     return Normalised(frame=nf, dialect=dname, current_sign=sign,
                       capacity_accum=accum, unit_fixes=unit_fixes,
                       warnings=warnings, columns_present=list(nf.columns))
@@ -494,9 +503,27 @@ def derive_cycle_index(df, sign: str):
 # Cycle summary + RPT segmentation
 # ---------------------------------------------------------------------
 
+def logging_gap_threshold(t) -> float:
+    """
+    Longest interval between samples that is still continuous logging.
+
+    Above it the recording stopped (a paused channel, a lost export), and the
+    current on the far side says nothing about what flowed in between:
+    integrating across a 49.5 h gap in CALCE CS2_8 added 27 Ah to one cycle
+    of a 1.1 Ah cell. Twenty median intervals, and never under an hour, so
+    sparse logging of slow steps is not mistaken for a gap.
+    """
+    import numpy as np
+    d = np.diff(np.asarray(t, dtype=float))
+    d = d[d > 0]
+    med = float(np.median(d)) if d.size else 1.0
+    return max(20.0 * med, 3600.0)
+
+
 def summarise_cycles(nz: Normalised) -> list[dict]:
     import numpy as np
     df = nz.frame
+    gap = logging_gap_threshold(df["test_time_second"].to_numpy(dtype=float))
     key = "cycle_index_derived" if "cycle_index_derived" in df.columns else "cycle_count"
     if key not in df.columns:
         return []
@@ -509,6 +536,7 @@ def summarise_cycles(nz: Normalised) -> list[dict]:
         v = g["voltage_volt"].to_numpy(dtype=float)
         c = cur[g.index]
         dt = np.diff(t, prepend=t[0])
+        dt[dt > gap] = 0.0                  # a recording gap carries no charge
         ah = np.abs(c) * dt / 3600.0
         chg = float(np.nansum(ah[c > 0]))
         dch = float(np.nansum(ah[c < 0]))

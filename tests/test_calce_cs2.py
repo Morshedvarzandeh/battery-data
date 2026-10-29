@@ -125,5 +125,50 @@ class CadexTest(unittest.TestCase):
             shutil.rmtree(tmp)
 
 
+@unittest.skipUnless(HAVE_EXCEL, "pandas not installed")
+class CadexSnapshotTest(unittest.TestCase):
+    def test_progressive_snapshots_collapse_to_the_longest(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            cell = os.path.join(tmp, "CS2_97")
+            os.makedirs(cell)
+            ma = np.tile(np.concatenate([np.full(60, 550), np.zeros(10), np.full(60, -550), np.zeros(10)]), 3)
+            full = pd.DataFrame({"Time": np.arange(len(ma), dtype=float), "mV": 3800, "mA": ma})
+            # Three exports of one running test, then a separate test.
+            full.iloc[:140].to_csv(os.path.join(cell, "CS2_97_1_19_10.txt"), sep="\t", index=False)
+            full.iloc[:280].to_csv(os.path.join(cell, "CS2_97_1_20_10.txt"), sep="\t", index=False)
+            full.to_csv(os.path.join(cell, "CS2_97_1_21_10.txt"), sep="\t", index=False)
+            other = full.iloc[:140].copy(); other["mV"] = 3700
+            other.to_csv(os.path.join(cell, "CS2_97_2_01_10.txt"), sep="\t", index=False)
+            table, sessions = calce.merge_cell(calce.session_files(cell))
+            actions = {s["file"]: s["action"] for s in sessions["sessions"]}
+            self.assertTrue(actions["CS2_97_1_19_10.txt"].startswith("dropped: earlier snapshot"))
+            self.assertTrue(actions["CS2_97_1_20_10.txt"].startswith("dropped: earlier snapshot"))
+            self.assertEqual(actions["CS2_97_1_21_10.txt"], "kept")
+            self.assertEqual(actions["CS2_97_2_01_10.txt"], "kept")
+            self.assertEqual(len(table), len(full) + 140)
+        finally:
+            shutil.rmtree(tmp)
+
+
+@unittest.skipUnless(HAVE_EXCEL, "pandas not installed")
+class LoggingGapTest(unittest.TestCase):
+    def test_a_recording_gap_adds_no_charge(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            t = np.concatenate([np.arange(0, 3600, 60.0), np.arange(0, 3600, 60.0) + 3600 + 2 * 86400])
+            cur = np.concatenate([np.full(30, 1.0), np.full(30, -1.0), np.full(60, -1.0)])
+            path = os.path.join(tmp, "gap.csv")
+            pd.DataFrame({"test_time_second": t, "voltage_volt": 3.7, "current_ampere": cur,
+                          "cycle_count": 1}).to_csv(path, index=False)
+            nz = cyclers.normalise(path)
+            self.assertTrue(any("logging gap" in w for w in nz.warnings))
+            (c,) = cyclers.summarise_cycles(nz)
+            # 89 one-minute discharge samples at 1 A, not 2 days' worth.
+            self.assertAlmostEqual(c["discharge_capacity_ah"], 89 / 60, places=3)
+        finally:
+            shutil.rmtree(tmp)
+
+
 if __name__ == "__main__":
     unittest.main()
