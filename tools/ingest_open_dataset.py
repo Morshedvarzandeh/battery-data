@@ -114,23 +114,74 @@ DATASETS: dict[str, dict] = {
         "name": "CALCE battery cycling data",
         "publisher": "Center for Advanced Life Cycle Engineering, U. Maryland",
         "landing": "https://calce.umd.edu/battery-data",
-        "citation": "CALCE Battery Research Group, University of Maryland.",
-        "license": "research use - verify at landing page",
+        # The CS2 set is the one most often reused (it is the 2011 CALCE set in
+        # cell-to-pack SOH work). CALCE asks for the experiment article, and
+        # lists these three for CS2; the first describes the experiments.
+        "citation": ("He, W., Williard, N., Osterman, M., Pecht, M. Prognostics of "
+                     "lithium-ion batteries based on Dempster-Shafer theory and the "
+                     "Bayesian Monte Carlo method. Journal of Power Sources 196(23), "
+                     "10314-10321 (2011). Also cited by CALCE for CS2: Xing et al., "
+                     "Microelectronics Reliability 53(6), 811-820 (2013); Williard et "
+                     "al., Int. J. Prognostics and Health Management 4, 1-7 (2013)."),
+        "license": ("open access, no licence stated; CALCE asks for the articles "
+                    "to be cited - verify at landing page"),
         "cells": ("5 cell types: INR18650-20R 2.0Ah NMC/graphite, A123 1.1Ah LFP, "
                   "CS2 1.1Ah prismatic LCO, CX2 1.35Ah prismatic LCO, PL 1.5Ah pouch LCO"),
         "chemistry": "LCO", "form_factor": "prismatic_hardcase", "ff_code": None,
         "nominal_ah": 1.1, "nominal_v": 3.7,
         "manufacturer": "unstated", "model": "CS2",
-        "file_glob": "*.xlsx",
+        "file_glob": "*.csv",
         "test_kind": "cycle_life",
         "notes": ("Set --nominal-ah per cell type; they differ (1.1 / 1.35 / 1.5 / 2.0 Ah). "
-                  "Arbin exports as Excel, so convert to CSV for the sniffer. CS2_8 and "
-                  "CS2_21 came off a CADEX tester and ship as .txt instead. Campaigns go "
+                  "Each cell is a folder of session files whose time and cycle numbering "
+                  "restart, and some sessions are exported twice; merge each cell with "
+                  "tools/convert_calce_cs2.py, which also reads the CADEX .txt exports of "
+                  "CS2_8 and CS2_21. Arbin cells ship as Excel. Campaigns go "
                   "well beyond plain cycling: low-current and incremental OCV at 0/25/45 C, "
                   "DST/US06/FUDS drive cycles, pulsed-discharge profiles, temperature "
                   "cycling 25-55 C, and partial-SOC ageing with periodic full "
                   "characterisation. Cite the CALCE article for the experiment, not just "
-                  "the page."),
+                  "the page. CS2 specifically: LiCoO2, 1100 mAh rated, maker not stated; "
+                  "every cell charged 0.5C CC to 4.2 V then CV to 0.05 A, discharge "
+                  "cut-off 2.7 V unless stated. Six test types: 0.5C cycling (CS2-8, 21, "
+                  "33, 34); 1C cycling (CS2-35 to 38); discharge current stepped "
+                  "0.11-2.2 A cycle to cycle (CS2-3, 9); 0.55 A with the cut-off moved "
+                  "at random (CS2-7); partial cycling 3.77-2.7 V (CS2-5, 6) and "
+                  "4.2-3.77 V (CS2-24, 25). The partial-cycling cells stay inside a "
+                  "voltage window, so their per-cycle capacity is not a full-capacity "
+                  "check."),
+    },
+    "xjtu-2024": {
+        "name": "XJTU battery degradation dataset (55 x 18650 NCM)",
+        "publisher": "Xi'an Jiaotong University",
+        "landing": "https://zenodo.org/records/10963339",
+        "citation": ("Wang, F., Zhai, Z., Zhao, Z. et al. Physics-informed neural "
+                     "network for lithium-ion battery degradation stable modeling and "
+                     "prognosis. Nature Communications 15, 4332 (2024). "
+                     "doi:10.1038/s41467-024-48779-z"),
+        # Dataset DOI, not the article's: the source row describes the files.
+        "doi": "10.5281/zenodo.10963339",
+        "license": "CC BY 4.0 - verify at landing page",
+        "cells": ("55 x LISHEN 18650 LiNi0.5Co0.2Mn0.3O2, 2.0 Ah / 3.6 V, "
+                  "6 batches of charge and discharge strategy"),
+        "chemistry": "NMC523", "form_factor": "cylindrical", "ff_code": "18650",
+        "nominal_ah": 2.0, "nominal_v": 3.6,
+        # The dataset names the maker but not a model number.
+        "manufacturer": "Lishen", "model": "unstated",
+        "file_glob": "*.csv",
+        "test_kind": "cycle_life",
+        "notes": ("Ships as one 2.4 GB zip of MATLAB .mat files, one per cell. Convert "
+                  "each with tools/convert_xjtu_mat.py to BDF CSV first; the sniffer "
+                  "cannot read .mat. Room temperature, 1 Hz, 4.2 V charge cut-off, 2.5 V "
+                  "discharge cut-off, end of life below 80 % of initial capacity. "
+                  "Batches: (1) 8 cells, 2C charge / 1C discharge; (2) 15 cells, 3C / 1C; "
+                  "(3) 8 cells, 2C charge, discharge rate cycled 0.5-1-2-3-5C to 2.5 V; "
+                  "(4) 8 cells, as batch 3 but to 3.0 V, capacity checked every cycle; "
+                  "(5) 8 cells, random 2-8 A discharge pulses of 2-6 min to 3.0 V, "
+                  "capacity checked periodically from cycle 21; (6) 8 cells, simulated "
+                  "GEO satellite, 2C charge and 0.667C discharge, capacity checked about "
+                  "every 5 cycles. Batches 4-6 do not discharge fully, so only the "
+                  "cycles each file labels 'test capacity' measure capacity."),
     },
     "batteryarchive": {
         "name": "Battery Archive (aggregator)",
@@ -395,9 +446,22 @@ def cmd_plan(a) -> int:
     return 0
 
 
+def dataset_provenance_sql(key: str) -> str:
+    """The provenance row provenance_sql() creates for this dataset, as a subquery."""
+    return ("(SELECT p.id FROM bd.provenance p"
+            " JOIN bd.source_location sl ON sl.id = p.source_location_id"
+            " JOIN bd.source s ON s.id = sl.source_id"
+            f" WHERE s.uid = {lit('src/dataset/' + key)} ORDER BY p.id LIMIT 1)")
+
+
 def run_pipeline(key: str, ds: dict, files: list[str], out, *,
                  chemistry=None, nominal_ah=None, test_kind=None,
-                 provenance_id: int = 1) -> dict:
+                 provenance_id: int | None = None) -> dict:
+    """
+    provenance_id is resolved in the database from the dataset's own source
+    unless given. It used to default to 1, which in a database holding
+    seeds or contributions is another source's provenance row.
+    """
     retrieved = _dt.date.today().isoformat()
     hashed = [(p, sha256(p)) for p in files]
     out.write(spine_sql(ds, key, retrieved, hashed, chemistry, nominal_ah))
@@ -417,6 +481,7 @@ def run_pipeline(key: str, ds: dict, files: list[str], out, *,
                 unit_uid=f"{prod_uid}/unit/{key}/{stem}",
                 run_uid=f"run/{key}/{stem}",
                 provenance_id=provenance_id,
+                provenance_sql=None if provenance_id is not None else dataset_provenance_sql(key),
                 test_kind=test_kind or ds["test_kind"],
                 c_rate_ref_ah=nominal_ah if nominal_ah is not None else ds.get("nominal_ah"),
                 c_rate_ref_src="dataset_nominal" if ds.get("nominal_ah") else None,

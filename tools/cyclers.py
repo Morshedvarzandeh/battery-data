@@ -348,6 +348,15 @@ def normalise(path: str, dialect_name: str | None = None) -> Normalised:
     if "step_count" not in nf.columns and "step_id" in nf.columns:
         nf["step_count"] = nf["step_id"]
 
+    import numpy as np
+    tt = nf["test_time_second"].to_numpy(dtype=float)
+    gap = logging_gap_threshold(tt)
+    jumps = (np.diff(tt) > gap) & (np.abs(nf["current_ampere"].to_numpy(dtype=float)[1:]) > 1e-9)
+    if jumps.any():
+        warnings.append(
+            f"{int(jumps.sum())} logging gap(s) longer than {gap:.0f} s with current "
+            f"flowing after them; not integrated into cycle capacity.")
+
     return Normalised(frame=nf, dialect=dname, current_sign=sign,
                       capacity_accum=accum, unit_fixes=unit_fixes,
                       warnings=warnings, columns_present=list(nf.columns))
@@ -453,6 +462,15 @@ def detect_capacity_accumulation(df) -> str | None:
     return "net_signed"
 
 
+def current_noise_floor(cur) -> float:
+    """|current| at or below which a sample is rest for cycle counting."""
+    import numpy as np
+    a = np.abs(np.asarray(cur, dtype=float))
+    a = a[np.isfinite(a)]
+    peak = float(np.percentile(a, 99)) if a.size else 0.0
+    return max(1e-9, min(0.005, 0.005 * peak))
+
+
 def derive_cycle_index(df, sign: str):
     """
     Recompute cycle index with an explicit, named rule:
@@ -462,25 +480,37 @@ def derive_cycle_index(df, sign: str):
     disagree. Neware's BTSDA counts backward step-index jumps; fastnda
     counts charge->discharge completion and documents the divergence;
     NewareNDA exposes three user-selectable modes.
+
+    A new cycle starts at the first charging row after a discharge. Rest
+    rows (zero current) between the two do not break the transition: real
+    protocols almost always rest there, and comparing only adjacent rows
+    found no boundary at all in such files, collapsing a whole campaign
+    into one cycle.
+
+    Currents inside the noise floor count as rest. Testers hold about
+    +/-1 mA in some rests (CALCE CS2 Arbin files), and treating that as
+    charge or discharge split every real cycle into a charge half and a
+    discharge half. The floor is 5 mA, or 0.5 % of the test's peak current
+    for cells small enough that 5 mA is a real current.
     """
     import numpy as np
     cur = df["current_ampere"].to_numpy(dtype=float)
     if sign == "discharge_positive":
         cur = -cur
-    charging = cur > 1e-9
-    discharging = cur < -1e-9
+    floor = current_noise_floor(cur)
+    charging = cur > floor
+    discharging = cur < -floor
 
     idx = np.zeros(len(cur), dtype=int)
-    n, seen_charge = 1, False
+    n, seen_charge, last_active = 1, False, None
     for i in range(len(cur)):
         if charging[i]:
-            seen_charge = True
-        elif discharging[i] and seen_charge:
-            pass
+            if last_active == "discharge" and seen_charge:
+                n += 1
+            seen_charge, last_active = True, "charge"
+        elif discharging[i]:
+            last_active = "discharge"
         idx[i] = n
-        if i > 0 and discharging[i - 1] and charging[i] and seen_charge:
-            n += 1
-            idx[i] = n
     import pandas as pd
     return pd.Series(idx, index=df.index)
 
@@ -489,9 +519,27 @@ def derive_cycle_index(df, sign: str):
 # Cycle summary + RPT segmentation
 # ---------------------------------------------------------------------
 
+def logging_gap_threshold(t) -> float:
+    """
+    Longest interval between samples that is still continuous logging.
+
+    Above it the recording stopped (a paused channel, a lost export), and the
+    current on the far side says nothing about what flowed in between:
+    integrating across a 49.5 h gap in CALCE CS2_8 added 27 Ah to one cycle
+    of a 1.1 Ah cell. Twenty median intervals, and never under an hour, so
+    sparse logging of slow steps is not mistaken for a gap.
+    """
+    import numpy as np
+    d = np.diff(np.asarray(t, dtype=float))
+    d = d[d > 0]
+    med = float(np.median(d)) if d.size else 1.0
+    return max(20.0 * med, 3600.0)
+
+
 def summarise_cycles(nz: Normalised) -> list[dict]:
     import numpy as np
     df = nz.frame
+    gap = logging_gap_threshold(df["test_time_second"].to_numpy(dtype=float))
     key = "cycle_index_derived" if "cycle_index_derived" in df.columns else "cycle_count"
     if key not in df.columns:
         return []
@@ -504,6 +552,7 @@ def summarise_cycles(nz: Normalised) -> list[dict]:
         v = g["voltage_volt"].to_numpy(dtype=float)
         c = cur[g.index]
         dt = np.diff(t, prepend=t[0])
+        dt[dt > gap] = 0.0                  # a recording gap carries no charge
         ah = np.abs(c) * dt / 3600.0
         chg = float(np.nansum(ah[c > 0]))
         dch = float(np.nansum(ah[c < 0]))
@@ -596,11 +645,17 @@ def _lit(v) -> str:
     return "'" + str(v).replace("'", "''") + "'"
 
 
-def emit_sql(nz: Normalised, unit_uid: str, run_uid: str, provenance_id: int,
+def emit_sql(nz: Normalised, unit_uid: str, run_uid: str, provenance_id: int | None,
              test_kind: str = "cycle_life", c_rate_ref_ah: float | None = None,
-             c_rate_ref_src: str | None = None) -> tuple[str, dict]:
+             c_rate_ref_src: str | None = None,
+             provenance_sql: str | None = None) -> tuple[str, dict]:
     """
     Render the whole ingest as a single SQL transaction.
+
+    provenance_sql, when given, is a scalar SQL subquery that resolves the
+    provenance row inside the database. A literal id only works when the
+    caller knows it, and a hardcoded 1 points at whichever row happens to
+    be first - usually somebody else's source.
 
     Exists so ingestion works anywhere `psql` does, with no Python database
     driver installed - which is a common state on lab machines and in
@@ -624,7 +679,7 @@ SELECT {_lit(run_uid)}, pu.id, {_lit(test_kind)}::test_kind,
        {_lit(c_rate_ref_ah)}, {_lit(c_rate_ref_src)},
        {_lit(nz.dialect)}, {_lit(DIALECTS[nz.dialect].encoding)},
        'tools/cyclers.py', '0.3.0',
-       {_lit(nz.warnings)}, {_lit(provenance_id)}
+       {_lit(nz.warnings)}, {provenance_sql if provenance_sql else _lit(provenance_id)}
   FROM bd.product_unit pu WHERE pu.uid = {_lit(unit_uid)};""", ""]
 
     out.append("-- segments: the [aging, RPT, aging, RPT, ...] structure")

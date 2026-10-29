@@ -47,7 +47,10 @@ NMC.
 
 CALCE asks that publications using the data cite the CALCE article(s)
 describing the experiments that generated it — cite the experiment, not just
-the page.
+the page. For the CS2 prismatic LCO cells (1.1 Ah), the set most often reused,
+that is He, Williard, Osterman and Pecht, *Journal of Power Sources* 196(23),
+10314–10321 (2011); the registry entry carries the two further articles CALCE
+lists for CS2. The page states no licence.
 
 The campaign protocols are stated precisely enough to reconstruct, which is
 rare. Pulsed-discharge profiles alternating rates on fixed durations,
@@ -74,10 +77,29 @@ file URLs, because published datasets move their files.
 | `severson-2019` | Toyota Research Institute / MIT / Stanford | 124 cells, fast-charge policies vary per cell |
 | `oxford-2017` | University of Oxford | Drive-cycle ageing with periodic characterisation |
 | `nasa-pcoe` | NASA Ames | Includes EIS sweeps; those belong in `eis_spectrum` |
-| `calce` | University of Maryland | Five cell types at different capacities |
+| `calce` | University of Maryland | Five cell types at different capacities; defaults to CS2 |
+| `xjtu-2024` | Xi'an Jiaotong University | 55 Lishen 18650 NCM523 cells (2.0 Ah) in 6 batches, CC BY 4.0; `.mat`, convert first |
 | `batteryarchive` | Battery Archive contributors | Aggregator; cite the originating laboratory |
 
     python tools/ingest_open_dataset.py list
+
+XJTU ships MATLAB files, which the sniffer cannot read. Unzip the Zenodo
+archive, convert, then plan and ingest as usual:
+
+    python tools/convert_xjtu_mat.py ~/data/xjtu/ --out ~/data/xjtu-csv/
+    python tools/ingest_open_dataset.py plan xjtu-2024 ~/data/xjtu-csv/
+    python tools/ingest_open_dataset.py ingest xjtu-2024 ~/data/xjtu-csv/ --emit-sql xjtu.sql
+
+CALCE ships each cell as a folder of session files. Time and cycle numbers
+restart in every file and some sessions were exported twice, so each cell is
+merged first:
+
+    python tools/convert_calce_cs2.py ~/data/calce/CS2_35/ ~/data/calce/CS2_36/ --out ~/data/calce-csv/
+    python tools/ingest_open_dataset.py plan calce ~/data/calce-csv/
+
+Batches 4–6 never discharge fully, so their per-cycle capacity is not a
+capacity measurement. The converter keeps each cycle's label, including the
+`test capacity` cycles that are, in a `.cycles.json` file next to each CSV.
 
 Licence fields in that registry are a **starting point, not a ruling**. Verify
 at the landing page before redistributing anything.
