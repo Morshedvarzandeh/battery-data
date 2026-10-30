@@ -35,13 +35,16 @@
       }
     },
     {
-      "quantity": "max_continuous_charge_current",
+      "quantity": "max_continuous_charge_rate",
       "value": 10,
-      "unit": "C",
+      "unit": "C-rate",
       "conditions": {
         "unstated": [
           "temperature_c"
-        ]
+        ],
+        "extra": {
+          "rate_reference": "Manufacturer C-rate label; the capacity the C-rate refers to is not stated"
+        }
       },
       "locator": {
         "quote": "the 28 Ah cell enables 6C fast charging and 10C recharging"

@@ -14,7 +14,7 @@
     "url": "https://www.reptbattero.com/106ah-battery-cell/",
     "license": "proprietary",
     "redistributable": false,
-    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here."
+    "note": "Recovered from the review issue that outlived its candidate file. The rendered issue carried no per-value statistic label and no page number, so neither is asserted here. C-rate revision (2026-10-28, tools/migrate_c_rate_units.py): the printed C-rate was stored as a current with unit C, which the unit table reads as coulombs; it is now recorded as max_continuous_charge_rate with unit C-rate. The value is unchanged and is not converted to amperes."
   },
   "observations": [
     {
@@ -98,14 +98,17 @@
       }
     },
     {
-      "quantity": "max_continuous_charge_current",
+      "quantity": "max_continuous_charge_rate",
       "value": 2.2,
-      "unit": "C",
+      "unit": "C-rate",
       "conditions": {
         "soc_window": "10-80%",
         "unstated": [
           "temperature_c"
-        ]
+        ],
+        "extra": {
+          "rate_reference": "Manufacturer C-rate label; the capacity the C-rate refers to is not stated"
+        }
       },
       "locator": {
         "quote": "Capacity 106Ah; Rated Voltage 3.2V; Dimension 52*148*115(mm); Application BEV; Energy Density 177Wh/kg; Fast Charging (10%~80%) 2.2C"

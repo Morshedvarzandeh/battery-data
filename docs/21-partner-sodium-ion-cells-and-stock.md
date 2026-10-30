@@ -70,11 +70,19 @@ Where a source prints amperes, the ampere quantities are still used. The
 finder shows a printed C-rate as such ("35 C", never converted) and counts it
 as a continuous discharge rating.
 
-Twenty existing REPT records (`contrib/cells/rept/*.yaml`) store a fast-charge
-rate as `max_continuous_charge_current` with unit `C`; the database reads
-them as coulombs (`value_si` 2.2 for "2.2C"). They are left unchanged here,
-because accepted records change only through a revision audit; moving them to
-`max_continuous_charge_rate` is that revision.
+Twenty existing REPT records (`contrib/cells/rept/*.yaml`) stored a
+fast-charge rate ("Fast Charging (10%~80%) 2.2C") as
+`max_continuous_charge_current` with unit `C`, so the database read 2.2C as
+2.2 coulombs. `tools/migrate_c_rate_units.py` moved them to
+`max_continuous_charge_rate` with unit `C-rate` on 28 October, value and
+quote unchanged, recorded in
+`review/audits/2026-10-28-c-rate-unit-revision.json`.
+The same error sat in 18 observations of 8 pending candidates (BAK,
+CATL 28Ah, Molicel P50B/P60C) from the same issue-recovery batch; the batch
+declaration is corrected, and the recovery parser now applies the same rule
+(`tools/c_rates.py`) so re-reading the issues cannot bring it back.
+`tools/validate_contrib.py` refuses unit `C` on any of the four current
+quantities, so the mistake cannot come back through a new contribution.
 
 ## What the sources leave open
 
@@ -111,4 +119,5 @@ because accepted records change only through a revision audit; moving them to
 
 The hub's shortlist at lemonergy.com/data is built in the private hub
 repository and does not yet show the stock line; the full finder under
-`/data/finder/` does, once this repository deploys.
+`/data/finder/` does. `pages.yml` redeploys when `offers/` changes, so
+editing the stock list alone updates the site.

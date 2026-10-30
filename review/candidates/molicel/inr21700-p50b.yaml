@@ -100,13 +100,16 @@
       }
     },
     {
-      "quantity": "max_continuous_charge_current",
+      "quantity": "max_continuous_charge_rate",
       "value": 5,
-      "unit": "C",
+      "unit": "C-rate",
       "conditions": {
         "unstated": [
           "temperature_c"
-        ]
+        ],
+        "extra": {
+          "rate_reference": "Manufacturer C-rate label; the capacity the C-rate refers to is not stated"
+        }
       },
       "locator": {
         "quote": "Cell Type 21700; Nom. Voltage 3.6V; Typical Capacity 5.0Ah, 18Wh; Energy Density 714 Wh/l, 265 Wh/kg; Discharge Current 60A; fast charge rate of 5C"

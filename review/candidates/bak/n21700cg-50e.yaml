@@ -99,39 +99,48 @@
       }
     },
     {
-      "quantity": "standard_charge_current",
+      "quantity": "standard_charge_rate",
       "value": 0.5,
-      "unit": "C",
+      "unit": "C-rate",
       "conditions": {
         "unstated": [
           "temperature_c"
-        ]
+        ],
+        "extra": {
+          "rate_reference": "Manufacturer C-rate label; the capacity the C-rate refers to is not stated"
+        }
       },
       "locator": {
         "quote": "Model N21700CG-50E; Materials Hi-Ni; Diameter 21.25±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 67 g; Max Charge Current 1C; Max Discharge Current 3C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
       }
     },
     {
-      "quantity": "max_continuous_charge_current",
+      "quantity": "max_continuous_charge_rate",
       "value": 1,
-      "unit": "C",
+      "unit": "C-rate",
       "conditions": {
         "unstated": [
           "temperature_c"
-        ]
+        ],
+        "extra": {
+          "rate_reference": "Manufacturer C-rate label; the capacity the C-rate refers to is not stated"
+        }
       },
       "locator": {
         "quote": "Model N21700CG-50E; Materials Hi-Ni; Diameter 21.25±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 67 g; Max Charge Current 1C; Max Discharge Current 3C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"
       }
     },
     {
-      "quantity": "max_continuous_discharge_current",
+      "quantity": "max_continuous_discharge_rate",
       "value": 3,
-      "unit": "C",
+      "unit": "C-rate",
       "conditions": {
         "unstated": [
           "temperature_c"
-        ]
+        ],
+        "extra": {
+          "rate_reference": "Manufacturer C-rate label; the capacity the C-rate refers to is not stated"
+        }
       },
       "locator": {
         "quote": "Model N21700CG-50E; Materials Hi-Ni; Diameter 21.25±0.15 mm; Height 70.5±0.25 mm; Nominal Voltage 3.6 V; Typical Capacity 5 Ah (0.2C); Limited charging voltage 4.2 V; End of discharge voltage 2.5 V; Standard charge current 0.5C; Standard discharge current 0.2C; Internal Resistance 13 mΩ; Cell Weight 67 g; Max Charge Current 1C; Max Discharge Current 3C; Charge 0–55 °C; Discharge -20–70 °C (cell surface)"

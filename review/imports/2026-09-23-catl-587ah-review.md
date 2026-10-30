@@ -1,6 +1,6 @@
 # CATL 587 Ah: September 23 source review
 
-The [user-submitted post](https://lnkd.in/p/edS7ZNYh) concerns CATL's 587 Ah LFP
+The user-submitted LinkedIn post (link withheld at the repository owner's request) concerns CATL's 587 Ah LFP
 storage cell. This product already exists in the current-cell research set.
 Added one [dated source revision](../revisions/catl/587ah-lfp-ess-cell-mall-2026-09-23.yaml),
 linked to the same product UID; no duplicate product was created.

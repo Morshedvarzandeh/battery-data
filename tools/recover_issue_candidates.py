@@ -42,6 +42,8 @@ import sys
 import urllib.parse
 import urllib.request
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import c_rates  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 BATCH = ROOT / "review" / "batches" / "2026-08-09-issue-recovery.json"
@@ -257,6 +259,8 @@ def recover(issue: dict) -> dict:
         if conditions:
             observation["conditions"] = conditions
         observation["locator"] = {"quote": quote_cell.strip().replace("\\|", "|")}
+        # A printed "2C" is a C-rate, not 2 coulombs (tools/c_rates.py).
+        c_rates.normalize(observation)
         observations.append(observation)
 
     return {
