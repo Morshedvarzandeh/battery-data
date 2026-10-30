@@ -37,6 +37,12 @@ class DatasetsTest(unittest.TestCase):
         self.assertEqual(sum(f["cycles"] for f in m["source_files"]), 35424)
         self.assertTrue(any("CS2_3" in c and "CS2_25" in c for c in m["caveats"]), "the two conflicting recordings are named")
         self.assertEqual([(x["cell"], x["cycle"]) for x in m["exceptions"]], [("CS2_8", 574), ("CS2_21", 425)])
+        self.assertEqual(list(m["batches"]), [f"Type {i}" for i in range(1, 7)], "CALCE's own test types")
+        by_type = {}
+        for f in m["source_files"]:
+            by_type.setdefault(f["batch"], []).append(f["path"][:-4])
+        self.assertEqual(by_type["Type 2"], ["CS2_35", "CS2_36", "CS2_37", "CS2_38"])
+        self.assertEqual(sorted(len(v) for v in by_type.values()), [1, 2, 2, 2, 4, 4])
 
     def test_an_unlisted_or_stale_exception_is_refused(self):
         tmp = Path(tempfile.mkdtemp())

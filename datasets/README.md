@@ -18,8 +18,9 @@ dashboard and the API from these values; no chart is stored here.
 **Using the values.** Credit the dataset as the manifest's `attribution`
 says. Read the manifest's `caveats` before comparing capacities: in XJTU
 Batches 4 to 6, only cycles labelled `[test capacity]` discharge fully; in
-CALCE, a cycle discharges fully when `v_min` reaches 2.75 V or below, and two
-cycles listed under `exceptions` hold two charges each.
+CALCE, a full cycle has `v_max` at or above 4.15 V and `v_min` at or below
+2.75 V, the cells' test types are under `batches`, and two cycles listed under
+`exceptions` hold two charges each.
 
 **No licence stated.** CALCE publishes its data openly and asks for its
 articles to be cited, but states no licence. Its raw files are therefore not

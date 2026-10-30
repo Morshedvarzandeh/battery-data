@@ -17,6 +17,7 @@ This check refuses a dataset folder when:
 - a file's bytes, SHA-256 or row count differ from the manifest;
 - the CSV header differs from the manifest's columns;
 - a row names a cell with no source file, or the per-cell cycle counts differ;
+- a source file names a batch the manifest's batches do not describe;
 - cycles are not numbered 1..n per cell, or a number is not finite;
 - a capacity is negative or above 1.5 times the nominal capacity, unless the
   manifest's `exceptions` names that cell, cycle, column and value with a
@@ -65,6 +66,9 @@ def check_folder(folder: str) -> list[str]:
         if "unit" not in spec or "meaning" not in spec:
             errs.append(f"{name}: column {col} needs a unit (null if none) and a meaning")
     sources = {os.path.splitext(os.path.basename(f["path"]))[0]: f for f in m["source_files"]}
+    for f in m["source_files"]:
+        if "batch" in f and f["batch"] not in m.get("batches", {}):
+            errs.append(f"{name}: source file {f['path']} names batch {f['batch']!r}, which batches does not describe")
     for f in m["source_files"]:
         if len(f.get("sha256", "")) != 64 or not isinstance(f.get("bytes"), int):
             errs.append(f"{name}: source file {f.get('path')} needs bytes and a SHA-256")
