@@ -141,9 +141,11 @@ validator refuses it:
 
     python tools/validate_contrib.py contrib/
 
-Per-cycle values computed from open datasets whose licence allows it, under
-`datasets/` (one folder per dataset, with a manifest naming each source file
-by path, byte count and SHA-256). Today that is XJTU (CC BY 4.0): 55 cells,
-27,642 cycles. The raw time series are not reproduced, and CALCE, which states
-no licence, is not published. See [datasets/README.md](../datasets/README.md);
+Per-cycle values computed from open datasets, under `datasets/` (one folder
+per dataset, with a manifest naming each source file by path, byte count and
+SHA-256): XJTU (CC BY 4.0; 55 cells, 27,642 cycles) and CALCE CS2 (no licence
+stated, so computed values only, with the citation CALCE asks for and the
+basis in the manifest; 15 cells, 35,424 cycles). The raw time series are not
+reproduced. Datasets licensed for non-commercial use only, or whose licence is
+unclear, are not used. See [datasets/README.md](../datasets/README.md);
 `python tools/check_datasets.py` checks every folder against its manifest.
