@@ -41,7 +41,13 @@ marked:
   export has a `lemonergy_design` column;
 * the hub (lemonergy.com/data) reads the same flag: its shortlist does not
   offer these records, *Open in Design* refuses them, and the discharge
-  calculator does not list them.
+  calculator does not list them;
+* the catalog snapshot the Data API is built from
+  (`tools/export_catalog_snapshot.py`) gives every entry
+  `design: {allowed, technology}` by the same rule, beside `record` and
+  `dates`, so the API can keep these records out of pack sizing while still
+  serving them as data. The 310 records the finder marks are exactly the 310
+  the snapshot marks `allowed: false`.
 
 A rechargeable record that states no technology is not excluded on a guess;
 a primary (non-rechargeable) one is, whatever its label says.
