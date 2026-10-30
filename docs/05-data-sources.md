@@ -140,3 +140,10 @@ measurement conditions, a page number and a verbatim quote, under
 validator refuses it:
 
     python tools/validate_contrib.py contrib/
+
+Per-cycle values computed from open datasets whose licence allows it, under
+`datasets/` (one folder per dataset, with a manifest naming each source file
+by path, byte count and SHA-256). Today that is XJTU (CC BY 4.0): 55 cells,
+27,642 cycles. The raw time series are not reproduced, and CALCE, which states
+no licence, is not published. See [datasets/README.md](../datasets/README.md);
+`python tools/check_datasets.py` checks every folder against its manifest.
