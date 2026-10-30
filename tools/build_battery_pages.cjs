@@ -403,7 +403,10 @@ function makerPage(slug, rows, ctx) {
   const kinds = countsText(rows, kindLabel);
   const techs = countsText(rows, techLabel, 'with the technology not stated');
   const indexed = rows.filter((x) => ctx.index[x.uid]).length;
-  const sources = countsText(rows, sourceLabel);
+  // Documents, not records: one catalogue page can hold a thousand rows.
+  const docs = new Map();
+  for (const x of rows) docs.set(x.url || x.title || x.uid, x);
+  const sources = countsText([...docs.values()], sourceLabel);
   const description = unnamed
     ? `${plural(rows.length, 'battery', 'batteries')} in the Lemonergy library whose source does not name a maker, with their specifications and sources.`
     : `${plural(rows.length, `${maker} battery`, `${maker} batteries`)}: ${kinds}. Capacity, voltage, mass, size and specific energy of each, with its source.`;
