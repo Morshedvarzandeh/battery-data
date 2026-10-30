@@ -151,6 +151,29 @@ td.company { color: var(--ink-2); max-width: 120px; overflow: hidden; text-overf
 .cmpbar .btn.pri { margin-left: auto; }
 .cmpbar .ghost { padding: 4px 8px; }
 tbody tr.incmp td.model::before { content: "✓ "; color: var(--accent); }
+/* specification limits: the old hub's number filters, always visible */
+.limits { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); padding: 12px 14px 14px; margin: 0 0 14px; }
+.limits-hd { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; margin-bottom: 10px; font-size: 13.5px; }
+.limits-hd span { color: var(--muted); font-size: 12.5px; }
+.limits-hd .toggle { margin-left: auto; }
+.toggle.sm { padding: 4px 9px; font-size: 12.5px; }
+.limits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); gap: 10px 14px; }
+.lim { min-width: 0; }
+.lim > span { display: block; font-size: 12px; color: var(--ink-2); margin-bottom: 4px; }
+.lim > span small { color: var(--muted); }
+.lim .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.lim input { width: 100%; min-width: 0; padding: 6px 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); font-size: 13px; font-variant-numeric: tabular-nums; }
+.lim input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 2px var(--accent-soft); }
+.lim input.set { border-color: var(--accent); background: var(--accent-soft); }
+.lim.single .pair { grid-template-columns: 1fr; }
+tbody tr.unknown td { opacity: .55; }
+tbody tr.unknown:hover td { opacity: .9; }
+.sortctl { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; }
+.sortctl label { color: var(--muted); }
+.sortctl select.f { padding: 5px 26px 5px 8px; font-size: 13px; }
+.count .sortctl + .btn { margin-left: 0; }
+th:not(.on)::after { content: " ↕"; color: var(--line-strong); font-size: 9px; }
+th:hover { color: var(--accent); }
 /* results + inspector */
 .work { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 18px; align-items: start; padding-bottom: 28px; }
 @media (max-width: 1000px) { .work { grid-template-columns: minmax(0, 1fr); } .inspector { position: static !important; } }

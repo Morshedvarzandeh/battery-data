@@ -451,6 +451,18 @@ def index_row(p: dict, offer: dict | None = None) -> dict:
         if by.get(q) is not None and units.get(q) in ("mohm", "mΩ", "ohm", "Ω"):
             ir = by[q] * (1000 if units[q] in ("ohm", "Ω") else 1); break
     dims = p["dims"]
+    # Envelope for the size limits: length-or-height, width-or-diameter,
+    # thickness-or-diameter, in mm, only from point values the source states.
+    # An upper bound ("<= 10.2 mm") is a valid size for a maximum-size limit,
+    # so dimensions accept point values and upper bounds, never lower bounds.
+    dim_v, dim_u = {}, {}
+    for o in p["obs"]:
+        if o["q"] in ("height", "length", "width", "thickness", "diameter") and not o.get("lower_bound") and isinstance(o.get("v"), (int, float)):
+            dim_v.setdefault(o["q"], o["v"]); dim_u.setdefault(o["q"], o["u"])
+    mm = lambda q: dim_v[q] * {"mm": 1, "cm": 10, "m": 1000}[dim_u[q]] if q in dim_v and dim_u.get(q) in ("mm", "cm", "m") else None
+    env_l = mm("height") if mm("height") is not None else mm("length")
+    env_w = mm("diameter") if mm("diameter") is not None else mm("width")
+    env_t = mm("diameter") if mm("diameter") is not None else mm("thickness")
     cyc = by.get("cycle_life")
     # A printed bound ("≥3000 cycles", "≤1 mΩ") is not a point value and stays out of
     # every metric and of `depth`, but it is not "not stated" either. Carry the first
@@ -503,7 +515,8 @@ def index_row(p: dict, offer: dict | None = None) -> dict:
         "g": g, "wh": wh, "whkg": whkg, "whkg_d": whkg_d, "whl": m["whl"],
         "a": m["a"], "crate": m["crate"], "crate_s": m["crate_s"], "cyc": cyc, "ir": ir, "dims": dims,
         **({"cyc_b": cyc_b} if cyc_b else {}), **({"ir_b": ir_b} if ir_b else {}), "shape": p["shape"],
-        "tmin": tmin, "tmax": tmax, "depth": sum(present), "n": len(p["obs"]),
+        "tmin": tmin, "tmax": tmax, "el": env_l, "ew": env_w, "et": env_t,
+        "depth": sum(present), "n": len(p["obs"]),
         "src": s.get("kind"), "doc": doc, "year": year, "yk": yk, "url": s.get("url"), "title": s.get("title"),
         "ratings": ratings, "shard": slug(p["manu"]),
         # A seller's availability rides on the row for display and an opt-in
