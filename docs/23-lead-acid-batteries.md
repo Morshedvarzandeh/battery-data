@@ -17,7 +17,7 @@ part may follow; until then lead-acid is reference data only.
 | Flooded | standby (OPzS) | Exide Classic OPzS technical data sheet | 21 × 2 V cells, 6 blocks |
 | AGM | standby / UPS / alarm | Yuasa NP technical data sheets | NP4-12, NP7-12, NP12-12, NP17-12I, NP12-6 |
 | AGM | starting and deep cycle | ODYSSEY Extreme specification page (EnerSys) | 16 × 12 V |
-| EFB | start-stop starting | VARTA Dynamic EFB product pages (Clarios) | 11 × 12 V |
+| EFB | start-stop starting | VARTA Dynamic EFB datasheets (Clarios) | 11 × 12 V |
 
 Every source is first-party. 35 products are 2 V cells (`kind: cell`); the
 62 six- and twelve-volt monoblocs hold several cells in one case and are
@@ -95,6 +95,17 @@ The Exide constant-current and constant-power discharge tables (1.60–1.90 Vpc,
 3 minutes to 20 hours) are the data a lead-acid design tool needs; they are
 not transcribed yet. Also held: Victron's capacity-versus-discharge-time
 table, storage voltages and compensation coefficients; Yuasa's 10-minute
-constant-power ratings; the VARTA PDF datasheets, which could not be opened
-for this review (download only), so weight and the C20 and CCA bases of the
-VARTA records are not stated; and every graph.
+constant-power ratings; and every graph.
+
+## VARTA datasheets (revision of 30 October 2026)
+
+The VARTA records were first taken from VARTA's product pages, because the
+PDF datasheets the pages link to are download-only. With the 11 datasheets
+downloaded, `tools/revise_varta_datasheets.py` moved each record onto its
+datasheet: every figure the page printed is re-located in the PDF (all agree),
+and the filled weight is added for 10 of them (the N50 sheet prints
+"Weight filled: -"). The datasheets still print no capacity rate or
+temperature and no CCA standard, so those stay declared unstated. The change
+is recorded as a revision in
+`review/audits/2026-10-30-varta-datasheet-revision.json`, and
+`--verify <folder>` re-reads the PDFs against the records.

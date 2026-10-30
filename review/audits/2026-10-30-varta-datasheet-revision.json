@@ -1,0 +1,145 @@
+{
+ "schema_version": "1",
+ "reviewed_at": "2026-10-30",
+ "reviewer": "Claude, acting under the repository owner's instruction in chat; every quote re-located in the datasheet text by tools/revise_varta_datasheets.py --verify",
+ "authorization": [
+  "Claude, 2026-10-30: 'May I download those 10 PDFs in your Chrome and then read them from your Downloads folder?'",
+  "Owner: 'Yes, download all 10'"
+ ],
+ "scope": "The 11 VARTA Dynamic EFB records of the 29 October lead-acid batch",
+ "basis": "Each record's source becomes its VARTA PDF datasheet, which prints every figure the product page printed plus the filled weight. No value changes; 10 filled weights are added (the N50 sheet prints none). Capacity rate and CCA standard remain unstated: the datasheets do not print them.",
+ "revisions": [
+  {
+   "uid": "module/clarios/varta-dynamic-efb-550500055",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-550500055.yaml",
+   "previous_sha256": "40cf55796ed69f38420efffda3c29ba38fde6c4e53492cb90bc023d935f1e72b",
+   "revised_sha256": "d9064cd8f3108c91234031f661a54f81133d345cb01091f0aa886bc4dce49ab2",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; no weight printed"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-560500064",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-560500064.yaml",
+   "previous_sha256": "abf93c143f7e965456c165dc892a7db92dd335aca9d0607d7921c217442b5857",
+   "revised_sha256": "3f2453c25be1d4c23073b71aa99313b0a1b96766f7b6d96c435cfcb9f680fe4a",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 16,93 kg added"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-565500065",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-565500065.yaml",
+   "previous_sha256": "ecb9c8574884d50f7a29dbc16f4ce09f8f1561883b9466a3e66b95c39275424c",
+   "revised_sha256": "540b5a084d714cbac582d083dc447e6502a04778b79dd6c949f9d12fa9f70b5e",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 18,63 kg added"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-565501065",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-565501065.yaml",
+   "previous_sha256": "c44888c83c13682ffd99fdb13625561ff0c4e99b66301b64d8e057f8c0aa3ec0",
+   "revised_sha256": "c016e0f1ff7b56764d82ffe82c9d11a22b5e3bd15c0b0c0a2e81b81a7ab313e2",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 18,4 kg added"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-570500076",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-570500076.yaml",
+   "previous_sha256": "c063941bd5cd8ad6c14792d7f2bc86614f03abdd5862409810a9c475807fb2e2",
+   "revised_sha256": "6f4e466b7b04496d00ba50ad010dbfd75c7ff2b8dc58fe95cc5a8000bcb75199",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 19,53 kg added"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-572501076",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-572501076.yaml",
+   "previous_sha256": "9bea55045383479f37f22be246c24541a26c74c0905223b76691d8dbbd18f3a2",
+   "revised_sha256": "7fa3c768d8de9cb77835214f1520d27185bff0e966377992a756941dc3b3cbcd",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 20,7 kg added"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-575500073",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-575500073.yaml",
+   "previous_sha256": "4a057cc28d7cbe92de70f79267de826cf92437d0398c185b126821e740864146",
+   "revised_sha256": "f8ff449a4de0486fdc005e8612a7e2f4346f08a5786fdefd38001893ef04e88c",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 21,19 kg added"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-580500080",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-580500080.yaml",
+   "previous_sha256": "c71bae12bd94a95ec4cbe74c501847bba0a4ec980ae0b400db2f9e4a6868b434",
+   "revised_sha256": "ad67ef38c2a0df436f6f8080b1b83597a408ea75e1e650e38d41bdbb6a6f1340",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 21,68 kg added"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-585501080",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-585501080.yaml",
+   "previous_sha256": "6f0f6985d9b6c52fb3156ad27c7f6d01c8cbcbf9a919850520233e694ecad1fc",
+   "revised_sha256": "a664c17ed7a0e1abb3e7e02179842b82b65605617954ad469b28bd2bf41e681d",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 26,4 kg added"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-595500085",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-595500085.yaml",
+   "previous_sha256": "e0b286fdfe24c3304d796605f1cd61394b7c5318a724bd27568f510f070ac02c",
+   "revised_sha256": "0df5ab60b32cb2a56afa7a8429df99ef30d539542f53de6ddf66eacecaade5ef",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 24,49 kg added"
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-605500095",
+   "file": "contrib/cells/clarios/varta-dynamic-efb-605500095.yaml",
+   "previous_sha256": "4c2d47752f5c51c90d5d190dde4871d2f2f43dc6fd5d7845d8768b741c78f697",
+   "revised_sha256": "8697e732e21c5ed2deda4230150f6e5fea275fd8576f4af1e640aae5771b5b15",
+   "fields": [
+    "source",
+    "observations",
+    "chemistry.locator"
+   ],
+   "change": "source: product page -> datasheet PDF; locators re-pointed to the datasheet; mass 26,07 kg added"
+  }
+ ]
+}

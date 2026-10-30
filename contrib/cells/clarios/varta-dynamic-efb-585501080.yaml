@@ -14,21 +14,22 @@
     ]
   },
   "source": {
-    "uid": "src/varta-dynamic-efb-585501080-web-2026-10-29",
-    "kind": "manufacturer_web",
-    "title": "VARTA Dynamic EFB 585501080 product page",
-    "url": "https://www.varta-automotive.com/products/product/585501080k262",
-    "retrieved_at": "2026-10-29",
-    "sha256": "312b21f7c8165a19d062f5c1ea6f9d4b91cf5a747c193ce844e63409f36795bb",
+    "uid": "src/varta-dynamic-efb-585501080-datasheet-2026-10-30",
+    "kind": "datasheet",
+    "title": "VARTA Dynamic EFB 585501080K262 datasheet",
+    "url": "https://api.data-varta-automotive.com/v2/en-001/datasheet/fc41bc000f09fe2fee5adfef8ea415ad/585501080K262.pdf",
+    "retrieved_at": "2026-10-30",
+    "sha256": "6218c1893988b6bbb3c6bbe5f1cdd8441f4227de7a5ba01bddb0aff012b57da3",
     "license": "proprietary",
     "redistributable": false,
-    "note": "Facts only; source body is not redistributed. VARTA Automotive product detail page (HTML as fetched). VARTA Automotive batteries are made and sold by Clarios ('Clarios manufactures and distributes VARTA Automotive batteries', varta-automotive.com home page), so the manufacturer is Clarios and the model keeps the VARTA name. Dynamic EFB is the renamed Silver Dynamic EFB ('Dynamic EFB replaces the well-known Silver Dynamic EFB'). The page prints capacity, CCA, voltage and dimensions only: the capacity's rate, temperature and end voltage and the CCA's standard, temperature, duration and end voltage are not stated. Dimensions are L/W/H in millimetres per the page's tooltip. The linked PDF datasheet could not be opened for this review (download only), so weight and the rated values it may print are not recorded. The regional listing at https://www.varta-automotive.com/en/products/automotive/dynamic-efb prints different dimensions for some models; only this product page's figures are recorded. The page body changes from one fetch to the next, so the SHA-256 identifies the copy inspected; every recorded figure was re-read from a fresh copy before acceptance. Page body 208,303 bytes."
+    "note": "Facts only; source body is not redistributed. VARTA Automotive PDF datasheet for 585501080K262 (title 'Datasheet for Battery: 585501080K262', 2 pages, 212,501 bytes), as rendered by VARTA's datasheet service on 2026-10-30; the service renders the PDF on each download, so the SHA-256 identifies the copy inspected. VARTA Automotive batteries are made and sold by Clarios ('Clarios manufactures and distributes VARTA Automotive batteries', varta-automotive.com home page), so the manufacturer is Clarios and the model keeps the VARTA name. Dynamic EFB is the renamed Silver Dynamic EFB. EFB is lead-acid: the product page states 'While EFB is an improved flooded battery'. The datasheet prints capacity, CCA, voltage, dimensions (L/W/H), case size, short code, UK code, weight filled, base hold-down, layout and terminal type. It prints no unit for the dimensions; they are millimetres per the product page's tooltip ('The dimensions are in millimetres (mm).'). The capacity's rate, temperature and end voltage and the CCA's standard, temperature, duration and end voltage are not stated. 'Weight filled' is the battery with its electrolyte. Replaced the product page (src/varta-dynamic-efb-585501080-web-2026-10-29) as this record's source on 2026-10-30, because the datasheet prints every figure the page did and the weight; each recorded figure was re-located in the datasheet text, and all agree with the page."
   },
   "chemistry": {
     "designation": "Lead-acid EFB",
     "locator": {
-      "section": "Product page heading and FAQ",
-      "quote": "DYNAMIC EFB 585501080 · While EFB is an improved flooded battery"
+      "section": "Heading",
+      "quote": "DYNAMIC EFB 585501080K262",
+      "page": 1
     }
   },
   "observations": [
@@ -37,8 +38,9 @@
       "value": 85,
       "unit": "Ah",
       "locator": {
-        "section": "Technical Specifications",
-        "quote": "85 Ah Capacity"
+        "section": "TECHNICAL DATA",
+        "quote": "Capacity: 85 Ah",
+        "page": 2
       },
       "conditions": {
         "unstated": [
@@ -54,8 +56,9 @@
       "value": 12,
       "unit": "V",
       "locator": {
-        "section": "Technical Specifications",
-        "quote": "12 V Voltage"
+        "section": "TECHNICAL DATA",
+        "quote": "Voltage: 12 V",
+        "page": 2
       },
       "statistic": "nominal"
     },
@@ -64,8 +67,9 @@
       "value": 800,
       "unit": "A",
       "locator": {
-        "section": "Technical Specifications",
-        "quote": "800 A CCA"
+        "section": "TECHNICAL DATA",
+        "quote": "CCA: 800 A",
+        "page": 2
       },
       "conditions": {
         "unstated": [
@@ -84,8 +88,9 @@
       "value": 306,
       "unit": "mm",
       "locator": {
-        "section": "Technical Specifications (tooltip: The dimensions are in millimetres (mm).)",
-        "quote": "306/173/225 Dimensions (L/W/H)"
+        "section": "TECHNICAL DATA",
+        "quote": "Dimensions (L/W/H): 306/173/225",
+        "page": 2
       }
     },
     {
@@ -93,8 +98,9 @@
       "value": 173,
       "unit": "mm",
       "locator": {
-        "section": "Technical Specifications (tooltip: The dimensions are in millimetres (mm).)",
-        "quote": "306/173/225 Dimensions (L/W/H)"
+        "section": "TECHNICAL DATA",
+        "quote": "Dimensions (L/W/H): 306/173/225",
+        "page": 2
       }
     },
     {
@@ -102,8 +108,19 @@
       "value": 225,
       "unit": "mm",
       "locator": {
-        "section": "Technical Specifications (tooltip: The dimensions are in millimetres (mm).)",
-        "quote": "306/173/225 Dimensions (L/W/H)"
+        "section": "TECHNICAL DATA",
+        "quote": "Dimensions (L/W/H): 306/173/225",
+        "page": 2
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 26.4,
+      "unit": "kg",
+      "locator": {
+        "section": "TECHNICAL DATA",
+        "quote": "Weight filled: 26,4 kg",
+        "page": 2
       }
     }
   ]
