@@ -35,6 +35,11 @@ the local server build them; CI runs --check so a broken contribution or a
 heading that names a non-existent quantity still fails the build.
 
 Hand-curated, in web/data/, and checked against the above:
+  technologies-and-chemistries.json
+                        every chemistry designation filed under one technology
+                        (lithium-ion, sodium-ion, lead-acid...) and, where the
+                        record supports it, one chemistry (LFP, NMC, NFPP...);
+                        an unfiled designation stops the build
   quantity-groups.json  which of the 98 quantities sit under which heading
   test-families.json    which of the test kinds sit under which family
   coverage.json         cells we want and do not yet have -- a wishlist, not data
@@ -50,6 +55,7 @@ drop one that does. That check is what would have caught the invented registry.
 from __future__ import annotations
 import argparse, glob, json, math, os, re, sys
 from catalog_dates import record_dates
+import classification
 
 try:
     import yaml
@@ -60,6 +66,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "web", "data")
 REGISTRY = os.path.join(ROOT, "json-schema", "quantity-registry.json")
 OFFERS = os.path.join(ROOT, "offers")
+CLASSES = os.path.join(DATA, "technologies-and-chemistries.json")
+_TAX: dict | None = None
+
+
+def taxonomy() -> dict:
+    global _TAX
+    if _TAX is None:
+        _TAX = classification.load(CLASSES)
+    return _TAX
 # A record whose source names no producer. It is a real row, not a company,
 # so it is not counted as one of the library's manufacturers.
 MAKER_NOT_STATED = "Maker not stated"
@@ -144,6 +159,9 @@ def product(doc: dict, path: str) -> dict:
 
     chem = doc.get("chemistry") or {}
     cloc = chem.get("locator") or {}
+    # Technology and chemistry are derived from what the record states, apart.
+    klass = classification.classify(taxonomy(), chem.get("designation"),
+                                    chem.get("cathode_text"), chem.get("electrolyte_text"))
     curves = [{"kind": c["curve_kind"], "x": c["x_values"], "y": c["y_values"],
                "z": c.get("z_values"), "xq": c["x_quantity"], "yq": c["y_quantity"],
                "xu": c["x_unit"], "yu": c["y_unit"],
@@ -172,6 +190,7 @@ def product(doc: dict, path: str) -> dict:
                  "cathode_quote": cloc.get("quote") if chem.get("cathode_text") else None,
                  "anode_pg": cloc.get("page"), "cathode_pg": cloc.get("page"),
                  **({"electrolyte_locator": cloc} if chem.get("electrolyte_text") else {})},
+        "class": klass,
         "source": {"title": src.get("title"), "ref": src.get("revision"),
                    "date": src.get("document_date"), "kind": src.get("kind"),
                    "url": src.get("url"), "sha256": src.get("sha256"),
@@ -350,7 +369,16 @@ def build() -> dict:
 
     files = sorted(glob.glob(os.path.join(ROOT, "contrib", "**", "*.y*ml"),
                              recursive=True))
-    products = [product(yaml.safe_load(open(f)), f) for f in files]
+    docs = [(yaml.safe_load(open(f)), f) for f in files]
+    labels = [((d.get("chemistry") or {}).get("designation"), (d.get("chemistry") or {}).get("cathode_text"),
+               (d.get("chemistry") or {}).get("electrolyte_text"))
+              for d, _ in docs if d["product"]["kind"] != "component"]
+    cerrs = classification.check(taxonomy(), labels)
+    if cerrs:
+        for e in cerrs:
+            print(f"  technologies-and-chemistries.json: {e}", file=sys.stderr)
+        sys.exit(f"\n{len(cerrs)} classification error(s); page not written")
+    products = [product(d, f) for d, f in docs]
 
     return {
         # GROUPS drives the datasheet slot list, so axis-only quantities are
@@ -457,6 +485,7 @@ def index_row(p: dict, offer: dict | None = None) -> dict:
         "uid": p["uid"], "kind": p["kind"], "manu": p["manu"], "model": p["model"],
         **({"ct": p["component_type"]} if p.get("component_type") else {}),
         "chem": p["chem"]["designation"], "fmt": p["fmt"] or None,
+        "tech": p["class"]["tech"], "tvar": p["class"]["variant"], "cclass": p["class"]["chem"],
         "ffc": p.get("ffc"), "ah": ah, "v": v, "vq": vq if v is not None else None,
         "g": g, "wh": wh, "whkg": whkg, "whkg_d": whkg_d, "whl": m["whl"],
         "a": m["a"], "crate": m["crate"], "crate_s": m["crate_s"], "cyc": cyc, "ir": ir, "dims": dims,

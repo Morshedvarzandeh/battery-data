@@ -1,0 +1,86 @@
+{
+  "_about": "Two separate classifications for the finder, never mixed in one list. TECHNOLOGY is the battery system a reader asks for first: lithium-ion, sodium-ion, lead-acid (AGM, gel, flooded, EFB), NiMH, lithium primary, alkaline. CHEMISTRY is the electrode chemistry inside it: LFP, NMC, NCA, LTO, NFPP, NVP, or the electrochemical couple of a primary cell. Both are derived from what a record states (chemistry.designation, cathode_text, electrolyte_text) and are never written back into a record. tools/build_web_data.py checks the file: every designation in contrib/ must belong to exactly one technology, and a technology-only designation that prints a cathode must have that cathode filed under a chemistry, so a new label stops the build until a person files it. 'aliases' are words a reader may type in search; one alias may name several entries ('li', 'lithium', 'zinc'). 'pb' is deliberately no alias: the sodium-ion sheets print PB for Prussian blue, so it cannot also mean lead. Entries with no records yet stay listed, so the filter shows an honest zero instead of hiding the gap.",
+  "technologies": [
+    {
+      "name": "Lithium-ion",
+      "aliases": ["li-ion", "lithium-ion", "lib", "li", "lithium"],
+      "designations": ["LFP", "NCM", "NMC+", "NCMA", "NCA", "LTO"],
+      "variants": [
+        {"name": "Lithium polymer", "aliases": ["lipo", "li-po", "li-polymer", "lithium polymer", "lithium-ion polymer"], "designations": ["Lithium polymer", "Lithium-ion polymer"]},
+        {"name": "Semi-solid", "aliases": ["semi-solid", "semisolid", "semi-solid-state"], "electrolytes": ["Semi-Solid", "Semi-Solid-State"]},
+        {"name": "Solid-state", "aliases": ["solid-state", "all-solid-state", "ssb"], "electrolytes": []}
+      ]
+    },
+    {
+      "name": "Lithium-alloy rechargeable",
+      "aliases": ["li", "lithium", "manganese lithium"],
+      "designations": ["lithium manganese dioxide rechargeable (ML)"]
+    },
+    {
+      "name": "Sodium-ion",
+      "aliases": ["na-ion", "sodium-ion", "sodium", "sib", "na"],
+      "designations": ["Sodium-ion"]
+    },
+    {
+      "name": "Lead-acid",
+      "aliases": ["lead-acid", "lead", "sla", "pb-acid"],
+      "designations": [],
+      "variants": [
+        {"name": "AGM", "aliases": ["agm", "absorbent glass mat", "vrla"], "designations": []},
+        {"name": "Gel", "aliases": ["gel", "vrla"], "designations": []},
+        {"name": "Flooded", "aliases": ["flooded", "wet cell", "vented"], "designations": []},
+        {"name": "EFB", "aliases": ["efb", "enhanced flooded"], "designations": []}
+      ]
+    },
+    {
+      "name": "Nickel-metal hydride",
+      "aliases": ["nimh", "ni-mh", "nickel-metal hydride", "nickel metal hydride", "nickel"],
+      "designations": ["NiMH"]
+    },
+    {
+      "name": "Nickel-cadmium",
+      "aliases": ["nicd", "ni-cd", "nickel-cadmium", "nickel cadmium", "nickel"],
+      "designations": []
+    },
+    {
+      "name": "Lithium primary",
+      "aliases": ["lithium primary", "primary lithium", "li primary", "li", "lithium"],
+      "designations": ["Li/MnO2", "CR series Li/MnO2", "Li/CFx", "BR series primary lithium"]
+    },
+    {
+      "name": "Alkaline",
+      "aliases": ["alkaline", "zinc"],
+      "designations": ["alkaline manganese / zinc"]
+    },
+    {
+      "name": "Zinc-air",
+      "aliases": ["zinc-air", "zn-air", "zinc"],
+      "designations": ["Zn/O2"]
+    },
+    {
+      "name": "Silver oxide",
+      "aliases": ["silver oxide", "silver-oxide", "zinc"],
+      "designations": ["silver oxide / zinc"]
+    }
+  ],
+  "chemistries": [
+    {"name": "LFP", "aliases": ["lfp", "lifepo4", "lithium iron phosphate"], "designations": ["LFP"]},
+    {"name": "LMFP", "aliases": ["lmfp", "lfmp", "lithium manganese iron phosphate"], "designations": []},
+    {"name": "NMC / NCM", "aliases": ["nmc", "ncm", "nmc+", "nickel manganese cobalt"], "designations": ["NCM", "NMC+"]},
+    {"name": "NCMA", "aliases": ["ncma", "nmca"], "designations": ["NCMA"]},
+    {"name": "NCA", "aliases": ["nca", "nickel cobalt aluminium", "nickel cobalt aluminum"], "designations": ["NCA"]},
+    {"name": "LCO", "aliases": ["lco", "licoo2", "lithium cobalt oxide"], "designations": []},
+    {"name": "LMO", "aliases": ["lmo", "limn2o4", "lithium manganese oxide"], "designations": []},
+    {"name": "LTO", "aliases": ["lto", "lithium titanate"], "designations": ["LTO"]},
+    {"name": "NFPP", "aliases": ["nfpp", "sodium iron pyrophosphate"], "cathodes": ["NFPP"]},
+    {"name": "NFM", "aliases": ["nfm", "sodium layered oxide"], "cathodes": ["NFM"]},
+    {"name": "NVP", "aliases": ["nvp", "sodium vanadium phosphate"], "cathodes": ["NVP"]},
+    {"name": "Prussian blue", "aliases": ["prussian blue", "prussian white", "pba"], "cathodes": ["PB"]},
+    {"name": "Li/MnO2", "aliases": ["li/mno2", "limno2", "lithium manganese dioxide"], "designations": ["Li/MnO2", "CR series Li/MnO2", "lithium manganese dioxide rechargeable (ML)"]},
+    {"name": "Li/CFx", "aliases": ["li/cfx", "cfx", "poly-carbon monofluoride"], "designations": ["Li/CFx", "BR series primary lithium"]},
+    {"name": "Li/SOCl2", "aliases": ["li/socl2", "socl2", "thionyl chloride"], "designations": []},
+    {"name": "Zn/MnO2", "aliases": ["zn/mno2"], "designations": ["alkaline manganese / zinc"]},
+    {"name": "Zn/O2", "aliases": ["zn/o2"], "designations": ["Zn/O2"]},
+    {"name": "Ag2O/Zn", "aliases": ["ag2o", "ag2o/zn"], "designations": ["silver oxide / zinc"]}
+  ]
+}

@@ -125,6 +125,8 @@ select.f { padding: 7px 30px 7px 10px; border: 1px solid var(--line); border-rad
 .facet-menu label { display: flex; align-items: center; gap: 9px; padding: 6px 6px; border-radius: 4px; font-size: 13.5px; cursor: pointer; }
 .facet-menu label:hover { background: var(--hover); }
 .facet-menu label.zero { color: var(--muted); }
+.facet-menu label.sub { padding-left: 28px; }
+td.chem small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
 .facet-menu input { accent-color: var(--accent); margin: 0; flex: none; }
 .facet-menu label span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .facet-menu label small { color: var(--muted); font-variant-numeric: tabular-nums; }
