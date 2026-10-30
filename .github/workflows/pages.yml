@@ -1,5 +1,5 @@
 # =====================================================================
-# Deploy the cell finder (web/) to GitHub Pages.
+# Deploy the cell finder (web/) and the battery pages (web/batteries/) to GitHub Pages.
 #
 # The page's data files are built here from contrib/ and never committed, so
 # the deployed finder is always the accepted library as of the commit it was
@@ -19,6 +19,7 @@ on:
       - 'json-schema/**'
       - 'schema/010_vocabulary.sql'
       - 'tools/build_web_data.py'
+      - 'tools/build_battery_pages.cjs'
       - 'tools/catalog_dates.py'
       - 'tools/classification.py'
       - '.github/workflows/pages.yml'
@@ -49,6 +50,12 @@ jobs:
           import json; s = json.load(open("web/data/summary.json"))
           print({k: v for k, v in s.items() if k != "by_manufacturer"})
           PY
+      - name: Build one page per battery from the finder's data
+        # Served at lemonergy.com/data/batteries/ by the hub; the sitemap lists
+        # only the pages search engines should index.
+        run: |
+          node tools/build_battery_pages.cjs
+          du -sh web/batteries
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with: { path: web }
