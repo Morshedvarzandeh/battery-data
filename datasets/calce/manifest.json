@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "dataset": "calce",
+  "subset": "CS2",
+  "title": "CALCE battery cycling data: CS2 cells",
+  "publisher": "Center for Advanced Life Cycle Engineering, U. Maryland",
+  "citation": "He, W., Williard, N., Osterman, M., Pecht, M. Prognostics of lithium-ion batteries based on Dempster-Shafer theory and the Bayesian Monte Carlo method. Journal of Power Sources 196(23), 10314-10321 (2011). Also cited by CALCE for CS2: Xing et al., Microelectronics Reliability 53(6), 811-820 (2013); Williard et al., Int. J. Prognostics and Health Management 4, 1-7 (2013).",
+  "doi": null,
+  "landing": "https://calce.umd.edu/battery-data",
+  "license": "none stated",
+  "license_url": null,
+  "attribution": "Data: CALCE Battery Research Group, University of Maryland (calce.umd.edu/battery-data), CS2 cells; cite He, Williard, Osterman and Pecht, J. Power Sources 196 (2011) 10314-10321, as CALCE asks. Per-cycle values computed by Lemonergy (battery-data).",
+  "redistributable": false,
+  "publication_basis": "CALCE publishes the data openly and asks that its articles be cited, but states no licence, so the raw files are not redistributed here. What is published are per-cycle values Lemonergy computed from them (facts about each cycle), with the citation CALCE asks for. Published on the owner's instruction of 30 October 2026; withdrawn if CALCE asks.",
+  "retrieved_at": "2026-10-29",
+  "product_uid": "cell/maker-not-stated/cs2",
+  "cells": {
+    "maker": "not stated",
+    "format": "prismatic",
+    "chemistry": "LiCoO2 (LCO)",
+    "nominal_capacity_ah": 1.1,
+    "count": 15,
+    "charge": "constant current at 0.5C to 4.2 V, then 4.2 V held until the current falls below 0.05 A",
+    "discharge_cut_off_v": 2.7,
+    "temperature": "not stated"
+  },
+  "batches": {
+    "Type 1": "CS2_8, CS2_21, CS2_33 and CS2_34: discharged at a constant 0.5C (0.55 A).",
+    "Type 2": "CS2_35 to CS2_38: discharged at a constant 1C (1.1 A).",
+    "Type 3": "CS2_3 and CS2_9: constant-current discharge whose current changes from cycle to cycle among 0.11, 0.22, 0.55, 1.1, 1.65 and 2.2 A.",
+    "Type 4": "CS2_7: discharged at 0.55 A, with the cut-off voltage changed at random times, as a user might stop at an unpredictable voltage.",
+    "Type 5": "CS2_5 and CS2_6: one full charge and a full discharge at 0.22 A, then cycled between 3.77 V and 2.7 V, discharging at 0.55 A.",
+    "Type 6": "CS2_24 and CS2_25: one full charge and a full discharge at 0.22 A, then cycled between 4.2 V and 3.77 V, discharging at 0.55 A."
+  },
+  "source_files": [
+    {
+      "path": "CS2_3.zip",
+      "bytes": 235649043,
+      "sha256": "375f6bb8e6bb8415fb01ea2fb54430f932d13b05fce89721dee77f34999109cd",
+      "cycles": 1361,
+      "batch": "Type 3"
+    },
+    {
+      "path": "CS2_5.zip",
+      "bytes": 189240574,
+      "sha256": "717a0c76e308dbb8cbffd217be087437d0484b88845b741bd175204cbc70c7f8",
+      "cycles": 7020,
+      "batch": "Type 5"
+    },
+    {
+      "path": "CS2_6.zip",
+      "bytes": 154484386,
+      "sha256": "41e8b0c5dc0509ea9c05a80f51b9949ed9b3bca4bcbeca1cae69d5f9b08760ed",
+      "cycles": 6307,
+      "batch": "Type 5"
+    },
+    {
+      "path": "CS2_7.zip",
+      "bytes": 21499912,
+      "sha256": "484fda436972139bf3439b388cbbb64b47c21595e46edcdf5ae8304459caa9c8",
+      "cycles": 1118,
+      "batch": "Type 4"
+    },
+    {
+      "path": "CS2_8.zip",
+      "bytes": 4350594,
+      "sha256": "3abf380169cd4afc46c944dc6496f2784465333e710161701515da3d3033e9ae",
+      "cycles": 725,
+      "batch": "Type 1"
+    },
+    {
+      "path": "CS2_9.zip",
+      "bytes": 163176454,
+      "sha256": "68367cf84f8486f94d6d2a638b3f421dcce1be7eaaae25464662ad04c49e7914",
+      "cycles": 1181,
+      "batch": "Type 3"
+    },
+    {
+      "path": "CS2_21.zip",
+      "bytes": 2685544,
+      "sha256": "28f998ffaee0de92d5b7554dfe5dccf51ef33ae1c3ae526f8b32f1d891c4deb4",
+      "cycles": 499,
+      "batch": "Type 1"
+    },
+    {
+      "path": "CS2_24.zip",
+      "bytes": 127488412,
+      "sha256": "8bb7832b52c627247d8a21cc8b9833328eff5897414645a1f5699b1cec50fd9a",
+      "cycles": 5039,
+      "batch": "Type 6"
+    },
+    {
+      "path": "CS2_25.zip",
+      "bytes": 180497342,
+      "sha256": "6c345636f84b019c9054c85a169187ee81de8eeee00fae19b37ff00f17474965",
+      "cycles": 6610,
+      "batch": "Type 6"
+    },
+    {
+      "path": "CS2_33.zip",
+      "bytes": 45345047,
+      "sha256": "ce375e3826e840ff0986ceade0d324ba6515f0446697c947353aca097f232505",
+      "cycles": 866,
+      "batch": "Type 1"
+    },
+    {
+      "path": "CS2_34.zip",
+      "bytes": 43836986,
+      "sha256": "229dcdc836f140f746c26316569c357b346994fddd3be1223b1e457805c484b4",
+      "cycles": 777,
+      "batch": "Type 1"
+    },
+    {
+      "path": "CS2_35.zip",
+      "bytes": 37056519,
+      "sha256": "84d88cb98a43c02049f16c78806a78ec19084776ea5df8a4b7c2f8f7ba4589e5",
+      "cycles": 882,
+      "batch": "Type 2"
+    },
+    {
+      "path": "CS2_36.zip",
+      "bytes": 37881685,
+      "sha256": "2e674f58bb6dc005c73bef10e87edbbd97afd041dde77a1d461a3c4ecac1b027",
+      "cycles": 973,
+      "batch": "Type 2"
+    },
+    {
+      "path": "CS2_37.zip",
+      "bytes": 41513048,
+      "sha256": "8ed8aecbcbea2bcb17f455923a974be01ea21d7389210e1912d177de5b6af4a5",
+      "cycles": 1038,
+      "batch": "Type 2"
+    },
+    {
+      "path": "CS2_38.zip",
+      "bytes": 42811100,
+      "sha256": "98787427c10478425efd4f54d823805724daff1d2fcbd822b3a2d7006a1051d8",
+      "cycles": 1028,
+      "batch": "Type 2"
+    }
+  ],
+  "method": "Each cell's session files (Arbin .xlsx or CADEX .txt) merged with battery-data tools/convert_calce_cs2.py and its cycles computed with tools/cyclers.py (cycle = one charge followed by one discharge; capacity integrated from current) at battery-data 5d881c9: the cycle_summary rows of the CALCE import. Values are rounded as printed: Ah and volts to 4 decimals, efficiency to 5, seconds to 0.1.",
+  "caveats": [
+    "CS2_3 (12-18 October 2012) and CS2_25 (4-5 March 2013) each hold two different recordings of the same period; the session that starts first is kept and the overlapping rows of the other dropped. CALCE was asked on 30 October 2026 which is correct.",
+    "CS2_8 and CS2_21 were tested on a CADEX tester whose files carry no clock: their sessions are joined end to end, so the gaps between sessions are unknown and start times are not calendar times.",
+    "CS2_3 and CS2_9 use stepped discharge currents; the tester counts cycles by its own schedule (863 and 204), battery-data by charge-discharge pairs (1,361 and 1,181).",
+    "Rests, short top-ups and other partial cycles are rows too. A full cycle charges to 4.2 V and discharges to the 2.7 V cut-off (v_max at or above 4.15 V and v_min at or below 2.75 V); v_min alone is not enough, because Type 5 cells reach 2.7 V every cycle from 3.77 V.",
+    "CS2_8 cycle 574 and CS2_21 cycle 425 each hold two charges and one discharge, because the CADEX recording has no discharge between the two charges; their charge_ah and coulombic_efficiency are not a normal cycle's (see exceptions)."
+  ],
+  "columns": {
+    "cell": {
+      "unit": null,
+      "meaning": "CALCE cell name"
+    },
+    "cycle": {
+      "unit": null,
+      "meaning": "cycle number, 1-based, counted by battery-data"
+    },
+    "charge_ah": {
+      "unit": "Ah",
+      "meaning": "charge capacity integrated from current"
+    },
+    "discharge_ah": {
+      "unit": "Ah",
+      "meaning": "discharge capacity integrated from current"
+    },
+    "coulombic_efficiency": {
+      "unit": null,
+      "meaning": "discharge_ah / charge_ah (meaningless when charge_ah is near zero)"
+    },
+    "v_max": {
+      "unit": "V",
+      "meaning": "highest voltage in the cycle"
+    },
+    "v_min": {
+      "unit": "V",
+      "meaning": "lowest voltage in the cycle"
+    },
+    "duration_s": {
+      "unit": "s",
+      "meaning": "length of the cycle"
+    },
+    "start_test_time_s": {
+      "unit": "s",
+      "meaning": "start of the cycle on the cell's merged time axis"
+    }
+  },
+  "files": {
+    "cycles.csv": {
+      "rows": 35424,
+      "sha256": "aa4cb6ddc7c911cb635aa10a654e12ed02784023e36b2339b51766b36559bca4"
+    }
+  },
+  "exceptions": [
+    {
+      "cell": "CS2_8",
+      "cycle": 574,
+      "column": "charge_ah",
+      "value": 1.9902,
+      "reason": "The CADEX recording holds a full charge to 4.2 V, then about a minute with no current recorded while the voltage falls to 3.68 V, then a second charge, before one discharge: the cycle derived from current holds two charges, so its charge is about twice a normal cycle's and its coulombic efficiency about 0.5. Kept as recorded."
+    },
+    {
+      "cell": "CS2_21",
+      "cycle": 425,
+      "column": "charge_ah",
+      "value": 2.0554,
+      "reason": "The CADEX recording holds a full charge to 4.2 V, then about a minute with no current recorded while the voltage falls to 3.54 V, then a second charge, before one discharge: the cycle derived from current holds two charges, so its charge is about twice a normal cycle's and its coulombic efficiency about 0.5. Kept as recorded."
+    }
+  ],
+  "batches_source": {
+    "url": "https://calce.umd.edu/battery-data",
+    "retrieved_at": "2026-10-30",
+    "note": "Test types as CALCE's page groups the CS2 cells, in our words; the page states no test temperature."
+  }
+}
