@@ -28,6 +28,24 @@ came with it.
 The demo path synthesises an aging campaign through cyclers' own generator
 and runs the entire pipeline offline, so the wiring can be proved before
 any download.
+
+What is stored is data: one product, one unit and one test run per cell file,
+the run's segments and one row of values per cycle. Nothing presentational
+(charts, plots, reports) is written here; those are drawn from the data by
+the website dashboard and the API.
+
+Two rules keep the evidence exact:
+
+* Every test run cites its own file. Each file gets its own source location
+  (file name and SHA-256) and its own provenance row, and the run points at
+  that row - not at the dataset's first file.
+* Every product is one physical cell type. A dataset that holds several cell
+  types (CALCE) declares them under ``cell_types``; the type is detected from
+  the file names or given with ``--cell-type``, and files of two types are
+  never filed as one product. A dataset that names no single model (an
+  aggregator) needs ``--model`` per batch. A maker the dataset does not name
+  is recorded as "Maker not stated", the library's placeholder, never as a
+  company called "unstated".
 """
 from __future__ import annotations
 
@@ -37,6 +55,7 @@ import hashlib
 import json
 import logging
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -127,13 +146,41 @@ DATASETS: dict[str, dict] = {
                     "to be cited - verify at landing page"),
         "cells": ("5 cell types: INR18650-20R 2.0Ah NMC/graphite, A123 1.1Ah LFP, "
                   "CS2 1.1Ah prismatic LCO, CX2 1.35Ah prismatic LCO, PL 1.5Ah pouch LCO"),
-        "chemistry": "LCO", "form_factor": "prismatic_hardcase", "ff_code": None,
-        "nominal_ah": 1.1, "nominal_v": 3.7,
-        "manufacturer": "unstated", "model": "CS2",
+        # One product per cell type, as the battery data page describes them
+        # (retrieved 2026-10-30). The page names no maker for any of them.
+        # `stem` is the page's own cell or file naming; a run whose files do
+        # not all match one type is refused rather than filed under the wrong
+        # product. The PLN storage cells (no cell type stated) are not listed.
+        "cell_types": {
+            "CS2": {"model": "CS2", "manufacturer": None, "chemistry": "LCO",
+                    "form_factor": "prismatic_hardcase", "ff_code": None, "nominal_ah": 1.1,
+                    "stem": r"^CS2_\d+",
+                    "page": "CS2: LiCoO2 cathode, 1100 mAh, prismatic, 5.4 x 33.6 x 50.6 mm, 21.1 g"},
+            "CX2": {"model": "CX2", "manufacturer": None, "chemistry": "LCO",
+                    "form_factor": "prismatic_hardcase", "ff_code": None, "nominal_ah": 1.35,
+                    "stem": r"^CX2_\d+",
+                    "page": "CX2: LiCoO2 cathode, 1350 mAh, prismatic, 6.6 x 33.8 x 50 mm, 28 g"},
+            "PL": {"model": "PL", "manufacturer": None, "chemistry": "LCO",
+                   "form_factor": "pouch", "ff_code": None, "nominal_ah": 1.5,
+                   "stem": r"^PL[ _-]?\d",
+                   "page": "PL: graphite/LiCoO2, 1500 mAh, pouch, 3.4 x 84.4 x 50.1 mm, 30.3 g"},
+            "INR18650-20R": {"model": "INR18650-20R", "manufacturer": None, "chemistry": "NMC",
+                             "form_factor": "cylindrical", "ff_code": "18650", "nominal_ah": 2.0,
+                             "stem": r"^SP\d",
+                             "page": ("INR 18650-20R: LiNiMnCo/graphite, 2000 mAh, cylindrical, "
+                                      "18.33 x 64.85 mm, 45 g; files SP1_, SP2_, SP3_")},
+            "A123": {"model": "A123", "manufacturer": None, "chemistry": "LFP",
+                     "form_factor": "cylindrical", "ff_code": None, "nominal_ah": 1.1,
+                     "stem": r"^A123",
+                     "page": ("'A123 Battery': LiFePO4, 1100 mAh, 25.4 mm diameter x 65 mm; "
+                              "no model number and no maker stated, so 'A123' is kept as the "
+                              "page's designation")},
+        },
         "file_glob": "*.csv",
         "test_kind": "cycle_life",
-        "notes": ("Set --nominal-ah per cell type; they differ (1.1 / 1.35 / 1.5 / 2.0 Ah). "
-                  "Each cell is a folder of session files whose time and cycle numbering "
+        "notes": ("One cell type per ingest run: the type is read from the file names "
+                  "(CS2_, CX2_, PL, SP1-3 for INR18650-20R, A123) or given with --cell-type, "
+                  "and sets the model and nominal capacity. Each cell is a folder of session files whose time and cycle numbering "
                   "restart, and some sessions are exported twice; merge each cell with "
                   "tools/convert_calce_cs2.py, which also reads the CADEX .txt exports of "
                   "CS2_8 and CS2_21. Arbin cells ship as Excel. Campaigns go "
@@ -202,6 +249,79 @@ DATASETS: dict[str, dict] = {
 }
 
 
+MAKER_NOT_STATED = "Maker not stated"  # the library's placeholder, as in contrib/
+IDENTITY_KEYS = ("manufacturer", "model", "chemistry", "form_factor", "ff_code", "nominal_ah")
+
+
+class IdentityError(ValueError):
+    """The files cannot be filed under one product without guessing."""
+
+
+def slug(text: str) -> str:
+    return re.sub(r"-+", "-", re.sub(r"[^a-z0-9.]+", "-", str(text).lower())).strip("-")
+
+
+def maker_name(ds: dict) -> str:
+    manu = ds.get("manufacturer")
+    return MAKER_NOT_STATED if not manu or str(manu).strip().lower() in {"unstated", "not stated"} else manu
+
+
+def product_uid(ds: dict, key: str) -> str:
+    return f"cell/{slug(maker_name(ds))}/{slug(ds.get('model') or key)}"
+
+
+def file_stem(path: str) -> str:
+    return os.path.splitext(os.path.basename(path))[0]
+
+
+def resolve_identity(key: str, ds: dict, files: list[str], *, cell_type: str | None = None,
+                     manufacturer: str | None = None, model: str | None = None,
+                     form_factor: str | None = None, ff_code: str | None = None,
+                     chemistry: str | None = None, nominal_ah: float | None = None) -> dict:
+    """The dataset entry with one product identity settled for these files.
+
+    Command-line values win over a cell type, which wins over the dataset's
+    defaults. Refuses, rather than guesses, when the files span several cell
+    types or the dataset names no single model.
+    """
+    d = {k: v for k, v in ds.items() if k != "cell_types"}
+    types = ds.get("cell_types") or {}
+    stems = [file_stem(f) for f in files]
+    if types:
+        if cell_type is None:
+            hits = sorted(name for name, t in types.items()
+                          if t.get("stem") and stems and all(re.match(t["stem"], s) for s in stems))
+            if len(hits) != 1:
+                seen = sorted({name for s in stems for name, t in types.items()
+                               if t.get("stem") and re.match(t["stem"], s)})
+                raise IdentityError(
+                    f"{key}: these files are not all one cell type ({', '.join(seen) or 'none recognised'}); "
+                    f"ingest one type per run and pass --cell-type, one of {', '.join(types)}")
+            cell_type = hits[0]
+        if cell_type not in types:
+            raise IdentityError(f"{key}: unknown cell type {cell_type!r}; one of {', '.join(types)}")
+        t = types[cell_type]
+        if t.get("stem"):
+            odd = [s for s in stems if not re.match(t["stem"], s)]
+            if odd:
+                raise IdentityError(
+                    f"{key}: {len(odd)} file(s) are not {cell_type} cells by name ({', '.join(odd[:3])}); "
+                    "ingest one cell type per run")
+        d.update({k: t[k] for k in IDENTITY_KEYS if k in t})
+        d["cell_type"] = cell_type
+    elif cell_type:
+        raise IdentityError(f"{key} declares no cell types; use --model and --manufacturer instead")
+    for k, v in (("manufacturer", manufacturer), ("model", model), ("form_factor", form_factor),
+                 ("ff_code", ff_code), ("chemistry", chemistry), ("nominal_ah", nominal_ah)):
+        if v is not None:
+            d[k] = v
+    if not d.get("model"):
+        raise IdentityError(
+            f"{key} names no single cell model, so every file would become one product; "
+            "pass --model (and --manufacturer, --nominal-ah) for each batch of one cell type")
+    return d
+
+
 def sha256(path: str, chunk: int = 1 << 20) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as fh:
@@ -230,15 +350,19 @@ def spine_sql(ds: dict, key: str, retrieved: str, files: list[tuple[str, str]],
     Organization -> source -> source_location -> provenance, then
     product -> product_revision -> product_unit, one unit per file.
 
-    Everything is idempotent on uid so re-running a dataset does not
-    duplicate it.
+    Re-running this part duplicates nothing: rows with a uid conflict on it,
+    and a file's source location (dataset, file name, SHA-256) and its
+    provenance row are inserted only if they are not there yet. A test run
+    that is already loaded is refused by its uid, so a repeated import fails
+    instead of doubling the cycles.
     """
     chem = chemistry or ds.get("chemistry")
     ah = nominal_ah if nominal_ah is not None else ds.get("nominal_ah")
-    manu = ds.get("manufacturer") or "unstated"
+    manu = maker_name(ds)
     model = ds.get("model") or key
-    prod_uid = f"cell/{manu.lower().replace(' ', '-')}/{str(model).lower()}"
+    prod_uid = product_uid(ds, key)
     src_uid = f"src/dataset/{key}"
+    maker_uid = "org/" + slug(manu)
 
     org_uid = "org/" + ds["publisher"].lower().replace(" ", "-").replace("/", "-")[:60]
 
@@ -270,9 +394,10 @@ def spine_sql(ds: dict, key: str, retrieved: str, files: list[tuple[str, str]],
          "  ON CONFLICT (uid) DO NOTHING;",
          "",
          "-- manufacturer is its own organization: the lab that ran the test",
-         "-- and the vendor that built the cell are rarely the same body.",
+         "-- and the vendor that built the cell are rarely the same body. A maker",
+         f"-- the dataset does not name is the library's placeholder, {MAKER_NOT_STATED!r}.",
          "INSERT INTO organization (uid, name, roles)",
-         f"VALUES ({lit('org/' + manu.lower().replace(' ', '-'))}, {lit(manu)},",
+         f"VALUES ({lit(maker_uid)}, {lit(manu)},",
          "        ARRAY['manufacturer']::text[])",
          "  ON CONFLICT (uid) DO NOTHING;",
          "",
@@ -280,7 +405,7 @@ def spine_sql(ds: dict, key: str, retrieved: str, files: list[tuple[str, str]],
          "                     form_factor, form_factor_code, is_rechargeable)",
          f"SELECT {lit(prod_uid)}, 'cell', o.id, {lit(model)},",
          f"       {lit(ds.get('form_factor'))}::form_factor, {lit(ds.get('ff_code'))}, TRUE",
-         f"  FROM organization o WHERE o.uid = {lit('org/' + manu.lower().replace(' ', '-'))}",
+         f"  FROM organization o WHERE o.uid = {lit(maker_uid)}",
          "  ON CONFLICT (uid) DO NOTHING;",
          "",
          "INSERT INTO product_revision (uid, product_id, source_id, effective_date)",
@@ -291,14 +416,18 @@ def spine_sql(ds: dict, key: str, retrieved: str, files: list[tuple[str, str]],
          ""]
 
     for path, digest in files:
-        stem = os.path.splitext(os.path.basename(path))[0]
+        stem = file_stem(path)
         unit_uid = f"{prod_uid}/unit/{key}/{stem}"
         base = os.path.basename(path)
+        quote = file_quote(base, digest)
         o += [f"-- {base}  sha256={digest[:16]}...",
+              "-- One location per file: the run of this file cites it, and only it.",
               "INSERT INTO source_location (source_id, locator_kind, file_path, quote)",
-              f"SELECT s.id, 'file', {lit(base)},",
-              f"       {lit('cycler file ' + base + ' sha256:' + digest)}",
-              f"  FROM source s WHERE s.uid = {lit(src_uid)};",
+              f"SELECT s.id, 'file', {lit(base)}, {lit(quote)}",
+              f"  FROM source s WHERE s.uid = {lit(src_uid)}",
+              "   AND NOT EXISTS (SELECT 1 FROM source_location sl",
+              "                    WHERE sl.source_id = s.id AND sl.locator_kind = 'file'",
+              f"                      AND sl.quote = {lit(quote)});",
               "",
               "-- prior_cycle_count left NULL deliberately. Published datasets",
               "-- almost never state whether a cell was fresh, and a guessed",
@@ -314,12 +443,20 @@ def spine_sql(ds: dict, key: str, retrieved: str, files: list[tuple[str, str]],
     return "\n".join(o)
 
 
+def file_quote(base: str, digest: str) -> str:
+    """How a file's source location names it: file name and SHA-256."""
+    return f"cycler file {base} sha256:{digest}"
+
+
 def provenance_sql(key: str) -> str:
     """
-    One provenance row the runs hang from. evidence 'measured' and
-    extraction 'file_parse' are the honest pair here: somebody put a cell on
-    a cycler and this is that file, parsed - not a vendor claim, and not an
-    LLM reading a PDF.
+    One provenance row per file location of the dataset, created once.
+    evidence 'measured' and extraction 'file_parse' are the honest pair here:
+    somebody put a cell on a cycler and this is that file, parsed - not a
+    vendor claim, and not an LLM reading a PDF.
+
+    It used to be a single row on the dataset's first location, so every run
+    cited the first cell's file and hash.
     """
     return "\n".join([
         "BEGIN;",
@@ -327,8 +464,9 @@ def provenance_sql(key: str) -> str:
         "INSERT INTO provenance (source_location_id, evidence, extraction, review, confidence)",
         "SELECT sl.id, 'measured', 'file_parse', 'pending_review', 1.000",
         "  FROM source_location sl JOIN source s ON s.id = sl.source_id",
-        f" WHERE s.uid = {lit('src/dataset/' + key)}",
-        " ORDER BY sl.id LIMIT 1;",
+        f" WHERE s.uid = {lit('src/dataset/' + key)} AND sl.locator_kind = 'file'",
+        "   AND NOT EXISTS (SELECT 1 FROM provenance p WHERE p.source_location_id = sl.id)",
+        " ORDER BY sl.id;",
         "COMMIT;",
         "",
     ])
@@ -430,6 +568,13 @@ def cmd_plan(a) -> int:
     if ds.get("notes"):
         print(f"  note: {ds['notes']}")
     print(f"\n{len(files)} file(s) under {a.path}")
+    try:
+        d = resolve_identity(a.dataset, ds, files, **identity_args(a))
+        how = (f", cell type {d['cell_type']}" + ("" if a.cell_type else " (from the file names)")
+               if d.get("cell_type") else "")
+        print(f"  product: {product_uid(d, a.dataset)}{how}; nominal {d.get('nominal_ah')} Ah")
+    except IdentityError as exc:
+        print(f"  product: NOT SETTLED - {exc}")
     ok = 0
     for p in files[: a.limit]:
         try:
@@ -446,34 +591,40 @@ def cmd_plan(a) -> int:
     return 0
 
 
-def dataset_provenance_sql(key: str) -> str:
-    """The provenance row provenance_sql() creates for this dataset, as a subquery."""
+def dataset_provenance_sql(key: str, base: str, digest: str) -> str:
+    """The provenance row of this one file, as a subquery."""
     return ("(SELECT p.id FROM bd.provenance p"
             " JOIN bd.source_location sl ON sl.id = p.source_location_id"
             " JOIN bd.source s ON s.id = sl.source_id"
-            f" WHERE s.uid = {lit('src/dataset/' + key)} ORDER BY p.id LIMIT 1)")
+            f" WHERE s.uid = {lit('src/dataset/' + key)} AND sl.locator_kind = 'file'"
+            f" AND sl.quote = {lit(file_quote(base, digest))} ORDER BY p.id LIMIT 1)")
 
 
 def run_pipeline(key: str, ds: dict, files: list[str], out, *,
                  chemistry=None, nominal_ah=None, test_kind=None,
-                 provenance_id: int | None = None) -> dict:
+                 provenance_id: int | None = None, identity: dict | None = None) -> dict:
     """
-    provenance_id is resolved in the database from the dataset's own source
-    unless given. It used to default to 1, which in a database holding
-    seeds or contributions is another source's provenance row.
+    provenance_id is resolved in the database from each file's own source
+    location unless given. It used to default to 1, which in a database
+    holding seeds or contributions is another source's provenance row.
+
+    identity: --cell-type / --manufacturer / --model / --form-factor /
+    --ff-code values; see resolve_identity().
     """
+    ds = resolve_identity(key, ds, files, chemistry=chemistry, nominal_ah=nominal_ah,
+                          **(identity or {}))
+    nominal_ah = ds.get("nominal_ah")
     retrieved = _dt.date.today().isoformat()
     hashed = [(p, sha256(p)) for p in files]
     out.write(spine_sql(ds, key, retrieved, hashed, chemistry, nominal_ah))
     out.write(provenance_sql(key))
 
-    manu = (ds.get("manufacturer") or "unstated").lower().replace(" ", "-")
-    model = str(ds.get("model") or key).lower()
-    prod_uid = f"cell/{manu}/{model}"
+    prod_uid = product_uid(ds, key)
 
-    stats = {"files": 0, "cycles": 0, "segments": 0, "failed": [], "warnings": []}
+    stats = {"files": 0, "cycles": 0, "segments": 0, "failed": [], "warnings": [],
+             "product": prod_uid, "cell_type": ds.get("cell_type")}
     for path, digest in hashed:
-        stem = os.path.splitext(os.path.basename(path))[0]
+        stem = file_stem(path)
         try:
             nz = cyclers.normalise(path)
             sql, meta = cyclers.emit_sql(
@@ -481,9 +632,10 @@ def run_pipeline(key: str, ds: dict, files: list[str], out, *,
                 unit_uid=f"{prod_uid}/unit/{key}/{stem}",
                 run_uid=f"run/{key}/{stem}",
                 provenance_id=provenance_id,
-                provenance_sql=None if provenance_id is not None else dataset_provenance_sql(key),
+                provenance_sql=(None if provenance_id is not None
+                                else dataset_provenance_sql(key, os.path.basename(path), digest)),
                 test_kind=test_kind or ds["test_kind"],
-                c_rate_ref_ah=nominal_ah if nominal_ah is not None else ds.get("nominal_ah"),
+                c_rate_ref_ah=nominal_ah,
                 c_rate_ref_src="dataset_nominal" if ds.get("nominal_ah") else None,
             )
             out.write(f"\n-- {os.path.basename(path)}  sha256={digest[:16]}...\n")
@@ -510,18 +662,24 @@ def cmd_ingest(a) -> int:
     if a.limit:
         files = files[: a.limit]
 
+    try:   # settle the product before anything is written
+        resolve_identity(a.dataset, ds, files, chemistry=a.chemistry, nominal_ah=a.nominal_ah,
+                         **identity_args(a))
+    except IdentityError as exc:
+        log.error("%s", exc)
+        return 2
     out = sys.stdout if a.emit_sql == "-" else open(a.emit_sql, "w")
     try:
         stats = run_pipeline(a.dataset, ds, files, out,
                              chemistry=a.chemistry, nominal_ah=a.nominal_ah,
-                             test_kind=a.test_kind)
+                             test_kind=a.test_kind, identity=identity_args(a))
     finally:
         if out is not sys.stdout:
             out.close()
 
     tgt = "stdout" if a.emit_sql == "-" else a.emit_sql
     sys.stderr.write(
-        f"\n{stats['files']}/{len(files)} files, {stats['cycles']} cycles, "
+        f"\n{stats['product']}: {stats['files']}/{len(files)} files, {stats['cycles']} cycles, "
         f"{stats['segments']} segments -> {tgt}\n")
     if stats["warnings"]:
         sys.stderr.write(f"{len(stats['warnings'])} convention warning(s):\n")
@@ -569,6 +727,19 @@ def cmd_demo(a) -> int:
     return 0 if stats["files"] == len(files) else 1
 
 
+def identity_args(a) -> dict:
+    return {k: getattr(a, k, None) for k in ("cell_type", "manufacturer", "model", "form_factor", "ff_code")}
+
+
+def add_identity_options(parser) -> None:
+    parser.add_argument("--cell-type", dest="cell_type",
+                        help="for datasets with several cell types (calce); read from file names if omitted")
+    parser.add_argument("--manufacturer", help="maker as the dataset names it; omit if it names none")
+    parser.add_argument("--model", help="cell model; required where the dataset names no single model")
+    parser.add_argument("--form-factor", dest="form_factor")
+    parser.add_argument("--ff-code", dest="ff_code")
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="ingest_open_dataset")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -587,6 +758,7 @@ def main(argv=None) -> int:
     p.add_argument("path")
     p.add_argument("--glob")
     p.add_argument("--limit", type=int, default=20)
+    add_identity_options(p)
 
     i = sub.add_parser("ingest", help="emit the SQL transaction for a dataset")
     i.add_argument("dataset", choices=sorted(DATASETS))
@@ -598,6 +770,7 @@ def main(argv=None) -> int:
     i.add_argument("--test-kind", dest="test_kind")
     i.add_argument("--emit-sql", default="-",
                    help="path to write SQL to, or '-' for stdout")
+    add_identity_options(i)
 
     d = sub.add_parser("demo", help="run the pipeline on synthetic files, offline")
     d.add_argument("--emit-sql", default="-")
