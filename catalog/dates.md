@@ -2,7 +2,7 @@
 
 [Battery models](README.md) · [Electrical components](../components/catalog.md) · [Date policy and data fields](../docs/18-technology-dates.md)
 
-All **3,673 accepted products** have a consistent date view. A missing date stays unknown; a recent source check does not make a product new.
+All **3,770 accepted products** have a consistent date view. A missing date stays unknown; a recent source check does not make a product new.
 
 ## Date coverage
 
@@ -11,13 +11,13 @@ Counts reflect structured evidence in accepted records, not dates guessed from t
 | Category | Products | Document date | Source retrieved | Lifecycle checked | Dated release / launch | Release not found | Release conflict | Release not researched |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | bms | 24 | 4 | 24 | 24 | 3 | 20 | 1 | 0 |
-| cell | 3,245 | 58 | 1,325 | 0 | 0 | 0 | 0 | 3,245 |
+| cell | 3,280 | 58 | 1,360 | 0 | 0 | 0 | 0 | 3,280 |
 | charger | 3 | 0 | 3 | 0 | 0 | 0 | 0 | 3 |
 | contactor | 5 | 0 | 5 | 2 | 0 | 2 | 0 | 3 |
 | dc dc converter | 3 | 0 | 3 | 0 | 0 | 0 | 0 | 3 |
 | fuse | 85 | 0 | 85 | 0 | 0 | 0 | 0 | 85 |
 | inverter | 3 | 0 | 3 | 0 | 0 | 0 | 0 | 3 |
-| module | 2 | 2 | 0 | 0 | 0 | 0 | 0 | 2 |
+| module | 64 | 3 | 62 | 0 | 0 | 0 | 0 | 64 |
 | pack | 36 | 3 | 0 | 0 | 0 | 0 | 0 | 36 |
 | precharge contactor | 3 | 0 | 3 | 0 | 0 | 0 | 0 | 3 |
 | precharge resistor | 52 | 0 | 52 | 0 | 0 | 0 | 0 | 52 |

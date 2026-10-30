@@ -1,0 +1,110 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "module/clarios/varta-dynamic-efb-570500076",
+    "kind": "module",
+    "manufacturer": "Clarios",
+    "model_number": "VARTA Dynamic EFB 570500076",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase",
+    "form_factor_code": "H6/L3",
+    "aliases": [
+      "570500076",
+      "N70"
+    ]
+  },
+  "source": {
+    "uid": "src/varta-dynamic-efb-570500076-web-2026-10-29",
+    "kind": "manufacturer_web",
+    "title": "VARTA Dynamic EFB 570500076 product page",
+    "url": "https://www.varta-automotive.com/products/product/570500076k262",
+    "retrieved_at": "2026-10-29",
+    "sha256": "fa5743597854871444494827fc7b1b8662e34efcaca38664d7d598e6f35b4a2c",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. VARTA Automotive product detail page (HTML as fetched). VARTA Automotive batteries are made and sold by Clarios ('Clarios manufactures and distributes VARTA Automotive batteries', varta-automotive.com home page), so the manufacturer is Clarios and the model keeps the VARTA name. Dynamic EFB is the renamed Silver Dynamic EFB ('Dynamic EFB replaces the well-known Silver Dynamic EFB'). The page prints capacity, CCA, voltage and dimensions only: the capacity's rate, temperature and end voltage and the CCA's standard, temperature, duration and end voltage are not stated. Dimensions are L/W/H in millimetres per the page's tooltip. The linked PDF datasheet could not be opened for this review (download only), so weight and the rated values it may print are not recorded. The regional listing at https://www.varta-automotive.com/en/products/automotive/dynamic-efb prints different dimensions for some models; only this product page's figures are recorded. The page body changes from one fetch to the next, so the SHA-256 identifies the copy inspected; every recorded figure was re-read from a fresh copy before acceptance. Page body 208,291 bytes."
+  },
+  "chemistry": {
+    "designation": "Lead-acid EFB",
+    "locator": {
+      "section": "Product page heading and FAQ",
+      "quote": "DYNAMIC EFB 570500076 · While EFB is an improved flooded battery"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 70,
+      "unit": "Ah",
+      "locator": {
+        "section": "Technical Specifications",
+        "quote": "70 Ah Capacity"
+      },
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "locator": {
+        "section": "Technical Specifications",
+        "quote": "12 V Voltage"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "cranking_current",
+      "value": 760,
+      "unit": "A",
+      "locator": {
+        "section": "Technical Specifications",
+        "quote": "760 A CCA"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "duration_s",
+          "voltage_lower_v"
+        ],
+        "extra": {
+          "rating": "CCA",
+          "standard": "not stated"
+        }
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 278,
+      "unit": "mm",
+      "locator": {
+        "section": "Technical Specifications (tooltip: The dimensions are in millimetres (mm).)",
+        "quote": "278/175/190 Dimensions (L/W/H)"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 175,
+      "unit": "mm",
+      "locator": {
+        "section": "Technical Specifications (tooltip: The dimensions are in millimetres (mm).)",
+        "quote": "278/175/190 Dimensions (L/W/H)"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 190,
+      "unit": "mm",
+      "locator": {
+        "section": "Technical Specifications (tooltip: The dimensions are in millimetres (mm).)",
+        "quote": "278/175/190 Dimensions (L/W/H)"
+      }
+    }
+  ]
+}

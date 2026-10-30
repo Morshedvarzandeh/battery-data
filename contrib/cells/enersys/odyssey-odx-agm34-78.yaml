@@ -1,0 +1,287 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "module/enersys/odyssey-odx-agm34-78",
+    "kind": "module",
+    "manufacturer": "EnerSys",
+    "model_number": "ODYSSEY ODX-AGM34 78",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase",
+    "aliases": [
+      "ODX-AGM34 78",
+      "34/78-PC1500"
+    ]
+  },
+  "source": {
+    "uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+    "kind": "manufacturer_web",
+    "title": "ODYSSEY Extreme Series Battery Specifications",
+    "url": "https://www.odysseybattery.com/extreme-series-battery-specifications/",
+    "retrieved_at": "2026-10-29",
+    "sha256": "c1f0d5d05bcf2dde3f0af2a4f4cda074f68274815c09b7ad06e71e6ac40180d3",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. EnerSys ODYSSEY specification web page (HTML as fetched, 194,170 bytes). 'All values shown are nominal unless otherwise noted.' The cranking ratings (MHPCA, MPCA, CCA, HCA, MCA) carry the footnote 'Cold Start Performance S.A.E J537 Apr 2016'; the page prints no temperature, duration or end voltage for them, so those stay unstated and the rating name is kept in extra. PHCA is printed as a 5-second '**Pulse Current' and is recorded as a 5 s pulse discharge current. Capacities print no temperature or end voltage. Weight and dimensions are the metric figures in parentheses; dimensions are maxima, total height first and container height second. Internal resistance is printed without its method and is not recorded. The AGM designation comes from the ODYSSEY Extreme series page (https://www.odysseybattery.com/extreme-series-batteries/, retrieved 2026-10-29), not from this table. Terminal and torque columns are not recorded."
+  },
+  "chemistry": {
+    "designation": "Lead-acid AGM",
+    "locator": {
+      "section": "ODYSSEY Extreme series page (https://www.odysseybattery.com/extreme-series-batteries/), not the specification table",
+      "quote": "ODYSSEY Extreme batteries employ dry cell Absorbed Glass Mat (AGM) technology to contain acid"
+    },
+    "electrolyte_text": "Absorbed glass mat (AGM)"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 68,
+      "unit": "Ah",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column 20 HR Rate [Ah]",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "rate_value": 0.05,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 68,
+        "rate_reference_source": "20-hour rate: the current is this 20-hour capacity divided by 20 h",
+        "unstated": [
+          "temperature_c",
+          "voltage_lower_v"
+        ],
+        "extra": {
+          "hour_rate_h": 20,
+          "source_label": "20 HR Rate [Ah]"
+        }
+      }
+    },
+    {
+      "quantity": "capacity",
+      "value": 62,
+      "unit": "Ah",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column 10 HR Rate [Ah]",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "rate_value": 0.1,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 62,
+        "rate_reference_source": "10-hour rate: the current is this 10-hour capacity divided by 10 h",
+        "unstated": [
+          "temperature_c",
+          "voltage_lower_v"
+        ],
+        "extra": {
+          "hour_rate_h": 10,
+          "source_label": "10 HR Rate [Ah]"
+        }
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column Voltage",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "cranking_current",
+      "value": 850,
+      "unit": "A",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column CCA* [A]; *Cold Start Performance S.A.E J537 Apr 2016",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "duration_s",
+          "voltage_lower_v"
+        ],
+        "extra": {
+          "rating": "CCA",
+          "standard": "SAE J537 Apr 2016"
+        }
+      }
+    },
+    {
+      "quantity": "cranking_current",
+      "value": 1250,
+      "unit": "A",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column HCA* [A]; *Cold Start Performance S.A.E J537 Apr 2016",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "duration_s",
+          "voltage_lower_v"
+        ],
+        "extra": {
+          "rating": "HCA",
+          "standard": "SAE J537 Apr 2016"
+        }
+      }
+    },
+    {
+      "quantity": "cranking_current",
+      "value": 1050,
+      "unit": "A",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column MCA* [A]; *Cold Start Performance S.A.E J537 Apr 2016",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "duration_s",
+          "voltage_lower_v"
+        ],
+        "extra": {
+          "rating": "MCA",
+          "standard": "SAE J537 Apr 2016"
+        }
+      }
+    },
+    {
+      "quantity": "max_pulse_discharge_current",
+      "value": 1500,
+      "unit": "A",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column PHCA** 5 sec. [A]; **Pulse Current",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "pulse_duration_s": 5,
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "source_label": "PHCA** 5 sec."
+        }
+      }
+    },
+    {
+      "quantity": "reserve_capacity",
+      "value": 135,
+      "unit": "min",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column Reserve Capacity [Minutes]",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 277,
+      "unit": "mm",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column Maximum Length [in (mm)]",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "width",
+      "value": 173,
+      "unit": "mm",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column Maximum Width [in (mm)]",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "height",
+      "value": 201,
+      "unit": "mm",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column Maximum Total Height [in (mm)]",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "maximum"
+    },
+    {
+      "quantity": "height",
+      "value": 185,
+      "unit": "mm",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column Maximum Container Height [in (mm)]",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "source_label": "Maximum Container Height"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 22.5,
+      "unit": "kg",
+      "locator": {
+        "section": "Extreme Battery Specifications table, row ODX-AGM34 78, column Weight [lb (kg)]",
+        "quote": "ODX-AGM34 78 (34/78-PC1500) | 12 | 1500 |  |  | 850 | 1250 | 1050 | 68 | 62 | 135 | 10.9 (277) | 6.8 (173) | 7.9 (201) | 7.3 (185) | 49.5 (22.5)"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "section": "Extreme Battery Specifications, heading",
+        "quote": "Rated Operating Temperature -40°F (-40°C) to 176°F (80°C)"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ],
+        "extra": {
+          "source_label": "Rated Operating Temperature"
+        }
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 80,
+      "unit": "°C",
+      "locator": {
+        "section": "Extreme Battery Specifications, heading",
+        "quote": "Rated Operating Temperature -40°F (-40°C) to 176°F (80°C)"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ],
+        "extra": {
+          "source_label": "Rated Operating Temperature"
+        }
+      }
+    }
+  ]
+}

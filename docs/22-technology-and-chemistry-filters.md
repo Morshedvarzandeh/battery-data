@@ -11,7 +11,7 @@ LFP and lead-acid had nowhere to go.
 | Filter | Holds | Examples |
 |---|---|---|
 | **Technology** | the battery system, with its variants | Lithium-ion (Lithium polymer, Semi-solid, Solid-state) · Sodium-ion · Lead-acid (AGM, Gel, Flooded, EFB) · Nickel-metal hydride · Nickel-cadmium · Lithium primary · Alkaline · Zinc-air · Silver oxide |
-| **Chemistry** | the electrode chemistry, or a primary cell's couple | LFP · LMFP · NMC / NCM · NCMA · NCA · LCO · LMO · LTO · NFPP · NFM · NVP · Prussian blue · Li/MnO2 · Li/CFx · Zn/MnO2 · Zn/O2 · Ag2O/Zn |
+| **Chemistry** | the electrode chemistry, or a primary cell's couple | LFP · LMFP · NMC / NCM · NCMA · NCA · LCO · LMO · LTO · NFPP · NFM · NVP · Prussian blue · Li/MnO2 · Li/CFx · Zn/MnO2 · Zn/O2 · Ag2O/Zn · PbO2/Pb |
 
 Both are derived from what the record states — `chemistry.designation` first,
 then `cathode_text` (a sodium-ion sheet's NFPP), then `electrolyte_text` (a
@@ -35,8 +35,15 @@ for Prussian blue.
 
 ## Classes with no records yet
 
-Lead-acid (and its variants), nickel-metal hydride, nickel-cadmium,
-solid-state lithium-ion and several chemistries are listed with a count of
-zero rather than hidden. Choosing one shows "The library has no … records
+Nickel-cadmium, solid-state lithium-ion and several chemistries are listed
+with a count of zero rather than hidden. (Lead-acid was in this list until
+the first 97 lead-acid batteries arrived; see
+[docs/23](23-lead-acid-batteries.md).) Choosing one shows "The library has no … records
 yet" with a link to ask for them. The eight Energizer NiMH cells in the
 review queue will appear under Nickel-metal hydride once accepted.
+
+## Which technologies Lemonergy Design may use
+
+Each technology carries `"design": true` or `false`. Only lithium-ion and
+sodium-ion are `true`; the build refuses a technology that says neither.
+[docs/23](23-lead-acid-batteries.md) explains how the flag is used.

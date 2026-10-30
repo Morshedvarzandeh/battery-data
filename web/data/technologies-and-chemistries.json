@@ -1,9 +1,10 @@
 {
-  "_about": "Two separate classifications for the finder, never mixed in one list. TECHNOLOGY is the battery system a reader asks for first: lithium-ion, sodium-ion, lead-acid (AGM, gel, flooded, EFB), NiMH, lithium primary, alkaline. CHEMISTRY is the electrode chemistry inside it: LFP, NMC, NCA, LTO, NFPP, NVP, or the electrochemical couple of a primary cell. Both are derived from what a record states (chemistry.designation, cathode_text, electrolyte_text) and are never written back into a record. tools/build_web_data.py checks the file: every designation in contrib/ must belong to exactly one technology, and a technology-only designation that prints a cathode must have that cathode filed under a chemistry, so a new label stops the build until a person files it. 'aliases' are words a reader may type in search; one alias may name several entries ('li', 'lithium', 'zinc'). 'pb' is deliberately no alias: the sodium-ion sheets print PB for Prussian blue, so it cannot also mean lead. Entries with no records yet stay listed, so the filter shows an honest zero instead of hiding the gap.",
+  "_about": "Two separate classifications for the finder, never mixed in one list. TECHNOLOGY is the battery system a reader asks for first: lithium-ion, sodium-ion, lead-acid (AGM, gel, flooded, EFB), NiMH, lithium primary, alkaline. CHEMISTRY is the electrode chemistry inside it: LFP, NMC, NCA, LTO, NFPP, NVP, or the electrochemical couple of a primary cell. Both are derived from what a record states (chemistry.designation, cathode_text, electrolyte_text) and are never written back into a record. tools/build_web_data.py checks the file: every designation in contrib/ must belong to exactly one technology, and a technology-only designation that prints a cathode must have that cathode filed under a chemistry, so a new label stops the build until a person files it. 'aliases' are words a reader may type in search; one alias may name several entries ('li', 'lithium', 'zinc'). 'pb' is deliberately no alias: the sodium-ion sheets print PB for Prussian blue, so it cannot also mean lead. Entries with no records yet stay listed, so the filter shows an honest zero instead of hiding the gap. 'design' says whether Lemonergy Design may use a technology: only lithium-ion and sodium-ion. Everything else -- lead-acid above all, which gets its own part later -- stays in the library for reference and is never handed to Design (the hub's shortlist, its 'Open in Design' hand-off and the discharge calculator all read this flag).",
   "technologies": [
     {
       "name": "Lithium-ion",
       "aliases": ["li-ion", "lithium-ion", "lib", "li", "lithium"],
+      "design": true,
       "designations": ["LFP", "NCM", "NMC+", "NCMA", "NCA", "LTO"],
       "variants": [
         {"name": "Lithium polymer", "aliases": ["lipo", "li-po", "li-polymer", "lithium polymer", "lithium-ion polymer"], "designations": ["Lithium polymer", "Lithium-ion polymer"]},
@@ -14,52 +15,61 @@
     {
       "name": "Lithium-alloy rechargeable",
       "aliases": ["li", "lithium", "manganese lithium"],
+      "design": false,
       "designations": ["lithium manganese dioxide rechargeable (ML)"]
     },
     {
       "name": "Sodium-ion",
       "aliases": ["na-ion", "sodium-ion", "sodium", "sib", "na"],
+      "design": true,
       "designations": ["Sodium-ion"]
     },
     {
       "name": "Lead-acid",
       "aliases": ["lead-acid", "lead", "sla", "pb-acid"],
+      "design": false,
       "designations": [],
       "variants": [
-        {"name": "AGM", "aliases": ["agm", "absorbent glass mat", "vrla"], "designations": []},
-        {"name": "Gel", "aliases": ["gel", "vrla"], "designations": []},
-        {"name": "Flooded", "aliases": ["flooded", "wet cell", "vented"], "designations": []},
-        {"name": "EFB", "aliases": ["efb", "enhanced flooded"], "designations": []}
+        {"name": "AGM", "aliases": ["agm", "absorbent glass mat", "absorbed glass mat", "vrla"], "designations": ["Lead-acid AGM"]},
+        {"name": "Gel", "aliases": ["gel", "vrla"], "designations": ["Lead-acid gel"]},
+        {"name": "Flooded", "aliases": ["flooded", "wet cell", "vented"], "designations": ["Lead-acid flooded"]},
+        {"name": "EFB", "aliases": ["efb", "enhanced flooded"], "designations": ["Lead-acid EFB"]}
       ]
     },
     {
       "name": "Nickel-metal hydride",
       "aliases": ["nimh", "ni-mh", "nickel-metal hydride", "nickel metal hydride", "nickel"],
+      "design": false,
       "designations": ["NiMH"]
     },
     {
       "name": "Nickel-cadmium",
       "aliases": ["nicd", "ni-cd", "nickel-cadmium", "nickel cadmium", "nickel"],
+      "design": false,
       "designations": []
     },
     {
       "name": "Lithium primary",
       "aliases": ["lithium primary", "primary lithium", "li primary", "li", "lithium"],
+      "design": false,
       "designations": ["Li/MnO2", "CR series Li/MnO2", "Li/CFx", "BR series primary lithium"]
     },
     {
       "name": "Alkaline",
       "aliases": ["alkaline", "zinc"],
+      "design": false,
       "designations": ["alkaline manganese / zinc"]
     },
     {
       "name": "Zinc-air",
       "aliases": ["zinc-air", "zn-air", "zinc"],
+      "design": false,
       "designations": ["Zn/O2"]
     },
     {
       "name": "Silver oxide",
       "aliases": ["silver oxide", "silver-oxide", "zinc"],
+      "design": false,
       "designations": ["silver oxide / zinc"]
     }
   ],
@@ -81,6 +91,7 @@
     {"name": "Li/SOCl2", "aliases": ["li/socl2", "socl2", "thionyl chloride"], "designations": []},
     {"name": "Zn/MnO2", "aliases": ["zn/mno2"], "designations": ["alkaline manganese / zinc"]},
     {"name": "Zn/O2", "aliases": ["zn/o2"], "designations": ["Zn/O2"]},
-    {"name": "Ag2O/Zn", "aliases": ["ag2o", "ag2o/zn"], "designations": ["silver oxide / zinc"]}
+    {"name": "Ag2O/Zn", "aliases": ["ag2o", "ag2o/zn"], "designations": ["silver oxide / zinc"]},
+    {"name": "PbO2/Pb", "aliases": ["pbo2/pb", "pbo2", "lead dioxide"], "designations": ["Lead-acid AGM", "Lead-acid gel", "Lead-acid flooded", "Lead-acid EFB"]}
   ]
 }

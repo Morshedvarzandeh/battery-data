@@ -1,0 +1,1393 @@
+{
+ "schema_version": 1,
+ "reviewed_at": "2026-10-29",
+ "reviewer": "Claude, acting under the repository owner's instruction in chat; every transcribed row re-located in a fresh copy of its source by an automated text check in the browser",
+ "authorization": [
+  "Claude, 2026-10-29: 'Shall I add lead-acid batteries (AGM, gel, flooded) so those filters have something in them?'",
+  "Owner: 'yes but they should not be allowerd to use for battery design which is related to lithiom ion and na ion, otherwise it is a mess. I will make part later for them'"
+ ],
+ "scope": "97 lead-acid batteries from 21 first-party sources (Victron Energy, Trojan Battery, Exide, Yuasa, EnerSys ODYSSEY, Clarios VARTA): AGM, gel, flooded and EFB across deep-cycle/solar, standby/UPS and engine starting. 35 are 2 V cells, 62 are 6 V or 12 V monoblocs (modules). Adds schema/139 (minute unit; cranking_current, reserve_capacity, float_charge_voltage, cyclic_charge_voltage, equalize_charge_voltage, short_circuit_current), files the four lead-acid designations and the PbO2/Pb couple in web/data/technologies-and-chemistries.json, and adds the per-technology 'design' flag (true only for lithium-ion and sodium-ion). No existing accepted record is changed.",
+ "identity_policy": {
+  "manufacturer": "The company the source names as maker or issuer; brands stay in the model (Sonnenschein, ODYSSEY, VARTA).",
+  "duplicates": "tools/check_duplicates.py: zero exact, zero probable; the three review collisions are pre-existing Renata coin cells",
+  "variants": "ODYSSEY terminal variants (F, M, R, A ...) are separate part numbers and separate records; old part numbers are aliases."
+ },
+ "design_exclusion": "Lead-acid has design: false. The battery-data finder marks these rows 'Not for Lemonergy Design'; the hub shortlist, its 'Open in Design' hand-off and the discharge calculator refuse them.",
+ "sources": {
+  "src/victron-gel-and-agm-batteries-datasheet-2025-12": {
+   "kind": "datasheet",
+   "url": "https://www.victronenergy.com/upload/documents/Datasheet-GEL-and-AGM-Batteries-EN.pdf",
+   "sha256": "0581f9e3039e42280903e1b0bceeaa39feb1bf968a990cb7e0f0f9e475e0981b",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/trojan-t-105-datasheet-ds-020819": {
+   "kind": "datasheet",
+   "url": "https://assets.ctfassets.net/nh2mdhlonj7m/3RwDBLAA3SCrYnhfDrQnKl/01b3929a9ced420254efa6ced4fb9ab4/T105_Trojan_Data_Sheets.pdf",
+   "sha256": "79c4f8a6f2f3ba4245b5151945de27af40e52cd8b69078e7ce0f785d789602d5",
+   "retrieved_at": "2026-10-29",
+   "document_date": "2019",
+   "source_body_committed": false
+  },
+  "src/exide-sonnenschein-a600-technical-data-sheet-2023-04": {
+   "kind": "datasheet",
+   "url": "https://www.exidegroup.com/nz/sites/default/files/2023-04/230404_Sonnenschein_A600_technicaldata.pdf",
+   "sha256": "7aebed8bf66aa876082efb665f6855359cf3369be29649bd2dc40d278ef81e1c",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/exide-classic-opzs-technical-data-sheet-2024-03": {
+   "kind": "datasheet",
+   "url": "https://www.exidegroup.com/eu/sites/default/files/2024-03/Classic_OPzS_technicaldata.pdf",
+   "sha256": "4debaadb1419d7b9832aff17ad308430ab4287a473ea717b86e64a8869eed3af",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/yuasa-np4-12-technical-data-sheet-2026-10-29": {
+   "kind": "datasheet",
+   "url": "https://www.yuasa.com/uk/datasheet/index/download/?sku=NP4-12%2F187%2FNF%2FBox",
+   "sha256": "669ebf1d252ed143cef6008f656d6714e1f7792bafcca4a2848ec1aa3dc48313",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/yuasa-np7-12-technical-data-sheet-2026-10-29": {
+   "kind": "datasheet",
+   "url": "https://www.yuasa.com/uk/datasheet/index/download/?sku=NP7-12%2F187%2FNF%2FBox",
+   "sha256": "3d3d3ef88dafa3b7d8eaa5d6fcb0f6870f4e310971f337a0b47fe79e2cac0e32",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/yuasa-np12-12-technical-data-sheet-2026-10-29": {
+   "kind": "datasheet",
+   "url": "https://www.yuasa.com/uk/datasheet/index/download/?sku=NP12-12%2F250%2FNF%2FBox",
+   "sha256": "1a9eab3fe19e5dc9dfcdb40845d57ed47b44a5bbcb97e5a515bd86df8cf66cce",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/yuasa-np17-12i-technical-data-sheet-2026-10-29": {
+   "kind": "datasheet",
+   "url": "https://www.yuasa.com/uk/datasheet/index/download/?sku=NP17-12%2FI%2FNF%2FBox",
+   "sha256": "66900548f88e4f3b2fad038b273abebe54f10086bcc9e0d366929a5199ca14fb",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/yuasa-np12-6-technical-data-sheet-2026-10-29": {
+   "kind": "datasheet",
+   "url": "https://www.yuasa.com/uk/datasheet/index/download/?sku=NP12-6%2F250%2FNF%2FBox",
+   "sha256": "95032494c80e1ec69f38c32dece5f3d72ade0da17490b2f0a3928578e1f807a4",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/odyssey-extreme-series-specifications-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.odysseybattery.com/extreme-series-battery-specifications/",
+   "sha256": "c1f0d5d05bcf2dde3f0af2a4f4cda074f68274815c09b7ad06e71e6ac40180d3",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-595500085-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/595500085k262",
+   "sha256": "748504fa425e7116e607d5621d05e9a37e77ad6fb1bed0c37b3c3c323c5899ec",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-585501080-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/585501080k262",
+   "sha256": "312b21f7c8165a19d062f5c1ea6f9d4b91cf5a747c193ce844e63409f36795bb",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-580500080-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/580500080k262",
+   "sha256": "466939046d5febc6c5cd8d51394931d40775eb8080f0c81d4a18aa5cbc775956",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-575500073-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/575500073k262",
+   "sha256": "38619135677719c38fc8c8951a5e4e4d64b3dd977330ec502b442aead57bc331",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-572501076-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/572501076k262",
+   "sha256": "b9dc62abd83935d9caf7320724671b874bd8401be2a4c6ed8ae32357aced0e62",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-570500076-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/570500076k262",
+   "sha256": "fa5743597854871444494827fc7b1b8662e34efcaca38664d7d598e6f35b4a2c",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-565501065-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/565501065k262",
+   "sha256": "016dd4524b9d7bbec083f6ec27bf8ff1e8b8bb1dfa76300a881efcfa986d22dd",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-565500065-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/565500065k262",
+   "sha256": "763e2f7b1b95d466f0005b1412a20c7815d7ca4a89e40f64129c6f7a2bfb7b6b",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-560500064-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/560500064k262",
+   "sha256": "c358d15432345c2873b34e94e235a8b0b20cc5f5a720327e69cb8475448a6d0e",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-550500055-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/550500055k262",
+   "sha256": "69c2def51d15b3322e4cceb877b00b2f6c65dabda0950db671e7da13a0684539",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  },
+  "src/varta-dynamic-efb-605500095-web-2026-10-29": {
+   "kind": "manufacturer_web",
+   "url": "https://www.varta-automotive.com/products/product/605500095k262",
+   "sha256": "77fc78796450482938aade9c76800e7cff00b29712d2faf0ffd6adde7f3b1e54",
+   "retrieved_at": "2026-10-29",
+   "document_date": null,
+   "source_body_committed": false
+  }
+ },
+ "decisions": [
+  {
+   "uid": "module/victron-energy/bat406225084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat406225084.yaml",
+   "accepted_document_sha256": "f3bf7dd951fae9536a692049afd5f31cac8ad773c4a251c36435ff28938dd371",
+   "observation_count": 18,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat212070084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat212070084.yaml",
+   "accepted_document_sha256": "3f4e6626959174f72a73abe8d555465119178dcc0daa78437733b15cad1af474",
+   "observation_count": 22,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat212120086",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat212120086.yaml",
+   "accepted_document_sha256": "76ac7f6f5418034c6eb10802d004b9fd1950fa7e9ee4caebbf4d1e4c4f421991",
+   "observation_count": 22,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat212200084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat212200084.yaml",
+   "accepted_document_sha256": "57535b853e738468fe21335f732450bae6fbc18236b26ada61e1497178bf78ad",
+   "observation_count": 22,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412350084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412350084.yaml",
+   "accepted_document_sha256": "2e5c49a6a9b0ab12fb78d6ec77265a4c10c3f6988099c6a1216f06427bee3551",
+   "observation_count": 22,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412550084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412550084.yaml",
+   "accepted_document_sha256": "246a08afb692a40b2683e8f0af286b9f968a5c7d82a64aa3dd0e1919591dda5a",
+   "observation_count": 24,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412800084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412800084.yaml",
+   "accepted_document_sha256": "a9a4dabdec43f8e2a32aed66a376664ef6a68e48d1b0a2bdcf99fc31f55b596b",
+   "observation_count": 24,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412101084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412101084.yaml",
+   "accepted_document_sha256": "5d75d5782f97ba249d5ac55850ad913a0fc7dcd43edb0eda9fa2742dc7c4e96f",
+   "observation_count": 24,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412121084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412121084.yaml",
+   "accepted_document_sha256": "ac14434942954add4e458ba96422eaf20ad806d0d2f11c255a2026aa7c153c5a",
+   "observation_count": 24,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412151084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412151084.yaml",
+   "accepted_document_sha256": "3bc2e54e0f5ad1304dfb01d702653cda814caa52d3856d4f81e510bb838bebd1",
+   "observation_count": 24,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412201084",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412201084.yaml",
+   "accepted_document_sha256": "c7b44649ded6cdc3c8d0835c02db7527cdfc8daf21c1521de96d7e2bd0c12971",
+   "observation_count": 24,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412124081",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412124081.yaml",
+   "accepted_document_sha256": "2ed66c1cf2b8eda0048455ee182925aeb033144f2ed66508f2a53401ceede027",
+   "observation_count": 24,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412550104",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412550104.yaml",
+   "accepted_document_sha256": "845d96fafde29035428b25debb6b032452c4bce6ff644047d7f7068598318958",
+   "observation_count": 21,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412800104",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412800104.yaml",
+   "accepted_document_sha256": "90f1e714c0689889dcd6b51ecbcc65858820d3c541172db216a50cf8450cce59",
+   "observation_count": 21,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412101104",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412101104.yaml",
+   "accepted_document_sha256": "df869d46b6c8b2f08c8f3549e431c193caa005f5c0473d6bf41ca9ebd990f5dd",
+   "observation_count": 21,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412121104",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412121104.yaml",
+   "accepted_document_sha256": "1d0dbb01eea00ab7accaef13a2765cdaad5f8ba7f2c9cd5e25b3cbf9ae9dc13c",
+   "observation_count": 21,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412151104",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412151104.yaml",
+   "accepted_document_sha256": "1eca6f0df1b1f87ffb6fded2a5a74916508024885e5bdbb3c26cb8ff6757c4c6",
+   "observation_count": 21,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412201104",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412201104.yaml",
+   "accepted_document_sha256": "f92b0e059232d074127041a1b161b663171ee42f7390297c7177c44dfff95696",
+   "observation_count": 21,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/victron-energy/bat412126101",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/victron-energy/bat412126101.yaml",
+   "accepted_document_sha256": "0bb119efa0459ca285d36bd6608e5876fd60a1be664efde7fe57b9d84c7286a2",
+   "observation_count": 21,
+   "source_uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/trojan-battery/t-105",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/trojan-battery/t-105.yaml",
+   "accepted_document_sha256": "d0df1d2022c0254ff8419485b3d96fef431421ebc001aa27a12e734a93ee1338",
+   "observation_count": 30,
+   "source_uid": "src/trojan-t-105-datasheet-ds-020819",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-225",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-225.yaml",
+   "accepted_document_sha256": "c1e0038d5f4e8b1ed67255cee51042927e8a7268da3695d7dd3c54d925ba06b0",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-280",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-280.yaml",
+   "accepted_document_sha256": "edad6960f943af32f2a8219f843f2061b30249112aa41a12aac7387c1f0ed5c8",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-335",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-335.yaml",
+   "accepted_document_sha256": "9c488c151397a1bb2ab1bf9717c9d4073ed73b2bd72bdf0c464103d85e81777e",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-415",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-415.yaml",
+   "accepted_document_sha256": "5fd0156bbde2a381f0d0b4e539fb51a24351ee82f0ea2a207e92ea042ae45ba5",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-500",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-500.yaml",
+   "accepted_document_sha256": "a816b83df0938d328f95a590d98a913bf30ba9ed5d7a9b73a664a5891b5f6037",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-580",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-580.yaml",
+   "accepted_document_sha256": "98aac6b2c88af7e2a29f72db8fb82b371754743b1c6f87ea714b28d19393a9b0",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-750",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-750.yaml",
+   "accepted_document_sha256": "6c23e0464841d47c1ae7a27795acff702a82ad60439b5301f6b4033835a6094a",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-1010",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-1010.yaml",
+   "accepted_document_sha256": "5fbd654f91ac805472cad64114d71cdd42dca790c0c5a23a0e7bfc8d5299545b",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-1250",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-1250.yaml",
+   "accepted_document_sha256": "1dd8edf765d0bd626bbef54b9876e0b0f3a21b69713f4ea457449a2b02a38a29",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-1510",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-1510.yaml",
+   "accepted_document_sha256": "93216881cf93e4150d226423949251982a5b45c394e5e2b90c037ebe3422af91",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-1650c",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-1650c.yaml",
+   "accepted_document_sha256": "05c5b36c1aa1df790430bc4cc9bf5465f55eafa5223140e5df57266d5d4688f2",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-2200",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-2200.yaml",
+   "accepted_document_sha256": "e181557745b77842c7b41a89ba04d5194abba58bb4f0dd5471515fcd283016a1",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-2740",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-2740.yaml",
+   "accepted_document_sha256": "ec380e66134dcc046908a13b15dbb5392b401bc0a5034e7462dbaaeb299efe68",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/sonnenschein-a602-3300",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a602-3300.yaml",
+   "accepted_document_sha256": "d9520782242019ba594eb4c9c431e4fe9c91064c704bab55718e86a4ac1af2b5",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "module/exide/sonnenschein-a606-200",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a606-200.yaml",
+   "accepted_document_sha256": "bb7c170c3b47b17d4464897da70a212696622472f586e2603eeb09a7fa1d9655",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/exide/sonnenschein-a606-300",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a606-300.yaml",
+   "accepted_document_sha256": "71b8500eb28c535fcecf31857f48d4b8ee9853e55376dc3f4eb7c6c92ca31ee9",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/exide/sonnenschein-a612-100",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a612-100.yaml",
+   "accepted_document_sha256": "659931adc1b68c2e10e92b1650174af786952b8a7eeb4146563f61692b997eff",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/exide/sonnenschein-a612-150",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/sonnenschein-a612-150.yaml",
+   "accepted_document_sha256": "fee373f062a0e28809b49737429987e757851df2bde3d5d55e4539c8055a6700",
+   "observation_count": 9,
+   "source_uid": "src/exide-sonnenschein-a600-technical-data-sheet-2023-04",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/exide/classic-6v-4-opzs-200-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-6v-4-opzs-200-la.yaml",
+   "accepted_document_sha256": "f00ad98812dfa1ff9d3878f1ba60ef7d7b72c95d9c197c13f3522da633c48f75",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/exide/classic-6v-5-opzs-250-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-6v-5-opzs-250-la.yaml",
+   "accepted_document_sha256": "47e25f419bd642527a40ca129a7f218497eb39234f314ed76c6b314195aa96a7",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/exide/classic-6v-6-opzs-300-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-6v-6-opzs-300-la.yaml",
+   "accepted_document_sha256": "0d4ad02e9ca2eb2df74deb141235e59c3f156b9160e485e67545de07edefacf4",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/exide/classic-12v-1-opzs-50-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-12v-1-opzs-50-la.yaml",
+   "accepted_document_sha256": "2f7a1cead0d5eb3e4004f3442e2ea3bdbb98675e080f7034429c9c1c219e88e2",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/exide/classic-12v-2-opzs-100-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-12v-2-opzs-100-la.yaml",
+   "accepted_document_sha256": "1970d7b279e2b9b4829cc96af50abfeef4159d0b7ad32b320b48a0ea4b0f45c0",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/exide/classic-12v-3-opzs-150-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-12v-3-opzs-150-la.yaml",
+   "accepted_document_sha256": "ab9d391c2d94f7da686c822843fe4625c1b7e66ee31f62234f2d1e1f75978a71",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-2-opzs-100-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-2-opzs-100-la.yaml",
+   "accepted_document_sha256": "051b663fd8c1984e11c105bbc6b5c1f0e0cd37f6ded51b99f4d600a5e4297b7c",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-3-opzs-150-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-3-opzs-150-la.yaml",
+   "accepted_document_sha256": "954e190c81a4b5bf4499a17620db646b39c2e5bb66b1bd61c05b177846849396",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-4-opzs-200-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-4-opzs-200-la.yaml",
+   "accepted_document_sha256": "ff81f99d75948f88ea4224e7411d67433162b93c1e59f07d8749aea6804d8029",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-5-opzs-250-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-5-opzs-250-la.yaml",
+   "accepted_document_sha256": "1174fc9187eb664274e35ad03f93531ba76088c5bdd9bc7e548d1cf247797f77",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-6-opzs-300-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-6-opzs-300-la.yaml",
+   "accepted_document_sha256": "c5f44af72f09868c32e6168f8cac2fba1e14504b348626e3c588f9289ed85995",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-5-opzs-350-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-5-opzs-350-la.yaml",
+   "accepted_document_sha256": "70c1bcc8e788fbd2a998a4e44e6e717dc9a0a10dfe4881c25722f59aefefa181",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-6-opzs-420-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-6-opzs-420-la.yaml",
+   "accepted_document_sha256": "54ea3fc64c985ec1ea4e0419c320ff1a1ba7ec0184b71483db405456a111c43e",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-7-opzs-490-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-7-opzs-490-la.yaml",
+   "accepted_document_sha256": "c984b1983d869167c2c2601e90035f3c829f9c68d40a2aedb02fb2de06985358",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-6-opzs-600-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-6-opzs-600-la.yaml",
+   "accepted_document_sha256": "09e74b1ad4d92504137bdfb1f56f0c3e652bb4b3e742de0b5014be653fb4921e",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-7-opzs-700-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-7-opzs-700-la.yaml",
+   "accepted_document_sha256": "7f3b1f2a0cef3244091afc68374f37913520ca4d3c5f09ced04189a154d59282",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-8-opzs-800-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-8-opzs-800-la.yaml",
+   "accepted_document_sha256": "461aac0faea0a0d5bafe27ad80c4db6d0d8ed0f221a80bad915fc07a84cfa708",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-9-opzs-900-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-9-opzs-900-la.yaml",
+   "accepted_document_sha256": "86af89b7c1ea82293b6537f097409d48a37f9e3aaec9959c5eb34194fec9b33a",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-10-opzs-1000-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-10-opzs-1000-la.yaml",
+   "accepted_document_sha256": "29eff6002a9e044b8ebaf1fac6f933fec06387a4c11a3394e95da3e4ee166311",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-12-opzs-1200-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-12-opzs-1200-la.yaml",
+   "accepted_document_sha256": "5357f8a72727b58707f9d0b81e7a337f27255e48641fb3363c0c4ffe70cc9769",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-12-opzs-1500-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-12-opzs-1500-la.yaml",
+   "accepted_document_sha256": "53e7bb5484d38faf5651f164fcccc8cb791d6142c90d4b0d5bd2ca6acea442b6",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-14-opzs-1750-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-14-opzs-1750-la.yaml",
+   "accepted_document_sha256": "cb5102d25c871384fe6e1b28302c7754ea9b7f80e406a5a1e58783d311b72040",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-16-opzs-2000-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-16-opzs-2000-la.yaml",
+   "accepted_document_sha256": "4887bc2c8813a97802ad0834cfd752960457927b87d1cb7b60779901c6efb80b",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-18-opzs-2250-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-18-opzs-2250-la.yaml",
+   "accepted_document_sha256": "04d143abca68be727eb201501994a94b194ef0374cdfee2b78ddc63bfbf020db",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-20-opzs-2500-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-20-opzs-2500-la.yaml",
+   "accepted_document_sha256": "60dd607bfe0998fd973b20c29b9d1f37c1078ac14986f49cf6789c447fcea79f",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-22-opzs-2750-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-22-opzs-2750-la.yaml",
+   "accepted_document_sha256": "6230531486cd398bde3843abb31924b961e514ad30c39d2e5e8e1ef2784652ed",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "cell/exide/classic-24-opzs-3000-la",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/exide/classic-24-opzs-3000-la.yaml",
+   "accepted_document_sha256": "2e34c0cdcf282a685f99e5a60f8996f5511685c786988d7019008cc58df17565",
+   "observation_count": 9,
+   "source_uid": "src/exide-classic-opzs-technical-data-sheet-2024-03",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text)."
+   ]
+  },
+  {
+   "uid": "module/yuasa/np4-12",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/yuasa/np4-12.yaml",
+   "accepted_document_sha256": "6776987cd5f26772a76a59e4701713e6a18143694dcad7c1db2d4b83214f2f54",
+   "observation_count": 22,
+   "source_uid": "src/yuasa-np4-12-technical-data-sheet-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/yuasa/np7-12",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/yuasa/np7-12.yaml",
+   "accepted_document_sha256": "77132ce129311a87e5a7f41ff6836468d629c43350b68a4ba28fb4d466880dfb",
+   "observation_count": 22,
+   "source_uid": "src/yuasa-np7-12-technical-data-sheet-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/yuasa/np12-12",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/yuasa/np12-12.yaml",
+   "accepted_document_sha256": "2261d332f0bbb8f79af78dd7620f890dc0dd98fa19b80f21c6dbee3a91d8171e",
+   "observation_count": 22,
+   "source_uid": "src/yuasa-np12-12-technical-data-sheet-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/yuasa/np17-12i",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/yuasa/np17-12i.yaml",
+   "accepted_document_sha256": "317ceebb9b4a5fc5fbc40cb7715145e7a191cc4efbbe5a8104d0f05a866793bc",
+   "observation_count": 22,
+   "source_uid": "src/yuasa-np17-12i-technical-data-sheet-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/yuasa/np12-6",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/yuasa/np12-6.yaml",
+   "accepted_document_sha256": "8c35fc339a12b4d1399c01bfbbe86e18833f9bf83546afa8f8f58e4fd4f1626d",
+   "observation_count": 22,
+   "source_uid": "src/yuasa-np12-6-technical-data-sheet-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm24",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm24.yaml",
+   "accepted_document_sha256": "907671430b5c08234bd4b0178a145094a0f6c058e4fa72fb8c746b6d87ce85fc",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm24f",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm24f.yaml",
+   "accepted_document_sha256": "4074791f5c32e83ef70a993dd8f3b68f84840138e1dd3fc2519a5e2a1f92591b",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm24m",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm24m.yaml",
+   "accepted_document_sha256": "8cd794624f469fdff5e5e9814d90eedc91cf1183eb2e494835ff2d62e62eff14",
+   "observation_count": 17,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm27",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm27.yaml",
+   "accepted_document_sha256": "74753474ede8e8049df5dae141a068b2b750edb91b6a5240f73a8676d92b9d5e",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm27f",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm27f.yaml",
+   "accepted_document_sha256": "82f03d030030b9991cce2ba678e23975a0ddff61b672f0a137e32681ab7e4ad7",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm27m",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm27m.yaml",
+   "accepted_document_sha256": "9ab39e441c85f1837bd36ac5267933cf9510890eb55a7cae567c18ac4d3b4d31",
+   "observation_count": 17,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm31",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm31.yaml",
+   "accepted_document_sha256": "1b862f3dcfe29a21af4f36a283ae92ce90c2fbb1a2a3f62ff04438069fec2759",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm31a",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm31a.yaml",
+   "accepted_document_sha256": "93a9d7a6c6427f192817b2c43828cad0e88f4e8ef9a4cce3ba59c9d5bb3c1865",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm31r",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm31r.yaml",
+   "accepted_document_sha256": "1b21df3d28d5eea37119a80b083eb052b4cc263d781a4dde0c38519f63bcfd09",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm31m",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm31m.yaml",
+   "accepted_document_sha256": "243de1133d3e88ea80fb107ce924169eab0f0950c293d2d1aea83d60fbdacda8",
+   "observation_count": 17,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm34",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm34.yaml",
+   "accepted_document_sha256": "bbd64b74c7d262ae213f2043f98a9865374b888bdf2110a5fa4def7f65a737dc",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm34r",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm34r.yaml",
+   "accepted_document_sha256": "ac0d513b175d11171aed37cd50e331995b39d7c7d0ebb19e53b8ac190e272833",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm34m",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm34m.yaml",
+   "accepted_document_sha256": "9cdfa928e374331656e9b8dfaa97db5511b4b30198cbdcd1b9dc0a686ec2ab74",
+   "observation_count": 17,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm34-78",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm34-78.yaml",
+   "accepted_document_sha256": "7a2e54ff0ce45d5323b2980c67d7dba8f4439a228c33b81dee8b0910485c5697",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm65",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm65.yaml",
+   "accepted_document_sha256": "43a590a7840caa83d9ae53c0f92447e1126b5987caa0eae9daade29e6378370f",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/enersys/odyssey-odx-agm78",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/enersys/odyssey-odx-agm78.yaml",
+   "accepted_document_sha256": "83f1df6fbecfee7933f81f9c2fcac00e4e11f7106d708aafecff924f9ad07f6d",
+   "observation_count": 15,
+   "source_uid": "src/odyssey-extreme-series-specifications-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-595500085",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-595500085.yaml",
+   "accepted_document_sha256": "e0b286fdfe24c3304d796605f1cd61394b7c5318a724bd27568f510f070ac02c",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-595500085-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-585501080",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-585501080.yaml",
+   "accepted_document_sha256": "6f0f6985d9b6c52fb3156ad27c7f6d01c8cbcbf9a919850520233e694ecad1fc",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-585501080-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-580500080",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-580500080.yaml",
+   "accepted_document_sha256": "c71bae12bd94a95ec4cbe74c501847bba0a4ec980ae0b400db2f9e4a6868b434",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-580500080-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-575500073",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-575500073.yaml",
+   "accepted_document_sha256": "4a057cc28d7cbe92de70f79267de826cf92437d0398c185b126821e740864146",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-575500073-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-572501076",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-572501076.yaml",
+   "accepted_document_sha256": "9bea55045383479f37f22be246c24541a26c74c0905223b76691d8dbbd18f3a2",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-572501076-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-570500076",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-570500076.yaml",
+   "accepted_document_sha256": "c063941bd5cd8ad6c14792d7f2bc86614f03abdd5862409810a9c475807fb2e2",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-570500076-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-565501065",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-565501065.yaml",
+   "accepted_document_sha256": "c44888c83c13682ffd99fdb13625561ff0c4e99b66301b64d8e057f8c0aa3ec0",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-565501065-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-565500065",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-565500065.yaml",
+   "accepted_document_sha256": "ecb9c8574884d50f7a29dbc16f4ce09f8f1561883b9466a3e66b95c39275424c",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-565500065-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-560500064",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-560500064.yaml",
+   "accepted_document_sha256": "abf93c143f7e965456c165dc892a7db92dd335aca9d0607d7921c217442b5857",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-560500064-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-550500055",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-550500055.yaml",
+   "accepted_document_sha256": "40cf55796ed69f38420efffda3c29ba38fde6c4e53492cb90bc023d935f1e72b",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-550500055-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  },
+  {
+   "uid": "module/clarios/varta-dynamic-efb-605500095",
+   "decision": "accept",
+   "accepted_file": "contrib/cells/clarios/varta-dynamic-efb-605500095.yaml",
+   "accepted_document_sha256": "4c2d47752f5c51c90d5d190dde4871d2f2f43dc6fd5d7845d8768b741c78f697",
+   "observation_count": 6,
+   "source_uid": "src/varta-dynamic-efb-605500095-web-2026-10-29",
+   "reasons": [
+    "Every value is transcribed from the cited first-party document and was re-checked against a fresh copy of it on 2026-10-29 (each printed table row and statement located in the document text).",
+    "Web source: the page as fetched is identified by its SHA-256; conditions the page omits are declared unstated.",
+    "A 6 V or 12 V monobloc: several cells in one case, filed as a module."
+   ]
+  }
+ ],
+ "held_fields": [
+  "internal_resistance printed without a method (Exide A600, Exide Classic OPzS, ODYSSEY Extreme): the library has no method-free resistance quantity",
+  "constant-current and constant-power discharge tables (Exide A600 pages 3-10, Classic OPzS pages 4-15): kept for the later lead-acid design part",
+  "Victron Table 1 capacity-versus-discharge-time percentages, storage-mode voltages and temperature-compensation coefficients",
+  "Yuasa 10-minute constant-power ratings and charge-voltage correction factors (unit basis not printed)",
+  "Exide Classic OPzS acid weight; A600 shelf life; terminal types and torques",
+  "Trojan per-cell open-circuit voltages and specific gravities (the 6 V column is recorded)",
+  "VARTA PDF datasheets (download-only; weight, C20 basis and CCA standard therefore not recorded)",
+  "cycle-life, temperature and performance graphs (not digitised)"
+ ],
+ "validation": {
+  "status": "passed",
+  "checked_at": "2026-10-29",
+  "checks": [
+   {
+    "command": "re-read every transcribed row and statement from a fresh copy of each of the 21 sources in the browser",
+    "result": "all located; static PDF hashes unchanged; VARTA pages change per fetch (noted on the records)"
+   },
+   {
+    "command": "python3 tools/validate_contrib.py contrib/",
+    "result": "3770 files, zero errors"
+   },
+   {
+    "command": "python3 tools/validate_review.py",
+    "result": "110 pending candidates, zero errors"
+   },
+   {
+    "command": "python3 tools/check_duplicates.py",
+    "result": "zero exact, zero probable; three pre-existing Renata review collisions"
+   },
+   {
+    "command": "python3 tools/import_lead_acid_batteries.py --check",
+    "result": "batch current: 97 products, 1280 observations"
+   },
+   {
+    "command": "tools/build_db.sh + tools/load_contrib.py (Postgres 16) + tests/010, tests/020, bd_graph.refresh, ci_*_loader",
+    "result": "3770 files loaded, 21700 observations promoted, zero rejected; SQL checks pass"
+   },
+   {
+    "command": "python3 tools/build_web_data.py",
+    "result": "3770 products; 97 lead-acid rows marked nodesign"
+   },
+   {
+    "command": "python3 -m unittest discover -s tests -p test_*.py; node tests/test_web_observations.cjs",
+    "result": "all pass"
+   }
+  ]
+ },
+ "observation_total": 1280
+}

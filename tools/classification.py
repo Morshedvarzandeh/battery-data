@@ -12,6 +12,10 @@ one chemistry. Nothing here is written back into a record.
 
     classify(tax, designation, cathode, electrolyte)
         -> {"tech": ..., "variant": ..., "chem": ...}   (None where unstated)
+    designable(tax, tech, rechargeable) -> False for a technology Lemonergy
+        Design must never be offered (everything but lithium-ion and
+        sodium-ion), and for a non-rechargeable product whose technology is
+        not stated
     check(tax, records) -> list of problems; empty means every label is filed
 """
 from __future__ import annotations
@@ -67,6 +71,24 @@ def classify(tax: dict, designation: str | None, cathode: str | None = None,
     return {"tech": tech, "variant": variant, "chem": chem}
 
 
+def designable(tax: dict, tech: str | None, rechargeable: bool = True) -> bool:
+    """May Lemonergy Design use a record of this technology?
+
+    Design is for lithium-ion and sodium-ion. A technology says so with
+    ``"design": true``; every other one -- lead-acid first of all -- is kept
+    for reference only. A rechargeable record whose technology is not stated
+    cannot be shown to be one of the excluded ones, so it is not excluded; a
+    primary (non-rechargeable) one is neither lithium-ion nor sodium-ion
+    whatever its label.
+    """
+    if tech is None:
+        return rechargeable
+    for t in tax["technologies"]:
+        if t["name"] == tech:
+            return t.get("design") is True
+    return False
+
+
 def check(tax: dict, records: list[tuple[str | None, str | None, str | None]]) -> list[str]:
     """records: (designation, cathode, electrolyte) for every non-component product."""
     errs: list[str] = []
@@ -82,6 +104,9 @@ def check(tax: dict, records: list[tuple[str | None, str | None, str | None]]) -
     for n, k in Counter(cnames).items():
         if k > 1:
             errs.append(f"chemistry {n!r} is listed {k} times")
+    for t in tax["technologies"]:
+        if not isinstance(t.get("design"), bool):
+            errs.append(f"technology {t['name']!r} must say design: true or false")
     for kind, entries in (("technology", tax["technologies"]), ("chemistry", tax["chemistries"])):
         for e in entries:
             if not e.get("aliases"):

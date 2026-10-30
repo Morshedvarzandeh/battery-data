@@ -33,8 +33,8 @@ class Classification(unittest.TestCase):
         self.assertEqual(cls.check(TAX, labels()), [])
 
     def test_an_unfiled_designation_stops_the_build(self):
-        errs = cls.check(TAX, labels() + [("Lead-acid AGM", None, None)])
-        self.assertTrue(any("'Lead-acid AGM'" in e and "no technology" in e for e in errs), errs)
+        errs = cls.check(TAX, labels() + [("Zinc-bromine flow", None, None)])
+        self.assertTrue(any("'Zinc-bromine flow'" in e and "no technology" in e for e in errs), errs)
         errs = cls.check(TAX, [("Sodium-ion", "XYZ", None)])
         self.assertTrue(any("cathode 'XYZ'" in e for e in errs), errs)
 
@@ -56,6 +56,18 @@ class Classification(unittest.TestCase):
         self.assertEqual(cls.classify(TAX, "NMC+", "NMC+", "Semi-Solid-State")["variant"], "Semi-solid")
         self.assertEqual(cls.classify(TAX, "CR series Li/MnO2")["tech"], "Lithium primary")
         self.assertEqual(cls.classify(TAX, None), {"tech": None, "variant": None, "chem": None})
+
+    def test_lead_acid_is_filed_and_never_offered_to_design(self):
+        for label, variant in (("Lead-acid AGM", "AGM"), ("Lead-acid gel", "Gel"),
+                               ("Lead-acid flooded", "Flooded"), ("Lead-acid EFB", "EFB")):
+            self.assertEqual(cls.classify(TAX, label), {"tech": "Lead-acid", "variant": variant, "chem": "PbO2/Pb"})
+        self.assertFalse(cls.designable(TAX, "Lead-acid"))
+        self.assertTrue(cls.designable(TAX, "Lithium-ion") and cls.designable(TAX, "Sodium-ion"))
+        self.assertTrue(cls.designable(TAX, None), "an unstated technology is not excluded on a guess")
+        self.assertFalse(cls.designable(TAX, None, rechargeable=False), "a primary cell is not lithium-ion")
+        self.assertEqual([t["name"] for t in TAX["technologies"] if t["design"]], ["Lithium-ion", "Sodium-ion"])
+        broken = {**TAX, "technologies": [{k: v for k, v in t.items() if k != "design"} for t in TAX["technologies"]]}
+        self.assertTrue(any("design: true or false" in e for e in cls.check(broken, [])))
 
     def test_pb_is_not_a_search_word(self):
         words = {cls.normalize(a) for e in TAX["technologies"] + TAX["chemistries"] for a in e["aliases"]}

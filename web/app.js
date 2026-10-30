@@ -26,7 +26,9 @@
     max_continuous_charge_current: "A", standard_charge_current: "A", specific_energy: "Wh/kg", energy_density: "Wh/L",
     max_continuous_discharge_rate: "C", max_pulse_discharge_rate: "C", max_continuous_charge_rate: "C", standard_charge_rate: "C",
     internal_resistance_ac: "mΩ", internal_resistance_dc: "mΩ", cycle_life: "cycles", calendar_life: "years",
-    operating_temperature_min: "°C", operating_temperature_max: "°C", storage_temperature_min: "°C", storage_temperature_max: "°C" };
+    operating_temperature_min: "°C", operating_temperature_max: "°C", storage_temperature_min: "°C", storage_temperature_max: "°C",
+    cranking_current: "A", short_circuit_current: "A", reserve_capacity: "min", float_charge_voltage: "V", cyclic_charge_voltage: "V",
+    equalize_charge_voltage: "V" };
   BD.LABEL = { max_continuous_discharge_current: "Continuous discharge current", max_continuous_charge_current: "Continuous charge current",
     max_pulse_discharge_current: "Pulse discharge current", standard_charge_current: "Standard charge current",
     max_continuous_discharge_rate: "Continuous discharge rate", max_pulse_discharge_rate: "Pulse discharge rate",
@@ -36,7 +38,9 @@
     operating_temperature_max: "Operating temperature, max", specific_energy: "Specific energy", energy_density: "Energy density",
     bms_series_cells_min: "Series cells, min", bms_series_cells_max: "Series cells, max", bms_pack_voltage_max: "Pack voltage, max",
     bms_temperature_channels: "Temperature channels", bms_can_ports: "CAN ports", bms_balancing_current: "Balancing current",
-    bms_cell_banks_max: "Cell banks, max" };
+    bms_cell_banks_max: "Cell banks, max", cranking_current: "Cranking current (CCA, MCA, …)", short_circuit_current: "Short-circuit current",
+    reserve_capacity: "Reserve capacity", float_charge_voltage: "Float charge voltage", cyclic_charge_voltage: "Cyclic (absorption) charge voltage",
+    equalize_charge_voltage: "Equalize charge voltage" };
   BD.label = function (q) {
     if (BD.LABEL[q]) return BD.LABEL[q];
     const s = q.replace(/_/g, " ");
@@ -166,7 +170,7 @@
     ["internal_resistance_bound_mohm", r => r.ir_b && r.ir_b.join(" ")],
     ["dimensions_mm", r => r.dims && r.dims.join(" x ")], ["t_min_c", r => r.tmin], ["t_max_c", r => r.tmax], ["specs_stated_of_8", r => r.depth],
     ["observations", r => r.n], ["source_kind", r => r.src], ["document_year", r => r.doc], ["year", r => r.year], ["year_kind", r => r.yk], ["source_url", r => r.url],
-    ["availability", r => BD.stockText(r.stock)]];
+    ["availability", r => BD.stockText(r.stock)], ["lemonergy_design", r => r.kind === "component" ? "" : r.nodesign ? "no" : "yes"]];
   BD.toCSV = function (rows) {
     const cell = v => { if (v == null) return ""; const s = String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
     return [BD.CSV_COLS.map(c => c[0]).join(",")].concat(rows.map(r => BD.CSV_COLS.map(c => cell(c[1](r))).join(","))).join("\n");
@@ -393,7 +397,19 @@
       num(r.ah, r.ah < 1 ? 3 : 1) + v + num(r.g, 1) + whkg + ampCell(r) + (r.cyc == null && r.cyc_b ? boundCell(r.cyc_b, 0) : num(r.cyc, 0)) + yearCell(r) + "<td>" + depthHTML(r.depth) + "</td>";
   }
   // When nothing matches because the library holds no such battery yet, say so.
+  /** Matches the Kind filter hides: lead-acid 12 V blocks are modules, and the default Kind is cells. */
+  function otherKinds() {
+    const active = state.q || ["tech", "chem", "mfr", "ff", "year"].some(k => state[k].size) || state.core || state.stock;
+    if (!active || !state.kind.size) return [];
+    const c = new Map();
+    rows.forEach(r => { const k = kindOf(r); if (!state.kind.has(k) && matches(r, "kind")) c.set(k, (c.get(k) || 0) + 1); });
+    return FACETS.kind.order.filter(k => c.has(k)).map(k => [k, c.get(k)]);
+  }
+  const kindHint = other => other.map(([k, n]) => n.toLocaleString("en") + " under " + esc(KIND[k] || k) +
+    ' <button type="button" class="linkbtn" data-kind="' + esc(k) + '">show them</button>').join(" · ");
   function emptyMessage() {
+    const other = otherKinds();
+    if (other.length) return "No " + esc([...state.kind].map(k => (KIND[k] || k).toLowerCase()).join(" or ")) + " match. " + kindHint(other) + ".";
     const none = [];
     for (const v of state.tech) if (!rows.some(r => FACETS.tech.values(r).includes(v))) none.push(FACETS.tech.text(v));
     for (const t of terms) if (t.keys && !rows.some(r => BD.classKeys(r).some(k => t.keys.has(k)))) none.push(...[...t.keys].map(k => k.slice(2).split(BD.SEP).pop()));
@@ -417,6 +433,9 @@
     });
     $("#more").hidden = list.length <= state.shown; $("#empty").hidden = list.length > 0;
     if (!list.length) $("#empty").innerHTML = emptyMessage();
+    const other = list.length ? otherKinds() : [];
+    $("#kindhint").hidden = !other.length; $("#kindhint").innerHTML = other.length ? "Also " + kindHint(other) : "";
+    document.querySelectorAll("[data-kind]").forEach(b => b.onclick = () => { state.kind.add(b.dataset.kind); refilter(); Object.keys(FACETS).forEach(facetMenu); });
     $("#csv").disabled = list.length === 0;
     if (state.view === "chart") drawChart(list);
     return list;
@@ -439,13 +458,13 @@
       if (r.vq !== "nominal_voltage") missing.push("nominal voltage"); if (r.g == null) missing.push("mass"); if (r.tmin == null) missing.push("operating temperature");
       specs = spec("Capacity", show(r.ah, "Ah", r.ah < 1 ? 3 : 2), r.ah != null ? '<span id="capcond">conditions load with the record…</span>' : "") +
         spec(r.vq === "voltage" ? 'Voltage <span class="pill warn" title="Printed as “Voltage”; not asserted as nominal">as printed</span>' : "Nominal voltage", show(r.v, "V", 2)) +
-        spec("Energy", show(r.wh, "Wh", 2), null, true) + spec("Mass", show(r.g, "g", 1)) +
+        spec("Energy", show(r.wh, "Wh", 2), null, true) + spec("Mass", r.g != null && r.g >= 10000 ? show(r.g / 1000, "kg", 1) : show(r.g, "g", 1)) +
         spec("Specific energy", show(r.whkg, "Wh/kg", 0), null, r.whkg_d) + spec("Continuous discharge", BD.dischargeText(r), r.crate_s ? "no ampere figure is printed; the capacity the C-rate refers to is not stated" : null) +
         spec("Cycle life", r.cyc != null ? show(r.cyc, "cycles", 0) : r.cyc_b ? r.cyc_b[0] + " " + BD.fmt(r.cyc_b[1], 0) + " cycles" : null, r.cyc == null && r.cyc_b ? "printed as a bound; conditions in the full record" : null) +
         spec("Internal resistance", r.ir != null ? show(r.ir, "mΩ", 1) : r.ir_b ? r.ir_b[0] + " " + BD.fmt(r.ir_b[1], 2) + " mΩ" : null, r.ir == null && r.ir_b ? "printed as a bound" : null) +
         spec("Dimensions", r.dims ? r.dims.map(x => BD.fmt(x, 1)).join(" × ") + " mm" + (r.shape === "cyl" && r.dims.length === 2 ? " (Ø × h)" : "") : null) +
         spec("Operating temperature", r.tmin != null ? r.tmin + " to " + r.tmax + " °C" : null) +
-        (missing.length ? '<div class="gap"><b>Not stated by the source:</b> ' + missing.join(", ") + ". " + (r.a == null && !r.crate_s ? "Without a discharge rating this record cannot size a pack for power." : "") + "</div>" : "");
+        (missing.length ? '<div class="gap"><b>Not stated by the source:</b> ' + missing.join(", ") + ". " + (r.a == null && !r.crate_s && !r.nodesign ? "Without a discharge rating this record cannot size a pack for power." : "") + "</div>" : "");
     }
     const sim = BD.similar(r, rows, 5);
     const seller = r.stock && ((summary && summary.sellers) || []).find(s => s.name === r.stock.by);
@@ -457,6 +476,7 @@
       (r.tech ? '<span class="pill">' + esc(r.tech) + "</span>" : "") + (r.tvar ? '<span class="pill">' + esc(r.tvar) + "</span>" : "") +
       (r.cclass ? '<span class="pill">' + esc(r.cclass) + "</span>" : "") + (r.fmt ? '<span class="pill">' + esc(BD.FF[r.fmt] || r.fmt) + "</span>" : "") + (r.ffc ? '<span class="pill">' + esc(r.ffc) + "</span>" : "") +
       '<span class="pill">' + esc((r.ct || r.kind).replace(/_/g, " ")) + '</span><span class="pill src">' + esc(BD.srcText(r.src)) + "</span></div></div>" + buy + specs +
+      (r.nodesign ? '<div class="gap nodesign"><b>Not for Lemonergy Design.</b> Design works with lithium-ion and sodium-ion batteries; ' + esc(r.tech || "this") + " records are listed here for reference only.</div>" : "") +
       '<div class="srcbox">Source: ' + esc(r.title || BD.srcText(r.src)) + (r.yk === "release" ? " · released " + esc(r.year) : r.year ? " · document dated " + esc(r.year) + " (product release not researched)" : " · no date recorded") + " · " + r.n + " observations" +
       (r.url ? ' · <a href="' + esc(r.url) + '" target="_blank" rel="noopener">open ↗</a>' : "") + "</div>" +
       (sim.length ? '<div class="similar"><span class="lbl">Similar records</span>' + sim.map(s => '<button type="button" data-u="' + esc(s.uid) + '">' + esc(s.model) + "<span>" + esc(mfrLabel(s.manu)) + (s.ah != null ? " · " + BD.fmt(s.ah, 1) + " Ah" : "") + (s.whkg != null ? " · " + BD.fmt(s.whkg, 0) + " Wh/kg" : "") + "</span></button>").join("") + "</div>" : "") +
@@ -489,6 +509,7 @@
       BD.lifecycleRows(rec).map(([k, v, url]) => kv(k, v, url, /^not /i.test(String(v)))).join("");
     const ch = rec.chem || {};
     if (r.tech || ch.designation || ch.cathode || ch.anode) h += "<h3>Technology and chemistry</h3>" + kv("technology", BD.techText(r) || "not stated", null, !r.tech) +
+      (r.nodesign ? kv("Lemonergy Design", "Not offered: Design works with lithium-ion and sodium-ion batteries only") : "") +
       kv("chemistry", r.cclass || "not stated by the source", null, !r.cclass) + (ch.designation ? kv("designation as printed", ch.designation) : "") + (ch.cathode ? kv("cathode", ch.cathode) : "") + (ch.anode ? kv("anode", ch.anode) : "") + (ch.electrolyte ? kv("electrolyte", ch.electrolyte) : "") + (ch.separator ? kv("separator", ch.separator) : "");
     groups.forEach(g => {
       h += "<h3>" + esc(g.group) + "<span>" + g.n + " of " + g.of + " recorded</span></h3>";

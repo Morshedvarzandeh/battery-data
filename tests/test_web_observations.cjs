@@ -101,3 +101,31 @@ console.log('CSV export and similarity helpers behave');
   assert.ok(csv[1].includes('Sodium-ion,,NFPP,Sodium-ion'));
   console.log('Technology and chemistry stay separate; search understands both');
 }
+
+// 6. Lead-acid: its own ratings are labelled, the search finds the variants, and
+//    every row says whether Lemonergy Design may use it (never, for lead-acid).
+{
+  const tax = JSON.parse(fs.readFileSync(path.join(root, 'web/data/technologies-and-chemistries.json')));
+  const idx = BD.searchIndex(tax);
+  const q = s => BD.parseQuery(s, idx);
+  const agm = { model: 'BAT412800084', manu: 'Victron Energy', chem: 'Lead-acid AGM', tech: 'Lead-acid', tvar: 'AGM', cclass: 'PbO2/Pb', kind: 'module', nodesign: true };
+  const efb = { model: 'VARTA Dynamic EFB 572501076', manu: 'Clarios', chem: 'Lead-acid EFB', tech: 'Lead-acid', tvar: 'EFB', cclass: 'PbO2/Pb', kind: 'module', nodesign: true };
+  const lfp = { model: 'LF105', manu: 'EVE Energy', chem: 'LFP', tech: 'Lithium-ion', tvar: null, cclass: 'LFP', kind: 'cell' };
+  assert.ok(BD.matchesQuery(agm, q('agm')) && !BD.matchesQuery(efb, q('agm')));
+  assert.ok(BD.matchesQuery(efb, q('enhanced flooded')) && BD.matchesQuery(agm, q('lead acid')) && BD.matchesQuery(agm, q('victron')));
+  assert.ok(BD.matchesQuery(agm, q('pbo2')) && !BD.matchesQuery(lfp, q('lead')));
+  assert.equal(tax.technologies.find(t => t.name === 'Lead-acid').design, false, 'lead-acid is never offered to Design');
+  assert.deepEqual(tax.technologies.filter(t => t.design).map(t => t.name), ['Lithium-ion', 'Sodium-ion']);
+  const csv = BD.toCSV([agm, lfp]).split('\n');
+  const col = csv[0].split(',').indexOf('lemonergy_design');
+  assert.ok(col > 0);
+  assert.equal(csv[1].split(',')[col], 'no'); assert.equal(csv[2].split(',')[col], 'yes');
+  const doc = JSON.parse(fs.readFileSync(path.join(root, 'contrib/cells/victron-energy/bat412800084.yaml')));
+  const rec = toRecord(doc);
+  const G = { Ratings: ['cranking_current', 'reserve_capacity', 'float_charge_voltage', 'cyclic_charge_voltage'] };
+  const rows = BD.recordGroups(rec, G).groups[0].rows;
+  assert.deepEqual(rows.map(r => r.label), ['Cranking current (CCA, MCA, …)', 'Reserve capacity', 'Float charge voltage', 'Cyclic (absorption) charge voltage']);
+  assert.equal(rows.find(r => r.q === 'cyclic_charge_voltage').obs.length, 4, 'normal and fastest-recharge ranges both kept');
+  assert.match(BD.recordMarkdown(rec, G), /`cranking_current` \| 400 \| A \| temperature_c: -17.8; extra: \{"rating":"CCA"/);
+  console.log('Lead-acid ratings are labelled, its variants are searchable, and Design is marked off');
+}
