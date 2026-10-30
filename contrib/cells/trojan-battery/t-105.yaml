@@ -1,0 +1,599 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "module/trojan-battery/t-105",
+    "kind": "module",
+    "manufacturer": "Trojan Battery",
+    "model_number": "T-105",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase",
+    "form_factor_code": "BCI GC2",
+    "aliases": [
+      "T-105 with Bayonet Cap"
+    ]
+  },
+  "source": {
+    "uid": "src/trojan-t-105-datasheet-ds-020819",
+    "kind": "datasheet",
+    "title": "Trojan Battery T-105 datasheet",
+    "url": "https://assets.ctfassets.net/nh2mdhlonj7m/3RwDBLAA3SCrYnhfDrQnKl/01b3929a9ced420254efa6ced4fb9ab4/T105_Trojan_Data_Sheets.pdf",
+    "revision": "T-105.DS_020819",
+    "document_date": "2019",
+    "retrieved_at": "2026-10-29",
+    "sha256": "79c4f8a6f2f3ba4245b5151945de27af40e52cd8b69078e7ce0f785d789602d5",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Two-page Trojan Battery Company datasheet (937,294 bytes), linked as 'T-105 6V FLOODED BATTERY DATASHEET' from https://www.trojanbattery.com/products/t-105-6v-flooded-battery. Printed '© 2019'. Capacities (footnote B) and minutes (footnote A) are at a constant rate at 80°F (27°C) to 1.75 V/cell; the sheet adds 'Capacities are based on peak performance.' The battery has 3 cells (printed), so the end voltage is 5.25 V. Hour-rate capacities are stored as 1/hours C. C.C.A. and C.A. are printed as '—' (no cranking rating), as are internal resistance and short-circuit current; none is recorded. Charger settings are the 6 V column at 77°F/25°C. The open-circuit-voltage rows are the 6 VOLT column of the state-of-charge table; specific gravity and per-cell voltages are not recorded. Dimensions are the millimetre figures; footnotes C and F say they vary with handle and terminal type. The product page prints slightly different dimensions (width 7.11 in (181), height 11.07 in (281)); the datasheet's figures are recorded. The performance and capacity-versus-temperature graphs are not digitised."
+  },
+  "chemistry": {
+    "designation": "Lead-acid flooded",
+    "locator": {
+      "section": "Page 1, product data",
+      "quote": "BATTERY | Deep-Cycle Flooded/Wet Lead-Acid Battery",
+      "page": 1
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 225,
+      "unit": "Ah",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS, CAPACITY B AMP-HOURS (Ah); Page 2, footnote B: 'The amount of amp-hours (Ah) a battery can deliver when discharged at a constant rate at 80°F (27°C) and maintain a voltage above 1.75 V/cell.'",
+        "quote": "CAPACITY B AMP-HOURS (Ah) · 20-Hr: 225",
+        "page": 1
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 0.05,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 225,
+        "rate_reference_source": "20-hour rate: the current is this 20-hour capacity divided by 20 h",
+        "temperature_c": 27,
+        "voltage_lower_v": 5.25,
+        "extra": {
+          "hour_rate_h": 20,
+          "source_label": "20-Hr",
+          "cutoff_per_cell_v": 1.75,
+          "voltage_lower_basis": "1.75 V per cell x 3 cells (CELL(S) 3 printed)",
+          "note": "Capacities are based on peak performance."
+        }
+      }
+    },
+    {
+      "quantity": "capacity",
+      "value": 185,
+      "unit": "Ah",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS, CAPACITY B AMP-HOURS (Ah); Page 2, footnote B: 'The amount of amp-hours (Ah) a battery can deliver when discharged at a constant rate at 80°F (27°C) and maintain a voltage above 1.75 V/cell.'",
+        "quote": "CAPACITY B AMP-HOURS (Ah) · 5-Hr: 185",
+        "page": 1
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 0.2,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 185,
+        "rate_reference_source": "5-hour rate: the current is this 5-hour capacity divided by 5 h",
+        "temperature_c": 27,
+        "voltage_lower_v": 5.25,
+        "extra": {
+          "hour_rate_h": 5,
+          "source_label": "5-Hr",
+          "cutoff_per_cell_v": 1.75,
+          "voltage_lower_basis": "1.75 V per cell x 3 cells (CELL(S) 3 printed)",
+          "note": "Capacities are based on peak performance."
+        }
+      }
+    },
+    {
+      "quantity": "capacity",
+      "value": 207,
+      "unit": "Ah",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS, CAPACITY B AMP-HOURS (Ah); Page 2, footnote B: 'The amount of amp-hours (Ah) a battery can deliver when discharged at a constant rate at 80°F (27°C) and maintain a voltage above 1.75 V/cell.'",
+        "quote": "CAPACITY B AMP-HOURS (Ah) · 10-Hr: 207",
+        "page": 1
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 0.1,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 207,
+        "rate_reference_source": "10-hour rate: the current is this 10-hour capacity divided by 10 h",
+        "temperature_c": 27,
+        "voltage_lower_v": 5.25,
+        "extra": {
+          "hour_rate_h": 10,
+          "source_label": "10-Hr",
+          "cutoff_per_cell_v": 1.75,
+          "voltage_lower_basis": "1.75 V per cell x 3 cells (CELL(S) 3 printed)",
+          "note": "Capacities are based on peak performance."
+        }
+      }
+    },
+    {
+      "quantity": "capacity",
+      "value": 250,
+      "unit": "Ah",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS, CAPACITY B AMP-HOURS (Ah); Page 2, footnote B: 'The amount of amp-hours (Ah) a battery can deliver when discharged at a constant rate at 80°F (27°C) and maintain a voltage above 1.75 V/cell.'",
+        "quote": "CAPACITY B AMP-HOURS (Ah) · 100-Hr: 250",
+        "page": 1
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 0.01,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 250,
+        "rate_reference_source": "100-hour rate: the current is this 100-hour capacity divided by 100 h",
+        "temperature_c": 27,
+        "voltage_lower_v": 5.25,
+        "extra": {
+          "hour_rate_h": 100,
+          "source_label": "100-Hr",
+          "cutoff_per_cell_v": 1.75,
+          "voltage_lower_basis": "1.75 V per cell x 3 cells (CELL(S) 3 printed)",
+          "note": "Capacities are based on peak performance."
+        }
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 6,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, PHYSICAL SPECIFICATIONS",
+        "quote": "VOLTAGE | 6",
+        "page": 1
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "series_count",
+      "value": 3,
+      "unit": "1",
+      "locator": {
+        "section": "Page 1, PHYSICAL SPECIFICATIONS",
+        "quote": "BCI | MODEL NAME | VOLTAGE | CELL(S) · GC2 | T-105 | 6 | 3 | 1, 2, 3, 4 | 10.30 (262) | 7.13 (181) | 11.15 (283) | 62 (28)",
+        "page": 1
+      }
+    },
+    {
+      "quantity": "length",
+      "value": 262,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 1, PHYSICAL SPECIFICATIONS, DIMENSIONS C INCHES (mm); height per footnote F is to the highest point",
+        "quote": "LENGTH | WIDTH | HEIGHT F · GC2 | T-105 | 6 | 3 | 1, 2, 3, 4 | 10.30 (262) | 7.13 (181) | 11.15 (283) | 62 (28)",
+        "page": 1
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 181,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 1, PHYSICAL SPECIFICATIONS, DIMENSIONS C INCHES (mm); height per footnote F is to the highest point",
+        "quote": "LENGTH | WIDTH | HEIGHT F · GC2 | T-105 | 6 | 3 | 1, 2, 3, 4 | 10.30 (262) | 7.13 (181) | 11.15 (283) | 62 (28)",
+        "page": 1
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 283,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 1, PHYSICAL SPECIFICATIONS, DIMENSIONS C INCHES (mm); height per footnote F is to the highest point",
+        "quote": "LENGTH | WIDTH | HEIGHT F · GC2 | T-105 | 6 | 3 | 1, 2, 3, 4 | 10.30 (262) | 7.13 (181) | 11.15 (283) | 62 (28)",
+        "page": 1
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 28,
+      "unit": "kg",
+      "locator": {
+        "section": "Page 1, PHYSICAL SPECIFICATIONS, WEIGHT H LBS.(kg); footnote H: weight may vary",
+        "quote": "WEIGHT H LBS.(kg) · GC2 | T-105 | 6 | 3 | 1, 2, 3, 4 | 10.30 (262) | 7.13 (181) | 11.15 (283) | 62 (28)",
+        "page": 1
+      }
+    },
+    {
+      "quantity": "reserve_capacity",
+      "value": 447,
+      "unit": "min",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS, CAPACITY A MINUTES; Page 2, footnote A: 'The number of minutes a battery can deliver when discharged at a constant rate at 80°F (27°C) and maintain a voltage above 1.75 V/cell.'",
+        "quote": "CAPACITY A MINUTES · @ 25 Amps: 447",
+        "page": 1
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 25,
+        "rate_unit": "A",
+        "temperature_c": 27,
+        "voltage_lower_v": 5.25,
+        "extra": {
+          "cutoff_per_cell_v": 1.75,
+          "voltage_lower_basis": "1.75 V per cell x 3 cells",
+          "source_label": "CAPACITY A MINUTES",
+          "note": "Capacities are based on peak performance."
+        }
+      }
+    },
+    {
+      "quantity": "reserve_capacity",
+      "value": 115,
+      "unit": "min",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS, CAPACITY A MINUTES; Page 2, footnote A: 'The number of minutes a battery can deliver when discharged at a constant rate at 80°F (27°C) and maintain a voltage above 1.75 V/cell.'",
+        "quote": "CAPACITY A MINUTES · @ 75 Amps: 115",
+        "page": 1
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 75,
+        "rate_unit": "A",
+        "temperature_c": 27,
+        "voltage_lower_v": 5.25,
+        "extra": {
+          "cutoff_per_cell_v": 1.75,
+          "voltage_lower_basis": "1.75 V per cell x 3 cells",
+          "source_label": "CAPACITY A MINUTES",
+          "note": "Capacities are based on peak performance."
+        }
+      }
+    },
+    {
+      "quantity": "energy",
+      "value": 1.5,
+      "unit": "kWh",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS",
+        "quote": "ENERGY (kWh) · 100-Hr: 1.50",
+        "page": 1
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 0.01,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 250,
+        "rate_reference_source": "100-Hr rate: the 100-hour capacity printed beside it (250 Ah)",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "hour_rate_h": 100,
+          "source_label": "ENERGY (kWh) 100-Hr"
+        }
+      }
+    },
+    {
+      "quantity": "cyclic_charge_voltage",
+      "value": 7.41,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS",
+        "quote": "Bulk Charge | 7.41 (6V)",
+        "page": 1
+      },
+      "statistic": "standard",
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "source_label": "CHARGER VOLTAGE SETTINGS (AT 77°F/25°C), SYSTEM VOLTAGE 6V, Bulk Charge",
+          "temperature_compensation": "0.005 volt per cell for every 1°C below/above 25°C (add/subtract)"
+        }
+      }
+    },
+    {
+      "quantity": "float_charge_voltage",
+      "value": 6.75,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS",
+        "quote": "Float Charge | 6.75 (6V)",
+        "page": 1
+      },
+      "statistic": "standard",
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "source_label": "CHARGER VOLTAGE SETTINGS (AT 77°F/25°C), SYSTEM VOLTAGE 6V",
+          "temperature_compensation": "0.005 volt per cell for every 1°C below/above 25°C (add/subtract)"
+        }
+      }
+    },
+    {
+      "quantity": "equalize_charge_voltage",
+      "value": 8.1,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, CHARGING INSTRUCTIONS",
+        "quote": "Equalize Charge | 8.10 (6V)",
+        "page": 1
+      },
+      "statistic": "standard",
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "source_label": "CHARGER VOLTAGE SETTINGS (AT 77°F/25°C), SYSTEM VOLTAGE 6V",
+          "temperature_compensation": "0.005 volt per cell for every 1°C below/above 25°C (add/subtract)"
+        }
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "locator": {
+        "section": "Page 1, OPERATIONAL DATA",
+        "quote": "OPERATING TEMPERATURE -4°F to 113°F (-20°C to +45°C).",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ],
+        "extra": {
+          "note": "At temperatures below 32°F (0°C) maintain a state of charge greater than 60%."
+        }
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 45,
+      "unit": "°C",
+      "locator": {
+        "section": "Page 1, OPERATIONAL DATA",
+        "quote": "OPERATING TEMPERATURE -4°F to 113°F (-20°C to +45°C).",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_reference",
+          "direction"
+        ],
+        "extra": {
+          "note": "At temperatures below 32°F (0°C) maintain a state of charge greater than 60%."
+        }
+      }
+    },
+    {
+      "quantity": "self_discharge_rate",
+      "value": 5,
+      "unit": "%/month",
+      "locator": {
+        "section": "Page 1, OPERATIONAL DATA",
+        "quote": "SELF DISCHARGE 5 – 15% per month depending on storage temperature conditions.",
+        "page": 1
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "soc_pct",
+          "duration_s"
+        ],
+        "extra": {
+          "note": "depending on storage temperature conditions"
+        }
+      }
+    },
+    {
+      "quantity": "self_discharge_rate",
+      "value": 15,
+      "unit": "%/month",
+      "locator": {
+        "section": "Page 1, OPERATIONAL DATA",
+        "quote": "SELF DISCHARGE 5 – 15% per month depending on storage temperature conditions.",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_c",
+          "soc_pct",
+          "duration_s"
+        ],
+        "extra": {
+          "note": "depending on storage temperature conditions"
+        }
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 6.37,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 100 · 6 VOLT 6.37",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 100,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 6.31,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 90 · 6 VOLT 6.31",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 90,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 6.25,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 80 · 6 VOLT 6.25",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 80,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 6.19,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 70 · 6 VOLT 6.19",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 70,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 6.12,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 60 · 6 VOLT 6.12",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 60,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 6.05,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 50 · 6 VOLT 6.05",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 50,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 5.98,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 40 · 6 VOLT 5.98",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 40,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 5.91,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 30 · 6 VOLT 5.91",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 30,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 5.83,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 20 · 6 VOLT 5.83",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 20,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    },
+    {
+      "quantity": "open_circuit_voltage",
+      "value": 5.75,
+      "unit": "V",
+      "locator": {
+        "section": "Page 1, STATE OF CHARGE MEASURE OF OPEN-CIRCUIT VOLTAGE, 6 VOLT column",
+        "quote": "PERCENTAGE CHARGE 10 · 6 VOLT 5.75",
+        "page": 1
+      },
+      "statistic": "typical",
+      "conditions": {
+        "soc_pct": 10,
+        "unstated": [
+          "temperature_c",
+          "direction",
+          "rest_before_s"
+        ]
+      }
+    }
+  ]
+}

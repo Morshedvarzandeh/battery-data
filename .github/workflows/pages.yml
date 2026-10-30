@@ -15,10 +15,12 @@ on:
     paths:
       - 'web/**'
       - 'contrib/**'
+      - 'offers/**'
       - 'json-schema/**'
       - 'schema/010_vocabulary.sql'
       - 'tools/build_web_data.py'
       - 'tools/catalog_dates.py'
+      - 'tools/classification.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 

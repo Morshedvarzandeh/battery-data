@@ -9,16 +9,16 @@
     "form_factor": "prismatic_hardcase"
   },
   "source": {
-    "uid": "src/catl-587ah-mall-screenshot-jerry-wan-2026-09-23",
+    "uid": "src/catl-587ah-mall-screenshot-2026-09-23",
     "kind": "user_submission",
-    "title": "CATL Mall 587Ah listing screenshot shared by Jerry Wan",
-    "url": "https://www.linkedin.com/posts/jerry-wan-069b41105_energystorage-catl-batterydesign-activity-7508442594948005888-pkOx",
+    "title": "CATL Mall 587Ah listing screenshot shared in a LinkedIn post",
+    "url": "https://media.licdn.com/dms/image/v2/D5622AQEPaRuHq7bRLg/feedshare-shrink_800/B56aDNYwKcI0Ac-/0/1790152213407?e=2147483647&v=beta&t=ghrSkd6Sk7sbuBUJRDvQ6_bEjlcYVYI6QAQstwG5cAw",
     "document_date": "2026-09-23",
     "retrieved_at": "2026-09-23",
     "sha256": "65a9258bcefe61813c2935bd8121d35849590cc9b80e2441c86e7503c04f8d2e",
     "license": "proprietary",
     "redistributable": false,
-    "note": "Pending source-revision review; same provisional capacity-based product UID as the existing CATL 587Ah candidate, not a second counted product. Source is a CATL Mall screenshot reproduced in the user-submitted LinkedIn post, not an independently retrieved manufacturer datasheet. SHA-256 identifies the inspected screenshot bytes; document_date is the post date, not a manufacturer revision date. CATL Mall homepage was reachable, but the live product listing could not be verified. Mass differs from the earlier brochure record (9.83 kg); no orderable part number or manufacturer revision mapping is available. Keep the two source records separate. Screenshot states 0.5P/0.5P, not 0.5C. The listed 379 Wh/L differs from the 374.4326 Wh/L calculated from the listed energy and external dimensions; the volume basis is unstated. Do not infer empty internal space or sodium-ion compatibility. See review/imports/2026-09-23-catl-587ah-review.md. Image: https://media.licdn.com/dms/image/v2/D5622AQEPaRuHq7bRLg/feedshare-shrink_800/B56aDNYwKcI0Ac-/0/1790152213407?e=2147483647&v=beta&t=ghrSkd6Sk7sbuBUJRDvQ6_bEjlcYVYI6QAQstwG5cAw"
+    "note": "Pending source-revision review; same provisional capacity-based product UID as the existing CATL 587Ah candidate, not a second counted product. Source is a CATL Mall screenshot reproduced in the user-submitted LinkedIn post, not an independently retrieved manufacturer datasheet. SHA-256 identifies the inspected screenshot bytes; document_date is the post date, not a manufacturer revision date. CATL Mall homepage was reachable, but the live product listing could not be verified. Mass differs from the earlier brochure record (9.83 kg); no orderable part number or manufacturer revision mapping is available. Keep the two source records separate. Screenshot states 0.5P/0.5P, not 0.5C. The listed 379 Wh/L differs from the 374.4326 Wh/L calculated from the listed energy and external dimensions; the volume basis is unstated. Do not infer empty internal space or sodium-ion compatibility. See review/imports/2026-09-23-catl-587ah-review.md. The post's own URL and author are withheld at the repository owner's request (the link names a private individual); the URL above is the screenshot image the SHA-256 identifies."
   },
   "observations": [
     {

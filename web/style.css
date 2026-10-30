@@ -125,6 +125,8 @@ select.f { padding: 7px 30px 7px 10px; border: 1px solid var(--line); border-rad
 .facet-menu label { display: flex; align-items: center; gap: 9px; padding: 6px 6px; border-radius: 4px; font-size: 13.5px; cursor: pointer; }
 .facet-menu label:hover { background: var(--hover); }
 .facet-menu label.zero { color: var(--muted); }
+.facet-menu label.sub { padding-left: 28px; }
+td.chem small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
 .facet-menu input { accent-color: var(--accent); margin: 0; flex: none; }
 .facet-menu label span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .facet-menu label small { color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -199,6 +201,13 @@ td.dash, .dash { color: var(--line-strong); }
 .pill { display: inline-block; font-size: 11px; line-height: 1.4; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); background: var(--paper); font-weight: 400; text-transform: none; letter-spacing: 0; white-space: nowrap; }
 .pill.src { border-style: dashed; }
 .pill.warn { border-color: var(--missing); color: var(--missing); }
+/* A seller's stock line. Blue like every other action: availability is an
+   offer to act on, not a quality of the cell, so it gets no colour of its own. */
+td.model small.stock { color: var(--accent); font-weight: 700; font-size: 11.5px; }
+.buy { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; justify-content: space-between; margin: 14px 18px 6px; padding: 10px 12px; border: 1px solid var(--accent-edge); background: var(--accent-soft); border-radius: var(--r); }
+.buy b { display: block; font-size: 13.5px; color: var(--ink); }
+.buy small { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+.buy .btn { flex: none; text-decoration: none; }
 .more { display: flex; justify-content: center; padding: 14px; }
 .empty { padding: 40px 20px; text-align: center; color: var(--muted); }
 
@@ -218,6 +227,8 @@ td.dash, .dash { color: var(--line-strong); }
 .srcbox a:hover { text-decoration: underline; }
 .gap { padding: 12px 18px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); }
 .gap b { color: var(--missing); }
+.gap.nodesign b { color: var(--ink); }
+.linkbtn { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; }
 .similar { padding: 10px 18px 12px; border-top: 1px solid var(--line); font-size: 13px; }
 .similar .lbl { display: block; margin-bottom: 6px; }
 .similar button { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 4px 0; cursor: pointer; color: var(--accent); font-weight: 700; font-size: 13px; }

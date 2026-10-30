@@ -1,0 +1,504 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "cell/maker-not-stated/nacp51160120-216wh",
+    "kind": "cell",
+    "manufacturer": "Maker not stated",
+    "model_number": "NaCP51160120-216Wh",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/partner-datasheet-nacp51160120-216wh",
+    "kind": "datasheet",
+    "title": "Sodium-ion cell datasheet NaCP51160120-216Wh (partner supplier)",
+    "retrieved_at": "2026-10-28",
+    "sha256": "ee868e9d419ff1dcc4ba4c30f349dd46f394b096c31974ea1b68ba929d130f9e",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Two-page supplier datasheet (page 2 repeats two chart images and has no text) supplied to Lemonergy by a commercial partner on 2026-10-28. The document is issued by a distributor, not by the cell producer, and does not name the producer; the manufacturer is therefore recorded as not stated. The model number is the distributor's designation. The issuing distributor's company name and its contact person, e-mail address and telephone number appear on the document and are deliberately not recorded, at the repository owner's instruction. The document is identified by its SHA-256 only and has no public URL. The datasheet names no cathode chemistry. The partner spreadsheet's JNP50160118H (NFM, 70 Ah) is not established to be the same part and is a separate record. The SOC-OCV curve is transcribed from the 21 value labels printed on the chart; the 35% label is partly covered by the 30% label and reads 2.878, last digit uncertain. The cycle-life legend '1C/ 2000th/85.36%' is recorded as a measured retention point; its temperature and DOD are not printed. Product-drawing dimensions (120.0, 116.0, 160, 51 mm with tolerances) are not mapped to axes beyond the table's T-W-H figures. Not recorded: the 'Special at 0V: Shippable and Rechargeable' claim (a qualitative statement, no voltage quantity fits it)."
+  },
+  "chemistry": {
+    "designation": "Sodium-ion",
+    "locator": {
+      "page": 1,
+      "section": "Title",
+      "quote": "Rechargeable Sodium ion Battery Product Datasheet NaCP51160120-216Wh"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 72,
+      "unit": "Ah",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Nominal Capacity 72Ah 216Wh"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c",
+          "voltage_lower_v"
+        ]
+      }
+    },
+    {
+      "quantity": "energy",
+      "value": 216,
+      "unit": "Wh",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Nominal Capacity 72Ah 216Wh"
+      },
+      "statistic": "nominal",
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 3,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Nominal Voltage 3V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "discharge_cutoff_voltage",
+      "value": 1.5,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Voltage Range 1.5V-3.9V"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "extra": {
+          "source_label": "Voltage Range"
+        }
+      }
+    },
+    {
+      "quantity": "charge_cutoff_voltage",
+      "value": 3.9,
+      "unit": "V",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Voltage Range 1.5V-3.9V"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "extra": {
+          "source_label": "Voltage Range"
+        }
+      }
+    },
+    {
+      "quantity": "specific_energy",
+      "value": 120,
+      "unit": "Wh/kg",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Energy Density ≥120Wh/Kg"
+      },
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "conditions": {
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "temperature_c"
+        ],
+        "extra": {
+          "source_comparator": "≥"
+        }
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 72,
+      "unit": "A",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Max. Cont. Charge Rate 1C/72A"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "rate_label": "1C"
+        }
+      }
+    },
+    {
+      "quantity": "max_continuous_discharge_current",
+      "value": 432,
+      "unit": "A",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Max. Discharge Rate 6C/432A Cont. 8C/576A Peak 10s"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "rate_label": "6C"
+        }
+      }
+    },
+    {
+      "quantity": "max_pulse_discharge_current",
+      "value": 576,
+      "unit": "A",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Max. Discharge Rate 6C/432A Cont. 8C/576A Peak 10s"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "pulse_duration_s": 10,
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "rate_label": "8C"
+        }
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 1,
+      "unit": "mohm",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Internal Resistance 1KHz AC≤1mΩ at 50% SOC"
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "conditions": {
+        "frequency_hz": 1000,
+        "soc_pct": 50,
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "source_comparator": "≤"
+        }
+      }
+    },
+    {
+      "quantity": "thickness",
+      "value": 51,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Dimension (T x W x H) 51-160-120mm"
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 160,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Dimension (T x W x H) 51-160-120mm"
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 120,
+      "unit": "mm",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Dimension (T x W x H) 51-160-120mm"
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 2000,
+      "unit": "cycles",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Cycle Life ≥2000 Times @0.5C/1C 100% DOD at RT"
+      },
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "conditions": {
+        "rate_value": 1,
+        "rate_unit": "C",
+        "rate_reference_source": "Supplier C-rate label; the capacity the C-rate refers to is not stated",
+        "dod_pct": 100,
+        "unstated": [
+          "rate_reference_capacity_ah",
+          "temperature_c"
+        ],
+        "extra": {
+          "source_comparator": "≥",
+          "rate_direction": "0.5C charge / 1C discharge",
+          "temperature_text": "RT",
+          "end_of_life_criterion": "not stated"
+        }
+      }
+    },
+    {
+      "quantity": "capacity_retention",
+      "value": 85.36,
+      "unit": "%",
+      "locator": {
+        "page": 1,
+        "section": "Cycle Life chart legend",
+        "quote": "1C/ 2000th/85.36%"
+      },
+      "statistic": "measured",
+      "conditions": {
+        "cycle_index": 2000,
+        "rate_value": 1,
+        "rate_unit": "C",
+        "rate_reference_source": "Supplier C-rate label; the capacity the C-rate refers to is not stated",
+        "unstated": [
+          "temperature_c",
+          "rate_reference_capacity_ah",
+          "dod_pct"
+        ],
+        "extra": {
+          "source_note": "chart legend of the cycle-life graph"
+        }
+      }
+    },
+    {
+      "quantity": "capacity_retention",
+      "value": 80,
+      "unit": "%",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "-20℃ 0.5C Discharge Capacity ≥80% VS 25℃"
+      },
+      "statistic": "minimum",
+      "is_lower_bound": true,
+      "conditions": {
+        "temperature_c": -20,
+        "rate_value": 0.5,
+        "rate_unit": "C",
+        "rate_reference_source": "Supplier C-rate label; the capacity the C-rate refers to is not stated",
+        "unstated": [
+          "cycle_index",
+          "rate_reference_capacity_ah"
+        ],
+        "extra": {
+          "source_comparator": "≥",
+          "relative_to": "0.5C discharge capacity at 25 °C"
+        }
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1.8,
+      "unit": "kg",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Approx. Weight 1.8kg"
+      },
+      "statistic": "typical",
+      "conditions": {
+        "extra": {
+          "source_label": "Approx. Weight"
+        }
+      }
+    },
+    {
+      "quantity": "stack_pressure",
+      "value": 0.2,
+      "unit": "MPa",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics",
+        "quote": "Compress Pressure 0.2MPa"
+      },
+      "conditions": {
+        "unstated": [
+          "soc_pct",
+          "constraint_mode"
+        ],
+        "extra": {
+          "source_label": "Compress Pressure"
+        }
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": 0,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics / Operating Temperature",
+        "quote": "Charge: 0℃~40℃"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 40,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics / Operating Temperature",
+        "quote": "Charge: 0℃~40℃"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -40,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics / Operating Temperature",
+        "quote": "Disharge: -40℃~60℃"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "page": 1,
+        "section": "Cell characteristics / Operating Temperature",
+        "quote": "Disharge: -40℃~60℃"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    }
+  ],
+  "curves": [
+    {
+      "curve_kind": "ocv_soc",
+      "x_quantity": "state_of_charge",
+      "y_quantity": "open_circuit_voltage",
+      "x_unit": "%",
+      "y_unit": "V",
+      "x_values": [
+        100,
+        95,
+        90,
+        85,
+        80,
+        75,
+        70,
+        65,
+        60,
+        55,
+        50,
+        45,
+        40,
+        35,
+        30,
+        25,
+        20,
+        15,
+        10,
+        5,
+        0
+      ],
+      "y_values": [
+        3.933,
+        3.816,
+        3.726,
+        3.651,
+        3.582,
+        3.515,
+        3.443,
+        3.365,
+        3.285,
+        3.203,
+        3.122,
+        3.042,
+        2.961,
+        2.878,
+        2.857,
+        2.826,
+        2.767,
+        2.662,
+        2.522,
+        2.367,
+        2.144
+      ],
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_c",
+          "rest_before_s"
+        ]
+      },
+      "processing": {
+        "method": "transcribed from printed point labels, not digitised from the line",
+        "uncertain_points": [
+          {
+            "soc_pct": 35,
+            "note": "label partly covered by the 30% label; last digit uncertain"
+          }
+        ]
+      },
+      "locator": {
+        "page": 1,
+        "section": "Discharge SOC-OCV chart",
+        "quote": "Discharge SOC-OCV · 3.933 at 100% … 2.144 at 0%"
+      }
+    }
+  ]
+}

@@ -37,7 +37,7 @@
     <form class="search" id="sform" role="search">
       <label class="box">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="q" type="search" placeholder="Model, manufacturer, chemistry or format — 50E, LFP, 21700, Murata" autocomplete="off" aria-label="Search cells and components">
+        <input id="q" type="search" placeholder="Model, maker, technology or chemistry — 50E, Na-ion, AGM, LFP, 21700" autocomplete="off" aria-label="Search cells and components">
       </label>
       <button class="btn pri" type="submit">Search</button>
     </form>
@@ -48,6 +48,7 @@
       <button type="button" class="chip" data-q="CR2032" data-kind="">CR2032</button>
       <button type="button" class="chip" data-q="sodium" data-kind="">sodium-ion</button>
       <button type="button" class="chip" data-kind="component" data-q="bms">BMS</button>
+      <button type="button" class="chip" data-stock="1" data-kind="">in stock now</button>
     </div>
     <div class="facts" id="facts" aria-label="What the library holds">
       <div class="fact"><b id="f-n">—</b><span>battery records</span></div>
@@ -63,12 +64,14 @@
   <div class="tools" role="toolbar" aria-label="Filters">
     <div class="facet" data-facet="kind"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-kind">Kind</button><div class="facet-menu" id="facet-kind" hidden></div></div>
     <div class="facet" data-facet="mfr"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-mfr">Company</button><div class="facet-menu" id="facet-mfr" hidden></div></div>
+    <div class="facet" data-facet="tech"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-tech">Technology</button><div class="facet-menu" id="facet-tech" hidden></div></div>
     <div class="facet" data-facet="chem"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-chem">Chemistry</button><div class="facet-menu" id="facet-chem" hidden></div></div>
     <div class="facet" data-facet="ff"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-ff">Format</button><div class="facet-menu" id="facet-ff" hidden></div></div>
     <div class="facet" data-facet="year"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-year">Year</button><div class="facet-menu" id="facet-year" hidden></div></div>
     <div class="facet" data-facet="src"><button type="button" class="facet-btn" aria-expanded="false" aria-controls="facet-src">Source</button><div class="facet-menu" id="facet-src" hidden></div></div>
     <button type="button" class="btn sm ghost" id="f-clear" hidden>Clear filters</button>
     <label class="toggle"><input type="checkbox" id="f-core-only"> Only records with capacity, voltage and mass</label>
+    <label class="toggle" hidden><input type="checkbox" id="f-stock"> Available now from Lemonergy</label>
     <div class="seg" role="group" aria-label="View">
       <button type="button" id="v-table" aria-pressed="true">Table</button>
       <button type="button" id="v-chart" aria-pressed="false">Energy map</button>
@@ -80,7 +83,7 @@
       <button type="reset" class="btn sm ghost" id="limits-reset">Reset limits</button></div>
     <div class="limits-grid" id="limits-grid"></div>
   </form>
-  <p class="count"><span id="count">Loading the library…</span>
+  <p class="count"><span id="count">Loading the library…</span><span id="kindhint" hidden></span>
     <span class="sortctl"><label for="sortby">Sort by</label><select class="f" id="sortby"></select><button class="btn sm" id="sortdir" type="button" aria-label="Reverse sort order">High → low</button></span>
     <button class="btn sm" id="csv" type="button">Export CSV</button></p>
   <div class="cmpbar" id="cmpbar" hidden role="status" aria-live="polite"><span class="cmpbar-step" id="cmpbar-step"></span><span class="cmpbar-chips" id="cmpbar-chips"></span><a class="btn sm pri" id="cmpbar-go" href="#tray" hidden>Compare them ↓</a><button class="btn sm ghost" id="cmpbar-clear" type="button">Clear</button></div>

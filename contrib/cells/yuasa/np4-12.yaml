@@ -1,0 +1,391 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "module/yuasa/np4-12",
+    "kind": "module",
+    "manufacturer": "Yuasa",
+    "model_number": "NP4-12",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase",
+    "aliases": [
+      "NP4-12/187/NF/Box"
+    ]
+  },
+  "source": {
+    "uid": "src/yuasa-np4-12-technical-data-sheet-2026-10-29",
+    "kind": "datasheet",
+    "title": "Yuasa Technical Data Sheet NP4-12",
+    "url": "https://www.yuasa.com/uk/datasheet/index/download/?sku=NP4-12%2F187%2FNF%2FBox",
+    "retrieved_at": "2026-10-29",
+    "sha256": "669ebf1d252ed143cef6008f656d6714e1f7792bafcca4a2848ec1aa3dc48313",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. One-page datasheet generated on request by yuasa.com for SKU NP4-12/187/NF/Box (linked from https://www.yuasa.com/uk/np4-12); it prints 'Data Sheet generated on 29/10/2026 – E&OE'. That is the date the copy was generated, not a revision date, so no document date is recorded. Each download is regenerated, so the SHA-256 (106,162 bytes) identifies the copy inspected, not a revision. Capacities are '20-hr rate Capacity to 1.75V /Cell at 20°C' and '10-hr rate Capacity to 1.8V /Cell at 20°C'; the per-cell end voltages are multiplied by the cells implied by the nominal voltage (the sheet also prints float voltage per block and per cell, 6:1 for 12 V). Charge voltages are per block at 20 °C with the printed tolerances (±1% float, ±3% cyclic) kept in extra; the per-cell values and the correction factors (-3 mV float, -4 mV cyclic, 'from std 20°C') are not recorded because the sheet does not say per what. The float and cyclic charge current limits are printed equal and recorded once. The 10-minute constant-power ratings are not recorded. Internal resistance is 'measured at 1 kHz'."
+  },
+  "chemistry": {
+    "designation": "Lead-acid AGM",
+    "locator": {
+      "section": "Yuasa Technical Data Sheet, title",
+      "quote": "Yuasa NP4-12 12V 4Ah - Yuasa NP series standby & cyclic AGM VRLA battery"
+    }
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 4,
+      "unit": "Ah",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Specifications",
+        "quote": "20-hr rate Capacity to 1.75V /Cell at 20°C (Ah) | 4"
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 0.05,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 4,
+        "rate_reference_source": "20-hour rate: the current is this 20-hour capacity divided by 20 h",
+        "temperature_c": 20,
+        "voltage_lower_v": 10.5,
+        "extra": {
+          "hour_rate_h": 20,
+          "source_label": "20-hr rate Capacity to 1.75V /Cell at 20°C",
+          "cutoff_per_cell_v": 1.75,
+          "voltage_lower_basis": "1.75 V per cell x 6 cells (nominal 12 V at 2 V per lead-acid cell)"
+        }
+      }
+    },
+    {
+      "quantity": "capacity",
+      "value": 3.7,
+      "unit": "Ah",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Specifications",
+        "quote": "10-hr rate Capacity to 1.8V /Cell at 20°C (Ah) | 3.7"
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 0.1,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 3.7,
+        "rate_reference_source": "10-hour rate: the current is this 10-hour capacity divided by 10 h",
+        "temperature_c": 20,
+        "voltage_lower_v": 10.8,
+        "extra": {
+          "hour_rate_h": 10,
+          "source_label": "10-hr rate Capacity to 1.8V /Cell at 20°C",
+          "cutoff_per_cell_v": 1.8,
+          "voltage_lower_basis": "1.8 V per cell x 6 cells (nominal 12 V at 2 V per lead-acid cell)"
+        }
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Specifications",
+        "quote": "Nominal Voltage (V) | 12 V"
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "length",
+      "value": 90,
+      "unit": "mm",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Dimensions",
+        "quote": "Length (mm) | 90 (±1)"
+      },
+      "tol_plus": 1,
+      "tol_minus": 1
+    },
+    {
+      "quantity": "width",
+      "value": 70,
+      "unit": "mm",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Dimensions",
+        "quote": "Width (mm) | 70 (±1)"
+      },
+      "tol_plus": 1,
+      "tol_minus": 1
+    },
+    {
+      "quantity": "height",
+      "value": 105.5,
+      "unit": "mm",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Dimensions",
+        "quote": "Height (mm) | 105.5"
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 1.75,
+      "unit": "kg",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Dimensions",
+        "quote": "Weight (kg) | 1.75"
+      }
+    },
+    {
+      "quantity": "float_charge_voltage",
+      "value": 13.65,
+      "unit": "V",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Charge Voltage",
+        "quote": "Float charge voltage at 20°C /Block (±1%) | 13.65"
+      },
+      "statistic": "standard",
+      "conditions": {
+        "temperature_c": 20,
+        "extra": {
+          "tolerance": "±1%",
+          "per": "block"
+        }
+      }
+    },
+    {
+      "quantity": "cyclic_charge_voltage",
+      "value": 14.5,
+      "unit": "V",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Charge Voltage",
+        "quote": "Cyclic (or Boost) charge Voltage at 20°C (V) /Block (±3%) | 14.5"
+      },
+      "statistic": "standard",
+      "conditions": {
+        "temperature_c": 20,
+        "extra": {
+          "tolerance": "±3%",
+          "per": "block",
+          "source_label": "Cyclic (or Boost) charge Voltage"
+        }
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_current",
+      "value": 1,
+      "unit": "A",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Charge Current",
+        "quote": "Float charge current limit (A) | 1 · Cyclic (or Boost) charge current limit (A) | 1"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "source_label": "Float / Cyclic (or Boost) charge current limit"
+        }
+      }
+    },
+    {
+      "quantity": "max_pulse_discharge_current",
+      "value": 120,
+      "unit": "A",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Maximum Discharge Current",
+        "quote": "Maximum discharge current 1s (A) | 120"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "pulse_duration_s": 1,
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "max_pulse_discharge_current",
+      "value": 40,
+      "unit": "A",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Maximum Discharge Current",
+        "quote": "Maximum discharge current 1m (A) | 40"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "pulse_duration_s": 60,
+        "unstated": [
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "short_circuit_current",
+      "value": 120,
+      "unit": "A",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Short-Circuit Current & Internal Resistance",
+        "quote": "Short-Circuit current - according to EN IEC 60896-21 (A) | 120"
+      },
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "standard": "EN IEC 60896-21"
+        }
+      }
+    },
+    {
+      "quantity": "internal_resistance_ac",
+      "value": 40,
+      "unit": "mΩ",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Short-Circuit Current & Internal Resistance",
+        "quote": "Internal resistance (mΩ) measured at 1 kHz | 40"
+      },
+      "conditions": {
+        "frequency_hz": 1000,
+        "unstated": [
+          "soc_pct",
+          "temperature_c"
+        ]
+      }
+    },
+    {
+      "quantity": "self_discharge_rate",
+      "value": 3,
+      "unit": "%/month",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Storage",
+        "quote": "Capacity loss per month at 20°C (% approx.) | 3"
+      },
+      "statistic": "typical",
+      "conditions": {
+        "temperature_c": 20,
+        "unstated": [
+          "soc_pct",
+          "duration_s"
+        ],
+        "extra": {
+          "source_label": "Capacity loss per month (% approx.)"
+        }
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -15,
+      "unit": "°C",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Operating Temperature Range",
+        "quote": "Charge | -15°C to +50°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 50,
+      "unit": "°C",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Operating Temperature Range",
+        "quote": "Charge | -15°C to +50°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "charge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Operating Temperature Range",
+        "quote": "Discharge | -20°C to +60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "operating_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Operating Temperature Range",
+        "quote": "Discharge | -20°C to +60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "direction": "discharge",
+        "unstated": [
+          "temperature_reference"
+        ]
+      }
+    },
+    {
+      "quantity": "storage_temperature_min",
+      "value": -20,
+      "unit": "°C",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Operating Temperature Range",
+        "quote": "Storage (in fully charged condition) | -20°C to +60°C"
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "unstated": [
+          "duration_s"
+        ],
+        "extra": {
+          "note": "in fully charged condition"
+        }
+      }
+    },
+    {
+      "quantity": "storage_temperature_max",
+      "value": 60,
+      "unit": "°C",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Operating Temperature Range",
+        "quote": "Storage (in fully charged condition) | -20°C to +60°C"
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "duration_s"
+        ],
+        "extra": {
+          "note": "in fully charged condition"
+        }
+      }
+    },
+    {
+      "quantity": "calendar_life",
+      "value": 5,
+      "unit": "year",
+      "locator": {
+        "section": "Yuasa Technical Data Sheet, Design Life & Approvals",
+        "quote": "Yuasa design life at 20°C (yrs) | Up to 5 years"
+      },
+      "statistic": "design",
+      "is_upper_bound": true,
+      "conditions": {
+        "temperature_c": 20,
+        "unstated": [
+          "soc_pct"
+        ],
+        "extra": {
+          "basis": "Yuasa design life",
+          "eurobat_classification": "Standard commercial: 3 to 5 years"
+        }
+      }
+    }
+  ]
+}

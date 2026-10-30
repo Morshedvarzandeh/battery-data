@@ -65,6 +65,11 @@
   "temperature_c",
   "cycle_index"
  ],
+ "cranking_current": [
+  "temperature_c",
+  "duration_s",
+  "voltage_lower_v"
+ ],
  "current": [],
  "cv_cutoff_current": [],
  "cycle_life": [
@@ -74,6 +79,9 @@
   "rate_unit"
  ],
  "cycle_number": [],
+ "cyclic_charge_voltage": [
+  "temperature_c"
+ ],
  "diameter": [],
  "diffusion_coefficient": [
   "soc_pct",
@@ -108,6 +116,9 @@
   "soc_pct",
   "temperature_c"
  ],
+ "equalize_charge_voltage": [
+  "temperature_c"
+ ],
  "expansion_force": [
   "soc_pct",
   "constraint_mode"
@@ -115,6 +126,9 @@
  "first_cycle_efficiency": [
   "rate_value",
   "rate_unit",
+  "temperature_c"
+ ],
+ "float_charge_voltage": [
   "temperature_c"
  ],
  "force": [],
@@ -179,10 +193,20 @@
  "max_continuous_charge_current": [
   "temperature_c"
  ],
+ "max_continuous_charge_rate": [
+  "temperature_c"
+ ],
  "max_continuous_discharge_current": [
   "temperature_c"
  ],
+ "max_continuous_discharge_rate": [
+  "temperature_c"
+ ],
  "max_pulse_discharge_current": [
+  "pulse_duration_s",
+  "temperature_c"
+ ],
+ "max_pulse_discharge_rate": [
   "pulse_duration_s",
   "temperature_c"
  ],
@@ -237,6 +261,12 @@
  "recycled_content_lithium": [],
  "recycled_content_nickel": [],
  "relaxation_time": [],
+ "reserve_capacity": [
+  "rate_value",
+  "rate_unit",
+  "temperature_c",
+  "voltage_lower_v"
+ ],
  "resistance_growth": [
   "cycle_index",
   "temperature_c",
@@ -290,6 +320,9 @@
   "temperature_c"
  ],
  "shipping_voltage": [],
+ "short_circuit_current": [
+  "temperature_c"
+ ],
  "soc_estimation_accuracy": [],
  "soh_estimation_accuracy": [],
  "specific_capacity": [
@@ -317,6 +350,9 @@
   "constraint_mode"
  ],
  "standard_charge_current": [
+  "temperature_c"
+ ],
+ "standard_charge_rate": [
   "temperature_c"
  ],
  "standby_consumption": [],

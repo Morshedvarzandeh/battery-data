@@ -1,0 +1,421 @@
+{
+  "schema_version": "1",
+  "product": {
+    "uid": "module/victron-energy/bat412101104",
+    "kind": "module",
+    "manufacturer": "Victron Energy",
+    "model_number": "BAT412101104",
+    "is_rechargeable": true,
+    "form_factor": "prismatic_hardcase"
+  },
+  "source": {
+    "uid": "src/victron-gel-and-agm-batteries-datasheet-2025-12",
+    "kind": "datasheet",
+    "title": "Victron Energy Gel and AGM Batteries datasheet (EN)",
+    "url": "https://www.victronenergy.com/upload/documents/Datasheet-GEL-and-AGM-Batteries-EN.pdf",
+    "retrieved_at": "2026-10-29",
+    "sha256": "0581f9e3039e42280903e1b0bceeaa39feb1bf968a990cb7e0f0f9e475e0981b",
+    "license": "proprietary",
+    "redistributable": false,
+    "note": "Facts only; source body is not redistributed. Four-page Victron Energy datasheet (1,028,647 bytes; PDF created 2025-12-09; no printed date or revision). Page 4 tables give article number, Ah, V, l x w x h, weight, CCA @0°F and RES CAP @80°F per battery; pages 1-4 give range-wide statements recorded on every battery of the range they name. Capacity: 'Rated capacity: 20 hr. discharge at 25°C'; page 1 says the rated capacity 'refers to 20 hour discharge, in other words: a discharge current of 0,05 C' and Table 1 gives 10,8 V as the end voltage of the 20-hour discharge. Table 1 is printed for the 12 V range, so the 6 V AGM battery's end voltage is recorded as unstated. CCA and RES CAP are printed without units; CCA is read as amperes and RES CAP as minutes, the units these ratings are defined in. Their temperatures are printed in Fahrenheit only and converted (0°F = -17.8 °C, 80°F = 26.7 °C). Neither rating states its standard, duration, current or end voltage. Charge voltages are Table 3 settings 'for a 12 V battery' and are recorded on the 12 V batteries only, at the 25 °C centre point that section 14 names for temperature compensation. Storage-mode voltages, the -4 mV/°C per cell compensation, Table 1's capacity-versus-discharge-time percentages and the cycle-life and temperature graphs are not recorded. Small AGM batteries (8-38 Ah) print no CCA or RES CAP. The article number BAT212200084 is printed with a space ('BAT2122000 84'); it is recorded without it."
+  },
+  "chemistry": {
+    "designation": "Lead-acid gel",
+    "locator": {
+      "section": "Page 4, 12 Volt Deep Cycle GEL General Specification and page 1",
+      "quote": "Technology: flat plate GEL · Here the electrolyte is immobilized as gel.",
+      "page": 4
+    },
+    "electrolyte_text": "Electrolyte immobilized as gel"
+  },
+  "observations": [
+    {
+      "quantity": "capacity",
+      "value": 110,
+      "unit": "Ah",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL table, row BAT412101104, column Ah, and General Specification",
+        "quote": "BAT412101104 · Ah: 110 · Rated capacity: 20 hr. discharge at 25°C",
+        "page": 4
+      },
+      "statistic": "rated",
+      "conditions": {
+        "rate_value": 0.05,
+        "rate_unit": "C",
+        "rate_reference_capacity_ah": 110,
+        "rate_reference_source": "20-hour rate: the current is this 20-hour capacity divided by 20 h",
+        "temperature_c": 25,
+        "extra": {
+          "hour_rate_h": 20,
+          "source_label": "Rated capacity: 20 hr. discharge at 25°C",
+          "rate_basis": "Page 1: 'a discharge current of 0,05 C'",
+          "voltage_lower_basis": "Page 1, Table 1: end voltage 10,8 V for the 20-hour discharge"
+        },
+        "voltage_lower_v": 10.8
+      }
+    },
+    {
+      "quantity": "nominal_voltage",
+      "value": 12,
+      "unit": "V",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL table, row BAT412101104, column V",
+        "quote": "BAT412101104 · V: 12",
+        "page": 4
+      },
+      "statistic": "nominal"
+    },
+    {
+      "quantity": "length",
+      "value": 330,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL table, row BAT412101104, column l x w x h mm",
+        "quote": "BAT412101104 · l x w x h: 330 x 171 x 220 mm",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "width",
+      "value": 171,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL table, row BAT412101104, column l x w x h mm",
+        "quote": "BAT412101104 · l x w x h: 330 x 171 x 220 mm",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "height",
+      "value": 220,
+      "unit": "mm",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL table, row BAT412101104, column l x w x h mm",
+        "quote": "BAT412101104 · l x w x h: 330 x 171 x 220 mm",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "mass",
+      "value": 33,
+      "unit": "kg",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL table, row BAT412101104, column Weight kg",
+        "quote": "BAT412101104 · Weight: 33 kg",
+        "page": 4
+      }
+    },
+    {
+      "quantity": "cranking_current",
+      "value": 450,
+      "unit": "A",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL table, row BAT412101104, column CCA @0°F",
+        "quote": "BAT412101104 · CCA @0°F: 450",
+        "page": 4
+      },
+      "statistic": "rated",
+      "conditions": {
+        "temperature_c": -17.8,
+        "unstated": [
+          "duration_s",
+          "voltage_lower_v"
+        ],
+        "extra": {
+          "rating": "CCA",
+          "temperature_printed": "0°F",
+          "standard": "not stated"
+        }
+      }
+    },
+    {
+      "quantity": "reserve_capacity",
+      "value": 150,
+      "unit": "min",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL table, row BAT412101104, column RES CAP @80°F",
+        "quote": "BAT412101104 · RES CAP @80°F: 150",
+        "page": 4
+      },
+      "statistic": "rated",
+      "conditions": {
+        "temperature_c": 26.7,
+        "unstated": [
+          "rate_value",
+          "rate_unit",
+          "voltage_lower_v"
+        ],
+        "extra": {
+          "source_label": "RES CAP @80°F",
+          "temperature_printed": "80°F",
+          "unit_basis": "printed without a unit; reserve capacity is defined in minutes"
+        }
+      }
+    },
+    {
+      "quantity": "calendar_life",
+      "value": 12,
+      "unit": "year",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL General Specification",
+        "quote": "Float design life: 12 years at 20°C",
+        "page": 4
+      },
+      "statistic": "design",
+      "conditions": {
+        "temperature_c": 20,
+        "unstated": [
+          "soc_pct"
+        ],
+        "extra": {
+          "basis": "Float design life",
+          "service": "float"
+        }
+      }
+    },
+    {
+      "quantity": "calendar_life",
+      "value": 6,
+      "unit": "year",
+      "locator": {
+        "section": "Page 1, Table 2: Design service life of Victron batteries under float service",
+        "quote": "Gel 'Deep Cycle' years · 30°C / 86°F: 6",
+        "page": 1
+      },
+      "statistic": "design",
+      "conditions": {
+        "temperature_c": 30,
+        "unstated": [
+          "soc_pct"
+        ],
+        "extra": {
+          "basis": "Design service life under float service",
+          "service": "float"
+        }
+      }
+    },
+    {
+      "quantity": "calendar_life",
+      "value": 3,
+      "unit": "year",
+      "locator": {
+        "section": "Page 1, Table 2: Design service life of Victron batteries under float service",
+        "quote": "Gel 'Deep Cycle' years · 40°C / 104°F: 3",
+        "page": 1
+      },
+      "statistic": "design",
+      "conditions": {
+        "temperature_c": 40,
+        "unstated": [
+          "soc_pct"
+        ],
+        "extra": {
+          "basis": "Design service life under float service",
+          "service": "float"
+        }
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 500,
+      "unit": "cycles",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL General Specification, Cycle design life",
+        "quote": "Cycle design life: 500 cycles at 80% discharge",
+        "page": 4
+      },
+      "statistic": "design",
+      "conditions": {
+        "dod_pct": 80,
+        "unstated": [
+          "temperature_c",
+          "rate_value",
+          "rate_unit"
+        ],
+        "extra": {
+          "source_label": "Cycle design life"
+        }
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 750,
+      "unit": "cycles",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL General Specification, Cycle design life",
+        "quote": "Cycle design life: 750 cycles at 50% discharge",
+        "page": 4
+      },
+      "statistic": "design",
+      "conditions": {
+        "dod_pct": 50,
+        "unstated": [
+          "temperature_c",
+          "rate_value",
+          "rate_unit"
+        ],
+        "extra": {
+          "source_label": "Cycle design life"
+        }
+      }
+    },
+    {
+      "quantity": "cycle_life",
+      "value": 1800,
+      "unit": "cycles",
+      "locator": {
+        "section": "Page 4, 12 Volt Deep Cycle GEL General Specification, Cycle design life",
+        "quote": "Cycle design life: 1800 cycles at 30% discharge",
+        "page": 4
+      },
+      "statistic": "design",
+      "conditions": {
+        "dod_pct": 30,
+        "unstated": [
+          "temperature_c",
+          "rate_value",
+          "rate_unit"
+        ],
+        "extra": {
+          "source_label": "Cycle design life"
+        }
+      }
+    },
+    {
+      "quantity": "max_pulse_discharge_rate",
+      "value": 7,
+      "unit": "C-rate",
+      "locator": {
+        "section": "Page 1, Table 1, lowest row ('the maximum allowable 5 seconds discharge current')",
+        "quote": "5 seconds | 8 C | 7 C (AGM 'Deep Cycle' | Gel 'Deep Cycle')",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "pulse_duration_s": 5,
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "rate_reference": "C as used for the rated 20-hour capacity"
+        }
+      }
+    },
+    {
+      "quantity": "max_continuous_charge_rate",
+      "value": 0.2,
+      "unit": "C-rate",
+      "locator": {
+        "section": "Page 3, section 15: Charge current",
+        "quote": "The charge current s hould preferably not exceed 0,2 C (20A for a 100Ah battery).",
+        "page": 3
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "unstated": [
+          "temperature_c"
+        ],
+        "extra": {
+          "source_label": "should preferably not exceed",
+          "note": "Temperature compensation is required above 0,2 C"
+        }
+      }
+    },
+    {
+      "quantity": "self_discharge_rate",
+      "value": 2,
+      "unit": "%/month",
+      "locator": {
+        "section": "Page 1, section 4: Low Self-Discharge",
+        "quote": "The rate of self -discharge is less than 2% per month at 20°C.",
+        "page": 1
+      },
+      "statistic": "maximum",
+      "is_upper_bound": true,
+      "conditions": {
+        "temperature_c": 20,
+        "unstated": [
+          "soc_pct",
+          "duration_s"
+        ],
+        "extra": {
+          "note": "The self-discharge doubles for every increase in temperature by 10°C."
+        }
+      }
+    },
+    {
+      "quantity": "cyclic_charge_voltage",
+      "value": 14.1,
+      "unit": "V",
+      "locator": {
+        "section": "Page 4, Table 3: Recommended charge voltage (12 V battery)",
+        "quote": "Victron Gel 'Deep Cycle' · Absorption | 14,1 - 14,4",
+        "page": 4
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "basis": "Section 14: the centre point for temperature compensation is 25°C",
+          "service": "Cycle service, normal",
+          "source_label": "Absorption"
+        }
+      }
+    },
+    {
+      "quantity": "cyclic_charge_voltage",
+      "value": 14.4,
+      "unit": "V",
+      "locator": {
+        "section": "Page 4, Table 3: Recommended charge voltage (12 V battery)",
+        "quote": "Victron Gel 'Deep Cycle' · Absorption | 14,1 - 14,4",
+        "page": 4
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "basis": "Section 14: the centre point for temperature compensation is 25°C",
+          "service": "Cycle service, normal",
+          "source_label": "Absorption"
+        }
+      }
+    },
+    {
+      "quantity": "float_charge_voltage",
+      "value": 13.5,
+      "unit": "V",
+      "locator": {
+        "section": "Page 4, Table 3: Recommended charge voltage (12 V battery)",
+        "quote": "Victron Gel 'Deep Cycle' · Float | 13,5 - 13,8 | 13,5 - 13,8",
+        "page": 4
+      },
+      "statistic": "minimum",
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "basis": "Section 14: the centre point for temperature compensation is 25°C",
+          "source_label": "Float"
+        }
+      }
+    },
+    {
+      "quantity": "float_charge_voltage",
+      "value": 13.8,
+      "unit": "V",
+      "locator": {
+        "section": "Page 4, Table 3: Recommended charge voltage (12 V battery)",
+        "quote": "Victron Gel 'Deep Cycle' · Float | 13,5 - 13,8 | 13,5 - 13,8",
+        "page": 4
+      },
+      "statistic": "maximum",
+      "conditions": {
+        "temperature_c": 25,
+        "extra": {
+          "basis": "Section 14: the centre point for temperature compensation is 25°C",
+          "source_label": "Float"
+        }
+      }
+    }
+  ]
+}

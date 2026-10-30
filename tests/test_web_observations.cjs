@@ -74,3 +74,58 @@ assert.ok(csv[2].includes('"B, ""big"""'), 'CSV quotes commas and doubles quotes
 assert.ok(csv[1].includes('21 x 70') === false && csv[2].includes('21 x 70'));
 assert.deepEqual(BD.similar(rows[0], rows, 2).map(r => r.uid), ['b', 'c']);
 console.log('CSV export and similarity helpers behave');
+
+// 5. Technology and chemistry are separate classes, and search understands both.
+{
+  const tax = JSON.parse(fs.readFileSync(path.join(root, 'web/data/technologies-and-chemistries.json')));
+  const idx = BD.searchIndex(tax);
+  const sodium = { model: 'JNC32700S', manu: 'Maker not stated', chem: 'Sodium-ion', tech: 'Sodium-ion', tvar: null, cclass: 'NFPP', kind: 'cell' };
+  const pana = { model: 'NCR-18650GA', manu: 'Panasonic', chem: null, tech: null, tvar: null, cclass: null, kind: 'cell' };
+  const lfp = { model: 'LF105', manu: 'EVE Energy', chem: 'LFP', tech: 'Lithium-ion', tvar: null, cclass: 'LFP', kind: 'cell' };
+  const lipo = { model: '101723', manu: 'Harding Energy', chem: 'Lithium polymer', tech: 'Lithium-ion', tvar: 'Lithium polymer', cclass: null, kind: 'cell' };
+  const q = s => BD.parseQuery(s, idx);
+  assert.ok(BD.matchesQuery(sodium, q('na')), '"na" is sodium-ion');
+  assert.ok(!BD.matchesQuery(pana, q('na')), '"na" is a class word, not a substring of Panasonic');
+  assert.ok(BD.matchesQuery(pana, q('panasonic')));
+  assert.deepEqual(q('lead acid').map(t => t.alias), ['lead acid'], 'two-word class names are one term');
+  assert.ok([...q('AGM')[0].keys].includes('v:Lead-acid' + BD.SEP + 'AGM'), 'AGM is a lead-acid variant');
+  assert.ok(BD.matchesQuery(lfp, q('li-ion lf105')) && BD.matchesQuery(lfp, q('LiFePO4')));
+  assert.ok(!BD.matchesQuery(lfp, q('nmc')));
+  assert.ok(BD.matchesQuery(sodium, q('nfpp')) && !BD.matchesQuery(sodium, q('lithium')));
+  assert.ok(BD.matchesQuery(lipo, q('lipo')) && BD.matchesQuery(lipo, q('li')) && !BD.matchesQuery(lfp, q('lipo')));
+  const li = [...q('li')[0].keys];
+  assert.ok(li.includes('t:Lithium-ion') && li.includes('t:Lithium primary'), '"li" names every lithium technology');
+  assert.ok(!idx.map.has('pb'), '"pb" stays free: the sodium sheets use it for Prussian blue');
+  const csv = BD.toCSV([sodium]).split('\n');
+  assert.ok(csv[0].includes('technology,technology_variant,chemistry,chemistry_as_printed'));
+  assert.ok(csv[1].includes('Sodium-ion,,NFPP,Sodium-ion'));
+  console.log('Technology and chemistry stay separate; search understands both');
+}
+
+// 6. Lead-acid: its own ratings are labelled, the search finds the variants, and
+//    every row says whether Lemonergy Design may use it (never, for lead-acid).
+{
+  const tax = JSON.parse(fs.readFileSync(path.join(root, 'web/data/technologies-and-chemistries.json')));
+  const idx = BD.searchIndex(tax);
+  const q = s => BD.parseQuery(s, idx);
+  const agm = { model: 'BAT412800084', manu: 'Victron Energy', chem: 'Lead-acid AGM', tech: 'Lead-acid', tvar: 'AGM', cclass: 'PbO2/Pb', kind: 'module', nodesign: true };
+  const efb = { model: 'VARTA Dynamic EFB 572501076', manu: 'Clarios', chem: 'Lead-acid EFB', tech: 'Lead-acid', tvar: 'EFB', cclass: 'PbO2/Pb', kind: 'module', nodesign: true };
+  const lfp = { model: 'LF105', manu: 'EVE Energy', chem: 'LFP', tech: 'Lithium-ion', tvar: null, cclass: 'LFP', kind: 'cell' };
+  assert.ok(BD.matchesQuery(agm, q('agm')) && !BD.matchesQuery(efb, q('agm')));
+  assert.ok(BD.matchesQuery(efb, q('enhanced flooded')) && BD.matchesQuery(agm, q('lead acid')) && BD.matchesQuery(agm, q('victron')));
+  assert.ok(BD.matchesQuery(agm, q('pbo2')) && !BD.matchesQuery(lfp, q('lead')));
+  assert.equal(tax.technologies.find(t => t.name === 'Lead-acid').design, false, 'lead-acid is never offered to Design');
+  assert.deepEqual(tax.technologies.filter(t => t.design).map(t => t.name), ['Lithium-ion', 'Sodium-ion']);
+  const csv = BD.toCSV([agm, lfp]).split('\n');
+  const col = csv[0].split(',').indexOf('lemonergy_design');
+  assert.ok(col > 0);
+  assert.equal(csv[1].split(',')[col], 'no'); assert.equal(csv[2].split(',')[col], 'yes');
+  const doc = JSON.parse(fs.readFileSync(path.join(root, 'contrib/cells/victron-energy/bat412800084.yaml')));
+  const rec = toRecord(doc);
+  const G = { Ratings: ['cranking_current', 'reserve_capacity', 'float_charge_voltage', 'cyclic_charge_voltage'] };
+  const rows = BD.recordGroups(rec, G).groups[0].rows;
+  assert.deepEqual(rows.map(r => r.label), ['Cranking current (CCA, MCA, …)', 'Reserve capacity', 'Float charge voltage', 'Cyclic (absorption) charge voltage']);
+  assert.equal(rows.find(r => r.q === 'cyclic_charge_voltage').obs.length, 4, 'normal and fastest-recharge ranges both kept');
+  assert.match(BD.recordMarkdown(rec, G), /`cranking_current` \| 400 \| A \| temperature_c: -17.8; extra: \{"rating":"CCA"/);
+  console.log('Lead-acid ratings are labelled, its variants are searchable, and Design is marked off');
+}
