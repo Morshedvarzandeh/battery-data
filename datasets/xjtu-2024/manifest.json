@@ -1,0 +1,435 @@
+{
+ "schema_version": 1,
+ "dataset": "xjtu-2024",
+ "title": "XJTU battery degradation dataset (55 x 18650 NCM)",
+ "publisher": "Xi'an Jiaotong University",
+ "citation": "Wang, F., Zhai, Z., Zhao, Z. et al. Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis. Nature Communications 15, 4332 (2024). doi:10.1038/s41467-024-48779-z",
+ "doi": "10.5281/zenodo.10963339",
+ "landing": "https://zenodo.org/records/10963339",
+ "license": "CC BY 4.0",
+ "license_url": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Data: Wang, F., Zhai, Z., Zhao, Z. et al., Xi'an Jiaotong University, XJTU battery dataset, doi:10.5281/zenodo.10963339, CC BY 4.0. Per-cycle values computed by Lemonergy (battery-data).",
+ "redistributable": true,
+ "retrieved_at": "2026-10-29",
+ "product_uid": "cell/lishen/unstated",
+ "cells": {
+  "maker": "Lishen",
+  "format": "18650",
+  "chemistry": "NMC523 (LiNi0.5Co0.2Mn0.3O2)",
+  "nominal_capacity_ah": 2.0,
+  "nominal_voltage_v": 3.6,
+  "count": 55
+ },
+ "batches": {
+  "Batch-1": "8 cells, 2C charge / 1C discharge",
+  "Batch-2": "15 cells, 3C charge / 1C discharge",
+  "Batch-3": "8 cells, 2C charge, discharge rate cycled 0.5-1-2-3-5C to 2.5 V",
+  "Batch-4": "8 cells, as Batch-3 but to 3.0 V, capacity checked every cycle",
+  "Batch-5": "8 cells, random 2-8 A discharge pulses of 2-6 min to 3.0 V, capacity checked periodically from cycle 21",
+  "Batch-6": "8 cells, simulated GEO satellite: 2C charge, 0.667C discharge, capacity checked about every 5 cycles"
+ },
+ "archive": {
+  "name": "Battery Dataset.zip",
+  "bytes": 2438769934,
+  "md5": "a635cef9678e0de21f9d5c1f78a4342c",
+  "md5_note": "matches the md5 Zenodo lists for the file"
+ },
+ "source_files": [
+  {
+   "path": "Battery Dataset/Batch-1/2C_battery-1.mat",
+   "bytes": 44388077,
+   "sha256": "336a0c25c9d6e4c18a231c0b4004edfb44fbd7808533490cddf4d073ce854dbb",
+   "cycles": 390
+  },
+  {
+   "path": "Battery Dataset/Batch-1/2C_battery-2.mat",
+   "bytes": 46247857,
+   "sha256": "55da58e12c472b4c447698770a9b4dbd9f56f96a64b89c4b9b07ac191ecc1201",
+   "cycles": 407
+  },
+  {
+   "path": "Battery Dataset/Batch-1/2C_battery-3.mat",
+   "bytes": 44350323,
+   "sha256": "5fe79f7fb1d7848ccec49845203d46ba4b1f9c551f6603f54a917bd06d57c59c",
+   "cycles": 393
+  },
+  {
+   "path": "Battery Dataset/Batch-1/2C_battery-4.mat",
+   "bytes": 45003278,
+   "sha256": "333a202e89686e7bafe4c28bb46d0a0a95f2e4699de9cebc58fa98b680bbf577",
+   "cycles": 396
+  },
+  {
+   "path": "Battery Dataset/Batch-1/2C_battery-5.mat",
+   "bytes": 45819718,
+   "sha256": "eb4ba517f8d1593e9e08697be1fb0a52e6f95be50311fcca1a0b10fc316b9cd8",
+   "cycles": 403
+  },
+  {
+   "path": "Battery Dataset/Batch-1/2C_battery-6.mat",
+   "bytes": 46401249,
+   "sha256": "8aa9ccbba5e0bcd58a3d8371cd9f6336d62ccd86554d6ba4c92e9a6efa6d8bee",
+   "cycles": 408
+  },
+  {
+   "path": "Battery Dataset/Batch-1/2C_battery-7.mat",
+   "bytes": 45614404,
+   "sha256": "35608e4781253e48c22729ad3bf15114a2d41c89e664f38e74977ee566975246",
+   "cycles": 402
+  },
+  {
+   "path": "Battery Dataset/Batch-1/2C_battery-8.mat",
+   "bytes": 47859917,
+   "sha256": "c3186b4f06e7a3d80a2a172739ab31611d7514203ec9fea653a1c630b0e2f636",
+   "cycles": 420
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-1.mat",
+   "bytes": 30837529,
+   "sha256": "1113afe4045da763c5a5c0d70459fc539dd3bd63d43dbd509b2e67fc0a36bc2a",
+   "cycles": 299
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-10.mat",
+   "bytes": 17345769,
+   "sha256": "d53020fecd245869707bf895b67fc390bec58e17980d4c4beca9e58860e6540f",
+   "cycles": 164
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-11.mat",
+   "bytes": 13865487,
+   "sha256": "4eabe4b1fc002933b8baf6ba13c042219adff83bd65efaf1f1ef62c26e6676b3",
+   "cycles": 131
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-12.mat",
+   "bytes": 22237179,
+   "sha256": "dc8653c43e4e41685160aff8a665aa01fd98d872ed968dcd65134039d26ea1e4",
+   "cycles": 212
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-13.mat",
+   "bytes": 23735057,
+   "sha256": "1a31b0fa07e89553cb68b7e70dcdd8531b2fe4019c72aed4b1c723c31a1ee50f",
+   "cycles": 226
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-14.mat",
+   "bytes": 15490867,
+   "sha256": "d3b22335d7897dcb7e1ccc9d3f1f33a041a9b4e5547aefff0b3809ee149ed766",
+   "cycles": 147
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-15.mat",
+   "bytes": 17584209,
+   "sha256": "2f1ee5357eece8650459489e39b39a0079e453f689f30c83893584cb4ea3a414",
+   "cycles": 168
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-2.mat",
+   "bytes": 30892649,
+   "sha256": "9eb4f3b460233517c6282752b7e82ea94125e5ca46cfbcd68d061bb6133950c0",
+   "cycles": 292
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-3.mat",
+   "bytes": 29869736,
+   "sha256": "adab52411a81117a3667e12970ccbef7b1df203825f4eef032c24aa45bbde4aa",
+   "cycles": 286
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-4.mat",
+   "bytes": 33294040,
+   "sha256": "215cbb928f5b96c51eadff261b7d9999e80f5f9451b6f605a3f0e5240948ef79",
+   "cycles": 322
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-5.mat",
+   "bytes": 30902715,
+   "sha256": "fc231a8fb49b98f75c890b3dc9015735924cca95792baacc63c9c308ae2b86bc",
+   "cycles": 297
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-6.mat",
+   "bytes": 33738699,
+   "sha256": "6fb0d9c903a08f4d63b1f072b59bb3e524e51ce4c820be8fd4499484171cb2b7",
+   "cycles": 322
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-7.mat",
+   "bytes": 32989248,
+   "sha256": "dc25f1fb18d3998dc841b10c74f39de8748a49f63a4e2b1e6a2f8a7b53a0dc83",
+   "cycles": 319
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-8.mat",
+   "bytes": 28310628,
+   "sha256": "9092219045c704cc4478939b5e3f1b473211e6272ed2d367e07f91f30e28b0c8",
+   "cycles": 270
+  },
+  {
+   "path": "Battery Dataset/Batch-2/3C_battery-9.mat",
+   "bytes": 29609109,
+   "sha256": "e2945d8099fcb33ae1818d823a85b74fe5a1e9ffde58679dccdcfeb2613614f3",
+   "cycles": 287
+  },
+  {
+   "path": "Battery Dataset/Batch-3/R2.5_battery-1.mat",
+   "bytes": 60264367,
+   "sha256": "94ec478408d8319aa5dfe0947539e41fd8c6c3a377fefc2f6c1041bbb13690c5",
+   "cycles": 592
+  },
+  {
+   "path": "Battery Dataset/Batch-3/R2.5_battery-2.mat",
+   "bytes": 56454444,
+   "sha256": "e039766c6da6a2c986fc4aac949a44681aa2c2ae472d16fe811248412529eafe",
+   "cycles": 552
+  },
+  {
+   "path": "Battery Dataset/Batch-3/R2.5_battery-3.mat",
+   "bytes": 68716109,
+   "sha256": "d66bf22ea2b0bb8fa30c97dc9f9a3af42e1f09da46e86b2e43f6b8cba88b9fe9",
+   "cycles": 667
+  },
+  {
+   "path": "Battery Dataset/Batch-3/R2.5_battery-4.mat",
+   "bytes": 56934998,
+   "sha256": "98322d7ae37199cbbdda334352e3226ecff7ac0beb6e297492a50d77885b8f03",
+   "cycles": 557
+  },
+  {
+   "path": "Battery Dataset/Batch-3/R2.5_battery-5.mat",
+   "bytes": 57527014,
+   "sha256": "f26f38df1ddfa5e1a3a6f25df31bde7f6096a0fdb484b543de92d114dd90e7a4",
+   "cycles": 562
+  },
+  {
+   "path": "Battery Dataset/Batch-3/R2.5_battery-6.mat",
+   "bytes": 55358503,
+   "sha256": "ff7490b30548b453fdb96728719db049bf842a65fb075bbaf8a6d6c64fcedc07",
+   "cycles": 542
+  },
+  {
+   "path": "Battery Dataset/Batch-3/R2.5_battery-7.mat",
+   "bytes": 54049890,
+   "sha256": "dcde7decb4802467f6c205e0cd598fc15016fe9bc9b646a09898013e0c58f7c1",
+   "cycles": 527
+  },
+  {
+   "path": "Battery Dataset/Batch-3/R2.5_battery-8.mat",
+   "bytes": 63220081,
+   "sha256": "26a51346a981bc203b08ef031943c3472d095119a30f0826b613f4935680030b",
+   "cycles": 617
+  },
+  {
+   "path": "Battery Dataset/Batch-4/R3_battery-1.mat",
+   "bytes": 80230783,
+   "sha256": "5a41e4c6223cd17c7d2866607560a1ea5f6c14f8e91fc42457347de93465097a",
+   "cycles": 799
+  },
+  {
+   "path": "Battery Dataset/Batch-4/R3_battery-2.mat",
+   "bytes": 68351110,
+   "sha256": "8e28c1072de52609f38fbb2508aeae83b1d24c6605cb720fdfe3469ca5bb1b07",
+   "cycles": 673
+  },
+  {
+   "path": "Battery Dataset/Batch-4/R3_battery-3.mat",
+   "bytes": 68801058,
+   "sha256": "c300d12802f4c8d87701da378ac1bff6fa2be1ee4622b5cbcd836fe682a20756",
+   "cycles": 673
+  },
+  {
+   "path": "Battery Dataset/Batch-4/R3_battery-4.mat",
+   "bytes": 75012217,
+   "sha256": "056d4cc24b3c5367a0fc1967c9821fc9ac198cfb122aec6ba6572da1c9f52c4a",
+   "cycles": 727
+  },
+  {
+   "path": "Battery Dataset/Batch-4/R3_battery-5.mat",
+   "bytes": 74560254,
+   "sha256": "baa5ebb77bd158e0442f9b8a7863d326c5f358b53410f004997d3b104ae3debc",
+   "cycles": 739
+  },
+  {
+   "path": "Battery Dataset/Batch-4/R3_battery-6.mat",
+   "bytes": 72446965,
+   "sha256": "8eca7e00ef0d3b429a566fe37074c59316a3be4caca95d846b5c9b70d11e0f5e",
+   "cycles": 715
+  },
+  {
+   "path": "Battery Dataset/Batch-4/R3_battery-7.mat",
+   "bytes": 61033624,
+   "sha256": "c444cebb69ac1144e6857fdf9aa22c45c008a97cf338536a864ce18e131f2b5e",
+   "cycles": 601
+  },
+  {
+   "path": "Battery Dataset/Batch-4/R3_battery-8.mat",
+   "bytes": 76320788,
+   "sha256": "4b63e4977c6c3ce24510037bb8feb5262348b8da3c23ab32d8569aaf91541f0b",
+   "cycles": 751
+  },
+  {
+   "path": "Battery Dataset/Batch-5/RW_battery-1.mat",
+   "bytes": 17476523,
+   "sha256": "59eb49feb67ddb16445311d729b377366e5ed2dc78dc60ec2bcf82ff8b9ee12b",
+   "cycles": 197
+  },
+  {
+   "path": "Battery Dataset/Batch-5/RW_battery-2.mat",
+   "bytes": 26773778,
+   "sha256": "83b7a53149bf2d16acfce2d30f873c8fa3841b7822280cc1723dde6f77728086",
+   "cycles": 307
+  },
+  {
+   "path": "Battery Dataset/Batch-5/RW_battery-3.mat",
+   "bytes": 29424058,
+   "sha256": "8b535c3c0add08e8e4cc16d5c956cf50a81605b6bdb6956e91f9a2fd233b9c2e",
+   "cycles": 340
+  },
+  {
+   "path": "Battery Dataset/Batch-5/RW_battery-4.mat",
+   "bytes": 22386522,
+   "sha256": "3b94d0aaccad451074f656594e84bc9e67944b6179d3960e884151e4a8aa9633",
+   "cycles": 252
+  },
+  {
+   "path": "Battery Dataset/Batch-5/RW_battery-5.mat",
+   "bytes": 24113364,
+   "sha256": "01d2da6145cd9f2c5399591bfa194fedff863403e7d9fc66d953fb89534073bd",
+   "cycles": 274
+  },
+  {
+   "path": "Battery Dataset/Batch-5/RW_battery-6.mat",
+   "bytes": 19701136,
+   "sha256": "5ea01d2969d28c8ad622c2f95f254ae0bc1a22b07558b9a18abba28b823e9693",
+   "cycles": 219
+  },
+  {
+   "path": "Battery Dataset/Batch-5/RW_battery-7.mat",
+   "bytes": 16867588,
+   "sha256": "9448ac306dea7b8760683bcffdf5605b49ac6c083e8bd5c82920e55d4dd9c3a8",
+   "cycles": 186
+  },
+  {
+   "path": "Battery Dataset/Batch-5/RW_battery-8.mat",
+   "bytes": 18759273,
+   "sha256": "dfff24a269aa1c629be06bbf988f4c6bed6090893ccddf3c7928cad0497e52d7",
+   "cycles": 208
+  },
+  {
+   "path": "Battery Dataset/Batch-6/Sim_satellite_battery-1.mat",
+   "bytes": 102808911,
+   "sha256": "4c68a1b0aa80502c438258dff7137fe788bc355aedbe977fbf3420d4f2247f3f",
+   "cycles": 949
+  },
+  {
+   "path": "Battery Dataset/Batch-6/Sim_satellite_battery-2.mat",
+   "bytes": 130758107,
+   "sha256": "b33f937a0a0bbe36d6b20afa7ee86c2cb0d5c914b7c0931cd676d213321a430a",
+   "cycles": 1226
+  },
+  {
+   "path": "Battery Dataset/Batch-6/Sim_satellite_battery-3.mat",
+   "bytes": 97611118,
+   "sha256": "25025752e587d45e3edf5d137a2692a6b4625fa2ab388d6fa52e16e4b551d0e6",
+   "cycles": 908
+  },
+  {
+   "path": "Battery Dataset/Batch-6/Sim_satellite_battery-4.mat",
+   "bytes": 101591956,
+   "sha256": "50edbf0185b1f3a174feabf3faaa126b1a49187c8fa835abfb88cb987d638057",
+   "cycles": 943
+  },
+  {
+   "path": "Battery Dataset/Batch-6/Sim_satellite_battery-5.mat",
+   "bytes": 138876177,
+   "sha256": "61c99e75663ba93df1217e0a6e6be6691d21a7cd68c052d12aaa86668a832fae",
+   "cycles": 1301
+  },
+  {
+   "path": "Battery Dataset/Batch-6/Sim_satellite_battery-6.mat",
+   "bytes": 117240589,
+   "sha256": "1327345c67da97fec9dd6b7dcf0764783493d04a66ec2f8015413754cf151bed",
+   "cycles": 1075
+  },
+  {
+   "path": "Battery Dataset/Batch-6/Sim_satellite_battery-7.mat",
+   "bytes": 102215556,
+   "sha256": "6ed034e3b5c145b29370aecaebfba66194d577c58b5800b6ca06e444856d2f5a",
+   "cycles": 949
+  },
+  {
+   "path": "Battery Dataset/Batch-6/Sim_satellite_battery-8.mat",
+   "bytes": 113477348,
+   "sha256": "df55e977ca817c3bed762ac325b6b5ab5a56cbb72270328dfbb9645f28d31c6d",
+   "cycles": 1053
+  }
+ ],
+ "method": "Each .mat file converted with battery-data tools/convert_xjtu_mat.py and its cycles computed with tools/cyclers.py (cycle = one charge followed by one discharge; capacity integrated from current) at battery-data 5d881c9, the same values as the cycle_summary rows of the XJTU import. The file's own per-cycle label and reported capacities are carried beside the computed ones. Values are rounded as printed: Ah to 5 decimals, efficiency and volts to 4, seconds to 0.1.",
+ "caveats": [
+  "Batches 4-6 do not discharge fully: only cycles whose label ends in '[test capacity]' measure capacity; every other discharge figure there is a partial one.",
+  "Current sign: charge-positive throughout; recorded as the BDF default because the files carry no capacity column to prove it.",
+  "10 cells (2C_battery-2, RW_battery-2 to RW_battery-8, Sim_satellite_battery-2 and -6) have one recording gap over an hour with current flowing after it; it is not integrated into capacity."
+ ],
+ "columns": {
+  "batch": {
+   "unit": null,
+   "meaning": "XJTU batch folder"
+  },
+  "cell": {
+   "unit": null,
+   "meaning": "cell file name without .mat"
+  },
+  "cycle": {
+   "unit": null,
+   "meaning": "cycle number, 1-based, counted by battery-data"
+  },
+  "label": {
+   "unit": null,
+   "meaning": "the file's own description of the cycle, verbatim"
+  },
+  "charge_ah": {
+   "unit": "Ah",
+   "meaning": "charge capacity integrated from current"
+  },
+  "discharge_ah": {
+   "unit": "Ah",
+   "meaning": "discharge capacity integrated from current"
+  },
+  "charge_ah_reported": {
+   "unit": "Ah",
+   "meaning": "charge capacity as the file's summary gives it"
+  },
+  "discharge_ah_reported": {
+   "unit": "Ah",
+   "meaning": "discharge capacity as the file's summary gives it"
+  },
+  "coulombic_efficiency": {
+   "unit": null,
+   "meaning": "discharge_ah / charge_ah"
+  },
+  "v_max": {
+   "unit": "V",
+   "meaning": "highest voltage in the cycle"
+  },
+  "v_min": {
+   "unit": "V",
+   "meaning": "lowest voltage in the cycle"
+  },
+  "duration_s": {
+   "unit": "s",
+   "meaning": "length of the cycle"
+  },
+  "start_test_time_s": {
+   "unit": "s",
+   "meaning": "start of the cycle on the test's time axis"
+  }
+ },
+ "files": {
+  "cycles.csv": {
+   "rows": 27642,
+   "sha256": "49811d1656f08a42ffa905e717cbdb9d402cf6947660eb6847034fd892a46b27"
+  }
+ }
+}
