@@ -37,9 +37,39 @@ class LeadAcid(unittest.TestCase):
         for doc in docs():
             d = by_uid[doc["product"]["uid"]]
             raw = (ROOT / d["accepted_file"]).read_bytes()
-            self.assertEqual(json.loads(raw), doc, d["accepted_file"])
+            # A later revision audit may change named fields (the VARTA records moved
+            # to their datasheets on 2026-10-30); everything else is as accepted.
+            changed = review_ledger.revised_fields(d["accepted_file"])
+            self.assertEqual(review_ledger.without_fields(json.loads(raw), changed),
+                             review_ledger.without_fields(doc, changed), d["accepted_file"])
             self.assertEqual(hashlib.sha256(raw).hexdigest(),
                              review_ledger.accepted_sha256(d["accepted_file"], d["accepted_document_sha256"]))
+
+    def test_varta_records_cite_their_datasheets(self):
+        import revise_varta_datasheets as varta
+        self.assertEqual(len(varta.SHEETS), 11)
+        weights = 0
+        for etn, _size, sha, rendered, weight in varta.SHEETS:
+            path = ROOT / "contrib" / "cells" / "clarios" / f"varta-dynamic-efb-{etn}.yaml"
+            doc = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(review_ledger.revised_fields(str(path.relative_to(ROOT))), varta.FIELDS)
+            src = doc["source"]
+            self.assertEqual((src["kind"], src["sha256"], src["retrieved_at"]), ("datasheet", sha, rendered))
+            self.assertTrue(src["url"].endswith(f"/{etn}K262.pdf"))
+            for o in doc["observations"]:
+                self.assertEqual(o["locator"]["page"], 2)
+            mass = [o for o in doc["observations"] if o["quantity"] == "mass"]
+            if weight == "-":
+                self.assertEqual(mass, [], "the N50 sheet prints no weight")
+                self.assertIn("'Weight filled: -'", src["note"])
+            else:
+                weights += 1
+                self.assertEqual(mass[0]["unit"], "kg")
+                self.assertEqual(mass[0]["locator"]["quote"], f"Weight filled: {weight}")
+                self.assertAlmostEqual(mass[0]["value"], float(weight.split()[0].replace(",", ".")))
+            cca = next(o for o in doc["observations"] if o["quantity"] == "cranking_current")
+            self.assertEqual(cca["conditions"]["extra"]["standard"], "not stated", "the sheets print no CCA standard")
+        self.assertEqual(weights, 10)
 
     def test_technology_variant_and_design(self):
         seen = set()
