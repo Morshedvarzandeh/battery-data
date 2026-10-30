@@ -66,6 +66,25 @@ class SnapshotTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "empty"):
             snap.build(self.tmp, REVISION)
 
+    def test_each_record_says_whether_design_may_use_it(self):
+        # Design takes lithium-ion and sodium-ion only, as the finder says.
+        extra = {"contrib/cells/trojan-battery/t-105.yaml": (False, "Lead-acid"),
+                 "contrib/cells/samsung-sdi/inr21700-50e.yaml": (True, "Lithium-ion")}
+        for sample in extra:
+            target = self.tmp / sample
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy(ROOT / sample, target)
+        primary = next(p for p in sorted((ROOT / "contrib").rglob("*.yaml"))
+                       if yaml.safe_load(p.read_text())["product"]["kind"] == "primary_cell")
+        target = self.tmp / primary.relative_to(ROOT)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(primary, target)
+        by_file = {e["file"]: e["design"] for e in snap.build(self.tmp, REVISION)["records"]}
+        for sample, (allowed, tech) in extra.items():
+            self.assertEqual(by_file[sample], {"allowed": allowed, "technology": tech}, sample)
+        self.assertFalse(by_file[primary.relative_to(ROOT).as_posix()]["allowed"], "a primary cell is not lithium-ion")
+        self.assertTrue(all(isinstance(d["allowed"], bool) for d in by_file.values()))
+
     def test_canonical_json_is_stable(self):
         text = snap.canonical({"b": 1, "a": [1.5, "é"]})
         self.assertEqual(text, '{"a":[1.5,"é"],"b":1}')

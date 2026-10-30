@@ -34,11 +34,31 @@ import yaml
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from validate_contrib import REGISTRY, SCHEMA, check  # noqa: E402
 from catalog_dates import TIMELINE, load_timeline, record_dates  # noqa: E402
+import classification  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "https://github.com/Morshedvarzandeh/battery-data"
 FORMAT_VERSION = 1
 SHA_PATTERN = re.compile(r"[0-9a-f]{40}")
+CLASSES = ROOT / "web" / "data" / "technologies-and-chemistries.json"
+
+
+def design_view(doc: dict, tax: dict) -> dict:
+    """
+    May Lemonergy Design use this record? The same rule the finder applies
+    (tools/build_web_data.py): Design takes lithium-ion and sodium-ion only,
+    so a lead-acid record -- or any technology the taxonomy marks off Design,
+    or a primary cell -- is listed and served for reference but never sized
+    into a pack. `technology` is the family the record's own chemistry
+    designation maps to, or None when it states none.
+    """
+    product = doc["product"]
+    chem = doc.get("chemistry") or {}
+    klass = classification.classify(tax, chem.get("designation"),
+                                    chem.get("cathode_text"), chem.get("electrolyte_text"))
+    rechargeable = product.get("is_rechargeable") is not False and product["kind"] != "primary_cell"
+    return {"allowed": classification.designable(tax, klass["tech"], rechargeable),
+            "technology": klass["tech"]}
 
 
 def canonical(value) -> str:
@@ -85,6 +105,7 @@ def build(root: Path, revision: str, *, schema: dict | None = None,
     if registry is None:
         registry = json.loads(Path(REGISTRY).read_text())
     validator = jsonschema.Draft202012Validator(schema)
+    tax = classification.load(str(CLASSES))
 
     records, seen, errors = [], {}, []
     for path in sorted(contrib.rglob("*.y*ml")):
@@ -102,7 +123,8 @@ def build(root: Path, revision: str, *, schema: dict | None = None,
             continue
         seen[uid] = relative
         # Approval is the promotion into contrib/; nothing else is scanned.
-        records.append({"file": relative, "record": doc, "dates": record_dates(doc)})
+        records.append({"file": relative, "record": doc, "dates": record_dates(doc),
+                        "design": design_view(doc, tax)})
     if errors:
         raise ValueError("\n".join(errors))
     if not records:
