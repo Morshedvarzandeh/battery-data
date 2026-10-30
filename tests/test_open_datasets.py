@@ -44,8 +44,91 @@ class RegistryTest(unittest.TestCase):
 
     def test_calce_cites_the_cs2_experiment_article(self):
         ds = ingest.DATASETS["calce"]
-        self.assertEqual(ds["model"], "CS2")
+        self.assertEqual(ds["cell_types"]["CS2"]["model"], "CS2")
         self.assertIn("Journal of Power Sources 196(23)", ds["citation"])
+
+
+def _synth_files(tmp, stems, dialect="arbin"):
+    paths = []
+    for stem in stems:
+        p = os.path.join(tmp, stem + ".csv")
+        with open(p, "w") as fh:
+            fh.write(cyclers._synth(dialect, n_cycles=6, rpt_every=3))
+        paths.append(p)
+    return paths
+
+
+class IdentityTest(unittest.TestCase):
+    """One product per physical cell type, and never a company called 'unstated'."""
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp)
+
+    def resolve(self, key, stems, **kw):
+        return ingest.resolve_identity(key, ingest.DATASETS[key], [s + ".csv" for s in stems], **kw)
+
+    def test_calce_cell_type_is_read_from_the_file_names(self):
+        for stems, kind, uid, ah in ((["CS2_35", "CS2_36"], "CS2", "cell/maker-not-stated/cs2", 1.1),
+                                     (["CX2_16"], "CX2", "cell/maker-not-stated/cx2", 1.35),
+                                     (["SP1_25C_LC_OCV"], "INR18650-20R", "cell/maker-not-stated/inr18650-20r", 2.0),
+                                     (["PL04"], "PL", "cell/maker-not-stated/pl", 1.5)):
+            with self.subTest(kind=kind):
+                d = self.resolve("calce", stems)
+                self.assertEqual((d["cell_type"], ingest.product_uid(d, "calce"), d["nominal_ah"]), (kind, uid, ah))
+
+    def test_two_cell_types_are_never_one_product(self):
+        with self.assertRaisesRegex(ingest.IdentityError, "not all one cell type"):
+            self.resolve("calce", ["CS2_35", "CX2_16"])
+        with self.assertRaisesRegex(ingest.IdentityError, "not CS2 cells by name"):
+            self.resolve("calce", ["CS2_35", "CX2_16"], cell_type="CS2")
+        with self.assertRaisesRegex(ingest.IdentityError, "unknown cell type"):
+            self.resolve("calce", ["CS2_35"], cell_type="CS3")
+
+    def test_an_aggregator_needs_a_model_per_batch(self):
+        with self.assertRaisesRegex(ingest.IdentityError, "names no single cell model"):
+            self.resolve("batteryarchive", ["SNL_18650_LFP_25C_0-100_0.5-1C_a"])
+        d = self.resolve("batteryarchive", ["x"], manufacturer="A123 Systems", model="APR18650M1A", nominal_ah=1.1)
+        self.assertEqual(ingest.product_uid(d, "batteryarchive"), "cell/a123-systems/apr18650m1a")
+        with self.assertRaisesRegex(ingest.IdentityError, "declares no cell types"):
+            self.resolve("xjtu-2024", ["2C_battery-1"], cell_type="CS2")
+
+    def test_an_unnamed_maker_is_the_library_placeholder(self):
+        files = _synth_files(self.tmp, ["CS2_1"])
+        out = io.StringIO()
+        stats = ingest.run_pipeline("calce", ingest.DATASETS["calce"], files, out)
+        sql = out.getvalue()
+        self.assertEqual(stats["product"], "cell/maker-not-stated/cs2")
+        self.assertIn("VALUES ('org/maker-not-stated', 'Maker not stated',", sql)
+        self.assertNotIn("'org/unstated'", sql)
+        # the xjtu identity is unchanged: maker named, model not
+        d = ingest.resolve_identity("xjtu-2024", ingest.DATASETS["xjtu-2024"], ["2C_battery-1.csv"])
+        self.assertEqual(ingest.product_uid(d, "xjtu-2024"), "cell/lishen/unstated")
+
+
+class PerFileProvenanceTest(unittest.TestCase):
+    """Each run cites its own file and hash, and a re-run adds no locations."""
+
+    def test_each_run_cites_its_own_file(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            files = _synth_files(tmp, ["CS2_1", "CS2_2", "CS2_3"])
+            out = io.StringIO()
+            ingest.run_pipeline("calce", ingest.DATASETS["calce"], files, out)
+            sql = out.getvalue()
+        finally:
+            shutil.rmtree(tmp)
+        runs = [b for b in sql.split("INSERT INTO bd.test_run")[1:]]
+        self.assertEqual(len(runs), 3)
+        for stem, run in zip(["CS2_1", "CS2_2", "CS2_3"], runs):
+            run = run[:run.index("INSERT INTO bd.test_segment")]
+            self.assertIn(f"'run/calce/{stem}'", run)
+            self.assertIn(f"sl.quote = 'cycler file {stem}.csv sha256:", run)
+        self.assertNotIn("LIMIT 1;", sql.split("INSERT INTO provenance")[1].split("COMMIT;")[0])
+        self.assertIn("NOT EXISTS (SELECT 1 FROM provenance p WHERE p.source_location_id = sl.id)", sql)
+        self.assertEqual(sql.count("AND NOT EXISTS (SELECT 1 FROM source_location sl"), 3)
 
 
 def _cycle(t0_clock, restart_relative, cycle_no, label):

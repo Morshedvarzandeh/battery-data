@@ -108,6 +108,11 @@ jobs:
       - name: Validate BMS lifecycle and scoped limits in the database
         run: python tests/ci_bms_loader.py "dbname=batterydb host=localhost user=postgres password=postgres"
 
+      - name: Validate open-dataset import provenance in a rolled-back transaction
+        run: |
+          pip install pandas numpy
+          python tests/ci_dataset_loader.py "dbname=batterydb host=localhost user=postgres password=postgres"
+
       - name: Load patent review corpus into staging
         run: |
           python tools/load_patents.py --dsn "dbname=batterydb host=localhost user=postgres password=postgres"
