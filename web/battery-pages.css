@@ -43,6 +43,10 @@
 .bp-similar a { font-weight: 700; display: block; }
 .bp-similar span { color: var(--muted); font-size: 13px; }
 .bp-more { margin-top: 32px; color: var(--muted); font-size: 14px; }
+.bp-cite { max-width: 920px; margin: 4px 0 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--soft); color: var(--ink); font-size: 13px; line-height: 1.55; overflow-wrap: anywhere; }
+.bp-sources th[scope="row"] { white-space: normal; min-width: 240px; }
+.bp-sources th[scope="row"] small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; margin-top: 2px; }
+.bp-sources code { font-family: var(--mono); font-size: 11px; }
 .bp-list th[scope="row"] { font-weight: 400; white-space: nowrap; }
 .bp-list td { white-space: nowrap; }
 .bp-page .bp-list th[aria-sort] { cursor: pointer; }

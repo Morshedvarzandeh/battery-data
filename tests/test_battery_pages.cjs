@@ -104,6 +104,41 @@ for (const [file, html] of Object.entries(files)) {
     assert.ok(files[target] || files[path.posix.join(target, 'index.html')], `${file}: ${href} resolves`);
   }
 }
+// 5. Every value is traceable: one sources page lists each document once with the records it
+//    supports, each maker page lists its documents, and each battery page gives a citation.
+const sourcesHtml = files['sources/index.html'];
+assert.ok(sourcesHtml, 'the sources page exists');
+assert.ok(listed.has(`${SITE}sources/`), 'the sources page is in the sitemap');
+assert.equal(meta(sourcesHtml, 'robots'), undefined, 'the sources page is indexable');
+const docKeys = new Map();
+for (const r of rows) {
+  const key = `${r.uid.split('/')[1]}|${pages.docKey(records.get(r.uid).source || {}, r.uid)}`;
+  docKeys.set(key, (docKeys.get(key) || 0) + 1);
+}
+assert.equal(stats.documents, docKeys.size);
+const sourceRows = [...sourcesHtml.matchAll(/<tr><th scope="row">[\s\S]*?<\/tr>/g)].map((m) => m[0]);
+assert.equal(sourceRows.length, docKeys.size, 'each document is listed once');
+const supported = sourceRows.reduce((n, row) => n + Number(row.match(/data-v="(\d+)"/)[1]), 0);
+assert.equal(supported, rows.length, 'the documents account for every battery');
+for (const [file, html] of Object.entries(files)) {
+  const m = file.match(/^([^/]+)\/index\.html$/);
+  if (!m || m[1] === 'sources') continue;
+  const own = [...docKeys.keys()].filter((k) => k.startsWith(`${m[1]}|`)).length;
+  const section = html.slice(html.indexOf('id="sources-title"'), html.indexOf('id="models-title"'));
+  assert.equal((section.match(/<tr><th scope="row">/g) || []).length, own, `${file}: its ${own} documents`);
+}
+for (const r of rows) {
+  const [, maker, model] = r.uid.split('/');
+  const html = files[`${maker}/${model}/index.html`];
+  const cite = (html.match(/<p class="bp-cite">([^<]*)<\/p>/) || [])[1];
+  assert.ok(cite && cite.endsWith(`record ${r.uid}: ${SITE}${maker}/${model}/`), `${r.uid}: a citation naming the record and its page`);
+  assert.equal(cite, pages.citation(r, records.get(r.uid)).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'));
+  assert.ok(html.includes('<a href="../../sources/">All sources of the library</a>'), `${r.uid}: links the sources page`);
+}
+assert.match(files['catl/302ah-lifepo4/index.html'], /CATL\. “CATL 302Ah 3\.22V LiFePO4 power battery — Product Specification”, datasheet, CATL product specification, C-sample stage, 2022\. Not public; SHA-256 2f4be57c/);
+assert.doesNotMatch(lipol, /Ltd\.\. /, 'no doubled full stop after a maker that ends in one');
+console.log(`Every value is traceable: ${docKeys.size} documents on the sources page, a citation on every battery page`);
+
 // The licence line covers the values, not the quotes: those stay their publishers'.
 for (const [file, html] of Object.entries(files)) {
   if (!file.endsWith('.html')) continue;
