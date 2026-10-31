@@ -104,6 +104,12 @@ for (const [file, html] of Object.entries(files)) {
     assert.ok(files[target] || files[path.posix.join(target, 'index.html')], `${file}: ${href} resolves`);
   }
 }
+// The licence line covers the values, not the quotes: those stay their publishers'.
+for (const [file, html] of Object.entries(files)) {
+  if (!file.endsWith('.html')) continue;
+  assert.match(html, /Values CC BY 4\.0; quoted text and source documents belong to their publishers/, `${file}: licence line`);
+  assert.doesNotMatch(html, /Data CC BY 4\.0/, `${file}: no blanket data licence over quoted text`);
+}
 const item = ld(catl)['@graph'].find((x) => x['@type'] === 'ItemPage');
 assert.equal(item.url, `${SITE}catl/302ah-lifepo4/`);
 assert.equal(item.about.name, 'CATL 302Ah LiFePO4');

@@ -346,6 +346,11 @@ Curated data stays **CC-BY-4.0**, unchanged — the code licence does not reach
 the facts. Attribution is the only condition, and every row already carries the
 provenance needed to give it.
 
+Quoted text is not part of that licence. Each value keeps a short excerpt of
+its source (`locator.quote`) as evidence of where it came from; the excerpt,
+like the document it comes from, belongs to its publisher. The finder and the
+battery pages say so in their footer.
+
 Manufacturer datasheets are **not** redistributed: `source.redistributable`
 governs whether a document body is stored, and every value keeps a URL, hash
 and retrieval date so any takedown request is answerable. `source.license`
