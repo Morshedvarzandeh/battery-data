@@ -44,8 +44,12 @@ python -m http.server -d web 8000       # then open http://localhost:8000/
 
 `tools/build_battery_pages.cjs` turns the finder's data into one page per
 battery (`web/batteries/<maker>/<model>/`, the record's uid as the path), a
-page per maker with every model in a sortable table, the library index, and
-`web/batteries/sitemap.xml`. The deploy builds them after `web/data/`; they
+page per maker with its source documents and every model in a sortable table,
+the library index, `web/batteries/sources/` (every source document once, by
+maker, with its link or hash, revision, retrieval date and the records it
+supports), and `web/batteries/sitemap.xml`. Each battery page ends its source
+block with a citation to copy: the document, then the record and page where
+the values were compiled. The deploy builds them after `web/data/`; they
 are not committed. lemonergy.com serves them at `/data/batteries/`, and every
 page's canonical address is that one.
 

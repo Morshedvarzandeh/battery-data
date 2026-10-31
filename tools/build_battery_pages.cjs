@@ -6,6 +6,7 @@
  *   web/batteries/<maker>/index.html           one maker: every battery in a table
  *   web/batteries/<maker>/<model>/index.html   one battery: every value with its
  *                                              conditions and its source
+ *   web/batteries/sources/index.html           every source document, by maker
  *   web/batteries/sitemap.xml                  the indexable pages only
  *
  * lemonergy.com serves them at /data/batteries/ (a Pages Function in the hub
@@ -280,6 +281,9 @@ function sourceBlock(r, rec) {
 <dl class="bp-kv">
 ${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('\n')}
 </dl>
+<h3 id="cite">How to cite</h3>
+<p class="bp-cite">${esc(citation(r, rec))}</p>
+<p class="bp-note">The values are CC BY 4.0; the document and the passages quoted from it belong to its publisher. <a href="../../sources/">All sources of the library</a></p>
 </section>`;
 }
 
@@ -301,6 +305,82 @@ function rel(from, to) {
   let i = 0;
   while (i < a.length && i < b.length && a[i] === b[i]) i += 1;
   return `${'../'.repeat(a.length - i)}${b.slice(i).join('/')}${b.length > i ? '/' : ''}` || './';
+}
+
+/* ---------------------------------------------------------------- sources */
+
+/** One document, however many records it supports: its link, or its hash when it is not public. */
+const docKey = (s, uid) => s.url || (s.sha256 ? `sha256:${s.sha256}` : s.title || uid);
+const SOURCES = `${BASE}sources/`;
+
+/** When the document was retrieved, as the record states it. */
+function retrieved(rec) {
+  const s = rec.source || {};
+  const d = (rec.dates || {}).source_retrieved || {};
+  return s.retrieved_at || (d.status === 'recorded' && d.date ? d.date : null);
+}
+
+/** A citation a reader can copy: the document, then where the values were compiled. */
+function citation(r, rec) {
+  const s = rec.source || {};
+  const who = r.manu === NOT_STATED ? 'Maker not stated' : r.manu;
+  // A revision field that only says the revision is unknown adds nothing to a citation.
+  const ref = s.ref && !/unstated|not stated|not recorded/i.test(s.ref) ? s.ref : null;
+  const doc = [`“${s.title || 'Source document'}”`, BD.srcText(s.kind), ref, s.date].filter(Boolean).join(', ');
+  const where = s.url ? s.url : s.sha256 ? `Not public; SHA-256 ${s.sha256}` : 'Link not recorded';
+  return `${who}${/\.$/.test(who) ? '' : '.'} ${doc}. ${where}${retrieved(rec) ? ` (retrieved ${retrieved(rec)})` : ''}. `
+    + `Values as compiled in the Lemonergy battery library, record ${r.uid}: ${SITE}${pagePath(r.uid)}`;
+}
+
+/** Table rows of documents: what it is, where to find it, and the records it supports. */
+function sourcesTable(docs, from) {
+  return `<div class="tblwrap"><table class="bp-list bp-sources">
+<thead><tr><th scope="col">Document</th><th scope="col">Kind</th><th scope="col">Revision · date</th><th scope="col">Retrieved</th><th scope="col" class="r">Records</th></tr></thead>
+<tbody>
+${docs.map((d) => {
+    const s = d.source;
+    const title = esc(s.title || 'Untitled document');
+    const doc = s.url ? `<a href="${esc(s.url)}" rel="noopener">${title}</a>` : `${title}<small>Not public: identified by SHA-256 <code>${esc((s.sha256 || '').slice(0, 16))}…</code></small>`;
+    const n = d.rows.length;
+    // One record links to its page; several link to their maker's table, unless that is this page.
+    const records = n === 1
+      ? `<a href="${rel(from, pagePath(d.rows[0].uid))}">${esc(d.rows[0].model)}</a>`
+      : from === makerPath(d.maker) ? n.toLocaleString('en') : `<a href="${rel(from, makerPath(d.maker))}">${n.toLocaleString('en')}</a>`;
+    return `<tr><th scope="row">${doc}</th><td>${esc(BD.srcText(s.kind))}</td><td>${esc([s.ref, s.date].filter(Boolean).join(' · ') || '–')}</td><td>${esc(d.retrieved || 'Not recorded')}</td><td class="r" data-v="${n}">${records}</td></tr>`;
+  }).join('\n')}
+</tbody></table></div>`;
+}
+
+function sourcesPage(ctx) {
+  const url = SITE + SOURCES;
+  const docs = [...ctx.documents.values()];
+  const makers = [...new Set(docs.map((d) => d.maker))]
+    .map((slug) => ({ slug, name: ctx.makers.get(slug), docs: docs.filter((d) => d.maker === slug) }))
+    .sort((a, b) => (a.name === NOT_STATED) - (b.name === NOT_STATED) || a.name.localeCompare(b.name));
+  const description = `The ${plural(docs.length, 'document', 'documents')} behind the ${ctx.rows.length.toLocaleString('en')} batteries in the Lemonergy library: datasheets, manufacturer pages and supplier lists, each with its link or hash, revision and retrieval date.`;
+  const title = 'Sources of the battery library | Lemonergy Data';
+  const ld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'CollectionPage', '@id': `${url}#page`, url, name: 'Sources of the battery library', description, isPartOf: { '@type': 'WebSite', name: 'Lemonergy', url: `${SITE}/` } },
+    crumbsLd([['Data', `${SITE}/data/`], ['Batteries', SITE + BASE], ['Sources', url]])] };
+  const sections = makers.map(({ slug, name, docs: list }) => `<section class="bp-section" aria-labelledby="src-${esc(slug)}"><h2 id="src-${esc(slug)}"><a href="../${esc(slug)}/">${esc(name === NOT_STATED ? 'Maker not stated' : name)}</a></h2>
+<p>${plural(list.length, 'document', 'documents')}, supporting ${plural(list.reduce((n, d) => n + d.rows.length, 0), 'record', 'records')}.</p>
+${sourcesTable(list, SOURCES)}
+</section>`).join('\n');
+  return `${head({ title, description, canonical: url, robots: null, ld, css: '../' })}${ctx.header}
+<main id="main" class="wrap bp-page">
+${crumbs([['Data', `${SITE}/data/`], ['Batteries', '../'], ['Sources', null]])}
+<p class="eyebrow">Battery library · sources</p>
+<h1>Sources of the battery library</h1>
+<p class="lede">${esc(description)} Every battery's page names its document, quotes it for each value and gives a citation to copy.</p>
+<p class="bp-note">Values are CC BY 4.0. The documents, and the short passages quoted from them as evidence, belong to their publishers: follow the link to read a document where its publisher keeps it. A document marked not public was supplied to us and is identified by its SHA-256.</p>
+<p class="bp-note">The open battery ageing datasets on lemonergy.com (XJTU, CALCE) have their own pages, each with its full citation: <a href="${SITE}/data/ageing/">open battery ageing data</a>.</p>
+${sections}
+</main>
+${ctx.footer}
+<script src="../battery-pages.js" defer></script>
+</body>
+</html>
+`;
 }
 
 function batteryPage(r, rec, ctx) {
@@ -407,6 +487,7 @@ function makerPage(slug, rows, ctx) {
   const docs = new Map();
   for (const x of rows) docs.set(x.url || x.title || x.uid, x);
   const sources = countsText([...docs.values()], sourceLabel);
+  const makerDocs = [...ctx.documents.values()].filter((d) => d.maker === slug);
   const description = unnamed
     ? `${plural(rows.length, 'battery', 'batteries')} in the Lemonergy library whose source does not name a maker, with their specifications and sources.`
     : `${plural(rows.length, `${maker} battery`, `${maker} batteries`)}: ${kinds}. Capacity, voltage, mass, size and specific energy of each, with its source.`;
@@ -423,8 +504,14 @@ ${crumbs([['Data', `${SITE}/data/`], ['Batteries', '../'], [unnamed ? NOT_STATED
 <p class="eyebrow">Battery library · ${unnamed ? 'maker not stated' : 'manufacturer'}</p>
 <h1>${esc(heading)}</h1>
 <p class="lede">${esc(`${plural(rows.length, 'record', 'records')} in the library: ${kinds}${techs ? `; ${techs}` : ''}. Taken from ${sources}. Each model has its own page with every value, the conditions it was stated at and its source.`)}</p>
+<section class="bp-section" aria-labelledby="sources-title"><h2 id="sources-title">Sources</h2>
+<p>The ${plural(makerDocs.length, 'document', 'documents')} these records are read from. <a href="../sources/">All sources of the library</a></p>
+${sourcesTable(makerDocs, here)}
+</section>
+<section class="bp-section" aria-labelledby="models-title"><h2 id="models-title">Models</h2>
 ${indexed < rows.length && !unnamed ? `<p class="bp-note">${indexed ? `${plural(indexed, 'page', 'pages')} of ${rows.length.toLocaleString('en')} ${indexed === 1 ? 'states' : 'state'} more than capacity, voltage, size and mass.` : 'These records state capacity, voltage, size and mass; this table is the place to compare them.'} Select a column heading to sort.</p>\n` : ''}${table(sorted, here)}
-<p class="bp-more"><a href="../">The battery library</a> · <a href="${FINDER}">Find and compare batteries</a></p>
+</section>
+<p class="bp-more"><a href="../">The battery library</a> · <a href="../sources/">Sources</a> · <a href="${FINDER}">Find and compare batteries</a></p>
 </main>
 ${ctx.footer}
 <script src="../battery-pages.js" defer></script>
@@ -450,7 +537,7 @@ ${crumbs([['Data', `${SITE}/data/`], ['Batteries', null]])}
 <p class="eyebrow">Battery library</p>
 <h1>Battery specifications with their conditions and sources</h1>
 <p class="lede">${esc(description)} Where a source says nothing, the page says so instead of filling the gap.</p>
-<p class="bp-actions"><a class="btn pri" href="${FINDER}">Find and compare batteries</a><a class="btn" href="${REPO}">The open library on GitHub</a></p>
+<p class="bp-actions"><a class="btn pri" href="${FINDER}">Find and compare batteries</a><a class="btn" href="sources/">Sources: ${plural(ctx.documents.size, 'document', 'documents')}</a><a class="btn" href="${REPO}">The open library on GitHub</a></p>
 <section class="bp-section" aria-labelledby="makers-title"><h2 id="makers-title">By maker</h2>
 <div class="tblwrap"><table class="bp-list" data-sortable>
 <thead><tr><th scope="col">Maker</th><th scope="col" class="r">Records</th><th scope="col">Kinds</th><th scope="col">Technologies</th></tr></thead>
@@ -500,7 +587,19 @@ function build({ data = path.join(ROOT, 'web', 'data'), web = path.join(ROOT, 'w
     index[r.uid] = indexable(rec).ok;
     dates[r.uid] = lastDate(rec);
   }
-  const ctx = { rows, GROUPS, header, footer, index, dates };
+  // Every document once, with the records it supports.
+  const documents = new Map();
+  const makers = new Map();
+  for (const r of rows) {
+    const rec = records.get(r.uid);
+    const maker = parts(r.uid).maker;
+    if (maker === 'sources') throw new Error('a maker slug "sources" would collide with the sources page');
+    makers.set(maker, r.manu);
+    const key = `${maker}|${docKey(rec.source || {}, r.uid)}`;
+    if (!documents.has(key)) documents.set(key, { maker, source: rec.source || {}, rows: [], retrieved: retrieved(rec) });
+    documents.get(key).rows.push(r);
+  }
+  const ctx = { rows, GROUPS, header, footer, index, dates, documents, makers };
   const files = {};
   const groups = new Map();
   for (const r of rows) {
@@ -511,7 +610,8 @@ function build({ data = path.join(ROOT, 'web', 'data'), web = path.join(ROOT, 'w
   }
   for (const [slug, list] of groups) files[`${slug}/index.html`] = makerPage(slug, list, ctx);
   files['index.html'] = indexPage(groups, ctx);
-  const entries = [{ loc: SITE + BASE }];
+  files['sources/index.html'] = sourcesPage(ctx);
+  const entries = [{ loc: SITE + BASE }, { loc: SITE + SOURCES }];
   for (const [slug, list] of [...groups].sort()) {
     if (list[0].manu !== NOT_STATED) entries.push({ loc: SITE + makerPath(slug) });
     for (const r of [...list].sort((a, b) => a.uid.localeCompare(b.uid))) if (index[r.uid]) entries.push({ loc: SITE + pagePath(r.uid), lastmod: dates[r.uid] });
@@ -520,7 +620,7 @@ function build({ data = path.join(ROOT, 'web', 'data'), web = path.join(ROOT, 'w
   files['style.css'] = fs.readFileSync(path.join(web, 'style.css'), 'utf8');
   files['battery-pages.css'] = fs.readFileSync(path.join(web, 'battery-pages.css'), 'utf8');
   files['battery-pages.js'] = fs.readFileSync(path.join(web, 'battery-pages.js'), 'utf8');
-  const stats = { batteries: rows.length, indexed: Object.values(index).filter(Boolean).length, makers: groups.size, sitemap: entries.length };
+  const stats = { batteries: rows.length, indexed: Object.values(index).filter(Boolean).length, makers: groups.size, documents: documents.size, sitemap: entries.length };
   return { files, stats };
 }
 
@@ -535,8 +635,8 @@ function main() {
     fs.writeFileSync(path.join(out, rel), text);
   }
   console.log(`wrote ${path.relative(ROOT, out) || out}/: ${stats.batteries} battery pages (${stats.indexed} indexable), `
-    + `${stats.makers} maker pages, sitemap of ${stats.sitemap} pages; index rule: ${INDEX_RULE}`);
+    + `${stats.makers} maker pages, ${stats.documents} source documents, sitemap of ${stats.sitemap} pages; index rule: ${INDEX_RULE}`);
 }
 
-module.exports = { build, indexable, pagePath, rel, shortSpec, INDEX_RULE, BASIC, MIN_QUANTITIES };
+module.exports = { build, indexable, pagePath, rel, shortSpec, citation, docKey, INDEX_RULE, BASIC, MIN_QUANTITIES };
 if (require.main === module) main();
