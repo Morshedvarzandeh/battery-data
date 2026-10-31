@@ -221,6 +221,11 @@
     return terms.every(t => t.keys ? keys.some(k => t.keys.has(k)) : hay.includes(t.text));
   };
   BD.techText = r => r.tech ? r.tech + (r.tvar ? " · " + r.tvar : "") : null;
+  /** A battery's own page (tools/build_battery_pages.cjs): its uid is the path. */
+  BD.pageUrl = function (uid) {
+    const p = String(uid).split("/");
+    return p.length === 3 && p[0] !== "component" ? "https://lemonergy.com/data/batteries/" + p[1] + "/" + p[2] + "/" : null;
+  };
 
   /** Nearest records by format, chemistry, capacity and specific energy. */
   BD.similar = function (row, rows, k) {
@@ -524,7 +529,7 @@
       '<div class="srcbox">Source: ' + esc(r.title || BD.srcText(r.src)) + (r.yk === "release" ? " · released " + esc(r.year) : r.year ? " · document dated " + esc(r.year) + " (product release not researched)" : " · no date recorded") + " · " + r.n + " observations" +
       (r.url ? ' · <a href="' + esc(r.url) + '" target="_blank" rel="noopener">open ↗</a>' : "") + "</div>" +
       (sim.length ? '<div class="similar"><span class="lbl">Similar records</span>' + sim.map(s => '<button type="button" data-u="' + esc(s.uid) + '">' + esc(s.model) + "<span>" + esc(mfrLabel(s.manu)) + (s.ah != null ? " · " + BD.fmt(s.ah, 1) + " Ah" : "") + (s.whkg != null ? " · " + BD.fmt(s.whkg, 0) + " Wh/kg" : "") + "</span></button>").join("") + "</div>" : "") +
-      '<div class="acts"><button class="btn sm pri" id="fullrec" type="button">Full record</button><button class="btn sm' + (inCmp ? "" : state.cmp.length ? " pri" : "") + '" id="cmpbtn" type="button">' + (inCmp ? "Remove from comparison" : state.cmp.length ? "Add as cell " + (state.cmp.length + 1) + " of 4" : "Compare +") + "</button></div>";
+      '<div class="acts"><button class="btn sm pri" id="fullrec" type="button">Full record</button>' + (BD.pageUrl(r.uid) ? '<a class="btn sm" href="' + BD.pageUrl(r.uid) + '">Its page</a>' : "") + '<button class="btn sm' + (inCmp ? "" : state.cmp.length ? " pri" : "") + '" id="cmpbtn" type="button">' + (inCmp ? "Remove from comparison" : state.cmp.length ? "Add as cell " + (state.cmp.length + 1) + " of 4" : "Compare +") + "</button></div>";
     $("#cmpbtn").onclick = () => { if (inCmp) state.cmp = state.cmp.filter(x => x !== uid); else { if (state.cmp.length >= 4) state.cmp.shift(); state.cmp.push(uid); } writeHash(); renderCmp(); select(uid); if (state.cmp.length === 1) $("#cmpbar").scrollIntoView({ behavior: "smooth", block: "nearest" }); };
     $("#fullrec").onclick = () => openRecord(r);
     document.querySelectorAll("#insp .similar button").forEach(b => b.onclick = () => select(b.dataset.u));

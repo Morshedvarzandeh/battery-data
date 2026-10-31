@@ -39,3 +39,23 @@ python -m http.server -d web 8000       # then open http://localhost:8000/
 
 `tests/test_web_observations.cjs` exercises the pure functions in `app.js`
 (record grouping, Markdown export, lifecycle dates, CSV, similarity).
+
+## Battery pages
+
+`tools/build_battery_pages.cjs` turns the finder's data into one page per
+battery (`web/batteries/<maker>/<model>/`, the record's uid as the path), a
+page per maker with every model in a sortable table, the library index, and
+`web/batteries/sitemap.xml`. The deploy builds them after `web/data/`; they
+are not committed. lemonergy.com serves them at `/data/batteries/`, and every
+page's canonical address is that one.
+
+Values read exactly as in the finder: the pages use `web/app.js` for labels,
+units, conditions, grouping, provenance and similar records. Search engines
+are asked to index a battery's page only when its record states at least six
+quantities, at least one beyond capacity, voltage, size and mass, from a named
+maker; the others carry `noindex, follow` and stay out of the sitemap, and
+their maker's page is the indexed one. `tests/test_battery_pages.cjs` checks
+all of it.
+
+    python tools/build_web_data.py
+    node tools/build_battery_pages.cjs

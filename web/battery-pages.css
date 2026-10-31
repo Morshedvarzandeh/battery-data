@@ -1,0 +1,62 @@
+/* Lemonergy Data — the battery pages (tools/build_battery_pages.cjs).
+ * Same visual system as the finder (style.css, loaded first): its tokens,
+ * its light and dark values, one blue for actions, no new colours. */
+.bp-page { padding-block: 28px 56px; }
+.bp-crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0 0 18px; padding: 0; font-size: 13px; color: var(--muted); }
+.bp-crumbs li + li::before { content: "/"; margin-right: 6px; color: var(--line-strong); }
+.bp-crumbs a { color: var(--ink-2); }
+.bp-page h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; margin: 4px 0 12px; max-width: 920px; }
+.bp-page .lede { max-width: 860px; color: var(--ink-2); font-size: 16px; margin: 0 0 20px; }
+.bp-figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); margin: 0 0 18px; background: var(--surface); border-top: 1px solid var(--line); border-left: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.bp-figures div { padding: 12px 14px; min-width: 0; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.bp-figures dt { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.bp-figures dd { margin: 3px 0 0; font-size: 17px; font-weight: 700; color: var(--ink); overflow-wrap: anywhere; }
+.bp-figures dd small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 2px; }
+.bp-figures .bp-miss dd { color: var(--missing); font-weight: 400; font-size: 14px; }
+.bp-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+.bp-note, .bp-stock { color: var(--ink-2); font-size: 14px; margin: 8px 0 0; max-width: 860px; }
+.bp-stock { font-weight: 700; color: var(--accent-strong); }
+.bp-section { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+.bp-section h2 { font-size: 22px; margin: 0 0 8px; }
+.bp-section h3 { font-size: 15px; margin: 22px 0 8px; color: var(--ink-2); }
+.bp-section > p { color: var(--ink-2); max-width: 860px; margin: 0 0 12px; }
+/* The finder's table heads sort; these tables' heads and row headings do not. */
+.bp-page table th { cursor: default; position: static; }
+.bp-page table th::after { content: none; }
+.bp-page table th[scope="row"] { text-transform: none; letter-spacing: 0; font-size: 13px; background: none; color: var(--ink); }
+.bp-page table td { white-space: normal; }
+.bp-page table td.r { white-space: nowrap; text-align: right; }
+.bp-page table th.r { text-align: right; }
+.bp-specs th[scope="row"] { font-weight: 700; white-space: nowrap; }
+.bp-specs td, .bp-specs th { vertical-align: top; }
+.bp-specs td small, .bp-specs td q + small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.bp-specs q { color: var(--ink-2); font-size: 13px; quotes: "“" "”"; }
+.bp-specs td:last-child { min-width: 220px; max-width: 420px; }
+.bp-kv { display: grid; grid-template-columns: minmax(150px, 220px) 1fr; gap: 6px 18px; margin: 0; }
+.bp-kv div { display: contents; }
+.bp-kv dt { color: var(--muted); font-size: 13px; }
+.bp-kv dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+.bp-kv code { font-family: var(--mono); font-size: 12px; }
+.bp-quote q { color: var(--ink-2); font-size: 14px; }
+.bp-similar { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+.bp-similar li { border: 1px solid var(--line); border-radius: var(--r); padding: 10px 12px; background: var(--surface); }
+.bp-similar a { font-weight: 700; display: block; }
+.bp-similar span { color: var(--muted); font-size: 13px; }
+.bp-more { margin-top: 32px; color: var(--muted); font-size: 14px; }
+.bp-list th[scope="row"] { font-weight: 400; white-space: nowrap; }
+.bp-list td { white-space: nowrap; }
+.bp-page .bp-list th[aria-sort] { cursor: pointer; }
+.bp-page .bp-list th[aria-sort="none"]::after { content: " ↕"; color: var(--line-strong); font-size: 9px; }
+.bp-page .bp-list th[aria-sort="ascending"]::after { content: " ↑"; }
+.bp-page .bp-list th[aria-sort="descending"]::after { content: " ↓"; }
+@media (max-width: 640px) {
+  .bp-page { padding-block: 20px 40px; }
+  /* One value per block on a phone: quantity, value, conditions, source. */
+  .bp-specs thead { display: none; }
+  .bp-specs tr { display: block; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .bp-specs th, .bp-specs td, .bp-page .bp-specs td.r { display: block; border: 0; padding: 1px 0; text-align: left; white-space: normal; min-width: 0; max-width: none; }
+  .bp-specs td.r { font-size: 15px; font-weight: 700; }
+  .bp-figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bp-kv { grid-template-columns: 1fr; gap: 2px; }
+  .bp-kv dd { margin-bottom: 8px; }
+}
